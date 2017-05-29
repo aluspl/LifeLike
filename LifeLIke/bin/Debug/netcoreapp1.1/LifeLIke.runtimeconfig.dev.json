@@ -1,0 +1,7 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "/Users/szymonmotyka/.nuget/packages"
+    ]
+  }
+}
