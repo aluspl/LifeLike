@@ -1,14 +1,14 @@
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace LifeLike.Controllers
 {
-    public class ProjectController : Controller
+    public class PhotoController : Controller
     {
         // GET
         public ActionResult Index()
         {
-            
-            return View();
+            return   View();
         }
     }
 }
