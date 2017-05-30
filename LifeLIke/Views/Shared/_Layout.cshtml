@@ -30,20 +30,25 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    @await Component.InvokeAsync("Menu")
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2017 - LifeLIke</p>
-        </footer>
+<div class="container body-content">
+    <div class="row">
+        <div class="col-md-9">
+            @RenderBody()            
+        </div>       
+        <div class="col-md-3">
+            @await Component.InvokeAsync("Author")
+        </div>       
+        
     </div>
+    <footer>
+        <p>&copy; 2017 - LifeLike</p>
+    </footer>
+</div>
 
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>

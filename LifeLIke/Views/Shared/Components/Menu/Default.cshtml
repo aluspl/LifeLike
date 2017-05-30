@@ -1,0 +1,9 @@
+@model System.Collections.Generic.List<LifeLike.Models.MenuItem>
+
+@if (Model!=null && Model.Any())
+{
+    foreach (var item in Model)
+    {
+        <li>@Html.ActionLink(item.Name,item.Action,item.Controller)    </li>
+    }
+}

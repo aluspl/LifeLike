@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LifeLike.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LifeLIke.Controllers
+namespace LifeLike.Controllers
 {
     public class HomeController : Controller
     {
@@ -20,16 +21,13 @@ namespace LifeLIke.Controllers
             return View();
         }
 
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
+        
+        
         public IActionResult Error()
         {
             return View();
         }
     }
+
+   
 }
