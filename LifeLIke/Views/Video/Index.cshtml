@@ -1,9 +1,28 @@
-@model object
+@using LifeLike.Models
+@model List<LifeLike.Models.MenuItem>
+
+@functions {
+    private static string GenerateYoutube(MenuItem videoLink)
+    {
+        var format = string.Format("<div class=col-md-8>" +
+                                   "<h2>{0}</h2>"+
+                                   "<iframe width='560' height='315' src='https://www.youtube.com/embed/{1}' " +
+                                   "?rel'0' frameborder='0' allowfullscreen></iframe>" + 
+                                   "</div>", videoLink.Name, videoLink.Link);
+        return format;
+    }
+}
 
 @{
+    
     ViewBag.Title = "Videos";
     Layout = "_Layout";
 }
 
 <h2>Videos</h2>
-Something about Videos
+<div class="row">
+    @foreach (var video in Model)
+    {
+        @Html.Raw(GenerateYoutube(video))
+    }    
+</div>
