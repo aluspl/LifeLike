@@ -1,8 +1,8 @@
-@using LifeLike.Models
-@model List<LifeLike.Models.MenuItem>
+@using LifeLike.ViewModel
+@model List<LifeLike.ViewModel.LinkViewModel>
 
 @functions {
-    private static string GenerateYoutube(MenuItem videoLink)
+    private static string GenerateYoutube(LinkViewModel videoLink)
     {
         var format = string.Format("<div class=col-md-8>" +
                                    "<h2>{0}</h2>"+

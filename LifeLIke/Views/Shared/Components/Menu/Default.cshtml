@@ -1,9 +1,10 @@
-@model System.Collections.Generic.List<LifeLike.Models.MenuItem>
+@using LifeLike.ViewModel
+@model System.Collections.Generic.List< LifeLike.ViewModel.LinkViewModel>
 
 @if (Model!=null && Model.Any())
 {
     foreach (var item in Model)
     {
-        <li>@Html.ActionLink(item.Name,item.Action,item.Controller)    </li>
+        <li>@Html.ActionLink(item.Name,item.Action,item.Controller)</li>
     }
-}text-left
+}

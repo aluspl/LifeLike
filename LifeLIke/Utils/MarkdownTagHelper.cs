@@ -1,10 +1,9 @@
 using System.Threading.Tasks;
 using HeyRed.MarkdownSharp;
-using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace LifeLike.Utils
+namespace LifeLIke.Utils
 {
     [HtmlTargetElement("markdown", TagStructure = TagStructure.NormalOrSelfClosing)]
     [HtmlTargetElement(Attributes = "markdown")]

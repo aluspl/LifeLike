@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using LifeLike.Models;
-using LifeLIke.Models;
+using LifeLike.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LifeLike.ViewComponents
@@ -10,15 +9,38 @@ namespace LifeLike.ViewComponents
     {
         public async Task< IViewComponentResult> InvokeAsync()
         {
-            var model = new SidebarDataModel
+            var model = new SidebarViewModel
             {
-                Links = new List<MenuItem>
+                Links = new List<LinkViewModel>
                 {
-                    new MenuItem {Link = "https://github.com/aluspl/", IconName = "glyphicon-fire", Name = "Github"},
-                    new MenuItem {Link = "http://kawowipodroznicy.pl", IconName = "glyphicon-globe", Name = "Kawowi Podróżnicy"},
-                    new MenuItem {Link = "http://szymonmotyka.pl", IconName = "glyphicon-pencil", Name = "Personal Blog"},
-                    new MenuItem {Link = "https://www.linkedin.com/in/szymon-motyka-a7440b58/", IconName = "glyphicon-comment", Name = "LinkedIn"},
-                    new MenuItem {Link = "https://www.facebook.com/SzymonMotykapl/", IconName = "glyphicon-comment", Name = "Facebook"}
+                    new LinkViewModel {
+                        Link = "https://github.com/aluspl/", 
+                        IconName = "fire", 
+                        Name = "Github"},
+                    new LinkViewModel {
+                        Link = "http://kawowipodroznicy.pl", 
+                        IconName = "globe", 
+                        Name = "Kawowi Podróżnicy"},
+                    new LinkViewModel {
+                        Link = "http://szymonmotyka.pl", 
+                        IconName = "pencil", 
+                        Name = "Personal Blog"},
+                    new LinkViewModel {
+                        Link = "https://www.linkedin.com/in/szymon-motyka-a7440b58/", 
+                        IconName = "comment", 
+                        Name = "LinkedIn"},
+                    new LinkViewModel {
+                        Link = "https://www.facebook.com/SzymonMotykapl/", 
+                        IconName = "comment", 
+                        Name = "Facebook"},
+                    new LinkViewModel {
+                    Link = "https://www.youtube.com/user/alusvanzuoo", 
+                    IconName = "play", 
+                    Name = "YT: Szymon Motyka"},
+                new LinkViewModel {
+                Link = "https://www.youtube.com/channel/UC-F1oSvOzczOSLAAsCLBvVA", 
+                IconName = "play", 
+                Name = "YT: Kawowi Podróżnicy"}
  
                 }
             };

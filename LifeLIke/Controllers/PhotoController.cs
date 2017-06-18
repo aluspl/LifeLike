@@ -1,7 +1,7 @@
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace LifeLike.Controllers
+namespace LifeLIke.Controllers
 {
     public class PhotoController : Controller
     {
