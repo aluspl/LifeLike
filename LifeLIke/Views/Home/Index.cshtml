@@ -3,14 +3,22 @@
 }
 <div class="row">
     <div class="col-md-12">
-        Welcome on <h2>LifeLike</h2>
+        <h1>Welcome On LifeLike</h1>
+        <img src="photo/LIKE.jpg" alt="LifeLike" class="img-responsive">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h1>RSS</h1>
     </div>
 </div>
 <div class="row">
     <div class="col-md-6">
+        <h3>Szymon Motyka's Blog</h3>
         @await Component.InvokeAsync("Rss", new {Url = "http://szymonmotyka.pl/feed"})
     </div> 
     <div class="col-md-6">
+        <h3>Kawowi Podróżnicy's Blog</h3>
         @await Component.InvokeAsync("Rss", new {Url = "http://kawowipodroznicy.pl/feed"})
     </div> 
 </div>
