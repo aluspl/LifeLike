@@ -14,8 +14,7 @@
         <div class="list-group">
         @foreach (var item in Model.Links)
         {
-            <a href="@item.Link" class="list-group-item"> <span class="glyphicon glyphicon-@item.IconName" aria-hidden="true"></span>@item.Name</a>
-           
+            <a href="@item.Link" class="list-group-item"> <span class="glyphicon glyphicon-@item.IconName" aria-hidden="true"> </span> @item.Name</a>           
         }
         </div>
        

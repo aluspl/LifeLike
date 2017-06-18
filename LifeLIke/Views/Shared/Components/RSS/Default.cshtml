@@ -1,0 +1,12 @@
+﻿@model System.Collections.Generic.IEnumerable<LifeLike.ViewModel.RssViewModel>
+
+@foreach (var item in Model)
+{
+  <h2>@item.Title</h2>
+  <p>
+    <a href="@item.Link" class="button">
+      <span class="glyphicon glyphicon-globe"></span>Read More
+    </a>
+  </p>
+  @Html.Raw(item.Description)
+}
