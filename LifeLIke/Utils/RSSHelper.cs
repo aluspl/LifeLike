@@ -64,7 +64,7 @@ namespace LifeLIke.Utils
                 {
                     var response = await httpclient.GetAsync(url);
 
-                    XDocument doc = XDocument.Load(await response.Content.ReadAsStreamAsync());
+                    var doc = XDocument.Load(await response.Content.ReadAsStreamAsync());
                     // RSS/Channel/item
                     var entries = from item in doc.Root?.Descendants().First(i => i.Name.LocalName == "channel")
                             .Elements()
@@ -80,8 +80,9 @@ namespace LifeLIke.Utils
                     return entries.ToList();
                 }
             }
-            catch
+            catch(Exception e)
             {
+                
                 return new List<RssViewModel>();
             }
         }

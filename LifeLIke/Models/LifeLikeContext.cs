@@ -10,6 +10,7 @@ namespace LifeLike.Models
         
         public DbSet<LinkDataModel> Links { get; set; }
         public DbSet<ChangelogDataModel> Changelogs { get; set; }
+                public DbSet<EventLogDataModel> EventLogs { get; set; }
 
         public LifeLikeContext(DbContextOptions<LifeLikeContext> options) : base(options) 
         {
@@ -22,7 +23,7 @@ namespace LifeLike.Models
         }
     }
 
-    public static class DbInitializer
+            public static class DbInitializer
     {
         public static void Initialize(LifeLikeContext context)
         {
