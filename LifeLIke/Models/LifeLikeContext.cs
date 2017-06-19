@@ -10,7 +10,7 @@ namespace LifeLike.Models
         
         public DbSet<LinkDataModel> Links { get; set; }
         public DbSet<ChangelogDataModel> Changelogs { get; set; }
-                public DbSet<EventLogDataModel> EventLogs { get; set; }
+         public DbSet<EventLogDataModel> EventLogs { get; set; }
 
         public LifeLikeContext(DbContextOptions<LifeLikeContext> options) : base(options) 
         {

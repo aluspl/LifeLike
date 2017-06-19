@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
-using LifeLike.ApiMOdels;
+using LifeLike.ApiModels;
 
 namespace LifeLike.Models
 {
@@ -22,13 +22,24 @@ namespace LifeLike.Models
                 EventTime=DateTime.Now
             };
         }
+
+        public static EventLogDataModel Generate(Exception model)
+        {
+            return new EventLogDataModel
+            {
+                EventTime = DateTime.Now,
+                Type = EventLogType.Error,
+                Messages = model.Message,
+                StackTrace = model.StackTrace
+            };
+        }
     }
 
     public enum EventLogType
     {
-        Notification,
-        Error,
-        Warning
+        Info=0,
+        Error=1,
+        Warning=2
     }
     
 }

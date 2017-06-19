@@ -1,8 +1,9 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using LifeLike.Models;
 
-namespace LifeLike.ApiMOdels
+namespace LifeLike.ApiModels
 {
     public class EventLogApiModel
     {
