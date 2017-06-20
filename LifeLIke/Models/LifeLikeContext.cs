@@ -16,10 +16,7 @@ namespace LifeLike.Models
         {
             
         }
-                public LifeLikeContext()
-                {
-            
-                }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<LinkDataModel>().ToTable("Links");
@@ -27,7 +24,7 @@ namespace LifeLike.Models
         }
     }
 
-            public static class DbInitializer
+    public static class DbInitializer
     {
         public static void Initialize(LifeLikeContext context)
         {

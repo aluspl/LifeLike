@@ -13,7 +13,7 @@ namespace LifeLIke.Utils
         /// <summary>
         /// Parses an RSS feed and returns a <see cref="IList&amp;lt;Item&amp;gt;"/>.
         /// </summary>
-        public static async Task<IList<RssViewModel>> ParseRss(string url)
+        public static async Task<IList<RssViewModel>> ParseRss(string url, IEventLogRepository eventLog)
         {
             try
             {
@@ -39,17 +39,14 @@ namespace LifeLIke.Utils
             }
             catch(Exception e)
             {
-                LogUtils.AddExceptionLog(e);
+                eventLog?.AddExceptionLog(e);
                 return new List<RssViewModel>();
             }
         }
         private static DateTime ParseDate(string date)
         {
             DateTime result;
-            if (DateTime.TryParse(date, out result))
-                return result;
-            else
-                return DateTime.MinValue;
+            return DateTime.TryParse(date, out result) ? result : DateTime.MinValue;
         }
     }
 

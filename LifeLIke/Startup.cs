@@ -1,6 +1,9 @@
 ﻿using LifeLike.Models;
+using LifeLIke.Utils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,7 +31,12 @@ namespace LifeLIke
             // Add framework services.
             services.AddDbContext<LifeLikeContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));     
-            services.AddMvc();  
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); 
+            services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+            services.AddSingleton<IEventLogRepository, EventLogsRepository>();
+
+            services.AddMvc();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +54,6 @@ namespace LifeLIke
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
             app.UseStaticFiles();
 
             app.UseMvc(routes =>

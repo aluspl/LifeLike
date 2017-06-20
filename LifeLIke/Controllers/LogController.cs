@@ -1,63 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using LifeLike.ApiModels;
 using LifeLike.Models;
+using LifeLike.ViewModel;
+using LifeLIke.Utils;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LifeLIke.Controllers
+namespace LifeLike.Controllers
 {
-    [Route("api/[controller]")]
     public class LogController : Controller
     {
         private readonly LifeLikeContext _context;
+        private readonly IEventLogRepository _eventLogs;
 
-        public LogController(LifeLikeContext context)
+        public LogController(LifeLikeContext context, IEventLogRepository eventLog)
         {
             _context = context;
+            _eventLogs = eventLog;
         }
         // GET
-        [HttpGet]
         public IActionResult Index()
         {
-            return Ok(_context.EventLogs.ToList());
-        }
-        [HttpPost]
-        public IActionResult Post(EventLogApiModel model)
-        {
             try
             {
-                if (string.IsNullOrEmpty(model?.Messages)) return new BadRequestResult();
-                _context.EventLogs.Add(EventLogDataModel.Generate(model));
-                _context.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                _context.EventLogs.Add(EventLogDataModel.Generate(e));
-                _context.SaveChanges();
+                var list=_eventLogs.GetAllLogs().Select(EventLogViewModel.Get);
+                return  View(list);
 
-                throw;
-            }
-            return Ok();
-        }
-        [HttpDelete]
-        public IActionResult Delete()
-        {
-            try
-            {
-                foreach (var eventLogDataModel in _context.EventLogs)
-                {
-                    _context.Remove(eventLogDataModel);
-                }
-                _context.SaveChanges();
             }
             catch (Exception e)
             {
-                _context.EventLogs.Add(EventLogDataModel.Generate(e));
-                _context.SaveChanges();
+                 _eventLogs.AddExceptionLog(e);
             }
-            return Ok();
+            return View();
+
         }
-        
+
+        public IActionResult Detail(long id)
+        {
+            return View(_eventLogs.GetLog(id));
+        }
     }
 }

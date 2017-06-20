@@ -1,0 +1,15 @@
+﻿@model LifeLike.Models.EventLogDataModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h1>Log Info: @Html.DisplayFor(modelItem=>Model.Type)</h1>
+<h3>Message</h3>
+<p>@Html.DisplayTextFor(modelItem=>Model.Messages)</p>
+<h3>Stack Trace</h3>
+<p>@Html.DisplayTextFor(modelItem=>Model.StackTrace)</p>
+<h3>Date Time</h3>
+<p>@Html.DisplayTextFor(modelItem=>Model.EventTime)</p>
+
