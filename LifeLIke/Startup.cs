@@ -33,6 +33,8 @@ namespace LifeLIke
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));     
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); 
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+            services.AddScoped<IRssReaderService, RssReaderService>();
+
             services.AddSingleton<IEventLogRepository, EventLogsRepository>();
 
             services.AddMvc();

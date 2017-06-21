@@ -12,24 +12,18 @@ namespace LifeLIke.ViewComponents
 {
     public class RssViewComponent : ViewComponent
     {
-        private IEventLogRepository eventLogRepo;
+        private readonly IRssReaderService RssService;
 
-        public RssViewComponent(IEventLogRepository repository)
+        public RssViewComponent(IRssReaderService repository)
         {
-            this.eventLogRepo=repository;
+            this.RssService=repository;
         }
         public async Task< IViewComponentResult> InvokeAsync(string URL)
         {
-            try
-            {
-                var feed = await RssReader.ParseRss(URL,eventLogRepo);
+      
+                var feed = await RssService.Parse(URL, FeedType.RSS);
                 return View(feed.Take(3));
-            }
-            catch (Exception e)
-            {
-                eventLogRepo.AddExceptionLog(e);
-                return View();
-            }
+         
             
         }
     }
