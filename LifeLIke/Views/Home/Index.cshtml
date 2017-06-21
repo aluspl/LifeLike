@@ -1,19 +1,22 @@
-﻿@{
+﻿@using LifeLike.ViewModel
+@using LifeLIke.Utils
+@{
     ViewData["Title"] = "Home Page";
 }
 <div class="row">
     <div class="col-md-12">
-        <h1>Welcome On LifeLike</h1>
-        <img src="photo/LIKE.jpg" alt="LifeLike" class="img-responsive">
+        <h1>LifeLike</h1>
     </div>
 </div>
 <div class="row">
     <div class="col-md-12">
-        <h1>RSS</h1>
+        @Html.Raw(VideoUtils.GenerateYoutube(new LinkViewModel
+        {
+            Link = "Qi5tp0eZHt8"
+        }))
     </div>
 </div>
 <div class="row">
-
     <div class="col-md-6">
         <h3>Kawowi Podróżnicy's Blog</h3>
         @await Component.InvokeAsync("Rss", new {Url = "http://kawowipodroznicy.pl/feed/"})
