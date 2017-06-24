@@ -1,9 +1,12 @@
 ﻿@model System.Collections.Generic.IEnumerable<LifeLike.Models.Config>
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Config Manager";
     Layout = "_Layout";
 }
+<h1>Config Manager</h1>
+@Html.ActionLink("Add New","Create","SiteManager", null, new {@class="btn btn-primary"})
+
 <table class="table">
 <tr>
     <th>Name</th>
