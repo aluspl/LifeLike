@@ -1,5 +1,10 @@
 ﻿<Properties StartupConfiguration="{B8DD4103-1FA1-46C4-8883-E18B71B22AAF}|Default">
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/LinkManagerController.cs">
+    <Files>
+      <File FileName="Views/LinkManager/Index.cshtml" Line="1" Column="1" />
+      <File FileName="Controllers/LinkManagerController.cs" Line="31" Column="22" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

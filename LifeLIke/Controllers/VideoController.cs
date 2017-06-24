@@ -7,9 +7,9 @@ namespace LifeLIke.Controllers
 {
     public class VideoController : Controller
     {
-        private LifeLikeContext _context;
+        private PortalContext _context;
 
-        public VideoController(LifeLikeContext context)
+        public VideoController(PortalContext context)
         {
             _context = context;
         }

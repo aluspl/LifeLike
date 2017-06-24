@@ -1,0 +1,12 @@
+﻿@model object
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Page Configuration</h2>
+
+@Html.ActionLink("Link Manager","Index","LinkManager", null, new {@class="btn btn-primary"})
+@Html.ActionLink("Config Manager","List","SiteManager", null, new {@class="btn btn-primary"})
+@Html.ActionLink("Logs","Index","Log", null, new {@class="btn btn-primary"})

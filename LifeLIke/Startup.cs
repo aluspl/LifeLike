@@ -31,7 +31,7 @@ namespace LifeLIke
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddDbContext<LifeLikeContext>(options =>
+            services.AddDbContext<PortalContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));     
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); 
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
@@ -39,13 +39,15 @@ namespace LifeLIke
 
             services.AddScoped<IEventLogRepository, EventLogsRepository>();
             services.AddScoped<ILinkRepository, LinkRepository>();
+            services.AddScoped<IConfigRepository, ConfigRepository>();
+            services.AddScoped<IGalleryRepository, GalleryRepository>();
 
             services.AddMvc();
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, LifeLikeContext context)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, PortalContext context)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();

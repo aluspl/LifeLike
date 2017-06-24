@@ -5,6 +5,20 @@
 {
     foreach (var item in Model)
     {
-        <li>@Html.ActionLink(item.Name,item.Action,item.Controller)</li>
+        if (!item.IsLink)
+        {
+            <li>
+                <a href="@Url.Action(item.Action, item.Controller)">
+                    <span class="glyphicon glyphicon-@item.IconName" aria-hidden="true"></span> @item.Name
+                </a>
+            </li>
+
+        }
+        else
+        {
+            <li><a href="@item.Link"> <span class="glyphicon glyphicon-@item.IconName" aria-hidden="true"> </span> @item.Name</a>           
+            </li>
+
+        }
     }
 }

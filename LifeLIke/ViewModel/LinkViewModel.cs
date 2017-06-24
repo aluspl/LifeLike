@@ -13,33 +13,36 @@ namespace LifeLike.ViewModel
         
         public string Name { get; set; }
         public string Link { get; set; }
-
+        public int Order { get; set; }
         public string IconName { get; set; }
         public LinkCategory Category { get; set; }
+        public bool IsLink => (!string.IsNullOrEmpty(Link) && string.IsNullOrEmpty(Controller));
 
-        public static LinkDataModel Get(LinkViewModel model)
+        public static Link Get(LinkViewModel model)
         {
-            return new LinkDataModel
+            return new Link
             {
                 Id=model.Id,
                 Action = model.Action,
                 Controller = model.Controller,
+                Order=model.Order,
                 Name = model.Name,
-                Link = model.Link,
+                Url = model.Link,
                 IconName = model.IconName,
                 Category=model.Category               
             };
 
         }
-        public static LinkViewModel Get(LinkDataModel model)
+        public static LinkViewModel Get(Link model)
         {
             return new LinkViewModel
             {
                 Id=model.Id,
                 Action = model.Action,
                 Controller = model.Controller,
+                Order=model.Order,
                 Name = model.Name,
-                Link = model.Link,
+                Link = model.Url,
                 IconName = model.IconName,
                 Category=model.Category               
             };

@@ -7,16 +7,16 @@ using LifeLike.Models.Enums;
 namespace LifeLike.Repositories
 {
     
-    public  class LinkRepository : ILinkRepository
+    public  class GalleryRepository : IGalleryRepository
     {
         private readonly PortalContext _context;
 
-        public LinkRepository(PortalContext context)
+        public GalleryRepository(PortalContext context)
         {
             _context = context;
         }
 
-        public Result Create(Link model)
+        public Result Create(Gallery model)
         {
             try
             {
@@ -33,17 +33,17 @@ namespace LifeLike.Repositories
             }    
         }
 
-        public IEnumerable<Link> List()
+        public IEnumerable<Gallery> List()
         {
-            return _context.Links.ToList();
+            return _context.Galleries.ToList();
         }
 
-        public Link Get(long id)
+        public Gallery Get(long id)
         {
-            return _context.Links.Find(id);
+            return _context.Galleries.Find(id);
         }
 
-        public Result Update(Link model)
+        public Result Update(Gallery model)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace LifeLike.Repositories
             }        
         }
 
-        public Result Delete(Link model)
+        public Result Delete(Gallery model)
         {
             try
             {
@@ -76,15 +76,9 @@ namespace LifeLike.Repositories
                 return   Result.Failed;
             }
         }
-
-        public IEnumerable<Link> List(LinkCategory category)
-        {
-            return _context.Links.Where(p=>p.Category==category);
-        }
     }
-    
-    public interface ILinkRepository : IRepository<Link>
+
+    public interface IGalleryRepository: IRepository<Gallery>
     {
-        IEnumerable<Link> List(LinkCategory category);
     }
 }

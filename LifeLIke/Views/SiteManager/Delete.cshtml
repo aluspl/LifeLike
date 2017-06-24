@@ -1,13 +1,16 @@
-﻿@model LifeLike.ViewModel.LinkViewModel
+﻿@model LifeLike.Models.Config
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "title";
     Layout = "_Layout";
 }
+
 <h2>Delete @Html.DisplayFor(model=>model.Name)</h2>
 <p class="text-danger">@ViewData["ErrorMessage"]</p>
 <h3>Are you sure you want to delete this?</h3>
 @using (Html.BeginForm())
 {
+    @Html.HiddenFor(p=>p.Name);
+    @Html.HiddenFor(p=>p.Value);
     <button type="submit" class="btn btn-primary">Delete</button>
 }

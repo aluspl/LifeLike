@@ -8,43 +8,51 @@ namespace LifeLIke.Repositories
 {
     public class EventLogsRepository : IEventLogRepository
     {
-        private readonly LifeLikeContext _context;
+        private readonly PortalContext _context;
 
-        public EventLogsRepository(LifeLikeContext context)
+        public EventLogsRepository(PortalContext context)
         {
             _context = context;
         }
         
         public void AddExceptionLog(Exception e)
         {
+           
+               Create(EventLog.Generate(e));
+          
+        }
+
+        public Result Create(EventLog model)
+        {
             try
             {
              
-               _context.EventLogs.Add(EventLogDataModel.Generate(e));
-               _context.SaveChanges();                
+                _context.EventLogs.Add(model);
+                _context.SaveChanges();    
+                return Result.Success;
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception);
-            }
+                return Result.Success;
+            }        
         }
 
-        public IEnumerable<EventLogDataModel> List()
+        public IEnumerable<EventLog> List()
         {
             return _context.EventLogs.ToList();
         }
 
-        public IEnumerable<EventLogDataModel> List(EventLogType type)
+        public IEnumerable<EventLog> List(EventLogType type)
         {
             return _context.EventLogs.Where(p => p.Type == type).ToList();
         }
 
-        public EventLogDataModel Get(long id)
+        public EventLog Get(long id)
         {
             return _context.EventLogs.FirstOrDefault(p=>p.Id==id);
         }
 
-        public Result Update(EventLogDataModel model)
+        public Result Update(EventLog model)
         {
             try
             {
@@ -61,7 +69,7 @@ namespace LifeLIke.Repositories
             
         }
 
-        public Result Delete(EventLogDataModel model)
+        public Result Delete(EventLog model)
         {
             try
             {
@@ -78,9 +86,9 @@ namespace LifeLIke.Repositories
         }
     }
     
-    public interface IEventLogRepository : IRepository<EventLogDataModel>
+    public interface IEventLogRepository : IRepository<EventLog>
     {
         void AddExceptionLog(Exception e);
-        IEnumerable<EventLogDataModel> List(EventLogType type);
+        IEnumerable<EventLog> List(EventLogType type);
     }
 }

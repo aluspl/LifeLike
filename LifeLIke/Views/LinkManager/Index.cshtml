@@ -2,15 +2,16 @@
 @model System.Collections.Generic.IEnumerable<LifeLike.ViewModel.LinkViewModel>
 
 @{
-    ViewBag.Title = "List Manager";
+    ViewBag.Title = "Url Manager";
     Layout = "_Layout";
 }
 
-<h2>List Manager</h2>
+<h2>Url Manager</h2>
+@Html.ActionLink("Add New","Create","LinkManager", null, new {@class="btn btn-primary"})
 <table class="table">
     <tr>
-        <th>List Name</th>
-        <th>Icon Name</th>
+        <th>Name</th>
+        <th>Icon </th>
         <th>Category</th>
         <th>Actions</th>
 
@@ -28,8 +29,8 @@
                 @Html.DisplayFor(modelItem => item.Category)
             </td>
             <td>
-                @Html.ActionLink("Detail","Update","LinkManager", new {id=item.Id}, new { @class="button btn-info"})
-                @Html.ActionLink("Detail","Delete","LinkManager", new {id=item.Id}, new { @class="button btn-warning"})
+                @Html.ActionLink("Edit","Update","LinkManager", new {id=item.Id}, new { @class="button btn-info"})
+                @Html.ActionLink("Delete","Delete","LinkManager", new {id=item.Id}, new { @class="button btn-warning"})
 
             </td>
         </tr>

@@ -10,10 +10,10 @@ namespace LifeLike.Controllers
 {
     public class LogController : Controller
     {
-        private readonly LifeLikeContext _context;
+        private readonly PortalContext _context;
         private readonly IEventLogRepository _eventLogs;
 
-        public LogController(LifeLikeContext context, IEventLogRepository eventLog)
+        public LogController(PortalContext context, IEventLogRepository eventLog)
         {
             _context = context;
             _eventLogs = eventLog;

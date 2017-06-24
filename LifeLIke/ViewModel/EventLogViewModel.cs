@@ -10,7 +10,7 @@ namespace LifeLike.ViewModel
         public string Messages { get; set; }
         public string StackTrace {  get; set; }
         public DateTime EventTime { get; set;  }
-        public static EventLogViewModel Get(EventLogDataModel model)
+        public static EventLogViewModel Get(EventLog model)
         {
             return new EventLogViewModel
             {

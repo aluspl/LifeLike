@@ -2,11 +2,11 @@
 @model LifeLike.ViewModel.LinkViewModel
 
 @{
-    ViewBag.Title = "Update Url";
+    ViewBag.Title = "Create Url";
     Layout = "_Layout";
 }
 
-<h2>Update Url</h2>
+<h2>Create Url</h2>
 <p class="text-danger">@ViewData["ErrorMessage"]</p>
 
 @using (Html.BeginForm())
@@ -15,7 +15,10 @@
         <label>Name</label>
         @Html.EditorFor(model=>model.Name)
     </div>
-        @Html.HiddenFor(model=>model.Id)
+    
+    @Html.HiddenFor(model=>model.Id)
+    
+    
     <div class="form-group">
         
         <label>Url Category</label>
@@ -30,8 +33,8 @@
         @Html.EditorFor(model=>model.Controller)
     </div>
     <div class="form-group">
-              <label>Order</label>
-              @Html.EditorFor(model=>model.Order)
+        <label>Order</label>
+        @Html.EditorFor(model=>model.Order)
     </div>
     <div class="form-group">
         <label>Url</label>

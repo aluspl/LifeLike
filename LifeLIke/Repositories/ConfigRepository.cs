@@ -7,16 +7,16 @@ using LifeLike.Models.Enums;
 namespace LifeLike.Repositories
 {
     
-    public  class LinkRepository : ILinkRepository
+    public  class ConfigRepository : IConfigRepository
     {
         private readonly PortalContext _context;
 
-        public LinkRepository(PortalContext context)
+        public ConfigRepository(PortalContext context)
         {
             _context = context;
         }
 
-        public Result Create(Link model)
+        public Result Create(Config model)
         {
             try
             {
@@ -33,17 +33,17 @@ namespace LifeLike.Repositories
             }    
         }
 
-        public IEnumerable<Link> List()
+        public IEnumerable<Config> List()
         {
-            return _context.Links.ToList();
+            return _context.Configs.ToList();
         }
 
-        public Link Get(long id)
+        public Config Get(long id)
         {
-            return _context.Links.Find(id);
+            return _context.Configs.Find(id);
         }
 
-        public Result Update(Link model)
+        public Result Update(Config model)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace LifeLike.Repositories
             }        
         }
 
-        public Result Delete(Link model)
+        public Result Delete(Config model)
         {
             try
             {
@@ -73,18 +73,26 @@ namespace LifeLike.Repositories
             {
                 _context.EventLogs.Add(EventLog.Generate(e));
                 _context.SaveChanges();
-                return   Result.Failed;
+                throw;
             }
         }
 
-        public IEnumerable<Link> List(LinkCategory category)
+        public Config Get(string id)
         {
-            return _context.Links.Where(p=>p.Category==category);
+            try
+            {
+                return _context.Configs.FirstOrDefault(config => config.Name == id);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            };
         }
     }
-    
-    public interface ILinkRepository : IRepository<Link>
+
+    public interface IConfigRepository: IRepository<Config>
     {
-        IEnumerable<Link> List(LinkCategory category);
+        Config Get(string id);
     }
 }

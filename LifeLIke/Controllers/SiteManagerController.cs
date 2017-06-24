@@ -1,47 +1,47 @@
 ﻿using System;
-using System.Linq;
 using LifeLike.Models;
-using LifeLike.Models.Enums;
 using LifeLike.Repositories;
 using LifeLike.ViewModel;
-using Microsoft.AspNetCore.Antiforgery.Internal;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LifeLike.Controllers
+namespace LifeLIke.Controllers
 {
-    public class LinkManagerController : Controller
+    public class SiteManagerController : Controller
     {
-        private readonly ILinkRepository _repository;
+        private readonly IConfigRepository _config;
 
-        public LinkManagerController(ILinkRepository repository)
+        public SiteManagerController(IConfigRepository configRepository)
         {
-            _repository = repository;
+            _config = configRepository;
+            
         }
+        
         // GET
         public ActionResult Index()
         {
-            var list = _repository.List().Select(LinkViewModel.Get);
-            return    View(list);
+            return View();
         }
-        
-        
-        
+        public ActionResult List()
+        {
+           var configs= _config.List();
+            return View(configs);
+        }
         public ActionResult Create()
         {
-         var model=new LinkViewModel();
+            var model=new Config();
             return View(model);
 
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(LinkViewModel model)
+        public ActionResult Create(Config model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _repository.Create(LinkViewModel.Get(model));
-                    return RedirectToAction("Index");
+                    _config.Create(model);
+                    return RedirectToAction("List");
                 }
             }
             catch (Exception e)
@@ -55,23 +55,23 @@ namespace LifeLike.Controllers
 
         }
         
-        public ActionResult Update(long id)
+        public ActionResult Update(string id)
         {
-            var model = _repository.Get(id);
-            if (model == null) return RedirectToAction("Index");
-            return View(LinkViewModel.Get(model));
+            var model = _config.Get(id);
+            if (model == null) return RedirectToAction("List");
+            return View(model);
 
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Update(LinkViewModel model)
+        public ActionResult Update(Config model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _repository.Update(LinkViewModel.Get(model));
-                    return RedirectToAction("Index");
+                    _config.Update(model);
+                    return RedirectToAction("List");
                 }
             }
             catch (Exception dote)
@@ -84,22 +84,22 @@ namespace LifeLike.Controllers
             return View(model);
         }
         
-        public ActionResult Delete(long id)
+        public ActionResult Delete(string id)
         {
             
-            var model = _repository.Get(id);
-            if (model == null) return RedirectToAction("Index");
-            return View(LinkViewModel.Get(model));
+            var model = _config.Get(id);
+            if (model == null) return RedirectToAction("List");
+            return View(model);
         }
         [HttpPost]
-        public ActionResult Delete(LinkViewModel model)
+        public ActionResult Delete(Config model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _repository.Delete(LinkViewModel.Get(model));
-                    return RedirectToAction("Index");
+                    _config.Delete(model);
+                    return RedirectToAction("List");
                 }
             }
             catch (Exception e)
@@ -109,6 +109,5 @@ namespace LifeLike.Controllers
  
             return View(model);
         }
-        
     }
 }
