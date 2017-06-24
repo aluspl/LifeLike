@@ -1,11 +1,13 @@
 using System;
 using System.Linq.Expressions;
 using LifeLike.Models;
+using LifeLike.Models.Enums;
 
 namespace LifeLike.ViewModel
 {
     public class LinkViewModel
     {
+        public long Id { get; set; }
         public string Controller { get; set; }
         public string Action { get; set; }
         
@@ -13,32 +15,36 @@ namespace LifeLike.ViewModel
         public string Link { get; set; }
 
         public string IconName { get; set; }
+        public LinkCategory Category { get; set; }
 
-        public static LinkViewModel GetMenuLink(LinkDataModel model)
+        public static LinkDataModel Get(LinkViewModel model)
         {
-            return new LinkViewModel
+            return new LinkDataModel
             {
+                Id=model.Id,
                 Action = model.Action,
                 Controller = model.Controller,
-                Name = model.Name
-            };
-        }
-        public static LinkViewModel GetSidebarLink(LinkDataModel model)
-        {
-            return new LinkViewModel
-            {
+                Name = model.Name,
                 Link = model.Link,
                 IconName = model.IconName,
-                Name = model.Name
+                Category=model.Category               
             };
+
         }
-        public static LinkViewModel GetVideoLink(LinkDataModel model)
+        public static LinkViewModel Get(LinkDataModel model)
         {
             return new LinkViewModel
             {
+                Id=model.Id,
+                Action = model.Action,
+                Controller = model.Controller,
+                Name = model.Name,
                 Link = model.Link,
-                Name = model.Name
+                IconName = model.IconName,
+                Category=model.Category               
             };
+
         }
     }
+    
 }

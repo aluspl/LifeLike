@@ -2,6 +2,7 @@
 using System.Linq;
 using LifeLike.Models;
 using LifeLike.ViewModel;
+using LifeLIke.Repositories;
 using LifeLIke.Utils;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,7 +23,7 @@ namespace LifeLike.Controllers
         {
             try
             {
-                var list=_eventLogs.GetAllLogs().Select(EventLogViewModel.Get);
+                var list=_eventLogs.List().Select(EventLogViewModel.Get);
                 return  View(list);
 
             }
@@ -36,7 +37,7 @@ namespace LifeLike.Controllers
 
         public IActionResult Detail(long id)
         {
-            return View(_eventLogs.GetLog(id));
+            return View(_eventLogs.Get(id));
         }
     }
 }

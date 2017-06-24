@@ -1,4 +1,6 @@
+using System;
 using LifeLike.Models.Enums;
+using LifeLike.ViewModel;
 
 namespace LifeLike.Models
 {
@@ -11,6 +13,7 @@ namespace LifeLike.Models
         public string Link { get; set; }
         public string IconName { get; set; }
         public LinkCategory Category { get; set; }
-
+        
+      
     }
 }

@@ -25,7 +25,7 @@ namespace LifeLIke.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<string>("Link");
+                    b.Property<string>("List");
 
                     b.Property<string>("Name");
 
@@ -67,7 +67,7 @@ namespace LifeLIke.Migrations
 
                     b.Property<string>("IconName");
 
-                    b.Property<string>("Link");
+                    b.Property<string>("List");
 
                     b.Property<string>("Name");
 

@@ -12,6 +12,6 @@
 <div class="row">
     @foreach (var video in Model)
     {
-        @Html.Raw(VideoUtils.GenerateYoutube(video))
+        @Html.Raw(HtmlUtils.GenerateYoutube(video))
     }    
 </div>

@@ -1,0 +1,37 @@
+﻿@using LifeLIke.Utils
+@model System.Collections.Generic.IEnumerable<LifeLike.ViewModel.LinkViewModel>
+
+@{
+    ViewBag.Title = "List Manager";
+    Layout = "_Layout";
+}
+
+<h2>List Manager</h2>
+<table class="table">
+    <tr>
+        <th>List Name</th>
+        <th>Icon Name</th>
+        <th>Category</th>
+        <th>Actions</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>        
+            <td>
+                @Html.Raw(HtmlUtils.GenerateIcon(item.IconName))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.ActionLink("Detail","Update","LinkManager", new {id=item.Id}, new { @class="button btn-info"})
+                @Html.ActionLink("Detail","Delete","LinkManager", new {id=item.Id}, new { @class="button btn-warning"})
+
+            </td>
+        </tr>
+    }
+</table>

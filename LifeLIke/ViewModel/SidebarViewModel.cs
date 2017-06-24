@@ -4,6 +4,6 @@ namespace LifeLike.ViewModel
 {
     public class SidebarViewModel
     {
-        public List<LinkViewModel> Links { get; set; }        
+        public IEnumerable<LinkViewModel> Links { get; set; }        
     }
 }

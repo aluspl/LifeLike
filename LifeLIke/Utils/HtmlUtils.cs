@@ -2,7 +2,7 @@
 
 namespace LifeLIke.Utils
 {
-    public class VideoUtils
+    public class HtmlUtils
     {
         public static string GenerateYoutube(LinkViewModel videoLink)
         {
@@ -13,5 +13,11 @@ namespace LifeLIke.Utils
                                        "</div>", videoLink.Name, videoLink.Link);
             return format;
         }
+        public static string GenerateIcon(string icon)
+        {
+            var format = string.Format($"<span class='glyphicon glyphicon-{icon}' aria-hidden='true'> </span> ");
+            return format;
+        }
+        
     }
 }

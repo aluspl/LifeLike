@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LifeLike.Models;
 using LifeLike.Models.Enums;
+using LifeLike.Repositories;
 using LifeLike.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,9 +11,9 @@ namespace LifeLike.ViewComponents
 {
     public class AuthorViewComponent : ViewComponent
     {
-        private readonly LifeLikeContext _context;
+        private readonly ILinkRepository _context;
 
-        public AuthorViewComponent(LifeLikeContext context)
+        public AuthorViewComponent(ILinkRepository context)
         {
             _context = context;
         }
@@ -20,8 +21,7 @@ namespace LifeLike.ViewComponents
         {
             var model = new SidebarViewModel
             {
-                Links = _context.Links.Where(p => p.Category == LinkCategory.Sidebar)
-                    .Select(p => LinkViewModel.GetSidebarLink(p)).ToList()
+                Links = _context.List(LinkCategory.Sidebar).Select(LinkViewModel.Get)
             };
 
 

@@ -19,8 +19,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.EventTime)
             </td>
+            <td></td>
             <td>
-                @Html.ActionLink("Detail","Detail","Log", new {id=item.Id}, new { @class="button btn-info"})
+                @Html.ActionLink("Update","Detail","Log", new {id=item.Id}, new { @class="button btn-info"})
             </td>
         </tr>
     }

@@ -3,3 +3,5 @@
 obj/
 bin/
 packages/
+.DS_Store
+wwwroot/.DS_Store

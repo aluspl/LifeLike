@@ -1,10 +1,10 @@
+/Users/szymonmotyka/Dev/Pages/LifeLIke/LifeLIke/bin/Debug/netcoreapp1.1//LifeLIke.pdb
 /Users/szymonmotyka/Dev/Pages/LifeLIke/LifeLIke/bin/Debug/netcoreapp1.1/LifeLIke.deps.json
 /Users/szymonmotyka/Dev/Pages/LifeLIke/LifeLIke/bin/Debug/netcoreapp1.1/LifeLIke.runtimeconfig.json
 /Users/szymonmotyka/Dev/Pages/LifeLIke/LifeLIke/bin/Debug/netcoreapp1.1/LifeLIke.runtimeconfig.dev.json
 /Users/szymonmotyka/Dev/Pages/LifeLIke/LifeLIke/bin/Debug/netcoreapp1.1/LifeLIke.dll
-/Users/szymonmotyka/Dev/Pages/LifeLIke/LifeLIke/bin/Debug/netcoreapp1.1//LifeLIke.pdb
 /Users/szymonmotyka/Dev/Pages/LifeLIke/LifeLIke/obj/Debug/netcoreapp1.1/LifeLIke.csprojResolveAssemblyReference.cache
-/Users/szymonmotyka/Dev/Pages/LifeLIke/LifeLIke/obj/Debug/netcoreapp1.1/LifeLIke.csproj.CoreCompileInputs.cache
 /Users/szymonmotyka/Dev/Pages/LifeLIke/LifeLIke/obj/Debug/netcoreapp1.1/LifeLIke.AssemblyInfo.cs
 /Users/szymonmotyka/Dev/Pages/LifeLIke/LifeLIke/obj/Debug/netcoreapp1.1/LifeLIke.dll
 /Users/szymonmotyka/Dev/Pages/LifeLIke/LifeLIke/obj/Debug/netcoreapp1.1/LifeLIke.pdb
+/Users/szymonmotyka/Dev/Pages/LifeLIke/LifeLIke/obj/Debug/netcoreapp1.1/LifeLIke.csproj.CoreCompileInputs.cache

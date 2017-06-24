@@ -1,4 +1,6 @@
 ﻿using LifeLike.Models;
+using LifeLike.Repositories;
+using LifeLIke.Repositories;
 using LifeLIke.Utils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,7 +37,8 @@ namespace LifeLIke
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddScoped<IRssReaderService, RssReaderService>();
 
-            services.AddSingleton<IEventLogRepository, EventLogsRepository>();
+            services.AddScoped<IEventLogRepository, EventLogsRepository>();
+            services.AddScoped<ILinkRepository, LinkRepository>();
 
             services.AddMvc();
 
