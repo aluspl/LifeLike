@@ -1,15 +1,16 @@
 ﻿using System.Linq;
 using LifeLike.Models.Enums;
 using LifeLike.ViewModel;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Models
 {
-    public class PortalContext : DbContext
+    public class PortalContext : IdentityDbContext<User>
     {
-                private readonly DbContextOptions<PortalContext> _options;
+        private readonly DbContextOptions<PortalContext> _options;
 
-         public DbSet<Link> Links { get; set; }
+        public DbSet<Link> Links { get; set; }
         public DbSet<Changelog> Changelogs { get; set; }
         public DbSet<EventLog> EventLogs { get; set; }
         public DbSet<Gallery> Galleries { get; set; }

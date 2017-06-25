@@ -1,0 +1,22 @@
+﻿@using LifeLike.ViewModel
+@model LifeLike.ViewModel.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "_Layout";
+}
+
+<h2>Login</h2>
+@using (Html.BeginForm())
+{
+    <div class="form-inline">
+        <label class="mr-sm-2">Login</label>
+        @Html.EditorFor(model=>model.Login)
+        <label class="mr-sm-2">Password</label>
+        @Html.PasswordFor(model=>model.Password)
+        <label class="mr-sm-2">Remember Me</label>
+        @Html.CheckBoxFor(model=>model.RememberMe)
+        
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+}

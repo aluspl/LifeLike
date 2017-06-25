@@ -1,0 +1,26 @@
+﻿@model LifeLike.ViewModel.RegisterViewModel 
+@{ 
+    ViewBag.Title = "Register"; 
+}  
+<h1>Register</h1> 
+
+@using (Html.BeginForm())
+{
+
+    <div class="form-inline">
+        <label class="mr-sm-2">Login</label>
+        @Html.EditorFor(model=>model.Username)
+        <span asp-validation-for = "Username"></span> 
+
+        <label class="mr-sm-2">Password</label>
+        @Html.PasswordFor(model=>model.Password)
+        <span asp-validation-for = "Password"></span> 
+
+        <label class="mr-sm-2">Confirm Password</label>
+        @Html.PasswordFor(model=>model.ConfirmPassword)
+        <span asp-validation-for = "ConfirmPassword"></span> 
+
+        
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+}

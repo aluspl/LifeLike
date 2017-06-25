@@ -28,7 +28,7 @@ namespace LifeLIke.Utils
     
 
 	/// <summary>
-	/// Parses the given <see cref="FeedType"/> and returns a <see cref="IList&amp;lt;Item&amp;gt;"/>.
+	/// Parses the given <see cref="FeedType"/> and returns a <see cref="IList{T}"/>.
 	/// </summary>
 	/// <returns></returns>
 	public async Task<IList<RssViewModel>> Parse(string url, FeedType feedType)
@@ -61,7 +61,7 @@ namespace LifeLIke.Utils
 	}
 
 	/// <summary>
-	/// Parses an Atom feed and returns a <see cref="IList&amp;lt;Item&amp;gt;"/>.
+	/// Parses an Atom feed and returns a <see cref="IList{T}"/>.
 	/// </summary>
 	public virtual async Task<IList<RssViewModel>> ParseAtom(Stream stream)
 	{
@@ -87,7 +87,7 @@ namespace LifeLIke.Utils
 	}
 
 	/// <summary>
-	/// Parses an RSS feed and returns a <see cref="IList&amp;lt;Item&amp;gt;"/>.
+	/// Parses an RSS feed and returns a <see cref="IList{T}"/>.
 	/// </summary>
 	public virtual async Task<IList<RssViewModel>> ParseRss(Stream stream)
 	{

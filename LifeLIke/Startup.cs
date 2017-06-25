@@ -1,10 +1,12 @@
-﻿using LifeLike.Models;
+﻿using System;
+using LifeLike.Models;
 using LifeLike.Repositories;
 using LifeLIke.Repositories;
 using LifeLIke.Utils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -41,7 +43,24 @@ namespace LifeLIke
             services.AddScoped<ILinkRepository, LinkRepository>();
             services.AddScoped<IConfigRepository, ConfigRepository>();
             services.AddScoped<IGalleryRepository, GalleryRepository>();
-
+            
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<PortalContext>()
+                .AddDefaultTokenProviders();
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Lockout settings
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                options.Lockout.MaxFailedAccessAttempts = 10;
+        
+                // Cookie settings
+                options.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromDays(150);
+                options.Cookies.ApplicationCookie.LoginPath = "/Account/LogIn";
+                options.Cookies.ApplicationCookie.LogoutPath = "/Account/LogOut";
+        
+                // User settings
+                options.User.RequireUniqueEmail = true;
+            });
             services.AddMvc();
 
         }

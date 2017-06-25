@@ -47,6 +47,12 @@ namespace LifeLIke.Repositories
             return _context.EventLogs.Where(p => p.Type == type).ToList();
         }
 
+        public void LogInformation(int i, string userLoggedOut)
+        {
+            
+            
+        }
+
         public EventLog Get(long id)
         {
             return _context.EventLogs.FirstOrDefault(p=>p.Id==id);
@@ -90,5 +96,6 @@ namespace LifeLIke.Repositories
     {
         void AddExceptionLog(Exception e);
         IEnumerable<EventLog> List(EventLogType type);
+        void LogInformation(int i, string userLoggedOut);
     }
 }
