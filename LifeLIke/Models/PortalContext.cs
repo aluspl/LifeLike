@@ -14,9 +14,11 @@ namespace LifeLike.Models
         public DbSet<Changelog> Changelogs { get; set; }
         public DbSet<EventLog> EventLogs { get; set; }
         public DbSet<Gallery> Galleries { get; set; }
-                
+        
+        public DbSet<Page> Pages { get; set; }
+        
         public DbSet<Photo> Photos { get; set; }
-                public DbSet<Config> Configs { get; set; }
+        public DbSet<Config> Configs { get; set; }
 
         public PortalContext(DbContextOptions<PortalContext> options) : base(options)
         {
@@ -37,7 +39,16 @@ namespace LifeLike.Models
             {
                 SetupConfigs(context);
             }
-                     
+            if (!context.Pages.Any())
+            {
+                context.Pages.Add(new Page {
+                    ShortName = "Test", 
+                    Category = PageCategory.Page, 
+                    FullName  = "Test of this", 
+                    PageOrder = 0, Content = "Lorem ipsim"}
+                );
+            }
+            
             context.SaveChanges();
 
         }
@@ -46,7 +57,19 @@ namespace LifeLike.Models
         {
             context.Add(new Config()
             {
-              Name="CurrentMovie", Value = "Qi5tp0eZHt8"
+              Name="WelcomeVideo", DisplayName="Welcome Video", Value = "Qi5tp0eZHt8"
+            });
+            context.Add(new Config()
+            {
+                Name="WelcomeText", DisplayName = "Welcome Text", Value = "Hello on Main Page"
+            });
+            context.Add(new Config()
+            {
+                Name="RSS1", DisplayName = "First RSS Url", Value = "http://kawowipodroznicy.pl/feed/"
+            });
+            context.Add(new Config()
+            {
+                Name="RSS2", DisplayName = "First RSS Url", Value = "http://szymonmotyka.pl/feed/"
             });
             
         }

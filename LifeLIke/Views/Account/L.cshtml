@@ -5,11 +5,12 @@
     ViewBag.Title = "Login";
     Layout = "_Layout";
 }
+<p class="text-danger">@ViewData["ErrorMessage"]</p>
 
 <h2>Login</h2>
 @using (Html.BeginForm())
 {
-    <div class="form-inline">
+        <div class="form-inline">
         <label class="mr-sm-2">Login</label>
         @Html.EditorFor(model=>model.Login)
         <label class="mr-sm-2">Password</label>

@@ -1,0 +1,17 @@
+﻿@model LifeLike.Models.Page
+
+@{
+    ViewBag.Title = Model.FullName;
+    Layout = "_Layout";
+}
+
+<h1>@Html.DisplayFor(model=>model.FullName)</h1>
+<p>
+    @Html.DisplayFor(model=>model.Content)
+</p>
+<p>
+    @Html.DisplayFor(model=>model.ShortName)
+</p>
+<p>
+    @Html.DisplayFor(model=>model.Category)
+</p>

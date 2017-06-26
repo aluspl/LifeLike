@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using LifeLike.Models;
 using LifeLike.ViewModel;
 using LifeLIke.Controllers;
@@ -6,6 +7,7 @@ using LifeLIke.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace LifeLike.Controllers
 {
@@ -22,27 +24,45 @@ namespace LifeLike.Controllers
             _logger = logger;
         }
         [HttpGet] 
-        public ViewResult Register() { 
+        public ViewResult R() { 
+            var model = new RegisterViewModel();
+
             return View(); 
         } 
         [HttpPost] 
-        public async Task<IActionResult> Register(RegisterViewModel model) {
-            if (!ModelState.IsValid) return View();
-            var user = new User { UserName = model.Username }; 
-            var result = await _userManager.CreateAsync(user, model.Password);
-     
-            if (result.Succeeded) { 
-                await _signInManager.SignInAsync(user, false); 
-                return RedirectToAction("Index", "Home"); 
-            } else { 
-                foreach (var error in result.Errors) { 
-                    ModelState.AddModelError("", error.Description); 
-                } 
+        public async Task<IActionResult> R(RegisterViewModel model) 
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    ModelState.AddModelError("","Invalid Model");
+                    return View(model);
+                }
+                var user = new User {UserName = model.Username};
+                var result = await _userManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, false);
+                    return RedirectToAction("Index", "Home");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return View(model); 
+
             }
-            return View(); 
+            catch (Exception error)
+            {
+                ModelState.AddModelError("", error.Message);
+                return View(model); 
+            }
+          
         }        
         
-        public  IActionResult Login()
+        public  IActionResult L()
         {
            var model = new LoginViewModel();
             return View(model);
@@ -50,7 +70,7 @@ namespace LifeLike.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> L(LoginViewModel model)
         {
             if (ModelState.IsValid) { 
                 var result = await _signInManager.PasswordSignInAsync(model.Login,
