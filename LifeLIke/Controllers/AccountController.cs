@@ -49,6 +49,8 @@ namespace LifeLike.Controllers
                 }
                 foreach (var error in result.Errors)
                 {
+                    _logger.LogInformation(EventLogType.Error,error.Description);
+
                     ModelState.AddModelError("", error.Description);
                 }
                 return View(model); 
@@ -56,6 +58,7 @@ namespace LifeLike.Controllers
             }
             catch (Exception error)
             {
+                _logger.AddExceptionLog(error);
                 ModelState.AddModelError("", error.Message);
                 return View(model); 
             }

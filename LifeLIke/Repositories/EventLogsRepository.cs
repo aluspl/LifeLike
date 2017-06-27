@@ -53,6 +53,12 @@ namespace LifeLIke.Repositories
             
         }
 
+        public void LogInformation(EventLogType result, string message)
+        {
+
+            Create(EventLog.Generate(result,message));
+        }
+
         public EventLog Get(long id)
         {
             return _context.EventLogs.FirstOrDefault(p=>p.Id==id);
@@ -97,5 +103,6 @@ namespace LifeLIke.Repositories
         void AddExceptionLog(Exception e);
         IEnumerable<EventLog> List(EventLogType type);
         void LogInformation(int i, string userLoggedOut);
+        void LogInformation(EventLogType result, string message);
     }
 }

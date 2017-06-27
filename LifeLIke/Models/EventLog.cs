@@ -35,6 +35,16 @@ namespace LifeLike.Models
                 StackTrace = model.StackTrace
             };
         }
+
+        public static EventLog Generate(EventLogType result, string message)
+        {
+              return new EventLog
+                        {
+                            Type = result,
+                            Messages = message,
+                            EventTime=DateTime.Now
+                        };        
+        }
     }
 
     public enum EventLogType
