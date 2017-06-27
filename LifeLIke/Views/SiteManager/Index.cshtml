@@ -1,14 +1,16 @@
 ﻿@model System.Collections.Generic.IEnumerable<LifeLike.Models.Config>
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Site Manager";
     Layout = "_Layout";
 }
 
-<h2>Page Configuration</h2>
+<h1>Page Configuration</h1>
 
 @Html.ActionLink("Link Manager","Index","LinkManager", null, new {@class="btn btn-primary"})
-@Html.ActionLink("Config Manager","List","SiteManager", null, new {@class="btn btn-primary"})
 @Html.ActionLink("Logs","Index","Log", null, new {@class="btn btn-primary"})
+<h2>
+    Settings:
+</h2>
 <div class="row">
     <div class="col-md-12">
         <table class="table">
@@ -30,9 +32,7 @@
                         @Html.DisplayFor(modelItem => item.Value)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit","Update","SiteManager", new {id=item.Name}, new { @class="button btn-info"})
-                        @Html.ActionLink("Delete","Delete","SiteManager", new {id=item.Name}, new { @class="button btn-warning"})
-
+                        @Html.ActionLink("Edit","Update","SiteManager", new {id=item.Name}, new { @class="btn btn-info"})
                     </td>
                 </tr>
             }
