@@ -1,5 +1,4 @@
-@using LifeLike.ViewModel
-@using LifeLIke.Utils
+@using LifeLike.Utils
 @model List<LifeLike.ViewModel.LinkViewModel>
 
 @{
@@ -12,6 +11,9 @@
 <div class="row">
     @foreach (var video in Model)
     {
+        <div class="col-lg-6">
+            
         @Html.Raw(HtmlUtils.GenerateYoutube(video))
+        </div>
     }    
 </div>

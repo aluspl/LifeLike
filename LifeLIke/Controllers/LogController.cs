@@ -3,7 +3,6 @@ using System.Linq;
 using LifeLike.Models;
 using LifeLike.ViewModel;
 using LifeLIke.Repositories;
-using LifeLIke.Utils;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LifeLike.Controllers

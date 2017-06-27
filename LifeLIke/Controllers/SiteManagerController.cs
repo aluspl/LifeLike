@@ -2,6 +2,7 @@
 using LifeLike.Models;
 using LifeLike.Repositories;
 using LifeLike.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LifeLIke.Controllers
@@ -17,15 +18,14 @@ namespace LifeLIke.Controllers
         }
         
         // GET
+        [Authorize]
         public ActionResult Index()
         {
-            return View();
+            var configs= _config.List();
+            return View(configs);       
         }
-        public ActionResult List()
-        {
-           var configs= _config.List();
-            return View(configs);
-        }
+       
+        [Authorize]
         public ActionResult Create()
         {
             var model=new Config();
@@ -55,10 +55,11 @@ namespace LifeLIke.Controllers
 
         }
         
+        [Authorize]
         public ActionResult Update(string id)
         {
             var model = _config.Get(id);
-            if (model == null) return RedirectToAction("List");
+            if (model == null) return RedirectToAction("Index");
             return View(model);
 
         }
@@ -71,7 +72,7 @@ namespace LifeLIke.Controllers
                 if (ModelState.IsValid)
                 {
                     _config.Update(model);
-                    return RedirectToAction("List");
+                    return RedirectToAction("Index");
                 }
             }
             catch (Exception dote)
@@ -84,30 +85,6 @@ namespace LifeLIke.Controllers
             return View(model);
         }
         
-        public ActionResult Delete(string id)
-        {
-            
-            var model = _config.Get(id);
-            if (model == null) return RedirectToAction("List");
-            return View(model);
-        }
-        [HttpPost]
-        public ActionResult Delete(Config model)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    _config.Delete(model);
-                    return RedirectToAction("List");
-                }
-            }
-            catch (Exception e)
-            {
-                ModelState.AddModelError("", "Unable to Delete");
-            }
- 
-            return View(model);
-        }
+       
     }
 }

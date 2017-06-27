@@ -1,5 +1,4 @@
-﻿@model object
-
+﻿@model System.Collections.Generic.IEnumerable<LifeLike.Models.Config>
 @{
     ViewBag.Title = "title";
     Layout = "_Layout";
@@ -10,3 +9,33 @@
 @Html.ActionLink("Link Manager","Index","LinkManager", null, new {@class="btn btn-primary"})
 @Html.ActionLink("Config Manager","List","SiteManager", null, new {@class="btn btn-primary"})
 @Html.ActionLink("Logs","Index","Log", null, new {@class="btn btn-primary"})
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>Name</th>
+ 
+                <th>Value</th>
+                <th>Actions</th>
+
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>        
+    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Value)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit","Update","SiteManager", new {id=item.Name}, new { @class="button btn-info"})
+                        @Html.ActionLink("Delete","Delete","SiteManager", new {id=item.Name}, new { @class="button btn-warning"})
+
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

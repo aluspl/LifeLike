@@ -39,7 +39,7 @@ namespace LifeLike.Controllers
                     ModelState.AddModelError("","Invalid Model");
                     return View(model);
                 }
-                var user = new User {UserName = model.Username};
+                var user = new User {UserName = model.Username, Email = model.Email, EmailConfirmed = true};
                 var result = await _userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)

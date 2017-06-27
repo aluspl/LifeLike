@@ -2,16 +2,26 @@
 @{ 
     ViewBag.Title = "Register"; 
 }  
-<h1>Register</h1> 
+<h1>Register new user</h1> 
 <p class="text-danger">@ViewData["ErrorMessage"]</p>
 
 @using (Html.BeginForm())
 {
-
-    <div class="form-inline">
-        <label class="mr-sm-2">Login</label>
+    <div class="form-group">
+        <label>Username</label>
         @Html.EditorFor(model=>model.Username)
         <span asp-validation-for = "Username"></span> 
+
+    </div>
+
+    <div class="form-group">
+        <label>Email</label>
+        @Html.EditorFor(model=>model.Email)
+        <span asp-validation-for = "Email"></span> 
+
+    </div>
+
+    <div class="form-inline">
 
         <label class="mr-sm-2">Password</label>
         @Html.PasswordFor(model=>model.Password)

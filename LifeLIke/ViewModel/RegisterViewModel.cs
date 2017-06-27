@@ -11,6 +11,8 @@ namespace LifeLike.ViewModel
         public string Password { get; set; }  
    
         [DataType(DataType.Password), Compare(nameof(Password))] 
-        public string ConfirmPassword { get; set; }    
+        public string ConfirmPassword { get; set; }
+        [DataType(DataType.EmailAddress), MaxLength(256)] 
+        public string Email { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-@using LifeLike.ViewModel
-@model System.Collections.Generic.List< LifeLike.ViewModel.LinkViewModel>
+@model List< LifeLike.ViewModel.LinkViewModel>
 
 @if (Model!=null && Model.Any())
 {
@@ -18,7 +17,15 @@
         {
             <li><a href="@item.Link"> <span class="glyphicon glyphicon-@item.IconName" aria-hidden="true"> </span> @item.Name</a>           
             </li>
-
         }
-    }
+    }    
+}
+@if (User.Identity.IsAuthenticated)
+{
+
+    <li>
+        <a href="@Url.Action("Index", "SiteManager")">
+            <span class="glyphicon glyphicon-apple" aria-hidden="true"></span>Site Manager for @User.Identity.Name
+        </a>
+    </li>
 }

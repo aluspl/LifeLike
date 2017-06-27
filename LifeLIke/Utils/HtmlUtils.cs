@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using LifeLike.Models;
 using LifeLike.Models.Enums;
 using LifeLike.ViewModel;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace LifeLIke.Utils
+namespace LifeLike.Utils
 {
     public class HtmlUtils
     {
@@ -202,8 +203,16 @@ namespace LifeLIke.Utils
             get { return glypgicons.Select(p => new SelectListItem {Value = p, Text = p}); }
             
         }
-       
 
-
+        public static IEnumerable<SelectListItem> PageCategoryList   
+        {
+            get
+            {
+                return Enum.GetValues(typeof(PageCategory))
+                    .Cast<int>()
+                    .Select(e =>
+                        new SelectListItem {Value = e.ToString(), Text = Enum.GetName(typeof(PageCategory), e)});
+            }
+        }
     }
 }

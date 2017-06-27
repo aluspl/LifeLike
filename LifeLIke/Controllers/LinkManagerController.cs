@@ -5,6 +5,7 @@ using LifeLike.Models.Enums;
 using LifeLike.Repositories;
 using LifeLike.ViewModel;
 using Microsoft.AspNetCore.Antiforgery.Internal;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LifeLike.Controllers
