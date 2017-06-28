@@ -35,8 +35,8 @@ namespace LifeLIke
         {
             // Add framework services.
             services.AddDbContext<PortalContext>(options =>
-                //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
-                    options.UseSqlite("Data Source=database.db")
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+               //         options.UseSqlite(Configuration.GetConnectionString("ConnectionName"))
             );
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
