@@ -34,6 +34,11 @@
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.1" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Repositories" />
+    <Folder Include="Views\Account" />
+    <Folder Include="Views\LinkManager" />
+    <Folder Include="Views\Page" />
+    <Folder Include="Views\SiteManager" />
     <Folder Include="wwwroot\photo" />
   </ItemGroup>
 </Project>

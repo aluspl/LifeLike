@@ -93,7 +93,7 @@ namespace LifeLIke.Utils
 	{
 		try
 		{
-			XDocument doc = XDocument.Load(stream);
+			var doc = XDocument.Load(stream);
 			// RSS/Channel/item
 			var entries = from item in doc.Root.Descendants().First(i => i.Name.LocalName == "channel").Elements().Where(i => i.Name.LocalName == "item")
 						  select new RssViewModel
