@@ -48,16 +48,16 @@
     </nav>
 <div class="container body-content">
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-12">
             @RenderBody()            
-        </div>       
-        <div class="col-md-3">
-            @await Component.InvokeAsync("Author")
-        </div>       
-        
+        </div>                
     </div>
     <footer>
-        <p>&copy; 2017 - LifeLike</p>
+        <div class="row">
+            <div class="col-md-12">
+                @await Component.InvokeAsync("Author")
+            </div>            
+        </div>
     </footer>
 </div>
 

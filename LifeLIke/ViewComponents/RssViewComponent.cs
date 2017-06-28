@@ -18,11 +18,11 @@ namespace LifeLIke.ViewComponents
         {
             this.RssService=repository;
         }
-        public async Task< IViewComponentResult> InvokeAsync(string URL)
+        public async Task< IViewComponentResult> InvokeAsync(string URL, int TOP)
         {
-      
+
                 var feed = await RssService.Parse(URL, FeedType.RSS);
-                return View(feed.Take(3));
+                return View(feed.Take(TOP));
          
             
         }

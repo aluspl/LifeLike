@@ -48,7 +48,15 @@ namespace LifeLIke
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<PortalContext>()
                 .AddDefaultTokenProviders();
-          
+            services.Configure<IdentityOptions>(options =>
+            {
+       
+               // Cookie settings
+                options.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromDays(150);
+                options.Cookies.ApplicationCookie.LoginPath = "/Account/L";
+                options.Cookies.ApplicationCookie.LogoutPath = "/Account/LogOut";
+    
+            });
             services.AddMvc();
 
         }
