@@ -1,10 +1,13 @@
 # LifeLike.pl
+You can see how it look on my [Portfolio](http://lifelike.pl)
 # Features
 - Micro CMS  to portfolio based on boostrap and ASP.NET Core 1.1 
 - Dynamic Pages based on Markdown
-- Photo Gallereis (soon))
+- Photo Galleries (soon))
 - Link Manager
+- Dynamic Pages 
 - Main Page Manager
+- Login/Register Module
 
 # TODO
 ## Photo Galleries 
@@ -16,4 +19,7 @@
 - Better Editor
 - Better Link Editors
 ## Database
-- Moved from SQL database to SQLite
+- Move from SQL database to SQLite
+## SideBar
+- Option to enable/disable based on ViewBag.IsSidebar
+- Old Style for Links (table like)

@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace LifeLIke
 {
@@ -34,8 +35,10 @@ namespace LifeLIke
         {
             // Add framework services.
             services.AddDbContext<PortalContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));     
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); 
+                //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                    options.UseSqlite("Data Source=database.db")
+            );
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddScoped<IRssReaderService, RssReaderService>();
 
@@ -50,19 +53,17 @@ namespace LifeLIke
                 .AddDefaultTokenProviders();
             services.Configure<IdentityOptions>(options =>
             {
-       
-               // Cookie settings
+                // Cookie settings
                 options.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromDays(150);
                 options.Cookies.ApplicationCookie.LoginPath = "/Account/L";
                 options.Cookies.ApplicationCookie.LogoutPath = "/Account/LogOut";
-    
             });
             services.AddMvc();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, PortalContext context)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory,
+            PortalContext context)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -77,7 +78,7 @@ namespace LifeLIke
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
-            app.UseIdentity(); 
+            app.UseIdentity();
 
             app.UseMvc(routes =>
             {
@@ -87,7 +88,7 @@ namespace LifeLIke
                 routes.MapRoute(
                     name: "pages",
                     template: "Page/{*id}",
-                    defaults: new { controller = "Page", action = "Detail" });
+                    defaults: new {controller = "Page", action = "Detail"});
             });
             DbInitializer.Initialize(context);
         }
