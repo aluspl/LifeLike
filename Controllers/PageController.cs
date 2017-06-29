@@ -32,6 +32,7 @@ namespace LifeLike.Controllers
             return View(model);
 
         }
+      
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(PageViewModel model)
@@ -54,6 +55,67 @@ namespace LifeLike.Controllers
             return View(model);
 
         }
+        public ActionResult Delete(string id)
+        {
+            var page = _pages.Get(id).ViewModel;
+
+            return View(page);
+
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(PageViewModel model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _pages.Delete(model.DataModel);
+                    
+                    return RedirectToAction("Index","Home");
+                }
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError("", "Unable to save changes. " +
+                                             "Try again, and if the problem persists, " +
+                                             "see your system administrator.");
+            }
+ 
+            return View(model);
+
+        }
+        public ActionResult Update(string id)
+        {
+            var page = _pages.Get(id).ViewModel;
+
+            return View(page);
+
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(PageViewModel model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _pages.Delete(model.DataModel);
+                    
+                    return RedirectToAction("Index","Home");
+                }
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError("", "Unable to save changes. " +
+                                             "Try again, and if the problem persists, " +
+                                             "see your system administrator.");
+            }
+ 
+            return View(model);
+
+        }
 
     }
+    
 }

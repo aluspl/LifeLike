@@ -9,11 +9,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LifeLike.ViewComponents
 {
-    public class AuthorViewComponent : ViewComponent
+    public class SidebarViewComponent : ViewComponent
     {
         private readonly ILinkRepository _context;
 
-        public AuthorViewComponent(ILinkRepository context)
+        public SidebarViewComponent(ILinkRepository context)
         {
             _context = context;
         }

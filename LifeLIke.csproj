@@ -3,6 +3,7 @@
     <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="2.4.337" />
     <PackageReference Include="Markdown" Version="2.2.1">
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
@@ -39,8 +40,9 @@
     <Folder Include="Repositories" />
     <Folder Include="Views\Account" />
     <Folder Include="Views\LinkManager" />
-    <Folder Include="Views\Page" />
     <Folder Include="Views\SiteManager" />
+    <Folder Include="wwwroot\js" />
+    <Folder Include="wwwroot\less" />
     <Folder Include="wwwroot\photo" />
   </ItemGroup>
 </Project>

@@ -45,7 +45,7 @@ namespace LifeLike.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 ModelState.AddModelError("", "Unable to save changes. " +
                                              "Try again, and if the problem persists, " +
@@ -75,7 +75,7 @@ namespace LifeLike.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            catch (Exception dote)
+            catch (Exception)
             {
                 ModelState.AddModelError("", "Unable to save changes. " +
                                              "Try again, and if the problem persists, " +
@@ -103,7 +103,7 @@ namespace LifeLike.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 ModelState.AddModelError("", "Unable to Delete");
             }

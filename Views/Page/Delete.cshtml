@@ -1,0 +1,15 @@
+﻿@model LifeLike.ViewModel.PageViewModel
+
+@{
+    Layout = "_layout";
+}
+<h2>Delete @Html.DisplayFor(model=>model.ShortName)</h2>
+<p class="text-danger">@ViewData["ErrorMessage"]</p>
+<h3>Are you sure you want to delete @Html.DisplayFor(model=>model.FullName)?</h3>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(p=>p.Id);
+    @Html.HiddenFor(p=>p.LinkId);
+
+    <button type="submit" class="btn btn-primary">Delete</button>
+}

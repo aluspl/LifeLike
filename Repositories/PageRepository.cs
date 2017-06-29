@@ -84,6 +84,8 @@ namespace LifeLike.Repositories
         {
             try
             {
+                var link = _context.Links.FirstOrDefault(p => p.Id == model.LinkId);
+                if (link!=null) _context.Remove(link);
                 _context.Remove(model);
                 _context.SaveChanges();
                 return  Result.Success;

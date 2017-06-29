@@ -41,5 +41,6 @@ namespace LifeLike.ViewModel
         };
 
         public string IconName { get; set; }
+        public long LinkId { get; set; }
     }
 }
