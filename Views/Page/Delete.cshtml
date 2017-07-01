@@ -1,6 +1,7 @@
 ﻿@model LifeLike.ViewModel.PageViewModel
 
 @{
+    ViewBag.Title = "Create New Page";
     Layout = "_layout";
 }
 <h2>Delete @Html.DisplayFor(model=>model.ShortName)</h2>
@@ -10,6 +11,11 @@
 {
     @Html.HiddenFor(p=>p.Id);
     @Html.HiddenFor(p=>p.LinkId);
+    @Html.HiddenFor(p=>p.Content);
+    @Html.HiddenFor(p=>p.ShortName);
+    @Html.HiddenFor(p=>p.FullName);
+
+
 
     <button type="submit" class="btn btn-primary">Delete</button>
 }

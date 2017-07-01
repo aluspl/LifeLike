@@ -8,6 +8,7 @@ namespace LifeLIke.Controllers
         // GET
         public ActionResult Index()
         {
+            
             return   View();
         }
     }

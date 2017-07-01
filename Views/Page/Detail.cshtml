@@ -5,10 +5,8 @@
     Layout = "_Layout";
 }
     <h1>@Html.DisplayFor(model=>model.FullName)</h1>
-    <p>
-        @Html.DisplayFor(model=>model.Content)
-    </p>
-    
-    <p>
-        @Html.DisplayFor(model=>model.Category)
-    </p>    
+    <markdown text=>@Model.Content</markdown>
+@*    <p markdown>*@
+@*    @Html.DisplayFor(model=>model.Content)*@
+@*    </p>*@
+@*    *@

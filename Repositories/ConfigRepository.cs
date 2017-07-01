@@ -16,6 +16,14 @@ namespace LifeLike.Repositories
             _context = context;
         }
 
+        public static string WelcomeVideo = "WelcomeVideo";
+        public static string WelcomeText = "WelcomeText";
+        public static string RSS1 = "RSS1";
+        public static string RSS2 = "RSS2";
+        public static string RSSCount = "RSS2Count";
+        
+
+
         public Result Create(Config model)
         {
             try

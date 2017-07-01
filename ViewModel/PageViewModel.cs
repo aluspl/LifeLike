@@ -19,16 +19,30 @@ namespace LifeLike.ViewModel
         public int PageOrder { get; set; }
         public PageCategory Category { get; set; }
 
-        public Page DataModel => new Page
+        public static Page DataModel(PageViewModel model)
         {
-            Id=Id,
-            Category = Category,
-            FullName = FullName,
-            ShortName = ShortName,
-            PageOrder = PageOrder,
-            Content = Content
-        };
-
+           return new Page
+            {
+                Id=model.Id,
+                Category = model.Category,
+                FullName = model.FullName,
+                ShortName = model.ShortName,
+                PageOrder = model.PageOrder,
+                Content = model.Content
+            };   
+        }
+        public static PageViewModel ViewModel(Page model)
+        {
+            return new PageViewModel
+            {
+                Id=model.Id,
+                Category = model.Category,
+                FullName = model.FullName,
+                ShortName = model.ShortName,
+                PageOrder = model.PageOrder,
+                Content = model.Content
+            };   
+        }
         public long Id { get; set; }
 
         public Link Link => new Link

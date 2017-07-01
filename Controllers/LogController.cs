@@ -3,6 +3,7 @@ using System.Linq;
 using LifeLike.Models;
 using LifeLike.ViewModel;
 using LifeLIke.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LifeLike.Controllers
@@ -18,6 +19,7 @@ namespace LifeLike.Controllers
             _eventLogs = eventLog;
         }
         // GET
+        [Authorize]
         public IActionResult Index()
         {
             try
@@ -33,7 +35,7 @@ namespace LifeLike.Controllers
             return View();
 
         }
-
+        [Authorize]
         public IActionResult Detail(long id)
         {
             return View(_eventLogs.Get(id));

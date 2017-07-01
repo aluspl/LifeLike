@@ -17,7 +17,7 @@ header {
 header .header-content {
     position: relative;
     text-align: center;
-    padding: 100px 15px 100px;
+    padding: 250px 15px 250px;
     width: 100%;
 }
 header .header-content .header-content-inner h1 {
@@ -30,6 +30,8 @@ header .header-content .header-content-inner h1 {
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
+    padding-top: 20px;
+
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -40,7 +42,22 @@ select,
 textarea {
     max-width: 280px;
 }
-
+.editor {
+    max-height: 250px;
+    height: 250px;
+    width:90%;
+    background-color: white;
+    border-collapse: separate;
+    border: 1px solid rgb(204, 204, 204);
+    padding: 4px;
+    box-sizing: content-box;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+    border-top-right-radius: 3px; border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px; border-top-left-radius: 3px;
+    overflow: scroll;
+    outline: none;
+}
 /* Carousel */
 .carousel-caption p {
     font-size: 20px;

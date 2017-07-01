@@ -11,5 +11,6 @@ namespace LifeLike.Repositories
         T Get(long id);
         Result Update(T model);
         Result Delete(T model);
+        
     }
 }

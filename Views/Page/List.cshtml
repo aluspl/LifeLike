@@ -2,9 +2,10 @@
 @model System.Collections.Generic.IEnumerable<LifeLike.Models.Page>
 
 @{
-    ViewBag.Title = "Link Manager";
+    ViewBag.Title = "Page Manager";
     Layout = "_Layout";
 }
+@Html.ActionLink("Create","Create","Page",null, new { @class="btn btn-info"})
 
 <table class="table">
     <tr>

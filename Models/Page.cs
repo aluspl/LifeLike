@@ -22,19 +22,7 @@ namespace LifeLike.Models
         public PageCategory Category { get; set; }
         public long LinkId { get; set; }
 
-        public PageViewModel ViewModel
-        {
-            get
-            {
-                return new PageViewModel
-                {
-                    Category = Category,
-                    FullName = FullName,
-                    Id = Id,
-                    LinkId = LinkId
-                };
-            }
-        }
+      
     }
 
     public enum PageCategory

@@ -1,17 +1,24 @@
 ﻿using System;
+using LifeLike.Models;
 using LifeLike.Repositories;
 using LifeLike.ViewModel;
+using LifeLIke.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LifeLike.Controllers
 {
     public class PageController : Controller
     {
-        private IPageRepository _pages;
+        private readonly IPageRepository _pages;
+        private readonly IEventLogRepository _logger;
+        private readonly ILinkRepository _links;
 
-        public PageController(IPageRepository pageRepository)
+        public PageController(IPageRepository pageRepository, IEventLogRepository logger, ILinkRepository links)
         {
             _pages = pageRepository;
+            _logger = logger;
+            _links = links;
         }
         // GET
         public ActionResult List()
@@ -26,6 +33,7 @@ namespace LifeLike.Controllers
             if (page == null) return RedirectToAction("Index", "Home");
             return View(page);
         }
+        [Authorize]
         public ActionResult Create()
         {
             var model=new PageViewModel();
@@ -41,7 +49,8 @@ namespace LifeLike.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _pages.Create(model.DataModel,model.Link);
+                    _links.Create(model.Link);
+                    _pages.Create(PageViewModel.DataModel(model));
                     return RedirectToAction("Index","Home");
                 }
             }
@@ -55,28 +64,34 @@ namespace LifeLike.Controllers
             return View(model);
 
         }
-        public ActionResult Delete(string id)
+        public ActionResult Delete(long id)
         {
-            var page = _pages.Get(id).ViewModel;
+            var page = _pages.Get(id);
+            
 
-            return View(page);
+            return View(PageViewModel.ViewModel(page));
 
         }
-        [HttpPost]
+        [HttpPost] 
         [ValidateAntiForgeryToken]
         public ActionResult Delete(PageViewModel model)
         {
             try
             {
-                if (ModelState.IsValid)
+                if (model != null)
                 {
-                    _pages.Delete(model.DataModel);
+                    var datamodel = _pages.Get(model.Id);
+                    var link = _links.Get(model.ShortName);
+                    var result=_pages.Delete(datamodel, link);
                     
-                    return RedirectToAction("Index","Home");
-                }
+                    if (result==Result.Success) return RedirectToAction("Index","Home");
+                                   
+               }
             }
             catch (Exception e)
             {
+                _logger.AddExceptionLog(e);
+
                 ModelState.AddModelError("", "Unable to save changes. " +
                                              "Try again, and if the problem persists, " +
                                              "see your system administrator.");
@@ -85,11 +100,22 @@ namespace LifeLike.Controllers
             return View(model);
 
         }
-        public ActionResult Update(string id)
+        [Authorize]
+        public ActionResult Update(long id)
         {
-            var page = _pages.Get(id).ViewModel;
+            try
+            {
+                var page = _pages.Get(id);               
+                return View(PageViewModel.ViewModel(page));
 
-            return View(page);
+            }
+            catch (Exception e)
+            {
+                _logger.AddExceptionLog(e);
+            }
+
+            return RedirectToAction("List", "Page");
+
 
         }
         [HttpPost]
@@ -100,13 +126,15 @@ namespace LifeLike.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _pages.Delete(model.DataModel);
+                   var result=_pages.Update(PageViewModel.DataModel(model));
                     
-                    return RedirectToAction("Index","Home");
+                    if (result==Result.Success) return RedirectToAction("Index","Home");
                 }
             }
             catch (Exception e)
             {
+                _logger.AddExceptionLog(e);
+
                 ModelState.AddModelError("", "Unable to save changes. " +
                                              "Try again, and if the problem persists, " +
                                              "see your system administrator.");

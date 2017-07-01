@@ -30,14 +30,14 @@ namespace LifeLike.Repositories
                 _context.EventLogs.Add(EventLog.Generate(e));
                 _context.SaveChanges();
                 return   Result.Failed;
-            }    
+            }     
         }
         public Result Create(Page model, Link link)
         {
             try
             {
+                _context.Add(link);               
                 _context.Add(model);
-                _context.Add(link);
                 _context.SaveChanges();
                 return  Result.Success;
                 
@@ -82,10 +82,15 @@ namespace LifeLike.Repositories
 
         public Result Delete(Page model)
         {
+            //Always True!! :D 
+         return   Result.Success;
+        }
+
+        public Result Delete(Page model, Link link)
+        {
             try
             {
-                var link = _context.Links.FirstOrDefault(p => p.Id == model.LinkId);
-                if (link!=null) _context.Remove(link);
+               if (link!=null) _context.Remove(link);
                 _context.Remove(model);
                 _context.SaveChanges();
                 return  Result.Success;
@@ -110,5 +115,7 @@ namespace LifeLike.Repositories
         IEnumerable<Page> List(PageCategory category);
         Page Get(string id);
         Result Create(Page model, Link link);
+        Result Delete(Page model, Link link);
+
     }
 }

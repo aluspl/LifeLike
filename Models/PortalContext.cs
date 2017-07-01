@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using LifeLike.Models.Enums;
+using LifeLike.Repositories;
 using LifeLike.ViewModel;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -57,19 +58,19 @@ namespace LifeLike.Models
         {
             context.Add(new Config()
             {
-              Name="WelcomeVideo", DisplayName="Welcome Video", Value = "Qi5tp0eZHt8"
+              Name=ConfigRepository.WelcomeVideo, DisplayName="Welcome Video", Value = "Qi5tp0eZHt8"
             });
             context.Add(new Config()
             {
-                Name="WelcomeText", DisplayName = "Welcome Text", Value = "Hello on Main Page"
+                Name=ConfigRepository.WelcomeText, DisplayName = "Welcome Text", Value = "Hello on Main Page"
             });
             context.Add(new Config()
             {
-                Name="RSS1", DisplayName = "First RSS Url", Value = "http://kawowipodroznicy.pl/feed/"
+                Name=ConfigRepository.RSS1, DisplayName = "First RSS Url", Value = "http://kawowipodroznicy.pl/feed/"
             });
             context.Add(new Config()
             {
-                Name="RSS2", DisplayName = "First RSS Url", Value = "http://szymonmotyka.pl/feed/"
+                Name=ConfigRepository.RSS2, DisplayName = "Second RSS Url", Value = "http://szymonmotyka.pl/feed/"
             });
             
         }

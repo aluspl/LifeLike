@@ -40,9 +40,12 @@ namespace LifeLike.Repositories
 
         public Link Get(long id)
         {
-            return _context.Links.Find(id);
+            return _context.Links.FirstOrDefault(p => p.Id == id);
         }
-
+        public Link Get(string id)
+        {
+            return _context.Links.FirstOrDefault(p => p.Action == id);
+        }
         public Result Update(Link model)
         {
             try
@@ -86,5 +89,6 @@ namespace LifeLike.Repositories
     public interface ILinkRepository : IRepository<Link>
     {
         IEnumerable<Link> List(LinkCategory category);
+        Link Get(string id);
     }
 }
