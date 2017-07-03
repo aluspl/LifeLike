@@ -187,7 +187,34 @@ namespace LifeLike.Utils
             var format = string.Format($"<span class='glyphicon glyphicon-{icon}' aria-hidden='true'> </span> ");
             return format;
         }
+        public static bool TryParseYoutubeLink(string link,out string value)
+        {
+            try
+            {
+                var uri = new Uri(link);
 
+
+//                var query = HttpUtility.ParseQueryString(uri.Query);
+//
+//                var videoId = string.Empty;
+//
+//                if (query.AllKeys.Contains("v"))
+//                {
+//                    videoId = query["v"];
+//                }
+//                else
+//                {
+//                    videoId = uri.Segments.Last();
+//                }         
+                value = string.Empty;
+                return true;
+            }
+            catch (Exception e)
+            {
+                value = string.Empty;
+                return false;
+            }
+        }
         public static IEnumerable<SelectListItem> CategoryList
         {
             get
