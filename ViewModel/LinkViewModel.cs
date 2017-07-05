@@ -2,6 +2,7 @@ using System;
 using System.Linq.Expressions;
 using LifeLike.Models;
 using LifeLike.Models.Enums;
+using LifeLike.Utils;
 
 namespace LifeLike.ViewModel
 {
@@ -15,6 +16,23 @@ namespace LifeLike.ViewModel
         public string Link { get; set; }
         public int Order { get; set; }
         public string IconName { get; set; }
+
+        public string YoutubeID
+        {
+            get
+            {
+                return GetID();
+                
+            }
+        }
+
+        private string GetID()
+        {
+            if (string.IsNullOrEmpty(Link)) return null;
+            string value;
+            return !HtmlUtils.TryParseYoutubeLink(Link, out value) ? null : value;
+        }
+
         public LinkCategory Category { get; set; }
         public bool IsLink => (!string.IsNullOrEmpty(Link) && string.IsNullOrEmpty(Controller));
 
