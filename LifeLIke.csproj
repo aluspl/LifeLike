@@ -37,7 +37,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Migrations" />
-    <Folder Include="Repositories" />
     <Folder Include="Views\Account" />
     <Folder Include="Views\LinkManager" />
     <Folder Include="Views\SiteManager" />

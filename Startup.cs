@@ -47,6 +47,7 @@ namespace LifeLIke
             services.AddScoped<IConfigRepository, ConfigRepository>();
             services.AddScoped<IGalleryRepository, GalleryRepository>();
             services.AddScoped<IPageRepository, PageRepository>();
+            services.AddScoped<IPhotoRepository, PhotoRepository>();
 
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<PortalContext>()
