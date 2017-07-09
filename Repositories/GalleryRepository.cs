@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using LifeLike.Models;
 using LifeLike.Models.Enums;
+using LifeLike.ViewModel;
 
 namespace LifeLike.Repositories
 {
@@ -76,9 +77,15 @@ namespace LifeLike.Repositories
                 return   Result.Failed;
             }
         }
+
+        public Gallery Get(string shortTitle)
+        {
+            return _context.Galleries.FirstOrDefault(id=>id.ShortTitle==shortTitle);
+        }
     }
 
     public interface IGalleryRepository: IRepository<Gallery>
     {
+        Gallery Get(string id);
     }
 }

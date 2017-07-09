@@ -90,6 +90,10 @@ namespace LifeLIke
                     name: "pages",
                     template: "Page/{*id}",
                     defaults: new {controller = "Page", action = "Detail"});
+                routes.MapRoute(
+                    name: "photos",
+                    template: "Photos/{*id}",
+                    defaults: new {controller = "Photos", action = "Detail"});
             });
             DbInitializer.Initialize(context);
         }

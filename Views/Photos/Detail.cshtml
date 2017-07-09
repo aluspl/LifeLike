@@ -1,0 +1,8 @@
+﻿@model LifeLike.ViewModel.GalleryViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "_Layout";
+}
+<h1>@Html.DisplayFor(model=>model.Place)</h1>
+<markdown text=@Model.Description></markdown>

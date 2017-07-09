@@ -6,7 +6,10 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using LifeLike.Repositories;
+using LifeLike.ViewModel;
 using LifeLIke.Repositories;
+using Microsoft.AspNetCore.Antiforgery.Internal;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,46 +18,25 @@ namespace LifeLIke.Controllers
 {
     public class PhotoController : Controller
     {
-        private readonly IEventLogRepository _logRepository;
+        private readonly IEventLogRepository logger;
         private readonly IPhotoRepository _photoRepository;
-        private readonly IHostingEnvironment _environment;
+        private readonly IGalleryRepository _gallery;
 
-        public PhotoController(IEventLogRepository logRepository, IPhotoRepository photoRepository, IHostingEnvironment environment)
+
+        public PhotoController(IEventLogRepository logger,
+            IPhotoRepository photoRepository,
+            IGalleryRepository gallery)
         {
-            _logRepository = logRepository;
+            logger = logger;
             _photoRepository = photoRepository;
-            _environment = environment;
+            _gallery = gallery;
 
         }
-        // GET
-        public ActionResult Index()
+     
+        [Authorize]
+        public IActionResult Delete(long id)
         {
-            
-            return   View();
-        }
-
-
-        public IActionResult UploadPhoto()
-        {
-            
-        }
-        
-        [HttpPost]
-        public async Task<IActionResult> UploadPhoto (ICollection<IFormFile> files)
-        {        
-            var uploads = Path.Combine(_environment.WebRootPath, "photo");
-            foreach (var file in files)
-            {
-                if (file.Length > 0)
-                {
-                    using (var fileStream = new FileStream(Path.Combine(uploads, file.FileName), FileMode.Create))
-                    {
-                        await file.CopyToAsync(fileStream);
-                    }
-                }
-            }
-            return View();
-                 
-        }
+            throw new  NotImplementedException();
+        }      
     }
 }

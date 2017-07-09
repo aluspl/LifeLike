@@ -17,6 +17,6 @@ namespace LifeLike.Models
         public string Place { get; set; }
         
         public ICollection<Photo> Photos { get; set; }
-      
+        public string ShortTitle { get; set; }
     }
 }

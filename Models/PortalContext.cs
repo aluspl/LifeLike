@@ -94,8 +94,15 @@ namespace LifeLike.Models
             });
             context.Add(new Link()
             {
+                Action = "Index",
+                Controller = "Photos",
+                Name = "Photos",
+                Category = LinkCategory.Menu
+            });
+            context.Add(new Link()
+            {
                 Action = "About",
-                Controller = "Home",
+                Controller = "Page",
                 Name = "About Me",
                 Category = LinkCategory.Menu
             });

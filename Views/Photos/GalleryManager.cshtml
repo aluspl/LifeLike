@@ -1,0 +1,32 @@
+﻿@model System.Collections.Generic.IEnumerable<LifeLike.ViewModel.GalleryViewModel>
+
+@{
+    ViewBag.Title = "Galeries Manager";
+    Layout = "_Layout";
+}
+<table class="table">
+    <tr>
+        <th>Short Name</th>
+        <th>Full Name </th>
+        <th>Actions</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortTitle)
+            </td>  
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>    
+                
+            <td>
+                @Html.ActionLink("Edit","Update","Photos", new {id=item.Id}, new { @class="btn btn-info"})
+                @Html.ActionLink("Delete","Delete","Photos", new {id=item.Id}, new { @class="btn btn-warning"})
+                @Html.ActionLink("Add Photos","AddPhotos","Photo", new {id=item.Id}, new { @class="btn btn-warning"})
+
+            </td>
+        </tr>
+    }
+</table>

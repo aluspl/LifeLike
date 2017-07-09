@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using LifeLike.Models;
+using LifeLike.Models.Enums;
+using LifeLike.Utils;
+
+namespace LifeLike.ViewModel
+{
+    public class PhotoViewModel
+    {
+        public long Id { get; set; }
+       
+        public string Title { get; set; }
+        public string Url { get; set; }
+        public string ThumbUrl { get; set; }
+        
+        public DateTime Created { get; set; }
+        public string Camera { get; set; }
+        public  virtual Gallery Gallery { get; set; }
+        public long GalleryId { get; set; }
+
+        public static PhotoViewModel Get(Photo model)
+        {
+            return new PhotoViewModel
+            {
+                Title = model.Title,
+                Created = model.Created,
+                Camera = model.Camera,
+                GalleryId=model.Gallery.Id
+            };
+        }
+
+
+        public static Photo Get(PhotoViewModel model)
+        {
+            return new Photo
+            {
+                Title = model.Title,
+                Created = model.Created,
+                Camera = model.Camera,
+                
+            };
+        }
+    }
+    
+}

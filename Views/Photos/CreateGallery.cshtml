@@ -1,0 +1,43 @@
+﻿@model LifeLike.ViewModel.GalleryViewModel
+
+@{
+    ViewBag.Title = "Create New Gallery";
+    Layout = "_Layout";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model=>model.Id)
+    <div class="form-group">
+        <label class="control-label">Short Name: </label>
+        @Html.TextBoxFor(model=>model.ShortTitle, new {@class="form-control"})
+        @Html.ValidationMessageFor(model => model.ShortTitle)
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label">Full Name: </label>
+        @Html.TextBoxFor(model=>model.Title, new {@class="form-control"})
+        @Html.ValidationMessageFor(model => model.Title)
+    </div>
+        
+  
+    <div class="form-group">
+        <label class="control-label">Description:</label>
+        @Html.TextAreaFor(model => model.Description, 20, 1, new {@class = "form-control"})
+        @Html.ValidationMessageFor(model => model.Description)
+    </div>
+        
+ 
+                
+    <div class="form-group">
+        <label class="control-label">Place:</label>
+        @Html.TextBoxFor(model=>model.Place, new {@class="form-control"})
+        @Html.ValidationMessageFor(model => model.Place)
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+    </div>
+}

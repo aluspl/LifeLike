@@ -36,7 +36,6 @@
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Migrations" />
     <Folder Include="Views\Account" />
     <Folder Include="Views\LinkManager" />
     <Folder Include="Views\SiteManager" />
