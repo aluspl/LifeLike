@@ -5,6 +5,9 @@ using System.Linq.Expressions;
 using LifeLike.Models;
 using LifeLike.Models.Enums;
 using LifeLike.Utils;
+using LifeLIke.Controllers;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.FileProviders;
 
 namespace LifeLike.ViewModel
 {
@@ -18,6 +21,16 @@ namespace LifeLike.ViewModel
 
         public IEnumerable<PhotoViewModel> Photos { get; set; }
         public string ShortTitle { get; set; }
+
+        public static UploadFileViewModel GetViewForUpload(Gallery model)
+        {
+            return new UploadFileViewModel
+            {
+                GalleryTitle=model.Title,
+                GalleryId=model.Id,
+                
+            };
+        }
 
         public static Gallery Get(GalleryViewModel model)
         {
@@ -33,6 +46,7 @@ namespace LifeLike.ViewModel
         }
         public static GalleryViewModel Get(Gallery model)
         {
+            if (model == null) return null;
             return new GalleryViewModel()
             {
                 Id=model.Id,
@@ -45,5 +59,14 @@ namespace LifeLike.ViewModel
 
             };
         }
+    }
+
+    public class UploadFileViewModel
+    {
+        public IFormFile Photo { get; set; }
+
+        public long GalleryId { get; set; }
+        public string GalleryTitle { get; set; }
+        public string Title { get; set; }
     }
 }

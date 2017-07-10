@@ -6,3 +6,7 @@
 }
 <h1>@Html.DisplayFor(model=>model.Place)</h1>
 <markdown text=@Model.Description></markdown>
+@foreach (var photo in Model.Photos)
+{
+    @Html.DisplayText($"{photo.Title}, {photo.FileName}")
+}

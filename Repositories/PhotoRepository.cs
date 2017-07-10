@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using LifeLike.Models;
 using LifeLike.Models.Enums;
+using LifeLIke.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Repositories
 {
@@ -10,9 +12,11 @@ namespace LifeLike.Repositories
     public  class PhotoRepository : IPhotoRepository
     {
         private readonly PortalContext _context;
+        private IEventLogRepository _logger;
 
-        public PhotoRepository(PortalContext context)
+        public PhotoRepository(PortalContext context, IEventLogRepository logger)
         {
+            _logger = logger;
             _context = context;
         }
 
@@ -27,8 +31,7 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-                _context.EventLogs.Add(EventLog.Generate(e));
-                _context.SaveChanges();
+               _logger.AddExceptionLog(e);
                 return   Result.Failed;
             }    
         }
@@ -54,8 +57,8 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-                _context.EventLogs.Add(EventLog.Generate(e));
-                _context.SaveChanges();
+                _logger.AddExceptionLog(e);
+
                 return   Result.Failed;
             }        
         }
@@ -71,16 +74,38 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-                _context.EventLogs.Add(EventLog.Generate(e));
-                _context.SaveChanges();
+                _logger.AddExceptionLog(e);
+
                 return   Result.Failed;
             }
         }
 
-     
+        public Result Create(Photo photo, long modelGalleryId)
+        {
+            try
+            {
+                var gallery = _context.Galleries
+                    .Where(p => p.Id == modelGalleryId)
+                    .Include(p=>p.Photos)
+                    .SingleOrDefault();
+                if (gallery == null) return Result.Failed;
+                gallery.Photos.Add(photo);
+//                _context.Add(photo);    
+//                _context.Update(gallery);
+                _context.SaveChanges();
+                return  Result.Success;
+            }
+            catch (Exception e)
+            {
+                _logger.AddExceptionLog(e);
+
+                return   Result.Failed;
+            }           
+        }
     }
     
     public interface IPhotoRepository : IRepository<Photo>
     {
+        Result Create(Photo photo, long modelGalleryId);
     }
 }

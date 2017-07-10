@@ -4,6 +4,8 @@ using System.Linq;
 using LifeLike.Models;
 using LifeLike.Models.Enums;
 using LifeLike.ViewModel;
+using LifeLIke.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Repositories
 {
@@ -11,9 +13,11 @@ namespace LifeLike.Repositories
     public  class GalleryRepository : IGalleryRepository
     {
         private readonly PortalContext _context;
+        private readonly IEventLogRepository _logger;
 
-        public GalleryRepository(PortalContext context)
+        public GalleryRepository(PortalContext context, IEventLogRepository logger)
         {
+            _logger = logger;
             _context = context;
         }
 
@@ -28,8 +32,7 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-                _context.EventLogs.Add(EventLog.Generate(e));
-                _context.SaveChanges();
+                _logger.AddExceptionLog(e);
                 return   Result.Failed;
             }    
         }
@@ -41,7 +44,11 @@ namespace LifeLike.Repositories
 
         public Gallery Get(long id)
         {
-            return _context.Galleries.Find(id);
+            var gallery = _context.Galleries
+                .Where(p => p.Id == id)
+                .Include(p=>p.Photos)
+                .SingleOrDefault();
+            return gallery;
         }
 
         public Result Update(Gallery model)
@@ -55,8 +62,8 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-                _context.EventLogs.Add(EventLog.Generate(e));
-                _context.SaveChanges();
+                _logger.AddExceptionLog(e);
+
                 return   Result.Failed;
             }        
         }
@@ -72,15 +79,27 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-                _context.EventLogs.Add(EventLog.Generate(e));
-                _context.SaveChanges();
+                _logger.AddExceptionLog(e);
+
                 return   Result.Failed;
             }
         }
 
         public Gallery Get(string shortTitle)
         {
-            return _context.Galleries.FirstOrDefault(id=>id.ShortTitle==shortTitle);
+            try
+            {
+                var gallery = _context.Galleries
+                    .Where(p => p.ShortTitle == shortTitle)
+                    .Include(p=>p.Photos)
+                    .SingleOrDefault();
+                return gallery;
+            }
+            catch (Exception e)
+            {
+                _logger.AddExceptionLog(e);
+                return null;
+            }
         }
     }
 

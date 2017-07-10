@@ -20,7 +20,7 @@ namespace LifeLIke.Controllers
 {
     public class PhotosController : Controller
     {
-        private readonly IEventLogRepository logger;
+        private readonly IEventLogRepository _logger;
         private readonly IPhotoRepository _photoRepository;
         private readonly IGalleryRepository _gallery;
 
@@ -29,7 +29,7 @@ namespace LifeLIke.Controllers
             IPhotoRepository photoRepository,
             IGalleryRepository gallery)
         {
-            logger = logger;
+            _logger = logger;
             _photoRepository = photoRepository;
             _gallery = gallery;
 
@@ -52,7 +52,7 @@ namespace LifeLIke.Controllers
             }
             catch (Exception e)
             {
-                logger.AddExceptionLog(e);
+                _logger.AddExceptionLog(e);
             }
             return View(new GalleryViewModel());
         }
@@ -68,13 +68,12 @@ namespace LifeLIke.Controllers
             {
                 var selectedgallery = _gallery.Get(id);
                 return View(GalleryViewModel.Get(selectedgallery));
-
             }
             catch (Exception e)
             {
-                logger.AddExceptionLog(e);
-                throw;
+                _logger.AddExceptionLog(e);
             }
+            return RedirectToAction("Index", "Photos");
         }
 
         public IActionResult GalleryManager()
@@ -98,7 +97,7 @@ namespace LifeLIke.Controllers
             }
             catch (Exception e)
             {
-               logger.AddExceptionLog(e);
+               _logger.AddExceptionLog(e);
             }
             return View(model);
         }
@@ -118,7 +117,7 @@ namespace LifeLIke.Controllers
             }
             catch (Exception e)
             {
-                logger.AddExceptionLog(e);
+                _logger.AddExceptionLog(e);
             }
             return View(model);
         }

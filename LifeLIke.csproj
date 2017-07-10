@@ -4,6 +4,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="BuildBundlerMinifier" Version="2.4.337" />
+    <PackageReference Include="ImageSharp" Version="0.0.0" />
     <PackageReference Include="Markdown" Version="2.2.1">
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
@@ -42,5 +43,6 @@
     <Folder Include="wwwroot\js" />
     <Folder Include="wwwroot\less" />
     <Folder Include="wwwroot\photo" />
+    <Folder Include="wwwroot\photos" />
   </ItemGroup>
 </Project>

@@ -26,7 +26,11 @@ namespace LifeLIke.Controllers
             return View(pageCongif);
         }
 
-    
+
+        public IActionResult UploadFiles()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
     public class PageConfigModel

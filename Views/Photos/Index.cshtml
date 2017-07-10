@@ -3,24 +3,11 @@
     ViewBag.Title = "Galeries";
     Layout = "_Layout";
 }
-
-<table class="table">
-    <tr>
-        <th>Short Name</th>
-        <th>Full Name </th>
-   
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ShortTitle)
-            </td>  
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>    
-                
-           
-        </tr>
-    }
-</table>
+@foreach (var item in Model)
+{
+    <div class="col-md-4">
+        <a href="@Url.Action(item.ShortTitle, "Photos")">
+            @item.Title
+        </a>
+    </div>
+}

@@ -12,7 +12,10 @@ namespace LifeLike.ViewModel
         public long Id { get; set; }
        
         public string Title { get; set; }
-        public string Url { get; set; }
+
+        public string Url => FileName;
+        public string FileName { get; set; }
+
         public string ThumbUrl { get; set; }
         
         public DateTime Created { get; set; }
@@ -27,9 +30,11 @@ namespace LifeLike.ViewModel
                 Title = model.Title,
                 Created = model.Created,
                 Camera = model.Camera,
+                FileName=model.FileName,
                 GalleryId=model.Gallery.Id
             };
         }
+
 
 
         public static Photo Get(PhotoViewModel model)
@@ -39,7 +44,7 @@ namespace LifeLike.ViewModel
                 Title = model.Title,
                 Created = model.Created,
                 Camera = model.Camera,
-                
+                FileName =model.FileName,
             };
         }
     }
