@@ -40,5 +40,11 @@ namespace LifeLike.Controllers
         {
             return View(_eventLogs.Get(id));
         }
+        [HttpGet]
+        public IActionResult Clear()
+        {
+            _eventLogs.ClearLogs();
+            return RedirectToAction("Index");
+        }
     }
 }

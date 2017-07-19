@@ -72,6 +72,13 @@ namespace LifeLike.Repositories
         {
             try
             {
+                model = Get(model.Id);
+                if (model==null) return Result.Failed;
+                
+                foreach (var photo in model.Photos)
+                {
+                    _context.Remove(photo);
+                }
                 _context.Remove(model);
                 _context.SaveChanges();
                 return  Result.Success;
@@ -81,7 +88,7 @@ namespace LifeLike.Repositories
             {
                 _logger.AddExceptionLog(e);
 
-                return   Result.Failed;
+                return  Result.Failed;
             }
         }
 

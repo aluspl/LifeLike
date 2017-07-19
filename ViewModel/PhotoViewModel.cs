@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq.Expressions;
 using LifeLike.Models;
 using LifeLike.Models.Enums;
@@ -13,7 +14,7 @@ namespace LifeLike.ViewModel
        
         public string Title { get; set; }
 
-        public string Url => FileName;
+        public string Url { get; set; }
         public string FileName { get; set; }
 
         public string ThumbUrl { get; set; }
@@ -23,7 +24,7 @@ namespace LifeLike.ViewModel
         public  virtual Gallery Gallery { get; set; }
         public long GalleryId { get; set; }
 
-        public static PhotoViewModel Get(Photo model)
+        public static PhotoViewModel Get(Photo model, string PhotoPath)
         {
             return new PhotoViewModel
             {
@@ -31,6 +32,7 @@ namespace LifeLike.ViewModel
                 Created = model.Created,
                 Camera = model.Camera,
                 FileName=model.FileName,
+                Url = Path.Combine(PhotoPath, model.FileName),
                 GalleryId=model.Gallery.Id
             };
         }

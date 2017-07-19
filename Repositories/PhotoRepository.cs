@@ -12,13 +12,16 @@ namespace LifeLike.Repositories
     public  class PhotoRepository : IPhotoRepository
     {
         private readonly PortalContext _context;
-        private IEventLogRepository _logger;
+        private readonly IEventLogRepository _logger;
 
         public PhotoRepository(PortalContext context, IEventLogRepository logger)
         {
             _logger = logger;
             _context = context;
         }
+
+        public static string PhotoPath =  "/photos/";
+
 
         public Result Create(Photo model)
         {

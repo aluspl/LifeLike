@@ -23,6 +23,7 @@ namespace LifeLIke.Controllers
         private readonly IPhotoRepository _photos;
         private readonly IGalleryRepository _gallery;
         private  readonly IHostingEnvironment _hostingEnv;
+        private readonly string _photoPath;
 
 
         public PhotoController(IEventLogRepository logger,
@@ -34,6 +35,8 @@ namespace LifeLIke.Controllers
             _hostingEnv = hosting;
             _photos = photos;
             _gallery = gallery;
+            _photoPath = Path.Combine("photos");
+
 
         }
         public IActionResult UploadFiles(long id)
@@ -48,11 +51,11 @@ namespace LifeLIke.Controllers
             {
                 if (!ModelState.IsValid) return View(model);
             
-                var photos = Path.Combine(_hostingEnv.WebRootPath, "photos");
+                var uploadPath = Path.Combine(_hostingEnv.WebRootPath, "photos");
 
                 if (model.Photo.Length > 0)
                 {
-                    using (var fileStream = new FileStream(Path.Combine(photos, model.Photo.FileName), FileMode.Create))
+                    using (var fileStream = new FileStream(Path.Combine(uploadPath, model.Photo.FileName), FileMode.Create))
                     {
                         await model.Photo.CopyToAsync(fileStream);
                     }
@@ -76,8 +79,9 @@ namespace LifeLIke.Controllers
         {
             try
             {
+
                 var photo=_photos.Get(id);
-                var selectedPhoto=PhotoViewModel.Get(photo);
+                var selectedPhoto=PhotoViewModel.Get(photo,_photoPath);
                 var photos = Path.Combine(_hostingEnv.WebRootPath, "photos");
                 return View(selectedPhoto);
 

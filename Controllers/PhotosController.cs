@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -13,6 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging;
 
@@ -23,12 +25,15 @@ namespace LifeLIke.Controllers
         private readonly IEventLogRepository _logger;
         private readonly IPhotoRepository _photoRepository;
         private readonly IGalleryRepository _gallery;
+        private readonly IHostingEnvironment _hosting;
 
 
         public PhotosController(IEventLogRepository logger,
             IPhotoRepository photoRepository,
-            IGalleryRepository gallery)
+            IGalleryRepository gallery,
+            IHostingEnvironment hosting)
         {
+            _hosting = hosting;
             _logger = logger;
             _photoRepository = photoRepository;
             _gallery = gallery;
@@ -94,7 +99,8 @@ namespace LifeLIke.Controllers
             try
             {
                 _gallery.Delete(GalleryViewModel.Get(model));
-            }
+                           return RedirectToAction("Index", "Photos");
+            }    
             catch (Exception e)
             {
                _logger.AddExceptionLog(e);
@@ -114,6 +120,8 @@ namespace LifeLIke.Controllers
             try
             {
                 _gallery.Delete(GalleryViewModel.Get(model));
+                return RedirectToAction("Index", "Photos");
+
             }
             catch (Exception e)
             {

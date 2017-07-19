@@ -79,6 +79,7 @@ namespace LifeLIke
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
+            
             app.UseIdentity();
 
             app.UseMvc(routes =>

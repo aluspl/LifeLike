@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using LifeLike.Models;
 using LifeLike.Models.Enums;
+using LifeLike.Repositories;
 using LifeLike.Utils;
 using LifeLIke.Controllers;
 using Microsoft.AspNetCore.Http;
@@ -27,8 +28,7 @@ namespace LifeLike.ViewModel
             return new UploadFileViewModel
             {
                 GalleryTitle=model.Title,
-                GalleryId=model.Id,
-                
+                GalleryId=model.Id,             
             };
         }
 
@@ -55,7 +55,7 @@ namespace LifeLike.ViewModel
                 Created = model.Created,
                 Description =  model.Description,
                 Place = model.Place,
-                Photos = model.Photos!=null ? model.Photos.Select(PhotoViewModel.Get) : new List<PhotoViewModel>()
+                Photos = model.Photos!=null ? model.Photos.Select(p=>PhotoViewModel.Get(p,PhotoRepository.PhotoPath)) : new List<PhotoViewModel>()
 
             };
         }

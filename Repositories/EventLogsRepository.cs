@@ -59,6 +59,14 @@ namespace LifeLIke.Repositories
             Create(EventLog.Generate(result,message));
         }
 
+        public void ClearLogs()
+        {
+            _context.EventLogs.RemoveRange(_context.EventLogs);            
+           
+            _context.SaveChanges();
+             
+        }
+
         public EventLog Get(long id)
         {
             return _context.EventLogs.FirstOrDefault(p=>p.Id==id);
@@ -104,5 +112,6 @@ namespace LifeLIke.Repositories
         IEnumerable<EventLog> List(EventLogType type);
         void LogInformation(int i, string userLoggedOut);
         void LogInformation(EventLogType result, string message);
+        void ClearLogs();
     }
 }

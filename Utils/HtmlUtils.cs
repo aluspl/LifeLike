@@ -179,9 +179,15 @@ namespace LifeLike.Utils
                                        "<div class='embed-responsive embed-responsive-16by9'>" +
                                        "<iframe width='560' height='315' src='https://www.youtube.com/embed/{1}' " +
                                        "?rel'0' frameborder='0' allowfullscreen></iframe>" + 
-                                       "</div>", videoLink.Name, videoLink.Link);
+                                       "</div>", videoLink.Name, GetYoutubeId(videoLink.Link));
             return format;
         }
+
+        public static string GetYoutubeId(string videoLink)
+        {
+            return videoLink.Contains('=') ? videoLink.Split('=').LastOrDefault() : videoLink;
+        }
+
         public static string GenerateIcon(string icon)
         {
             var format = string.Format($"<span class='glyphicon glyphicon-{icon}' aria-hidden='true'> </span> ");
