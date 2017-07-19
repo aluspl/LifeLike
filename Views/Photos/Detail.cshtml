@@ -13,19 +13,18 @@
 <markdown text=@Model?.Description></markdown>
 
 <div class="row">
-
-    @{
-        Debug.Assert(Model?.Photos != null, "Model?.Photos != null");
-    }
-    @foreach (var photo in Model?.Photos)
-    {
-        <div class="col-md-4">
-            @Html.DisplayFor(p=>photo.Title)
-            @Html.DisplayFor(p=>photo.Url)  
-
-            <div class="item">
+    @if (Model?.Photos != null)
+    {    
+        foreach (var photo in Model?.Photos)
+        {
+            <div class="col-md-4">
+                @Html.DisplayFor(p => photo.Title)
+                @Html.DisplayFor(p => photo.Url)
+    
+                <div class="item">
                     <img src="@photo.Url" alt="@ViewBag.Title">
-            </div> 
-        </div>
-    }    
+                </div>
+            </div>
+        }
+    }
 </div>

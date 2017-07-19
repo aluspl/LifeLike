@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using LifeLike.Models;
@@ -55,10 +56,27 @@ namespace LifeLike.ViewModel
                 Created = model.Created,
                 Description =  model.Description,
                 Place = model.Place,
-                Photos = model.Photos!=null ? model.Photos.Select(p=>PhotoViewModel.Get(p,PhotoRepository.PhotoPath)) : new List<PhotoViewModel>()
+                Photos = GetPhotoViewModels(model),
+                SelectedPhoto=GetSelectedPhoto(model)
 
             };
         }
+
+        private static IEnumerable<PhotoViewModel> GetPhotoViewModels(Gallery model)
+        {
+            return model.Photos!=null ? model.Photos.Select(PhotoViewModel.Get) : new List<PhotoViewModel>();
+        }
+
+        private static string GetSelectedPhoto(Gallery model)
+        {
+            var selectedPhoto = model?.Photos?.FirstOrDefault() != null
+                ? PhotoViewModel.Get(model.Photos.FirstOrDefault()).Url
+                : Path.Combine(PhotoRepository.PhotoPath, "logo.png");
+ 
+            return selectedPhoto;
+        }
+
+        public string SelectedPhoto { get; set; }
     }
 
     public class UploadFileViewModel

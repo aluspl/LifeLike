@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq.Expressions;
 using LifeLike.Models;
 using LifeLike.Models.Enums;
+using LifeLike.Repositories;
 using LifeLike.Utils;
 
 namespace LifeLike.ViewModel
@@ -24,7 +25,7 @@ namespace LifeLike.ViewModel
         public  virtual Gallery Gallery { get; set; }
         public long GalleryId { get; set; }
 
-        public static PhotoViewModel Get(Photo model, string PhotoPath)
+        public static PhotoViewModel Get(Photo model)
         {
             return new PhotoViewModel
             {
@@ -32,23 +33,14 @@ namespace LifeLike.ViewModel
                 Created = model.Created,
                 Camera = model.Camera,
                 FileName=model.FileName,
-                Url = Path.Combine(PhotoPath, model.FileName),
+                Url = Path.Combine(PhotoRepository.PhotoPath, model.FileName),
                 GalleryId=model.Gallery.Id
             };
         }
 
 
 
-        public static Photo Get(PhotoViewModel model)
-        {
-            return new Photo
-            {
-                Title = model.Title,
-                Created = model.Created,
-                Camera = model.Camera,
-                FileName =model.FileName,
-            };
-        }
+       
     }
     
 }

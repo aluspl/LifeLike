@@ -1,0 +1,12 @@
+﻿@model LifeLike.ViewModel.GalleryViewModel
+
+<div class="col-xs-12 col-md-6">
+    
+    <div class="panel panel-default">
+        <div class="panel-image">
+            <a href="@Url.Action(Model.ShortTitle, "Photos")">
+                <img src="@Model?.SelectedPhoto" class="panel-image-preview" alt="@Model?.Title"/>
+            </a>
+        </div>      
+    </div>
+</div>
