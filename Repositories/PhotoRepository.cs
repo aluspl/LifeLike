@@ -93,8 +93,7 @@ namespace LifeLike.Repositories
                     .SingleOrDefault();
                 if (gallery == null) return Result.Failed;
                 gallery.Photos.Add(photo);
-//                _context.Add(photo);    
-//                _context.Update(gallery);
+
                 _context.SaveChanges();
                 return  Result.Success;
             }

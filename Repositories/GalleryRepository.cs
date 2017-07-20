@@ -39,7 +39,9 @@ namespace LifeLike.Repositories
 
         public IEnumerable<Gallery> List()
         {
-            return _context.Galleries.ToList();
+            return _context.Galleries
+                .Include(p=>p.Photos)
+                .ToList();
         }
 
         public Gallery Get(long id)

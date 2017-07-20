@@ -2,14 +2,18 @@
 
 @{
     ViewBag.Title = "Galeries Manager";
+    ViewBag.Subtitle = "You can create gallery here";
+
     Layout = "_Layout";
 }
+@Html.ActionLink("Create","CreateGallery","Photos",null, new { @class="btn btn-info"})
+
+
 <table class="table">
     <tr>
         <th>Short Name</th>
         <th>Full Name </th>
         <th>Actions</th>
-
     </tr>
     @foreach (var item in Model)
     {

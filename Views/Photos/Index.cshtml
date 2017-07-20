@@ -6,6 +6,6 @@
 <div class="row form-group">
     @foreach (var item in Model)
     {    
-        @await Component.InvokeAsync("Gallery", new {model = item})
+        @await Component.InvokeAsync("Gallery", new {model = item})       
     }
 </div>

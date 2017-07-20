@@ -6,6 +6,7 @@
         <div class="panel-image">
             <a href="@Url.Action(Model.ShortTitle, "Photos")">
                 <img src="@Model?.SelectedPhoto" class="panel-image-preview" alt="@Model?.Title"/>
+                <h1>@Html.DisplayFor(p=>p.Title)</h1>
             </a>
         </div>      
     </div>
