@@ -79,7 +79,6 @@ namespace LifeLIke.Controllers
         {
             try
             {
-
                 var photo=_photos.Get(id);
                 var selectedPhoto=PhotoViewModel.Get(photo);
                 var photos = Path.Combine(_hostingEnv.WebRootPath, "photos");

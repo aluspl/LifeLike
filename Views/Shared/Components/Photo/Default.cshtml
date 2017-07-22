@@ -1,0 +1,12 @@
+﻿@model LifeLike.ViewModel.PhotoViewModel
+
+<div class="col-xs-12 col-md-6">
+    
+    <div class="panel panel-default">
+        <div class="panel-image">
+            <a href="@Url.Action("Detail", "Photo", new { Id=Model.Id})">
+                <img src="@Model?.Url" class="panel-image-preview" alt="@Model?.Title"/>
+            </a>
+        </div>      
+    </div>
+</div>  
