@@ -119,7 +119,7 @@ namespace LifeLIke.Controllers
         {
             try
             {
-                _gallery.Delete(GalleryViewModel.Get(model));
+                _gallery.Update(GalleryViewModel.Get(model));
                 return RedirectToAction("Index", "Photos");
 
             }
