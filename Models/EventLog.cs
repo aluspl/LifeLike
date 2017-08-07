@@ -45,13 +45,24 @@ namespace LifeLike.Models
                             EventTime=DateTime.Now
                         };        
         }
+
+        public static EventLog Generate(string id, string action, string controller)
+        {
+            return new EventLog
+            {
+                Type = EventLogType.Statistic,
+                Messages = $"{id}; {action}; {controller}",
+                EventTime=DateTime.Now
+            };                
+        }
     }
 
     public enum EventLogType
     {
         Info=0,
         Error=1,
-        Warning=2
+        Warning=2,
+        Statistic=4,
     }
     
 }

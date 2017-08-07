@@ -47,6 +47,8 @@ namespace LifeLIke.Controllers
         [HttpPost]
         public IActionResult CreateGallery(GalleryViewModel model)
         {
+            _logger.AddStat(model.ShortTitle,"Create", "Photos");
+
             try
             {
                 model.Created=DateTime.Now;
@@ -64,11 +66,15 @@ namespace LifeLIke.Controllers
         // GET
         public ActionResult Index()
         {
+            _logger.AddStat("","Index", "Photos");
+
             return View( _gallery.List().Select(GalleryViewModel.Get));
         }
         // GET
         public ActionResult Detail(string id)
         {
+            _logger.AddStat(id,"Detail", "Photos");
+
             try
             {
                 var selectedgallery = _gallery.Get(id);

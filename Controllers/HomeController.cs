@@ -1,25 +1,29 @@
 ﻿using LifeLike.Models;
 using LifeLike.Repositories;
+using LifeLIke.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LifeLIke.Controllers
 {
     public class HomeController : Controller
     {
-        private IConfigRepository config;
+        private readonly IConfigRepository _config;
+        private readonly IEventLogRepository _logger;
 
-        public HomeController(IConfigRepository config)
+        public HomeController(IConfigRepository config, IEventLogRepository logger)
         {
-            this.config = config;
+            this._logger = logger;
+            this._config = config;
         }
         public IActionResult Index()
         {
+            _logger.AddStat("","Index", "Home");
             var pageCongif = new PageConfigModel
             {
-                Rss1Url=config.Get(ConfigRepository.RSS1)?.Value,
-                Rss2Url=config.Get(ConfigRepository.RSS2)?.Value,
-                WelcomeText=config.Get(ConfigRepository.WelcomeText)?.Value,
-                WelcomeVideo=config.Get(ConfigRepository.WelcomeVideo)?.Value
+                Rss1Url=_config.Get(ConfigRepository.RSS1)?.Value,
+                Rss2Url=_config.Get(ConfigRepository.RSS2)?.Value,
+                WelcomeText=_config.Get(ConfigRepository.WelcomeText)?.Value,
+                WelcomeVideo=_config.Get(ConfigRepository.WelcomeVideo)?.Value
 
             };
                 
@@ -27,10 +31,6 @@ namespace LifeLIke.Controllers
         }
 
 
-        public IActionResult UploadFiles()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 
     public class PageConfigModel

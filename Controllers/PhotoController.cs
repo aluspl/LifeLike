@@ -41,6 +41,8 @@ namespace LifeLIke.Controllers
         }
         public IActionResult UploadFiles(long id)
         {
+            _logger.AddStat(id.ToString(),"Upload", "Photo");
+
             var gallery = _gallery.Get(id);   
             return View(GalleryViewModel.GetViewForUpload(gallery));
         } 
@@ -77,6 +79,8 @@ namespace LifeLIke.Controllers
         }
         public IActionResult Detail(long id)
         {
+            _logger.AddStat(id.ToString(),"Detail", "Photo");
+
             try
             {
                 var photo=_photos.Get(id);

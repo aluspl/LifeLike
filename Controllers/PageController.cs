@@ -23,12 +23,16 @@ namespace LifeLike.Controllers
         // GET
         public ActionResult List()
         {
+            _logger.AddStat("","List", "Page");
+
             var list=_pages.List();
             return View(list);
         }
 
         public ActionResult Detail(string id)
         {
+            _logger.AddStat(id,"Detail", "Page");
+
             var page = _pages.Get(id);
             if (page == null) return RedirectToAction("Index", "Home");
             return View(page);
@@ -36,6 +40,8 @@ namespace LifeLike.Controllers
         [Authorize]
         public ActionResult Create()
         {
+            _logger.AddStat("","Create", "Page");
+
             var model=new PageViewModel();
             return View(model);
 

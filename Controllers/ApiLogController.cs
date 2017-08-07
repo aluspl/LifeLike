@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using LifeLike.ApiModels;
 using LifeLike.Models;
+using LifeLIke.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LifeLIke.Controllers
@@ -11,15 +12,19 @@ namespace LifeLIke.Controllers
     public class ApiLogController : Controller
     {
         private readonly PortalContext _context;
+        private readonly IEventLogRepository _logger;
 
-        public ApiLogController(PortalContext context)
+        public ApiLogController(PortalContext context, IEventLogRepository logger)
         {
             _context = context;
+            _logger = logger;
         }
         // GET
         [HttpGet]
         public IActionResult Index()
         {
+            _logger.AddStat("","Index", "API Log");
+
             return Ok(_context.EventLogs.ToList());
         }
         [HttpPost]
@@ -27,6 +32,8 @@ namespace LifeLIke.Controllers
         {
             try
             {
+                _logger.AddStat("","Post", "API Log");
+
                 if (string.IsNullOrEmpty(model?.Messages)) return new BadRequestResult();
                 _context.EventLogs.Add(EventLog.Generate(model));
                 _context.SaveChanges();

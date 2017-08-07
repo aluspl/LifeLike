@@ -18,8 +18,13 @@ namespace LifeLIke.Repositories
         public void AddExceptionLog(Exception e)
         {
            
-               Create(EventLog.Generate(e));
+            Create(EventLog.Generate(e));
           
+        }
+
+        public void AddStat(string id,string action, string controller)
+        {
+            Create(EventLog.Generate(id, action, controller));
         }
 
         public Result Create(EventLog model)
@@ -61,7 +66,7 @@ namespace LifeLIke.Repositories
 
         public void ClearLogs()
         {
-            _context.EventLogs.RemoveRange(_context.EventLogs);            
+            _context.EventLogs.RemoveRange(_context.EventLogs.Where(p=>p.Type!=EventLogType.Statistic));            
            
             _context.SaveChanges();
              
@@ -109,6 +114,7 @@ namespace LifeLIke.Repositories
     public interface IEventLogRepository : IRepository<EventLog>
     {
         void AddExceptionLog(Exception e);
+        void AddStat(string id, string action, string controller);
         IEnumerable<EventLog> List(EventLogType type);
         void LogInformation(int i, string userLoggedOut);
         void LogInformation(EventLogType result, string message);

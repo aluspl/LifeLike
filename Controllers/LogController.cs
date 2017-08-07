@@ -11,12 +11,12 @@ namespace LifeLike.Controllers
     public class LogController : Controller
     {
         private readonly PortalContext _context;
-        private readonly IEventLogRepository _eventLogs;
+        private readonly IEventLogRepository _logger;
 
-        public LogController(PortalContext context, IEventLogRepository eventLog)
+        public LogController(PortalContext context, IEventLogRepository logger)
         {
             _context = context;
-            _eventLogs = eventLog;
+            _logger = logger;
         }
         // GET
         [Authorize]
@@ -24,26 +24,25 @@ namespace LifeLike.Controllers
         {
             try
             {
-                var list=_eventLogs.List().Select(EventLogViewModel.Get);
+                var list=_logger.List().Where(P=>P.Type!=EventLogType.Statistic).Select(EventLogViewModel.Get);
                 return  View(list);
 
             }
             catch (Exception e)
             {
-                 _eventLogs.AddExceptionLog(e);
+                 _logger.AddExceptionLog(e);
             }
             return View();
-
         }
         [Authorize]
         public IActionResult Detail(long id)
         {
-            return View(_eventLogs.Get(id));
+            return View(_logger.Get(id));
         }
         [HttpGet]
         public IActionResult Clear()
         {
-            _eventLogs.ClearLogs();
+            _logger.ClearLogs();
             return RedirectToAction("Index");
         }
     }

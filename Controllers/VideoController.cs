@@ -18,10 +18,7 @@ namespace LifeLIke.Controllers
         {
             _repository = repository;
         }
-        public IActionResult GalleryManager()
-        {
-            return View( );
-        }
+
         [Authorize]
         public ActionResult Create()
         {
