@@ -18,7 +18,7 @@ header {
 header .header-content {
     position: relative;
     text-align: center;
-    padding: 250px 15px 250px;
+    padding: 100px 15px 100px;
     width: 100%;
 }
 header .header-content .header-content-inner h1 {
@@ -41,7 +41,7 @@ header .header-content .header-content-inner h1 {
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 90%;
 }
 .editor {
     max-height: 250px;

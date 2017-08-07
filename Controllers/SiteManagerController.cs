@@ -41,7 +41,7 @@ namespace LifeLIke.Controllers
                 if (ModelState.IsValid)
                 {
                     _config.Create(model);
-                    return RedirectToAction("List");
+                    return RedirectToAction("Index");
                 }
             }
             catch (Exception e)

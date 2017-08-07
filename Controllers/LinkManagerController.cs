@@ -19,6 +19,7 @@ namespace LifeLike.Controllers
             _repository = repository;
         }
         // GET
+        [Authorize]
         public ActionResult Index()
         {
             var list = _repository.List().Select(LinkViewModel.Get);
@@ -26,7 +27,7 @@ namespace LifeLike.Controllers
         }
         
         
-        
+        [Authorize]
         public ActionResult Create()
         {
          var model=new LinkViewModel();
@@ -55,7 +56,7 @@ namespace LifeLike.Controllers
             return View(model);
 
         }
-        
+        [Authorize]
         public ActionResult Update(long id)
         {
             var model = _repository.Get(id);
@@ -85,6 +86,7 @@ namespace LifeLike.Controllers
             return View(model);
         }
         
+        [Authorize]
         public ActionResult Delete(long id)
         {
             

@@ -25,7 +25,20 @@
 
     <li>
         <a href="@Url.Action("Index", "SiteManager")">
-            <span class="glyphicon glyphicon-apple" aria-hidden="true"></span>Site Manager for @User.Identity.Name
+            <span class="glyphicon glyphicon-apple" aria-hidden="true"></span>Site Manager
         </a>
+    </li>
+    <li>
+    
+        <a href="@Url.Action("List", "Page")">
+            <span class="glyphicon glyphicon-apple" aria-hidden="true"></span>Pages
+        </a>
+        </li>
+    <li>
+        <a href="@Url.Action("Index", "LinkManager")">
+            <span class="glyphicon glyphicon-apple" aria-hidden="true"></span>Links
+        </a>
+        
+        
     </li>
 }

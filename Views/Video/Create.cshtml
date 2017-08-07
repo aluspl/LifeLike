@@ -1,0 +1,26 @@
+﻿@model LifeLike.ViewModel.LinkViewModel
+
+@{
+    ViewBag.Title = "Add Video";
+    Layout = "_Layout";
+}
+
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        <label>Name</label>
+        @Html.EditorFor(model=>model.Name)
+    </div>
+    
+    @Html.HiddenFor(model=>model.Id)
+    
+    @Html.HiddenFor(model=>model.IconName)
+
+    @Html.HiddenFor(model=>model.Category)
+    <div class="form-group">
+        <label>Url</label>
+        @Html.EditorFor(model=>model.Link)
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+}

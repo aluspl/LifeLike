@@ -83,6 +83,7 @@ namespace LifeLike.Models
                 Action = "Index",
                 Controller = "Video",
                 Name = "Video Projects",
+                IconName = "film",
                 Category = LinkCategory.Menu
             });
             context.Add(new Link()
@@ -99,14 +100,7 @@ namespace LifeLike.Models
                 Name = "Photos",
                 Category = LinkCategory.Menu
             });
-            context.Add(new Link()
-            {
-                Action = "About",
-                Controller = "Page",
-                Name = "About Me",
-                Category = LinkCategory.Menu
-            });
-            // Sidebar
+                   // Sidebar
             context.Add(new Link()
             {
                 Url = "https://github.com/aluspl/",

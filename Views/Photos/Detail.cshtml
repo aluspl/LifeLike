@@ -17,7 +17,7 @@
     {    
         foreach (var photo in Model?.Photos)
         {
-                 @await Component.InvokeAsync("Photo", new {model = photo})       
+              @await Component.InvokeAsync("Photo", new {model = photo})       
         }
     }
 </div>
