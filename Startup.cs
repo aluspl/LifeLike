@@ -6,6 +6,7 @@ using LifeLIke.Utils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
@@ -36,7 +37,7 @@ namespace LifeLIke
             // Add framework services.
             services.AddDbContext<PortalContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
-               //         options.UseSqlite(Configuration.GetConnectionString("ConnectionName"))
+            //         options.UseSqlite(Configuration.GetConnectionString("ConnectionName"))
             );
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
@@ -52,13 +53,12 @@ namespace LifeLIke
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<PortalContext>()
                 .AddDefaultTokenProviders();
-            services.Configure<IdentityOptions>(options =>
+            services.ConfigureApplicationCookie(options =>
             {
-                // Cookie settings
-                options.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromDays(150);
-                options.Cookies.ApplicationCookie.LoginPath = "/Account/L";
-                options.Cookies.ApplicationCookie.LogoutPath = "/Account/LogOut";
-            });
+                options.LoginPath = "/Account/L";
+                options.LogoutPath = "/Account/LogOut";
+                options.ExpireTimeSpan=TimeSpan.FromDays(50);
+            });     
             services.AddMvc();
         }
 
@@ -79,8 +79,8 @@ namespace LifeLIke
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
-            
-            app.UseIdentity();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
@@ -90,11 +90,11 @@ namespace LifeLIke
                 routes.MapRoute(
                     name: "pages",
                     template: "Page/{*id}",
-                    defaults: new {controller = "Page", action = "Detail"});
+                    defaults: new { controller = "Page", action = "Detail" });
                 routes.MapRoute(
                     name: "photos",
                     template: "Photos/{*id}",
-                    defaults: new {controller = "Photos", action = "Detail"});
+                    defaults: new { controller = "Photos", action = "Detail" });
             });
             DbInitializer.Initialize(context);
         }

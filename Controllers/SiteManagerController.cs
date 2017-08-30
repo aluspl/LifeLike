@@ -2,6 +2,7 @@
 using LifeLike.Models;
 using LifeLike.Repositories;
 using LifeLike.ViewModel;
+using LifeLIke.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,24 +12,26 @@ namespace LifeLIke.Controllers
     {
         private readonly IConfigRepository _config;
 
-        public SiteManagerController(IConfigRepository configRepository)
+        public IEventLogRepository _logger;
+
+        public SiteManagerController(IConfigRepository configRepository, IEventLogRepository logger)
         {
             _config = configRepository;
-            
+            _logger = logger;
         }
-        
+
         // GET
         [Authorize]
         public ActionResult Index()
         {
-            var configs= _config.List();
-            return View(configs);       
+            var configs = _config.List();
+            return View(configs);
         }
-       
+
         [Authorize]
         public ActionResult Create()
         {
-            var model=new Config();
+            var model = new Config();
             return View(model);
 
         }
@@ -46,15 +49,15 @@ namespace LifeLIke.Controllers
             }
             catch (Exception e)
             {
-                ModelState.AddModelError("", "Unable to save changes. " +
-                                             "Try again, and if the problem persists, " +
-                                             "see your system administrator.");
+                _logger.AddExceptionLog(e);
             }
- 
+            ModelState.AddModelError("", "Unable to save changes. " +
+                                                        "Try again, and if the problem persists, " +
+                                                        "see your system administrator.");
             return View(model);
 
         }
-        
+
         [Authorize]
         public ActionResult Update(string id)
         {
@@ -75,16 +78,16 @@ namespace LifeLIke.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            catch (Exception dote)
+            catch (Exception e)
             {
-                ModelState.AddModelError("", "Unable to save changes. " +
-                                             "Try again, and if the problem persists, " +
-                                             "see your system administrator.");
+                _logger.AddExceptionLog(e);
             }
- 
+            ModelState.AddModelError("", "Unable to save changes. " +
+                                                       "Try again, and if the problem persists, " +
+                                                       "see your system administrator.");
             return View(model);
         }
-        
-       
+
+
     }
 }

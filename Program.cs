@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
 namespace LifeLIke
@@ -7,14 +9,18 @@ namespace LifeLIke
     {
         public static void Main(string[] args)
         {
-            var host = new WebHostBuilder()
+            BuildWebHost(args).Run();         
+        }
+        public static IWebHost BuildWebHost(string[] args)
+        {
+            var portNumber = args.Length == 0 ? "5000" : args[0];
+            return WebHost.CreateDefaultBuilder(args)
                 .UseKestrel()
-                .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
+                .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseStartup<Startup>()
                 .Build();
-
-            host.Run();
         }
+
     }
 }

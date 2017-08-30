@@ -36,8 +36,9 @@ namespace LifeLIke.Repositories
                 _context.SaveChanges();    
                 return Result.Success;
             }
-            catch (Exception exception)
+            catch (Exception e)
             {
+                AddExceptionLog(e);
                 return Result.Success;
             }        
         }

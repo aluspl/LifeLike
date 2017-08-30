@@ -23,15 +23,15 @@ namespace LifeLike.Controllers
         // GET
         public ActionResult List()
         {
-            _logger.AddStat("","List", "Page");
+            _logger.AddStat("", "List", "Page");
 
-            var list=_pages.List();
+            var list = _pages.List();
             return View(list);
         }
 
         public ActionResult Detail(string id)
         {
-            _logger.AddStat(id,"Detail", "Page");
+            _logger.AddStat(id, "Detail", "Page");
 
             var page = _pages.Get(id);
             if (page == null) return RedirectToAction("Index", "Home");
@@ -40,13 +40,13 @@ namespace LifeLike.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            _logger.AddStat("","Create", "Page");
+            _logger.AddStat("", "Create", "Page");
 
-            var model=new PageViewModel();
+            var model = new PageViewModel();
             return View(model);
 
         }
-      
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(PageViewModel model)
@@ -57,28 +57,29 @@ namespace LifeLike.Controllers
                 {
                     _links.Create(model.Link);
                     _pages.Create(PageViewModel.DataModel(model));
-                    return RedirectToAction("Index","Home");
+                    return RedirectToAction("Index", "Home");
                 }
             }
             catch (Exception e)
             {
-                ModelState.AddModelError("", "Unable to save changes. " +
-                                             "Try again, and if the problem persists, " +
-                                             "see your system administrator.");
+                _logger.AddExceptionLog(e);
             }
- 
+
+            ModelState.AddModelError("", "Unable to save changes. " +
+                                         "Try again, and if the problem persists, " +
+                                         "see your system administrator.");
             return View(model);
 
         }
         public ActionResult Delete(long id)
         {
             var page = _pages.Get(id);
-            
+
 
             return View(PageViewModel.ViewModel(page));
 
         }
-        [HttpPost] 
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(PageViewModel model)
         {
@@ -88,11 +89,11 @@ namespace LifeLike.Controllers
                 {
                     var datamodel = _pages.Get(model.Id);
                     var link = _links.Get(model.ShortName);
-                    var result=_pages.Delete(datamodel, link);
-                    
-                    if (result==Result.Success) return RedirectToAction("Index","Home");
-                                   
-               }
+                    var result = _pages.Delete(datamodel, link);
+
+                    if (result == Result.Success) return RedirectToAction("Index", "Home");
+
+                }
             }
             catch (Exception e)
             {
@@ -102,7 +103,7 @@ namespace LifeLike.Controllers
                                              "Try again, and if the problem persists, " +
                                              "see your system administrator.");
             }
- 
+
             return View(model);
 
         }
@@ -111,7 +112,7 @@ namespace LifeLike.Controllers
         {
             try
             {
-                var page = _pages.Get(id);               
+                var page = _pages.Get(id);
                 return View(PageViewModel.ViewModel(page));
 
             }
@@ -132,9 +133,9 @@ namespace LifeLike.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                   var result=_pages.Update(PageViewModel.DataModel(model));
-                    
-                    if (result==Result.Success) return RedirectToAction("Index","Home");
+                    var result = _pages.Update(PageViewModel.DataModel(model));
+
+                    if (result == Result.Success) return RedirectToAction("Index", "Home");
                 }
             }
             catch (Exception e)
@@ -145,11 +146,11 @@ namespace LifeLike.Controllers
                                              "Try again, and if the problem persists, " +
                                              "see your system administrator.");
             }
- 
+
             return View(model);
 
         }
 
     }
-    
+
 }
