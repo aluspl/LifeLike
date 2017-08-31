@@ -35,6 +35,7 @@ namespace LifeLIke.Controllers
             return View(model);
 
         }
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Config model)
