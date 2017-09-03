@@ -26,7 +26,19 @@ namespace LifeLIke.Repositories
         {
             Create(EventLog.Generate(id, action, controller));
         }
-
+        public Result Add(EventLog model)
+        {
+            try
+            {
+             
+               return Create(model);
+            }
+            catch (Exception e)
+            {
+                AddExceptionLog(e);
+                return Result.Success;
+            }        
+        }
         public Result Create(EventLog model)
         {
             try
@@ -120,5 +132,6 @@ namespace LifeLIke.Repositories
         void LogInformation(int i, string userLoggedOut);
         void LogInformation(EventLogType result, string message);
         void ClearLogs();
+        Result Add(EventLog eventLog);
     }
 }

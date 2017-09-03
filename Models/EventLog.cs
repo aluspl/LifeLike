@@ -36,6 +36,16 @@ namespace LifeLike.Models
             };
         }
 
+        internal static EventLog Generate(WebHookDataModel model)
+        {
+            return new EventLog
+            {
+                    Type=EventLogType.Unity,
+                    Messages=$"Unity Project: {model?.projectName}, Platform: {model?.platform}",
+                    EventTime=DateTime.Now
+            };
+        }
+
         public static EventLog Generate(EventLogType result, string message)
         {
               return new EventLog
@@ -63,6 +73,7 @@ namespace LifeLike.Models
         Error=1,
         Warning=2,
         Statistic=4,
+        Unity = 8,
     }
     
 }
