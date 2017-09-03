@@ -26,7 +26,7 @@ namespace LifeLIke.Controllers
             {
                 _logger.AddStat("","Post", "Unity");
 
-                if (model==null)) return new BadRequestResult();
+                if (model==null) return new BadRequestResult();
                 _logger.Add(EventLog.Generate(model));
             }
             catch (Exception e)
