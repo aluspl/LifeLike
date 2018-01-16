@@ -29,8 +29,7 @@ namespace LifeLIke.Repositories
         public Result Add(EventLog model)
         {
             try
-            {
-             
+            {             
                return Create(model);
             }
             catch (Exception e)

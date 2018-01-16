@@ -79,10 +79,10 @@ namespace LifeLIke.Controllers
         }
         public IActionResult Detail(long id)
         {
-            _logger.AddStat(id.ToString(),"Detail", "Photo");
-
             try
             {
+                            _logger?.AddStat(id.ToString(),"Detail", "Photo");
+
                 var photo=_photos.Get(id);
                 var selectedPhoto=PhotoViewModel.Get(photo);
                 var photos = Path.Combine(_hostingEnv.WebRootPath, "photos");
@@ -91,7 +91,7 @@ namespace LifeLIke.Controllers
             }
             catch (Exception e)
             {
-                _logger.AddExceptionLog(e);
+                _logger?.AddExceptionLog(e);
             }
             return RedirectToAction("Index", "Photos");
         }   
