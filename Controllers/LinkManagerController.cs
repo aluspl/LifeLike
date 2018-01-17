@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using LifeLike.Models;
 using LifeLike.Models.Enums;
 using LifeLike.Repositories;
@@ -13,101 +14,100 @@ namespace LifeLike.Controllers
     public class LinkManagerController : Controller
     {
         private readonly ILinkRepository _repository;
+        private readonly IEventLogRepository _logger;
 
-        public LinkManagerController(ILinkRepository repository)
+        public LinkManagerController(ILinkRepository repository, IEventLogRepository logger)
         {
             _repository = repository;
+            _logger = logger;
         }
         // GET
         [Authorize]
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            var list = _repository.List().Select(LinkViewModel.Get);
-            return    View(list);
+            var list = await _repository.List();
+            
+            return    View(list.Select(LinkViewModel.Get));
         }
         
         
         [Authorize]
         public ActionResult Create()
         {
-         var model=new LinkViewModel();
+            var model=new LinkViewModel();
             return View(model);
-
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(LinkViewModel model)
+        public async Task<ActionResult> Create(LinkViewModel model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _repository.Create(LinkViewModel.Get(model));
+                    await _repository.Create(LinkViewModel.Get(model));
                     return RedirectToAction("Index");
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                ModelState.AddModelError("", "Unable to save changes. " +
-                                             "Try again, and if the problem persists, " +
-                                             "see your system administrator.");
+                await _logger.AddExceptionLog(e);
+
             }
  
             return View(model);
 
         }
         [Authorize]
-        public ActionResult Update(long id)
+        public async Task<ActionResult> Update(long id)
         {
-            var model = _repository.Get(id);
+            var model =await _repository.Get(id);
             if (model == null) return RedirectToAction("Index");
             return View(LinkViewModel.Get(model));
 
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Update(LinkViewModel model)
+        public async Task<ActionResult> Update(LinkViewModel model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _repository.Update(LinkViewModel.Get(model));
+                    await _repository.Update(LinkViewModel.Get(model));
                     return RedirectToAction("Index");
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                ModelState.AddModelError("", "Unable to save changes. " +
-                                             "Try again, and if the problem persists, " +
-                                             "see your system administrator.");
+                await _logger.AddExceptionLog(e);
             }
  
             return View(model);
         }
         
         [Authorize]
-        public ActionResult Delete(long id)
+        public async Task<ActionResult> Delete(long id)
         {
             
-            var model = _repository.Get(id);
+            var model = await _repository.Get(id);
             if (model == null) return RedirectToAction("Index");
             return View(LinkViewModel.Get(model));
         }
         [HttpPost]
-        public ActionResult Delete(LinkViewModel model)
+        public async Task<ActionResult> Delete(LinkViewModel model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _repository.Delete(LinkViewModel.Get(model));
+                   await _repository.Delete(LinkViewModel.Get(model));
                     return RedirectToAction("Index");
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                ModelState.AddModelError("", "Unable to Delete");
+                await _logger.AddExceptionLog(e);
             }
  
             return View(model);

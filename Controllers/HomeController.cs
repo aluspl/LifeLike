@@ -1,9 +1,9 @@
-﻿using LifeLike.Models;
+﻿using System.Threading.Tasks;
+using LifeLike.Models;
 using LifeLike.Repositories;
-using LifeLIke.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LifeLIke.Controllers
+namespace LifeLike.Controllers
 {
     public class HomeController : Controller
     {
@@ -15,16 +15,15 @@ namespace LifeLIke.Controllers
             this._logger = logger;
             this._config = config;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            _logger.AddStat("","Index", "Home");
+            await _logger?.AddStat("","Index", "Home");
             var pageCongif = new PageConfigModel
             {
-                Rss1Url=_config.Get(ConfigRepository.RSS1)?.Value,
-                Rss2Url=_config.Get(ConfigRepository.RSS2)?.Value,
-                WelcomeText=_config.Get(ConfigRepository.WelcomeText)?.Value,
-                WelcomeVideo=_config.Get(ConfigRepository.WelcomeVideo)?.Value
-
+                Rss1Url=await _config.Get(ConfigRepository.RSS1),
+                Rss2Url=await _config.Get(ConfigRepository.RSS2),
+                WelcomeText=await _config.Get(ConfigRepository.WelcomeText),
+                WelcomeVideo=await _config.Get(ConfigRepository.WelcomeVideo)
             };
                 
             return View(pageCongif);
@@ -35,9 +34,9 @@ namespace LifeLIke.Controllers
 
     public class PageConfigModel
     {
-        public string Rss1Url { get; set; }
-        public string WelcomeText { get; set; }
-        public string Rss2Url { get; set; }
-        public string WelcomeVideo { get; set; }
+        public Config Rss1Url { get; set; }
+        public Config WelcomeText { get; set; }
+        public Config Rss2Url { get; set; }
+        public Config WelcomeVideo { get; set; }
     }
 }

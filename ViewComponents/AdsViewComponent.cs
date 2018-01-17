@@ -21,8 +21,8 @@ namespace LifeLike.ViewComponents
         {
             AdViewModel model=new AdViewModel
             {
-                Slot=_context.Get(ConfigRepository.ADSLOT)?.Value,
-                Client=_context.Get(ConfigRepository.ADCLIENT)?.Value,
+                Slot=await _context.Get(ConfigRepository.ADSLOT),
+                Client=await _context.Get(ConfigRepository.ADCLIENT),
                 Width=width,
                 Height=height
 

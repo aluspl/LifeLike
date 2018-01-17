@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using LifeLike.Models;
 using LifeLike.Models.Enums;
 using LifeLike.ViewModel;
-using LifeLIke.Utils;
+using LifeLike.Utils;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LifeLIke.ViewComponents
+namespace LifeLike.ViewComponents
 {
     public class RssViewComponent : ViewComponent
     {

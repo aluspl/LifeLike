@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Threading.Tasks;
 using LifeLike.Models;
 using LifeLike.Repositories;
 using LifeLike.ViewModel;
-using LifeLIke.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,26 +21,26 @@ namespace LifeLike.Controllers
             _links = links;
         }
         // GET
-        public ActionResult List()
+        public async Task<ActionResult> List()
         {
-            _logger.AddStat("", "List", "Page");
+            await  _logger.AddStat("", "List", "Page");
 
-            var list = _pages.List();
+            var list = await _pages.List();
             return View(list);
         }
 
-        public ActionResult Detail(string id)
+        public async Task<ActionResult> Detail(string id)
         {
-            _logger.AddStat(id, "Detail", "Page");
+            await  _logger.AddStat(id, "Detail", "Page");
 
-            var page = _pages.Get(id);
+            var page =await _pages.Get(id);
             if (page == null) return RedirectToAction("Index", "Home");
             return View(page);
         }
         [Authorize]
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
-            _logger.AddStat("", "Create", "Page");
+            await _logger.AddStat("", "Create", "Page");
 
             var model = new PageViewModel();
             return View(model);
@@ -49,47 +49,42 @@ namespace LifeLike.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PageViewModel model)
+        public async Task<ActionResult> Create(PageViewModel model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _links.Create(model.Link);
-                    _pages.Create(PageViewModel.DataModel(model));
+                    await   _links.Create(model.Link);
+                    await  _pages.Create(PageViewModel.DataModel(model));
                     return RedirectToAction("Index", "Home");
                 }
             }
             catch (Exception e)
             {
-                _logger.AddExceptionLog(e);
+               await _logger.AddExceptionLog(e);
             }
-
-            ModelState.AddModelError("", "Unable to save changes. " +
-                                         "Try again, and if the problem persists, " +
-                                         "see your system administrator.");
+           
             return View(model);
 
         }
-        public ActionResult Delete(long id)
+        public async Task<ActionResult> Delete(long id)
         {
-            var page = _pages.Get(id);
-
-
+            var page = await _pages.Get(id);
             return View(PageViewModel.ViewModel(page));
 
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(PageViewModel model)
+        public async Task<ActionResult> Delete(PageViewModel model)
         {
             try
             {
                 if (model != null)
                 {
-                    var datamodel = _pages.Get(model.Id);
-                    var link = _links.Get(model.ShortName);
-                    var result = _pages.Delete(datamodel, link);
+                    var datamodel =await _pages.Get(model.Id);
+                    var link =await _links.Get(model.ShortName);
+                    var result =await _pages.Delete(datamodel, link);
 
                     if (result == Result.Success) return RedirectToAction("Index", "Home");
 
@@ -97,28 +92,25 @@ namespace LifeLike.Controllers
             }
             catch (Exception e)
             {
-                _logger.AddExceptionLog(e);
-
-                ModelState.AddModelError("", "Unable to save changes. " +
-                                             "Try again, and if the problem persists, " +
-                                             "see your system administrator.");
+               await _logger.AddExceptionLog(e);
+              
             }
 
             return View(model);
 
         }
         [Authorize]
-        public ActionResult Update(long id)
+        public async Task<ActionResult> Update(long id)
         {
             try
             {
-                var page = _pages.Get(id);
+                var page =await _pages.Get(id);
                 return View(PageViewModel.ViewModel(page));
 
             }
             catch (Exception e)
             {
-                _logger.AddExceptionLog(e);
+              await  _logger.AddExceptionLog(e);
             }
 
             return RedirectToAction("List", "Page");
@@ -127,20 +119,20 @@ namespace LifeLike.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Update(PageViewModel model)
+        public async Task<ActionResult> Update(PageViewModel model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var result = _pages.Update(PageViewModel.DataModel(model));
+                    var result = await _pages.Update(PageViewModel.DataModel(model));
 
                     if (result == Result.Success) return RedirectToAction("Index", "Home");
                 }
             }
             catch (Exception e)
             {
-                _logger.AddExceptionLog(e);
+               await _logger.AddExceptionLog(e);
 
                 ModelState.AddModelError("", "Unable to save changes. " +
                                              "Try again, and if the problem persists, " +

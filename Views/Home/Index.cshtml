@@ -1,6 +1,5 @@
 ﻿@using LifeLike.ViewModel
 @using LifeLike.Utils
-@model LifeLIke.Controllers.PageConfigModel
 @{
     ViewData["Title"] = "LifeLike";
 }
@@ -11,7 +10,7 @@
 
         @Html.Raw(HtmlUtils.GenerateYoutube(new LinkViewModel
         {
-            Link = @Model.WelcomeVideo
+            Link = @Model.WelcomeVideo?.Value
         }))
 
         <div class="row">
@@ -19,11 +18,11 @@
                 <div class="row">
                     <div class="col-md-6">
                         <h3>Kawowi Podróżnicy's Blog</h3>
-                        @await Component.InvokeAsync("Rss", new {Url = @Model.Rss1Url, Top = 1})
+                        @await Component.InvokeAsync("Rss", new {Url = @Model.Rss1Url?.Value, Top = 1})
                     </div>
                     <div class="col-md-6">
                         <h3>Szymon Motyka's Blog</h3>
-                        @await Component.InvokeAsync("Rss", new {Url = @Model.Rss2Url, Top = 1})
+                        @await Component.InvokeAsync("Rss", new {Url = @Model.Rss2Url?.Value, Top = 1})
                     </div>
                 </div>
             </div>

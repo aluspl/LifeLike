@@ -7,9 +7,10 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using LifeLike.ViewModel;
-using LifeLIke.Repositories;
+using LifeLike.Repositories;
+using LifeLike.Models.Enums;
 
-namespace LifeLIke.Utils
+namespace LifeLike.Utils
 {
     public class RssReaderService : IRssReaderService
     {
@@ -54,7 +55,7 @@ namespace LifeLIke.Utils
 		}
 		catch (Exception e)
 		{
-			_eventLog.AddExceptionLog(e);
+			await _eventLog.AddExceptionLog(e);
 			return new List<RssViewModel>();
 		}
 		
@@ -122,7 +123,7 @@ namespace LifeLIke.Utils
 	/// <summary>
     /// Represents the XML format of a feed.
     /// </summary>
-    public enum FeedType
+    public enum dFeedType
     {
         /// <summary>
         /// Really Simple Syndication format.

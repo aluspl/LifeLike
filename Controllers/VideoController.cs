@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using LifeLike.Models;
 using LifeLike.Models.Enums;
 using LifeLike.Repositories;
@@ -8,15 +9,17 @@ using LifeLike.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LifeLIke.Controllers
+namespace LifeLike.Controllers
 {
     public class VideoController : Controller
     {
         private readonly ILinkRepository _repository;
+        private readonly IEventLogRepository _logger;
 
-        public VideoController(ILinkRepository repository)
+        public VideoController(ILinkRepository repository, IEventLogRepository logger)
         {
             _repository = repository;
+            _logger=logger;
         }
 
         [Authorize]
@@ -31,42 +34,29 @@ namespace LifeLIke.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(LinkViewModel model)
+        public async Task<ActionResult> Create(LinkViewModel model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _repository.Create(LinkViewModel.Get(model));
+                    await _repository.Create(LinkViewModel.Get(model));
                     return RedirectToAction("Index");
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                ModelState.AddModelError("", "Unable to save changes. " +
-                                             "Try again, and if the problem persists, " +
-                                             "see your system administrator.");
+               await _logger.AddExceptionLog(e);
             }
  
             return View(model);
 
         }
         // GET
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-           var items= _repository.List(LinkCategory.Video).Select(LinkViewModel.Get);
-//            var items = new List<LinkViewModel>
-//            {
-//                new LinkViewModel {Link="https://www.youtube.com/watch?v=SC4o9JqI_aA", Name = "VLOG 4 : Żywiec"},
-//                new LinkViewModel {Link = "https://www.youtube.com/watch?v=kHMqiPbrKx8", Name = "VLOG 3 : W Aucie"},
-//
-//                new LinkViewModel {Link = "https://www.youtube.com/watch?v=Qi5tp0eZHt8", Name = "VLOG 2 : Podsumowanie DSP 2017"},
-//
-//                new LinkViewModel {Link = "1Gjnnq93X9E", Name = "VLOG 1 : DSP 2017"},
-//                new LinkViewModel {Link = "Q8v0KHMtwBs", Name = "Kawowe Podróże: Islandia"},
-//                new LinkViewModel {Link = "QnL0mgOAYfQ", Name = "Kawowe Podróże: Grecja"},
-//
-//            };
+            var list=await _repository.List(LinkCategory.Video);
+            var items= list.Select(LinkViewModel.Get);
             return    View(items);
         }
     }

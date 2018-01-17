@@ -1,26 +1,16 @@
 
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using LifeLike.Repositories;
 using LifeLike.ViewModel;
-using LifeLIke.Repositories;
-using Microsoft.AspNetCore.Antiforgery.Internal;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Routing;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.Extensions.Logging;
 
-namespace LifeLIke.Controllers
+namespace LifeLike.Controllers
 {
-    public class PhotosController : Controller
+    public class AlbumController : Controller
     {
         private readonly IEventLogRepository _logger;
         private readonly IPhotoRepository _photoRepository;
@@ -28,7 +18,7 @@ namespace LifeLIke.Controllers
         private readonly IHostingEnvironment _hosting;
 
 
-        public PhotosController(IEventLogRepository logger,
+        public AlbumController(IEventLogRepository logger,
             IPhotoRepository photoRepository,
             IGalleryRepository gallery,
             IHostingEnvironment hosting)
@@ -45,93 +35,97 @@ namespace LifeLIke.Controllers
             return View(new GalleryViewModel());
         }
         [HttpPost]
-        public IActionResult CreateGallery(GalleryViewModel model)
+        public async Task<IActionResult> CreateGallery(GalleryViewModel model)
         {
-            _logger.AddStat(model.ShortTitle,"Create", "Photos");
+           await _logger?.AddStat(model.ShortTitle,"Create", "Album");
 
             try
             {
                 model.Created=DateTime.Now;
                 model.ShortTitle=model.ShortTitle.Trim().Replace(" ","");
                 var gallery = GalleryViewModel.Get(model);
-                _gallery.Create(gallery);
+                await _gallery.Create(gallery);
                 return RedirectToAction("Index");
             }
             catch (Exception e)
             {
-                _logger.AddExceptionLog(e);
+                await _logger?.AddExceptionLog(e);
             }
             return View(new GalleryViewModel());
         }
         // GET
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            _logger.AddStat("","Index", "Photos");
+            await _logger?.AddStat("","Index", "Album");
+            var list=await _gallery.List();
 
-            return View( _gallery.List().Select(GalleryViewModel.Get));
+            return View(list.Select(GalleryViewModel.Get));
         }
         // GET
-        public ActionResult Detail(string id)
+        public async Task<ActionResult> Detail(string id)
         {
-            _logger.AddStat(id,"Detail", "Photos");
-
             try
             {
-                var selectedgallery = _gallery.Get(id);
+                await _logger?.AddStat(id,"Detail", "Album");
+
+                var selectedgallery = await _gallery.Get(id);
                 return View(GalleryViewModel.Get(selectedgallery));
             }
             catch (Exception e)
             {
-                _logger.AddExceptionLog(e);
+                await _logger?.AddExceptionLog(e);
             }
-            return RedirectToAction("Index", "Photos");
+            return RedirectToAction("Index", "Album");
         }
 
-        public IActionResult GalleryManager()
-        {
-           return View( _gallery.List().Select(GalleryViewModel.Get));
+        public async Task<IActionResult> GalleryManager()
+        {            
+            var list=await _gallery.List();
+
+           return View(list.Select(GalleryViewModel.Get));
         }
         
         [Authorize]
-        public IActionResult Delete(long id)
+        public async Task<IActionResult> Delete(long id)
         {
-            var gallery=_gallery.Get(id);
+            var gallery=await _gallery.Get(id);
 
             return View(GalleryViewModel.Get(gallery));
         }
         [HttpPost]
-        public IActionResult Delete(GalleryViewModel model)
+        public async Task<IActionResult> Delete(GalleryViewModel model)
         {
             try
             {
-                _gallery.Delete(GalleryViewModel.Get(model));
-                           return RedirectToAction("Index", "Photos");
+                await _gallery.Delete(GalleryViewModel.Get(model));
+                return RedirectToAction("Index", "Album");
             }    
             catch (Exception e)
             {
-               _logger.AddExceptionLog(e);
+              await _logger.AddExceptionLog(e);
             }
             return View(model);
         }
         [Authorize]
-        public IActionResult Update(long id)
+        public async Task<IActionResult> Update(long id)
         {
-            var gallery=_gallery.Get(id);
+
+            var gallery=await _gallery.Get(id);
 
             return View(GalleryViewModel.Get(gallery));
         }
         [HttpPost]
-        public IActionResult Update(GalleryViewModel model)
+        public async Task<IActionResult> Update(GalleryViewModel model)
         {
             try
             {
-                _gallery.Update(GalleryViewModel.Get(model));
+               await _gallery.Update(GalleryViewModel.Get(model));
                 return RedirectToAction("Index", "Photos");
 
             }
             catch (Exception e)
             {
-                _logger.AddExceptionLog(e);
+               await _logger.AddExceptionLog(e);
             }
             return View(model);
         }

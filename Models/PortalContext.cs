@@ -97,7 +97,7 @@ namespace LifeLike.Models
             {
                 Action = "Index",
                 Controller = "Photos",
-                Name = "Photos",
+                Name = "Album",
                 Category = LinkCategory.Menu
             });
                    // Sidebar

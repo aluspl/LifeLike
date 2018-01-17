@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using LifeLike.ApiModels;
 using LifeLike.Models;
-using LifeLIke.Repositories;
+using LifeLike.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LifeLIke.Controllers
+namespace LifeLike.Controllers
 {
     [Route("api/[controller]")]
     public class ApiLogController : Controller
@@ -23,45 +24,37 @@ namespace LifeLIke.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            _logger.AddStat("","Index", "API Log");
+            _logger?.AddStat(string.Empty,"Index", "API Log");
 
             return Ok(_context.EventLogs.ToList());
         }
         [HttpPost]
-        public IActionResult Post(EventLogApiModel model)
+        public async Task<IActionResult> Post(EventLogApiModel model)
         {
             try
             {
-                _logger.AddStat("","Post", "API Log");
+                await _logger?.AddStat(string.Empty,"Post", "API Log");
 
                 if (string.IsNullOrEmpty(model?.Messages)) return new BadRequestResult();
-                _context.EventLogs.Add(EventLog.Generate(model));
-                _context.SaveChanges();
+                await  _logger.Add(EventLog.Generate(model));
+            
             }
             catch (Exception e)
             {
-                _context.EventLogs.Add(EventLog.Generate(e));
-                _context.SaveChanges();
-
-                throw;
+                await _logger.AddExceptionLog(e);
             }
             return Ok();
         }
         [HttpDelete]
-        public IActionResult Delete()
+        public async Task<IActionResult> Delete()
         {
             try
             {
-                foreach (var eventLogDataModel in _context.EventLogs)
-                {
-                    _context.Remove(eventLogDataModel);
-                }
-                _context.SaveChanges();
+                await _logger.DeleteAll();
             }
             catch (Exception e)
             {
-                _context.EventLogs.Add(EventLog.Generate(e));
-                _context.SaveChanges();
+                await _logger.AddExceptionLog(e);
             }
             return Ok();
         }

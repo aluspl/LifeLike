@@ -7,7 +7,7 @@ using LifeLike.Repositories;
 using LifeLike.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LifeLIke.ViewComponents
+namespace LifeLike.ViewComponents
 {
     public class MenuViewComponent : ViewComponent
     {
@@ -19,9 +19,9 @@ namespace LifeLIke.ViewComponents
         }
    
         public async Task< IViewComponentResult> InvokeAsync()
-        {
-                var list = _context.List(LinkCategory.Menu).Select(LinkViewModel.Get).ToList();
-                return View(list);      
+        {            
+                var list = await _context.List(LinkCategory.Menu);
+                return View(list.Select(LinkViewModel.Get).ToList());      
         }
     }
 }

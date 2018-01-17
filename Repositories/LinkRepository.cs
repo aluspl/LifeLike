@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using LifeLike.Models;
 using LifeLike.Models.Enums;
 
@@ -16,7 +17,7 @@ namespace LifeLike.Repositories
             _context = context;
         }
 
-        public Result Create(Link model)
+        public async Task<Result> Create(Link model)
         {
             try
             {
@@ -33,20 +34,20 @@ namespace LifeLike.Repositories
             }    
         }
 
-        public IEnumerable<Link> List()
+        public async Task<IEnumerable<Link>> List()
         {
             return _context.Links.ToList();
         }
 
-        public Link Get(long id)
+        public async Task<Link> Get(long id)
         {
             return _context.Links.FirstOrDefault(p => p.Id == id);
         }
-        public Link Get(string id)
+        public async Task<Link> Get(string id)
         {
             return _context.Links.FirstOrDefault(p => p.Action == id);
         }
-        public Result Update(Link model)
+        public async Task<Result> Update(Link model)
         {
             try
             {
@@ -63,7 +64,7 @@ namespace LifeLike.Repositories
             }        
         }
 
-        public Result Delete(Link model)
+        public async Task<Result> Delete(Link model)
         {
             try
             {
@@ -80,7 +81,7 @@ namespace LifeLike.Repositories
             }
         }
 
-        public IEnumerable<Link> List(LinkCategory category)
+        public async Task<IEnumerable<Link>> List(LinkCategory category)
         {
             return _context.Links.Where(p=>p.Category==category);
         }
@@ -88,7 +89,7 @@ namespace LifeLike.Repositories
     
     public interface ILinkRepository : IRepository<Link>
     {
-        IEnumerable<Link> List(LinkCategory category);
-        Link Get(string id);
+        Task<IEnumerable<Link>> List(LinkCategory category);
+        Task<Link> Get(string id);
     }
 }

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using LifeLike.ApiModels;
 using LifeLike.Models;
-using LifeLIke.Repositories;
+using LifeLike.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LifeLIke.Controllers
+namespace LifeLike.Controllers
 {
     [Route("api/[controller]")]
     public class UnityController : Controller
@@ -20,18 +21,18 @@ namespace LifeLIke.Controllers
         // GET
        
         [HttpPost]
-        public IActionResult Post(WebHookDataModel model)
+        public async Task<IActionResult> Post(WebHookDataModel model)
         {
             try
             {
-                _logger.AddStat("","Post", "Unity");
+                await _logger.AddStat("","Post", "Unity");
 
                 if (model==null) return new BadRequestResult();
-                _logger.Add(EventLog.Generate(model));
+                await _logger.Add(EventLog.Generate(model));
             }
             catch (Exception e)
             {
-            _logger.AddExceptionLog(e);
+                await  _logger.AddExceptionLog(e);
 
                 throw;
             }

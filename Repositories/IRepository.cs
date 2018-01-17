@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using LifeLike.Models;
 
 namespace LifeLike.Repositories
 {
     public interface IRepository<T>
     {
-        Result Create(T model);
+        Task<Result> Create(T model);
 
-        IEnumerable<T> List();
-        T Get(long id);
-        Result Update(T model);
-        Result Delete(T model);
+        Task<IEnumerable<T>> List();
+        Task<T> Get(long id);
+        Task<Result> Update(T model);
+        Task<Result> Delete(T model);
         
     }
 }

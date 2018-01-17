@@ -1,21 +1,14 @@
 
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using LifeLike.Models;
 using LifeLike.Repositories;
 using LifeLike.ViewModel;
-using LifeLIke.Repositories;
-using Microsoft.AspNetCore.Antiforgery.Internal;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Net.Http.Headers;
-namespace LifeLIke.Controllers
+namespace LifeLike.Controllers
 {
     public class PhotoController : Controller
     {
@@ -39,11 +32,11 @@ namespace LifeLIke.Controllers
 
 
         }
-        public IActionResult UploadFiles(long id)
+        public async Task<IActionResult> UploadFilesAsync(long id)
         {
-            _logger.AddStat(id.ToString(),"Upload", "Photo");
+            _logger?.AddStat(id.ToString(),"Upload", "Photo");
 
-            var gallery = _gallery.Get(id);   
+            var gallery =await _gallery.Get(id);   
             return View(GalleryViewModel.GetViewForUpload(gallery));
         } 
         [HttpPost]
@@ -65,25 +58,25 @@ namespace LifeLIke.Controllers
                     {
                         FileName = model.Photo.FileName, Created = DateTime.Now, Title = model.Title,                 
                     };
-                    _photos.Create(photo, model.GalleryId);
+                   await _photos.Create(photo, model.GalleryId);
                 }
                 
             }
             catch (Exception e)
             {
-                _logger.AddExceptionLog(e);
+               await _logger?.AddExceptionLog(e);
             }
        
-            return RedirectToAction("Index", "Photos");
+            return RedirectToAction("Index", "Album");
 
         }
-        public IActionResult Detail(long id)
+        public async Task<IActionResult> DetailAsync(long id)
         {
             try
             {
-                            _logger?.AddStat(id.ToString(),"Detail", "Photo");
+                _logger?.AddStat(id.ToString(),"Detail", "Photo");
 
-                var photo=_photos.Get(id);
+                var photo=await _photos.Get(id);
                 var selectedPhoto=PhotoViewModel.Get(photo);
                 var photos = Path.Combine(_hostingEnv.WebRootPath, "photos");
                 return View(selectedPhoto);
@@ -91,9 +84,9 @@ namespace LifeLIke.Controllers
             }
             catch (Exception e)
             {
-                _logger?.AddExceptionLog(e);
+                await _logger?.AddExceptionLog(e);
             }
-            return RedirectToAction("Index", "Photos");
+            return RedirectToAction("Index", "Album");
         }   
         
         

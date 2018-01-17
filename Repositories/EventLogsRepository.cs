@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using LifeLike.Models;
 using LifeLike.Repositories;
 
-namespace LifeLIke.Repositories
+namespace LifeLike.Repositories
 {
     public class EventLogsRepository : IEventLogRepository
     {
@@ -15,122 +16,167 @@ namespace LifeLIke.Repositories
             _context = context;
         }
         
-        public void AddExceptionLog(Exception e)
+        public async Task<Result> AddExceptionLog(Exception e)
         {
-           
-            Create(EventLog.Generate(e));
-          
+            try
+            {
+               return await Create(EventLog.Generate(e));          
+            }
+            catch (System.Exception)
+            {
+                return Result.Failed;
+            }
         }
 
-        public void AddStat(string id,string action, string controller)
+        public async Task<Result> AddStat(string id,string action, string controller)
         {
-            Create(EventLog.Generate(id, action, controller));
+            try
+            {
+                return await Create(EventLog.Generate(id, action, controller));
+            }
+            catch (System.Exception)
+            {
+                return Result.Failed;
+            }
         }
-        public Result Add(EventLog model)
+        public async Task<Result> Add(EventLog model)
         {
             try
             {             
-               return Create(model);
+               return  await Create(model);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                AddExceptionLog(e);
                 return Result.Success;
             }        
         }
-        public Result Create(EventLog model)
+        public async Task<Result> Create(EventLog model)
         {
             try
-            {
-             
-                _context.EventLogs.Add(model);
-                _context.SaveChanges();    
+            {             
+                await _context.EventLogs.AddAsync(model);
+                await _context.SaveChangesAsync();
                 return Result.Success;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                AddExceptionLog(e);
+            //    await AddExceptionLog(e);
                 return Result.Success;
             }        
         }
 
-        public IEnumerable<EventLog> List()
+        public async Task<IEnumerable<EventLog>> List()
         {
             return _context.EventLogs.ToList();
         }
 
-        public IEnumerable<EventLog> List(EventLogType type)
+        public async Task<IEnumerable<EventLog>> List(EventLogType type)
         {
             return _context.EventLogs.Where(p => p.Type == type).ToList();
         }
 
-        public void LogInformation(int i, string userLoggedOut)
+        public async Task<Result> LogInformation(int i, string information)
         {
-            
-            
+            return Result.Failed;
         }
 
-        public void LogInformation(EventLogType result, string message)
+        public async Task<Result> LogInformation(EventLogType result, string message)
         {
+            try
+            {
+                await Create(EventLog.Generate(result,message));
+                return Result.Success;
+            }
+            catch (System.Exception e)
+            {
+                await AddExceptionLog(e);
+                return Result.Success;
+            }
 
-            Create(EventLog.Generate(result,message));
         }
 
-        public void ClearLogs()
+        public async Task<Result>  ClearLogs()
         {
-            _context.EventLogs.RemoveRange(_context.EventLogs.Where(p=>p.Type!=EventLogType.Statistic));            
+            try
+            {
+                  _context.EventLogs.RemoveRange(_context.EventLogs.Where(p=>p.Type!=EventLogType.Statistic));            
            
-            _context.SaveChanges();
+                await _context.SaveChangesAsync();
+                return Result.Success;
+            }
+            catch (System.Exception)
+            {
+                
+                throw;
+            }
+          
              
         }
 
-        public EventLog Get(long id)
+        public  async Task<EventLog> Get(long id)
         {
             return _context.EventLogs.FirstOrDefault(p=>p.Id==id);
         }
 
-        public Result Update(EventLog model)
+        public async Task<Result> Update(EventLog model)
         {
             try
             {
                 _context.Update(model);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
                 return Result.Success;
 
             }
             catch (Exception e)
             {
-                AddExceptionLog(e);
+                await AddExceptionLog(e);
                 return Result.Failed;
             }
             
         }
 
-        public Result Delete(EventLog model)
+        public async Task<Result> Delete(EventLog model)
         {
             try
             {
                 _context.Remove(model);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
                 return Result.Success;
 
             }
             catch (Exception e)
             {
-                AddExceptionLog(e);
+                await AddExceptionLog(e);
                 return Result.Failed;
             }
         }
+          public async Task<Result> DeleteAll()
+        {
+            try
+            {
+                _context.EventLogs.RemoveRange(_context.EventLogs.ToList());
+                await _context.SaveChangesAsync();
+                return Result.Success;
+
+            }
+            catch (Exception e)
+            {
+                await AddExceptionLog(e);
+                return Result.Failed;
+            }
+        }
+       
     }
     
     public interface IEventLogRepository : IRepository<EventLog>
     {
-        void AddExceptionLog(Exception e);
-        void AddStat(string id, string action, string controller);
-        IEnumerable<EventLog> List(EventLogType type);
-        void LogInformation(int i, string userLoggedOut);
-        void LogInformation(EventLogType result, string message);
-        void ClearLogs();
-        Result Add(EventLog eventLog);
+        Task<Result> AddExceptionLog(Exception e);
+        Task<Result> AddStat(string id, string action, string controller);
+        Task<IEnumerable<EventLog>> List(EventLogType type);
+        Task<Result>  LogInformation(int i, string information);
+        Task<Result>  LogInformation(EventLogType result, string message);
+        Task<Result> ClearLogs();
+        Task<Result> Add(EventLog eventLog);
+        Task<Result> DeleteAll();
     }
 }

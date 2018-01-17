@@ -215,7 +215,7 @@ namespace LifeLike.Utils
                 value = string.Empty;
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 value = string.Empty;
                 return false;

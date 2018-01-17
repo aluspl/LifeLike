@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using LifeLike.Models;
 using LifeLike.ViewModel;
-using LifeLIke.Controllers;
-using LifeLIke.Repositories;
+using LifeLike.Controllers;
+using LifeLike.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -49,7 +49,7 @@ namespace LifeLike.Controllers
                 }
                 foreach (var error in result.Errors)
                 {
-                    _logger.LogInformation(EventLogType.Error,error.Description);
+                    await _logger.LogInformation(EventLogType.Error,error.Description);
 
                     ModelState.AddModelError("", error.Description);
                 }
@@ -58,7 +58,7 @@ namespace LifeLike.Controllers
             }
             catch (Exception error)
             {
-                _logger.AddExceptionLog(error);
+               await _logger.AddExceptionLog(error);
                 ModelState.AddModelError("", error.Message);
                 return View(model); 
             }
@@ -84,7 +84,6 @@ namespace LifeLike.Controllers
                 } 
             } 
             
-            ModelState.AddModelError("","Invalid login attempt"); 
             return View(model); 
         }
 
@@ -93,7 +92,6 @@ namespace LifeLike.Controllers
         public async Task<IActionResult> LogOut()
         {
             await _signInManager.SignOutAsync();
-            _logger.LogInformation(4, "User logged out.");
             return RedirectToAction("Index", "Home");
         }
     }

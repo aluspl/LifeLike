@@ -3,7 +3,7 @@ using System.IO;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace LifeLIke
+namespace LifeLike
 {
     public class Program
     {

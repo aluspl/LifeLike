@@ -1,12 +1,11 @@
 ﻿using System;
+using System.Threading.Tasks;
 using LifeLike.Models;
 using LifeLike.Repositories;
-using LifeLike.ViewModel;
-using LifeLIke.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LifeLIke.Controllers
+namespace LifeLike.Controllers
 {
     public class SiteManagerController : Controller
     {
@@ -22,9 +21,9 @@ namespace LifeLIke.Controllers
 
         // GET
         [Authorize]
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            var configs = _config.List();
+            var configs =await _config.List();
             return View(configs);
         }
 
@@ -38,54 +37,48 @@ namespace LifeLIke.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Config model)
+        public async Task<ActionResult> Create(Config model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _config.Create(model);
+                    await _config.Create(model);
                     return RedirectToAction("Index");
                 }
             }
             catch (Exception e)
             {
-                _logger.AddExceptionLog(e);
+              await  _logger.AddExceptionLog(e);
             }
-            ModelState.AddModelError("", "Unable to save changes. " +
-                                                        "Try again, and if the problem persists, " +
-                                                        "see your system administrator.");
             return View(model);
 
         }
 
         [Authorize]
-        public ActionResult Update(string id)
+        public async Task<ActionResult> Update(string id)
         {
-            var model = _config.Get(id);
+            var model = await _config.Get(id);
             if (model == null) return RedirectToAction("Index");
             return View(model);
 
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Update(Config model)
+        public async Task<ActionResult> Update(Config model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _config.Update(model);
+                 await   _config.Update(model);
                     return RedirectToAction("Index");
                 }
             }
             catch (Exception e)
             {
-                _logger.AddExceptionLog(e);
+              await  _logger.AddExceptionLog(e);
             }
-            ModelState.AddModelError("", "Unable to save changes. " +
-                                                       "Try again, and if the problem persists, " +
-                                                       "see your system administrator.");
             return View(model);
         }
 

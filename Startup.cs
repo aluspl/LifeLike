@@ -1,21 +1,18 @@
 ﻿using System;
 using LifeLike.Models;
 using LifeLike.Repositories;
-using LifeLIke.Repositories;
-using LifeLIke.Utils;
+using LifeLike.Utils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
-namespace LifeLIke
+namespace LifeLike
 {
     public class Startup
     {
@@ -41,9 +38,9 @@ namespace LifeLIke
             );
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+            services.AddScoped<IEventLogRepository, EventLogsRepository>();
             services.AddScoped<IRssReaderService, RssReaderService>();
 
-            services.AddScoped<IEventLogRepository, EventLogsRepository>();
             services.AddScoped<ILinkRepository, LinkRepository>();
             services.AddScoped<IConfigRepository, ConfigRepository>();
             services.AddScoped<IGalleryRepository, GalleryRepository>();
@@ -93,8 +90,8 @@ namespace LifeLIke
                     defaults: new { controller = "Page", action = "Detail" });
                 routes.MapRoute(
                     name: "photos",
-                    template: "Photos/{*id}",
-                    defaults: new { controller = "Photos", action = "Detail" });
+                    template: "Album/{*id}",
+                    defaults: new { controller = "Album", action = "Detail" });
             });
             DbInitializer.Initialize(context);
         }

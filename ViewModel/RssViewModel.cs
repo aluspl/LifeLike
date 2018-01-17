@@ -1,5 +1,6 @@
 ﻿using System;
-using LifeLIke.Utils;
+using LifeLike.Models.Enums;
+using LifeLike.Utils;
 
 namespace LifeLike.ViewModel
 {

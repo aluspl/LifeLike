@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using LifeLike.Models;
 using LifeLike.ViewModel;
-using LifeLIke.Repositories;
+using LifeLike.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,29 +21,31 @@ namespace LifeLike.Controllers
         }
         // GET
         [Authorize]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             try
             {
-                var list=_logger.List().Where(P=>P.Type!=EventLogType.Statistic).Select(EventLogViewModel.Get);
-                return  View(list);
+                var list=await _logger.List();
+                
+                return  View(list?.Where(P=>P.Type!=EventLogType.Statistic)
+                    .Select(EventLogViewModel.Get));
 
             }
             catch (Exception e)
             {
-                 _logger.AddExceptionLog(e);
+                 await _logger.AddExceptionLog(e);
             }
             return View();
         }
         [Authorize]
-        public IActionResult Detail(long id)
+        public async Task<IActionResult> Detail(long id)
         {
-            return View(_logger.Get(id));
+            return View(await _logger.Get(id));
         }
         [HttpGet]
-        public IActionResult Clear()
+        public async Task<IActionResult> Clear()
         {
-            _logger.ClearLogs();
+            await _logger.ClearLogs();
             return RedirectToAction("Index");
         }
     }

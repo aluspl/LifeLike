@@ -19,9 +19,10 @@ namespace LifeLike.ViewComponents
         }
         public async Task< IViewComponentResult> InvokeAsync()
         {
+            var list=await _context.List(LinkCategory.Sidebar);
             var model = new SidebarViewModel
             {
-                Links = _context.List(LinkCategory.Sidebar).Select(LinkViewModel.Get)
+                Links =list.Select(LinkViewModel.Get)
             };
 
 

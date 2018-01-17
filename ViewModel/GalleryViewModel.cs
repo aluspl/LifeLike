@@ -7,7 +7,7 @@ using LifeLike.Models;
 using LifeLike.Models.Enums;
 using LifeLike.Repositories;
 using LifeLike.Utils;
-using LifeLIke.Controllers;
+using LifeLike.Controllers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.FileProviders;
 

@@ -3,7 +3,7 @@ using HeyRed.MarkdownSharp;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace LifeLIke.Utils
+namespace LifeLike.Utils
 {
     [HtmlTargetElement("p", Attributes = "markdown")]
     [HtmlTargetElement("markdown")]

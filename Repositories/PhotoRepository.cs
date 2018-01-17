@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using LifeLike.Models;
 using LifeLike.Models.Enums;
-using LifeLIke.Repositories;
+using LifeLike.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Repositories
@@ -23,7 +24,7 @@ namespace LifeLike.Repositories
         public static string PhotoPath =  "/photos/";
 
 
-        public Result Create(Photo model)
+        public async Task<Result> Create(Photo model)
         {
             try
             {
@@ -34,22 +35,22 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-               _logger.AddExceptionLog(e);
+              await _logger.AddExceptionLog(e);
                 return   Result.Failed;
             }    
         }
 
-        public IEnumerable<Photo> List()
+        public async Task<IEnumerable<Photo>> List()
         {
             return _context.Photos.ToList();
         }
 
-        public Photo Get(long id)
+        public async Task<Photo> Get(long id)
         {
             return _context.Photos.FirstOrDefault(p => p.Id == id);
         }
   
-        public Result Update(Photo model)
+        public async Task<Result> Update(Photo model)
         {
             try
             {
@@ -60,30 +61,30 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-                _logger.AddExceptionLog(e);
+                await _logger.AddExceptionLog(e);
 
                 return   Result.Failed;
             }        
         }
 
-        public Result Delete(Photo model)
+        public async Task<Result> Delete(Photo model)
         {
             try
             {
                 _context.Remove(model);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
                 return  Result.Success;
                 
             }
             catch (Exception e)
             {
-                _logger.AddExceptionLog(e);
+               await _logger.AddExceptionLog(e);
 
                 return   Result.Failed;
             }
         }
 
-        public Result Create(Photo photo, long modelGalleryId)
+        public async Task<Result> Create(Photo photo, long modelGalleryId)
         {
             try
             {
@@ -99,7 +100,7 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-                _logger.AddExceptionLog(e);
+               await _logger.AddExceptionLog(e);
 
                 return   Result.Failed;
             }           
@@ -108,6 +109,6 @@ namespace LifeLike.Repositories
     
     public interface IPhotoRepository : IRepository<Photo>
     {
-        Result Create(Photo photo, long modelGalleryId);
+        Task<Result> Create(Photo photo, long modelGalleryId);
     }
 }

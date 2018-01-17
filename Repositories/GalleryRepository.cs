@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using LifeLike.Models;
 using LifeLike.Models.Enums;
 using LifeLike.ViewModel;
-using LifeLIke.Repositories;
+using LifeLike.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Repositories
@@ -21,7 +22,7 @@ namespace LifeLike.Repositories
             _context = context;
         }
 
-        public Result Create(Gallery model)
+        public async Task<Result> Create(Gallery model)
         {
             try
             {
@@ -32,28 +33,28 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-                _logger.AddExceptionLog(e);
+               await _logger.AddExceptionLog(e);
                 return   Result.Failed;
             }    
         }
 
-        public IEnumerable<Gallery> List()
+        public async Task<IEnumerable<Gallery>> List()
         {
             return _context.Galleries
                 .Include(p=>p.Photos)
                 .ToList();
         }
 
-        public Gallery Get(long id)
+        public async Task<Gallery> Get(long id)
         {
-            var gallery = _context.Galleries
+            var gallery = await _context.Galleries
                 .Where(p => p.Id == id)
                 .Include(p=>p.Photos)
-                .SingleOrDefault();
+                .SingleOrDefaultAsync();
             return gallery;
         }
 
-        public Result Update(Gallery model)
+        public  async Task<Result> Update(Gallery model)
         {
             try
             {
@@ -64,17 +65,17 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-                _logger.AddExceptionLog(e);
+                await _logger.AddExceptionLog(e);
 
                 return   Result.Failed;
             }        
         }
 
-        public Result Delete(Gallery model)
+        public  async Task<Result> Delete(Gallery model)
         {
             try
             {
-                model = Get(model.Id);
+                model = await Get(model.Id);
                 if (model==null) return Result.Failed;
                 
                 foreach (var photo in model.Photos)
@@ -82,31 +83,31 @@ namespace LifeLike.Repositories
                     _context.Remove(photo);
                 }
                 _context.Remove(model);
-                _context.SaveChanges();
+              await  _context.SaveChangesAsync();
                 return  Result.Success;
                 
             }
             catch (Exception e)
             {
-                _logger.AddExceptionLog(e);
+               await _logger.AddExceptionLog(e);
 
                 return  Result.Failed;
             }
         }
 
-        public Gallery Get(string shortTitle)
+        public async Task<Gallery> Get(string shortTitle)
         {
             try
             {
-                var gallery = _context.Galleries
+                var gallery =await _context.Galleries
                     .Where(p => p.ShortTitle == shortTitle)
                     .Include(p=>p.Photos)
-                    .SingleOrDefault();
+                    .SingleOrDefaultAsync();
                 return gallery;
             }
             catch (Exception e)
             {
-                _logger.AddExceptionLog(e);
+             await   _logger.AddExceptionLog(e);
                 return null;
             }
         }
@@ -114,6 +115,6 @@ namespace LifeLike.Repositories
 
     public interface IGalleryRepository: IRepository<Gallery>
     {
-        Gallery Get(string id);
+        Task<Gallery> Get(string id);
     }
 }

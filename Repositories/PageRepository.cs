@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using LifeLike.Models;
 using LifeLike.Models.Enums;
+using LifeLike.Repositories;
 
 namespace LifeLike.Repositories
 {
@@ -10,13 +12,15 @@ namespace LifeLike.Repositories
     public  class PageRepository : IPageRepository
     {
         private readonly PortalContext _context;
+        private readonly IEventLogRepository _logger;
 
-        public PageRepository(PortalContext context)
+        public PageRepository(PortalContext context, IEventLogRepository logger)
         {
             _context = context;
+            _logger= logger;
         }
 
-        public Result Create(Page model)
+        public async Task<Result> Create(Page model)
         {
             try
             {
@@ -32,7 +36,7 @@ namespace LifeLike.Repositories
                 return   Result.Failed;
             }     
         }
-        public Result Create(Page model, Link link)
+        public async Task<Result> Create(Page model, Link link)
         {
             try
             {
@@ -49,21 +53,21 @@ namespace LifeLike.Repositories
                 return   Result.Failed;
             }    
         }
-        public IEnumerable<Page> List()
+        public async Task<IEnumerable<Page>> List()
         {
             return _context.Pages.ToList();
         }
 
-        public Page Get(long id)
+        public async Task<Page> Get(long id)
         {
             return _context.Pages.Find(id);
         }
-        public Page Get(string id)
+        public async Task<Page> Get(string id)
         {
             return _context.Pages.FirstOrDefault(p=>p.ShortName.Equals(id));
         }
 
-        public Result Update(Page model)
+        public async Task<Result> Update(Page model)
         {
             try
             {
@@ -74,19 +78,18 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-                _context.EventLogs.Add(EventLog.Generate(e));
-                _context.SaveChanges();
+               await _logger.AddExceptionLog(e);
                 return   Result.Failed;
             }        
         }
 
-        public Result Delete(Page model)
+        public async Task<Result> Delete(Page model)
         {
             //Always True!! :D 
          return   Result.Success;
         }
 
-        public Result Delete(Page model, Link link)
+        public async Task<Result> Delete(Page model, Link link)
         {
             try
             {
@@ -98,13 +101,13 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-                _context.EventLogs.Add(EventLog.Generate(e));
-                _context.SaveChanges();
+                await _logger.AddExceptionLog(e);
+
                 return   Result.Failed;
             }
         }
 
-        public IEnumerable<Page> List(PageCategory category)
+        public async Task<IEnumerable<Page>> List(PageCategory category)
         {
             return _context.Pages.Where(p=>p.Category==category);
         }
@@ -112,10 +115,10 @@ namespace LifeLike.Repositories
     
     public interface IPageRepository : IRepository<Page>
     {
-        IEnumerable<Page> List(PageCategory category);
-        Page Get(string id);
-        Result Create(Page model, Link link);
-        Result Delete(Page model, Link link);
+         Task<IEnumerable<Page>> List(PageCategory category);
+         Task<Page> Get(string id);
+         Task<Result> Create(Page model, Link link);
+         Task<Result> Delete(Page model, Link link);
 
     }
 }
