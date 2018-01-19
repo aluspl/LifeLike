@@ -41,7 +41,7 @@ namespace LifeLike.Repositories
 
         public async Task<Link> Get(long id)
         {
-            return _context.Links.FirstOrDefault(p => p.Id == id);
+            return await _context.Links.FindAsync(id);
         }
         public async Task<Link> Get(string id)
         {
