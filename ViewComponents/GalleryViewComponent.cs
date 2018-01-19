@@ -17,7 +17,7 @@ namespace LifeLike.ViewComponents
         {
             _context = context;
         }
-        public async Task< IViewComponentResult> InvokeAsync(GalleryViewModel model)
+        public IViewComponentResult Invoke(GalleryViewModel model)
         {
             return View(model);
         }

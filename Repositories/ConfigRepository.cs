@@ -46,7 +46,16 @@ namespace LifeLike.Repositories
 
         public  async Task<IEnumerable<Config>> List()
         {
-            return _context.Configs.ToList();
+            try
+            {
+                return _context.Configs.ToList();
+
+            }
+            catch (System.Exception e)
+            {
+                await _logger.AddExceptionLog(e);
+                throw;
+            }
         }
 
         public async Task<Config> Get(long id)
