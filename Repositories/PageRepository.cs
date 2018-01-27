@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using LifeLike.Models;
 using LifeLike.Models.Enums;
 using LifeLike.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Repositories
 {
@@ -24,15 +25,14 @@ namespace LifeLike.Repositories
         {
             try
             {
-                _context.Add(model);
-                _context.SaveChanges();
+               await _context.AddAsync(model);
+               await _context.SaveChangesAsync();
                 return  Result.Success;
                 
             }
             catch (Exception e)
             {
-                _context.EventLogs.Add(EventLog.Generate(e));
-                _context.SaveChanges();
+                await _logger.AddException(e);
                 return   Result.Failed;
             }     
         }
@@ -40,31 +40,39 @@ namespace LifeLike.Repositories
         {
             try
             {
-                _context.Add(link);               
-                _context.Add(model);
-                _context.SaveChanges();
+                await _context.AddAsync(link);               
+               await _context.AddAsync(model);
+             await   _context.SaveChangesAsync();
                 return  Result.Success;
                 
             }
             catch (Exception e)
             {
-                _context.EventLogs.Add(EventLog.Generate(e));
-                _context.SaveChanges();
+                await _logger.AddException(e);
+
                 return   Result.Failed;
             }    
         }
         public async Task<IEnumerable<Page>> List()
         {
-            return _context.Pages.ToList();
+            try
+            {
+                return await _context.Pages.ToListAsync();               
+            }
+            catch (System.Exception e)
+            {
+                await _logger.AddException(e);
+                throw;
+            }
         }
 
         public async Task<Page> Get(long id)
         {
-            return _context.Pages.Find(id);
+            return await _context.Pages.FindAsync(id);
         }
         public async Task<Page> Get(string id)
         {
-            return _context.Pages.FirstOrDefault(p=>p.ShortName.Equals(id));
+            return await _context.Pages.FirstOrDefaultAsync(p=>p.ShortName.Equals(id));
         }
 
         public async Task<Result> Update(Page model)
@@ -72,36 +80,48 @@ namespace LifeLike.Repositories
             try
             {
                 _context.Update(model);
-                _context.SaveChanges();
+               await _context.SaveChangesAsync();
                 return  Result.Success;
                 
             }
             catch (Exception e)
             {
-               await _logger.AddExceptionLog(e);
+               await _logger.AddException(e);
                 return   Result.Failed;
             }        
         }
 
         public async Task<Result> Delete(Page model)
         {
-            //Always True!! :D 
-         return   Result.Success;
+            try
+            {             
+                _context.Remove(model);
+                await _context.SaveChangesAsync();
+                return  Result.Success;
+                
+            }
+            catch (Exception e)
+            {
+                await _logger.AddException(e);
+
+                return   Result.Failed;
+            }
         }
 
         public async Task<Result> Delete(Page model, Link link)
         {
             try
             {
-               if (link!=null) _context.Remove(link);
-                _context.Remove(model);
-                _context.SaveChanges();
+               if (link!=null) 
+                    _context.Remove(link);
+                await Delete(model);
+                await _context.SaveChangesAsync();
                 return  Result.Success;
                 
             }
             catch (Exception e)
             {
-                await _logger.AddExceptionLog(e);
+                await _logger.AddException(e);
 
                 return   Result.Failed;
             }
@@ -109,7 +129,7 @@ namespace LifeLike.Repositories
 
         public async Task<IEnumerable<Page>> List(PageCategory category)
         {
-            return _context.Pages.Where(p=>p.Category==category);
+            return await _context.Pages.Where(p=>p.Category==category).ToListAsync();
         }
     }
     

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LifeLike.Models;
 using LifeLike.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Repositories
 {
@@ -16,7 +17,7 @@ namespace LifeLike.Repositories
             _context = context;
         }
         
-        public async Task<Result> AddExceptionLog(Exception e)
+        public async Task<Result> AddException(Exception e)
         {
             try
             {
@@ -67,18 +68,27 @@ namespace LifeLike.Repositories
 
         public async Task<IEnumerable<EventLog>> List()
         {
-            return _context.EventLogs.ToList();
+            return await _context.EventLogs.ToListAsync();
         }
 
         public async Task<IEnumerable<EventLog>> List(EventLogType type)
         {
-            return _context.EventLogs.Where(p => p.Type == type).ToList();
+            return await _context.EventLogs.Where(p => p.Type == type).ToListAsync();
         }
 
         public async Task<Result> LogInformation(int i, string information)
         {
-            return Result.Failed;
-        }
+            try
+            {
+                return await Create(EventLog.Generate(i,information));
+
+            }
+            catch (System.Exception e)
+            {
+                await AddException(e);
+                return Result.Failed;
+            }   
+     }
 
         public async Task<Result> LogInformation(EventLogType result, string message)
         {
@@ -89,8 +99,8 @@ namespace LifeLike.Repositories
             }
             catch (System.Exception e)
             {
-                await AddExceptionLog(e);
-                return Result.Success;
+                await AddException(e);
+                return Result.Failed;
             }
 
         }
@@ -115,7 +125,7 @@ namespace LifeLike.Repositories
 
         public  async Task<EventLog> Get(long id)
         {
-            return _context.EventLogs.FirstOrDefault(p=>p.Id==id);
+            return await _context.EventLogs.FirstOrDefaultAsync(p=>p.Id==id);
         }
 
         public async Task<Result> Update(EventLog model)
@@ -129,7 +139,7 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-                await AddExceptionLog(e);
+                await AddException(e);
                 return Result.Failed;
             }
             
@@ -146,7 +156,7 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-                await AddExceptionLog(e);
+                await AddException(e);
                 return Result.Failed;
             }
         }
@@ -161,7 +171,7 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-                await AddExceptionLog(e);
+                await AddException(e);
                 return Result.Failed;
             }
         }
@@ -170,7 +180,7 @@ namespace LifeLike.Repositories
     
     public interface IEventLogRepository : IRepository<EventLog>
     {
-        Task<Result> AddExceptionLog(Exception e);
+        Task<Result> AddException(Exception e);
         Task<Result> AddStat(string id, string action, string controller);
         Task<IEnumerable<EventLog>> List(EventLogType type);
         Task<Result>  LogInformation(int i, string information);

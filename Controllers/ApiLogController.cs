@@ -41,7 +41,7 @@ namespace LifeLike.Controllers
             }
             catch (Exception e)
             {
-                await _logger.AddExceptionLog(e);
+                await _logger.AddException(e);
             }
             return Ok();
         }
@@ -54,7 +54,7 @@ namespace LifeLike.Controllers
             }
             catch (Exception e)
             {
-                await _logger.AddExceptionLog(e);
+                await _logger.AddException(e);
             }
             return Ok();
         }

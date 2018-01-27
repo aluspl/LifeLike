@@ -35,19 +35,28 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-              await _logger.AddExceptionLog(e);
+              await _logger.AddException(e);
                 return   Result.Failed;
             }    
         }
 
         public async Task<IEnumerable<Photo>> List()
         {
-            return _context.Photos.ToList();
+            return  await _context.Photos.ToListAsync();
         }
 
         public async Task<Photo> Get(long id)
         {
-            return _context.Photos.FirstOrDefault(p => p.Id == id);
+            try
+            {
+                return _context.Photos.FirstOrDefault(p => p.Id == id);                
+            }
+            catch (System.Exception e)
+            {
+                 await _logger.AddException(e);
+
+                return   null;
+            }
         }
   
         public async Task<Result> Update(Photo model)
@@ -55,13 +64,13 @@ namespace LifeLike.Repositories
             try
             {
                 _context.Update(model);
-                _context.SaveChanges();
+              await  _context.SaveChangesAsync();
                 return  Result.Success;
                 
             }
             catch (Exception e)
             {
-                await _logger.AddExceptionLog(e);
+                await _logger.AddException(e);
 
                 return   Result.Failed;
             }        
@@ -78,7 +87,7 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-               await _logger.AddExceptionLog(e);
+               await _logger.AddException(e);
 
                 return   Result.Failed;
             }
@@ -100,7 +109,7 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-               await _logger.AddExceptionLog(e);
+               await _logger.AddException(e);
 
                 return   Result.Failed;
             }           

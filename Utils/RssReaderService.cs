@@ -14,11 +14,11 @@ namespace LifeLike.Utils
 {
     public class RssReaderService : IRssReaderService
     {
-	    private readonly IEventLogRepository _eventLog;
+	    private readonly IEventLogRepository _logger;
 
 	    public RssReaderService(IEventLogRepository eventLog)
 	    {
-		    _eventLog = eventLog;
+		    _logger = eventLog;
 	    }
 	    
         private static DateTime ParseDate(string date)
@@ -55,7 +55,7 @@ namespace LifeLike.Utils
 		}
 		catch (Exception e)
 		{
-			await _eventLog.AddExceptionLog(e);
+			await _logger.AddException(e);
 			return new List<RssViewModel>();
 		}
 		
@@ -81,9 +81,11 @@ namespace LifeLike.Utils
 						  };
 			return entries.ToList();
 		}
-		catch
+		catch(Exception e)
 		{
-			throw;
+			await _logger.AddException(e);
+			return new List<RssViewModel>();
+
 		}
 	}
 
@@ -107,9 +109,10 @@ namespace LifeLike.Utils
 						  };
 			return entries.ToList();
 		}
-		catch
+		catch(Exception e)
 		{
-			throw;
+			await _logger.AddException(e);
+			return new List<RssViewModel>();
 		}
 	}
 

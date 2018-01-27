@@ -65,6 +65,16 @@ namespace LifeLike.Models
                 EventTime=DateTime.Now
             };                
         }
+
+        internal static EventLog Generate(int i, string information)
+        {
+             return new EventLog
+            {
+                Type = EventLogType.Info,
+                Messages = $"{i}; {information}",
+                EventTime=DateTime.Now
+            };          
+        }
     }
 
     public enum EventLogType

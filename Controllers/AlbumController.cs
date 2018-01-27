@@ -49,7 +49,7 @@ namespace LifeLike.Controllers
             }
             catch (Exception e)
             {
-                await _logger?.AddExceptionLog(e);
+                await _logger?.AddException(e);
             }
             return View(new GalleryViewModel());
         }
@@ -73,7 +73,7 @@ namespace LifeLike.Controllers
             }
             catch (Exception e)
             {
-                await _logger?.AddExceptionLog(e);
+                await _logger?.AddException(e);
             }
             return RedirectToAction("Index", "Album");
         }
@@ -102,7 +102,7 @@ namespace LifeLike.Controllers
             }    
             catch (Exception e)
             {
-              await _logger.AddExceptionLog(e);
+              await _logger.AddException(e);
             }
             return View(model);
         }
@@ -120,12 +120,12 @@ namespace LifeLike.Controllers
             try
             {
                await _gallery.Update(GalleryViewModel.Get(model));
-                return RedirectToAction("Index", "Photos");
+                return RedirectToAction("Index", "Album");
 
             }
             catch (Exception e)
             {
-               await _logger.AddExceptionLog(e);
+               await _logger.AddException(e);
             }
             return View(model);
         }

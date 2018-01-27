@@ -26,23 +26,23 @@ namespace LifeLike.Repositories
         {
             try
             {
-                _context.Add(model);
-                _context.SaveChanges();
+               await _context.AddAsync(model);
+              await  _context.SaveChangesAsync();
                 return  Result.Success;
                 
             }
             catch (Exception e)
             {
-               await _logger.AddExceptionLog(e);
+               await _logger.AddException(e);
                 return   Result.Failed;
             }    
         }
 
         public async Task<IEnumerable<Gallery>> List()
         {
-            return _context.Galleries
+            return await _context.Galleries
                 .Include(p=>p.Photos)
-                .ToList();
+                .ToListAsync();
         }
 
         public async Task<Gallery> Get(long id)
@@ -59,13 +59,13 @@ namespace LifeLike.Repositories
             try
             {
                 _context.Update(model);
-                _context.SaveChanges();
+              await  _context.SaveChangesAsync();
                 return  Result.Success;
                 
             }
             catch (Exception e)
             {
-                await _logger.AddExceptionLog(e);
+                await _logger.AddException(e);
 
                 return   Result.Failed;
             }        
@@ -89,7 +89,7 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-               await _logger.AddExceptionLog(e);
+               await _logger.AddException(e);
 
                 return  Result.Failed;
             }
@@ -107,7 +107,7 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-             await   _logger.AddExceptionLog(e);
+             await   _logger.AddException(e);
                 return null;
             }
         }

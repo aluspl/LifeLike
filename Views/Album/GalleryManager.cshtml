@@ -6,7 +6,7 @@
 
     Layout = "_Layout";
 }
-@Html.ActionLink("Create","CreateGallery","Photos",null, new { @class="btn btn-info"})
+@Html.ActionLink("Create","CreateGallery","Album",null, new { @class="btn btn-info"})
 
 
 <table class="table">
@@ -26,8 +26,8 @@
             </td>    
                 
             <td>
-                @Html.ActionLink("Edit","Update","Photos", new {id=item.Id}, new { @class="btn btn-info"})
-                @Html.ActionLink("Delete","Delete","Photos", new {id=item.Id}, new { @class="btn btn-warning"})
+                @Html.ActionLink("Edit","Update","Album", new {id=item.Id}, new { @class="btn btn-info"})
+                @Html.ActionLink("Delete","Delete","Album", new {id=item.Id}, new { @class="btn btn-warning"})
                 @Html.ActionLink("Add Photos","UploadFiles","Photo", new {id=item.Id}, new { @class="btn btn-warning"})
 
             </td>

@@ -51,7 +51,7 @@ namespace LifeLike.Controllers
             }
             catch (Exception e)
             {
-                await _logger.AddExceptionLog(e);
+                await _logger.AddException(e);
 
             }
  
@@ -80,7 +80,7 @@ namespace LifeLike.Controllers
             }
             catch (Exception e)
             {
-                await _logger.AddExceptionLog(e);
+                await _logger.AddException(e);
             }
  
             return View(model);
@@ -107,7 +107,7 @@ namespace LifeLike.Controllers
             }
             catch (Exception e)
             {
-                await _logger.AddExceptionLog(e);
+                await _logger.AddException(e);
             }
  
             return View(model);

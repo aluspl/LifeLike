@@ -39,7 +39,7 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-              await _logger.AddExceptionLog(e);
+              await _logger.AddException(e);
                 return   Result.Failed;
             }    
         }
@@ -53,7 +53,7 @@ namespace LifeLike.Repositories
             }
             catch (System.Exception e)
             {
-                await _logger.AddExceptionLog(e);
+                await _logger.AddException(e);
                 throw;
             }
         }
@@ -74,7 +74,7 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-                await _logger.AddExceptionLog(e);
+                await _logger.AddException(e);
                 return   Result.Failed;
             }        
         }
@@ -90,7 +90,7 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-                await _logger.AddExceptionLog(e);
+                await _logger.AddException(e);
                 return Result.Failed;
             }
         }
@@ -103,7 +103,7 @@ namespace LifeLike.Repositories
             }
             catch (Exception e)
             {
-               await _logger.AddExceptionLog(e);
+               await _logger.AddException(e);
                return null;
             };
         }

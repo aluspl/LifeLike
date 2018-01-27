@@ -32,7 +32,7 @@ namespace LifeLike.Controllers
 
 
         }
-        public async Task<IActionResult> UploadFilesAsync(long id)
+        public async Task<IActionResult> UploadFiles(long id)
         {
             _logger?.AddStat(id.ToString(),"Upload", "Photo");
 
@@ -64,13 +64,13 @@ namespace LifeLike.Controllers
             }
             catch (Exception e)
             {
-               await _logger?.AddExceptionLog(e);
+               await _logger?.AddException(e);
             }
        
             return RedirectToAction("Index", "Album");
 
         }
-        public async Task<IActionResult> DetailAsync(long id)
+        public async Task<IActionResult> Detail(long id)
         {
             try
             {
@@ -84,7 +84,7 @@ namespace LifeLike.Controllers
             }
             catch (Exception e)
             {
-                await _logger?.AddExceptionLog(e);
+                await _logger.AddException(e);
             }
             return RedirectToAction("Index", "Album");
         }   

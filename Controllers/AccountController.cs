@@ -58,7 +58,7 @@ namespace LifeLike.Controllers
             }
             catch (Exception error)
             {
-               await _logger.AddExceptionLog(error);
+               await _logger.AddException(error);
                 ModelState.AddModelError("", error.Message);
                 return View(model); 
             }

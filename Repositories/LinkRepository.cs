@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LifeLike.Models;
 using LifeLike.Models.Enums;
+using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Repositories
 {
@@ -11,32 +12,33 @@ namespace LifeLike.Repositories
     public  class LinkRepository : ILinkRepository
     {
         private readonly PortalContext _context;
-
-        public LinkRepository(PortalContext context)
+        private readonly IEventLogRepository _logger;
+        public LinkRepository(PortalContext context, IEventLogRepository logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         public async Task<Result> Create(Link model)
         {
             try
             {
-                _context.Add(model);
-                _context.SaveChanges();
+               await _context.AddAsync(model);
+               await _context.SaveChangesAsync();
                 return  Result.Success;
                 
             }
             catch (Exception e)
             {
-                _context.EventLogs.Add(EventLog.Generate(e));
-                _context.SaveChanges();
+                     await _logger.AddException(e);
+
                 return   Result.Failed;
             }    
         }
 
         public async Task<IEnumerable<Link>> List()
         {
-            return _context.Links.ToList();
+            return await _context.Links.ToListAsync();
         }
 
         public async Task<Link> Get(long id)
@@ -45,21 +47,20 @@ namespace LifeLike.Repositories
         }
         public async Task<Link> Get(string id)
         {
-            return _context.Links.FirstOrDefault(p => p.Action == id);
+            return await _context.Links.FirstOrDefaultAsync(p => p.Action == id);
         }
         public async Task<Result> Update(Link model)
         {
             try
             {
                 _context.Update(model);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
                 return  Result.Success;
                 
             }
             catch (Exception e)
             {
-                _context.EventLogs.Add(EventLog.Generate(e));
-                _context.SaveChanges();
+                await _logger.AddException(e);
                 return   Result.Failed;
             }        
         }
@@ -69,21 +70,30 @@ namespace LifeLike.Repositories
             try
             {
                 _context.Remove(model);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
                 return  Result.Success;
                 
             }
             catch (Exception e)
             {
-                _context.EventLogs.Add(EventLog.Generate(e));
-                _context.SaveChanges();
+                             await _logger.AddException(e);
+
                 return   Result.Failed;
             }
         }
 
         public async Task<IEnumerable<Link>> List(LinkCategory category)
         {
-            return _context.Links.Where(p=>p.Category==category);
+            try
+            {
+                            return _context.Links.Where(p=>p.Category==category);
+
+            }
+            catch (System.Exception e)
+            {
+                await _logger.AddException(e);
+                throw;
+            }
         }
     }
     
