@@ -35,6 +35,7 @@ namespace LifeLike.ViewModel
 
         public static Gallery Get(GalleryViewModel model)
         {
+            if (model == null) return null;
             return new Gallery
             {
                 ShortTitle=model.ShortTitle,
@@ -64,7 +65,7 @@ namespace LifeLike.ViewModel
 
         private static IEnumerable<PhotoViewModel> GetPhotoViewModels(Gallery model)
         {
-            return model.Photos!=null ? model.Photos.Select(PhotoViewModel.Get) : new List<PhotoViewModel>();
+            return model.Photos?.Select(PhotoViewModel.Get) ?? new List<PhotoViewModel>();
         }
 
         private static string GetSelectedPhoto(Gallery model)

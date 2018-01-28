@@ -30,6 +30,7 @@ namespace LifeLike.ViewModel
             return new PhotoViewModel
             {
                 Title = model.Title,
+                Id=model.Id,
                 Created = model.Created,
                 Camera = model.Camera,
                 FileName=model.FileName,

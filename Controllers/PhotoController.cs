@@ -74,7 +74,7 @@ namespace LifeLike.Controllers
         {
             try
             {
-                _logger?.AddStat(id.ToString(),"Detail", "Photo");
+               await  _logger?.AddStat(id.ToString(),"Detail", "Photo");
 
                 var photo=await _photos.Get(id);
                 var selectedPhoto=PhotoViewModel.Get(photo);

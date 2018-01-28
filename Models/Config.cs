@@ -11,9 +11,6 @@ namespace LifeLike.Models
         public string Value { get; set; }
         public string DisplayName { get; set; }
 
-        public static implicit operator string(Config v)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
