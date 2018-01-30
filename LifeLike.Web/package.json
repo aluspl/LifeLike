@@ -1,0 +1,60 @@
+{
+  "name": "lifelike",
+  "version": "1.0.0",
+  "description": "Main CMS system",
+  "main": "index.js",
+  "scripts": {
+ 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aluspl/LifeLIke.git"
+  },
+  "author": "Alus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aluspl/LifeLIke/issues"
+  },
+  "homepage": "https://github.com/aluspl/LifeLIke#readme",
+  "dependencies": {
+    "@types/history": "4.6.0",
+    "@types/prop-types": "^15.5.2",
+    "@types/react": "15.0.35",
+    "@types/react-dom": "15.5.1",
+    "@types/react-hot-loader": "3.0.3",
+    "@types/react-router": "4.0.12",
+    "@types/react-router-dom": "4.0.5",
+    "@types/webpack-env": "1.13.0",
+    "aspnet-webpack": "^2.0.1",
+    "aspnet-webpack-react": "^3.0.0",
+    "awesome-typescript-loader": "3.2.1",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "bootstrap": "3.3.7",
+    "build": "^0.1.4",
+    "css-loader": "0.28.4",
+    "event-source-polyfill": "0.0.9",
+    "extract-text-webpack-plugin": "2.1.2",
+    "file-loader": "0.11.2",
+    "isomorphic-fetch": "2.2.1",
+    "jquery": "3.2.1",
+    "json-loader": "0.5.4",
+    "moment": "^2.20.1",
+    "node-sass": "^4.7.2",
+    "prop-types": "latest",
+    "react": "15.6.1",
+    "react-dom": "15.6.1",
+    "react-hot-loader": "3.0.0-beta.7",
+    "react-router-dom": "4.1.1",
+    "sass-loader": "^6.0.6",
+    "style-loader": "0.18.2",
+    "typescript": "2.4.1",
+    "url-loader": "0.5.9",
+    "webpack": "2.5.1",
+    "webpack-hot-middleware": "2.18.2"
+  }
+}

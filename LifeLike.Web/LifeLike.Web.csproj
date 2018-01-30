@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RuntimeFrameworkVersion>2.0.5</RuntimeFrameworkVersion>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="System.ComponentModel.Primitives" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Shared\Components" />
+    <Folder Include="wwwroot" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LifeLike.Data\LifeLike.Data.csproj">
+      <Project>{87DE8383-DE45-42A4-838F-3704BE3B2E42}</Project>
+      <Name>LifeLike.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LifeLike.Repositories\LifeLike.Repositories.csproj">
+      <Project>{B5FB45D9-07AC-4D2E-B387-C653538B08CE}</Project>
+      <Name>LifeLike.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LifeLIke.Services\LifeLike.Services.csproj">
+      <Project>{D0351F66-D70F-47F5-A0E4-FD493CB7D372}</Project>
+      <Name>LifeLike.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
