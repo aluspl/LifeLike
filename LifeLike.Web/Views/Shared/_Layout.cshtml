@@ -8,7 +8,7 @@
     @RenderSection("Styles", required: false)
 </head>
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -22,7 +22,9 @@
             <ul class="nav navbar-nav">
                 <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                 <li><a asp-area="" asp-controller="Album" asp-action="Index">Albums</a></li>
-                <li><a asp-area="" asp-controller="Page" asp-action="Index">Posts</a></li>
+                <li><a asp-area="" asp-controller="Page" asp-action="OpenPage">Pages</a></li>
+                <li><a asp-area="" asp-controller="Page" asp-action="OpenPost">Posts</a></li>
+
                 <li><a asp-area="" asp-controller="Log" asp-action="Index">Logs</a></li>
 
             </ul>

@@ -93,15 +93,7 @@ namespace LifeLike.Web
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-                routes.MapRoute(
-                    name: "pages",
-                    template: "Page/{*id}",
-                    defaults: new { controller = "Page", action = "Detail" });
-                routes.MapRoute(
-                    name: "posts",
-                    template: "Post/{*id}",
-                    defaults: new { controller = "Page", action = "Detail" });
+                    template: "{controller=Home}/{action=Index}/{id?}");             
                 routes.MapRoute(
                     name: "photos",
                     template: "Album/{*id}",

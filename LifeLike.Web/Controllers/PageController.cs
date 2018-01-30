@@ -24,8 +24,13 @@ namespace LifeLike.Web.Controllers
             _links = links;
         }
 
-        [HttpGet]
-        public IActionResult Index()
+        [HttpGet("Page")]
+        public IActionResult OpenPage()
+        {
+            return View();
+        }
+        [HttpGet("Post")]
+        public IActionResult OpenPost()
         {
             return View();
         }
@@ -45,10 +50,18 @@ namespace LifeLike.Web.Controllers
             var list = await _pages.List();
             return Json(list.Where(p=>p.Category==PageCategory.Post).Select(PageViewModel.ViewModel));
         }
-        [HttpGet("Details/{id}")]
+        [HttpGet("Open/{id}")]
         public async Task<IActionResult> Detail(string id)
         {
             await  _logger.AddStat(id, "Detail", "Page");
+
+            var page =await _pages.Get(id);
+            return View(PageViewModel.ViewModel(page));
+        }
+        [HttpGet("Details/{id}")]
+        public async Task<IActionResult> Details(string id)
+        {
+            await  _logger.AddStat(id, "Details", "Page");
 
             var page =await _pages.Get(id);
             return Json(PageViewModel.ViewModel(page));

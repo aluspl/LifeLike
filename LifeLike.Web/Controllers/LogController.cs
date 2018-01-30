@@ -41,12 +41,21 @@ namespace LifeLike.Web.Controllers
                 return null;
             }
         }
-        
-        [HttpGet("Details")]
+        //Get
+        [HttpGet("Detail/{id}")]
         public async Task<IActionResult> Detail(long id)
         {
-            return Json ( EventLogViewModel
-                .Get(await _logger.Get(id)));
+            try
+            {
+                var log = await _logger.Get(id);
+                return Json ( EventLogViewModel.Get(log));
+            }
+            catch (Exception e)
+            {
+              await  _logger.AddException(e);      
+                throw;
+            }
+           
         }
         [HttpGet("Clear")]
         public async Task<IActionResult> Clear()
