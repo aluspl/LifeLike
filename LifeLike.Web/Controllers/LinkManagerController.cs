@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LifeLike.Web.Controllers
 {
+    [Route("api/[controller]")]
     public class LinkManagerController : Controller
     {
         private readonly ILinkRepository _repository;

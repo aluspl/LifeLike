@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LifeLike.Web.Controllers
 {
-    [Route("Album")]
+    [Route("api/[controller]")]
     public class AlbumController : Controller
     {
         private readonly IEventLogRepository _logger;
@@ -33,10 +33,6 @@ namespace LifeLike.Web.Controllers
 
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
         [HttpGet("List")]
         public async Task<IActionResult> List()
         {

@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LifeLike.Web.Controllers
 {
-    [Route("Page")]
+    [Route("api/[controller]")]
     public class PageController : Controller
     {
         private readonly IPageRepository _pages;
@@ -24,16 +24,7 @@ namespace LifeLike.Web.Controllers
             _links = links;
         }
 
-        [HttpGet("Page")]
-        public IActionResult OpenPage()
-        {
-            return View();
-        }
-        [HttpGet("Post")]
-        public IActionResult OpenPost()
-        {
-            return View();
-        }
+   
         // GET
         [HttpGet("Posts")]
         public async Task<IActionResult> Posts()
@@ -49,15 +40,7 @@ namespace LifeLike.Web.Controllers
             await  _logger.AddStat("", "List", "Page");
             var list = await _pages.List();
             return Json(list.Where(p=>p.Category==PageCategory.Post).Select(PageViewModel.ViewModel));
-        }
-        [HttpGet("Open/{id}")]
-        public async Task<IActionResult> Detail(string id)
-        {
-            await  _logger.AddStat(id, "Detail", "Page");
-
-            var page =await _pages.Get(id);
-            return View(PageViewModel.ViewModel(page));
-        }
+        }       
         [HttpGet("Details/{id}")]
         public async Task<IActionResult> Details(string id)
         {

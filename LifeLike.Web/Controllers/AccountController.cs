@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LifeLike.Web.Controllers
 {
+    [Route("api/[controller]")]
     public class AccountController : Controller
     {
         private readonly UserManager<User> _userManager;

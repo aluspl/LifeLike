@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LifeLike.Web.Controllers
 {
+    
+    [Route("api/[controller]")]
     public class SiteManagerController : Controller
     {
         private readonly IConfigRepository _config;

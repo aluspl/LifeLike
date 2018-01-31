@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LifeLike.Web.Controllers
 {
+    [Route("api/[controller]")]
     public class PhotoController : Controller
     {
         private readonly IEventLogRepository _logger;

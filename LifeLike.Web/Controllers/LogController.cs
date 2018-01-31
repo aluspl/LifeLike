@@ -11,7 +11,7 @@ using Microsoft.Azure.KeyVault.Models;
 
 namespace LifeLike.Web.Controllers
 {
-    [Route("Log")]
+    [Route("api/[controller]")]
     public class LogController : Controller
     {
         private readonly IEventLogRepository _logger;
@@ -21,10 +21,6 @@ namespace LifeLike.Web.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }    
         // GET
         [HttpGet("List")]
         public async Task<IActionResult> List()
