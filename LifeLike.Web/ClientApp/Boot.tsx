@@ -1,4 +1,4 @@
-import './Styles/Site.scss'
+import './Styles/Site.scss';
 import 'bootstrap';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
@@ -28,4 +28,3 @@ if (module.hot) {
         renderApp();
     });
 }
-    

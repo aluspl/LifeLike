@@ -98,18 +98,34 @@ namespace LifeLike.Data.Models
             });
             context.Add(new Link()
             {
-                Action = "Index",
-                Controller = "LifeLike",
+                Action = "LifeLike",
+                Controller = "Page",
                 Name = "LifeLike: The Game",
                 Category = LinkCategory.Menu
             });
             context.Add(new Link()
             {
-                Action = "Index",
-                Controller = "Photos",
-                Name = "Album",
+                Action = "",
+                Controller = "Posts",
+                Name = "News",
                 Category = LinkCategory.Menu
             });
+            
+            context.Add(new Link()
+            {
+                Action = "",
+                Controller = "Album",
+                Name = "Albums",
+                Category = LinkCategory.Menu
+            });
+            context.Add(new Link()
+            {
+                Action = "",
+                Controller = "Logs",
+                Name = "Logs",
+                Category = LinkCategory.Menu
+            });
+            
             // Sidebar
             context.Add(new Link()
             {
