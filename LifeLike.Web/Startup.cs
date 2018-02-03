@@ -78,12 +78,7 @@ namespace LifeLike.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
-                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
-                {
-                    HotModuleReplacement = true,
-                    ReactHotModuleReplacement = true
-                });
+                app.UseBrowserLink();               
             }
             else
             {
