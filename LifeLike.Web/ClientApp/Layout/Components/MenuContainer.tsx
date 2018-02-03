@@ -1,8 +1,8 @@
 import * as React from 'react';
-import LoadingView from '../../Shared/Components/LoadingView/LoadingView';
+import LoadingView from '../../Components/Loading/LoadingView';
 
-import Item from "../Models/MenuItem";
-import ListView from "./ListView";
+import Item from "../../Models/MenuItem";
+import ListView from "../../Components/MenuList/ListView";
 interface NavMenuState {
     loadingData: boolean,
     items: Item[]

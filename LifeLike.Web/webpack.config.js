@@ -9,7 +9,7 @@ module.exports = (env) => {
     return [{
         stats: { modules: false },
         entry: { 'main': './ClientApp/boot.tsx' },
-        resolve: { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
+        resolve: { extensions: ['.js', '.ts', '.tsx'] },
         output: {
             path: path.join(__dirname, bundleOutputDir),
             filename: '[name].js',
@@ -18,12 +18,11 @@ module.exports = (env) => {
         module: {
             rules: [
                 { test: /\.tsx?$/, include: /ClientApp/, use: 'awesome-typescript-loader?silent=true' },
-                { test: /\.css$/, use: isDevBuild ? ['style-loader', 'css-loader'] : ExtractTextPlugin.extract({ use: 'css-loader?minimize' }) },
-                { test: /\.scss$/, use: isDevBuild ? ['style-loader', 'css-loader'] : ExtractTextPlugin.extract({ use: 'css-loader?minimize' }) },
-
+                { test: /\.scss$/, use: isDevBuild ? ['style-loader', 'sass-loader'] : ExtractTextPlugin.extract({ use: 'sass-loader?minimize' }) },
                 { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' }
             ]
         },
+
         plugins: [
             new CheckerPlugin(),
             new webpack.DllReferencePlugin({
@@ -39,7 +38,7 @@ module.exports = (env) => {
         ] : [
             // Plugins that apply in production builds only
             new webpack.optimize.UglifyJsPlugin(),
-            new ExtractTextPlugin('site.css')
+            new ExtractTextPlugin('Site.scss')
         ])
     }];
 };

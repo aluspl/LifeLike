@@ -1,9 +1,9 @@
 import * as React from 'react';
-import List from './List/List';
-import EmptyListView from '../../Shared/Components/EmptyListView/EmptyListView';
-import LoadingView from '../../Shared/Components/LoadingView/LoadingView';
+import ListView from '../../Components/PageList/PageList';
+import EmptyListView from '../../Components/EmptyList/EmptyListView';
+import LoadingView from '../../Components/Loading/LoadingView';
 
-import Item from '../Models/Page';
+import Item from '../../Models/Page';
 
 interface ListContainerState {
     loadingData: boolean,
@@ -45,7 +45,7 @@ class ListContainer extends React.Component<any, ListContainerState> {
             this.state.loadingData ?
                 <LoadingView Title={"Posts"}/> :
                 hasProjects ?
-                    <List items= {this.state.items} /> :  <EmptyListView />
+                    <ListView items= {this.state.items} /> :  <EmptyListView />
         )
     }
  

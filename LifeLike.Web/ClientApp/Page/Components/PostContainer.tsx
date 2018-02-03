@@ -1,9 +1,9 @@
 import * as React from 'react';
-import ListView from './List/List';
-import EmptyListView from '../../Shared/Components/EmptyListView/EmptyListView';
-import LoadingView from '../../Shared/Components/LoadingView/LoadingView';
+import ListView from '../../Components/PageList/PageList';
+import EmptyListView from '../../Components/EmptyList/EmptyListView';
+import LoadingView from '../../Components/Loading/LoadingView';
 
-import Item from '../Models/Page';
+import Item from '../../Models/Page';
 
 interface ListContainerState {
     loadingData: boolean,

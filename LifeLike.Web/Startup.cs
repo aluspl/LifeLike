@@ -99,10 +99,9 @@ namespace LifeLike.Web
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");             
-                routes.MapRoute(
-                    name: "photos",
-                    template: "Album/{*id}",
-                    defaults: new { controller = "Album", action = "Detail" });
+                routes.MapSpaFallbackRoute(
+                    name: "spa-fallback",
+                    defaults: new { controller = "Home", action = "Index" });
             });
             
             DbInitializer.Initialize(context);
