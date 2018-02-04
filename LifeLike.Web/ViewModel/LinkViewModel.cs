@@ -45,7 +45,7 @@ namespace LifeLike.Web.ViewModel
             return new LinkViewModel
             {
                 Id=model.Id,
-                Action = model.Action,
+                Action = model.Action == "Index" ? string.Empty : model.Action,
                 Controller = model.Controller,
                 Order=model.Order,
                 Name = model.Name,

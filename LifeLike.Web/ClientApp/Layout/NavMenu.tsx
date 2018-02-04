@@ -5,8 +5,7 @@ import MenuList from "./Components/MenuContainer";
 
 export class NavMenu extends React.Component<{}, {}> {
     public render() {
-        return <div className='main-nav'>
-            <div className='navbar navbar-inverse'>
+        return <div className='navbar navbar'>
                 <div className='navbar-header'>
                     <button type='button' className='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
                         <span className='sr-only'>Pokaż Menu</span>
@@ -16,12 +15,9 @@ export class NavMenu extends React.Component<{}, {}> {
                     </button>
                     <Link className='navbar-brand' to={ '/' }>LifeLike</Link>
                 </div>
-                <div className='clearfix'/>
-                <div className='navbar-collapse collapse'>
-                     
+                <div className= 'navbar-collapse collapse'>                     
                         <MenuList />              
-                </div>
-            </div>
+                </div>              
         </div>;
     }
 }

@@ -8,6 +8,6 @@ export class HomeLayout extends React.Component<RouteComponentProps<{}>, any> {
     }
 
     public render() {
-        return <div>Home</div>;
+        return <h1>Home</h1>;
     }
 }

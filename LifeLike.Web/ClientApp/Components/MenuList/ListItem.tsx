@@ -21,7 +21,7 @@ class ListItem extends React.Component<ListItemPros, any> {
         return (
             <li>
                 <NavLink to={this.SetupNavLink()}   exact activeClassName='active'>
-                    <span className={this.SetupGlyph()}>{this.props.item.Name}</span> 
+                    <span className={this.SetupGlyph()}> </span> {this.props.item.Name}
                 </NavLink>
             </li>
         )

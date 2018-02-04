@@ -1,17 +1,21 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
-import PageListView from './Components/PageContainer';
-export class PageLayout extends React.Component<RouteComponentProps<{}>, {}> {
+import PageContainer from './Components/PageContainer';
+import PageDetailView from './Components/PageDetailView';
+
+export class PageLayout extends React.Component<RouteComponentProps<string>, {}> {
     constructor() {
         super();
     }
-
-
     public render() {
-        let contents = <PageListView/>;
+        console.log('Page Params: '+this.props.match.params)
+        let isDetail = this.props.match.params != null; 
+
+      //  let contents = isDetail ?  <PageContainer/> : <PageDetailView Item={this.props.match.params} />;
+        
         return <div>
-            <h1>Logs</h1>
-            { contents }
+            <h1>Posts</h1>
+            {  <PageContainer/>  }
         </div>;
     }
 }

@@ -14,7 +14,7 @@ export default class MenuItem
 
     Id: number;
     Controller: string;
-    Action: string;
+    Action: string; 
     Name: string;
     IconName: string;
     Link: string;

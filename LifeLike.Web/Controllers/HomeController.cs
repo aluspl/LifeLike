@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
@@ -29,11 +30,70 @@ namespace LifeLike.Web.Controllers
         [HttpGet("Api/Menu")]
         public async Task<IActionResult> GetMenuLinks()
         {
-            await _logger.AddStat("Menu","Index", "Home");
+            await _logger.AddStat("Menu", "Index", "Home");
+            var list =   MenuList();
 
-            var list = await _links.List(LinkCategory.Menu);
+           // var list = await _links.List(LinkCategory.Menu);
             return Json(list.Select(LinkViewModel.Get));
         }
+
+        private static List<Link> MenuList()
+        {
+            var context= new List<Link>();
+          
+         
+            context.Add(new Link()
+            {                Id=1,
+
+                Action = "",
+                Controller = "Posts",
+                Name = "News",
+                IconName = "pencil",
+
+                Category = LinkCategory.Menu
+            });
+
+            context.Add(new Link()
+            {
+                                Id=2,
+
+                Action = "",
+                Controller = "Album",
+                Name = "Albums",
+                IconName = "camera",
+                Category = LinkCategory.Menu
+            });
+               context.Add(new Link()
+            {
+                Id=0,
+                Action = "LifeLike",
+                Controller = "Page",
+                Name = "LifeLike: The Game",
+                IconName = "king",
+
+                Category = LinkCategory.Menu
+            });
+            context.Add(new Link()
+            {
+                                Id=3,
+                Action = "",
+                Controller = "Logs",
+                Name = "Logs",
+                IconName = "film",
+
+                Category = LinkCategory.Menu
+            });
+            //   context.Add(new Link()
+            // {
+            //     Action = "",
+            //     Controller = "Video",
+            //     Name = "Video Projects",
+            //     IconName = "film",
+            //     Category = LinkCategory.Menu
+            // });
+            return context;
+        }
+
         [HttpGet("Api/Config")]
         public async Task<IActionResult> GetList()
         {

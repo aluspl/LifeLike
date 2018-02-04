@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import "../../Styles/ListItem.scss";
 import Item from '../../Models/Page';
 
 interface ListItemPros {
@@ -11,12 +11,12 @@ class ListItem extends React.Component<ListItemPros, any> {
 
     render() {
         return (            
-            <a href={`/Page/${this.props.item.ShortName}`}>
+            <a href={`/Post/${this.props.item.ShortName}`}>
               <div className='ListItem row'>
                     <div className='col-md-12'>
-                        <div className='ProjectsListItem-summary row'>
+                        <div className='ListItem-summary row'>
                             <div className='col-md-6 padding-none'>
-                                <span className='ProjectsListItem-name'>{this.props.item.FullName}</span>
+                                <span className='ListItem-name'>{this.props.item.FullName}</span>
                             </div>
                             <div className='col-md-6 padding-none'>
                                 <span className='pull-right'>
