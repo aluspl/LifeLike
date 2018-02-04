@@ -16457,8 +16457,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/sass-loader/lib/loader.js!./Site.scss", function() {
-			var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/sass-loader/lib/loader.js!./Site.scss");
+		module.hot.accept("!!../../node_modules/css-loader/index.js??ref--1-1!../../node_modules/sass-loader/lib/loader.js??ref--1-2!./Site.scss", function() {
+			var newContent = require("!!../../node_modules/css-loader/index.js??ref--1-1!../../node_modules/sass-loader/lib/loader.js??ref--1-2!./Site.scss");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -16775,10 +16775,16 @@ var ListItem = (function (_super) {
     function ListItem() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    ListItem.prototype.SetupNavLink = function () {
+        return '/'.concat(this.props.item.Controller).concat('/').concat(this.props.item.Action);
+    };
+    ListItem.prototype.SetupGlyph = function () {
+        return 'glyphicon glyphicon-'.concat(this.props.item.IconName);
+    };
     ListItem.prototype.render = function () {
         return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("li", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["NavLink"], { to: this.props.item.Controller, exact: true, activeClassName: 'active' },
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'glyphicon glyphicon-name${this.props.item.IconName}' }, this.props.item.Name))));
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["NavLink"], { to: this.SetupNavLink(), exact: true, activeClassName: 'active' },
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: this.SetupGlyph() }, this.props.item.Name))));
     };
     return ListItem;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
@@ -17396,12 +17402,12 @@ if (false) {
 /* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(152)(undefined);
+exports = module.exports = __webpack_require__(152)(true);
 // imports
 
 
 // module
-exports.push([module.i, "/* Highlighting rules for nav menu items */\n.main-nav li a.active,\n.main-nav li a.active:hover,\n.main-nav li a.active:focus {\n  background-color: #4189C7;\n  color: white; }\n\n.padding-none {\n  padding: 0; }\n\n.margin-none {\n  margin: 0; }\n\n.main-nav li .glyphicon {\n  margin-right: 10px; }\n\n/* Keep the nav menu independent of scrolling and on top of other items */\n.main-nav {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  z-index: 1; }\n\n@media (max-width: 767px) {\n  /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */\n  body {\n    padding-top: 50px; } }\n\n@media (min-width: 768px) {\n  /* On small screens, convert the nav menu to a vertical sidebar */\n  .main-nav {\n    height: 100%;\n    width: calc(25% - 20px); }\n  .main-nav .navbar {\n    border-radius: 0px;\n    border-width: 0px;\n    height: 100%; }\n  .main-nav .navbar-header {\n    float: none; }\n  .main-nav .navbar-collapse {\n    border-top: 1px solid #444;\n    padding: 0px; }\n  .main-nav .navbar ul {\n    float: none; }\n  .main-nav .navbar li {\n    float: none;\n    font-size: 15px;\n    margin: 6px; }\n  .main-nav .navbar li a {\n    padding: 10px 16px;\n    border-radius: 4px; }\n  .main-nav .navbar a {\n    /* If a menu item's text is too long, truncate it */\n    width: 100%;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis; } }\n", ""]);
+exports.push([module.i, "/* Highlighting rules for nav menu items */\n.main-nav li a.active,\n.main-nav li a.active:hover,\n.main-nav li a.active:focus {\n  background-color: #4189C7;\n  color: white; }\n\n.padding-none {\n  padding: 0; }\n\n.margin-none {\n  margin: 0; }\n\n.main-nav li .glyphicon {\n  margin-right: 10px; }\n\n/* Keep the nav menu independent of scrolling and on top of other items */\n.main-nav {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  z-index: 1; }\n\n@media (max-width: 767px) {\n  /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */\n  body {\n    padding-top: 50px; } }\n\n@media (min-width: 768px) {\n  /* On small screens, convert the nav menu to a vertical sidebar */\n  .main-nav {\n    height: 100%;\n    width: calc(25% - 20px); }\n  .main-nav .navbar {\n    border-radius: 0px;\n    border-width: 0px;\n    height: 100%; }\n  .main-nav .navbar-header {\n    float: none; }\n  .main-nav .navbar-collapse {\n    border-top: 1px solid #444;\n    padding: 0px; }\n  .main-nav .navbar ul {\n    float: none; }\n  .main-nav .navbar li {\n    float: none;\n    font-size: 15px;\n    margin: 6px; }\n  .main-nav .navbar li a {\n    padding: 10px 16px;\n    border-radius: 4px; }\n  .main-nav .navbar a {\n    /* If a menu item's text is too long, truncate it */\n    width: 100%;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis; } }\n", "", {"version":3,"sources":["B:/Dev/Web/LifeLike/LifeLike.Web/ClientApp/Styles/ClientApp/Styles/Site.scss"],"names":[],"mappings":"AACA,2CAA2C;AAC3C;;;EAGI,0BAAyB;EACzB,aAAY,EACf;;AACD;EACI,WAAU,EACX;;AAED;EACE,UAAS,EACV;;AACD;EACI,mBAAkB,EACrB;;AAEH,0EAA0E;AAC1E;EACI,gBAAe;EACf,OAAM;EACN,QAAO;EACP,SAAQ;EACR,WAAU,EACb;;AAED;EACI,8FAA8F;EAC9F;IACI,kBAAiB,EACpB,EAAA;;AAGL;EACI,kEAAkE;EAClE;IACI,aAAY;IACZ,wBAAuB,EAC1B;EACD;IACI,mBAAkB;IAClB,kBAAiB;IACjB,aAAY,EACf;EACD;IACI,YAAW,EACd;EACD;IACI,2BAA0B;IAC1B,aAAY,EACf;EACD;IACI,YAAW,EACd;EACD;IACI,YAAW;IACX,gBAAe;IACf,YAAW,EACd;EACD;IACI,mBAAkB;IAClB,mBAAkB,EACrB;EACD;IACI,oDAAoD;IACpD,YAAW;IACX,oBAAmB;IACnB,iBAAgB;IAChB,wBAAuB,EAC1B,EAAA","file":"Site.scss","sourcesContent":["\r\n/* Highlighting rules for nav menu items */\r\n.main-nav li a.active,\r\n.main-nav li a.active:hover,\r\n.main-nav li a.active:focus {\r\n    background-color: #4189C7;\r\n    color: white;\r\n}\r\n.padding-none {\r\n    padding: 0;\r\n  }\r\n  \r\n  .margin-none {\r\n    margin: 0;\r\n  }\r\n  .main-nav li .glyphicon {\r\n      margin-right: 10px;\r\n  }\r\n  \r\n/* Keep the nav menu independent of scrolling and on top of other items */\r\n.main-nav {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    z-index: 1;\r\n}\r\n\r\n@media (max-width: 767px) {\r\n    /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */\r\n    body {\r\n        padding-top: 50px;\r\n    }\r\n}\r\n\r\n@media (min-width: 768px) {\r\n    /* On small screens, convert the nav menu to a vertical sidebar */\r\n    .main-nav {\r\n        height: 100%;\r\n        width: calc(25% - 20px);\r\n    }\r\n    .main-nav .navbar {\r\n        border-radius: 0px;\r\n        border-width: 0px;\r\n        height: 100%;\r\n    }\r\n    .main-nav .navbar-header {\r\n        float: none;\r\n    }\r\n    .main-nav .navbar-collapse {\r\n        border-top: 1px solid #444;\r\n        padding: 0px;\r\n    }\r\n    .main-nav .navbar ul {\r\n        float: none;\r\n    }\r\n    .main-nav .navbar li {\r\n        float: none;\r\n        font-size: 15px;\r\n        margin: 6px;\r\n    }\r\n    .main-nav .navbar li a {\r\n        padding: 10px 16px;\r\n        border-radius: 4px;\r\n    }\r\n    .main-nav .navbar a {\r\n        /* If a menu item's text is too long, truncate it */\r\n        width: 100%;\r\n        white-space: nowrap;\r\n        overflow: hidden;\r\n        text-overflow: ellipsis;\r\n    }\r\n}\r\n"],"sourceRoot":""}]);
 
 // exports
 

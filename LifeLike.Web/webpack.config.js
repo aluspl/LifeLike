@@ -17,21 +17,27 @@ module.exports = (env) => {
         },
         module: {
             rules: [
-                {
-                    test: /.jsx?$/,
-                    loader: 'babel-loader',
-                    include: /ClientApp/,
-                    query: {
-                        presets: ['es2015', 'react']
-                    }
-                },
                 { test: /\.tsx?$/, include: /ClientApp/, use: 'awesome-typescript-loader?silent=true' },
-                { test: /\.css$/, use: isDevBuild ? ['style-loader', 'css-loader'] : ExtractTextPlugin.extract({ use: 'css-loader?minimize' }) },
                 {
                     test: /\.scss$/,
-                    loaders: ["style-loader", "css-loader", "sass-loader"],
-                    include: path.resolve(__dirname, '../')
+                    include: /ClientApp/,
+                    use: [{
+                        loader: "style-loader"
+                    }, {
+                        loader: "css-loader", options: {
+                            sourceMap: true
+                        }
+                    }, {
+                        loader: "sass-loader", options: {
+                            sourceMap: true
+                        }
+                    }]
                 },
+                { test: /\.css$/,   
+                    include: /ClientApp/, 
+                    use: isDevBuild ? 
+                    ['style-loader', 'css-loader'] : 
+                    ExtractTextPlugin.extract({ use: 'css-loader?minimize' }) },
                 { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' }
             ]
         },

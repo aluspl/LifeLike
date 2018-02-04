@@ -18,27 +18,8 @@ export class NavMenu extends React.Component<{}, {}> {
                 </div>
                 <div className='clearfix'/>
                 <div className='navbar-collapse collapse'>
-                        <MenuList />
-                        {/*<li>*/}
-                            {/*<NavLink to={ '/' } exact activeClassName='active'>*/}
-                                {/*<span className='glyphicon glyphicon-home'></span> Home*/}
-                            {/*</NavLink>*/}
-                        {/*</li>*/}
-                        {/*<li>*/}
-                            {/*<NavLink to={ '/Pages' } activeClassName='active'>*/}
-                                {/*<span className='glyphicon glyphicon-education'></span> Pages*/}
-                            {/*</NavLink>*/}
-                        {/*</li>*/}
-                        {/*<li>*/}
-                            {/*<NavLink to={ '/Posts' } activeClassName='active'>*/}
-                                {/*<span className='glyphicon glyphicon-th-list'></span> Posts*/}
-                            {/*</NavLink>*/}
-                        {/*</li>*/}
-                        {/*<li>*/}
-                            {/*<NavLink to={ '/Logs' } activeClassName='active'>*/}
-                                {/*<span className='glyphicon glyphicon-th-list'></span> Logs*/}
-                            {/*</NavLink>*/}
-                        {/*</li>*/}
+                     
+                        <MenuList />              
                 </div>
             </div>
         </div>;

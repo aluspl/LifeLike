@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import { Router } from "react-router";
 import Item from '../../Models/MenuItem';
 import {NavLink} from "react-router-dom";
 
@@ -9,17 +9,23 @@ interface ListItemPros {
 }
 
 class ListItem extends React.Component<ListItemPros, any> {
-
+    SetupNavLink()
+    {
+         return '/'.concat(this.props.item.Controller).concat('/').concat(this.props.item.Action);        
+    }
+    SetupGlyph()
+    {
+         return'glyphicon glyphicon-'.concat(this.props.item.IconName);        
+    }
     render() {
         return (
             <li>
-                <NavLink to={ this.props.item.Controller } exact activeClassName='active'>
-                    <span className='glyphicon glyphicon-name${this.props.item.IconName}'>{this.props.item.Name}</span> 
+                <NavLink to={this.SetupNavLink()}   exact activeClassName='active'>
+                    <span className={this.SetupGlyph()}>{this.props.item.Name}</span> 
                 </NavLink>
             </li>
         )
     }
-
 }
 
 export default ListItem;
