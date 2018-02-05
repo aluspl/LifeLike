@@ -18,13 +18,13 @@ export const routes =
 
         <Route path='/Logs' component={ LogLayout } />
         <Route path='/Posts' component={ PostLayout } />
-        <Route exact  path='/Posts/:shortname' component={ PostLayout } />
+        <Route path='/Posts/:shortname' component={ PostLayout } />
 
         <Route path='/Photos' component={ AlbumLayout } />
         <Route path='/Album' component={ AlbumLayout } />
 
         <Route path='/Pages' component={ PageLayout } />
-        <Route exact  path='/Pages/:shortname' component={ PageLayout } />
+        <Route   path='/Pages/:shortname' component={ PageLayout } />
 
     {/*TODO: Logs / Posts and Pages / Details */}
 </Layout>;

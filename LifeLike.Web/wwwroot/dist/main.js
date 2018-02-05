@@ -4725,7 +4725,8 @@ var ListView = (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     ListView.prototype.render = function () {
-        return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("section", { className: 'List row' },
+        return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("section", { className: 'row' },
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null, "Posts"),
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' }, this.props.items.map(function (item) {
                 return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__PageListItem__["a" /* default */], { key: item.Id, item: item });
             })));
@@ -16424,11 +16425,11 @@ var routes = __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPO
     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { path: '/Index', component: __WEBPACK_IMPORTED_MODULE_3__Home_HomeLayout__["a" /* HomeLayout */] }),
     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { path: '/Logs', component: __WEBPACK_IMPORTED_MODULE_5__Log_LogLayout__["a" /* LogLayout */] }),
     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { path: '/Posts', component: __WEBPACK_IMPORTED_MODULE_4__Page_PostLayout__["a" /* PostLayout */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { exact: true, path: '/Posts/:shortname', component: __WEBPACK_IMPORTED_MODULE_4__Page_PostLayout__["a" /* PostLayout */] }),
+    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { path: '/Posts/:shortname', component: __WEBPACK_IMPORTED_MODULE_4__Page_PostLayout__["a" /* PostLayout */] }),
     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { path: '/Photos', component: __WEBPACK_IMPORTED_MODULE_7__Album_AlbumView__["a" /* AlbumLayout */] }),
     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { path: '/Album', component: __WEBPACK_IMPORTED_MODULE_7__Album_AlbumView__["a" /* AlbumLayout */] }),
     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { path: '/Pages', component: __WEBPACK_IMPORTED_MODULE_6__Page_PageLayout__["a" /* PageLayout */] }),
-    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { exact: true, path: '/Pages/:shortname', component: __WEBPACK_IMPORTED_MODULE_6__Page_PageLayout__["a" /* PageLayout */] }));
+    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Route"], { path: '/Pages/:shortname', component: __WEBPACK_IMPORTED_MODULE_6__Page_PageLayout__["a" /* PageLayout */] }));
 
 
 /***/ }),
@@ -16857,13 +16858,13 @@ var ListItem = (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     ListItem.prototype.SetupNavLink = function () {
-        return ('/Page/').concat(this.props.item.ShortName);
+        return ('/Pages/').concat(this.props.item.ShortName);
     };
     ListItem.prototype.render = function () {
-        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["Link"], { to: this.SetupNavLink() },
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'ListItem row' },
+        return (__WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["NavLink"], { to: this.SetupNavLink() },
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-12' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'ListItem-summary row' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'row' },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6 padding-none' },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: 'ProjectsListItem-name' }, this.props.item.FullName)),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: 'col-md-6 padding-none' },
@@ -17415,9 +17416,7 @@ var PageLayout = (function (_super) {
         console.log('Page Params: ' + this.props.match.path);
         var isDetail = this.props.match.params != null;
         var contents = isDetail ? __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__Components_PageContainer__["a" /* default */], null) : __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__Components_PageDetailView__["a" /* default */], { Item: this.props.match.params });
-        return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("h1", null, "Posts"),
-            contents);
+        return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null, contents);
     };
     return PageLayout;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));

@@ -16,7 +16,6 @@ export class PageLayout extends React.Component<RouteComponentProps<{}>, {}>{
         let contents = isDetail ?  <PageContainer/> : <PageDetailView Item={this.props.match.params} />;
         
         return <div>
-            <h1>Posts</h1>
             {  contents  }
         </div>;
     }
