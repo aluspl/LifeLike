@@ -1,5 +1,6 @@
 import * as React from 'react';
-import "../../Styles/ListItem.scss";
+import {Link} from "react-router-dom";
+
 import Item from '../../Models/Page';
 
 interface ListItemPros {
@@ -8,15 +9,18 @@ interface ListItemPros {
 }
 
 class ListItem extends React.Component<ListItemPros, any> {
-
+    SetupNavLink()
+    {
+        return ('/Page/').concat(this.props.item.ShortName);
+    }
     render() {
         return (            
-            <a href={`/Post/${this.props.item.ShortName}`}>
+            <Link to={this.SetupNavLink()}>
               <div className='ListItem row'>
                     <div className='col-md-12'>
                         <div className='ListItem-summary row'>
                             <div className='col-md-6 padding-none'>
-                                <span className='ListItem-name'>{this.props.item.FullName}</span>
+                                <span className='ProjectsListItem-name'>{this.props.item.FullName}</span>
                             </div>
                             <div className='col-md-6 padding-none'>
                                 <span className='pull-right'>
@@ -27,7 +31,7 @@ class ListItem extends React.Component<ListItemPros, any> {
                                     
                     </div>
                 </div>
-                </a>
+                </Link>
         )
     }
 

@@ -3,7 +3,7 @@ import { RouteComponentProps } from 'react-router';
 import  PostContainer from './Components/PostContainer';
 import  PostDetailView from './Components/PostDetailView';
 
-export class PostLayout extends React.Component<RouteComponentProps<string>, {}> {
+export class PostLayout extends React.Component<RouteComponentProps<{}>, {}> {
     constructor() {
         super();
     }
