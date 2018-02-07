@@ -3,6 +3,6 @@ install:
 - cmd: >-
     npm install
 
-    npm run install
+    npm run restore
 build:
   verbosity: minimal
