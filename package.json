@@ -1,0 +1,10 @@
+{
+  "name": "lifelike",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "install": "cd LifeLike.Web npm install && dotnet restore",
+    "build": "cd LifeLike.Web webpack && dotnet build",
+    "start": "cd LifeLike.Web webpack && dotnet run"
+  }
+}
