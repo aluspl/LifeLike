@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "restore": "dotnet restore && cd LifeLike.Web && npm install",
-    "build": "webpack && dotnet build",
-    "start": "webpack && dotnet run"
+    "build": "cd LifeLike.Web && npm run build",
+    "start": "cd LifeLike.Web && npm run start"
   }
 }

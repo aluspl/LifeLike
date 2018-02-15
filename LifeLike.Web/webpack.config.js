@@ -8,7 +8,9 @@ module.exports = (env) => {
     const isDevBuild = !(env && env.prod);
     return [{
         stats: { modules: false },
-        entry: { 'main': './ClientApp/boot.tsx' },
+        entry: { 
+            'main': './ClientApp/boot.tsx', 
+        },
         resolve: { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
         output: {
             path: path.join(__dirname, bundleOutputDir),
@@ -20,15 +22,23 @@ module.exports = (env) => {
                 { test: /\.tsx?$/, include: /ClientApp/, use: 'awesome-typescript-loader?silent=true' },
                 {
                     test: /\.scss$/,
-                    include: /ClientApp/,
+                    include: /ClientApp/, 
                     use: [{
-                        loader: "style-loader"
+                        loader: "style-loader", 
+                        options: {
+                            outputPath: '/wwwroot/dist/',
+                        }
                     }, {
-                        loader: "css-loader", options: {
+                        loader: "css-loader", 
+                        options: {
+                            outputPath: '/wwwroot/dist/',
+
                             sourceMap: true
                         }
                     }, {
-                        loader: "sass-loader", options: {
+                        loader: "sass-loader", 
+                        options: {
+                            outputPath: '/wwwroot/dist/',
                             sourceMap: true
                         }
                     }]

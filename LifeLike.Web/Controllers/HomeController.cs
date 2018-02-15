@@ -43,8 +43,8 @@ namespace LifeLike.Web.Controllers
           
          
             context.Add(new Link()
-            {                Id=1,
-
+            {                
+                Id=1,
                 Action = "",
                 Controller = "Posts",
                 Name = "News",
@@ -55,27 +55,26 @@ namespace LifeLike.Web.Controllers
 
             context.Add(new Link()
             {
-                                Id=2,
-
+                Id=2,
                 Action = "",
-                Controller = "Album",
+                Controller = "Albums",
                 Name = "Albums",
                 IconName = "camera",
                 Category = LinkCategory.Menu
             });
-               context.Add(new Link()
-            {
-                Id=0,
-                Action = "LifeLike",
-                Controller = "Page",
-                Name = "LifeLike: The Game",
-                IconName = "king",
+            //    context.Add(new Link()
+            // {
+            //     Id=0,
+            //     Action = "LifeLike",
+            //     Controller = "Page",
+            //     Name = "LifeLike: The Game",
+            //     IconName = "king",
 
-                Category = LinkCategory.Menu
-            });
+            //     Category = LinkCategory.Menu
+            // });
             context.Add(new Link()
             {
-                                Id=3,
+                Id=3,
                 Action = "",
                 Controller = "Logs",
                 Name = "Logs",
@@ -83,14 +82,15 @@ namespace LifeLike.Web.Controllers
 
                 Category = LinkCategory.Menu
             });
-            //   context.Add(new Link()
-            // {
-            //     Action = "",
-            //     Controller = "Video",
-            //     Name = "Video Projects",
-            //     IconName = "film",
-            //     Category = LinkCategory.Menu
-            // });
+              context.Add(new Link()
+            {
+                Id=4,
+                Action = "",
+                Controller = "Videos",
+                Name = "Video Projects",
+                IconName = "film",
+                Category = LinkCategory.Menu
+            });
             return context;
         }
 

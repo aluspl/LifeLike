@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 
-import Item from '../../Models/Page';
-import ListItem from './PageListItem';
+import Item from '../../Models/MenuItem';
+import ListItem from './ListItem';
 
 interface ListProps {
     items: Item[]

@@ -11,7 +11,7 @@ interface ListItemPros {
 class ListItem extends React.Component<ListItemPros, any> {
     SetupNavLink()
     {
-        return ('/Pages/').concat(this.props.item.ShortName);
+        return ('/Post/').concat(this.props.item.ShortName);
     }
     render() {
         return (            

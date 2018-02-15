@@ -44,10 +44,20 @@ namespace LifeLike.Web.Controllers
         [HttpGet("Details/{id}")]
         public async Task<IActionResult> Details(string id)
         {
-            await  _logger.AddStat(id, "Details", "Page");
+            try
+            {
+                await  _logger.AddStat(id, "Details", "Page");
 
-            var page =await _pages.Get(id);
-            return Json(PageViewModel.ViewModel(page));
+                var page =await _pages.Get(id);
+                if (page==null) return Json(null);
+                return Json(PageViewModel.ViewModel(page));
+
+            }
+            catch(Exception e)
+            {
+                await  _logger.AddException(e);
+                return null;
+            }
         }
    
         [HttpPost]

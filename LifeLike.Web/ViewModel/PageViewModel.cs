@@ -33,6 +33,7 @@ namespace LifeLike.Web.ViewModel
         }
         public static PageViewModel ViewModel(Page model)
         {
+            if (model==null) return null;
             return new PageViewModel
             {
                 Id=model.Id,
