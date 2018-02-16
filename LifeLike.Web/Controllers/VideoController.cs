@@ -47,6 +47,7 @@ namespace LifeLike.Web.Controllers
  
         }
         // GET
+        [HttpGet]
         public async Task<IEnumerable<LinkViewModel>> GetList()
         {
             var list=await _repository.List(LinkCategory.Video);

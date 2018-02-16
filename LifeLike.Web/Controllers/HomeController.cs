@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LifeLike.Web.Controllers
 {
-    
+
     public class HomeController : Controller
     {
         private readonly IConfigRepository _config;
@@ -43,8 +43,8 @@ namespace LifeLike.Web.Controllers
           
          
             context.Add(new Link()
-            {                Id=1,
-
+            {                
+                Id=1,
                 Action = "",
                 Controller = "Posts",
                 Name = "News",
@@ -55,27 +55,26 @@ namespace LifeLike.Web.Controllers
 
             context.Add(new Link()
             {
-                                Id=2,
-
+                Id=2,
                 Action = "",
-                Controller = "Album",
+                Controller = "Albums",
                 Name = "Albums",
                 IconName = "camera",
                 Category = LinkCategory.Menu
             });
-               context.Add(new Link()
-            {
-                Id=0,
-                Action = "LifeLike",
-                Controller = "Page",
-                Name = "LifeLike: The Game",
-                IconName = "king",
+            //    context.Add(new Link()
+            // {
+            //     Id=0,
+            //     Action = "LifeLike",
+            //     Controller = "Page",
+            //     Name = "LifeLike: The Game",
+            //     IconName = "king",
 
-                Category = LinkCategory.Menu
-            });
+            //     Category = LinkCategory.Menu
+            // });
             context.Add(new Link()
             {
-                                Id=3,
+                Id=3,
                 Action = "",
                 Controller = "Logs",
                 Name = "Logs",
@@ -83,14 +82,15 @@ namespace LifeLike.Web.Controllers
 
                 Category = LinkCategory.Menu
             });
-            //   context.Add(new Link()
-            // {
-            //     Action = "",
-            //     Controller = "Video",
-            //     Name = "Video Projects",
-            //     IconName = "film",
-            //     Category = LinkCategory.Menu
-            // });
+              context.Add(new Link()
+            {
+                Id=4,
+                Action = "",
+                Controller = "Videos",
+                Name = "Video Projects",
+                IconName = "film",
+                Category = LinkCategory.Menu
+            });
             return context;
         }
 
@@ -98,23 +98,19 @@ namespace LifeLike.Web.Controllers
         public async Task<IActionResult> GetList()
         {
             await _logger.AddStat("Configs","Index", "Home");
+            var   config1=await _config.Get(Config.RSS1);
+             var   config2=await _config.Get(Config.RSS2);
+             var   config3=await _config.Get(Config.WelcomeText);
+             var   config4=await _config.Get(Config.WelcomeVideo);
             var pageConfig = new PageConfigModel
             {
-                Rss1Url=await _config.Get(Config.RSS1),
-                Rss2Url=await _config.Get(Config.RSS2),
-                WelcomeText=await _config.Get(Config.WelcomeText),
-                WelcomeVideo=await _config.Get(Config.WelcomeVideo)
+                Rss1Url=config1.Value,
+                Rss2Url=config2.Value,
+                WelcomeText=config3.Value,
+                WelcomeVideo=config4.Value
             };
 
             return Json(pageConfig);
         }
-    }
-
-    public class PageConfigModel
-    {
-        public Config Rss1Url { get; set; }
-        public Config WelcomeText { get; set; }
-        public Config Rss2Url { get; set; }
-        public Config WelcomeVideo { get; set; }
     }
 }

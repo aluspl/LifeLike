@@ -4,27 +4,33 @@ import { Layout } from './Layout/Layout';
 import { HomeLayout } from './Home/HomeLayout';
 
 import { PostLayout } from "./Page/PostLayout";
+import { PageLayout } from "./Page/PageLayout";
+import { PostDetailLayout }  from "./Page/PostDetailLayout";
+
 
 import { LogLayout } from './Log/LogLayout';
+import { VideoLayout } from './Video/VideoLayout';
 
-import { PageLayout } from "./Page/PageLayout";
 
-import {AlbumLayout} from "./Album/AlbumView";
+import { AlbumLayout } from "./Album/AlbumView";
 
 export const routes = 
     <Layout>
         <Route exact path='/' component={ HomeLayout } />
         <Route  path='/Index' component={ HomeLayout } />
-
         <Route path='/Logs' component={ LogLayout } />
-        <Route path='/Posts' component={ PostLayout } />
-        <Route path='/Posts/:shortname' component={ PostLayout } />
-
         <Route path='/Photos' component={ AlbumLayout } />
-        <Route path='/Album' component={ AlbumLayout } />
+        <Route path='/Albums' component={ AlbumLayout } />
+        <Route path='/Videos' component={ VideoLayout } />
+        
+        <Route path='/Album/:shortname' component={ AlbumLayout } />
 
         <Route path='/Pages' component={ PageLayout } />
-        <Route   path='/Pages/:shortname' component={ PageLayout } />
+        <Route  path='/Page/:shortname' component={ PostDetailLayout } />
+
+        <Route path='/Posts' component={ PostLayout } />
+        <Route  path='/Post/:shortname' component={ PostDetailLayout } />
+
 
     {/*TODO: Logs / Posts and Pages / Details */}
 </Layout>;

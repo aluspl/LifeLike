@@ -1,9 +1,9 @@
 import * as React from 'react';
-import ListView from '../../Components/PageList/ListView';
+import ListView from '../../Components/VideoList/ListView';
 import EmptyListView from '../../Components/EmptyList/EmptyListView';
 import LoadingView from '../../Components/Loading/LoadingView';
 
-import Item from '../../Models/Page';
+import Item from '../../Models/MenuItem';
 
 interface ListContainerState {
     loadingData: boolean,
@@ -13,7 +13,7 @@ interface ListContainerState {
 class ListContainer extends React.Component<any, ListContainerState> {
 
     private paths = {
-        getList: '/Api/Page/Pages'
+        getList: '/Api/Video/'
     };
 
     constructor() {
@@ -43,7 +43,7 @@ class ListContainer extends React.Component<any, ListContainerState> {
 
         return (
             this.state.loadingData ?
-                <LoadingView Title={"Posts"}/> :
+                <LoadingView Title={"Videos"}/> :
                 hasProjects ?
                     <ListView items= {this.state.items} /> :  <EmptyListView />
         )

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ListView from '../../Components/PageList/PageList';
+import ListView from '../../Components/PageList/ListView';
 import EmptyListView from '../../Components/EmptyList/EmptyListView';
 import LoadingView from '../../Components/Loading/LoadingView';
 
@@ -43,7 +43,7 @@ class PostContainer extends React.Component<any, ListContainerState> {
 
         return (
             this.state.loadingData ?
-                <LoadingView Title={"Posts"}/> :
+                <LoadingView Title={"News"}/> :
                 hasProjects ? 
                     <ListView items= {this.state.items} /> :  <EmptyListView />
         )
