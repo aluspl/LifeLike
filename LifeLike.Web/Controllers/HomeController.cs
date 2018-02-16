@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LifeLike.Web.Controllers
 {
-    
+
     public class HomeController : Controller
     {
         private readonly IConfigRepository _config;
@@ -98,23 +98,19 @@ namespace LifeLike.Web.Controllers
         public async Task<IActionResult> GetList()
         {
             await _logger.AddStat("Configs","Index", "Home");
+            var   config1=await _config.Get(Config.RSS1);
+             var   config2=await _config.Get(Config.RSS2);
+             var   config3=await _config.Get(Config.WelcomeText);
+             var   config4=await _config.Get(Config.WelcomeVideo);
             var pageConfig = new PageConfigModel
             {
-                Rss1Url=await _config.Get(Config.RSS1),
-                Rss2Url=await _config.Get(Config.RSS2),
-                WelcomeText=await _config.Get(Config.WelcomeText),
-                WelcomeVideo=await _config.Get(Config.WelcomeVideo)
+                Rss1Url=config1.Value,
+                Rss2Url=config2.Value,
+                WelcomeText=config3.Value,
+                WelcomeVideo=config4.Value
             };
 
             return Json(pageConfig);
         }
-    }
-
-    public class PageConfigModel
-    {
-        public Config Rss1Url { get; set; }
-        public Config WelcomeText { get; set; }
-        public Config Rss2Url { get; set; }
-        public Config WelcomeVideo { get; set; }
     }
 }
