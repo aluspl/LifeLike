@@ -3,8 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "restore": "dotnet restore && cd LifeLike.Web && npm install",
-    "build": "dotnet build cd LifeLike.Web && npm run build",
+    "restore": "dotnet restore && cd LifeLike.Web && npm run restore",
+    "build": "dotnet build && cd LifeLike.Web && npm run build",
     "start": "cd LifeLike.Web && npm run start"
   }
 }

@@ -1,5 +1,6 @@
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
+using LifeLike.Web.Utils;
 
 namespace LifeLike.Web.ViewModel
 {
@@ -24,6 +25,8 @@ namespace LifeLike.Web.ViewModel
 
         public LinkCategory Category { get; set; }
         public bool IsLink => (!string.IsNullOrEmpty(Link) && string.IsNullOrEmpty(Controller));
+
+        public string YoutubeID { get; private set; }
 
         public static Link Get(LinkViewModel model)
         {
@@ -50,6 +53,22 @@ namespace LifeLike.Web.ViewModel
                 Order=model.Order,
                 Name = model.Name,
                 Link = model.Url,
+                IconName = model.IconName,
+                Category=model.Category               
+            };
+
+        }
+         public static LinkViewModel GetYoutube(Link model)
+        {
+            return new LinkViewModel
+            {
+                Id=model.Id,
+                Action = model.Action == "Index" ? string.Empty : model.Action,
+                Controller = model.Controller,
+                Order=model.Order,
+                Name = model.Name,
+                Link = model.Url,
+                YoutubeID = HtmlUtils.GetYoutubeId(model.Url),
                 IconName = model.IconName,
                 Category=model.Category               
             };
