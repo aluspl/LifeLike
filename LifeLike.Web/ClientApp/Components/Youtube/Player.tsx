@@ -17,12 +17,10 @@ class Player extends React.Component<IPlayer, any> {
             autoplay: 1, 
           }
         };
-     
+        console.log(this.GetLink());
+
         return (
-            <YouTube 
-              videoId={this.props.YoutubeId}
-              opts={opts}
-            />
+            <YouTube videoId={this.props.YoutubeId} />
           );
       }
           

@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories;
+using LifeLike.Web.Utils;
 using LifeLike.Web.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
@@ -107,9 +109,9 @@ namespace LifeLike.Web.Controllers
                 Rss1Url=config1.Value,
                 Rss2Url=config2.Value,
                 WelcomeText=config3.Value,
-                WelcomeVideo=config4.Value
+                WelcomeVideo=HtmlUtils.GetYoutubeId(config4.Value)
             };
-
+            Debug.WriteLine(pageConfig.WelcomeVideo);
             return Json(pageConfig);
         }
     }
