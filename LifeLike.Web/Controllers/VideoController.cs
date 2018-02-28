@@ -48,11 +48,19 @@ namespace LifeLike.Web.Controllers
         }
         // GET
         [HttpGet]
-        public async Task<IEnumerable<LinkViewModel>> GetList()
+        public async Task<IActionResult> GetList()
         {
-            var list=await _repository.List(LinkCategory.Video);
-            var items= list.Select(LinkViewModel.Get);
-            return  items;
+            try
+            {    
+                var list=await _repository.List(LinkCategory.Video);
+                var items= list.Select(LinkViewModel.GetYoutube);
+                return  Json(items);
+            }
+            catch(Exception e)
+            {
+                await _logger.AddException(e);
+                return Json(null);
+            }
         }
     }
 }

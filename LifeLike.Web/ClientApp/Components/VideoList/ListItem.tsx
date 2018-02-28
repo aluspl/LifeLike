@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {NavLink} from "react-router-dom";
-
+import Player from '../Youtube/Player'
 import Item from '../../Models/MenuItem';
 
 interface ListItemPros {
@@ -9,22 +9,11 @@ interface ListItemPros {
 }
 
 class ListItem extends React.Component<ListItemPros, any> {
-    SetupNavLink()
-    {
-         return '/'.concat(this.props.item.Controller).concat('/').concat(this.props.item.Action);        
-    }
-    SetupGlyph()
-    {
-         return'glyphicon glyphicon-'.concat(this.props.item.IconName);        
-    }
+   
     render() {
-        return (
-            <li>
-                <NavLink to={this.SetupNavLink()}   exact activeClassName='active'>
-                    <span className={this.SetupGlyph()}> </span> {this.props.item.Name}
-                </NavLink>
-            </li>
-        )
+        return ( 
+               <Player YoutubeId={this.props.item.YoutubeID} />
+        );
     }
 }
 

@@ -1,43 +1,61 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories;
+using LifeLike.Web.Utils;
 using LifeLike.Web.ViewModel;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Principal;
+using System;
 
 namespace LifeLike.Web.Controllers
 {
-
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly IConfigRepository _config;
         private readonly IEventLogRepository _logger;
-        private ILinkRepository _links;
+        private readonly ILinkRepository _links;
+        private readonly SignInManager<User> _userManager;
 
-        public HomeController(IConfigRepository config, IEventLogRepository logger, ILinkRepository link)
+        public HomeController(IConfigRepository config, IEventLogRepository logger, 
+        SignInManager<User> signInManager,
+        ILinkRepository link)
         {
             _logger = logger;
             _config = config;
             _links = link;
+                        _userManager = signInManager;
+
         }
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
         [HttpGet("Api/Menu")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetMenuLinks()
         {
+            var   isLogged = User.Identity.IsAuthenticated;
+
             await _logger.AddStat("Menu", "Index", "Home");
-            var list =   MenuList();
+            var list =   MenuList(isLogged);
 
            // var list = await _links.List(LinkCategory.Menu);
             return Json(list.Select(LinkViewModel.Get));
         }
 
-        private static List<Link> MenuList()
+      
+
+        private static List<Link> MenuList(bool isLogged)
         {
             var context= new List<Link>();
           
@@ -61,17 +79,8 @@ namespace LifeLike.Web.Controllers
                 Name = "Albums",
                 IconName = "camera",
                 Category = LinkCategory.Menu
-            });
-            //    context.Add(new Link()
-            // {
-            //     Id=0,
-            //     Action = "LifeLike",
-            //     Controller = "Page",
-            //     Name = "LifeLike: The Game",
-            //     IconName = "king",
-
-            //     Category = LinkCategory.Menu
-            // });
+            }); 
+            if (isLogged)                   
             context.Add(new Link()
             {
                 Id=3,
@@ -79,7 +88,6 @@ namespace LifeLike.Web.Controllers
                 Controller = "Logs",
                 Name = "Logs",
                 IconName = "film",
-
                 Category = LinkCategory.Menu
             });
               context.Add(new Link()
@@ -94,6 +102,7 @@ namespace LifeLike.Web.Controllers
             return context;
         }
 
+        [AllowAnonymous]
         [HttpGet("Api/Config")]
         public async Task<IActionResult> GetList()
         {
@@ -107,9 +116,9 @@ namespace LifeLike.Web.Controllers
                 Rss1Url=config1.Value,
                 Rss2Url=config2.Value,
                 WelcomeText=config3.Value,
-                WelcomeVideo=config4.Value
+                WelcomeVideo=HtmlUtils.GetYoutubeId(config4.Value)
             };
-
+            Debug.WriteLine(pageConfig.WelcomeVideo);
             return Json(pageConfig);
         }
     }

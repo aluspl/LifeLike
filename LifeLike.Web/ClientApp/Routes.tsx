@@ -9,6 +9,8 @@ import { PostDetailLayout }  from "./Page/PostDetailLayout";
 
 
 import { LogLayout } from './Log/LogLayout';
+import { LogDetailLayout } from './Log/LogDetailLayout';
+
 import { VideoLayout } from './Video/VideoLayout';
 
 
@@ -18,11 +20,12 @@ export const routes =
     <Layout>
         <Route exact path='/' component={ HomeLayout } />
         <Route  path='/Index' component={ HomeLayout } />
-        <Route path='/Logs' component={ LogLayout } />
         <Route path='/Photos' component={ AlbumLayout } />
         <Route path='/Albums' component={ AlbumLayout } />
         <Route path='/Videos' component={ VideoLayout } />
-        
+        <Route path='/Logs' component={ LogLayout } />
+        <Route path='/Log/:shortname' component={ LogDetailLayout } />
+
         <Route path='/Album/:shortname' component={ AlbumLayout } />
 
         <Route path='/Pages' component={ PageLayout } />

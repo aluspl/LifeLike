@@ -11,6 +11,7 @@ using Microsoft.Azure.KeyVault.Models;
 
 namespace LifeLike.Web.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class LogController : Controller
     {
@@ -19,6 +20,7 @@ namespace LifeLike.Web.Controllers
         public LogController(PortalContext context, IEventLogRepository logger)
         {
             _logger = logger;
+            
         }
 
         // GET
@@ -43,6 +45,8 @@ namespace LifeLike.Web.Controllers
         {
             try
             {
+              var login=  User.Identity.IsAuthenticated;
+
                 var log = await _logger.Get(id);
                 return Json ( EventLogViewModel.Get(log));
             }
@@ -53,6 +57,7 @@ namespace LifeLike.Web.Controllers
             }
            
         }
+        [Authorize]
         [HttpGet("Clear")]
         public async Task<IActionResult> Clear()
         {

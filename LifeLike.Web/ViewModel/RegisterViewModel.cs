@@ -5,7 +5,7 @@ namespace LifeLike.Web.ViewModel
     public class RegisterViewModel
     {
         [Required, MaxLength(256)] 
-        public string Username { get; set; }  
+        public string Login { get; set; }  
    
         [Required, DataType(DataType.Password)] 
         public string Password { get; set; }  
@@ -14,5 +14,6 @@ namespace LifeLike.Web.ViewModel
         public string ConfirmPassword { get; set; }
         [DataType(DataType.EmailAddress), MaxLength(256)] 
         public string Email { get; set; }
+        public string Info { get; set; }
     }
 }

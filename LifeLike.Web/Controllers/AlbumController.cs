@@ -85,7 +85,7 @@ namespace LifeLike.Web.Controllers
             }
         }
        
-        [HttpPost]
+        [HttpDelete]
         public async Task<Result> Delete(GalleryViewModel model)
         {
             try

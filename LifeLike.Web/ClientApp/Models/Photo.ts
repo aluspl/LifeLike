@@ -1,5 +1,6 @@
 export default class Photo
 {
+    
     Id: number;
     Type: number;
 

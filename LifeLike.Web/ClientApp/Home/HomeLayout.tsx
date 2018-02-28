@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 import Config from '../Models/Config'
+import Player from '../Components/Youtube/Player'
 interface IHomeState{
   Item: Config,
   loadingData: boolean
@@ -29,11 +30,12 @@ export class HomeLayout extends React.Component<RouteComponentProps<{}>, IHomeSt
             });
     }
     public render() {
-        return <div>
-            <h1>{this.state.loadingData ? 'Welcome' : this.state.Item.WelcomeText} </h1>
-            <p>{this.state.loadingData ? '' : this.state.Item.WelcomeVideo} </p>
-            <p>{this.state.loadingData ?  '' : this.state.Item.Rss1Url} </p>
-            <p>{this.state.loadingData ? '' : this.state.Item.Rss2Url} </p>
+        return this.state.loadingData? <h1>Loading</h1> :
+            <div>
+            <h1>{this.state.Item.WelcomeText} </h1>
+            <p><Player YoutubeId={this.state.Item.WelcomeVideo} ></Player> </p>
+            <p>{this.state.Item.Rss1Url} </p>
+            <p>{this.state.Item.Rss2Url} </p>
 
             </div>;
     }
