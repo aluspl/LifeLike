@@ -1,13 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories;
 using LifeLike.Web.Utils;
 using LifeLike.Web.ViewModel;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Principal;
 
 namespace LifeLike.Web.Controllers
 {
@@ -16,13 +20,18 @@ namespace LifeLike.Web.Controllers
     {
         private readonly IConfigRepository _config;
         private readonly IEventLogRepository _logger;
-        private ILinkRepository _links;
+        private readonly ILinkRepository _links;
+        private readonly SignInManager<User> _userManager;
 
-        public HomeController(IConfigRepository config, IEventLogRepository logger, ILinkRepository link)
+        public HomeController(IConfigRepository config, IEventLogRepository logger, 
+        SignInManager<User> signInManager,
+        ILinkRepository link)
         {
             _logger = logger;
             _config = config;
             _links = link;
+                        _userManager = signInManager;
+
         }
         [HttpGet]
         public IActionResult Index()
@@ -38,9 +47,10 @@ namespace LifeLike.Web.Controllers
            // var list = await _links.List(LinkCategory.Menu);
             return Json(list.Select(LinkViewModel.Get));
         }
-
+        [Authorize]
         private static List<Link> MenuList()
         {
+
             var context= new List<Link>();
           
          
@@ -63,17 +73,7 @@ namespace LifeLike.Web.Controllers
                 Name = "Albums",
                 IconName = "camera",
                 Category = LinkCategory.Menu
-            });
-            //    context.Add(new Link()
-            // {
-            //     Id=0,
-            //     Action = "LifeLike",
-            //     Controller = "Page",
-            //     Name = "LifeLike: The Game",
-            //     IconName = "king",
-
-            //     Category = LinkCategory.Menu
-            // });
+            });                    
             context.Add(new Link()
             {
                 Id=3,
