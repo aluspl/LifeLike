@@ -12,10 +12,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Principal;
+using System;
 
 namespace LifeLike.Web.Controllers
 {
-
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly IConfigRepository _config;
@@ -34,23 +35,28 @@ namespace LifeLike.Web.Controllers
 
         }
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
         [HttpGet("Api/Menu")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetMenuLinks()
         {
+            var   isLogged = User.Identity.IsAuthenticated;
+
             await _logger.AddStat("Menu", "Index", "Home");
-            var list =   MenuList();
+            var list =   MenuList(isLogged);
 
            // var list = await _links.List(LinkCategory.Menu);
             return Json(list.Select(LinkViewModel.Get));
         }
-        [Authorize]
-        private static List<Link> MenuList()
-        {
 
+      
+
+        private static List<Link> MenuList(bool isLogged)
+        {
             var context= new List<Link>();
           
          
@@ -73,7 +79,8 @@ namespace LifeLike.Web.Controllers
                 Name = "Albums",
                 IconName = "camera",
                 Category = LinkCategory.Menu
-            });                    
+            }); 
+            if (isLogged)                   
             context.Add(new Link()
             {
                 Id=3,
@@ -81,7 +88,6 @@ namespace LifeLike.Web.Controllers
                 Controller = "Logs",
                 Name = "Logs",
                 IconName = "film",
-
                 Category = LinkCategory.Menu
             });
               context.Add(new Link()
@@ -96,6 +102,7 @@ namespace LifeLike.Web.Controllers
             return context;
         }
 
+        [AllowAnonymous]
         [HttpGet("Api/Config")]
         public async Task<IActionResult> GetList()
         {

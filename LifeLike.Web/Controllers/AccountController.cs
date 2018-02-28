@@ -16,6 +16,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace LifeLike.Web.Controllers
 {
+    [Authorize]
     [Route("api/Account")]
     public class AccountController : Controller
     {
