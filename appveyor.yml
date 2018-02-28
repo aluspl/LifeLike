@@ -1,11 +1,9 @@
 version: 1.0.{build}
 install:
 - cmd: >-
-    npm install yarn 
-    yarn install
-
-    yarn run restore
-    yarn run build
-    yarn run start
+    npm install 
+    npm run restore
+    npm run build
+    npm run start
 build:
   verbosity: minimal
