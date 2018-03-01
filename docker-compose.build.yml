@@ -1,6 +1,8 @@
 version: '2'
 
 services:  
+  package: 
+    
   ci-build:
     image: microsoft/aspnetcore-build
     container_name: build
