@@ -5,7 +5,6 @@ using System.Text;
 using LifeLike.Data.Models;
 using LifeLike.Repositories;
 using LifeLike.Web.ViewModel;
-using LifeLIke.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -49,7 +48,6 @@ namespace LifeLike.Web
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddScoped<IEventLogRepository, EventLogsRepository>();
-            services.AddScoped<IRssReaderService, RssReaderService>();
 
             services.AddScoped<ILinkRepository, LinkRepository>();
             services.AddScoped<IConfigRepository, ConfigRepository>();
