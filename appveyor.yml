@@ -1,9 +1,0 @@
-version: 1.0.{build}
-install:
-- cmd: >-
-    npm install 
-    npm run restore
-    npm run build
-    npm run start
-build:
-  verbosity: minimal

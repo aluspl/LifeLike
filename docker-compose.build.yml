@@ -1,0 +1,10 @@
+version: '2'
+
+services:  
+  ci-build:
+    image: microsoft/aspnetcore-build
+    container_name: build
+    volumes:
+      - .:/src
+    working_dir: /
+    command: /bin/bash -c "dotnet restore && dotnet publish -c Release -o ./build"

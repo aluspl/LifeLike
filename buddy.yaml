@@ -1,0 +1,30 @@
+- pipeline: "ReactWeb"
+  trigger_mode: "ON_EVERY_PUSH"
+  ref_name: "master"
+  auto_clear_cache: true
+  actions:
+  - action: "Execute: dotnet build"
+    type: "BUILD"
+    working_directory: "/buddy/lifelike"
+    docker_image_name: "microsoft/dotnet"
+    docker_image_tag: "latest"
+    execute_commands:
+    - "dotnet restore"
+    - "dotnet build"
+    mount_filesystem_path: "/buddy/lifelike"
+    shell: "SH"
+    trigger_condition: "ALWAYS"
+  - action: "Execute: webpack"
+    type: "BUILD"
+    working_directory: "/buddy/lifelike"
+    docker_image_name: "library/node"
+    docker_image_tag: "6"
+    execute_commands:
+    - "cd LifeLike.Web"
+    - "npm install"
+    - "webpack"
+    setup_commands:
+    - "npm install -g webpack"
+    mount_filesystem_path: "/buddy/lifelike"
+    shell: "BASH"
+    trigger_condition: "ALWAYS"
