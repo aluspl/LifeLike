@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using LifeLike.Data.Models;
 using LifeLike.Repositories;
+using LifeLike.Web.ViewModel;
 using LifeLIke.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -25,10 +27,12 @@ namespace LifeLike.Web
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
+                .SetBasePath(env.ContentRootPath)     
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+
                 .AddEnvironmentVariables();
+            if (env.IsDevelopment())
+                builder.AddUserSecrets<Startup>();
             Configuration = builder.Build();
         }
 
@@ -37,10 +41,10 @@ namespace LifeLike.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            Debug.WriteLine(Configuration.ToString());
             // Add framework services.
             services.AddDbContext<PortalContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
-            //         options.UseSqlite(Configuration.GetConnectionString("ConnectionName"))
             );
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
@@ -59,7 +63,8 @@ namespace LifeLike.Web
             services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = "/Account/Login";
-                options.LogoutPath = "/Account/Loguut";
+                options.LogoutPath = "/Account/Logout";
+                
                 options.ExpireTimeSpan=TimeSpan.FromDays(50);
             });    
 

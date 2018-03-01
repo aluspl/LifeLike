@@ -4,6 +4,7 @@
     <RuntimeFrameworkVersion>2.0.5</RuntimeFrameworkVersion>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <UserSecretsId>8084c8e7-0000-0000-0000-c26798dc28d1</UserSecretsId>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
