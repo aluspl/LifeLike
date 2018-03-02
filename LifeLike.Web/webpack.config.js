@@ -1,13 +1,17 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 const bundleOutputDir = './wwwroot/dist';
+const CheckerPlugin = require('awesome-typescript-loader');
+const extractLESS = new ExtractTextPlugin('Styles/[name]-two.css');
+
 
 module.exports = (env) => {
     const isDevBuild = !(env && env.prod);
+    
     return [{
         stats: { modules: false },
+        devtool: "inline-source-map",
         entry: { 
             'main': './ClientApp/boot.tsx', 
         },
@@ -19,16 +23,16 @@ module.exports = (env) => {
         },
         module: {
             rules: [
-                { test: /\.tsx?$/, include: /ClientApp/, use: 'awesome-typescript-loader?silent=true' },
+                { 
+                    test: /\.tsx?$/, 
+                    include: /ClientApp/,
+                    loader: 'awesome-typescript-loader'
+                },
                 {
-                    test: /\.scss$/,
+                    test: /\.less$/,
                     include: /ClientApp/, 
-                    use: [{
-                        loader: "style-loader", 
-                        options: {
-                            outputPath: '/wwwroot/dist/',
-                        }
-                    }, {
+                    use: [
+                        {
                         loader: "css-loader", 
                         options: {
                             outputPath: '/wwwroot/dist/',
@@ -36,7 +40,7 @@ module.exports = (env) => {
                             sourceMap: true
                         }
                     }, {
-                        loader: "sass-loader", 
+                        loader: "less-loader", 
                         options: {
                             outputPath: '/wwwroot/dist/',
                             sourceMap: true
@@ -48,25 +52,13 @@ module.exports = (env) => {
                     use: isDevBuild ? 
                     ['style-loader', 'css-loader'] : 
                     ExtractTextPlugin.extract({ use: 'css-loader?minimize' }) },
-                { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' }
+                { 
+                    test: /\.(png|jpg|jpeg|gif|svg)$/, 
+                    use: 'url-loader?limit=25000' 
+                }
             ]
         },
         plugins: [
-            new CheckerPlugin(),
-            new webpack.DllReferencePlugin({
-                context: __dirname,
-                manifest: require('./wwwroot/dist/vendor-manifest.json')
-            })
-        ].concat(isDevBuild ? [
-            // Plugins that apply in development builds only
-            new webpack.SourceMapDevToolPlugin({
-                filename: '[file].map', // Remove this line if you prefer inline source maps
-                moduleFilenameTemplate: path.relative(bundleOutputDir, '[resourcePath]') // Point sourcemap entries to the original file locations on disk
-            })
-        ] : [
-            // Plugins that apply in production builds only
-            new webpack.optimize.UglifyJsPlugin(),
-                new ExtractTextPlugin('/dist/Site.css')
-        ])
+        ]
     }];
-};
+}
