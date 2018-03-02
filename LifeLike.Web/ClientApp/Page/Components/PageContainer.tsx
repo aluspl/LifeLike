@@ -9,15 +9,17 @@ interface ListContainerState {
     loadingData: boolean,
     items: Item[]
 }
+interface ListContainerProps {
+}
 
-class ListContainer extends React.Component<any, ListContainerState> {
+class ListContainer extends React.Component<ListContainerProps, ListContainerState> {
 
     private paths = {
         getList: '/Api/Page/Pages'
     };
 
-    constructor() {
-        super();
+    constructor(props: ListContainerProps) {
+        super(props);
 
         this.state = {
             loadingData: true,
@@ -45,7 +47,7 @@ class ListContainer extends React.Component<any, ListContainerState> {
             this.state.loadingData ?
                 <LoadingView Title={"Posts"}/> :
                 hasProjects ?
-                    <ListView items= {this.state.items} /> :  <EmptyListView />
+                    <ListView items= {this.state.items} /> :  <EmptyListView Title={"Page"}/>
         )
     }
  

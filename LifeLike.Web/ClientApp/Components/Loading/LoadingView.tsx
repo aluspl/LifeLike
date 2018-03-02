@@ -5,23 +5,17 @@ interface LoadingViewProps {
     Title: string;
 }
 
-class LoadingView extends React.Component<any, LoadingViewProps> {
+class LoadingView extends React.Component<LoadingViewProps, any> {
 
-    constructor() {
-        super();
-
-        this.state = {
-            Title: "Data"
-        };
+    constructor(props: LoadingViewProps) {
+        super(props);
+        
     }
     public render() {
         return (
-            <section className='EmptyListWarning'>
-                <section className='EmptyListWarning-textContainer'>
-                    <p className='text-center'>Loading {this.state.Title}... </p>
-                   
-                </section>
-            </section>
+            <div className="jumbotron">
+                <p className="lead">Loading</p>
+            </div>
         )
     }
 }

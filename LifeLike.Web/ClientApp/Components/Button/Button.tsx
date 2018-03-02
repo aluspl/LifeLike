@@ -7,7 +7,10 @@ interface ButtonProps {
 }
 
 class Button extends React.Component<ButtonProps, any> {
-
+    constructor(props: ButtonProps)
+    {
+        super(props)
+    }
     public render() {
 
         let classNames = ['btn'].concat(this.props.extraClassNames).join(' ');

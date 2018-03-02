@@ -32,8 +32,10 @@ export class HomeLayout extends React.Component<RouteComponentProps<{}>, IHomeSt
     public render() {
         return this.state.loadingData? <h1>Loading</h1> :
             <div>
-            <h1>{this.state.Item.WelcomeText} </h1>
-            <p><Player YoutubeId={this.state.Item.WelcomeVideo} ></Player> </p>
+                <div className="jumbotron">
+                    <h1 className='display-4'>{this.state.Item.WelcomeText}  </h1>
+                </div>
+            <p><Player YoutubeId={this.state.Item.WelcomeVideo} /> </p>
             <p>{this.state.Item.Rss1Url} </p>
             <p>{this.state.Item.Rss2Url} </p>
 

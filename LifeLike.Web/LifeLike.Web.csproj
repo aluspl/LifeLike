@@ -18,9 +18,6 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="wwwroot" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\LifeLike.Data\LifeLike.Data.csproj">
       <Project>{87DE8383-DE45-42A4-838F-3704BE3B2E42}</Project>
       <Name>LifeLike.Data</Name>
@@ -28,10 +25,6 @@
     <ProjectReference Include="..\LifeLike.Repositories\LifeLike.Repositories.csproj">
       <Project>{B5FB45D9-07AC-4D2E-B387-C653538B08CE}</Project>
       <Name>LifeLike.Repositories</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LifeLIke.Services\LifeLike.Services.csproj">
-      <Project>{D0351F66-D70F-47F5-A0E4-FD493CB7D372}</Project>
-      <Name>LifeLike.Services</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

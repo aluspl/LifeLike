@@ -9,6 +9,9 @@ export class PostLayout extends React.Component<RouteComponentProps<{}>, {}> {
     public render() {
         let contents = <PostContainer/>;        
         return <div>
+            <div className="jumbotron">
+                <p className="lead">NEWS</p>
+            </div>
             { contents }
         </div>;
     }

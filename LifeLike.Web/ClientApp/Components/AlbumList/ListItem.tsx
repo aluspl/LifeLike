@@ -10,6 +10,10 @@ interface LogListItemPros {
 
 class LogListItem extends React.Component<LogListItemPros, any> {
 
+    constructor(props: LogListItemPros)
+    {
+        super(props)
+    }
     render() {
         return (            
             <a href={`/Log/Details/${this.props.item.Id}`}>

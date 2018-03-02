@@ -13,6 +13,9 @@ export class PageLayout extends React.Component<RouteComponentProps<IPostProps>,
         let contents =   <PageContainer/>;
 
         return <div>
+            <div className="jumbotron">
+                <p className="lead">PAGES</p>
+            </div>
             { contents }
         </div>;
     }

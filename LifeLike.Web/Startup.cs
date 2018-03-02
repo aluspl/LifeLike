@@ -110,8 +110,8 @@ namespace LifeLike.Web
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-            }           
-          
+            }
+
             app.UseStaticFiles();
 
             app.UseAuthentication();

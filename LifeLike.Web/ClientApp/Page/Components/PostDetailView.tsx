@@ -44,8 +44,10 @@ interface IPostDetailProps {
     }
     public render() {
         return  this.state.loadingData ?  <LoadingView Title="Post"/> : 
-             <div>            
-                <h1>{this.state.Item.FullName}</h1>
+             <div>
+                 <div className="jumbotron">
+                     <p className="lead">{this.state.Item.FullName}</p>
+                 </div>
                 <h2>{this.state.Item.ShortName}</h2>
                 <p> {this.state.Item.Content}</p>
                 <p>{this.state.Item.Category}</p>

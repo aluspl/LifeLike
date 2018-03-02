@@ -13,7 +13,9 @@ export class LogLayout extends React.Component<RouteComponentProps<{}>, {}> {
     public render() {
         let contents = <LogContainer/>;
         return <div>
-            <h1>Logs</h1>
+            <div className="jumbotron">
+                <p className="lead">LOGS</p>
+            </div>
             { contents }
         </div>;
     }

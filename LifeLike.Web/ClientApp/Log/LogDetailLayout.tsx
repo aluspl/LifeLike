@@ -52,12 +52,12 @@ export class LogDetailLayout extends React.Component<RouteComponentProps<ILogDet
                 </div>
                 <div className='row'>
                     <div className='col-md-12'>
-                        <span className='ListItem-description'>{this.state.item.Messages}</span>
+                        <span>{this.state.item.Messages}</span>
                     </div>
                 </div>   
                 <div className='row'>
                     <div className='col-md-12'>
-                        <span className='ListItem-description'>{this.state.item.StackTrace}</span>
+                        <span>{this.state.item.StackTrace}</span>
                     </div>
                 </div>                         
             </div>

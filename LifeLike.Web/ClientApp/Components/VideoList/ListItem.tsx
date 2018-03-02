@@ -11,9 +11,9 @@ interface ListItemPros {
 class ListItem extends React.Component<ListItemPros, any> {
    
     render() {
-        return ( 
-               <Player YoutubeId={this.props.item.YoutubeID} />
-        );
+        return (             <Player YoutubeId={this.props.item.YoutubeID} />
+
+            );
     }
 }
 
