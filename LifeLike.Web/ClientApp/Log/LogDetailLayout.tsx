@@ -15,8 +15,8 @@ export class LogDetailLayout extends React.Component<RouteComponentProps<ILogDet
     private paths = {
         getList: '/Api/Log/Detail/'
     };
-    constructor() {
-        super();
+    constructor(props: RouteComponentProps<ILogDetailParam>) {
+        super(props);
 
         this.state = {
             loadingData: true,

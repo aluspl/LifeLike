@@ -9,15 +9,17 @@ interface ListContainerState {
     loadingData: boolean,
     items: Item[]
 }
-
-class ListContainer extends React.Component<any, ListContainerState> {
+interface ListContainerProps{
+    
+}
+class ListContainer extends React.Component<ListContainerProps, ListContainerState> {
 
     private paths = {
         getList: '/Api/Page/Pages'
     };
 
-    constructor() {
-        super();
+    constructor(props: ListContainerProps) {
+        super(props);
 
         this.state = {
             loadingData: true,

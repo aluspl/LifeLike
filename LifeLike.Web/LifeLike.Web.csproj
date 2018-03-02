@@ -29,9 +29,5 @@
       <Project>{B5FB45D9-07AC-4D2E-B387-C653538B08CE}</Project>
       <Name>LifeLike.Repositories</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LifeLIke.Services\LifeLike.Services.csproj">
-      <Project>{D0351F66-D70F-47F5-A0E4-FD493CB7D372}</Project>
-      <Name>LifeLike.Services</Name>
-    </ProjectReference>
   </ItemGroup>
 </Project>

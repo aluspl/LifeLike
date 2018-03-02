@@ -11,8 +11,8 @@ interface IPostDetailProps {
     Shortname: string
 }
   class PostDetailView extends React.Component<IPostDetailProps, IPostDetailLayout> {   
-    constructor() {
-        super();
+    constructor(props: IPostDetailProps) {
+        super(props);
         console.log(this.props);
 
         this.state = {
