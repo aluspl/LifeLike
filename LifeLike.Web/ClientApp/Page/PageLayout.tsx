@@ -6,8 +6,8 @@ interface IPostProps{
     shortname: string;
 }
 export class PageLayout extends React.Component<RouteComponentProps<IPostProps>, {}>{
-    constructor() {
-        super();
+    constructor(props: RouteComponentProps<IPostProps>) {
+        super(props);
     }
     public render() {
         let contents =   <PageContainer/>;

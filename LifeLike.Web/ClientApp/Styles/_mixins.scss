@@ -1,0 +1,25 @@
+// Mixins
+// Bootstrap Button Variant
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300');
+
+@mixin background-cover {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+@mixin body-font {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+
+}
+@mixin heading-font {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+
+}
+@mixin nav-font {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+
+}

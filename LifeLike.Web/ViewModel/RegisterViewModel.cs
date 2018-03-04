@@ -2,7 +2,7 @@
 
 namespace LifeLike.Web.ViewModel
 {
-    public class RegisterViewModel
+    public class RegisterViewModel : BaseViewModel
     {
         [Required, MaxLength(256)] 
         public string Login { get; set; }  

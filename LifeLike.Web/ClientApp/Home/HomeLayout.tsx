@@ -8,8 +8,8 @@ interface IHomeState{
 
 }
 export class HomeLayout extends React.Component<RouteComponentProps<{}>, IHomeState> {
-    constructor() {
-        super();
+    constructor(props:RouteComponentProps<{}>) {
+        super(props);
         this.state = { Item: new Config, loadingData: true };
     }
     private paths = {
@@ -22,10 +22,9 @@ export class HomeLayout extends React.Component<RouteComponentProps<{}>, IHomeSt
                 return response.text();
             })
             .then((data) => {
-                this.setState((state, props) => {
-                    state.Item = JSON.parse(data);
-                    state.loadingData = false;
-                    console.log(state.Item);
+                this.setState({
+                    Item: JSON.parse(data),
+                    loadingData: false
                 });
             });
     }

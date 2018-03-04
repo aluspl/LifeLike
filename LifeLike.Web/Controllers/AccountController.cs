@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -17,6 +18,7 @@ using Microsoft.IdentityModel.Tokens;
 namespace LifeLike.Web.Controllers
 {
     [Authorize]
+    [AllowAnonymous]
     [Route("api/Account")]
     public class AccountController : Controller
     {
@@ -48,7 +50,7 @@ namespace LifeLike.Web.Controllers
                     model.Info = "Invalid Model";
                     return BadRequest(model);
                 }
-
+                Debug.WriteLine($"LOGIN: {model.ToString()}");               
                 var user = new User {UserName = model.Login, Email = model.Email, EmailConfirmed = true};
                 var result = await _userManager.CreateAsync(user, model.Password);
 
@@ -78,7 +80,9 @@ namespace LifeLike.Web.Controllers
                 {
                     model.Info = "Invalid Model";
                     return BadRequest(model);
-                } 
+                }
+
+                Debug.WriteLine($"LOGIN: {model.ToString()}");               
                 var result = await _signInManager.PasswordSignInAsync(model.Login,
                     model.Password, model.RememberMe, false);
                 if (result.Succeeded)
@@ -103,7 +107,7 @@ namespace LifeLike.Web.Controllers
             {
                 new Claim(JwtRegisteredClaimNames.Sub, login),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.NameIdentifier, user.Id)
+                new Claim(ClaimTypes.NameIdentifier, user.Id),
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtKey"]));

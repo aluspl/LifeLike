@@ -32,10 +32,9 @@ class ListContainer extends React.Component<ListContainerProps, ListContainerSta
                 return response.text();
             })
             .then((data) => {
-                this.setState((state, props) => {
-                    state.items = JSON.parse(data);
-                    state.loadingData = false;
-                    console.log(state.items);
+                this.setState({
+                    items: JSON.parse(data),
+                    loadingData: false
                 });
             });
     }

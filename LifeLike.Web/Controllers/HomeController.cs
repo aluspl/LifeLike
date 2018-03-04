@@ -17,6 +17,7 @@ using System;
 namespace LifeLike.Web.Controllers
 {
     [Authorize]
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly IConfigRepository _config;
@@ -79,6 +80,24 @@ namespace LifeLike.Web.Controllers
                 Name = "Albums",
                 IconName = "camera",
                 Category = LinkCategory.Menu
+            });            
+            context.Add(new Link()
+            {
+                Id=2,
+                Action = "szymonmotyka",
+                Controller = "RSS",
+                Name = "BLOG",
+                IconName = "camera",
+                Category = LinkCategory.Menu
+            }); 
+            context.Add(new Link()
+            {
+                Id=2,
+                Action = "kawowipodroznicy",
+                Controller = "RSS",
+                Name = "KAWOWI PODRÓŻNICY",
+                IconName = "camera",
+                Category = LinkCategory.Menu
             }); 
             if (isLogged)                   
             context.Add(new Link()
@@ -90,19 +109,18 @@ namespace LifeLike.Web.Controllers
                 IconName = "film",
                 Category = LinkCategory.Menu
             });
-              context.Add(new Link()
+            context.Add(new Link()
             {
                 Id=4,
                 Action = "",
                 Controller = "Videos",
-                Name = "Video Projects",
+                Name = "VIDEOS",
                 IconName = "film",
                 Category = LinkCategory.Menu
             });
             return context;
         }
 
-        [AllowAnonymous]
         [HttpGet("Api/Config")]
         public async Task<IActionResult> GetList()
         {

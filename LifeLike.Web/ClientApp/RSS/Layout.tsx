@@ -2,20 +2,21 @@ import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 import LogContainer from './Components/ListContainer';
 
+interface Props {
+    shortname: string
 
-export class LogLayout extends React.Component<RouteComponentProps<{}>, {}> {
-    constructor(props: RouteComponentProps<{}>) {
+}
+export class LogLayout extends React.Component<RouteComponentProps<Props>, {}> {
+    constructor(props: RouteComponentProps<Props>) {
         super(props);
     }
 
 
     public render() {
-        let contents = <LogContainer/>;
         return <section className="resume-section">
             <div className="jumbotron">
-                <p className="lead">LOGS</p>
+                <p className="lead">this.props.shortname</p>
             </div>
-            { contents }
         </section>;
     }
 }

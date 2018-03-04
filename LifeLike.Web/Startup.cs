@@ -105,7 +105,8 @@ namespace LifeLike.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();               
+                app.UseBrowserLink();           
+                
             }
             else
             {
@@ -113,9 +114,7 @@ namespace LifeLike.Web
             }
 
             app.UseStaticFiles();
-
-            app.UseAuthentication();
-
+            app.UseAuthentication();         
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

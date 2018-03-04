@@ -11,8 +11,8 @@ interface IPostDetailProps {
     Shortname: string
 }
   class PostDetailView extends React.Component<IPostDetailProps, IPostDetailLayout> {   
-    constructor() {
-        super();
+    constructor(props: IPostDetailProps) {
+        super(props);
         console.log(this.props);
 
         this.state = {
@@ -34,11 +34,9 @@ interface IPostDetailProps {
                 return response.text();
             })
             .then((data) => {
-                this.setState((state, props) => {
-                    console.log("JSON: "+data);
-                    state.Item = JSON.parse(data);
-                    state.loadingData = false;
-                    console.log(state.Item);
+                this.setState({
+                    Item: JSON.parse(data),
+                    loadingData: false
                 });
             });
     }

@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <base href="~/" />
 
-    <link rel="stylesheet" href="~/dist/vendor.css" asp-append-version="true" />
-    <!-- <environment exclude="Development">
-        <link rel="stylesheet" href="~/dist/site.css" asp-append-version="true" />
-    </environment> -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <base href="~/" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/dist/main.bundle.css">
+
 </head>
 <body>
 @RenderBody()
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" 
+        crossorigin="anonymous"></script>
+<script src="~/dist/main.js" asp-append-version="true"></script>
 
-<script src="~/dist/vendor.js" asp-append-version="true"></script>
-@RenderSection("scripts", required: false)
 </body>
 </html>

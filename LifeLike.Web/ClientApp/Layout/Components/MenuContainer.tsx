@@ -2,21 +2,23 @@ import * as React from 'react';
 import LoadingView from '../../Components/Loading/LoadingView';
 
 import Item from "../../Models/MenuItem";
-import ListView from "../../Components/MenuList/ListView";
+import ListItem from "../../Components/MenuList/ListItem";
 interface NavMenuState {
     loadingData: boolean,
     items: Item[]
 }
+interface NavMenuProps{
+    
+}
 
-
-class MenuContainer extends React.Component<any, NavMenuState> {
+class MenuContainer extends React.Component<NavMenuProps, NavMenuState> {
 
     private paths = {
         getList: '/Api/Menu'
     };
 
-    constructor() {
-        super();
+    constructor(props: NavMenuProps) {
+        super(props);
 
         this.state = {
             loadingData: true,
@@ -30,17 +32,21 @@ class MenuContainer extends React.Component<any, NavMenuState> {
                 return response.text();
             })
             .then((data) => {
-                this.setState((state, props) => {
-                    state.items = JSON.parse(data);
-                    state.loadingData = false;
+                this.setState({
+                    items: JSON.parse(data),
+                    loadingData: false
                 });
             });
     }
     public render() {
         return (
-            this.state.loadingData ?
-                <LoadingView Title={"Menu"}/> :
-                <ListView items={this.state.items} />
+            <ul className='navbar-nav'>
+                {
+                    this.state.items.map(item => {
+                        return <ListItem key={item.Id} item={item}/>
+                    })
+                }
+            </ul>
         )
     }
  

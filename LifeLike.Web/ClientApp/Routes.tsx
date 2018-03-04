@@ -5,6 +5,8 @@ import {HomeLayout} from './Home/HomeLayout';
 
 import {PostLayout} from "./Page/PostLayout";
 import {PageLayout} from "./Page/PageLayout";
+import {RSSLayout} from "./RSS/Layout";
+
 import {PostDetailLayout} from "./Page/PostDetailLayout";
 
 
@@ -24,7 +26,10 @@ export const routes =
         <Route path='/Albums' component={AlbumLayout}/>
         <Route path='/Videos' component={VideoLayout}/>
         <Route path='/Logs' component={LogLayout}/>
-        <Route path='/Log/:shortname' component={LogDetailLayout}/>
+        <Route exact path='/RSS' component={RSSLayout}/>
+        <Route exact path='/RSS/:shortname' component={RSSLayout}/>
+
+            <Route path='/Log/:shortname' component={LogDetailLayout}/>
 
         <Route path='/Album/:shortname' component={AlbumLayout}/>
 
