@@ -67,7 +67,7 @@ namespace LifeLike.Web.Controllers
                 Action = "",
                 Controller = "Posts",
                 Name = "News",
-                IconName = "pencil",
+                IconName = "newspaper",
 
                 Category = LinkCategory.Menu
             });
@@ -78,46 +78,55 @@ namespace LifeLike.Web.Controllers
                 Action = "",
                 Controller = "Albums",
                 Name = "Albums",
-                IconName = "camera",
+                IconName = "camera-retro",
                 Category = LinkCategory.Menu
-            });            
-            context.Add(new Link()
-            {
-                Id=2,
-                Action = "szymonmotyka",
-                Controller = "RSS",
-                Name = "BLOG",
-                IconName = "camera",
-                Category = LinkCategory.Menu
-            }); 
-            context.Add(new Link()
-            {
-                Id=2,
-                Action = "kawowipodroznicy",
-                Controller = "RSS",
-                Name = "KAWOWI PODRÓŻNICY",
-                IconName = "camera",
-                Category = LinkCategory.Menu
-            }); 
-            if (isLogged)                   
+            });   
             context.Add(new Link()
             {
                 Id=3,
-                Action = "",
-                Controller = "Logs",
-                Name = "Logs",
-                IconName = "film",
-                Category = LinkCategory.Menu
-            });
-            context.Add(new Link()
-            {
-                Id=4,
                 Action = "",
                 Controller = "Videos",
                 Name = "VIDEOS",
                 IconName = "film",
                 Category = LinkCategory.Menu
             });
+            context.Add(new Link()
+            {
+                Id=4,
+                Action = "code",
+                Controller = "Pages",
+                Name = "PROJECTS",
+                IconName = "code",
+                Category = LinkCategory.Menu
+            });
+            context.Add(new Link()
+            {
+                Id=5,
+                Action = "szymonmotyka",
+                Controller = "RSS",
+                Name = "BLOGS",
+                IconName = "coffee",
+                Category = LinkCategory.Menu
+            }); 
+            context.Add(new Link()
+            {
+                Id=6,
+                Action = "",
+                Controller = "Logs",
+                Name = "Logs",
+                IconName = "book",
+                Category = LinkCategory.Menu
+            });
+            context.Add(new Link()
+            {
+                Id=7,
+                Action = "Contact",
+                Controller = "Page",
+                Name = "CONTACT",
+                IconName = "at",
+                Category = LinkCategory.Menu
+            });
+           
             return context;
         }
 

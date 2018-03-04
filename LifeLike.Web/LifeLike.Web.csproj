@@ -28,6 +28,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ClientApp\Reduces" />
     <Folder Include="wwwroot\dist" />
   </ItemGroup>
 </Project>

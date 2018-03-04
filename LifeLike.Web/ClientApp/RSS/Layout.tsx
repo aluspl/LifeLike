@@ -6,7 +6,7 @@ interface Props {
     shortname: string
 
 }
-export class LogLayout extends React.Component<RouteComponentProps<Props>, {}> {
+export class RSSLayout extends React.Component<RouteComponentProps<Props>, {}> {
     constructor(props: RouteComponentProps<Props>) {
         super(props);
     }

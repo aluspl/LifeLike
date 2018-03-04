@@ -13,11 +13,16 @@
     "@types/react": "16.0.40",
     "@types/react-dom": "^16.0.4",
     "@types/react-hot-loader": "3.0.3",
-    "@types/react-redux": "^5.0.15",
     "@types/react-router": "4.0.12",
     "@types/react-router-dom": "4.0.5",
     "@types/react-youtube": "^7.4.1",
     "@types/webpack-env": "1.13.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-hot-loader": "^4.0.0",
+    "react-router-dom": "4.1.1",
+    "react-youtube": "7.5.0",
+    "react-cookie": "^2.1.4",
     "ajv": "^6.2.1",
     "aspnet-webpack": "^2.0.1",
     "aspnet-webpack-react": "^3.0.0",
@@ -34,12 +39,6 @@
     "moment": "^2.20.1",
     "node-sass": "^4.7.2",
     "popper.js": "^1.12.9",
-    "react": "15.6.1",
-    "react-dom": "15.6.1",
-    "react-hot-loader": "3.0.0-beta.7",
-    "react-router-dom": "4.1.1",
-    "react-youtube": "7.5.0",
-    "redux": "^3.7.2",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.2",
     "typescript": "2.4.1",
@@ -48,7 +47,5 @@
     "webpack": "^2.7.0",
     "webpack-hot-middleware": "2.18.2"
   },
-  "dependencies": {
-    "rss-parser": "^3.1.1"
-  }
+  "dependencies": {}
 }

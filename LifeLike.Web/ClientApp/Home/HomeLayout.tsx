@@ -35,9 +35,8 @@ export class HomeLayout extends React.Component<RouteComponentProps<{}>, IHomeSt
                     <h1 className='display-4'>{this.state.Item.WelcomeText}  </h1>
                 </div>
             <p><Player YoutubeId={this.state.Item.WelcomeVideo} /> </p>
-            <p>{this.state.Item.Rss1Url} </p>
-            <p>{this.state.Item.Rss2Url} </p>
-
+            {/*<p>{this.state.Item.Rss1Url} </p>*/}
+            {/*<p>{this.state.Item.Rss2Url} </p>*/}
             </div>;
     }
 }

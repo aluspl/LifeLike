@@ -12,11 +12,11 @@ export class VideoLayout extends React.Component<RouteComponentProps<VideoLayout
     }
     public render() {
         let contents = <PostContainer/>;        
-        return <div>
+        return <section className="resume-section">
             <div className="jumbotron">
                 <p className="lead">VIDEOS</p>
             </div>
             { contents }
-        </div>;
+        </section>;
     }
 }
