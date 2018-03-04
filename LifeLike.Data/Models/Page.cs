@@ -16,13 +16,12 @@ namespace LifeLike.Data.Models
         public int PageOrder { get; set; }
 
         public PageCategory Category { get; set; }
-        public long LinkId { get; set; }
-
-      
+        public long LinkId { get; set; }      
     }
 
     public enum PageCategory
     {
-        App,Game, Tutorial, Page, Post
+        App,Game, Tutorial, Page, Post,
+        Devs = App | Game
     }
 }

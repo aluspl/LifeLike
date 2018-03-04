@@ -6,7 +6,7 @@ import ListView from "../Components/PageList/ListView";
 import EmptyListView from "../Components/EmptyList/EmptyListView";
 
 interface IPostProps {
-    shortname: string;
+    Params: string;
 }
 
 interface IPostState {
@@ -24,11 +24,12 @@ export class PageLayout extends React.Component<RouteComponentProps<IPostProps>,
     }
 
     private paths = {
-        getList: '/Api/Page/Pages'
+        All: '/Api/Page/Pages',
+        Devs: '/Api/Page/Devs',
     };
 
     public componentDidMount() {
-        fetch(this.paths.getList, {
+        fetch(this.paths.All, {
             credentials: 'include'
         })
             .then((response) => {

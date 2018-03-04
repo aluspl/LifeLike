@@ -126,6 +126,7 @@ namespace LifeLike.Repositories
         {
             try
             {
+                                
                 return await _context.Pages.Where(p => p.Category == category).ToListAsync();
             }
             catch (Exception e)

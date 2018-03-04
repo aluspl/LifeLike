@@ -40,7 +40,15 @@ namespace LifeLike.Web.Controllers
             await  _logger.AddStat("", "List", "Page");
             var list = await _pages.List();
             return Json(list.Where(p=>p.Category==PageCategory.Post).Select(PageViewModel.ViewModel));
-        }       
+        }    
+        // GET
+        [HttpGet("Devs")]
+        public async Task<IActionResult> Devs()
+        {
+            await  _logger.AddStat("", "List", "Page");
+            var list = await _pages.List(PageCategory.Devs);
+            return Json(list.Where(p=>p.Category==PageCategory.Post).Select(PageViewModel.ViewModel));
+        }    
         [HttpGet("Details/{id}")]
         public async Task<IActionResult> Details(string id)
         {
