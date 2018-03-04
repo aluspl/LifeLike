@@ -69,7 +69,7 @@ namespace LifeLike.Web.Controllers
         }
    
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [Route("Create")]
         public async Task<Result> Create(PageViewModel model)
         {
             try
@@ -90,7 +90,7 @@ namespace LifeLike.Web.Controllers
         }
    
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [Route("Delete")]
         public async Task<Result> Delete(PageViewModel model)
         {
             try
