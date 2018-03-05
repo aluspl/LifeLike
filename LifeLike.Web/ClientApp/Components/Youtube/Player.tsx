@@ -6,7 +6,6 @@ interface IPlayer {
 
 class Player extends React.Component<IPlayer, any> {
     render() {
-
         return (
             <YouTube videoId={this.props.YoutubeId} />
           );

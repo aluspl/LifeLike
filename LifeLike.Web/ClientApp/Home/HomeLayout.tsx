@@ -2,6 +2,7 @@ import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 import Config from '../Models/Config'
 import Player from '../Components/Youtube/Player'
+import LoadingView from "../Components/Loading/LoadingView";
 interface IHomeState{
   Item: Config,
   loadingData: boolean
@@ -29,14 +30,20 @@ export class HomeLayout extends React.Component<RouteComponentProps<{}>, IHomeSt
             });
     }
     public render() {
-        return this.state.loadingData? <h1>Loading</h1> :
-            <div>
-                <div className="subheading">
-                    LifeLike: {this.state.Item.WelcomeText}
-                </div>
-            <Player YoutubeId={this.state.Item.WelcomeVideo} /> 
-            {/*<p>{this.state.Item.Rss1Url} </p>*/}
-            {/*<p>{this.state.Item.Rss2Url} </p>*/}
-            </div>;
+            return (
+                <section className="resume-section">
+                {
+                    this.state.loadingData ? <LoadingView Title="Main Page"/> :
+                        <div className="subheading">
+                            LifeLike: {this.state.Item.WelcomeText}
+
+                            <Player YoutubeId={this.state.Item.WelcomeVideo} />
+
+                        </div>
+                }
+                {/*<p>{this.state.Item.Rss1Url} </p>*/}
+                {/*<p>{this.state.Item.Rss2Url} </p>*/}
+                
+            </section>)
     }
 }
