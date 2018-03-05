@@ -34,7 +34,6 @@ export const routes =
         <Route path='/Album/:shortname' component={AlbumLayout}/>
 
         <Route exact path='/Pages' component={PageLayout}/>
-        <Route exact path='/Pages/Dev' component={PageLayout}/>
 
             <Route path='/Page/:shortname' component={PostDetailLayout}/>
 

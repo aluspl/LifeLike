@@ -8,8 +8,8 @@ class EmptyListView extends React.Component<LoadingViewProps, any> {
 
     public render() {
         return (
-            <div className="jumbotron">
-                <p className="lead">Empty List</p>
+            <div className="subheading">
+                Empty List
             </div>
         )
     }

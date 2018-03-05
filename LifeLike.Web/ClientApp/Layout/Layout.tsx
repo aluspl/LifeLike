@@ -10,7 +10,7 @@ export class Layout extends React.Component<LayoutProps, {}> {
         return  ( 
             <div className='container'>
                 <NavMenu/>
-                <div className="container-fluid p-0">
+                <div className="container-fluid">
                         {this.props.children}
                 </div>
             </div>

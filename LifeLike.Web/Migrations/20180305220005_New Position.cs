@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 using System.Collections.Generic;
 
-namespace LifeLike.Data.Migrations
+namespace LifeLike.Web.Migrations
 {
-    public partial class CONFIG : Migration
+    public partial class NewPosition : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -140,8 +140,10 @@ namespace LifeLike.Data.Migrations
                     Category = table.Column<int>(nullable: false),
                     Content = table.Column<string>(nullable: true),
                     FullName = table.Column<string>(nullable: true),
+                    ImageUrl = table.Column<string>(nullable: true),
                     LinkId = table.Column<long>(nullable: false),
                     PageOrder = table.Column<int>(nullable: false),
+                    Published = table.Column<DateTime>(nullable: false),
                     ShortName = table.Column<string>(nullable: false)
                 },
                 constraints: table =>

@@ -3,7 +3,6 @@ import {RouteComponentProps, RouteProps} from 'react-router';
 import Item from "../Models/Page";
 import LoadingView from "../Components/Loading/LoadingView";
 
-
 interface IPostDetailParam {
     shortname: string
 }
@@ -50,12 +49,12 @@ export class PostDetailLayout extends React.Component<RouteComponentProps<IPostD
             this.state.loadingData ?
                 <LoadingView Title="Post"/> :
                 <section className="resume-section">
-                    <div className="jumbotron">
-                        <h1 className="lead">{this.state.Item.FullName}</h1>
-                        <p className="lead">{this.state.Item.ShortName}</p>
+                    <div className="subheading">
+                      {this.state.Item.FullName}
                     </div>
                     <p> {this.state.Item.Content}</p>
                     <p>{this.state.Item.Category}</p>
-                </section>);
+                </section>
+        );
     }
 }

@@ -14,8 +14,8 @@ export class RSSLayout extends React.Component<RouteComponentProps<Props>, {}> {
 
     public render() {
         return <section className="resume-section">
-            <div className="jumbotron">
-                <p className="lead">this.props.shortname</p>
+            <div className="subheading">
+               {this.props.match.params.shortname}
             </div>
         </section>;
     }

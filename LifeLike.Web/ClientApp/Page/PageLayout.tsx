@@ -25,7 +25,6 @@ export class PageLayout extends React.Component<RouteComponentProps<IPostProps>,
 
     private paths = {
         All: '/Api/Page/Pages',
-        Devs: '/Api/Page/Devs',
     };
 
     public componentDidMount() {
@@ -46,12 +45,20 @@ export class PageLayout extends React.Component<RouteComponentProps<IPostProps>,
     public render() {
         const hasProjects = this.state.items.length > 0;
 
-        return (this.state.loadingData ?
-            <LoadingView Title={"Posts"}/> :
+        return (
             <section className="resume-section">
-                hasProjects ?
-                <ListView items={this.state.items}/> :
-                <EmptyListView Title={"Page"}/>
-            </section>)
+                <div className="subheading">
+                    Dev Projects
+                </div>
+                {
+                    this.state.loadingData ?
+                    <LoadingView Title={"Posts"}/> :
+                     hasProjects ?
+                    <ListView items={this.state.items}/> :  <EmptyListView Title={"Posts"}/>
+                }
+            </section>
+        )
+                    
+           
     }
 }

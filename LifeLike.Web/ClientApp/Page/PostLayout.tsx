@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RouteComponentProps, RouteProps } from 'react-router';
+import {RouteComponentProps, RouteProps} from 'react-router';
 import Item from "../Models/Page";
 import EmptyListView from "../Components/EmptyList/EmptyListView";
 import ListView from "../Components/PageList/ListView";
@@ -16,20 +16,22 @@ interface IPostState {
 }
 
 export class PostLayout extends React.Component<RouteComponentProps<IPostProps>, IPostState> {
-    constructor(props: RouteComponentProps<IPostProps>, state: IPostState ) {
+    constructor(props: RouteComponentProps<IPostProps>, state: IPostState) {
         super(props, state);
         this.state = {
             loadingData: true,
             items: []
         };
     }
+
     private paths = {
         getList: '/Api/Page/Posts'
     };
-    
+
     public componentDidMount() {
         fetch(this.paths.getList, {
-            credentials: 'include' })
+            credentials: 'include'
+        })
             .then((response) => {
                 return response.text();
             })
@@ -40,18 +42,22 @@ export class PostLayout extends React.Component<RouteComponentProps<IPostProps>,
                 });
             });
     }
+
     public render() {
         const hasProjects = this.state.items.length > 0;
 
         return (
-            this.state.loadingData ?
-                <LoadingView Title={"News"}/> :
-                hasProjects ?
-                    <section className="resume-section">
-                    <ListView items= {this.state.items} />
-                    </section> :  <EmptyListView Title={"Posts"}  />
-                   
-
+            <section className="resume-section">
+                    <div className="subheading">
+                      News
+                    </div>
+                {
+                    this.state.loadingData ?                  
+                        <LoadingView Title={"News"}/> :
+                    hasProjects ? 
+                        <ListView items={this.state.items}/> : <EmptyListView Title={"News"}/>
+                }
+            </section>
         );
     }
 }

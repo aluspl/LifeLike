@@ -14,10 +14,11 @@ class ListView extends React.Component<ListProps, any> {
             <table className='table'>
             <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Date</th>
                 <th scope="col">Message</th>
+                <th scope="col">Action</th>
+
             </tr>
             </thead>
             <tbody>

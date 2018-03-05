@@ -1,10 +1,11 @@
-export default class Page
-{
+export default class Page {
     Id: number;
-    LinkId : number;
+    LinkId: number;
     ShortName: string;
     FullName: string;
     Content: string;
-    IconName: Date;
-     Category: string;
+    IconName: string;
+    Category: string;
+    Published: Date;
+    ImageUrl: string;
 }

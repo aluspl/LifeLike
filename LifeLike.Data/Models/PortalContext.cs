@@ -45,11 +45,20 @@ namespace LifeLike.Data.Models
             {
                 context.Pages.Add(new Page
                     {
-                        ShortName = "Test",
-                        Category = PageCategory.Page,
-                        FullName = "Test of this",
+                        ShortName = "newPage",
+                        Category = PageCategory.Post,
+                        FullName = "New Page engine",
                         PageOrder = 0,
-                        Content = "Lorem ipsim"
+                        Content = ".Net Core 2.0 + React"
+                    }
+                );
+                context.Pages.Add(new Page
+                    {
+                        ShortName = "contact",
+                        Category = PageCategory.Page,
+                        FullName = "Contact Me",
+                        PageOrder = 0,
+                        Content = "Phone: 600836095"
                     }
                 );
             }

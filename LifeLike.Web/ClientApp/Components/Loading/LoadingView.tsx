@@ -13,8 +13,8 @@ class LoadingView extends React.Component<LoadingViewProps, any> {
     }
     public render() {
         return (
-            <div className="jumbotron">
-                <p className="lead">Loading</p>
+            <div className="subheading">
+                Loading..
             </div>
         )
     }

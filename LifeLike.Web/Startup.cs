@@ -43,7 +43,8 @@ namespace LifeLike.Web
             Debug.WriteLine(Configuration.ToString());
             // Add framework services.
             services.AddDbContext<PortalContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), 
+                    b => b.MigrationsAssembly("LifeLike.Web"))
             );
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();

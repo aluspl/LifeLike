@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LifeLike.Web.Controllers
 {
+    [Authorize]
+    [AllowAnonymous]
     [Route("api/[controller]")]
     public class PageController : Controller
     {
@@ -29,26 +31,21 @@ namespace LifeLike.Web.Controllers
         [HttpGet("Posts")]
         public async Task<IActionResult> Posts()
         {
-            await  _logger.AddStat("", "List", "Page");
+            await  _logger.AddStat("Posts", "List", "Page");
             var list = await _pages.List();
-            return Json(list.Where(p=>p.Category==PageCategory.Page).Select(PageViewModel.ViewModel));
+            return Json(list.Where(p=>p.Category==PageCategory.Post).Select(PageViewModel.ViewModel));
         }
         // GET
+        
         [HttpGet("Pages")]
         public async Task<IActionResult> Pages()
         {
-            await  _logger.AddStat("", "List", "Page");
-            var list = await _pages.List();
-            return Json(list.Where(p=>p.Category==PageCategory.Post).Select(PageViewModel.ViewModel));
-        }    
-        // GET
-        [HttpGet("Devs")]
-        public async Task<IActionResult> Devs()
-        {
-            await  _logger.AddStat("", "List", "Page");
-            var list = await _pages.List(PageCategory.Devs);
-            return Json(list.Where(p=>p.Category==PageCategory.Post).Select(PageViewModel.ViewModel));
-        }    
+            await  _logger.AddStat("All", "List", "Page");
+            var   isLogged = User.Identity.IsAuthenticated;
+
+            var list = isLogged ?  await _pages.List() : await _pages.List(PageCategory.App | PageCategory.Game);
+            return Json(list.Where(p=>p.Category==PageCategory.Page).Select(PageViewModel.ViewModel));
+        }           
         [HttpGet("Details/{id}")]
         public async Task<IActionResult> Details(string id)
         {

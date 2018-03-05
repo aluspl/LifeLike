@@ -1,23 +1,55 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
-import ListContainer from './Components/ListContainer';
+import EmptyListView from "../Components/EmptyList/EmptyListView";
+import LoadingView from "../Components/Loading/LoadingView";
+import ListView from "../Components/AlbumList/ListView";
+import Item from "../Models/Album";
 
 interface Props{
     
 }
-export class AlbumLayout extends React.Component<RouteComponentProps<Props>, {}> {
-    constructor(props: RouteComponentProps<Props>) {
-        super(props);
+interface State {
+    loadingData: boolean,
+    items: Item[]
+}
+export class AlbumLayout extends React.Component<RouteComponentProps<Props>, State> {
+    constructor(props: RouteComponentProps<Props>, state: State) {
+        super(props, state);
+        this.state = {
+            loadingData: true,
+            items: []
+        };
     }
 
-
+    private paths = {
+        getList: '/Api/Album/List'
+    };
+    public componentDidMount() {
+        fetch(this.paths.getList, {
+            credentials: 'include' })
+            .then((response) => {
+                return response.text();
+            })
+            .then((data) => {
+                this.setState({
+                    items: JSON.parse(data),
+                    loadingData: false
+                });
+            });
+    }
     public render() {
-        let contents = <ListContainer/>;
-        return <div>
-            <div className="jumbotron">
-                <p className="lead">ALBUMS</p>
+        const hasItems = this.state.items.length > 0;
+
+        return <section className="resume-section">
+            <div className="subheading">
+               ALBUMS
             </div>
-            { contents }
-        </div>;
+            {
+                this.state.loadingData ?
+                    <LoadingView Title={'Albums'}/> :
+                    hasItems ?
+                        <ListView items= {this.state.items} /> :  <EmptyListView Title={"Album"} />
+            }
+        </section>;
     }
 }

@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Principal;
 using System;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace LifeLike.Web.Controllers
 {
@@ -93,7 +94,7 @@ namespace LifeLike.Web.Controllers
             context.Add(new Link()
             {
                 Id=4,
-                Action = "code",
+                Action = "",
                 Controller = "Pages",
                 Name = "PROJECTS",
                 IconName = "code",
@@ -102,12 +103,13 @@ namespace LifeLike.Web.Controllers
             context.Add(new Link()
             {
                 Id=5,
-                Action = "szymonmotyka",
+                Action = "",
                 Controller = "RSS",
                 Name = "BLOGS",
                 IconName = "coffee",
                 Category = LinkCategory.Menu
             }); 
+            if (isLogged)
             context.Add(new Link()
             {
                 Id=6,

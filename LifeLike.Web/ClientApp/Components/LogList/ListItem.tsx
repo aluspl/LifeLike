@@ -18,19 +18,21 @@ class ListItem extends React.Component<ItemPros, any> {
     render() {
         return (    
             
-            <NavLink to={this.SetupNavLink()}   exact activeClassName='active'>
-              <tr className='row'>
+           
+              <tr>
                   <td>
                       {this.props.item.Name}
                   </td>
                   <td>
-                      <span className='glyphicon glyphicon-calendar'/> {moment(this.props.item.EventTime).format("DD-MM-YYYY")}
+                      <span className='fas fe'/> {moment(this.props.item.EventTime).format("DD-MM-YYYY")}
                   </td>
                   <td>
                       {this.props.item.Messages}
                   </td>
+                  <td>
+                      <NavLink to={this.SetupNavLink()}   exact activeClassName='active'>Detail</NavLink>
+                  </td>
                 </tr>
-            </NavLink>
         )
     }
 }

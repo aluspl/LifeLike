@@ -31,10 +31,10 @@ export class HomeLayout extends React.Component<RouteComponentProps<{}>, IHomeSt
     public render() {
         return this.state.loadingData? <h1>Loading</h1> :
             <div>
-                <div className="jumbotron">
-                    <h1 className='display-4'>{this.state.Item.WelcomeText}  </h1>
+                <div className="subheading">
+                    LifeLike: {this.state.Item.WelcomeText}
                 </div>
-            <p><Player YoutubeId={this.state.Item.WelcomeVideo} /> </p>
+            Player YoutubeId={this.state.Item.WelcomeVideo} /> 
             {/*<p>{this.state.Item.Rss1Url} </p>*/}
             {/*<p>{this.state.Item.Rss2Url} </p>*/}
             </div>;
