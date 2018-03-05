@@ -78,11 +78,11 @@ h2 {
         flex-direction: column;
         width: 100%; }
         #sideNav .navbar-collapse .navbar-nav .nav-item {
-          display: block;
-          font-family: 'Roboto', sans-serif;
-          font-weight: 100; }
+          display: block; }
           #sideNav .navbar-collapse .navbar-nav .nav-item .nav-link {
-            display: block; } }
+            display: block;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 100; } }
 
 section.resume-section {
   border-bottom: 1px solid #dee2e6;

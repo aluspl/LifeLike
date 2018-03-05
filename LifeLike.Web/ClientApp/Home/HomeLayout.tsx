@@ -34,7 +34,7 @@ export class HomeLayout extends React.Component<RouteComponentProps<{}>, IHomeSt
                 <div className="subheading">
                     LifeLike: {this.state.Item.WelcomeText}
                 </div>
-            Player YoutubeId={this.state.Item.WelcomeVideo} /> 
+            <Player YoutubeId={this.state.Item.WelcomeVideo} /> 
             {/*<p>{this.state.Item.Rss1Url} </p>*/}
             {/*<p>{this.state.Item.Rss2Url} </p>*/}
             </div>;
