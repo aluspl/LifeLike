@@ -36,12 +36,11 @@ export class HomeLayout extends React.Component<RouteComponentProps<{}>, IHomeSt
                     this.state.loadingData ? <LoadingView Title="Main Page"/> :
                         <div className="subheading">
                             LifeLike: {this.state.Item.WelcomeText}
-
-                            <Player YoutubeId={this.state.Item.WelcomeVideo} />
-
                         </div>
                 }
-                {/*<p>{this.state.Item.Rss1Url} </p>*/}
+                    <Player YoutubeId={this.state.Item.WelcomeVideo} />
+
+                    {/*<p>{this.state.Item.Rss1Url} </p>*/}
                 {/*<p>{this.state.Item.Rss2Url} </p>*/}
                 
             </section>)

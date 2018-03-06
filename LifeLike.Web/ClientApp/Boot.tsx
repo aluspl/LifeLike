@@ -17,13 +17,5 @@ function renderApp() {
         document.getElementById('react-app')
     );
 }
-
 renderApp();
 
-// Allow Hot Module Replacement
-if (module.hot) {
-    module.hot.accept('./Routes', () => {
-        routes = require<typeof RoutesModule>('./Routes').routes;
-        renderApp();
-    });
-}

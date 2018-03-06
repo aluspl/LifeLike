@@ -41,7 +41,10 @@ module.exports = (env) =>
             ]
         },
         plugins: [
-            new UglifyJsPlugin(),
+            new webpack.optimize.CommonsChunkPlugin('common'),
+            new webpack.optimize.DedupePlugin(),
+            new webpack.optimize.UglifyJsPlugin(),
+            new webpack.optimize.AggressiveMergingPlugin(),
             new ExtractTextPlugin({ // define where to save the file
                 filename: '[name].bundle.css',
                 allChunks: true
