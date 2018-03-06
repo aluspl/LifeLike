@@ -5,25 +5,11 @@ interface IPlayer {
 }
 
 class Player extends React.Component<IPlayer, any> {
-    GetLink()
-    {
-         return this.props.YoutubeId;
-    }
     render() {
-        const opts = {
-          height: '390',
-          width: '640',
-          playerVars: { // https://developers.google.com/youtube/player_parameters
-            autoplay: 1, 
-          }
-        };
-        console.log(this.GetLink());
-
         return (
             <YouTube videoId={this.props.YoutubeId} />
           );
-      }
-          
+      }       
 }
 
 export default Player;

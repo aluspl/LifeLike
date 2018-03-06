@@ -11,18 +11,16 @@ interface ListProps {
 class ListView extends React.Component<ListProps, any> {
 
     render() {
-        return  <section className='row'>
-                <h1>Posts</h1>
-            <div className='col-md-12'>
+        return (
+            <div className="row">
                 {
                     this.props.items.map(item => {
                         return <ListItem key={item.Id} item={item}/>
                     })
                 }
             </div>
-        </section>
+        )
     }
-
 }
 
 export default ListView;

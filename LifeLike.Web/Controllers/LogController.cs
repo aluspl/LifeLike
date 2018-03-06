@@ -12,6 +12,7 @@ using Microsoft.Azure.KeyVault.Models;
 namespace LifeLike.Web.Controllers
 {
     [Authorize]
+    [AllowAnonymous]
     [Route("api/[controller]")]
     public class LogController : Controller
     {

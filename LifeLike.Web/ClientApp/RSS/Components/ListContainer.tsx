@@ -1,21 +1,20 @@
 import * as React from 'react';
-import ListView from '../../Components/PageList/ListView';
+import ListView from '../../Components/LogList/LogList';
 import EmptyListView from '../../Components/EmptyList/EmptyListView';
 import LoadingView from '../../Components/Loading/LoadingView';
-
-import Item from '../../Models/Page';
+import Item from '../../Models/Log';
 
 interface ListContainerState {
     loadingData: boolean,
     items: Item[]
 }
-interface ListContainerProps{
-    
+interface ListContainerProps {
 }
-class ListContainer extends React.Component<ListContainerProps, ListContainerState> {
 
+class ListContainer extends React.Component<ListContainerProps, ListContainerState> {
+   
     private paths = {
-        getList: '/Api/Page/Pages'
+        getList: '/Api/Log/List'
     };
 
     constructor(props: ListContainerProps) {
@@ -27,30 +26,27 @@ class ListContainer extends React.Component<ListContainerProps, ListContainerSta
         };
     }
     public componentDidMount() {
-        fetch(this.paths.getList, {
+        fetch(this.paths.getList, { 
             credentials: 'include' })
             .then((response) => {
                 return response.text();
             })
             .then((data) => {
-                this.setState((state, props) => {
-                    state.items = JSON.parse(data);
-                    state.loadingData = false;
-                    console.log(state.items);
+                this.setState({
+                    items: JSON.parse(data),
+                    loadingData: false
                 });
             });
     }
     public render() {
-        const hasProjects = this.state.items.length > 0;
-
+        const hasItems = this.state.items.length > 0;
         return (
             this.state.loadingData ?
-                <LoadingView Title={"Posts"}/> :
-                hasProjects ?
-                    <ListView items= {this.state.items} /> :  <EmptyListView />
+                <LoadingView Title={'Logs'}/> :
+                hasItems ? 
+                    <ListView items= {this.state.items} /> :  <EmptyListView  Title={"Logs"}  />
         )
     }
- 
 }
 
 export default ListContainer;

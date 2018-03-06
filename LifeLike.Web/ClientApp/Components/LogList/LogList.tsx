@@ -10,15 +10,26 @@ interface ListProps {
 class ListView extends React.Component<ListProps, any> {
 
     render() {
-        return <section className='row'>
-            <div className='col-md-10'>
+        return <div>
+            <table className='table'>
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Message</th>
+                <th scope="col">Action</th>
+
+            </tr>
+            </thead>
+            <tbody>
                 {
                     this.props.items.map(log => {
                         return <ListItem key={log.Id} item={log}/>
                     })
                 }
-            </div>
-        </section>
+            </tbody>
+        </table>
+        </div>
     }
 
 }

@@ -1,16 +1,16 @@
 import * as React from 'react';
 
+interface LoadingViewProps {
+    Title: string;
+}
 
-class EmptyListView extends React.Component<any, any> {
+class EmptyListView extends React.Component<LoadingViewProps, any> {
 
     public render() {
         return (
-            <section className='EmptyListWarning'>
-                <section className='EmptyListWarning-textContainer'>
-                    <p className='text-center'>Empty List :(</p>
-                   
-                </section>
-            </section>
+            <div className="subheading">
+                Empty List
+            </div>
         )
     }
 }

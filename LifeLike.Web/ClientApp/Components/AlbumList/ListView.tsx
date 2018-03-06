@@ -8,9 +8,13 @@ interface ListProps {
 }
 
 class ListView extends React.Component<ListProps, any> {
-
+    constructor(props: ListProps)
+    {
+        super(props)
+    }
+    
     render() {
-        return <section className='ProjectsList row'>
+        return <section className='row'>
             <div className='col-md-12'>
                 {
                     this.props.items.map(item => {

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
-namespace LifeLike.Data.Migrations
+namespace LifeLike.Web.Migrations
 {
     [DbContext(typeof(PortalContext))]
     partial class PortalContextModelSnapshot : ModelSnapshot
@@ -128,9 +128,13 @@ namespace LifeLike.Data.Migrations
 
                     b.Property<string>("FullName");
 
+                    b.Property<string>("ImageUrl");
+
                     b.Property<long>("LinkId");
 
                     b.Property<int>("PageOrder");
+
+                    b.Property<DateTime>("Published");
 
                     b.Property<string>("ShortName")
                         .IsRequired();

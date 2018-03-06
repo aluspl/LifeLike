@@ -1,6 +1,6 @@
 ﻿namespace LifeLike.Web.ViewModel
 {
-    public class LoginViewModel
+    public class LoginViewModel : BaseViewModel
     {
         public string Login { get; set; }
         public string Password { get; set; }

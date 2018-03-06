@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
-namespace LifeLike.Data.Migrations
+namespace LifeLike.Web.Migrations
 {
     [DbContext(typeof(PortalContext))]
-    [Migration("20180128203956_init")]
-    partial class init
+    [Migration("20180305220005_New Position")]
+    partial class NewPosition
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -129,9 +129,13 @@ namespace LifeLike.Data.Migrations
 
                     b.Property<string>("FullName");
 
+                    b.Property<string>("ImageUrl");
+
                     b.Property<long>("LinkId");
 
                     b.Property<int>("PageOrder");
+
+                    b.Property<DateTime>("Published");
 
                     b.Property<string>("ShortName")
                         .IsRequired();

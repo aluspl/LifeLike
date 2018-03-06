@@ -1,26 +1,29 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
-import Item from "../Models/Log";
-import LoadingView from "../Components/Loading/LoadingView";
-import ListView from "../Components/LogList/LogList";
 import EmptyListView from "../Components/EmptyList/EmptyListView";
+import LoadingView from "../Components/Loading/LoadingView";
+import ListView from "../Components/AlbumList/ListView";
+import Item from "../Models/Album";
 
+interface Props{
+    
+}
 interface State {
     loadingData: boolean,
     items: Item[]
 }
-export class LogLayout extends React.Component<RouteComponentProps<{}>, State> {
-    constructor(props: RouteComponentProps<{}>, state: State) {
+export class AlbumLayout extends React.Component<RouteComponentProps<Props>, State> {
+    constructor(props: RouteComponentProps<Props>, state: State) {
         super(props, state);
         this.state = {
             loadingData: true,
             items: []
         };
     }
-    private paths = {
-        getList: '/Api/Log/List'
-    };
 
+    private paths = {
+        getList: '/Api/Album/List'
+    };
     public componentDidMount() {
         fetch(this.paths.getList, {
             credentials: 'include' })
@@ -34,20 +37,19 @@ export class LogLayout extends React.Component<RouteComponentProps<{}>, State> {
                 });
             });
     }
-
     public render() {
         const hasItems = this.state.items.length > 0;
 
         return <section className="resume-section">
             <div className="subheading">
-               LOGS
+               ALBUMS
             </div>
             {
                 this.state.loadingData ?
-                    <LoadingView Title={'Logs'}/> :
+                    <LoadingView Title={'Albums'}/> :
                     hasItems ?
-                        <ListView items= {this.state.items} /> :  <EmptyListView  Title={"Logs"}  />
+                        <ListView items= {this.state.items} /> :  <EmptyListView Title={"Album"} />
             }
-        </section>
+        </section>;
     }
 }

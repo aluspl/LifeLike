@@ -11,8 +11,10 @@ interface ListItemPros {
 class ListItem extends React.Component<ListItemPros, any> {
    
     render() {
-        return ( 
-               <Player YoutubeId={this.props.item.YoutubeID} />
+        return (  
+            <div className="col-md-6">
+                <Player YoutubeId={this.props.item.YoutubeID} />
+            </div>
         );
     }
 }

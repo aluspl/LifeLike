@@ -1,20 +1,20 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 const bundleOutputDir = './wwwroot/dist';
-const CheckerPlugin = require('awesome-typescript-loader');
 
-
-module.exports = {
+module.exports = (env) => 
+{
+    const isDevBuild = !(env && env.prod);
+    return [{
         stats: {modules: false},
-        devtool: "inline-source-map",
-        entry: {
-            'main': './ClientApp/boot.tsx',
-        },
+        entry: ['./ClientApp/boot.tsx', './ClientApp/Styles/resume.scss' ]
+        ,
         resolve: {extensions: ['.js', '.jsx', '.ts', '.tsx']},
         output: {
             path: path.join(__dirname, bundleOutputDir),
-            filename: '[name].js',
+            filename: 'main.js',
             publicPath: 'dist/'
         },
         module: {
@@ -22,42 +22,36 @@ module.exports = {
                 {
                     test: /\.tsx?$/,
                     include: /ClientApp/,
-                    loader: 'awesome-typescript-loader',
-                    options: {
-                        configFileName: 'tsconfig.json'
-                    }
+                    use: 'awesome-typescript-loader?silent=true'
+                },
+                { // sass / scss loader for webpack
+                    test: /\.(sass|scss)$/,
+                    loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
                 },
                 {
-                    test: /\.ts?$/,
+                    test: /\.css$/,
                     include: /ClientApp/,
-                    loader: 'awesome-typescript-loader',
-                    options: {
-                        configFileName: 'tsconfig.json'
-                    }
+                    use: isDevBuild ?
+                        ['style-loader', 'css-loader'] :
+                        ExtractTextPlugin.extract({use: 'css-loader?minimize'})
                 },
-                {
-                    test: /\.less$/,
-                    include: /ClientApp/,
-                    use: [
-                        {
-                            loader: "css-loader",
-                            options: {
-                                outputPath: '/wwwroot/dist/',
-
-                                sourceMap: true
-                            }
-                        }, {
-                            loader: "less-loader",
-                            options: {
-                                outputPath: '/wwwroot/dist/',
-                                sourceMap: true
-                            }
-                        }]
-                },
-                {
-                    test: /\.(png|jpg|jpeg|gif|svg)$/,
-                    use: 'url-loader?limit=25000'
-                }
+                {test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000'}
             ]
-        }
-};
+        },
+        plugins: [
+            new webpack.optimize.UglifyJsPlugin({
+                compress: { warnings: false },
+                output: {comments: false },
+                mangle: false,
+                sourcemap: false,
+                minimize: true,
+                mangle: { except: ['$super', '$', 'exports', 'require', '$q', '$ocLazyLoad'] }
+            }),
+            new ExtractTextPlugin({ // define where to save the file
+                filename: '[name].bundle.css',
+                allChunks: true
+            }),
+            new CheckerPlugin()
+        ]
+    }];
+}

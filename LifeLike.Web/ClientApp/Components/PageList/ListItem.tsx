@@ -2,6 +2,7 @@ import * as React from 'react';
 import {NavLink} from "react-router-dom";
 
 import Item from '../../Models/Page';
+import * as moment from "moment";
 
 interface ListItemPros {
     key: number,
@@ -9,29 +10,26 @@ interface ListItemPros {
 }
 
 class ListItem extends React.Component<ListItemPros, any> {
-    SetupNavLink()
-    {
+    SetupNavLink() {
         return ('/Post/').concat(this.props.item.ShortName);
     }
+
     render() {
-        return (            
-            <NavLink to={this.SetupNavLink()}>
-              <div className='row'>
-                    <div className='col-md-12'>
-                        <div className='row'>
-                            <div className='col-md-6 padding-none'>
-                                <span className='ProjectsListItem-name'>{this.props.item.FullName}</span>
-                            </div>
-                            <div className='col-md-6 padding-none'>
-                                <span className='pull-right'>
-                                    <span className='glyphicon glyphicon-calendar'/> {this.props.item.Category}
-                                </span>
-                            </div>
-                        </div>
-                                    
+        return (
+            <NavLink className='col-sm-4' to={this.SetupNavLink()}>
+                <div className='subheading'>
+                    {this.props.item.FullName}
+                </div>
+                <div className="row">
+                    <div className='col-md-6'>
+                        <i className='fas fa-calendar'/> {this.props.item.ShortName}
+                    </div>
+
+                    <div className='col-md-3'>
+                        <i className='fas fa-calendar'/>{moment(this.props.item.Published).format("DD-MM-YYYY")}
                     </div>
                 </div>
-                </NavLink>
+            </NavLink>
         )
     }
 

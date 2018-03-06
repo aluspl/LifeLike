@@ -15,13 +15,13 @@ class ListItem extends React.Component<ListItemPros, any> {
     }
     SetupGlyph()
     {
-         return'glyphicon glyphicon-'.concat(this.props.item.IconName);        
+         return'fas fa-'.concat(this.props.item.IconName);        
     }
     render() {
         return (
-            <li>
-                <NavLink to={this.SetupNavLink()}   exact activeClassName='active'>
-                    <span className={this.SetupGlyph()}> </span> {this.props.item.Name}
+            <li className="nav-item">
+                <NavLink className="nav-link"  to={this.SetupNavLink()}   exact activeClassName='active'>
+                    <i className={this.SetupGlyph()}/>  {this.props.item.Name}
                 </NavLink>
             </li>
         )

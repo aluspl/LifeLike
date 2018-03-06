@@ -13,10 +13,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Principal;
 using System;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace LifeLike.Web.Controllers
 {
     [Authorize]
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly IConfigRepository _config;
@@ -66,7 +68,7 @@ namespace LifeLike.Web.Controllers
                 Action = "",
                 Controller = "Posts",
                 Name = "News",
-                IconName = "pencil",
+                IconName = "newspaper",
 
                 Category = LinkCategory.Menu
             });
@@ -77,32 +79,59 @@ namespace LifeLike.Web.Controllers
                 Action = "",
                 Controller = "Albums",
                 Name = "Albums",
-                IconName = "camera",
+                IconName = "camera-retro",
                 Category = LinkCategory.Menu
-            }); 
-            if (isLogged)                   
+            });   
             context.Add(new Link()
             {
                 Id=3,
                 Action = "",
-                Controller = "Logs",
-                Name = "Logs",
+                Controller = "Videos",
+                Name = "VIDEOS",
                 IconName = "film",
                 Category = LinkCategory.Menu
             });
-              context.Add(new Link()
+            context.Add(new Link()
             {
                 Id=4,
                 Action = "",
-                Controller = "Videos",
-                Name = "Video Projects",
-                IconName = "film",
+                Controller = "Pages",
+                Name = "PROJECTS",
+                IconName = "code",
                 Category = LinkCategory.Menu
             });
+            context.Add(new Link()
+            {
+                Id=5,
+                Action = "",
+                Controller = "RSS",
+                Name = "BLOGS",
+                IconName = "coffee",
+                Category = LinkCategory.Menu
+            }); 
+            if (isLogged)
+            context.Add(new Link()
+            {
+                Id=6,
+                Action = "",
+                Controller = "Logs",
+                Name = "Logs",
+                IconName = "book",
+                Category = LinkCategory.Menu
+            });
+            context.Add(new Link()
+            {
+                Id=7,
+                Action = "Contact",
+                Controller = "Page",
+                Name = "CONTACT",
+                IconName = "at",
+                Category = LinkCategory.Menu
+            });
+           
             return context;
         }
 
-        [AllowAnonymous]
         [HttpGet("Api/Config")]
         public async Task<IActionResult> GetList()
         {
