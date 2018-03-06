@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 const bundleOutputDir = './wwwroot/dist';
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = (env) => 
 {
@@ -22,7 +23,7 @@ module.exports = (env) =>
                 {
                     test: /\.tsx?$/,
                     include: /ClientApp/,
-                    use: 'awesome-typescript-loader?silent=true'
+                    loader: 'ts-loader'
                 },
                 { // sass / scss loader for webpack
                     test: /\.(sass|scss)$/,
@@ -40,14 +41,7 @@ module.exports = (env) =>
             ]
         },
         plugins: [
-            new webpack.optimize.UglifyJsPlugin({
-                compress: { warnings: false },
-                output: {comments: false },
-                mangle: false,
-                sourcemap: false,
-                minimize: true,
-                mangle: { except: ['$super', '$', 'exports', 'require', '$q', '$ocLazyLoad'] }
-            }),
+            new UglifyJsPlugin(),
             new ExtractTextPlugin({ // define where to save the file
                 filename: '[name].bundle.css',
                 allChunks: true
