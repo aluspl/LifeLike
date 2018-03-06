@@ -100,15 +100,15 @@ namespace LifeLike.Web.Controllers
                 IconName = "code",
                 Category = LinkCategory.Menu
             });
-            context.Add(new Link()
-            {
-                Id=5,
-                Action = "",
-                Controller = "RSS",
-                Name = "BLOGS",
-                IconName = "coffee",
-                Category = LinkCategory.Menu
-            }); 
+//            context.Add(new Link()
+//            {
+//                Id=5,
+//                Action = "",
+//                Controller = "RSS",
+//                Name = "BLOGS",
+//                IconName = "coffee",
+//                Category = LinkCategory.Menu
+//            }); 
             if (isLogged)
             context.Add(new Link()
             {
