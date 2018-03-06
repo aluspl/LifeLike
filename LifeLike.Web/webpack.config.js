@@ -28,6 +28,7 @@ module.exports = (env) =>
                     test: /\.(sass|scss)$/,
                     loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
                 },
+                
                 {
                     test: /\.css$/,
                     include: /ClientApp/,
