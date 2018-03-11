@@ -9,7 +9,9 @@ interface State {
     loadingData: boolean,
     items: Item[]
 }
-export class LogLayout extends React.Component<RouteComponentProps<{}>, State> {
+interface  Props extends RouteComponentProps<any> {
+}
+export class LogLayout extends React.Component<Props, State> {
     constructor(props: RouteComponentProps<{}>, state: State) {
         super(props, state);
         this.state = {

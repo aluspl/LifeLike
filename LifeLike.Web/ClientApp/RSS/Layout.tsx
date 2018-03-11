@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
-import LogContainer from './Components/ListContainer';
 
-interface Props {
+interface  Props extends RouteComponentProps<any>{
     shortname: string
 
 }
-export class RSSLayout extends React.Component<RouteComponentProps<Props>, {}> {
-    constructor(props: RouteComponentProps<Props>) {
+export class RSSLayout extends React.Component<Props, {}> {
+    constructor(props: Props) {
         super(props);
     }
 

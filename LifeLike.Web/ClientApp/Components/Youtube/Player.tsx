@@ -1,13 +1,18 @@
 import * as React from "react";
-import YouTube from 'react-youtube';
+
 interface IPlayer {
     YoutubeId: string
 }
 
 class Player extends React.Component<IPlayer, any> {
+
     render() {
+        const videoUrl = `http://www.youtube.com/embed/${this.props.YoutubeId}`;
+
         return (
-            <YouTube videoId={this.props.YoutubeId} />
+            <div>
+                <iframe className="responsive-embed-item" src={videoUrl}/>
+            </div>
           );
       }       
 }

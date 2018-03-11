@@ -13,9 +13,9 @@ class LoadingView extends React.Component<LoadingViewProps, any> {
     }
     public render() {
         return (
-            <div className="subheading">
-                Loading..
-            </div>
+                <div className="subheading">
+                    Loading..
+                </div>
         )
     }
 }

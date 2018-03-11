@@ -5,15 +5,15 @@ import LoadingView from "../Components/Loading/LoadingView";
 import EmptyListView from "../Components/EmptyList/EmptyListView";
 import ListView from "../Components/VideoList/ListView";
 
-interface  VideoLayoutProps{
+interface  Props extends RouteComponentProps<any>{
     
 }
 interface ListContainerState {
     loadingData: boolean,
     items: Item[]
 }
-export class VideoLayout extends React.Component<RouteComponentProps<VideoLayoutProps>, ListContainerState> {
-    constructor(props: RouteComponentProps<VideoLayoutProps>, state: ListContainerState){
+export class VideoLayout extends React.Component<Props, ListContainerState> {
+    constructor(props: Props, state: ListContainerState){
         super(props, state);
         this.state = {
             loadingData: true,

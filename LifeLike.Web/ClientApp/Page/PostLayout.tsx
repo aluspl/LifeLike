@@ -5,7 +5,7 @@ import EmptyListView from "../Components/EmptyList/EmptyListView";
 import ListView from "../Components/PageList/ListView";
 import LoadingView from "../Components/Loading/LoadingView";
 
-interface IPostProps {
+interface  Props extends RouteComponentProps<any>{
     shortname: string;
 }
 
@@ -15,8 +15,8 @@ interface IPostState {
     items: Item[]
 }
 
-export class PostLayout extends React.Component<RouteComponentProps<IPostProps>, IPostState> {
-    constructor(props: RouteComponentProps<IPostProps>, state: IPostState) {
+export class PostLayout extends React.Component<Props, IPostState> {
+    constructor(props:Props, state: IPostState) {
         super(props, state);
         this.state = {
             loadingData: true,

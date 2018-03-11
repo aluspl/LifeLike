@@ -14,7 +14,7 @@ namespace LifeLike.Web.ViewModel
         [DataType(DataType.MultilineText)]
         public string Content { get; set; }        
         public int PageOrder { get; set; }
-        public PageCategory Category { get; set; }
+        public string Category { get; set; }
         public string IconName { get; set; }
         public long LinkId { get; set; }
         public long Id { get; set; }
@@ -23,10 +23,13 @@ namespace LifeLike.Web.ViewModel
 
         public static Page DataModel(PageViewModel model)
         {
+            if (model == null) return null;
+           var value = Enum.TryParse(model.Category, out PageCategory	 category);
+           
            return new Page
             {
                 Id=model.Id,
-                Category = model.Category,
+                Category = category,
                 FullName = model.FullName,
                 ShortName = model.ShortName,
                 PageOrder = model.PageOrder,
@@ -41,7 +44,7 @@ namespace LifeLike.Web.ViewModel
             return new PageViewModel
             {
                 Id=model.Id,
-                Category = model.Category,
+                Category = model.Category.ToString(),
                 FullName = model.FullName,
                 ShortName = model.ShortName,
                 PageOrder = model.PageOrder,

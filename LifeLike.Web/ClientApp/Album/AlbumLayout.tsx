@@ -5,15 +5,15 @@ import LoadingView from "../Components/Loading/LoadingView";
 import ListView from "../Components/AlbumList/ListView";
 import Item from "../Models/Album";
 
-interface Props{
+interface  Props extends RouteComponentProps<any> {
     
 }
 interface State {
     loadingData: boolean,
     items: Item[]
 }
-export class AlbumLayout extends React.Component<RouteComponentProps<Props>, State> {
-    constructor(props: RouteComponentProps<Props>, state: State) {
+export class AlbumLayout extends React.Component<Props, State> {
+    constructor(props: Props, state: State) {
         super(props, state);
         this.state = {
             loadingData: true,

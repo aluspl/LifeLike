@@ -1,3 +1,5 @@
+'use strict';
+
 import * as React from 'react';
 import {RouteComponentProps} from 'react-router';
 import Item from "../Models/Page";
@@ -5,7 +7,7 @@ import LoadingView from "../Components/Loading/LoadingView";
 import ListView from "../Components/PageList/ListView";
 import EmptyListView from "../Components/EmptyList/EmptyListView";
 
-interface IPostProps {
+interface  Props extends RouteComponentProps<any>{
     Params: string;
 }
 
@@ -14,8 +16,8 @@ interface IPostState {
     items: Item[]
 }
 
-export class PageLayout extends React.Component<RouteComponentProps<IPostProps>, IPostState> {
-    constructor(props: RouteComponentProps<IPostProps>, state: IPostState) {
+export class PageLayout extends React.Component<Props, IPostState> {
+    constructor(props: Props, state: IPostState) {
         super(props, state);
         this.state = {
             loadingData: true,

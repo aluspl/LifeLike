@@ -3,21 +3,21 @@ import * as moment from 'moment';
 import {RouteComponentProps} from 'react-router';
 import Log from '../Models/Log';
 
-interface LogContainerState {
+interface State {
     loadingData: boolean,
     item: Log
 }
 
-interface ILogDetailParam {
+interface  Props extends RouteComponentProps<any> {
     shortname: string
 }
 
-export class LogDetailLayout extends React.Component<RouteComponentProps<ILogDetailParam>, LogContainerState> {
+export class LogDetailLayout extends React.Component<Props, State> {
     private paths = {
         getList: '/Api/Log/Detail/'
     };
 
-    constructor(props: RouteComponentProps<ILogDetailParam>) {
+    constructor(props: Props, state: State) {
         super(props);
 
         this.state = {

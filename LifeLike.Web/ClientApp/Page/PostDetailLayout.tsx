@@ -1,9 +1,12 @@
+'use strict';
+
 import * as React from 'react';
-import {RouteComponentProps, RouteProps} from 'react-router';
+import {RouteComponentProps} from 'react-router';
 import Item from "../Models/Page";
 import LoadingView from "../Components/Loading/LoadingView";
+import Detail from './PostDetailView';
 
-interface IPostDetailParam {
+interface  Props extends RouteComponentProps<any>{
     shortname: string
 }
 
@@ -12,8 +15,8 @@ interface IPostDetailState {
     Item: Item,
 }
 
-export class PostDetailLayout extends React.Component<RouteComponentProps<IPostDetailParam>, IPostDetailState> {
-    constructor(props: RouteComponentProps<IPostDetailParam>, state: IPostDetailState) {
+export class PostDetailLayout extends React.Component<Props, IPostDetailState> {
+    constructor(props: Props) {
         super(props);
         this.state = {
             loadingData: true,
@@ -46,14 +49,12 @@ export class PostDetailLayout extends React.Component<RouteComponentProps<IPostD
 
     public render() {
         return (
-            this.state.loadingData ?
-                <LoadingView Title="Post"/> :
-                <section className="resume-section">
-                    <div className="subheading">
-                      {this.state.Item.FullName}
-                    </div>
-                    <p> {this.state.Item.Content}</p>
-                    <p>{this.state.Item.Category}</p>
+            <section className="resume-section">
+                {
+                    this.state.loadingData ?
+                        <LoadingView Title="Post"/> : 
+                        <Detail   Item={this.state.Item} />                     
+                    }
                 </section>
         );
     }
