@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeLike.Web", "LifeLike.We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeLike.Repositories", "LifeLike.Repositories\LifeLike.Repositories.csproj", "{B5FB45D9-07AC-4D2E-B387-C653538B08CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeLike.Test", "LifeLike.Test\LifeLike.Test.csproj", "{FC7E197F-FC0E-48B2-BB75-9BB61F9FAC9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,5 +31,9 @@ Global
 		{B5FB45D9-07AC-4D2E-B387-C653538B08CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5FB45D9-07AC-4D2E-B387-C653538B08CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5FB45D9-07AC-4D2E-B387-C653538B08CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC7E197F-FC0E-48B2-BB75-9BB61F9FAC9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC7E197F-FC0E-48B2-BB75-9BB61F9FAC9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC7E197F-FC0E-48B2-BB75-9BB61F9FAC9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC7E197F-FC0E-48B2-BB75-9BB61F9FAC9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
