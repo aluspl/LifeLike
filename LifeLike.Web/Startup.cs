@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
@@ -29,8 +30,6 @@ namespace LifeLike.Web
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)     
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-
                 .AddEnvironmentVariables();
             if (env.IsDevelopment())
                 builder.AddUserSecrets<Startup>();
@@ -125,13 +124,15 @@ namespace LifeLike.Web
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
-            app.UseMvc(routes =>
+                    
+            var forwarOptions = new ForwardedHeadersOptions
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");                            
-            });
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            };
+            forwarOptions.KnownNetworks.Clear();
+            forwarOptions.KnownProxies.Clear();
+
+            app.UseForwardedHeaders(forwarOptions);
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
             app.UseAuthentication();
@@ -156,7 +157,7 @@ namespace LifeLike.Web
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
                 // see https://go.microsoft.com/fwlink/?linkid=864501
 
-                spa.Options.SourcePath = "src";
+                spa.Options.SourcePath = "ClientApp";
 
                 if (env.IsDevelopment())
                 {

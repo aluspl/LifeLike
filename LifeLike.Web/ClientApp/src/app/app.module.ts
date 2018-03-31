@@ -49,6 +49,8 @@ import { LogComponent } from './log/log.component';
 import { YoutubePlayerComponent } from './youtube-player/youtube-player.component';
 import { LogDetailComponent } from './log-detail/log-detail.component';
 import { AlbumDetailComponent } from './album-detail/album-detail.component';
+import { PostDetailCardComponent } from './post-detail-card/post-detail-card.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -65,17 +67,19 @@ import { AlbumDetailComponent } from './album-detail/album-detail.component';
     LogComponent,
     YoutubePlayerComponent,
     LogDetailComponent,
-    AlbumDetailComponent
+    AlbumDetailComponent,
+    PostDetailCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatToolbarModule,
     MatMenuModule,
     MatButtonModule,
     MatIconModule,
-
+    MatCardModule,
   ],
   exports: [
     CdkTableModule,

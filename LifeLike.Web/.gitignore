@@ -8,6 +8,7 @@
 
 # dependencies
 /node_modules
+/ClientApp/node_modules
 
 # IDEs and editors
 /.idea

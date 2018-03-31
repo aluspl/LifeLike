@@ -1,5 +1,4 @@
-export default class Log
-{
+export default class Log {
     Id: number;
     Type: number;
 
