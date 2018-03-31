@@ -95,9 +95,7 @@ namespace LifeLike.Web
             }); 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "QuickApp API", Version = "v1" });
-
-            
+                c.SwaggerDoc("v1", new Info { Title = "QuickApp API", Version = "v1" });            
             }); 
             services.AddMvc();
             services.AddMvc().AddJsonOptions(options =>
