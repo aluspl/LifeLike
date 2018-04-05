@@ -123,13 +123,6 @@ namespace LifeLike.Web.Controllers
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> LogOut()
-        {
-            await _signInManager.SignOutAsync();
-            return Ok();
-        }
+        }        
     }
 }

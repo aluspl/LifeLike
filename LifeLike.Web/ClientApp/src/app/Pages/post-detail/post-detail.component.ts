@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Page } from '../../Models/Page';
 
 @Component({
   selector: 'app-post-detail',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post-detail.component.scss']
 })
 export class PostDetailComponent implements OnInit {
-
+  page: Page;
   constructor() { }
 
   ngOnInit() {

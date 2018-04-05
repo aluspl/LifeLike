@@ -1,6 +1,6 @@
-export default class Config {
+export  class Config {
     Rss1Url: string;
-    WelcomeText : string;
+    WelcomeText: string;
     Rss2Url: string;
-     WelcomeVideo:string;
+     WelcomeVideo: string;
 }

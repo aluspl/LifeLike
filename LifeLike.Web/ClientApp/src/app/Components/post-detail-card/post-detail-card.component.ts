@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RestService } from '../rest.service';
-import Page from '../Models/Page';
+import { Page } from '../../Models/Page';
+import { RestService } from '../../Services/rest.service';
+
 
 @Component({
   selector: 'app-post-detail-card',
@@ -11,7 +12,7 @@ export class PostDetailCardComponent implements OnInit {
 
   @Input() post: Page;
 
-  constructor(private restService : RestService) { }
+  constructor(private restServices: RestService) { }
 
   ngOnInit() {
   }

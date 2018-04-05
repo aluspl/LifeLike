@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PageComponent } from './page/page.component';
-import { PostDetailComponent } from './post-detail/post-detail.component';
-import { HomeComponent } from './home/home.component';
-import { PostComponent } from './post/post.component';
-import { LogComponent } from './log/log.component';
-import { VideoComponent } from './video/video.component';
-import { LogDetailComponent } from './log-detail/log-detail.component';
-import { AlbumDetailComponent } from './album-detail/album-detail.component';
-import { AlbumComponent } from './album/album.component';
+import { HomeComponent } from './Pages/home/home.component';
+import { PageComponent } from './Pages/page/page.component';
+import { LogComponent } from './Pages/log/log.component';
+import { PostComponent } from './Pages/post/post.component';
+import { AlbumComponent } from './Pages/album/album.component';
+import { VideoComponent } from './Pages/video/video.component';
+import { LogDetailComponent } from './Pages/log-detail/log-detail.component';
+import { PostDetailComponent } from './Pages/post-detail/post-detail.component';
+import { AlbumDetailComponent } from './Pages/album-detail/album-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/Home', pathMatch: 'full' },

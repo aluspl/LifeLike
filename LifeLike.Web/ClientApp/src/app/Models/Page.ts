@@ -1,4 +1,4 @@
-export default class Page {
+export class Page {
     Id: number;
     LinkId: number;
     ShortName: string;

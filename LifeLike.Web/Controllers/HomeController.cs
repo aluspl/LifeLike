@@ -36,12 +36,12 @@ namespace LifeLike.Web.Controllers
                         _userManager = signInManager;
 
         }
-        [HttpGet]
-        [AllowAnonymous]
-        public IActionResult Index()
-        {
-            return View();
-        }
+        // [HttpGet]
+        // [AllowAnonymous]
+        // public IActionResult Index()
+        // {
+        //     return View();
+        // }
         [HttpGet("Api/Menu")]
         [AllowAnonymous]
         public async Task<IActionResult> GetMenuLinks()

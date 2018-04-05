@@ -49,14 +49,13 @@ namespace LifeLike.Web.Controllers
               var login=  User.Identity.IsAuthenticated;
 
                 var log = await _logger.Get(id);
-                return Json ( EventLogViewModel.Get(log));
+                return Ok ( EventLogViewModel.Get(log));
             }
             catch (Exception e)
             {
               await  _logger.AddException(e);      
-                throw;
-            }
-           
+              throw;
+            }           
         }
         [Authorize]
         [HttpGet("Clear")]
