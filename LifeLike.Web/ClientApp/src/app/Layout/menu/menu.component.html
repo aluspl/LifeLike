@@ -1,18 +1,14 @@
 <div class="container" style="padding-left: 0; padding-right: 0;">
-    <header class="navbar navbar-light navbar-fixed-top navbar-expand-lg">
-  
-      <a class="navbar-brand" [routerLink]="['/']" (click)="navbarCollapsed = true">ng-bootstrap</a>
-  
+    <header class="navbar navbar-light navbar-fixed-top navbar-expand-lg">  
+      <a class="navbar-brand" [routerLink]="['/']" (click)="navbarCollapsed = true">LifeLike</a>
+
       <button class="navbar-toggler navbar-toggler-right" type="button" (click)="navbarCollapsed = !navbarCollapsed"
               [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
   
       <div class="navbar-collapse" [ngbCollapse]="navbarCollapsed" id="navbarContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item" [routerLinkActive]="['active']">
-                <a class="nav-link" [routerLink]="['/']" (click)="navbarCollapsed = true">LifeLike</a>
-            </li>
+        <ul class="navbar-nav mr-auto">           
             <li *ngFor="let menu of MenuItems"  class="nav-item"  >
                 <a class="nav-link" [routerLink]="[ menu.Controller + '/' + menu.Action ]" >
                     <i class="fas fa-{{menu.Icon}}"></i> {{menu.Name}}

@@ -53,7 +53,7 @@ export class RestService {
 
 
   private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
+    return (error: string): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
