@@ -7,7 +7,7 @@
     "startDev": "export ASPNETCORE_ENVIRONMENT=Development && dotnet run",
     "ng": "ng",
     "start": "ng serve",
-    "buildProd": "ng build --prod",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
