@@ -8,8 +8,5 @@
       <Project>{87DE8383-DE45-42A4-838F-3704BE3B2E42}</Project>
       <Name>LifeLike.Data</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.NETCore.App" Version="2.0.6" />
-  </ItemGroup>
+  </ItemGroup>  
 </Project>
