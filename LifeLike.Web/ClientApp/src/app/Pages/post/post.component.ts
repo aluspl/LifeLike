@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { debug } from 'util';
 import { RestService } from '../../Services/rest.service';
 import { Page } from '../../Models/Page';
+import { share } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-post',
@@ -9,13 +11,12 @@ import { Page } from '../../Models/Page';
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
-  Posts: Page[];
+  Posts: Observable<Page[]>;
   constructor(private restService: RestService) { }
   GetPosts(): void {
-    this.restService.getPostList().subscribe(posts => this.Posts = posts);
+    this.Posts = this.restService.getPostList().pipe(share());
   }
   ngOnInit() {
     this.GetPosts();
   }
-
 }

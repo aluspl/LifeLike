@@ -1,1 +1,5 @@
-<app-post-detail-card *ngFor="let post of Posts" [post]="post"></app-post-detail-card>
+<div *ngIf="Posts | async; let Posts; else loading">
+    <div class="card" style="width: 18rem;" *ngFor="let post of Posts" >
+            <h5 class="card-title">{{post.FullName}}</h5>
+    </div>
+</div>

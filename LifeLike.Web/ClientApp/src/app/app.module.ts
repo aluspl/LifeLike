@@ -5,7 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { HomeComponent } from './Pages/home/home.component';
 import { LogComponent } from './Pages/log/log.component';
 import { PostDetailComponent } from './Pages/post-detail/post-detail.component';
@@ -20,6 +20,7 @@ import { MenuComponent } from './Layout/menu/menu.component';
 import { RestService } from './Services/rest.service';
 import { PostDetailCardComponent } from './Components/post-detail-card/post-detail-card.component';
 import { YoutubePlayerComponent } from './Components/youtube-player/youtube-player.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -43,6 +44,12 @@ import { YoutubePlayerComponent } from './Components/youtube-player/youtube-play
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    HttpClientModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'My-Xsrf-Cookie',
+      headerName: 'My-Xsrf-Header',
+    }),
     NgbModule.forRoot(),
   ],
   exports: [
