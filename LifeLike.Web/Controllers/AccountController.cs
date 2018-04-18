@@ -50,7 +50,7 @@ namespace LifeLike.Web.Controllers
                     model.Info = "Invalid Model";
                     return BadRequest(model);
                 }
-                Debug.WriteLine($"LOGIN: {model.ToString()}");               
+                Debug.WriteLine($"LOGIN: {model}");               
                 var user = new User {UserName = model.Login, Email = model.Email, EmailConfirmed = true};
                 var result = await _userManager.CreateAsync(user, model.Password);
 
@@ -82,7 +82,7 @@ namespace LifeLike.Web.Controllers
                     return BadRequest(model);
                 }
 
-                Debug.WriteLine($"LOGIN: {model.ToString()}");               
+                Debug.WriteLine($"LOGIN: {model}");               
                 var result = await _signInManager.PasswordSignInAsync(model.Login,
                     model.Password, model.RememberMe, false);
                 if (result.Succeeded)
@@ -107,7 +107,7 @@ namespace LifeLike.Web.Controllers
             {
                 new Claim(JwtRegisteredClaimNames.Sub, login),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.NameIdentifier, user.Id),
+                new Claim(ClaimTypes.NameIdentifier, user.Id)
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtKey"]));

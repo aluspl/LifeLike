@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { HomeComponent } from './Pages/home/home.component';
@@ -18,7 +18,6 @@ import { PostComponent } from './Pages/post/post.component';
 import { PageComponent } from './Pages/page/page.component';
 import { MenuComponent } from './Layout/menu/menu.component';
 import { RestService } from './Services/rest.service';
-import { PostDetailCardComponent } from './Components/post-detail-card/post-detail-card.component';
 import { YoutubePlayerComponent } from './Components/youtube-player/youtube-player.component';
 import { FormsModule } from '@angular/forms';
 
@@ -38,7 +37,6 @@ import { FormsModule } from '@angular/forms';
     YoutubePlayerComponent,
     LogDetailComponent,
     AlbumDetailComponent,
-    PostDetailCardComponent
   ],
   imports: [
     BrowserModule,

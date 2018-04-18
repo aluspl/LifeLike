@@ -7,8 +7,6 @@ namespace LifeLike.Data.Models
 {
     public class PortalContext : IdentityDbContext<User>
     {
-        private readonly DbContextOptions<PortalContext> _options;
-
         public DbSet<Link> Links { get; set; }
         public DbSet<Changelog> Changelogs { get; set; }
         public DbSet<EventLog> EventLogs { get; set; }
@@ -22,7 +20,6 @@ namespace LifeLike.Data.Models
 
         public PortalContext(DbContextOptions<PortalContext> options) : base(options)
         {
-            _options = options;
         }
     }
 
@@ -68,27 +65,27 @@ namespace LifeLike.Data.Models
 
         private static void SetupConfigs(PortalContext context)
         {
-            context.Add(new Config()
+            context.Add(new Config
             {
                 Name = Config.WelcomeVideo,
                 DisplayName = "Welcome Video",
                 Value = "Qi5tp0eZHt8"
             });
-            context.Add(new Config()
+            context.Add(new Config
             {
                 Name = Config.WelcomeText,
                 DisplayName = "Welcome Text",
                 Value = "Hello on Main Page"
             });
-            context.Add(new Config()
+            context.Add(new Config
             {
-                Name = Config.RSS1,
+                Name = Config.Rss1,
                 DisplayName = "First RSS Url",
                 Value = "http://kawowipodroznicy.pl/feed/"
             });
-            context.Add(new Config()
+            context.Add(new Config
             {
-                Name = Config.RSS2,
+                Name = Config.Rss2,
                 DisplayName = "Second RSS Url",
                 Value = "http://szymonmotyka.pl/feed/"
             });
@@ -97,7 +94,7 @@ namespace LifeLike.Data.Models
         private static void SetupLinks(PortalContext context)
         {
             //Menu
-            context.Add(new Link()
+            context.Add(new Link
             {
                 Action = "Index",
                 Controller = "Video",
@@ -105,14 +102,14 @@ namespace LifeLike.Data.Models
                 IconName = "film",
                 Category = LinkCategory.Menu
             });
-            context.Add(new Link()
+            context.Add(new Link
             {
                 Action = "LifeLike",
                 Controller = "Page",
                 Name = "LifeLike: The Game",
                 Category = LinkCategory.Menu
             });
-            context.Add(new Link()
+            context.Add(new Link
             {
                 Action = "",
                 Controller = "Posts",
@@ -120,14 +117,14 @@ namespace LifeLike.Data.Models
                 Category = LinkCategory.Menu
             });
             
-            context.Add(new Link()
+            context.Add(new Link
             {
                 Action = "",
                 Controller = "Album",
                 Name = "Albums",
                 Category = LinkCategory.Menu
             });
-            context.Add(new Link()
+            context.Add(new Link
             {
                 Action = "",
                 Controller = "Logs",
@@ -136,49 +133,49 @@ namespace LifeLike.Data.Models
             });
             
             // Sidebar
-            context.Add(new Link()
+            context.Add(new Link
             {
                 Url = "https://github.com/aluspl/",
                 IconName = "fire",
                 Name = "Github",
                 Category = LinkCategory.Sidebar
             });
-            context.Add(new Link()
+            context.Add(new Link
             {
                 Url = "http://kawowipodroznicy.pl",
                 IconName = "globe",
                 Name = "Kawowi Podróżnicy",
                 Category = LinkCategory.Sidebar
             });
-            context.Add(new Link()
+            context.Add(new Link
             {
                 Url = "http://szymonmotyka.pl",
                 IconName = "pencil",
                 Name = "Personal Blog",
                 Category = LinkCategory.Sidebar
             });
-            context.Add(new Link()
+            context.Add(new Link
             {
                 Url = "https://www.linkedin.com/in/szymon-motyka-a7440b58/",
                 IconName = "comment",
                 Name = "LinkedIn",
                 Category = LinkCategory.Sidebar
             });
-            context.Add(new Link()
+            context.Add(new Link
             {
                 Url = "https://www.facebook.com/SzymonMotykapl/",
                 IconName = "comment",
                 Name = "Facebook",
                 Category = LinkCategory.Sidebar
             });
-            context.Add(new Link()
+            context.Add(new Link
             {
                 Url = "https://www.youtube.com/user/alusvanzuoo",
                 IconName = "play",
                 Name = "YT: Szymon Motyka",
                 Category = LinkCategory.Sidebar
             });
-            context.Add(new Link()
+            context.Add(new Link
             {
                 Url = "https://www.youtube.com/channel/UC-F1oSvOzczOSLAAsCLBvVA",
                 IconName = "play",

@@ -15,18 +15,10 @@ namespace LifeLike.Web.ViewModel
         public int Order { get; set; }
         public string IconName { get; set; }
 
-    //    public string YoutubeID => GetID();
-
-//        private string GetID()
-//        {
-//            if (string.IsNullOrEmpty(Link)) return null;
-//            return !HtmlUtils.TryParseYoutubeLink(Link, out var value) ? null : value;
-//        }
-
         public LinkCategory Category { get; set; }
         public bool IsLink => (!string.IsNullOrEmpty(Link) && string.IsNullOrEmpty(Controller));
 
-        public string YoutubeID { get; private set; }
+        public string YoutubeId { get;  set; }
 
         public static Link Get(LinkViewModel model)
         {
@@ -68,7 +60,7 @@ namespace LifeLike.Web.ViewModel
                 Order=model.Order,
                 Name = model.Name,
                 Link = model.Url,
-                YoutubeID = HtmlUtils.GetYoutubeId(model.Url),
+                YoutubeId = HtmlUtils.GetYoutubeId(model.Url),
                 IconName = model.IconName,
                 Category=model.Category               
             };

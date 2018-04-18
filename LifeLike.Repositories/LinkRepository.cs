@@ -89,7 +89,7 @@ namespace LifeLike.Repositories
                 return await _context.Links.Where(p=>p.Category==category).ToListAsync();
 
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 await _logger.AddException(e);
                 throw;

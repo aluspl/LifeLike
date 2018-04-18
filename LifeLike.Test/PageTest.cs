@@ -7,10 +7,6 @@ namespace LifeLike.Test
     {
         private IPageRepository _pageRepository;
 
-        public PageTest()
-        {
-        }
-
         [Fact]
         public void AnyPage()
         {

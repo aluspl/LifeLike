@@ -11,7 +11,9 @@ import Log from '../Models/Log';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-const PageDetail = '/Api/Page/Details/';
+const PageDetail = '/Api/Page/Details';
+const LogDetail = '/Api/Log/Detail';
+
 const PageList = '/Api/Page/Pages';
 const PostList = '/Api/Page/Posts';
 const MenuList = '/Api/Menu';
@@ -40,11 +42,13 @@ export class RestService {
     );
   }
   getPageDetail(name: string): Observable<Page> {
-    const list = PageDetail.concat(name);
-    return this.http.get<Page>(list)
+    const url = `${PageDetail}/${name}`;
+
+    this.log(url);
+    return this.http.get<Page>(url)
     .pipe(
       tap(_ => this.log(`fetched Page id=${name}`)),
-      catchError(this.handleError<Page>(list))
+      catchError(this.handleError<Page>(url))
     );
   }
   getLogList(): Observable<Log[]> {
@@ -60,7 +64,7 @@ export class RestService {
 
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
-this.log(error);
+      this.log(error);
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };

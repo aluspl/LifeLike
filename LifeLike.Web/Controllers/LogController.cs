@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LifeLike.Data.Models;
@@ -7,7 +6,6 @@ using LifeLike.Repositories;
 using LifeLike.Web.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.KeyVault.Models;
 
 namespace LifeLike.Web.Controllers
 {

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LifeLike.Data.Models;
@@ -34,10 +33,8 @@ namespace LifeLike.Web.Controllers
                 {
                   return  await _repository.Create(LinkViewModel.Get(model));                  
                 }
-                else
-                {
-                    return Result.Failed;
-                }
+
+                return Result.Failed;
             }
             catch (Exception e)
             {

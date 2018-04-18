@@ -12,7 +12,6 @@ namespace LifeLike.Web
         }
         public static IWebHost BuildWebHost(string[] args)
         {
-            var portNumber = args.Length == 0 ? "5000" : args[0];
             return WebHost.CreateDefaultBuilder(args)
                 .UseKestrel()
                 .UseIISIntegration()

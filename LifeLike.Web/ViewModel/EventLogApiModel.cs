@@ -18,16 +18,7 @@ namespace LifeLike.Web.ViewModel
                 EventTime=DateTime.Now
             };
         }
-        public static EventLog Generate(WebHookDataModel model)
-        {
-            return new EventLog
-            {
-                Type=EventLogType.Unity,
-                Messages=$"Unity Project: {model?.projectName}, Platform: {model?.platform}",
-                EventTime=DateTime.Now
-            };
-        }
-
+      
 
     }
     

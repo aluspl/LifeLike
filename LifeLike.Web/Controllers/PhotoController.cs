@@ -17,7 +17,6 @@ namespace LifeLike.Web.Controllers
         private readonly IPhotoRepository _photos;
         private readonly IGalleryRepository _gallery;
         private readonly IHostingEnvironment _hostingEnv;
-        private readonly string _photoPath;
 
 
         public PhotoController(IEventLogRepository logger,
@@ -29,7 +28,7 @@ namespace LifeLike.Web.Controllers
             _hostingEnv = hosting;
             _photos = photos;
             _gallery = gallery;
-            _photoPath = Path.Combine("photos");
+            Path.Combine("photos");
         }
 
         public async Task<UploadFileViewModel> UploadFiles(long id)
@@ -59,7 +58,7 @@ namespace LifeLike.Web.Controllers
                 {
                     FileName = model.Photo.FileName,
                     Created = DateTime.Now,
-                    Title = model.Title,
+                    Title = model.Title
                 };
                 return await _photos.Create(photo, model.GalleryId);
 

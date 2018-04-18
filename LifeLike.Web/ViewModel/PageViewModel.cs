@@ -24,7 +24,7 @@ namespace LifeLike.Web.ViewModel
         public static Page DataModel(PageViewModel model)
         {
             if (model == null) return null;
-           var value = Enum.TryParse(model.Category, out PageCategory	 category);
+           Enum.TryParse(model.Category, out PageCategory	 category);
            
            return new Page
             {

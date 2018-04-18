@@ -41,12 +41,12 @@ namespace LifeLike.Web.Utils
     {
         public Image(FileStream input)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void Save(FileStream output)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

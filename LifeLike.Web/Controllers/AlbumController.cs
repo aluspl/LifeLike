@@ -1,12 +1,9 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Repositories;
 using LifeLike.Web.ViewModel;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,9 +13,7 @@ namespace LifeLike.Web.Controllers
     public class AlbumController : Controller
     {
         private readonly IEventLogRepository _logger;
-        private readonly IPhotoRepository _photoRepository;
         private readonly IGalleryRepository _gallery;
-        private readonly IHostingEnvironment _hosting;
 
 
         public AlbumController(IEventLogRepository logger,
@@ -26,9 +21,7 @@ namespace LifeLike.Web.Controllers
             IGalleryRepository gallery,
             IHostingEnvironment hosting)
         {
-            _hosting = hosting;
             _logger = logger;
-            _photoRepository = photoRepository;
             _gallery = gallery;
 
         }

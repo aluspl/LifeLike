@@ -1,3 +1,11 @@
-<p>
-  post-detail works!
-</p>
+<div *ngIf="Page | async; let Page; else Loading">
+
+  <h1> {{Page.ShortName}}  </h1>
+  {{Page.FullName}}
+  {{Page.Content}}
+  {{Page.IconName}}
+  {{Page.Published}}
+  {{Page.Category}}
+
+</div>
+<ng-template #loading>Loading Page...</ng-template>

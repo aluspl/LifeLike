@@ -42,7 +42,7 @@ namespace LifeLike.Repositories
                 return await _context.Configs.ToListAsync();
 
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 await _logger.AddException(e);
                 return new List<Config>();
@@ -96,7 +96,7 @@ namespace LifeLike.Repositories
             {
                await _logger.AddException(e);
                return null;
-            };
+            }
         }
 
     }

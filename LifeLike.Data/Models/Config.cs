@@ -4,14 +4,12 @@ namespace LifeLike.Data.Models
 {
     public class Config
     {
-        
-        public static string WelcomeVideo = "WelcomeVideo";
-        public static string WelcomeText = "WelcomeText";
-        public static string RSS1 = "RSS1";
-        public static string RSS2 = "RSS2";
-        
-        
-        
+        public const string WelcomeVideo = "WelcomeVideo";
+        public const string WelcomeText = "WelcomeText";
+        public const string Rss1 = "RSS1";
+        public const string Rss2 = "RSS2";
+
+
         [Key]
         public long Id { get; set; }
         public string Name { get; set; }

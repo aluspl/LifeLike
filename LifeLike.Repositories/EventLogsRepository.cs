@@ -25,7 +25,7 @@ namespace LifeLike.Repositories
 
                return await Create(EventLog.Generate(e));          
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 Debug.WriteLine(e);
                 return Result.Failed;
@@ -38,7 +38,7 @@ namespace LifeLike.Repositories
             {
                 return await AddStat(string.Empty, action, controller);
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return Result.Failed;
             }
@@ -57,7 +57,7 @@ namespace LifeLike.Repositories
                 await _context.SaveChangesAsync();
                 return Result.Success;
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return Result.Failed;
             }
@@ -105,7 +105,7 @@ namespace LifeLike.Repositories
                 return await Create(EventLog.Generate(i,information));
 
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 await AddException(e);
                 return Result.Failed;
@@ -119,7 +119,7 @@ namespace LifeLike.Repositories
                 await Create(EventLog.Generate(result,message));
                 return Result.Success;
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 await AddException(e);
                 return Result.Failed;
@@ -136,9 +136,9 @@ namespace LifeLike.Repositories
                 await _context.SaveChangesAsync();
                 return Result.Success;
             }
-            catch (System.Exception)
+            catch (Exception e)
             {
-                
+                await AddException(e);
                 throw;
             }
           

@@ -1,4 +1,3 @@
-using System;
 using Xunit;
 
 namespace LifeLike.Test

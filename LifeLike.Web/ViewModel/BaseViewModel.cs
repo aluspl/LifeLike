@@ -1,5 +1,4 @@
-﻿using Microsoft.ApplicationInsights.Extensibility.Implementation;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace LifeLike.Web.ViewModel
 {

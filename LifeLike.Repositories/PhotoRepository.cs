@@ -49,7 +49,7 @@ namespace LifeLike.Repositories
             {
                 return _context.Photos.FirstOrDefault(p => p.Id == id);                
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                  await _logger.AddException(e);
 

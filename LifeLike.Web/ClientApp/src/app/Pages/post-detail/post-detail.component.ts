@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Page } from '../../Models/Page';
+import {ActivatedRoute} from '@angular/router';
+import {RestService} from '../../Services/rest.service';
+import { Observable } from 'rxjs/Observable';
+import { share } from 'rxjs/operators';
 
 @Component({
   selector: 'app-post-detail',
@@ -7,10 +11,17 @@ import { Page } from '../../Models/Page';
   styleUrls: ['./post-detail.component.scss']
 })
 export class PostDetailComponent implements OnInit {
-  page: Page;
-  constructor() { }
-
+  Page: Observable<Page>;
+  constructor(  private route: ActivatedRoute,
+                private restService: RestService
+                ) { }
+  GetPage(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    console.log('Article ID ' + id);
+    this.Page = this.restService.getPageDetail(id).pipe(share());
+  }
   ngOnInit() {
+    this.GetPage();
   }
 
 }

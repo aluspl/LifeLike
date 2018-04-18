@@ -1,5 +1,3 @@
-using LifeLike.Data.Models;
-
 namespace LifeLike.Web.ViewModel
 {
     public class PageConfigModel

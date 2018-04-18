@@ -24,7 +24,7 @@ namespace LifeLike.Web.ViewModel
             return new UploadFileViewModel
             {
                 GalleryTitle=model.Title,
-                GalleryId=model.Id,             
+                GalleryId=model.Id             
             };
         }
 
@@ -38,13 +38,13 @@ namespace LifeLike.Web.ViewModel
                 Title       = model.Title,
                 Created = model.Created,
                 Description =  model.Description,
-                Place = model.Place,
+                Place = model.Place
             };
         }
         public static GalleryViewModel Get(Gallery model)
         {
             if (model == null) return null;
-            return new GalleryViewModel()
+            return new GalleryViewModel
             {
                 Id=model.Id,
                 ShortTitle = model.ShortTitle,

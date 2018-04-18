@@ -4,7 +4,6 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using LifeLike.Data.Models;
 using LifeLike.Repositories;
-using LifeLike.Web.ViewModel;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -13,7 +12,6 @@ using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
-using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -44,9 +42,9 @@ namespace LifeLike.Web
             Debug.WriteLine(Configuration.ToString());
             // Add framework services.
             services.AddDbContext<PortalContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), 
-                    b => b.MigrationsAssembly("LifeLike.Web"))
-            );
+//                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), 
+//                        b => b.MigrationsAssembly("LifeLike.Web"))
+                    options.UseSqlite("Data Source=sqlite.db"));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddScoped<IEventLogRepository, EventLogsRepository>();

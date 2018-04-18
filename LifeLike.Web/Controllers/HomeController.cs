@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
@@ -11,9 +10,6 @@ using LifeLike.Web.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Principal;
-using System;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace LifeLike.Web.Controllers
 {
@@ -23,8 +19,6 @@ namespace LifeLike.Web.Controllers
     {
         private readonly IConfigRepository _config;
         private readonly IEventLogRepository _logger;
-        private readonly ILinkRepository _links;
-        private readonly SignInManager<User> _userManager;
 
         public HomeController(IConfigRepository config, IEventLogRepository logger, 
         SignInManager<User> signInManager,
@@ -32,9 +26,6 @@ namespace LifeLike.Web.Controllers
         {
             _logger = logger;
             _config = config;
-            _links = link;
-                        _userManager = signInManager;
-
         }
         // [HttpGet]
         // [AllowAnonymous]
@@ -62,7 +53,7 @@ namespace LifeLike.Web.Controllers
             var context= new List<Link>();
           
          
-            context.Add(new Link()
+            context.Add(new Link
             {                
                 Id=1,
                 Action = "",
@@ -73,7 +64,7 @@ namespace LifeLike.Web.Controllers
                 Category = LinkCategory.Menu
             });
 
-            context.Add(new Link()
+            context.Add(new Link
             {
                 Id=2,
                 Action = "",
@@ -82,7 +73,7 @@ namespace LifeLike.Web.Controllers
                 IconName = "camera-retro",
                 Category = LinkCategory.Menu
             });   
-            context.Add(new Link()
+            context.Add(new Link
             {
                 Id=3,
                 Action = "",
@@ -91,7 +82,7 @@ namespace LifeLike.Web.Controllers
                 IconName = "film",
                 Category = LinkCategory.Menu
             });
-            context.Add(new Link()
+            context.Add(new Link
             {
                 Id=4,
                 Action = "",
@@ -110,7 +101,7 @@ namespace LifeLike.Web.Controllers
 //                Category = LinkCategory.Menu
 //            }); 
             if (isLogged)
-            context.Add(new Link()
+            context.Add(new Link
             {
                 Id=6,
                 Action = "",
@@ -119,7 +110,7 @@ namespace LifeLike.Web.Controllers
                 IconName = "book",
                 Category = LinkCategory.Menu
             });
-            context.Add(new Link()
+            context.Add(new Link
             {
                 Id=7,
                 Action = "Contact",
@@ -136,8 +127,8 @@ namespace LifeLike.Web.Controllers
         public async Task<IActionResult> GetList()
         {
             await _logger.AddStat("Configs","Index", "Home");
-            var   config1=await _config.Get(Config.RSS1);
-             var   config2=await _config.Get(Config.RSS2);
+            var   config1=await _config.Get(Config.Rss1);
+             var   config2=await _config.Get(Config.Rss2);
              var   config3=await _config.Get(Config.WelcomeText);
              var   config4=await _config.Get(Config.WelcomeVideo);
             var pageConfig = new PageConfigModel
