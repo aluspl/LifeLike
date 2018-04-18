@@ -1,11 +1,16 @@
 <div *ngIf="Page | async; let Page; else Loading">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">  {{Page.FullName}}</h1>
+ 
+    </div>
+  </div>
 
-  <h1> {{Page.ShortName}}  </h1>
-  {{Page.FullName}}
   {{Page.Content}}
-  {{Page.IconName}}
-  {{Page.Published}}
-  {{Page.Category}}
 
+
+
+  <p class="lead">  {{Page.Published}}      </p>
+  <p class="lead">  {{Page.Category}}      </p>
 </div>
 <ng-template #loading>Loading Page...</ng-template>

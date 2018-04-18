@@ -36,11 +36,11 @@ export const MENUITEMS: MenuItem[] = [
     Name: 'LOGS',
     Icon: 'book',
 },
-{
-    Id: 6,
-    Action: 'Contact',
-    Controller: 'Page',
-    Name: 'CONTACT',
-    Icon: 'at',
-}
+// {
+//     Id: 6,
+//     Action: 'Contact',
+//     Controller: 'Page',
+//     Name: 'CONTACT',
+//     Icon: 'at',
+// }
 ];
