@@ -20,6 +20,7 @@ import { MenuComponent } from './Layout/menu/menu.component';
 import { RestService } from './Services/rest.service';
 import { YoutubePlayerComponent } from './Components/youtube-player/youtube-player.component';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from './Services/auth.service';
 
 
 @NgModule({
@@ -52,7 +53,7 @@ import { FormsModule } from '@angular/forms';
   ],
   exports: [
   ],
-  providers: [RestService],
+  providers: [RestService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

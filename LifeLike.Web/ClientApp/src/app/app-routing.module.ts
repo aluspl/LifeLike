@@ -9,6 +9,7 @@ import { VideoComponent } from './Pages/video/video.component';
 import { LogDetailComponent } from './Pages/log-detail/log-detail.component';
 import { PostDetailComponent } from './Pages/post-detail/post-detail.component';
 import { AlbumDetailComponent } from './Pages/album-detail/album-detail.component';
+import { LoginComponent } from './Pages/login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
@@ -16,6 +17,8 @@ const routes: Routes = [
   { path: 'Page', component: PageComponent },
   { path: 'Post', component: PostComponent },
   { path: 'Log', component: LogComponent },
+  { path: 'Login', component: LoginComponent },
+
   { path: 'Album', component: AlbumComponent },
   { path: 'Video', component: VideoComponent },
   { path: 'Log/:id', component: LogDetailComponent },
