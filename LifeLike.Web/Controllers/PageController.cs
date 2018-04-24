@@ -66,14 +66,14 @@ namespace LifeLike.Web.Controllers
    
         [HttpPost]
         [Route("Create")]
-        public async Task<Result> Create(PageViewModel model)
+        public async Task<IActionResult> Create(PageViewModel model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
                     await   _links.Create(model.Link);
-                    return await _pages.Create(PageViewModel.DataModel(model));
+                    return Ok(await _pages.Create(PageViewModel.DataModel(model)));
                 }
             }
             catch (Exception e)
@@ -81,20 +81,20 @@ namespace LifeLike.Web.Controllers
                await _logger.AddException(e);
             }
 
-            return Result.Failed;
+            return Ok(Result.Failed);
 
         }
    
         [HttpPost]
         [Route("Delete")]
-        public async Task<Result> Delete(PageViewModel model)
+        public async Task<IActionResult> Delete(PageViewModel model)
         {
             try
             {
-                if (model == null) return Result.Failed;
+                if (model == null) return BadRequest();
                 var datamodel =await _pages.Get(model.Id);
                 var link =await _links.Get(model.ShortName);
-                return await _pages.Delete(datamodel, link);
+                return Ok(await _pages.Delete(datamodel, link));
 
             }
             catch (Exception e)
@@ -105,12 +105,12 @@ namespace LifeLike.Web.Controllers
 
         }
         [Authorize]
-        public async Task<PageViewModel> Update(long id)
+        public async Task<IActionResult> Update(long id)
         {
             try
             {
                 var page =await _pages.Get(id);
-                return PageViewModel.ViewModel(page);
+                return Ok( PageViewModel.ViewModel(page));
             }
             catch (Exception e)
             {

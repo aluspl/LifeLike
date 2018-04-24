@@ -9,15 +9,16 @@ import { VideoComponent } from './Pages/video/video.component';
 import { LogDetailComponent } from './Pages/log-detail/log-detail.component';
 import { PostDetailComponent } from './Pages/post-detail/post-detail.component';
 import { AlbumDetailComponent } from './Pages/album-detail/album-detail.component';
-import { LoginComponent } from './Pages/login/login.component';
+import { PostCreateComponent } from './Pages/post-create/post-create.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
   { path: 'Home', component: HomeComponent },
   { path: 'Page', component: PageComponent },
   { path: 'Post', component: PostComponent },
+  { path: 'CreatePost', component: PostCreateComponent },
+
   { path: 'Log', component: LogComponent },
-  { path: 'Login', component: LoginComponent },
 
   { path: 'Album', component: AlbumComponent },
   { path: 'Video', component: VideoComponent },

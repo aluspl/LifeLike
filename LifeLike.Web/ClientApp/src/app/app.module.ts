@@ -10,7 +10,6 @@ import { HomeComponent } from './Pages/home/home.component';
 import { LogComponent } from './Pages/log/log.component';
 import { PostDetailComponent } from './Pages/post-detail/post-detail.component';
 import { VideoComponent } from './Pages/video/video.component';
-import { LoginComponent } from './Pages/login/login.component';
 import { LogDetailComponent } from './Pages/log-detail/log-detail.component';
 import { AlbumDetailComponent } from './Pages/album-detail/album-detail.component';
 import { AlbumComponent } from './Pages/album/album.component';
@@ -21,6 +20,7 @@ import { RestService } from './Services/rest.service';
 import { YoutubePlayerComponent } from './Components/youtube-player/youtube-player.component';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './Services/auth.service';
+import { PostCreateComponent } from './Pages/post-create/post-create.component';
 
 
 @NgModule({
@@ -31,13 +31,13 @@ import { AuthService } from './Services/auth.service';
     PostComponent,
     AlbumComponent,
     VideoComponent,
-    LoginComponent,
     PostDetailComponent,
     HomeComponent,
     LogComponent,
     YoutubePlayerComponent,
     LogDetailComponent,
     AlbumDetailComponent,
+    PostCreateComponent,
   ],
   imports: [
     BrowserModule,

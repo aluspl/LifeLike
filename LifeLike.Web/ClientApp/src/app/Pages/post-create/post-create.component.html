@@ -1,0 +1,74 @@
+<div class="container">
+  
+  <form  #createPostForm="ngForm">
+      <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h1 class="display-4">Create {{model.FullName}}</h1>
+            <p>
+                {{diagnostic}}
+            </p>
+          </div>
+        </div>
+    <div class="form-row">     
+      <div class="form-group col-md-6">
+        <label for="FullName">Name</label>
+        <input type="text" 
+        class="form-control" 
+        id="FullName"  
+        [(ngModel)]="model.FullName" 
+        name="model.FullName" 
+        required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="ShortName">Link Name</label>
+        <input type="text" 
+        class="form-control" 
+        id="ShortName" 
+        [(ngModel)]="model.ShortName" 
+        name="ShortName"  required>
+      </div>
+    </div>
+    <div class="form-row">     
+      <div class="form-group col-md-6">
+        <label for="ImageUrl">Image</label>
+        <input type="text" 
+        class="form-control" 
+        id="ImageUrl" 
+        [(ngModel)]="model.ImageUrl" 
+        name="ImageUrl"  >
+      </div>
+      <div class="form-group col-md-3">
+        <label for="IconName">Icon Name</label>
+        <input type="text" 
+        class="form-control" 
+        id="IconName" 
+        [(ngModel)]="model.IconName" 
+        name="IconName">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="Category">Category</label>
+        <select class="form-control" 
+        id="Category" 
+        required
+        [(ngModel)]="model.Category" 
+        name="Category">
+              <option 
+              *ngFor="let category of categories" 
+              [value]="category">
+                {{category}}
+            </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+          <label for="Content">Content</label>
+          <textarea 
+          class="form-control" 
+          id="Content" 
+          rows="10"
+          [(ngModel)]="model.Content" 
+          name="Content"></textarea>
+    </div>
+  <button type="submit" class="btn btn-success"  (click)="addPost()" >Submit</button>
+  </form>
+</div>

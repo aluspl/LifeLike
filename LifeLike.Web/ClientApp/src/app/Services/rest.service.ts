@@ -16,15 +16,23 @@ const LogDetail = '/Api/Log/Detail';
 
 const PageList = '/Api/Page/Pages';
 const PostList = '/Api/Page/Posts';
+const CreatePost = '/Api/Page/Create';
+
 const MenuList = '/Api/Menu';
-const  AlbumList = '/Api/Album/List';
-  const ConfigList = '/Api/Config';
-  const LogList = '/Api/Log/List';
+const AlbumList = '/Api/Album/List';
+const ConfigList = '/Api/Config';
+const LogList = '/Api/Log/List';
 
 @Injectable()
 export class RestService {
 
 
+  createPost(model: Page): any {
+    return this.http.post(CreatePost, model).pipe(
+      tap(_ => this.log(`create Post`)),
+      catchError(this.handleError<Page[]>(PostList))
+    );
+  }
   getMenuItems(): Observable<MenuItem[]> {
     return of(MENUITEMS);
   }
