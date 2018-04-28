@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using AutoMapper;
 using LifeLike.Data.Models;
 using LifeLike.Repositories;
+using LifeLike.Web.Profiles;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -18,6 +19,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
+using Serilog;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace LifeLike.Web
@@ -25,7 +27,14 @@ namespace LifeLike.Web
     public class Startup
     {
         public Startup(IHostingEnvironment env)
-        {
+        {  
+            Log.Logger = new LoggerConfiguration()
+                .Enrich.FromLogContext()
+                .WriteTo.Console()
+                .WriteTo.File("log.txt",
+                    rollingInterval: RollingInterval.Day,
+                    rollOnFileSizeLimit: true)
+                .CreateLogger();
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)     
                 .AddEnvironmentVariables();
@@ -39,8 +48,9 @@ namespace LifeLike.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            Debug.WriteLine(Configuration.ToString());
             // Add framework services.
+            services.AddLogging(loggingBuilder =>
+                loggingBuilder.AddSerilog(dispose: true));
             services.AddDbContext<PortalContext>(options =>
 //                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), 
 //                        b => b.MigrationsAssembly("LifeLike.Web"))
@@ -95,6 +105,15 @@ namespace LifeLike.Web
             {
                 c.SwaggerDoc("v1", new Info { Title = "QuickApp API", Version = "v1" });            
             }); 
+//            services.AddAutoMapper();
+            
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new DomainProfile());
+            });
+
+            var mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
             services.AddMvc();
             services.AddMvc().AddJsonOptions(options =>
             {

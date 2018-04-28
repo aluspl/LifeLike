@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using LifeLike.Data.Models;
 using LifeLike.Repositories;
+using LifeLike.Web.Extensions;
 using LifeLike.Web.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -17,127 +20,146 @@ namespace LifeLike.Web.Controllers
         private readonly IPageRepository _pages;
         private readonly IEventLogRepository _logger;
         private readonly ILinkRepository _links;
+        private readonly IMapper _mapper;
 
-        public PageController(IPageRepository pageRepository, IEventLogRepository logger, ILinkRepository links)
+        public PageController(IPageRepository pageRepository, IEventLogRepository logger, ILinkRepository links, IMapper mapper)
         {
             _pages = pageRepository;
             _logger = logger;
             _links = links;
+            _mapper = mapper;
         }
 
-   
+
         // GET
         [HttpGet("Posts")]
         public async Task<IActionResult> Posts()
         {
-            await  _logger.AddStat("Posts", "List", "Page");
+            await _logger.AddStat("Posts", "List", "Page");
             var list = await _pages.List();
-            return Json(list.Where(p=>p.Category==PageCategory.Post).Select(PageViewModel.ViewModel));
+            var posts = list.Where(p => p.Category == PageCategory.Post).Select(_mapper.Map<PageViewModel>);
+            return Ok(posts);
         }
         // GET
-        
+
         [HttpGet("Pages")]
         public async Task<IActionResult> Pages()
         {
-            await  _logger.AddStat("All", "List", "Page");
-            var   isLogged = User.Identity.IsAuthenticated;
+            try
+            {
+                await _logger.AddStat("All", "List", "Page");
+                var isLogged = User.Identity.IsAuthenticated;
 
-            var list = isLogged ?  await _pages.List() : await _pages.List(PageCategory.App | PageCategory.Game);
-            return Json(list.Where(p=>p.Category==PageCategory.Page).Select(PageViewModel.ViewModel));
-        }           
+                var list = isLogged ? 
+                    await _pages.List() : 
+                    await _pages.List(PageCategory.App | PageCategory.Game);
+                var pageList = list.Where(p => p.Category == PageCategory.Page).Select(_mapper.Map<PageViewModel>);
+                return Ok(pageList);
+            }
+            catch (Exception e)
+            {
+                await _logger.AddException(e);
+                return StatusCode(500);
+            }
+        }
+
         [HttpGet("Details/{id}")]
         public async Task<IActionResult> Details(string id)
         {
             try
             {
-                await  _logger.AddStat(id, "Details", "Page");
+                await _logger.AddStat(id, "Details", "Page");
+                    
+                var page = await _pages.Get(id.ToLower());
+                if (page == null) return NotFound();
+                var dto = _mapper.Map<PageViewModel>(page);
 
-                var page =await _pages.Get(id);
-                if (page==null) return Json(null);
-                return Json(PageViewModel.ViewModel(page));
-
+                return Ok(dto);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                await  _logger.AddException(e);
-                return null;
+                await _logger.AddException(e);
+                return StatusCode(500);
             }
         }
-   
+
         [HttpPost]
         [Route("Create")]
-        public async Task<IActionResult> Create(PageViewModel model)
+        public async Task<IActionResult> Create([FromBody] PageViewModel model)
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    await   _links.Create(model.Link);
-                    return Ok(await _pages.Create(PageViewModel.DataModel(model)));
-                }
+                await _logger.AddStat("Create", "Page");
+                model.Published = DateTime.Now;
+                if (!ModelState.IsValid) return BadRequest(ModelState);
+//                var  dto=  PageViewModel.DataModel(model);
+                var dto = _mapper.Map<Page>(model);
+                var result = await _pages.Create(dto, model.Link);
+               
+                return Ok(result);
             }
             catch (Exception e)
             {
-               await _logger.AddException(e);
+                await _logger.AddException(e);
+                return StatusCode(500);
             }
-
-            return Ok(Result.Failed);
-
         }
-   
-        [HttpPost]
+
+        [HttpDelete]
         [Route("Delete")]
-        public async Task<IActionResult> Delete(PageViewModel model)
+        public async Task<IActionResult> Delete([FromBody] PageViewModel model)
         {
             try
             {
-                if (model == null) return BadRequest();
-                var datamodel =await _pages.Get(model.Id);
-                var link =await _links.Get(model.ShortName);
-                return Ok(await _pages.Delete(datamodel, link));
+                await _logger.AddStat("Delete", "Page");
 
+                if (model == null) return BadRequest();
+                var datamodel = await _pages.Get(model.ShortName);
+                var link = await _links.Get(model.ShortName);
+                var result = await _pages.Delete(datamodel, link);
+                return Ok(result);
             }
             catch (Exception e)
             {
-               await _logger.AddException(e);
-                return Result.Failed;
+                await _logger.AddException(e);
+                return StatusCode(500);
             }
-
         }
-        [Authorize]
         public async Task<IActionResult> Update(long id)
         {
             try
             {
-                var page =await _pages.Get(id);
-                return Ok( PageViewModel.ViewModel(page));
+                await _logger.AddStat("Update", "Page");
+                var page = await _pages.Get(id);
+                return Ok(PageViewModel.ViewModel(page));
             }
             catch (Exception e)
             {
-              await  _logger.AddException(e);
-                return null;
+                await _logger.AddException(e);
+                return StatusCode(500);
             }
         }
-        [HttpPost]
+
+        [HttpPut]
         [ValidateAntiForgeryToken]
-        public async Task<Result> Update(PageViewModel model)
+        public async Task<IActionResult> Update([FromBody] PageViewModel model)
         {
             try
             {
-                return ModelState.IsValid
-                    ? await _pages.Update(PageViewModel.DataModel(model))
-                    :  Result.Failed;
+                await _logger.AddStat("Update", "Page");
+                
+                if (!ModelState.IsValid) return BadRequest(ModelState);
+                var dto = _mapper.Map<Page>(model);
+//model: PageViewModel.DataModel(model)
+                var value = await _pages.Update(dto);
+                return Ok(value);
             }
             catch (Exception e)
             {
-               await _logger.AddException(e);
-          
-                return Result.Failed;
+                await _logger.AddException(e);
+
+                return StatusCode(500);
             }
-
-
         }
-
     }
-
 }

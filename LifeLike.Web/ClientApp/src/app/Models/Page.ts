@@ -1,5 +1,6 @@
 export class Page {
-    Id: number;
+
+  Id: number;
     LinkId: number;
     ShortName: string;
     FullName: string;

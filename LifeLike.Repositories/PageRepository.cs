@@ -22,6 +22,7 @@ namespace LifeLike.Repositories
         {
             try
             {
+                
                 await _context.AddAsync(model);
                 await _context.SaveChangesAsync();
                 return Result.Success;
@@ -37,6 +38,9 @@ namespace LifeLike.Repositories
         {
             try
             {
+                var item = await Get(model.ShortName);
+                if (item != null) 
+                    return Result.Duplicated;
                 await _context.AddAsync(link);
                 await _context.AddAsync(model);
                 await _context.SaveChangesAsync();
@@ -65,11 +69,12 @@ namespace LifeLike.Repositories
 
         public async Task<Page> Get(long id)
         {
-            return await _context.Pages.FirstOrDefaultAsync(p => p.Id == id);
+            return await _context.Pages.FirstOrDefaultAsync();
         }
 
         public async Task<Page> Get(string id)
         {
+            if (id == null) return null;
             return await _context.Pages.FirstOrDefaultAsync(p => p.ShortName.Equals(id));
         }
 
@@ -125,8 +130,7 @@ namespace LifeLike.Repositories
         public async Task<IEnumerable<Page>> List(PageCategory category)
         {
             try
-            {
-                                
+            {                                
                 return await _context.Pages.Where(p => p.Category == category).ToListAsync();
             }
             catch (Exception e)

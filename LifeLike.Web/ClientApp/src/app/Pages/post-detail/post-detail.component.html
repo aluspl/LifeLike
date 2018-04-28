@@ -2,13 +2,13 @@
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h1 class="display-4">  {{Page.FullName}}</h1>
- 
+
     </div>
   </div>
 
-  {{Page.Content}}
 
-
+  <markdown
+  [data]="Page.Content">
 
   <p class="lead">  {{Page.Published}}      </p>
   <p class="lead">  {{Page.Category}}      </p>

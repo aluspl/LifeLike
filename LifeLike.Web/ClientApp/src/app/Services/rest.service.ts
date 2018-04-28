@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
-import { MENUITEMS } from '../mock-data/MenuItems';
-import { MenuItem } from '../Models/MenuItem';
-import { Page } from '../Models/Page';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {of} from 'rxjs/observable/of';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {catchError, tap} from 'rxjs/operators';
+import {MENUITEMS} from '../mock-data/MenuItems';
+import {MenuItem} from '../Models/MenuItem';
+import {Page} from '../Models/Page';
 import Log from '../Models/Log';
 
 const httpOptions = {
@@ -27,59 +27,65 @@ const LogList = '/Api/Log/List';
 export class RestService {
 
 
-  createPost(model: Page): any {
-    return this.http.post(CreatePost, model).pipe(
-      tap(_ => this.log(`create Post`)),
-      catchError(this.handleError<Page[]>(PostList))
-    );
+  private static handleError(error: Response | any) {
+    console.error('ApiService::handleError', error);
+    return Observable.throw(error);
   }
   getMenuItems(): Observable<MenuItem[]> {
     return of(MENUITEMS);
   }
+
+  private static log(message: string) {
+    console.log(message);
+    // this.messageService.add('HeroService: ' + message);
+  }
+
+  createPost(model: Page): Observable<string> {
+    return this.http
+      .post<string>(CreatePost, model, httpOptions)
+      .pipe(
+        tap(_ => RestService.log(`create Post`)),
+        catchError(RestService.handleError)
+      );
+  }
+
   getPostList(): Observable<Page[]> {
-    return this.http.get<Page[]>(PostList).pipe(
-      tap(_ => this.log(`fetched News`)),
-      catchError(this.handleError<Page[]>(PostList))
+    return this.http
+      .get<Page[]>(PostList)
+      .pipe(
+        tap(_ => RestService.log(`fetched News`)),
+        catchError(RestService.handleError)
     );
   }
+
   getPageList(): Observable<Page[]> {
-    return this.http.get<Page[]>(PageList)
-    .pipe(
-      tap(_ => this.log(`fetched Pages`)),
-      catchError(this.handleError<Page[]>(PageList))
+    return this.http
+      .get<Page[]>(PageList)
+      .pipe(
+        tap(_ => RestService.log(`fetched Pages`)),
+        catchError(RestService.handleError)
     );
   }
+
   getPageDetail(name: string): Observable<Page> {
     const url = `${PageDetail}/${name}`;
 
-    this.log(url);
-    return this.http.get<Page>(url)
-    .pipe(
-      tap(_ => this.log(`fetched Page id=${name}`)),
-      catchError(this.handleError<Page>(url))
+    RestService.log(url);
+    return this.http
+      .get<Page>(url)
+      .pipe(
+        tap(_ => RestService.log(`fetched Page id=${name}`)),
+        catchError(RestService.handleError)
     );
   }
+
   getLogList(): Observable<Log[]> {
-    return this.http.get<Log[]>(LogList).pipe(
-      tap(_ => this.log(`fetched Logs`)),
-      catchError(this.handleError<Log[]>(LogList))
+    return this.http
+      .get<Log[]>(LogList)
+      .pipe(
+        tap(_ => RestService.log(`fetched Logs`)),
+        catchError(RestService.handleError)
     );
-  }
-
-
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: string): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-      this.log(error);
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
-  private log(message: string) {
-    console.log(message);
-    // this.messageService.add('HeroService: ' + message);
   }
   constructor(private http: HttpClient) { }
 

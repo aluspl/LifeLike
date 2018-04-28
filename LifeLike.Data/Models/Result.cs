@@ -2,6 +2,7 @@
 {
     public enum Result
     {
-        Success, Failed
+        Success, Failed,
+        Duplicated
     }
 }

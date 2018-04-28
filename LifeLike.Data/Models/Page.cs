@@ -4,9 +4,10 @@ using System.ComponentModel.DataAnnotations;
 namespace LifeLike.Data.Models
 {
     public class Page
-    {
+    {        
         [Key]
         public long Id { get; set; }
+
         [DataType(DataType.Text), Required]
         public string ShortName { get; set; }
         
