@@ -22,6 +22,7 @@ import {FormsModule} from '@angular/forms';
 import {AuthService} from './Services/auth.service';
 import {PostCreateComponent} from './Pages/post-create/post-create.component';
 import {MarkdownModule} from "ngx-md";
+import { TitleComponent } from './Components/title/title.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import {MarkdownModule} from "ngx-md";
     LogDetailComponent,
     AlbumDetailComponent,
     PostCreateComponent,
+    TitleComponent,
   ],
   imports: [
     BrowserModule,

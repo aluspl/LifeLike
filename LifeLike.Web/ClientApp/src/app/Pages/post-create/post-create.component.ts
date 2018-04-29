@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {RestService} from '../../Services/rest.service';
 import {Page} from '../../Models/Page';
+import { Navigation } from 'selenium-webdriver';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-create',
@@ -18,12 +20,13 @@ export class PostCreateComponent implements OnInit {
     this.restService.createPost(this.model).subscribe(p => {
       this.loading = false;
       console.log(p);
+      this.router.navigate(['']);
     });
   }
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.model); }
 
-  constructor(private restService: RestService) { }
+  constructor(private restService: RestService, private router: Router) { }
 
   ngOnInit() {
   }

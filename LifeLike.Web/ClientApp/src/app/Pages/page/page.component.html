@@ -1,5 +1,13 @@
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-4">Projects</h1>
+<app-title Title="Project"></app-title>
+
+<div *ngIf="Pages | async; let Pages; else loading">
+  <div class="card" style="width: 36rem;" *ngFor="let post of Pages" >
+    <div class="card-body">
+      <h5 class="card-title">{{post.FullName}}</h5>
+      <p class="card-">{{post.ShortName}}</p>
+      <button class="btn btn-outline-dark" routerLink='{{post.ShortName}}'>Open</button>
     </div>
+
   </div>
+</div>
+<ng-template #loading>Loading Page...</ng-template>

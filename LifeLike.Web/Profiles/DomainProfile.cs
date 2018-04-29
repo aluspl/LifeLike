@@ -10,6 +10,8 @@ namespace LifeLike.Web.Profiles
         {
             CreateMap<Page, PageViewModel>();
             CreateMap<PageViewModel, Page>();
+             CreateMap<EventLog, EventLogViewModel>();
+            CreateMap<EventLogViewModel, EventLog>();
 
         }
     }

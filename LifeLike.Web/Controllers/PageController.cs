@@ -50,10 +50,13 @@ namespace LifeLike.Web.Controllers
                 await _logger.AddStat("All", "List", "Page");
                 var isLogged = User.Identity.IsAuthenticated;
 
-                var list = isLogged ? 
-                    await _pages.List() : 
-                    await _pages.List(PageCategory.App | PageCategory.Game);
-                var pageList = list.Where(p => p.Category == PageCategory.Page).Select(_mapper.Map<PageViewModel>);
+                var list = 
+                // isLogged ? 
+                    await _pages.List();
+                    // await _pages.List(PageCategory.App | PageCategory.Game);
+                var pageList = list
+                    .Where(p => p.Category == PageCategory.Page)
+                    .Select(_mapper.Map<PageViewModel>);
                 return Ok(pageList);
             }
             catch (Exception e)
@@ -91,6 +94,7 @@ namespace LifeLike.Web.Controllers
             {
                 await _logger.AddStat("Create", "Page");
                 model.Published = DateTime.Now;
+                model.ShortName = model?.ShortName?.ToLower();
                 if (!ModelState.IsValid) return BadRequest(ModelState);
 //                var  dto=  PageViewModel.DataModel(model);
                 var dto = _mapper.Map<Page>(model);

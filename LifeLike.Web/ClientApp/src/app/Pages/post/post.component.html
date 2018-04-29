@@ -1,13 +1,10 @@
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">News</h1>
-  </div>
-</div>
+<app-title Title="News"></app-title>
+
 <div *ngIf="Posts | async; let Posts; else loading">
     <div class="card" style="width: 36rem;" *ngFor="let post of Posts" >
       <div class="card-body">
         <h5 class="card-title">{{post.FullName}}</h5>
-        <p class="card-">{{post.ShortName}}</p>
+        <!-- <p class="card-">{{post.ShortName}}</p> -->
         <button class="btn btn-outline-dark" routerLink='{{post.ShortName}}'>Open</button>
       </div>
 

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { RestService } from '../../Services/rest.service';
+import Log from '../../Models/Log';
+import { share } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-log',
@@ -7,9 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogComponent implements OnInit {
 
-  constructor() { }
-
+  Logs: Observable<Log[]>;
+  constructor(private restService: RestService) { }
+  GetLogs(): void {
+    this.Logs = this.restService.getLogList().pipe(share());
+  }
   ngOnInit() {
+    this.GetLogs();
   }
 
 }

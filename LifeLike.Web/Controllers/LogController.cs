@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using LifeLike.Data.Models;
 using LifeLike.Repositories;
 using LifeLike.Web.ViewModel;
@@ -15,10 +16,12 @@ namespace LifeLike.Web.Controllers
     public class LogController : Controller
     {
         private readonly IEventLogRepository _logger;
+        private readonly IMapper _mapper;
 
-        public LogController(PortalContext context, IEventLogRepository logger)
+        public LogController( IEventLogRepository logger, IMapper mapper)
         {
             _logger = logger;
+            _mapper=mapper;
             
         }
 
@@ -29,13 +32,13 @@ namespace LifeLike.Web.Controllers
             try
             {
                 var list=await _logger.List();
-
-                return Json(list.Where(p=>p.Type!=EventLogType.Statistic).Select(EventLogViewModel.Get));
+                var items=list.Select(_mapper.Map<EventLogViewModel>);
+                return Ok(items);
             }
             catch (Exception e)
             {
                 await _logger.AddException(e);
-                return null;
+                return StatusCode(500);
             }
         }
         //Get
@@ -47,12 +50,12 @@ namespace LifeLike.Web.Controllers
               var login=  User.Identity.IsAuthenticated;
 
                 var log = await _logger.Get(id);
-                return Ok ( EventLogViewModel.Get(log));
+                return Ok ( _mapper.Map<EventLogViewModel>(log));
             }
             catch (Exception e)
             {
               await  _logger.AddException(e);      
-              throw;
+                return StatusCode(500);
             }           
         }
         [Authorize]
@@ -60,7 +63,7 @@ namespace LifeLike.Web.Controllers
         public async Task<IActionResult> Clear()
         {
             var list = await _logger.ClearLogs();
-            return  Json(list);    
+            return  Ok(list);    
         }
     }
 }

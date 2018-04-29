@@ -1,14 +1,8 @@
 <div *ngIf="Page | async; let Page; else Loading">
-  <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-4">  {{Page.FullName}}</h1>
 
-    </div>
-  </div>
+<app-title Title="{{Page.Full}}"></app-title>
 
-
-  <markdown
-  [data]="Page.Content">
+  <markdown >{{Page.Content}}</markdown>
 
   <p class="lead">  {{Page.Published}}      </p>
   <p class="lead">  {{Page.Category}}      </p>
