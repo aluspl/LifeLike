@@ -21,8 +21,7 @@ namespace LifeLike.Web.Controllers
             _logger=logger;
         }
     
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost]        
         public async Task<Result> Create(LinkViewModel model)
         {
             try
@@ -44,19 +43,19 @@ namespace LifeLike.Web.Controllers
  
         }
         // GET
-        [HttpGet]
-        public async Task<IActionResult> GetList()
+        [HttpGet("List")]
+        public async Task<IActionResult> Get()
         {
             try
             {    
                 var list=await _repository.List(LinkCategory.Video);
                 var items= list.Select(LinkViewModel.GetYoutube);
-                return  Json(items);
+                return  Ok(items);
             }
             catch(Exception e)
             {
                 await _logger.AddException(e);
-                return Json(null);
+                return StatusCode(500);
             }
         }
     }

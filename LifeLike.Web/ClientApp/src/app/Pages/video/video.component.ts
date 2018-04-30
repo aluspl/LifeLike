@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {PostComponent} from "../post/post.component";
+import {Observable} from "rxjs/Observable";
+import {Page} from "../../Models/Page";
+import {RestService} from "../../Services/rest.service";
+import {share} from "rxjs/operators";
+import {MenuItem} from "../../Models/MenuItem";
 
 @Component({
   selector: 'app-video',
@@ -7,9 +13,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VideoComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit() {
+  Videos: Observable<MenuItem[]>;
+  constructor(private restService: RestService) { }
+  GetPosts(): void {
+    this.Videos = this.restService.GetVideos().pipe(share());
+    console.log(this.Videos);
   }
-
+  ngOnInit() {
+    this.GetPosts();
+  }
 }

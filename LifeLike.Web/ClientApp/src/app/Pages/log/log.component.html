@@ -1,15 +1,18 @@
 <app-title Title="Logs"></app-title>
 
-<div *ngIf="Logs | async; let Logs; else loading">
-    <div class="card" style="width: 36rem;" *ngFor="let log of Logs" >
-      <div class="card-body">
-          
-        <h5 class="card-title">{{log.Name}}</h5>
-        <p class="card-body">{{log.Messages}}</p>
-        <button class="btn btn-outline-dark" routerLink='{{log.ShortName}}'>Open</button>
-      </div>
-  
-    </div>
-  </div>
-  <ng-template #loading>Loading Page...</ng-template>
-  
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Messages</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let log of Logs | async" >
+            <th scope="row">{{log.Id}}</th>
+            <td>{{log.Name}}</td>
+            <td>{{log.Messages}}</td>
+          </tr>
+        </tbody>
+      </table>

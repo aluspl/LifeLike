@@ -8,6 +8,7 @@
   },
   "private": true,
   "dependencies": {
+    "ng": "0.0.0-rc6",
     "npm": "^6.0.0"
   }
 }

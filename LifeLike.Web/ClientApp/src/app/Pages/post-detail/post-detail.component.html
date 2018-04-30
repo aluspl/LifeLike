@@ -1,4 +1,4 @@
-<div *ngIf="Page | async; let Page; else Loading">
+<div *ngIf="Page | async; let Page;">
 
 <app-title Title="{{Page.Full}}"></app-title>
 
@@ -7,4 +7,3 @@
   <p class="lead">  {{Page.Published}}      </p>
   <p class="lead">  {{Page.Category}}      </p>
 </div>
-<ng-template #loading>Loading Page...</ng-template>

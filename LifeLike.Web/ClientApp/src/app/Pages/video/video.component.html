@@ -1,1 +1,6 @@
 <app-title Title="Videos"></app-title>
+
+  <div class="card" style="width: 36rem;" *ngFor="let video of Videos | async" >
+    <app-youtube-player [YoutubeID]="video.YoutubeId"
+
+  </div>

@@ -1,7 +1,6 @@
 <app-title Title="News"></app-title>
 
-<div *ngIf="Posts | async; let Posts; else loading">
-    <div class="card" style="width: 36rem;" *ngFor="let post of Posts" >
+    <div class="card" style="width: 36rem;" *ngFor="let post of Posts | async" >
       <div class="card-body">
         <h5 class="card-title">{{post.FullName}}</h5>
         <!-- <p class="card-">{{post.ShortName}}</p> -->
@@ -9,5 +8,3 @@
       </div>
 
     </div>
-</div>
-<ng-template #loading>Loading Page...</ng-template>
