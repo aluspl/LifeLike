@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories;
+using LifeLike.Web.Extensions;
 using LifeLike.Web.Utils;
 using LifeLike.Web.ViewModel;
 using Microsoft.AspNetCore.Authorization;
@@ -127,19 +128,10 @@ namespace LifeLike.Web.Controllers
         public async Task<IActionResult> GetList()
         {
             await _logger.AddStat("Configs","Index", "Home");
-            var   config1=await _config.Get(Config.Rss1);
-             var   config2=await _config.Get(Config.Rss2);
-             var   config3=await _config.Get(Config.WelcomeText);
-             var   config4=await _config.Get(Config.WelcomeVideo);
-            var pageConfig = new PageConfigModel
-            {
-                Rss1Url=config1.Value,
-                Rss2Url=config2.Value,
-                WelcomeText=config3.Value,
-                WelcomeVideo=HtmlUtils.GetYoutubeId(config4.Value)
-            };
-            Debug.WriteLine(pageConfig.WelcomeVideo);
-            return Json(pageConfig);
+            var configs =await _config.List();
+            
+            Debug.WriteLine(configs.ToJSON());
+            return Json(configs);
         }
     }
 }

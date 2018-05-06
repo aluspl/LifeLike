@@ -1,12 +1,11 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {of} from 'rxjs/observable/of';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, tap} from 'rxjs/operators';
 import {MENUITEMS} from '../mock-data/MenuItems';
 import {MenuItem} from '../Models/MenuItem';
 import {Page} from '../Models/Page';
 import Log from '../Models/Log';
+import {Observable, of} from "rxjs/index";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

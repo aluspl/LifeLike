@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Page } from '../../Models/Page';
 import { RestService } from '../../Services/rest.service';
 import { share } from 'rxjs/operators';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/index';
 
 
 @Component({

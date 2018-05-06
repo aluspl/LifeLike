@@ -1,9 +1,11 @@
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories;
+using LifeLike.Web.Extensions;
 using LifeLike.Web.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,7 +24,7 @@ namespace LifeLike.Web.Controllers
         }
     
         [HttpPost]        
-        public async Task<Result> Create(LinkViewModel model)
+        public async Task<IActionResult> Create(LinkViewModel model)
         {
             try
             {
@@ -30,15 +32,17 @@ namespace LifeLike.Web.Controllers
                 model.IconName = "film";
                 if (ModelState.IsValid)
                 {
-                  return  await _repository.Create(LinkViewModel.Get(model));                  
+                    var item =await _repository.Create(LinkViewModel.Get(model));  
+                    return  Ok(item);
+                
                 }
+                return  BadRequest(Result.Failed);
 
-                return Result.Failed;
             }
             catch (Exception e)
             {
                await _logger.AddException(e);
-               return Result.Failed;
+                return StatusCode(500);
             }
  
         }
@@ -50,6 +54,7 @@ namespace LifeLike.Web.Controllers
             {    
                 var list=await _repository.List(LinkCategory.Video);
                 var items= list.Select(LinkViewModel.GetYoutube);
+                Debug.WriteLine(items.ToJSON());
                 return  Ok(items);
             }
             catch(Exception e)

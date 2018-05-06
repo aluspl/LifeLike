@@ -140,14 +140,6 @@ namespace LifeLike.Web
                 app.UseExceptionHandler("/Home/Error");
             }
                     
-            var forwarOptions = new ForwardedHeadersOptions
-            {
-                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-            };
-            forwarOptions.KnownNetworks.Clear();
-            forwarOptions.KnownProxies.Clear();
-
-            app.UseForwardedHeaders(forwarOptions);
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
             app.UseAuthentication();

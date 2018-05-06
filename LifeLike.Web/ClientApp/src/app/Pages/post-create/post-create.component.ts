@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {RestService} from '../../Services/rest.service';
 import {Page} from '../../Models/Page';
-import { Navigation } from 'selenium-webdriver';
 import { Router } from '@angular/router';
 
 @Component({

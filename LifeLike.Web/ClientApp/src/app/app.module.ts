@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
@@ -21,8 +20,8 @@ import {YoutubePlayerComponent} from './Components/youtube-player/youtube-player
 import {FormsModule} from '@angular/forms';
 import {AuthService} from './Services/auth.service';
 import {PostCreateComponent} from './Pages/post-create/post-create.component';
-import {MarkdownModule} from "ngx-md";
 import { TitleComponent } from './Components/title/title.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -44,7 +43,6 @@ import { TitleComponent } from './Components/title/title.component';
   ],
   imports: [
     BrowserModule,
-    MarkdownModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
@@ -53,7 +51,7 @@ import { TitleComponent } from './Components/title/title.component';
       cookieName: 'My-Xsrf-Cookie',
       headerName: 'My-Xsrf-Header',
     }),
-    NgbModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   exports: [
   ],

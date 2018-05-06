@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from '../../Services/rest.service';
 import Log from '../../Models/Log';
 import { share } from 'rxjs/operators';
-import { Observable } from 'rxjs/Observable';
-import {switchMap} from "rxjs/operator/switchMap";
+import { Observable } from 'rxjs/index';
 
 @Component({
   selector: 'app-log',

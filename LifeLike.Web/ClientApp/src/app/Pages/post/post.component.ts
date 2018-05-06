@@ -3,7 +3,7 @@ import { debug } from 'util';
 import { RestService } from '../../Services/rest.service';
 import { Page } from '../../Models/Page';
 import { share } from 'rxjs/operators';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/index';
 
 @Component({
   selector: 'app-post',

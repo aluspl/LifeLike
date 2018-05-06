@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {PostComponent} from "../post/post.component";
-import {Observable} from "rxjs/Observable";
 import {Page} from "../../Models/Page";
 import {RestService} from "../../Services/rest.service";
 import {share} from "rxjs/operators";
 import {MenuItem} from "../../Models/MenuItem";
+import {Observable} from "rxjs/index";
 
 @Component({
   selector: 'app-video',

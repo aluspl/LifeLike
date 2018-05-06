@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Page } from '../../Models/Page';
 import {ActivatedRoute} from '@angular/router';
 import {RestService} from '../../Services/rest.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/index';
 import { share } from 'rxjs/operators';
 
 @Component({

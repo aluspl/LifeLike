@@ -15,7 +15,7 @@ namespace LifeLike.Data.Models
         public string Name { get; set; }
         public string Value { get; set; }
         public string DisplayName { get; set; }
-
+        public ConfigType Type { get; set; }
        
     }
 }
