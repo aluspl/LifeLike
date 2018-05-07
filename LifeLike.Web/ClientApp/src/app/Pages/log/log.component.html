@@ -1,4 +1,6 @@
 <app-title Title="Logs"></app-title>
+<mat-spinner *ngIf="IsLoading"></mat-spinner>
+
 
     <table class="table">
         <thead>
@@ -9,7 +11,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let log of Logs | async" >
+          <tr *ngFor="let log of Logs" >
             <th scope="row">{{log.Id}}</th>
             <td>{{log.Name}}</td>
             <td>{{log.Messages}}</td>

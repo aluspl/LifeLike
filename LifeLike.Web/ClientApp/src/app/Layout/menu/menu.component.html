@@ -1,28 +1,34 @@
-<div class="container" style="padding-left: 0; padding-right: 0;">
-    <header class="navbar navbar-light navbar-fixed-top navbar-expand-lg">  
-      <a class="navbar-brand" [routerLink]="['/']">LifeLike</a>
+<!--<div class="container" style="padding-left: 0; padding-right: 0;">-->
+    <!--<header class="navbar navbar-light navbar-fixed-top navbar-expand-lg">-->
+      <!--<a class="navbar-brand" [routerLink]="['/']">LifeLike</a>-->
 
-      <button class="navbar-toggler navbar-toggler-right" type="button" 
-             aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-  
-      <div class="navbar-collapse" id="navbarContent">
-        <ul class="navbar-nav mr-auto">           
-            <li *ngFor="let menu of MenuItems"  class="nav-item"  >
-                <a class="nav-link" [routerLink]="[ menu.Controller + '/' + menu.Action ]" >
-                    <i class="fas fa-{{menu.Icon}}"></i> {{menu.Name}}
-                </a>
-            </li>
-        </ul>
-  
-        <span class="github-buttons d-none d-lg-inline">
-          <a class="github-button"
-             href="https://github.com/aluspl"
-             target="_blank"
-             data-size="large"
-             data-show-count="true">GitHub</a>          
-        </span>
-      </div>
-    </header>
-  </div>         
+      <!--<button class="navbar-toggler navbar-toggler-right" type="button"-->
+             <!--aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">-->
+        <!--<span class="navbar-toggler-icon"></span>-->
+      <!--</button>-->
+
+      <!--<div class="navbar-collapse" id="navbarContent">-->
+        <!--<ul class="navbar-nav mr-auto">-->
+            <!--<li *ngFor="let menu of MenuItems"  class="nav-item"  >-->
+                <!--<a class="nav-link" [routerLink]="[ menu.Controller + '/' + menu.Action ]" >-->
+                    <!--<i class="fas fa-{{menu.Icon}}"></i> {{menu.Name}}-->
+                <!--</a>-->
+            <!--</li>-->
+        <!--</ul>-->
+
+        <!--<span class="github-buttons d-none d-lg-inline">-->
+          <!--<a class="github-button"-->
+             <!--href="https://github.com/aluspl"-->
+             <!--target="_blank"-->
+             <!--data-size="large"-->
+             <!--data-show-count="true">GitHub</a>-->
+        <!--</span>-->
+      <!--</div>-->
+    <!--</header>-->
+  <!--</div>-->
+<mat-toolbar color="primary">
+  <span>LifeLike</span>
+  <button mat-button *ngFor="let menu of MenuItems"  class="nav-item" [routerLink]="[ menu.Controller + '/' + menu.Action ]"  >
+      <i class="fas fa-{{menu.Icon}}"></i> {{menu.Name}}
+  </button>
+</mat-toolbar>

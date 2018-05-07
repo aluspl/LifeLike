@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RestService} from '../../Services/rest.service';
 import {Page} from '../../Models/Page';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-post-create',
@@ -19,13 +19,15 @@ export class PostCreateComponent implements OnInit {
     this.restService.createPost(this.model).subscribe(p => {
       this.loading = false;
       console.log(p);
-      this.router.navigate(['']);
+      this.location.back();
     });
   }
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.model); }
 
-  constructor(private restService: RestService, private router: Router) { }
+  constructor(
+    private restService: RestService,
+    private location: Location) { }
 
   ngOnInit() {
   }

@@ -108,4 +108,11 @@ export class RestService {
   }
 
 
+  removePost(page: Page) {
+
+  }
+
+  editPost(page: Page) {
+
+  }
 }

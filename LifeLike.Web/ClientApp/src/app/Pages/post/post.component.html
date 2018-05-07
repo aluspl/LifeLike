@@ -1,10 +1,23 @@
 <app-title Title="News"></app-title>
+<mat-spinner *ngIf="IsLoading"></mat-spinner>
+<mat-grid-list cols="3" rowHeight="2:1">
+  <mat-grid-tile *ngFor="let post of Posts">
+    <mat-card class="card" routerLink='{{post.ShortName}}'>
+      <mat-card-header>
+        <mat-card-title class="title">{{post.FullName}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image *ngIf=" post.ImageUrl != ''" src="{{post.ImageUrl}}">
+      <mat-card-content>
+        <p>
+        {{post.Content}}
+        </p>
+      </mat-card-content>
+      <!--<mat-card-actions>-->
 
-    <div class="card" style="width: 36rem;" *ngFor="let post of Posts | async" >
-      <div class="card-body">
-        <h5 class="card-title">{{post.FullName}}</h5>
-        <!-- <p class="card-">{{post.ShortName}}</p> -->
-        <button class="btn btn-outline-dark" routerLink='{{post.ShortName}}'>Open</button>
-      </div>
-
-    </div>
+        <!--<button  mat-button routerLink='{{post.ShortName}}'>Open</button>-->
+      <!--</mat-card-actions>-->
+      <mat-card-footer>Published: {{post.Published  | date: 'dd/MM/yyyy'}}</mat-card-footer>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+<app-post-create *ngIf="CreateMode" ></app-post-create>

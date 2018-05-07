@@ -1,13 +1,20 @@
 <app-title Title="Project"></app-title>
 
-<div *ngIf="Pages | async; let Pages; else loading">
-  <div class="card" style="width: 36rem;" *ngFor="let post of Pages" >
-    <div class="card-body">
-      <h5 class="card-title">{{post.FullName}}</h5>
-      <p class="card-">{{post.ShortName}}</p>
-      <button class="btn btn-outline-dark" routerLink='{{post.ShortName}}'>Open</button>
-    </div>
+<mat-spinner *ngIf="IsLoading"></mat-spinner>
+<mat-grid-list cols="2" rowHeight="2:1" >
+  <mat-grid-tile *ngFor="let post of Pages">
+    <mat-card class="card"  routerLink='{{post.ShortName}}' >
+      <mat-card-header>
+        <mat-card-title class="title">
+          {{post.FullName}}
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-actions>
+        <button  mat-button (click)="Edit(post)">Edit</button>
+        <button  mat-button (click)="Remove(post)">Delete</button>
+      </mat-card-actions>
+      <mat-card-footer>Published: {{post.Published  | date: 'dd/MM/yyyy'}}</mat-card-footer>
 
-  </div>
-</div>
-<ng-template #loading>Loading Page...</ng-template>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

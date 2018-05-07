@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { debug } from 'util';
 import { RestService } from '../../Services/rest.service';
 import { Page } from '../../Models/Page';
-import { share } from 'rxjs/operators';
-import { Observable } from 'rxjs/index';
+import {catchError, map, startWith} from "rxjs/internal/operators";
 
 @Component({
   selector: 'app-post',
@@ -11,10 +10,19 @@ import { Observable } from 'rxjs/index';
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
-  Posts: Observable<Page[]>;
+  Posts: Page[];
+  IsLoading: boolean;
   constructor(private restService: RestService) { }
   GetPosts(): void {
-    this.Posts = this.restService.getPostList().pipe(share());
+    this.IsLoading=true;
+    this.restService.getPostList()
+      .pipe(
+        map(data=> {
+          this.IsLoading=false;
+          console.log(data);
+          return data;
+        }))
+      .subscribe(p=> this.Posts = p);
   }
   ngOnInit() {
     this.GetPosts();

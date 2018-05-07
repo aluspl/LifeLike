@@ -3,6 +3,7 @@ import { Page } from '../../Models/Page';
 import { RestService } from '../../Services/rest.service';
 import { share } from 'rxjs/operators';
 import { Observable } from 'rxjs/index';
+import {map} from "rxjs/internal/operators";
 
 
 @Component({
@@ -11,11 +12,32 @@ import { Observable } from 'rxjs/index';
   styleUrls: ['./page.component.scss']
 })
 export class PageComponent implements OnInit {
-  Pages: Observable<Page[]>;
+  Pages: Page[];
+   IsLoading: boolean;
   constructor(private restService: RestService) { }
-  GetPages(): void {
-    this.Pages = this.restService.getPageList().pipe(share());
+
+  Edit(page: Page): void {
+    console.log("Edit");
+    console.log(page);
+    this.restService.editPost(page);
   }
+  Remove(page: Page):  void{
+    console.log("Remove");
+    console.log(page);
+    this.restService.removePost(page);
+  }
+
+  GetPages(): void {
+    this.restService.getPageList()
+      .pipe(
+      map(data=> {
+        this.IsLoading=false;
+        console.log(data);
+        return data;
+      }))
+      .subscribe(p=> this.Pages = p);
+  }
+
   ngOnInit() {
     this.GetPages();
   }
