@@ -1,5 +1,5 @@
 export default class Log {
-    Id: number;
+  Id: number;
     Type: number;
 
     Name: string;

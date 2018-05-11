@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using LifeLike.Data.Models.Enums;
 
 namespace LifeLike.Data.Models
 {

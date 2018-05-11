@@ -1,8 +1,10 @@
-<div *ngIf="Page | async; let Page;">
+<section class="mat-typography"  *ngIf="Page">
 
-<app-title Title="{{Page.Full}}"></app-title>
+<app-title Title="{{Page.FullName}}"></app-title>
 
-
-  <p class="lead">  {{Page.Published}}      </p>
-  <p class="lead">  {{Page.Category}}      </p>
-</div>
+ <p class="body-1">
+   {{Page.Content}}
+ </p>
+  Published: {{Page.Published  | date: 'dd/MM/yyyy'}}
+  <!--<p class="lead">  {{Page.Category}}      </p>-->
+</section>

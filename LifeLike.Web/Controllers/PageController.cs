@@ -135,7 +135,7 @@ namespace LifeLike.Web.Controllers
             {
                 await _logger.AddStat("Update", "Page");
                 var page = await _pages.Get(id);
-                return Ok(PageViewModel.ViewModel(page));
+                return Ok(_mapper.Map<PageViewModel>(page));
             }
             catch (Exception e)
             {

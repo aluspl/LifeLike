@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LifeLike.Data.Models;
+using LifeLike.Data.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Repositories
@@ -22,7 +23,6 @@ namespace LifeLike.Repositories
         {
             try
             {
-                
                 await _context.AddAsync(model);
                 await _context.SaveChangesAsync();
                 return Result.Success;
@@ -39,7 +39,7 @@ namespace LifeLike.Repositories
             try
             {
                 var item = await Get(model.ShortName);
-                if (item != null) 
+                if (item != null)
                     return Result.Duplicated;
                 await _context.AddAsync(link);
                 await _context.AddAsync(model);
@@ -130,7 +130,7 @@ namespace LifeLike.Repositories
         public async Task<IEnumerable<Page>> List(PageCategory category)
         {
             try
-            {                                
+            {
                 return await _context.Pages.Where(p => p.Category == category).ToListAsync();
             }
             catch (Exception e)

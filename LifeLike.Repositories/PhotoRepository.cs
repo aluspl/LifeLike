@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LifeLike.Data.Models;
+using LifeLike.Data.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Repositories
@@ -19,7 +20,7 @@ namespace LifeLike.Repositories
             _context = context;
         }
 
-        public static string PhotoPath =  "/photos/";
+        public static readonly string PhotoPath =  "/photos/";
 
 
         public async Task<Result> Create(Photo model)

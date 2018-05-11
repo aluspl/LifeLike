@@ -56,6 +56,9 @@ import {
 } from "@angular/material";
 import {CdkTableModule} from "@angular/cdk/table";
 import {PostEditComponent} from "./Pages/post-edit/post-edit.component";
+import { PostListComponent } from './Components/post-list/post-list.component';
+import { AdminPanelComponent } from './Pages/admin-panel/admin-panel.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -75,6 +78,9 @@ import {PostEditComponent} from "./Pages/post-edit/post-edit.component";
     PostCreateComponent,
     TitleComponent,
     PostEditComponent,
+    PostListComponent,
+    AdminPanelComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

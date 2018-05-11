@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using LifeLike.Data.Models;
+using LifeLike.Data.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Repositories
@@ -16,14 +17,14 @@ namespace LifeLike.Repositories
         {
             _context = context;
         }
-        
+
         public async Task<Result> AddException(Exception e)
         {
             try
             {
                 Debug.WriteLine(e);
 
-               return await Create(EventLog.Generate(e));          
+                return await Create(EventLog.Generate(e));
             }
             catch (Exception)
             {
@@ -43,7 +44,8 @@ namespace LifeLike.Repositories
                 return Result.Failed;
             }
         }
-        public async Task<Result> AddStat(string id,string action, string controller)
+
+        public async Task<Result> AddStat(string id, string action, string controller)
         {
             try
             {
@@ -62,21 +64,23 @@ namespace LifeLike.Repositories
                 return Result.Failed;
             }
         }
+
         public async Task<Result> Add(EventLog model)
         {
             try
-            {             
-               return  await Create(model);
+            {
+                return await Create(model);
             }
             catch (Exception)
             {
                 return Result.Success;
-            }        
+            }
         }
+
         public async Task<Result> Create(EventLog model)
         {
             try
-            {             
+            {
                 await _context.EventLogs.AddAsync(model);
                 await _context.SaveChangesAsync();
                 return Result.Success;
@@ -85,7 +89,7 @@ namespace LifeLike.Repositories
             {
                 await AddException(e);
                 return Result.Success;
-            }        
+            }
         }
 
         public async Task<IEnumerable<EventLog>> List()
@@ -102,21 +106,20 @@ namespace LifeLike.Repositories
         {
             try
             {
-                return await Create(EventLog.Generate(i,information));
-
+                return await Create(EventLog.Generate(i, information));
             }
             catch (Exception e)
             {
                 await AddException(e);
                 return Result.Failed;
-            }   
-     }
+            }
+        }
 
         public async Task<Result> LogInformation(EventLogType result, string message)
         {
             try
             {
-                await Create(EventLog.Generate(result,message));
+                await Create(EventLog.Generate(result, message));
                 return Result.Success;
             }
             catch (Exception e)
@@ -124,15 +127,14 @@ namespace LifeLike.Repositories
                 await AddException(e);
                 return Result.Failed;
             }
-
         }
 
-        public async Task<Result>  ClearLogs()
+        public async Task<Result> ClearLogs()
         {
             try
             {
-                  _context.EventLogs.RemoveRange(_context.EventLogs.Where(p=>p.Type!=EventLogType.Statistic));            
-           
+                _context.EventLogs.RemoveRange(_context.EventLogs.Where(p => p.Type != EventLogType.Statistic));
+
                 await _context.SaveChangesAsync();
                 return Result.Success;
             }
@@ -141,13 +143,11 @@ namespace LifeLike.Repositories
                 await AddException(e);
                 throw;
             }
-          
-             
         }
 
-        public  async Task<EventLog> Get(long id)
+        public async Task<EventLog> Get(long id)
         {
-            return await _context.EventLogs.FirstOrDefaultAsync(p=>p.Id==id);
+            return await _context.EventLogs.FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<Result> Update(EventLog model)
@@ -157,14 +157,12 @@ namespace LifeLike.Repositories
                 _context.Update(model);
                 await _context.SaveChangesAsync();
                 return Result.Success;
-
             }
             catch (Exception e)
             {
                 await AddException(e);
                 return Result.Failed;
             }
-            
         }
 
         public async Task<Result> Delete(EventLog model)
@@ -174,7 +172,6 @@ namespace LifeLike.Repositories
                 _context.Remove(model);
                 await _context.SaveChangesAsync();
                 return Result.Success;
-
             }
             catch (Exception e)
             {
@@ -182,14 +179,14 @@ namespace LifeLike.Repositories
                 return Result.Failed;
             }
         }
-          public async Task<Result> DeleteAll()
+
+        public async Task<Result> DeleteAll()
         {
             try
             {
                 _context.EventLogs.RemoveRange(_context.EventLogs.ToList());
                 await _context.SaveChangesAsync();
                 return Result.Success;
-
             }
             catch (Exception e)
             {
@@ -197,9 +194,8 @@ namespace LifeLike.Repositories
                 return Result.Failed;
             }
         }
-       
     }
-    
+
     public interface IEventLogRepository : IRepository<EventLog>
     {
         Task<Result> AddException(Exception e);
@@ -207,7 +203,7 @@ namespace LifeLike.Repositories
         Task<Result> AddStat(string action, string controller);
 
         Task<IEnumerable<EventLog>> List(EventLogType type);
-        Task<Result>  LogInformation(EventLogType result, string message);
+        Task<Result> LogInformation(EventLogType result, string message);
         Task<Result> ClearLogs();
         Task<Result> Add(EventLog eventLog);
     }

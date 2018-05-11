@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using LifeLike.Data.Models;
+using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories;
 using LifeLike.Web.ViewModel;
 using Microsoft.AspNetCore.Hosting;
@@ -40,15 +41,15 @@ namespace LifeLike.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<Result> UploadFiles(UploadFileViewModel model)
+        public async Task<IActionResult> UploadFiles(UploadFileViewModel model)
         {
             try
             {
-                if (!ModelState.IsValid) return Result.Failed;
+                if (!ModelState.IsValid) return BadRequest(Result.Failed);
 
                 var uploadPath = Path.Combine(_hostingEnv.WebRootPath, "photos");
 
-                if (model.Photo.Length <= 0) return Result.Failed;
+                if (model.Photo.Length <= 0) return BadRequest(Result.Failed);
                 using (var fileStream = new FileStream(Path.Combine(uploadPath, model.Photo.FileName), FileMode.Create))
                 {
                     await model.Photo.CopyToAsync(fileStream);
@@ -60,17 +61,18 @@ namespace LifeLike.Web.Controllers
                     Created = DateTime.Now,
                     Title = model.Title
                 };
-                return await _photos.Create(photo, model.GalleryId);
+                return Ok(await _photos.Create(photo, model.GalleryId));
 
             }
             catch (Exception e)
             {
                 await _logger.AddException(e);
-                return Result.Failed;
+                return StatusCode(500);
+
             }
         }
 
-        public async Task<PhotoViewModel> Detail(long id)
+        public async Task<IActionResult> Detail(long id)
         {
             try
             {
@@ -78,12 +80,12 @@ namespace LifeLike.Web.Controllers
 
                 var photo = await _photos.Get(id);
                 var selectedPhoto = PhotoViewModel.Get(photo);
-                return selectedPhoto;
+                return Ok(selectedPhoto);
             }
             catch (Exception e)
             {
                 await _logger.AddException(e);
-                return null;
+                return StatusCode(500);
             }
         }
 

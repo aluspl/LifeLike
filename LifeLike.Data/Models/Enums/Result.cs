@@ -1,5 +1,6 @@
-﻿namespace LifeLike.Data.Models
+﻿namespace LifeLike.Data.Models.Enums
 {
+    
     public enum Result
     {
         Success, Failed,

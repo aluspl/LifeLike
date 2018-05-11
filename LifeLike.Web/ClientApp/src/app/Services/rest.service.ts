@@ -6,6 +6,7 @@ import {MenuItem} from '../Models/MenuItem';
 import {Page} from '../Models/Page';
 import Log from '../Models/Log';
 import {Observable, of} from "rxjs/index";
+import Video from "../Models/Video";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -96,12 +97,12 @@ export class RestService {
         catchError(RestService.handleError<Log[]>())
       );
   }
-  GetVideos<Data>(): Observable<MenuItem[]> {
+  GetVideos<Data>(): Observable<Video[]> {
     return this.http
-      .get<MenuItem[]>(VideoList)
+      .get<Video[]>(VideoList)
       .pipe(
         tap(_ => RestService.log(`fetched Videos`)),
-        catchError(RestService.handleError<MenuItem[]>())
+        catchError(RestService.handleError<Video[]>())
       );
   }
   constructor(private http: HttpClient) {

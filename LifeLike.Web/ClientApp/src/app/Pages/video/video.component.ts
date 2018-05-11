@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {PostComponent} from "../post/post.component";
-import {Page} from "../../Models/Page";
 import {RestService} from "../../Services/rest.service";
-import {share} from "rxjs/operators";
-import {MenuItem} from "../../Models/MenuItem";
-import {Observable} from "rxjs/index";
+import {map} from "rxjs/internal/operators";
+import Video from "../../Models/Video";
 
 @Component({
   selector: 'app-video',
@@ -14,10 +11,18 @@ import {Observable} from "rxjs/index";
 export class VideoComponent implements OnInit {
 
 
-  Videos: Observable<MenuItem[]>;
+  Videos: Video[];
+   IsLoading: boolean;
   constructor(private restService: RestService) { }
   GetPosts(): void {
-    this.Videos = this.restService.GetVideos().pipe(share());
+    this.restService.GetVideos()
+      .pipe(
+        map(data=> {
+          this.IsLoading=false;
+          console.log(data);
+          return data;
+        }))
+      .subscribe(p=> this.Videos = p);
     console.log(this.Videos);
   }
   ngOnInit() {

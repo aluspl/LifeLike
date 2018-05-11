@@ -16,6 +16,8 @@ namespace LifeLike.Data.Models
 
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Config> Configs { get; set; }
+        public DbSet<Video> Videos { get; set; }
+
         public DbSet<Statistic> Stats { get; set; }
 
         public PortalContext(DbContextOptions<PortalContext> options) : base(options)
@@ -39,16 +41,7 @@ namespace LifeLike.Data.Models
             }
 
             if (!context.Pages.Any())
-            {
-                context.Pages.Add(new Page
-                    {
-                        ShortName = "newPage",
-                        Category = PageCategory.Post,
-                        FullName = "New Page engine",
-                        PageOrder = 0,
-                        Content = ".Net Core 2.0 + React"
-                    }
-                );
+            {               
                 context.Pages.Add(new Page
                     {
                         ShortName = "contact",
@@ -69,25 +62,26 @@ namespace LifeLike.Data.Models
             {
                 Name = Config.WelcomeVideo,
                 DisplayName = "Welcome Video",
-                Value = "Qi5tp0eZHt8"
+                Value = "Qi5tp0eZHt8", Type = ConfigType.Video
+                
             });
             context.Add(new Config
             {
                 Name = Config.WelcomeText,
                 DisplayName = "Welcome Text",
-                Value = "Hello on Main Page"
+                Value = "Hello on Main Page", Type = ConfigType.Text
             });
             context.Add(new Config
             {
                 Name = Config.Rss1,
                 DisplayName = "First RSS Url",
-                Value = "http://kawowipodroznicy.pl/feed/"
+                Value = "http://kawowipodroznicy.pl/feed/", Type = ConfigType.RSS
             });
             context.Add(new Config
             {
                 Name = Config.Rss2,
                 DisplayName = "Second RSS Url",
-                Value = "http://szymonmotyka.pl/feed/"
+                Value = "http://szymonmotyka.pl/feed/", Type = ConfigType.RSS
             });
         }
 
@@ -102,13 +96,7 @@ namespace LifeLike.Data.Models
                 IconName = "film",
                 Category = LinkCategory.Menu
             });
-            context.Add(new Link
-            {
-                Action = "LifeLike",
-                Controller = "Page",
-                Name = "LifeLike: The Game",
-                Category = LinkCategory.Menu
-            });
+           
             context.Add(new Link
             {
                 Action = "",
@@ -122,16 +110,9 @@ namespace LifeLike.Data.Models
                 Action = "",
                 Controller = "Album",
                 Name = "Albums",
-                Category = LinkCategory.Menu
+                Category = LinkCategory.Menu, IconName = "camera-retro"
             });
-            context.Add(new Link
-            {
-                Action = "",
-                Controller = "Logs",
-                Name = "Logs",
-                Category = LinkCategory.Menu
-            });
-            
+                     
             // Sidebar
             context.Add(new Link
             {

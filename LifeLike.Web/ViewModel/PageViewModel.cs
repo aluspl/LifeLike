@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
+using LifeLike.Web.Extensions;
 
 namespace LifeLike.Web.ViewModel
 {
@@ -20,40 +21,11 @@ namespace LifeLike.Web.ViewModel
         public long LinkId { get; set; }
         public string ImageUrl { get; set; }
         public DateTime Published { get; set; }
+        public string Summary => Content.Summary();
+        public string ContentInHTML => Content.ToHTML();
 
-        public static Page DataModel(PageViewModel model)
-        {
-            if (model == null) return null;
-            Enum.TryParse(model.Category, out PageCategory category);
 
-            return new Page
-            {
-                Id = model.Id,
-                Category = category,
-                FullName = model.FullName,
-                ShortName = model.ShortName,
-                PageOrder = model.PageOrder,
-                Content = model.Content,
-                ImageUrl = model.ImageUrl,
-                Published = model.Published
-            };
-        }
-
-        public static PageViewModel ViewModel(Page model)
-        {
-            if (model == null) return null;
-            return new PageViewModel
-            {
-                Category = model.Category.ToString(),
-                FullName = model.FullName,
-                ShortName = model.ShortName,
-                PageOrder = model.PageOrder,
-                Content = model.Content,
-                ImageUrl = model.ImageUrl,
-                Published = model.Published
-            };
-        }
-
+      
         public Link Link => new Link
         {
             Name = FullName,

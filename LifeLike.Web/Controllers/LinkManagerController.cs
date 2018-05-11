@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LifeLike.Data.Models;
+using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories;
 using LifeLike.Web.ViewModel;
 using Microsoft.AspNetCore.Authorization;

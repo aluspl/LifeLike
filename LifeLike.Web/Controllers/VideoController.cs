@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories;
@@ -14,50 +15,47 @@ namespace LifeLike.Web.Controllers
     [Route("api/[controller]")]
     public class VideoController : Controller
     {
-        private readonly ILinkRepository _repository;
+        private readonly IVideoRepository _repository;
         private readonly IEventLogRepository _logger;
+        private readonly IMapper _mapper;
 
-        public VideoController(ILinkRepository repository, IEventLogRepository logger)
+        public VideoController(IVideoRepository repository, IEventLogRepository logger, IMapper mapper)
         {
             _repository = repository;
-            _logger=logger;
+            _logger = logger;
+            _mapper = mapper;
         }
-    
-        [HttpPost]        
-        public async Task<IActionResult> Create(LinkViewModel model)
+
+        [HttpPost]
+        public async Task<IActionResult> Create(VideoViewModel model)
         {
             try
             {
-                model.Category = LinkCategory.Video;
-                model.IconName = "film";
-                if (ModelState.IsValid)
-                {
-                    var item =await _repository.Create(LinkViewModel.Get(model));  
-                    return  Ok(item);
-                
-                }
-                return  BadRequest(Result.Failed);
+                model.PublishDate = DateTime.Now;
 
+                if (!ModelState.IsValid) return BadRequest(Result.Failed);
+                var item = await _repository.Create(_mapper.Map<Video>(model));
+                return Ok(item);
             }
             catch (Exception e)
             {
-               await _logger.AddException(e);
+                await _logger.AddException(e);
                 return StatusCode(500);
             }
- 
         }
+
         // GET
         [HttpGet("List")]
         public async Task<IActionResult> Get()
         {
             try
-            {    
-                var list=await _repository.List(LinkCategory.Video);
-                var items= list.Select(LinkViewModel.GetYoutube);
+            {
+                var list = await _repository.List();
+                var items = list.Select(_mapper.Map);
                 Debug.WriteLine(items.ToJSON());
-                return  Ok(items);
+                return Ok(items);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 await _logger.AddException(e);
                 return StatusCode(500);

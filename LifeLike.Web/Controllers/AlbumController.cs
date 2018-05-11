@@ -1,7 +1,9 @@
 using System;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using LifeLike.Data.Models;
+using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories;
 using LifeLike.Web.ViewModel;
 using Microsoft.AspNetCore.Hosting;
@@ -50,7 +52,7 @@ namespace LifeLike.Web.Controllers
                 await _logger.AddStat(id,"Detail", "Album");
 
                 var selectedgallery = await _gallery.Get(id);
-                return Json(GalleryViewModel.Get(selectedgallery));
+                return Ok(GalleryViewModel.Get(selectedgallery));
             }
             catch (Exception e)
             {
@@ -59,7 +61,7 @@ namespace LifeLike.Web.Controllers
             }
         }
         [HttpPost]
-        public async Task<Result> CreateGallery(GalleryViewModel model)
+        public async Task<IActionResult> CreateGallery(GalleryViewModel model)
         {
 
             try
@@ -68,12 +70,12 @@ namespace LifeLike.Web.Controllers
                 model.Created=DateTime.Now;
                 model.ShortTitle=model.ShortTitle.Trim().Replace(" ","");
                 var gallery = GalleryViewModel.Get(model);
-                return await _gallery.Create(gallery);
+                return Ok(await _gallery.Create(gallery));
             }
             catch (Exception e)
             {
                 await _logger.AddException(e);
-                return Result.Failed;
+                return  new  BadRequestResult();
 
             }
         }

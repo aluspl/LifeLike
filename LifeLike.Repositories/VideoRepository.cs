@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
@@ -7,19 +8,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Repositories
 {
-    public class ConfigRepository : IConfigRepository
+    public class VideoRepository : IVideoRepository
     {
-        private readonly IEventLogRepository _logger;
         private readonly PortalContext _context;
+        private readonly IEventLogRepository _logger;
 
-        public ConfigRepository(PortalContext context, IEventLogRepository logger)
+        public VideoRepository(PortalContext context, IEventLogRepository logger)
         {
-            _logger = logger;
             _context = context;
+            _logger = logger;
         }
 
-
-        public async Task<Result> Create(Config model)
+        public async Task<Result> Create(Video model)
         {
             try
             {
@@ -30,34 +30,27 @@ namespace LifeLike.Repositories
             catch (Exception e)
             {
                 await _logger.AddException(e);
+
                 return Result.Failed;
             }
         }
 
-        public async Task<IEnumerable<Config>> List()
+        public async Task<IEnumerable<Video>> List()
         {
-            try
-            {
-                return await _context.Configs.ToListAsync();
-            }
-            catch (Exception e)
-            {
-                await _logger.AddException(e);
-                return new List<Config>();
-            }
+            return await _context.Videos.ToListAsync();
         }
 
-        public async Task<Config> Get(long id)
+        public async Task<Video> Get(long id)
         {
-            return await _context.Configs.FirstOrDefaultAsync(p => p.Name == id.ToString());
+            return await _context.Videos.FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task<Result> Update(Config model)
+        public async Task<Result> Update(Video model)
         {
             try
             {
                 _context.Update(model);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
                 return Result.Success;
             }
             catch (Exception e)
@@ -67,26 +60,27 @@ namespace LifeLike.Repositories
             }
         }
 
-        public async Task<Result> Delete(Config model)
+        public async Task<Result> Delete(Video model)
         {
             try
             {
                 _context.Remove(model);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
                 return Result.Success;
             }
             catch (Exception e)
             {
                 await _logger.AddException(e);
+
                 return Result.Failed;
             }
         }
 
-        public async Task<Config> Get(string id)
+        public async Task<IEnumerable<Video>> List(VideoCategory category)
         {
             try
             {
-                return await _context.Configs.FirstOrDefaultAsync(config => config.Name == id);
+                return await _context.Videos.Where(p => p.Category == category).ToListAsync();
             }
             catch (Exception e)
             {
@@ -96,8 +90,8 @@ namespace LifeLike.Repositories
         }
     }
 
-    public interface IConfigRepository : IRepository<Config>
+    public interface IVideoRepository : IRepository<Video>
     {
-        Task<Config> Get(string id);
+        Task<IEnumerable<Video>> List(VideoCategory category);
     }
 }

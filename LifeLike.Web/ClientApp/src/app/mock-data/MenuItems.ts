@@ -8,13 +8,13 @@ export const MENUITEMS: MenuItem[] = [
     Name: 'NEWS',
     Icon: 'newspaper'
  },
- {
-    Id: 2,
-    Action: '',
-    Controller: 'Album',
-    Name: 'ALBUMS',
-    Icon: 'camera-retro',
-},
+//  {
+//     Id: 2,
+//     Action: '',
+//     Controller: 'Album',
+//     Name: 'ALBUMS',
+//     Icon: 'camera-retro',
+// },
 {
     Id: 3,
     Action: '',
@@ -29,18 +29,18 @@ export const MENUITEMS: MenuItem[] = [
     Name: 'PROJECTS',
     Icon: 'code'
 },
-{
-    Id: 5,
-    Action: '',
-    Controller: 'Log',
-    Name: 'LOGS',
-    Icon: 'book',
-},
 // {
-//     Id: 6,
-//     Action: 'Contact',
-//     Controller: 'Page',
-//     Name: 'CONTACT',
-//     Icon: 'at',
-// }
+//     Id: 5,
+//     Action: '',
+//     Controller: 'Log',
+//     Name: 'LOGS',
+//     Icon: 'book',
+// },
+{
+    Id: 6,
+    Action: 'Contact',
+    Controller: 'Page',
+    Name: 'CONTACT',
+    Icon: 'at',
+}
 ];

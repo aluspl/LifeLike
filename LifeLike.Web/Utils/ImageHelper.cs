@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using LifeLike.Data.Models;
+using LifeLike.Data.Models.Enums;
 
 namespace LifeLike.Web.Utils
 {
