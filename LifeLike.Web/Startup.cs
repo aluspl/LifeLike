@@ -64,6 +64,7 @@ namespace LifeLike.Web
             services.AddScoped<IGalleryRepository, GalleryRepository>();
             services.AddScoped<IPageRepository, PageRepository>();
             services.AddScoped<IPhotoRepository, PhotoRepository>();
+            services.AddScoped<IVideoRepository, VideoRepository>();
 
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<PortalContext>()
