@@ -54,7 +54,7 @@ namespace LifeLike.Web
             services.AddDbContext<PortalContext>(options =>
 //                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), 
 //                        b => b.MigrationsAssembly("LifeLike.Web"))
-                    options.UseSqlite("Data Source=sqlite.db"));
+                    options.UseSqlite("Data Source=lifelike.db"));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddScoped<IEventLogRepository, EventLogsRepository>();

@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { debug } from 'util';
-import { RestService } from '../../Services/rest.service';
-import { Page } from '../../Models/Page';
-import {catchError, map, startWith} from "rxjs/internal/operators";
+import {Component, OnInit} from '@angular/core';
+import {RestService} from '../../Services/rest.service';
+import {Page} from '../../Models/Page';
+import {map} from "rxjs/internal/operators";
 
 @Component({
   selector: 'app-post',
@@ -12,6 +11,8 @@ import {catchError, map, startWith} from "rxjs/internal/operators";
 export class PostComponent implements OnInit {
   Posts: Page[];
   IsLoading: boolean;
+  CreateMode: boolean;
+
   constructor(private restService: RestService) { }
   GetPosts(): void {
     this.IsLoading=true;

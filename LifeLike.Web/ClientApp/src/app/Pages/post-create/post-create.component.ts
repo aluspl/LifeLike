@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {RestService} from '../../Services/rest.service';
 import {Page} from '../../Models/Page';
-import { Location } from '@angular/common';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-post-create',
@@ -10,6 +10,7 @@ import { Location } from '@angular/common';
 })
 export class PostCreateComponent implements OnInit {
   model = new Page();
+  @Input() CreateMode: boolean;
   loading = false;
   categories = [ 'App', 'Game', 'Tutorial', 'Page', 'Post'];
 
@@ -19,7 +20,7 @@ export class PostCreateComponent implements OnInit {
     this.restService.createPost(this.model).subscribe(p => {
       this.loading = false;
       console.log(p);
-      this.location.back();
+      this.CreateMode = false;
     });
   }
   // TODO: Remove this when we're done

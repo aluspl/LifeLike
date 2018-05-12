@@ -1,7 +1,9 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+  "mappings": "AAAA,eAAgB;EACd,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;;AAGxB,mBAAoB;EAClB,KAAK,EAAE,IAAI",
+  "sources": [
+    "post-create.component.scss"
+  ],
 "names": [],
 "file": "post-create.component.css"
 }

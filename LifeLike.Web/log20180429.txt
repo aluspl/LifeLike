@@ -4507,3 +4507,4 @@ FROM "Pages" AS "p"
 2018-04-29 23:03:49.438 +02:00 [INF] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
 2018-04-29 23:03:49.440 +02:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web) in 19.274ms
 2018-04-29 23:03:49.441 +02:00 [INF] Request finished in 28.165ms 200 application/json; charset=utf-8
+2018-04-29 23:04:47.415 +02:00 [INF] Request finished in 66626.051ms 101 
