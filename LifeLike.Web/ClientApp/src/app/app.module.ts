@@ -58,7 +58,8 @@ import {CdkTableModule} from "@angular/cdk/table";
 import {PostEditComponent} from "./Pages/post-edit/post-edit.component";
 import { PostListComponent } from './Components/post-list/post-list.component';
 import { AdminPanelComponent } from './Pages/admin-panel/admin-panel.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { IntroTextComponent } from './Components/intro-text/intro-text.component';
+import { IntroRSSComponent } from './Components/intro-rss/intro-rss.component';
 
 
 @NgModule({
@@ -80,7 +81,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     PostEditComponent,
     PostListComponent,
     AdminPanelComponent,
-    DashboardComponent,
+    IntroTextComponent,
+    IntroRSSComponent,
   ],
   imports: [
     BrowserModule,
