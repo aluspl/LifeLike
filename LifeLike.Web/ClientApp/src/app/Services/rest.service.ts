@@ -7,6 +7,7 @@ import {Page} from '../Models/Page';
 import Log from '../Models/Log';
 import {Observable, of} from "rxjs/index";
 import Video from "../Models/Video";
+import {Config} from "../Models/Config";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -115,5 +116,14 @@ export class RestService {
 
   editPost(page: Page) {
 
+  }
+
+  getConfigs(): Observable<Config[]> {
+    return this.http
+      .get<Config[]>(ConfigList)
+      .pipe(
+        tap(_ => RestService.log(`fetched Configs`)),
+        catchError(RestService.handleError<Config[]>())
+      );
   }
 }

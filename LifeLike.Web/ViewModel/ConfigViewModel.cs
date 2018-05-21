@@ -9,6 +9,7 @@ namespace LifeLike.Web.ViewModel
 
         public string Value { get; set; }
         public string DisplayName { get; set; }
+        public string Type { get; set; }
        
     }
 }

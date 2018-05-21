@@ -1,6 +1,8 @@
 export  class Config {
-    Rss1Url: string;
-    WelcomeText: string;
-    Rss2Url: string;
-     WelcomeVideo: string;
+  Id: number;
+  Name: string;
+  Value: string;
+  DisplayName: string;
+  Type: string;
+ 
 }

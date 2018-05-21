@@ -34,15 +34,10 @@
 <!--</button>-->
 <!--</mat-toolbar>-->
 <nav class="docs-navbar-header">
-  <span>LifeLike</span>
-  <div class="flex-spacer"></div>
+  <button mat-button class="nav-item" routerLink="/"  >
+   LifeLike
+  </button>  <div class="flex-spacer"></div>
   <button mat-button *ngFor="let menu of MenuItems"  class="nav-item" [routerLink]="[ menu.Controller + '/' + menu.Action ]"  >
-    <i class="fas fa-{{menu.Icon}}"></i> {{menu.Name}}
-  </button>
-</nav>
-<nav class="docs-navbar docs-navbar-show-small">
-  <button mat-button *ngFor="let menu of MenuItems" class="nav-item"
-          [routerLink]="[ menu.Controller + '/' + menu.Action ]">
     <i class="fas fa-{{menu.Icon}}"></i> {{menu.Name}}
   </button>
 </nav>

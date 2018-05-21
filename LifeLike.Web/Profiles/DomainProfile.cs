@@ -15,6 +15,8 @@ namespace LifeLike.Web.Profiles
             CreateMap<EventLogViewModel, EventLog>();
             CreateMap<Video, VideoViewModel>();
             CreateMap<VideoViewModel, Video>();
+            CreateMap<Config, ConfigViewModel>();
+            CreateMap<ConfigViewModel, Config>();
 
 
         }

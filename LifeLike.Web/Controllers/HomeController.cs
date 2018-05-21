@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories;
@@ -20,11 +21,13 @@ namespace LifeLike.Web.Controllers
     {
         private readonly IConfigRepository _config;
         private readonly IEventLogRepository _logger;
+        private readonly IMapper _mapper;
 
-        public HomeController(IConfigRepository config, IEventLogRepository logger, 
+        public HomeController(IConfigRepository config, IEventLogRepository logger, IMapper mapper,
         SignInManager<User> signInManager,
         ILinkRepository link)
         {
+            _mapper = mapper;
             _logger = logger;
             _config = config;
         }
@@ -51,56 +54,47 @@ namespace LifeLike.Web.Controllers
 
         private static List<Link> MenuList(bool isLogged)
         {
-            var context= new List<Link>();
-          
-         
-            context.Add(new Link
-            {                
-                Id=1,
-                Action = "",
-                Controller = "Posts",
-                Name = "News",
-                IconName = "newspaper",
+            var context = new List<Link>
+            {
+                new Link
+                {
+                    Id = 1,
+                    Action = "",
+                    Controller = "Posts",
+                    Name = "News",
+                    IconName = "newspaper",
 
-                Category = LinkCategory.Menu
-            });
+                    Category = LinkCategory.Menu
+                },
+                new Link
+                {
+                    Id = 2,
+                    Action = "",
+                    Controller = "Albums",
+                    Name = "Albums",
+                    IconName = "camera-retro",
+                    Category = LinkCategory.Menu
+                },
+                new Link
+                {
+                    Id = 3,
+                    Action = "",
+                    Controller = "Videos",
+                    Name = "VIDEOS",
+                    IconName = "film",
+                    Category = LinkCategory.Menu
+                },
+                new Link
+                {
+                    Id = 4,
+                    Action = "",
+                    Controller = "Pages",
+                    Name = "PROJECTS",
+                    IconName = "code",
+                    Category = LinkCategory.Menu
+                }
+            };
 
-            context.Add(new Link
-            {
-                Id=2,
-                Action = "",
-                Controller = "Albums",
-                Name = "Albums",
-                IconName = "camera-retro",
-                Category = LinkCategory.Menu
-            });   
-            context.Add(new Link
-            {
-                Id=3,
-                Action = "",
-                Controller = "Videos",
-                Name = "VIDEOS",
-                IconName = "film",
-                Category = LinkCategory.Menu
-            });
-            context.Add(new Link
-            {
-                Id=4,
-                Action = "",
-                Controller = "Pages",
-                Name = "PROJECTS",
-                IconName = "code",
-                Category = LinkCategory.Menu
-            });
-//            context.Add(new Link()
-//            {
-//                Id=5,
-//                Action = "",
-//                Controller = "RSS",
-//                Name = "BLOGS",
-//                IconName = "coffee",
-//                Category = LinkCategory.Menu
-//            }); 
             if (isLogged)
             context.Add(new Link
             {
@@ -131,7 +125,7 @@ namespace LifeLike.Web.Controllers
             var configs =await _config.List();
             
             Debug.WriteLine(configs.ToJSON());
-            return Json(configs);
+            return Ok(configs.Select(_mapper.Map<ConfigViewModel>));
         }
     }
 }
