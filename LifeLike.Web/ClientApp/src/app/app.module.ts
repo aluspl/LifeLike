@@ -59,7 +59,6 @@ import {PostEditComponent} from "./Pages/post-edit/post-edit.component";
 import { PostListComponent } from './Components/post-list/post-list.component';
 import { AdminPanelComponent } from './Pages/admin-panel/admin-panel.component';
 import { IntroTextComponent } from './Components/intro-text/intro-text.component';
-import { IntroRSSComponent } from './Components/intro-rss/intro-rss.component';
 
 
 @NgModule({
@@ -82,7 +81,6 @@ import { IntroRSSComponent } from './Components/intro-rss/intro-rss.component';
     PostListComponent,
     AdminPanelComponent,
     IntroTextComponent,
-    IntroRSSComponent,
   ],
   imports: [
     BrowserModule,
@@ -135,7 +133,8 @@ import { IntroRSSComponent } from './Components/intro-rss/intro-rss.component';
   ],
   exports: [
     CdkTableModule,
-    MatToolbarModule,    MatButtonModule,
+    MatToolbarModule,
+    MatButtonModule,
     MatProgressSpinnerModule,
     MatAutocompleteModule,
     MatBadgeModule,
