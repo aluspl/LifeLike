@@ -19,15 +19,7 @@ export class YoutubePlayerComponent implements OnInit {
   }
 
   constructor(private sanitizer: DomSanitizer) { }
-  public embed_youtube(): string {
-    return this.sanitize_iframe(
-      '<iframe src="https://www.youtube.com/embed/' + this.YoutubeID
-    + ' frameborder="0" allowfullscreen></iframe>');
-  }
 
-  private sanitize_iframe(iframe: string): any {
-    return this.sanitizer.bypassSecurityTrustHtml(iframe);
-  }
   ngOnInit() {
   }
 

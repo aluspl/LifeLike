@@ -26,7 +26,6 @@ namespace LifeLike.Data.Models
     [Flags]
     public enum PageCategory
     {
-        App,Game, Tutorial, Page, Post,
-        Devs = App | Game
+        App, Game, Tutorial, Page, Post
     }
 }

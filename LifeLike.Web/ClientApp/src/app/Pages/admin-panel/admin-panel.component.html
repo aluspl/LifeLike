@@ -1,44 +1,23 @@
-<div class="grid-container">
-  <mat-grid-list cols="2" rowHeight="350px">
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-            Logs
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <app-log></app-log>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
+<mat-tab-group>
+  <mat-tab label="Logs">
+    <h1>Logs</h1>
+    <app-log></app-log>
+  </mat-tab>
+  <mat-tab label="Page Config">
+    <h1>Some more tab content</h1>
+    <app-log></app-log>
+  </mat-tab>
+  <mat-tab label="Posts">
+    <h1>Post List</h1>
+    <app-post-list></app-post-list>4
+    <button routerLink='/CreatePost'>Add New Post</button>
+  </mat-tab>
+  <mat-tab label="Pages">
+    <h1>Some more tab content</h1>
+    <app-page></app-page>
+    <button mat-button routerLink='/CreatePost'>Add New </button>
 
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
+  </mat-tab>
+</mat-tab-group>
 
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-            Posts
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <app-log></app-log>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
 
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-            Pages
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <app-log></app-log>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-</div>

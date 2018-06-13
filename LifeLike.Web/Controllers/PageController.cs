@@ -85,7 +85,7 @@ namespace LifeLike.Web.Controllers
                 return StatusCode(500);
             }
         }
-
+//TODO: CATEGORY IN DROPDPOWN IN ANGULAR
         [HttpPost]
         [Route("Create")]
         public async Task<IActionResult> Create([FromBody] PageViewModel model)
@@ -94,6 +94,7 @@ namespace LifeLike.Web.Controllers
             {
                 await _logger.AddStat("Create", "Page");
                 model.Published = DateTime.Now;
+                if (model.Category == null) model.Category = "Post";
                 model.ShortName = model?.ShortName?.ToLower();
                 if (!ModelState.IsValid) return BadRequest(ModelState);
 //                var  dto=  PageViewModel.DataModel(model);
