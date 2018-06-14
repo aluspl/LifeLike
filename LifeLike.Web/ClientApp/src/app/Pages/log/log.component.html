@@ -1,4 +1,21 @@
 <!--<app-title Title="Logs"></app-title>-->
 <mat-spinner *ngIf="IsLoading"></mat-spinner>
+<table mat-table *ngIf="!IsLoading" [dataSource]="Logs" class="mat-elevation-z8">
 
-fsdg
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="message">
+    <th mat-header-cell *matHeaderCellDef> Message </th>
+    <td mat-cell *matCellDef="let element"> {{element.Messages}} </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

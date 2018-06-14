@@ -1,10 +1,10 @@
-<mat-grid-list cols="2"  rowHeight="2:1">
+<mat-grid-list [cols]="3"  rowHeight="1:1">
   <mat-grid-tile *ngFor="let post of List">
     <mat-card class="dashboard-card" routerLink='{{post.ShortName}}'>
       <mat-card-header>
         <mat-card-title class="title">{{post.FullName}}</mat-card-title>
       </mat-card-header>
-      <img mat-card-image *ngIf=" post.ImageUrl != ''" src="{{post.ImageUrl}}">
+      <img *ngIf="post.ImageUrl != ''" src="{{post.ImageUrl}}">
       <mat-card-content>
         <p class="mat-body-1">
           {{post.Summary}}
@@ -12,7 +12,7 @@
       </mat-card-content>
       <mat-card-footer>
         <p class="caption">
-        Published: {{post.Published  | date: 'dd/MM/yyyy'}}
+          Published: {{post.Published  | date: 'dd/MM/yyyy'}}
         </p>
       </mat-card-footer>
     </mat-card>

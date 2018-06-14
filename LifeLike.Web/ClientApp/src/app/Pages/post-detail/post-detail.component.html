@@ -1,7 +1,9 @@
 <app-title Title="{{Page.FullName}}"></app-title>
 
 <section class="mat-typography"  *ngIf="Page">
- <p class="body-1">
+  <img *ngIf=" Page.ImageUrl != ''" src="{{Page.ImageUrl}}">
+
+  <p class="body-1">
    {{Page.Content}}
  </p>
   Published: {{Page.Published  | date: 'dd/MM/yyyy'}}

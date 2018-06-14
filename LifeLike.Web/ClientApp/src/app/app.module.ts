@@ -59,6 +59,7 @@ import {PostEditComponent} from "./Pages/post-edit/post-edit.component";
 import { PostListComponent } from './Components/post-list/post-list.component';
 import { AdminPanelComponent } from './Pages/admin-panel/admin-panel.component';
 import { IntroTextComponent } from './Components/intro-text/intro-text.component';
+import {ConfigComponent} from "./Pages/config/config.component";
 
 
 @NgModule({
@@ -81,6 +82,7 @@ import { IntroTextComponent } from './Components/intro-text/intro-text.component
     PostListComponent,
     AdminPanelComponent,
     IntroTextComponent,
+    ConfigComponent
   ],
   imports: [
     BrowserModule,

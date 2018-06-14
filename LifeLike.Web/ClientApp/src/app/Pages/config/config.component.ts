@@ -1,29 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../../Services/rest.service';
-import Log from '../../Models/Log';
 import {map} from "rxjs/internal/operators";
+import {Config} from "../../Models/Config";
 
 @Component({
-  selector: 'app-log',
-  templateUrl: './log.component.html',
-  styleUrls: ['./log.component.scss']
+  selector: 'app-config',
+  templateUrl: './config.component.html',
+  styleUrls: ['./config.component.scss']
 })
-export class LogComponent implements OnInit {
-  displayedColumns = ['name', 'message'];
+
+export class ConfigComponent implements OnInit {
+  displayedColumns = ['Name', 'Value', 'DisplayName', 'Type'];
   IsLoading: boolean;
-  Logs: Log[];
+  Configs: Config[];
   constructor(private restService: RestService) { }
   GetLogs(): void {
     this.IsLoading=true;
      this.restService
-       .getLogList()
+       .getConfigs()
        .pipe(
          map(data=> {
            this.IsLoading=false;
            console.log(data);
 
            return data;
-         })).subscribe(p=>this.Logs=p);
+         })).subscribe(p=>this.Configs=p);
 
   }
   ngOnInit() {
