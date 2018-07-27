@@ -106,7 +106,6 @@ namespace LifeLike.Web
             {
                 c.SwaggerDoc("v1", new Info { Title = "QuickApp API", Version = "v1" });            
             }); 
-//            services.AddAutoMapper();
             
             var config = new MapperConfiguration(cfg =>
             {

@@ -10,7 +10,8 @@ namespace LifeLike.Web
         {
             BuildWebHost(args).Run();         
         }
-        public static IWebHost BuildWebHost(string[] args)
+
+        private static IWebHost BuildWebHost(string[] args)
         {
             return WebHost.CreateDefaultBuilder(args)
                 .UseKestrel()
