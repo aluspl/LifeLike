@@ -1,16 +1,37 @@
-FROM microsoft/aspnetcore:2.0 AS build-env
-WORKDIR /app
+FROM microsoft/aspnetcore:2.0 AS base
+WORKDIR /out
+EXPOSE 5000
 
+FROM microsoft/dotnet:2.1-sdk AS build
+WORKDIR /app
+ # Install Node (used for server pre-rendering)
+ RUN buildDeps='gnupg' \
+     && set -x \
+     && apt-get update && apt-get install -y $buildDeps --no-install-recommends \
+     && rm -rf /var/lib/apt/lists/* \
+     && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+     && apt install nodejs \
+     && rm -rf /usr/lib/systemd/* \
+     && apt-get purge -y --auto-remove $buildDeps \
+     && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
+     && node -v
 # copy csproj and restore as distinct layers
-COPY *.slm ./
+COPY *.sln .
+
+COPY LifeLike.Web/*.csproj ./LifeLike.Web/
+COPY LifeLike.Test/*.csproj ./LifeLike.Test/
+COPY LifeLike.Data/*.csproj ./LifeLike.Data/
+COPY LifeLike.Repositories/*.csproj ./LifeLike.Repositories/
+
 RUN dotnet restore
 
-# copy everything else and build
-COPY . ./
-RUN dotnet publish -c Release -o out
+# copy everything else and build app
+COPY . .
+WORKDIR /app/LifeLike.Web
+RUN dotnet publish -c Release -o /out
 
-# build runtime image
-FROM microsoft/dotnet:runtime
-WORKDIR /app
-COPY --from=build-env /app/out ./
-ENTRYPOINT ["dotnet", "dotnetapp.dll"]
+
+FROM microsoft/dotnet:2.1-aspnetcore-runtime AS runtime
+WORKDIR /out
+COPY --from=publish /out .
+ENTRYPOINT ["dotnet", "LifeLike.Web.dll"]
