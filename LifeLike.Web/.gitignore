@@ -10,6 +10,7 @@
 /node_modules
 /ClientApp/node_modules
 /ClientApp/package-lock.json
+/package-lock.json
 
 # IDEs and editors
 /.idea
