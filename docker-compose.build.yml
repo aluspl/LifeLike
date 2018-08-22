@@ -3,7 +3,6 @@ version: '3'
 services:
   managingconfigurationnetcore:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
       - USER_SECRETS_ID=8084c8e7-0000-0000-0000-c26798dc28d1
     ports:
       - "80"
