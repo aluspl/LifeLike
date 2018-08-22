@@ -33,5 +33,5 @@ RUN dotnet publish -c Release -o /out
 
 FROM microsoft/dotnet:2.1-aspnetcore-runtime AS runtime
 WORKDIR /out
-COPY --from=publish /out .
+COPY --from=build /out .
 ENTRYPOINT ["dotnet", "LifeLike.Web.dll"]

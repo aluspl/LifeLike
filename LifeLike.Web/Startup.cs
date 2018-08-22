@@ -38,7 +38,7 @@ namespace LifeLike.Web
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)     
                 .AddEnvironmentVariables();
-            if (env.IsDevelopment())
+            // if (env.IsDevelopment())
                 builder.AddUserSecrets<Startup>();
             Configuration = builder.Build();
         }
