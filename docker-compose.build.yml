@@ -1,12 +1,12 @@
-version: '2'
+version: '3'
 
-services:  
-  package: 
-    
-  ci-build:
-    image: microsoft/aspnetcore-build
-    container_name: build
+services:
+  managingconfigurationnetcore:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - USER_SECRETS_ID=8084c8e7-0000-0000-0000-c26798dc28d1
+    ports:
+      - "80"
     volumes:
-      - .:/src
-    working_dir: /
-    command: /bin/bash -c "dotnet restore && dotnet publish -c Release -o ./build"
+      - $APPDATA/Microsoft/UserSecrets/$USER_SECRETS_ID:/root/.microsoft/usersecrets/$USER_SECRETS_ID
+      - $HOME/.microsoft/usersecrets/$USER_SECRETS_ID:/root/.microsoft/usersecrets/$USER_SECRETS_ID
