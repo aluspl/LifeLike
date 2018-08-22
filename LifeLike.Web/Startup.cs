@@ -37,9 +37,11 @@ namespace LifeLike.Web
                 .CreateLogger();
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)     
-                .AddEnvironmentVariables();
+                .AddEnvironmentVariables()
+                .AddJsonFile("app.settings.json");
+
             // if (env.IsDevelopment())
-                builder.AddUserSecrets<Startup>();
+                // builder.AddUserSecrets<Startup>();
             Configuration = builder.Build();
         }
 

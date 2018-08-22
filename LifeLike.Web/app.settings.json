@@ -1,0 +1,11 @@
+{
+    "JwtKey": "Ab123456789101112131415",
+    "JwtIssuer": "http://lifelike.pl",
+    "JwtExpireDays": 30,
+    "Logging": {
+          "IncludeScopes": false,
+          "LogLevel": {
+              "Default": "Warning"
+          }
+      }   
+  }
