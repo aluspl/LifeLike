@@ -1,0 +1,993 @@
+2018-08-25 19:43:00.204 +02:00 [INF] User profile is available. Using 'C:\Users\szymo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-08-25 19:43:00.303 +02:00 [INF] Creating key "94a8f0f2-30ee-4a80-a564-f2baa400866a" with creation date "2018-08-25T17:43:00.3000605+00:00", activation date "2018-08-25T17:43:00.2550913+00:00", and expiration date "2018-11-23T17:43:00.2550913+00:00".
+2018-08-25 19:43:00.325 +02:00 [INF] Writing data to file 'C:\Users\szymo\AppData\Local\ASP.NET\DataProtection-Keys\key-94a8f0f2-30ee-4a80-a564-f2baa400866a.xml'.
+2018-08-25 19:43:00.750 +02:00 [INF] Starting @angular/cli on port 56392...
+2018-08-25 19:43:00.996 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:43:01.134 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:01.140 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:01.144 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2018-08-25 19:43:01.199 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:01.207 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-08-25 19:43:01.219 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:01.223 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-08-25 19:43:01.231 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:01.233 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-08-25 19:43:05.208 +02:00 [INF] > LifeLikeWeb@6.6.6 start D:\Dev\LifeLike\LifeLike.Web\ClientApp
+> ng serve "--port" "56392"
+
+** Angular Live Development Server is listening on localhost:56392, open your browser on http://localhost:56392/ **
+
+2018-08-25 19:43:21.140 +02:00 [INF] Date: 2018-08-25T17:43:21.111Z
+Hash: b9306158767fd00fb843
+Time: 15748ms
+chunk {main} main.js, main.js.map (main) 120 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 227 kB [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 5.22 kB [entry] [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 75.9 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 7.14 MB [initial] [rendered]
+i ´Żówdm´Żú: Compiled successfully.
+
+2018-08-25 19:43:30.354 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/  
+2018-08-25 19:43:31.807 +02:00 [INF] Request finished in 1453.1901ms 200 text/html; charset=UTF-8
+2018-08-25 19:43:31.827 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/polyfills.js  
+2018-08-25 19:43:31.827 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/vendor.js  
+2018-08-25 19:43:31.827 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/styles.js  
+2018-08-25 19:43:31.827 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/runtime.js  
+2018-08-25 19:43:31.828 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/main.js  
+2018-08-25 19:43:31.839 +02:00 [INF] Request finished in 11.2643ms 200 application/javascript; charset=UTF-8
+2018-08-25 19:43:32.860 +02:00 [INF] Request finished in 1032.4561ms 200 application/javascript; charset=UTF-8
+2018-08-25 19:43:32.860 +02:00 [INF] Request finished in 1032.6122ms 200 application/javascript; charset=UTF-8
+2018-08-25 19:43:32.876 +02:00 [INF] Request finished in 1048.505ms 200 application/javascript; charset=UTF-8
+2018-08-25 19:43:32.972 +02:00 [INF] Request finished in 1144.4123ms 200 application/javascript; charset=UTF-8
+2018-08-25 19:43:34.097 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Config  
+2018-08-25 19:43:34.141 +02:00 [INF] Route matched with {action = "GetList", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web)
+2018-08-25 19:43:34.166 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/info?t=1535219014163  
+2018-08-25 19:43:34.171 +02:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:43:34.175 +02:00 [INF] Request finished in 9.3819ms 200 application/json; charset=UTF-8
+2018-08-25 19:43:34.191 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/758/30b0fmxe/websocket  
+2018-08-25 19:43:34.196 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico  
+2018-08-25 19:43:34.204 +02:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'D:\Dev\LifeLike\LifeLike.Web\ClientApp\dist\favicon.ico'
+2018-08-25 19:43:34.205 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:43:34.213 +02:00 [INF] Request finished in 16.2085ms 200 image/x-icon
+2018-08-25 19:43:34.308 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:34.334 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (Size = 5), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:43:34.452 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:34.457 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."Id", "c"."DisplayName", "c"."Name", "c"."Type", "c"."Value"
+FROM "Configs" AS "c"
+2018-08-25 19:43:34.482 +02:00 [INF] Executed action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 307.3938ms.
+2018-08-25 19:43:34.490 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[LifeLike.Data.Models.Config, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.ConfigViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:43:34.515 +02:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) in 368.7101ms
+2018-08-25 19:43:34.516 +02:00 [INF] Request finished in 419.486ms 200 application/json; charset=utf-8
+2018-08-25 19:43:34.925 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/sockjs-node/758/cam2xnoq/xhr_streaming?t=1535219014922  0
+2018-08-25 19:43:34.926 +02:00 [INF] Request finished in 735.7559ms 0 
+2018-08-25 19:43:43.008 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Log/List  
+2018-08-25 19:43:43.022 +02:00 [INF] Route matched with {action = "List", controller = "Log"}. Executing action LifeLike.Web.Controllers.LogController.List (LifeLike.Web)
+2018-08-25 19:43:43.024 +02:00 [INF] Executing action method LifeLike.Web.Controllers.LogController.List (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:43:43.032 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:43:43.043 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:43.047 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "e"."Id", "e"."EventTime", "e"."Messages", "e"."StackTrace", "e"."Type"
+FROM "EventLogs" AS "e"
+2018-08-25 19:43:43.072 +02:00 [INF] Executed action method LifeLike.Web.Controllers.LogController.List (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 46.8038ms.
+2018-08-25 19:43:43.074 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[LifeLike.Data.Models.EventLog, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.EventLogViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:43:43.086 +02:00 [INF] Executed action LifeLike.Web.Controllers.LogController.List (LifeLike.Web) in 62.471900000000005ms
+2018-08-25 19:43:43.088 +02:00 [INF] Request finished in 80.1283ms 200 application/json; charset=utf-8
+2018-08-25 19:43:44.592 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Config  
+2018-08-25 19:43:44.596 +02:00 [INF] Route matched with {action = "GetList", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web)
+2018-08-25 19:43:44.599 +02:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:43:44.610 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:43:44.617 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:44.622 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 5), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:43:44.733 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:44.736 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."Id", "c"."DisplayName", "c"."Name", "c"."Type", "c"."Value"
+FROM "Configs" AS "c"
+2018-08-25 19:43:44.738 +02:00 [INF] Executed action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 128.2792ms.
+2018-08-25 19:43:44.739 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[LifeLike.Data.Models.Config, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.ConfigViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:43:44.740 +02:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) in 142.2338ms
+2018-08-25 19:43:44.741 +02:00 [INF] Request finished in 148.5721ms 200 application/json; charset=utf-8
+2018-08-25 19:43:46.651 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Log/List  
+2018-08-25 19:43:46.652 +02:00 [INF] Route matched with {action = "List", controller = "Log"}. Executing action LifeLike.Web.Controllers.LogController.List (LifeLike.Web)
+2018-08-25 19:43:46.654 +02:00 [INF] Executing action method LifeLike.Web.Controllers.LogController.List (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:43:46.656 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:43:46.658 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:46.682 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "e"."Id", "e"."EventTime", "e"."Messages", "e"."StackTrace", "e"."Type"
+FROM "EventLogs" AS "e"
+2018-08-25 19:43:46.685 +02:00 [INF] Executed action method LifeLike.Web.Controllers.LogController.List (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 29.2547ms.
+2018-08-25 19:43:46.689 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[LifeLike.Data.Models.EventLog, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.EventLogViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:43:46.690 +02:00 [INF] Executed action LifeLike.Web.Controllers.LogController.List (LifeLike.Web) in 36.4639ms
+2018-08-25 19:43:46.696 +02:00 [INF] Request finished in 45.2397ms 200 application/json; charset=utf-8
+2018-08-25 19:43:47.862 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Config  
+2018-08-25 19:43:47.864 +02:00 [INF] Route matched with {action = "GetList", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web)
+2018-08-25 19:43:47.866 +02:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:43:47.868 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:43:47.869 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:47.873 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 5), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:43:47.983 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:47.986 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."Id", "c"."DisplayName", "c"."Name", "c"."Type", "c"."Value"
+FROM "Configs" AS "c"
+2018-08-25 19:43:47.988 +02:00 [INF] Executed action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 120.2612ms.
+2018-08-25 19:43:47.989 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[LifeLike.Data.Models.Config, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.ConfigViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:43:47.990 +02:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) in 123.6982ms
+2018-08-25 19:43:47.991 +02:00 [INF] Request finished in 128.8255ms 200 application/json; charset=utf-8
+2018-08-25 19:43:48.975 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Log/List  
+2018-08-25 19:43:48.977 +02:00 [INF] Route matched with {action = "List", controller = "Log"}. Executing action LifeLike.Web.Controllers.LogController.List (LifeLike.Web)
+2018-08-25 19:43:48.980 +02:00 [INF] Executing action method LifeLike.Web.Controllers.LogController.List (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:43:48.982 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:43:48.985 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:48.990 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "e"."Id", "e"."EventTime", "e"."Messages", "e"."StackTrace", "e"."Type"
+FROM "EventLogs" AS "e"
+2018-08-25 19:43:48.993 +02:00 [INF] Executed action method LifeLike.Web.Controllers.LogController.List (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 11.661100000000001ms.
+2018-08-25 19:43:48.995 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[LifeLike.Data.Models.EventLog, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.EventLogViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:43:48.997 +02:00 [INF] Executed action LifeLike.Web.Controllers.LogController.List (LifeLike.Web) in 17.5476ms
+2018-08-25 19:43:48.998 +02:00 [INF] Request finished in 23.2219ms 200 application/json; charset=utf-8
+2018-08-25 19:43:49.632 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Config  
+2018-08-25 19:43:49.635 +02:00 [INF] Route matched with {action = "GetList", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web)
+2018-08-25 19:43:49.641 +02:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:43:49.643 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:43:49.645 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:49.649 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 5), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:43:49.765 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:49.768 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."Id", "c"."DisplayName", "c"."Name", "c"."Type", "c"."Value"
+FROM "Configs" AS "c"
+2018-08-25 19:43:49.771 +02:00 [INF] Executed action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 128.2581ms.
+2018-08-25 19:43:49.772 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[LifeLike.Data.Models.Config, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.ConfigViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:43:49.773 +02:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) in 132.5937ms
+2018-08-25 19:43:49.774 +02:00 [INF] Request finished in 141.8137ms 200 application/json; charset=utf-8
+2018-08-25 19:43:50.530 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Log/List  
+2018-08-25 19:43:50.533 +02:00 [INF] Route matched with {action = "List", controller = "Log"}. Executing action LifeLike.Web.Controllers.LogController.List (LifeLike.Web)
+2018-08-25 19:43:50.535 +02:00 [INF] Executing action method LifeLike.Web.Controllers.LogController.List (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:43:50.537 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:43:50.547 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:50.557 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "e"."Id", "e"."EventTime", "e"."Messages", "e"."StackTrace", "e"."Type"
+FROM "EventLogs" AS "e"
+2018-08-25 19:43:50.561 +02:00 [INF] Executed action method LifeLike.Web.Controllers.LogController.List (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 24.4935ms.
+2018-08-25 19:43:50.567 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[LifeLike.Data.Models.EventLog, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.EventLogViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:43:50.573 +02:00 [INF] Executed action LifeLike.Web.Controllers.LogController.List (LifeLike.Web) in 38.1644ms
+2018-08-25 19:43:50.575 +02:00 [INF] Request finished in 44.8269ms 200 application/json; charset=utf-8
+2018-08-25 19:43:51.457 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Page/Pages  
+2018-08-25 19:43:51.463 +02:00 [INF] Route matched with {action = "Pages", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Pages (LifeLike.Web)
+2018-08-25 19:43:51.465 +02:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Pages (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:43:51.469 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:43:51.473 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:51.477 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 4), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:43:51.588 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:51.592 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Category", "p"."Content", "p"."FullName", "p"."ImageUrl", "p"."LinkId", "p"."PageOrder", "p"."Published", "p"."ShortName"
+FROM "Pages" AS "p"
+2018-08-25 19:43:51.608 +02:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Pages (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 141.2718ms.
+2018-08-25 19:43:51.610 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+WhereSelectListIterator`2[[LifeLike.Data.Models.Page, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.PageViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:43:51.629 +02:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Pages (LifeLike.Web) in 164.24980000000002ms
+2018-08-25 19:43:51.631 +02:00 [INF] Request finished in 174.2038ms 200 application/json; charset=utf-8
+2018-08-25 19:43:52.658 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Page/Details/contact  
+2018-08-25 19:43:52.679 +02:00 [INF] Route matched with {action = "Details", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web)
+2018-08-25 19:43:52.706 +02:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) with arguments (["contact"]) - Validation state: "Valid"
+2018-08-25 19:43:52.714 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:43:52.716 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:52.720 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 7), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:43:52.838 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:52.843 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (Size = 7)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Category", "p"."Content", "p"."FullName", "p"."ImageUrl", "p"."LinkId", "p"."PageOrder", "p"."Published", "p"."ShortName"
+FROM "Pages" AS "p"
+WHERE "p"."ShortName" = @__id_0
+LIMIT 1
+2018-08-25 19:43:52.847 +02:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 134.4546ms.
+2018-08-25 19:43:52.848 +02:00 [INF] Executing ObjectResult, writing value of type 'LifeLike.Web.ViewModel.PageViewModel'.
+2018-08-25 19:43:52.849 +02:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) in 167.8133ms
+2018-08-25 19:43:52.850 +02:00 [INF] Request finished in 191.3919ms 200 application/json; charset=utf-8
+2018-08-25 19:43:53.889 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Page/Pages  
+2018-08-25 19:43:53.892 +02:00 [INF] Route matched with {action = "Pages", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Pages (LifeLike.Web)
+2018-08-25 19:43:53.894 +02:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Pages (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:43:53.896 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:43:53.900 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:53.904 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 4), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:43:53.974 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:53.977 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Category", "p"."Content", "p"."FullName", "p"."ImageUrl", "p"."LinkId", "p"."PageOrder", "p"."Published", "p"."ShortName"
+FROM "Pages" AS "p"
+2018-08-25 19:43:53.979 +02:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Pages (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 83.6288ms.
+2018-08-25 19:43:53.980 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+WhereSelectListIterator`2[[LifeLike.Data.Models.Page, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.PageViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:43:53.981 +02:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Pages (LifeLike.Web) in 87.4987ms
+2018-08-25 19:43:53.982 +02:00 [INF] Request finished in 92.4695ms 200 application/json; charset=utf-8
+2018-08-25 19:43:55.221 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Page/Details/Contact  
+2018-08-25 19:43:55.223 +02:00 [INF] Route matched with {action = "Details", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web)
+2018-08-25 19:43:55.226 +02:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) with arguments (["Contact"]) - Validation state: "Valid"
+2018-08-25 19:43:55.228 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:43:55.230 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:55.234 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 7), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:43:55.326 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:55.330 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (Size = 7)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Category", "p"."Content", "p"."FullName", "p"."ImageUrl", "p"."LinkId", "p"."PageOrder", "p"."Published", "p"."ShortName"
+FROM "Pages" AS "p"
+WHERE "p"."ShortName" = @__id_0
+LIMIT 1
+2018-08-25 19:43:55.333 +02:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 105.6984ms.
+2018-08-25 19:43:55.334 +02:00 [INF] Executing ObjectResult, writing value of type 'LifeLike.Web.ViewModel.PageViewModel'.
+2018-08-25 19:43:55.335 +02:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) in 110.0879ms
+2018-08-25 19:43:55.336 +02:00 [INF] Request finished in 114.6281ms 200 application/json; charset=utf-8
+2018-08-25 19:43:56.488 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Page/Pages  
+2018-08-25 19:43:56.490 +02:00 [INF] Route matched with {action = "Pages", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Pages (LifeLike.Web)
+2018-08-25 19:43:56.493 +02:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Pages (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:43:56.495 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:43:56.498 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:56.503 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 4), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:43:56.606 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:56.610 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Category", "p"."Content", "p"."FullName", "p"."ImageUrl", "p"."LinkId", "p"."PageOrder", "p"."Published", "p"."ShortName"
+FROM "Pages" AS "p"
+2018-08-25 19:43:56.612 +02:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Pages (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 117.60130000000001ms.
+2018-08-25 19:43:56.614 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+WhereSelectListIterator`2[[LifeLike.Data.Models.Page, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.PageViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:43:56.615 +02:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Pages (LifeLike.Web) in 123.0458ms
+2018-08-25 19:43:56.617 +02:00 [INF] Request finished in 128.6184ms 200 application/json; charset=utf-8
+2018-08-25 19:43:59.796 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Page/Details/contact  
+2018-08-25 19:43:59.799 +02:00 [INF] Route matched with {action = "Details", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web)
+2018-08-25 19:43:59.804 +02:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) with arguments (["contact"]) - Validation state: "Valid"
+2018-08-25 19:43:59.806 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:43:59.809 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:59.815 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 7), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:43:59.916 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:43:59.919 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (Size = 7)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Category", "p"."Content", "p"."FullName", "p"."ImageUrl", "p"."LinkId", "p"."PageOrder", "p"."Published", "p"."ShortName"
+FROM "Pages" AS "p"
+WHERE "p"."ShortName" = @__id_0
+LIMIT 1
+2018-08-25 19:43:59.923 +02:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 116.6239ms.
+2018-08-25 19:43:59.924 +02:00 [INF] Executing ObjectResult, writing value of type 'LifeLike.Web.ViewModel.PageViewModel'.
+2018-08-25 19:43:59.925 +02:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) in 121.1058ms
+2018-08-25 19:43:59.926 +02:00 [INF] Request finished in 129.2102ms 200 application/json; charset=utf-8
+2018-08-25 19:44:00.641 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Page/Pages  
+2018-08-25 19:44:00.643 +02:00 [INF] Route matched with {action = "Pages", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Pages (LifeLike.Web)
+2018-08-25 19:44:00.646 +02:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Pages (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:44:00.648 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:44:00.650 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:44:00.655 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 4), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:44:00.757 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:44:00.760 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Category", "p"."Content", "p"."FullName", "p"."ImageUrl", "p"."LinkId", "p"."PageOrder", "p"."Published", "p"."ShortName"
+FROM "Pages" AS "p"
+2018-08-25 19:44:00.762 +02:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Pages (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 114.5865ms.
+2018-08-25 19:44:00.763 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+WhereSelectListIterator`2[[LifeLike.Data.Models.Page, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.PageViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:44:00.765 +02:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Pages (LifeLike.Web) in 119.3272ms
+2018-08-25 19:44:00.767 +02:00 [INF] Request finished in 126.7553ms 200 application/json; charset=utf-8
+2018-08-25 19:44:01.768 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Log/List  
+2018-08-25 19:44:01.771 +02:00 [INF] Route matched with {action = "List", controller = "Log"}. Executing action LifeLike.Web.Controllers.LogController.List (LifeLike.Web)
+2018-08-25 19:44:01.774 +02:00 [INF] Executing action method LifeLike.Web.Controllers.LogController.List (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:44:01.776 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:44:01.779 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:44:01.782 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "e"."Id", "e"."EventTime", "e"."Messages", "e"."StackTrace", "e"."Type"
+FROM "EventLogs" AS "e"
+2018-08-25 19:44:01.785 +02:00 [INF] Executed action method LifeLike.Web.Controllers.LogController.List (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 9.5905ms.
+2018-08-25 19:44:01.787 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[LifeLike.Data.Models.EventLog, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.EventLogViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:44:01.789 +02:00 [INF] Executed action LifeLike.Web.Controllers.LogController.List (LifeLike.Web) in 15.638200000000001ms
+2018-08-25 19:44:01.792 +02:00 [INF] Request finished in 23.8101ms 200 application/json; charset=utf-8
+2018-08-25 19:44:02.818 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Page/Pages  
+2018-08-25 19:44:02.819 +02:00 [INF] Route matched with {action = "Pages", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Pages (LifeLike.Web)
+2018-08-25 19:44:02.821 +02:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Pages (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:44:02.822 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:44:02.823 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:44:02.827 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 4), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:44:02.975 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:44:02.978 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Category", "p"."Content", "p"."FullName", "p"."ImageUrl", "p"."LinkId", "p"."PageOrder", "p"."Published", "p"."ShortName"
+FROM "Pages" AS "p"
+2018-08-25 19:44:02.981 +02:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Pages (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 159.0196ms.
+2018-08-25 19:44:02.981 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+WhereSelectListIterator`2[[LifeLike.Data.Models.Page, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.PageViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:44:02.982 +02:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Pages (LifeLike.Web) in 161.8878ms
+2018-08-25 19:44:02.985 +02:00 [INF] Request finished in 167.6532ms 200 application/json; charset=utf-8
+2018-08-25 19:44:03.389 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Page/Posts  
+2018-08-25 19:44:03.394 +02:00 [INF] Route matched with {action = "Posts", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web)
+2018-08-25 19:44:03.396 +02:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:44:03.400 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:44:03.404 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:44:03.408 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 4), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:44:03.482 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:44:03.486 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Category", "p"."Content", "p"."FullName", "p"."ImageUrl", "p"."LinkId", "p"."PageOrder", "p"."Published", "p"."ShortName"
+FROM "Pages" AS "p"
+2018-08-25 19:44:03.488 +02:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 90.448900000000009ms.
+2018-08-25 19:44:03.489 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+WhereSelectListIterator`2[[LifeLike.Data.Models.Page, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.PageViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:44:03.490 +02:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web) in 94.550000000000011ms
+2018-08-25 19:44:03.493 +02:00 [INF] Request finished in 104.0799ms 200 application/json; charset=utf-8
+2018-08-25 19:44:04.943 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Page/Details/loremipsum  
+2018-08-25 19:44:04.945 +02:00 [INF] Route matched with {action = "Details", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web)
+2018-08-25 19:44:04.946 +02:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) with arguments (["loremipsum"]) - Validation state: "Valid"
+2018-08-25 19:44:04.948 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:44:04.950 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:44:04.954 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 7), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:44:05.099 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:44:05.102 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (Size = 10)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Category", "p"."Content", "p"."FullName", "p"."ImageUrl", "p"."LinkId", "p"."PageOrder", "p"."Published", "p"."ShortName"
+FROM "Pages" AS "p"
+WHERE "p"."ShortName" = @__id_0
+LIMIT 1
+2018-08-25 19:44:05.104 +02:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 157.1233ms.
+2018-08-25 19:44:05.105 +02:00 [INF] Executing ObjectResult, writing value of type 'LifeLike.Web.ViewModel.PageViewModel'.
+2018-08-25 19:44:05.106 +02:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) in 160.1257ms
+2018-08-25 19:44:05.107 +02:00 [INF] Request finished in 164.6319ms 200 application/json; charset=utf-8
+2018-08-25 19:44:05.673 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Page/Posts  
+2018-08-25 19:44:05.674 +02:00 [INF] Route matched with {action = "Posts", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web)
+2018-08-25 19:44:05.677 +02:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:44:05.682 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:44:05.685 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:44:05.689 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 4), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:44:05.791 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:44:05.795 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Category", "p"."Content", "p"."FullName", "p"."ImageUrl", "p"."LinkId", "p"."PageOrder", "p"."Published", "p"."ShortName"
+FROM "Pages" AS "p"
+2018-08-25 19:44:05.801 +02:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 119.9559ms.
+2018-08-25 19:44:05.802 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+WhereSelectListIterator`2[[LifeLike.Data.Models.Page, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.PageViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:44:05.804 +02:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web) in 126.9431ms
+2018-08-25 19:44:05.805 +02:00 [INF] Request finished in 131.6984ms 200 application/json; charset=utf-8
+2018-08-25 19:44:07.201 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Page/Pages  
+2018-08-25 19:44:07.203 +02:00 [INF] Route matched with {action = "Pages", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Pages (LifeLike.Web)
+2018-08-25 19:44:07.206 +02:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Pages (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:44:07.208 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:44:07.210 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:44:07.215 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 4), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:44:07.299 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:44:07.306 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Category", "p"."Content", "p"."FullName", "p"."ImageUrl", "p"."LinkId", "p"."PageOrder", "p"."Published", "p"."ShortName"
+FROM "Pages" AS "p"
+2018-08-25 19:44:07.308 +02:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Pages (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 101.265ms.
+2018-08-25 19:44:07.309 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+WhereSelectListIterator`2[[LifeLike.Data.Models.Page, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.PageViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:44:07.310 +02:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Pages (LifeLike.Web) in 105.07440000000001ms
+2018-08-25 19:44:07.311 +02:00 [INF] Request finished in 110.0285ms 200 application/json; charset=utf-8
+2018-08-25 19:44:09.297 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Page/Posts  
+2018-08-25 19:44:09.299 +02:00 [INF] Route matched with {action = "Posts", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web)
+2018-08-25 19:44:09.301 +02:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:44:09.304 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:44:09.306 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:44:09.312 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 4), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:44:09.416 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:44:09.419 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Category", "p"."Content", "p"."FullName", "p"."ImageUrl", "p"."LinkId", "p"."PageOrder", "p"."Published", "p"."ShortName"
+FROM "Pages" AS "p"
+2018-08-25 19:44:09.421 +02:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 117.40650000000001ms.
+2018-08-25 19:44:09.422 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+WhereSelectListIterator`2[[LifeLike.Data.Models.Page, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.PageViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:44:09.423 +02:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web) in 122.01230000000001ms
+2018-08-25 19:44:09.427 +02:00 [INF] Request finished in 129.5468ms 200 application/json; charset=utf-8
+2018-08-25 19:44:10.926 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Log/List  
+2018-08-25 19:44:10.928 +02:00 [INF] Route matched with {action = "List", controller = "Log"}. Executing action LifeLike.Web.Controllers.LogController.List (LifeLike.Web)
+2018-08-25 19:44:10.931 +02:00 [INF] Executing action method LifeLike.Web.Controllers.LogController.List (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:44:10.932 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:44:10.935 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:44:10.939 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "e"."Id", "e"."EventTime", "e"."Messages", "e"."StackTrace", "e"."Type"
+FROM "EventLogs" AS "e"
+2018-08-25 19:44:10.943 +02:00 [INF] Executed action method LifeLike.Web.Controllers.LogController.List (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 11.109300000000001ms.
+2018-08-25 19:44:10.945 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[LifeLike.Data.Models.EventLog, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.EventLogViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:44:10.949 +02:00 [INF] Executed action LifeLike.Web.Controllers.LogController.List (LifeLike.Web) in 18.6478ms
+2018-08-25 19:44:10.952 +02:00 [INF] Request finished in 25.7236ms 200 application/json; charset=utf-8
+2018-08-25 19:45:18.489 +02:00 [INF] i ´Żówdm´Żú: Compiling...
+
+2018-08-25 19:45:19.040 +02:00 [INF] Date: 2018-08-25T17:45:19.025Z - Hash: 082e4312eb54f1ed64d4 - Time: 321ms
+4 unchanged chunks
+chunk {main} main.js, main.js.map (main) 120 kB [initial] [rendered]
+i ´Żówdm´Żú: Compiled successfully.
+
+2018-08-25 19:45:19.047 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Video  
+2018-08-25 19:45:20.055 +02:00 [INF] Request finished in 1008.0428ms 200 text/html; charset=UTF-8
+2018-08-25 19:45:20.076 +02:00 [INF] Request finished in 105151.0825ms 200 application/javascript; charset=UTF-8
+2018-08-25 19:45:20.079 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/runtime.js  
+2018-08-25 19:45:20.079 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/polyfills.js  
+2018-08-25 19:45:20.079 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/styles.js  
+2018-08-25 19:45:20.083 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/vendor.js  
+2018-08-25 19:45:20.083 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/main.js  
+2018-08-25 19:45:20.091 +02:00 [INF] Request finished in 12.2095ms 304 
+2018-08-25 19:45:20.098 +02:00 [INF] Request finished in 18.5862ms 304 
+2018-08-25 19:45:20.114 +02:00 [INF] Request finished in 31.4664ms 304 
+2018-08-25 19:45:21.097 +02:00 [INF] Request finished in 1018.7328ms 304 
+2018-08-25 19:45:21.111 +02:00 [INF] Request finished in 1027.746ms 200 application/javascript; charset=UTF-8
+2018-08-25 19:45:22.436 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Log/List  
+2018-08-25 19:45:22.438 +02:00 [INF] Route matched with {action = "List", controller = "Log"}. Executing action LifeLike.Web.Controllers.LogController.List (LifeLike.Web)
+2018-08-25 19:45:22.439 +02:00 [INF] Executing action method LifeLike.Web.Controllers.LogController.List (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:45:22.441 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:45:22.443 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:45:22.450 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "e"."Id", "e"."EventTime", "e"."Messages", "e"."StackTrace", "e"."Type"
+FROM "EventLogs" AS "e"
+2018-08-25 19:45:22.453 +02:00 [INF] Executed action method LifeLike.Web.Controllers.LogController.List (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 12.270100000000001ms.
+2018-08-25 19:45:22.454 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[LifeLike.Data.Models.EventLog, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.EventLogViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:45:22.456 +02:00 [INF] Executed action LifeLike.Web.Controllers.LogController.List (LifeLike.Web) in 17.1403ms
+2018-08-25 19:45:22.457 +02:00 [INF] Request finished in 21.4857ms 200 application/json; charset=utf-8
+2018-08-25 19:45:22.513 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/info?t=1535219122511  
+2018-08-25 19:45:22.518 +02:00 [INF] Request finished in 4.4533ms 200 application/json; charset=UTF-8
+2018-08-25 19:45:22.539 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/454/wtwdua1l/websocket  
+2018-08-25 19:45:23.247 +02:00 [INF] Request finished in 708.935ms 0 
+2018-08-25 19:45:23.251 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/sockjs-node/454/m1v3o3q0/xhr_streaming?t=1535219123249  0
+2018-08-25 19:45:30.939 +02:00 [INF] i ´Żówdm´Żú: Compiling...
+
+2018-08-25 19:45:31.342 +02:00 [INF] Date: 2018-08-25T17:45:31.327Z - Hash: 082e4312eb54f1ed64d4 - Time: 179ms
+5 unchanged chunks
+i ´Żówdm´Żú: Compiled successfully.
+
+2018-08-25 19:45:31.351 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Video  
+2018-08-25 19:45:32.359 +02:00 [INF] Request finished in 1008.0811ms 304 
+2018-08-25 19:45:32.368 +02:00 [INF] Request finished in 9116.4099ms 200 application/javascript; charset=UTF-8
+2018-08-25 19:45:32.398 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/runtime.js  
+2018-08-25 19:45:32.398 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/polyfills.js  
+2018-08-25 19:45:32.399 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/styles.js  
+2018-08-25 19:45:32.399 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/vendor.js  
+2018-08-25 19:45:32.400 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/main.js  
+2018-08-25 19:45:32.405 +02:00 [INF] Request finished in 7.1607ms 304 
+2018-08-25 19:45:32.409 +02:00 [INF] Request finished in 10.5218ms 304 
+2018-08-25 19:45:32.411 +02:00 [INF] Request finished in 11.866ms 304 
+2018-08-25 19:45:32.425 +02:00 [INF] Request finished in 25.7487ms 304 
+2018-08-25 19:45:33.424 +02:00 [INF] Request finished in 1023.816ms 304 
+2018-08-25 19:45:34.172 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Log/List  
+2018-08-25 19:45:34.174 +02:00 [INF] Route matched with {action = "List", controller = "Log"}. Executing action LifeLike.Web.Controllers.LogController.List (LifeLike.Web)
+2018-08-25 19:45:34.181 +02:00 [INF] Executing action method LifeLike.Web.Controllers.LogController.List (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:45:34.183 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:45:34.187 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:45:34.190 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "e"."Id", "e"."EventTime", "e"."Messages", "e"."StackTrace", "e"."Type"
+FROM "EventLogs" AS "e"
+2018-08-25 19:45:34.192 +02:00 [INF] Executed action method LifeLike.Web.Controllers.LogController.List (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 9.6918ms.
+2018-08-25 19:45:34.194 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[LifeLike.Data.Models.EventLog, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.EventLogViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:45:34.196 +02:00 [INF] Executed action LifeLike.Web.Controllers.LogController.List (LifeLike.Web) in 15.1798ms
+2018-08-25 19:45:34.198 +02:00 [INF] Request finished in 25.6036ms 200 application/json; charset=utf-8
+2018-08-25 19:45:34.234 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/info?t=1535219134231  
+2018-08-25 19:45:34.236 +02:00 [INF] Request finished in 2.5486ms 200 application/json; charset=UTF-8
+2018-08-25 19:45:34.258 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/967/5r0mn5yi/websocket  
+2018-08-25 19:45:34.958 +02:00 [INF] Request finished in 700.0768ms 0 
+2018-08-25 19:45:34.961 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/sockjs-node/967/3mvxb0or/xhr_streaming?t=1535219134958  0
+2018-08-25 19:45:50.384 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Page/Posts  
+2018-08-25 19:45:50.386 +02:00 [INF] Route matched with {action = "Posts", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web)
+2018-08-25 19:45:50.388 +02:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:45:50.389 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:45:50.392 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:45:50.396 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 4), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:45:50.493 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:45:50.498 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Category", "p"."Content", "p"."FullName", "p"."ImageUrl", "p"."LinkId", "p"."PageOrder", "p"."Published", "p"."ShortName"
+FROM "Pages" AS "p"
+2018-08-25 19:45:50.501 +02:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 112.24350000000001ms.
+2018-08-25 19:45:50.505 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+WhereSelectListIterator`2[[LifeLike.Data.Models.Page, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.PageViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:45:50.506 +02:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web) in 119.08290000000001ms
+2018-08-25 19:45:50.508 +02:00 [INF] Request finished in 124.0983ms 200 application/json; charset=utf-8
+2018-08-25 19:45:52.929 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Config  
+2018-08-25 19:45:52.930 +02:00 [INF] Route matched with {action = "GetList", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web)
+2018-08-25 19:45:52.932 +02:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:45:52.934 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:45:52.937 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:45:52.941 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 5), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:45:53.042 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:45:53.045 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."Id", "c"."DisplayName", "c"."Name", "c"."Type", "c"."Value"
+FROM "Configs" AS "c"
+2018-08-25 19:45:53.048 +02:00 [INF] Executed action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 114.5139ms.
+2018-08-25 19:45:53.050 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[LifeLike.Data.Models.Config, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.ConfigViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:45:53.051 +02:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) in 118.72120000000001ms
+2018-08-25 19:45:53.052 +02:00 [INF] Request finished in 122.9944ms 200 application/json; charset=utf-8
+2018-08-25 19:46:29.114 +02:00 [INF] i ´Żówdm´Żú: Compiling...
+
+2018-08-25 19:46:29.509 +02:00 [INF] Date: 2018-08-25T17:46:29.494Z - Hash: 082e4312eb54f1ed64d4 - Time: 171ms
+5 unchanged chunks
+i ´Żówdm´Żú: Compiled successfully.
+
+2018-08-25 19:46:29.517 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Home  
+2018-08-25 19:46:30.522 +02:00 [INF] Request finished in 1005.3956ms 200 text/html; charset=UTF-8
+2018-08-25 19:46:30.531 +02:00 [INF] Request finished in 55570.2579ms 200 application/javascript; charset=UTF-8
+2018-08-25 19:46:30.548 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/runtime.js  
+2018-08-25 19:46:30.550 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/polyfills.js  
+2018-08-25 19:46:30.551 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/styles.js  
+2018-08-25 19:46:30.551 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/vendor.js  
+2018-08-25 19:46:30.555 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/main.js  
+2018-08-25 19:46:30.560 +02:00 [INF] Request finished in 12.3729ms 304 
+2018-08-25 19:46:30.562 +02:00 [INF] Request finished in 11.0871ms 304 
+2018-08-25 19:46:30.570 +02:00 [INF] Request finished in 19.0329ms 304 
+2018-08-25 19:46:31.582 +02:00 [INF] Request finished in 1030.4683ms 304 
+2018-08-25 19:46:31.583 +02:00 [INF] Request finished in 1028.0232ms 304 
+2018-08-25 19:46:32.518 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Config  
+2018-08-25 19:46:32.520 +02:00 [INF] Route matched with {action = "GetList", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web)
+2018-08-25 19:46:32.522 +02:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:46:32.524 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:46:32.528 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:46:32.531 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 5), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:46:32.557 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/info?t=1535219192554  
+2018-08-25 19:46:32.560 +02:00 [INF] Request finished in 3.4873ms 200 application/json; charset=UTF-8
+2018-08-25 19:46:32.573 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/450/e1oove3a/websocket  
+2018-08-25 19:46:32.627 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:46:32.634 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."Id", "c"."DisplayName", "c"."Name", "c"."Type", "c"."Value"
+FROM "Configs" AS "c"
+2018-08-25 19:46:32.636 +02:00 [INF] Executed action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 112.4255ms.
+2018-08-25 19:46:32.638 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[LifeLike.Data.Models.Config, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.ConfigViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:46:32.639 +02:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) in 117.09ms
+2018-08-25 19:46:32.640 +02:00 [INF] Request finished in 121.9368ms 200 application/json; charset=utf-8
+2018-08-25 19:46:33.201 +02:00 [INF] Request finished in 627.5453ms 0 
+2018-08-25 19:46:33.204 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/sockjs-node/450/yr5ca12j/xhr_streaming?t=1535219193202  0
+2018-08-25 19:46:55.657 +02:00 [INF] i ´Żówdm´Żú: Compiling...
+
+2018-08-25 19:46:56.094 +02:00 [INF] Date: 2018-08-25T17:46:56.082Z - Hash: 3598b213ca03da9e1b90 - Time: 216ms
+4 unchanged chunks
+chunk {main} main.js, main.js.map (main) 120 kB [initial] [rendered]
+i ´Żówdm´Żú: Compiled successfully.
+
+2018-08-25 19:46:56.104 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Home  
+2018-08-25 19:46:57.120 +02:00 [INF] Request finished in 1015.6437ms 304 
+2018-08-25 19:46:57.127 +02:00 [INF] Request finished in 23922.676ms 200 application/javascript; charset=UTF-8
+2018-08-25 19:46:57.143 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/runtime.js  
+2018-08-25 19:46:57.143 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/polyfills.js  
+2018-08-25 19:46:57.143 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/styles.js  
+2018-08-25 19:46:57.145 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/vendor.js  
+2018-08-25 19:46:57.145 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/main.js  
+2018-08-25 19:46:57.151 +02:00 [INF] Request finished in 8.2999ms 304 
+2018-08-25 19:46:57.153 +02:00 [INF] Request finished in 9.3826ms 304 
+2018-08-25 19:46:57.155 +02:00 [INF] Request finished in 11.8113ms 304 
+2018-08-25 19:46:57.168 +02:00 [INF] Request finished in 23.4407ms 304 
+2018-08-25 19:46:58.161 +02:00 [INF] Request finished in 1015.7567ms 200 application/javascript; charset=UTF-8
+2018-08-25 19:46:59.018 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Config  
+2018-08-25 19:46:59.019 +02:00 [INF] Route matched with {action = "GetList", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web)
+2018-08-25 19:46:59.021 +02:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:46:59.023 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:46:59.025 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:46:59.030 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 5), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:46:59.061 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/info?t=1535219219057  
+2018-08-25 19:46:59.064 +02:00 [INF] Request finished in 2.7922ms 200 application/json; charset=UTF-8
+2018-08-25 19:46:59.071 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/178/mecymdko/websocket  
+2018-08-25 19:46:59.109 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:46:59.113 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."Id", "c"."DisplayName", "c"."Name", "c"."Type", "c"."Value"
+FROM "Configs" AS "c"
+2018-08-25 19:46:59.116 +02:00 [INF] Executed action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 93.5449ms.
+2018-08-25 19:46:59.117 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[LifeLike.Data.Models.Config, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.ConfigViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:46:59.118 +02:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) in 97.1898ms
+2018-08-25 19:46:59.119 +02:00 [INF] Request finished in 101.5477ms 200 application/json; charset=utf-8
+2018-08-25 19:46:59.707 +02:00 [INF] Request finished in 635.4441ms 0 
+2018-08-25 19:46:59.710 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/sockjs-node/178/n142mvdw/xhr_streaming?t=1535219219709  0
+2018-08-25 19:47:05.215 +02:00 [INF] i ´Żówdm´Żú: Compiling...
+
+2018-08-25 19:47:05.593 +02:00 [INF] Date: 2018-08-25T17:47:05.584Z - Hash: 3598b213ca03da9e1b90 - Time: 163ms
+5 unchanged chunks
+i ´Żówdm´Żú: Compiled successfully.
+
+2018-08-25 19:47:05.600 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Home  
+2018-08-25 19:47:06.606 +02:00 [INF] Request finished in 1005.8449ms 304 
+2018-08-25 19:47:06.617 +02:00 [INF] Request finished in 6907.0129ms 200 application/javascript; charset=UTF-8
+2018-08-25 19:47:06.635 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/runtime.js  
+2018-08-25 19:47:06.635 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/polyfills.js  
+2018-08-25 19:47:06.635 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/styles.js  
+2018-08-25 19:47:06.635 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/vendor.js  
+2018-08-25 19:47:06.635 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/main.js  
+2018-08-25 19:47:06.664 +02:00 [INF] Request finished in 29.5986ms 304 
+2018-08-25 19:47:06.668 +02:00 [INF] Request finished in 33.3262ms 304 
+2018-08-25 19:47:06.669 +02:00 [INF] Request finished in 33.7828ms 304 
+2018-08-25 19:47:07.671 +02:00 [INF] Request finished in 1036.0208ms 304 
+2018-08-25 19:47:07.686 +02:00 [INF] Request finished in 1050.9118ms 304 
+2018-08-25 19:47:08.550 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Config  
+2018-08-25 19:47:08.552 +02:00 [INF] Route matched with {action = "GetList", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web)
+2018-08-25 19:47:08.554 +02:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:47:08.557 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:47:08.559 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:47:08.570 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 5), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:47:08.579 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/info?t=1535219228577  
+2018-08-25 19:47:08.582 +02:00 [INF] Request finished in 2.5501ms 200 application/json; charset=UTF-8
+2018-08-25 19:47:08.594 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/480/bsjnpqr2/websocket  
+2018-08-25 19:47:08.668 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:47:08.671 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."Id", "c"."DisplayName", "c"."Name", "c"."Type", "c"."Value"
+FROM "Configs" AS "c"
+2018-08-25 19:47:08.673 +02:00 [INF] Executed action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 116.9445ms.
+2018-08-25 19:47:08.674 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[LifeLike.Data.Models.Config, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.ConfigViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:47:08.676 +02:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) in 122.10170000000001ms
+2018-08-25 19:47:08.677 +02:00 [INF] Request finished in 127.0466ms 200 application/json; charset=utf-8
+2018-08-25 19:47:09.241 +02:00 [INF] Request finished in 647.2971ms 0 
+2018-08-25 19:47:09.245 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/sockjs-node/480/4n03vwng/xhr_streaming?t=1535219229242  0
+2018-08-25 19:47:38.216 +02:00 [INF] i ´Żówdm´Żú: Compiling...
+
+2018-08-25 19:47:38.601 +02:00 [INF] Date: 2018-08-25T17:47:38.587Z - Hash: 3598b213ca03da9e1b90 - Time: 159ms
+5 unchanged chunks
+i ´Żówdm´Żú: Compiled successfully.
+
+2018-08-25 19:47:38.619 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Home  
+2018-08-25 19:47:39.631 +02:00 [INF] Request finished in 1012.1971ms 304 
+2018-08-25 19:47:39.646 +02:00 [INF] Request finished in 30401.6386ms 200 application/javascript; charset=UTF-8
+2018-08-25 19:47:39.682 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/runtime.js  
+2018-08-25 19:47:39.683 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/polyfills.js  
+2018-08-25 19:47:39.685 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/styles.js  
+2018-08-25 19:47:39.685 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/vendor.js  
+2018-08-25 19:47:39.686 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/main.js  
+2018-08-25 19:47:39.696 +02:00 [INF] Request finished in 14.2247ms 304 
+2018-08-25 19:47:39.700 +02:00 [INF] Request finished in 15.2724ms 304 
+2018-08-25 19:47:39.702 +02:00 [INF] Request finished in 15.9657ms 304 
+2018-08-25 19:47:40.700 +02:00 [INF] Request finished in 1016.8113ms 304 
+2018-08-25 19:47:40.711 +02:00 [INF] Request finished in 1025.8421ms 304 
+2018-08-25 19:47:42.441 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Config  
+2018-08-25 19:47:42.443 +02:00 [INF] Route matched with {action = "GetList", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web)
+2018-08-25 19:47:42.449 +02:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:47:42.453 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:47:42.455 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:47:42.458 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 5), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:47:42.561 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:47:42.570 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."Id", "c"."DisplayName", "c"."Name", "c"."Type", "c"."Value"
+FROM "Configs" AS "c"
+2018-08-25 19:47:42.573 +02:00 [INF] Executed action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 120.8191ms.
+2018-08-25 19:47:42.574 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[LifeLike.Data.Models.Config, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.ConfigViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:47:42.575 +02:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) in 126.5762ms
+2018-08-25 19:47:42.577 +02:00 [INF] Request finished in 135.4676ms 200 application/json; charset=utf-8
+2018-08-25 19:47:42.677 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/info?t=1535219262673  
+2018-08-25 19:47:42.680 +02:00 [INF] Request finished in 2.3043ms 200 application/json; charset=UTF-8
+2018-08-25 19:47:42.699 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/989/terwkwsx/websocket  
+2018-08-25 19:47:50.650 +02:00 [INF] i ´Żówdm´Żú: Compiling...
+
+2018-08-25 19:47:51.112 +02:00 [INF] Date: 2018-08-25T17:47:51.098Z - Hash: dd0adffdd59743d88932 - Time: 241ms
+4 unchanged chunks
+chunk {main} main.js, main.js.map (main) 120 kB [initial] [rendered]
+i ´Żówdm´Żú: Compiled successfully.
+
+2018-08-25 19:47:51.622 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Home  
+2018-08-25 19:47:52.629 +02:00 [INF] Request finished in 1007.4983ms 304 
+2018-08-25 19:47:52.656 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/runtime.js  
+2018-08-25 19:47:52.658 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/polyfills.js  
+2018-08-25 19:47:52.658 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/styles.js  
+2018-08-25 19:47:52.659 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/vendor.js  
+2018-08-25 19:47:52.668 +02:00 [INF] Request finished in 9.9139ms 304 
+2018-08-25 19:47:52.659 +02:00 [INF] Request finished in 3.3549ms 304 
+2018-08-25 19:47:52.659 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/main.js  
+2018-08-25 19:47:52.679 +02:00 [INF] Request finished in 20.7458ms 304 
+2018-08-25 19:47:52.701 +02:00 [INF] Request finished in 10001.8175ms 101 
+2018-08-25 19:47:53.672 +02:00 [INF] Request finished in 1013.6839ms 304 
+2018-08-25 19:47:53.676 +02:00 [INF] Request finished in 1017.1818ms 200 application/javascript; charset=UTF-8
+2018-08-25 19:47:55.174 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Config  
+2018-08-25 19:47:55.176 +02:00 [INF] Route matched with {action = "GetList", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web)
+2018-08-25 19:47:55.178 +02:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:47:55.180 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:47:55.183 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:47:55.187 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 5), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:47:55.274 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:47:55.277 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."Id", "c"."DisplayName", "c"."Name", "c"."Type", "c"."Value"
+FROM "Configs" AS "c"
+2018-08-25 19:47:55.279 +02:00 [INF] Executed action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 99.968600000000009ms.
+2018-08-25 19:47:55.280 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[LifeLike.Data.Models.Config, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.ConfigViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:47:55.281 +02:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) in 103.3335ms
+2018-08-25 19:47:55.282 +02:00 [INF] Request finished in 107.7015ms 200 application/json; charset=utf-8
+2018-08-25 19:47:55.623 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/info?t=1535219275620  
+2018-08-25 19:47:55.626 +02:00 [INF] Request finished in 2.6362ms 200 application/json; charset=UTF-8
+2018-08-25 19:47:55.642 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/548/dymtkyqy/websocket  
+2018-08-25 19:48:54.558 +02:00 [INF] i ´Żówdm´Żú: Compiling...
+
+2018-08-25 19:48:55.062 +02:00 [INF] Date: 2018-08-25T17:48:55.048Z - Hash: e2fc0a45a708a88d0444 - Time: 279ms
+4 unchanged chunks
+chunk {main} main.js, main.js.map (main) 120 kB [initial] [rendered]
+i ´Żówdm´Żú: Compiled successfully.
+
+2018-08-25 19:48:55.624 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Home  
+2018-08-25 19:48:56.635 +02:00 [INF] Request finished in 1011.5473ms 304 
+2018-08-25 19:48:56.656 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/runtime.js  
+2018-08-25 19:48:56.657 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/polyfills.js  
+2018-08-25 19:48:56.657 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/styles.js  
+2018-08-25 19:48:56.657 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/vendor.js  
+2018-08-25 19:48:56.661 +02:00 [INF] Request finished in 4.6003ms 304 
+2018-08-25 19:48:56.660 +02:00 [INF] Request finished in 4.4311ms 304 
+2018-08-25 19:48:56.657 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/main.js  
+2018-08-25 19:48:56.673 +02:00 [INF] Request finished in 15.679ms 304 
+2018-08-25 19:48:56.738 +02:00 [INF] Request finished in 61096.6508ms 101 
+2018-08-25 19:48:57.664 +02:00 [INF] Request finished in 1007.4436ms 304 
+2018-08-25 19:48:57.667 +02:00 [INF] Request finished in 1009.9661ms 304 
+2018-08-25 19:48:57.716 +02:00 [INF] i ´Żówdm´Żú: Compiling...
+
+2018-08-25 19:48:58.176 +02:00 [INF] Date: 2018-08-25T17:48:58.119Z - Hash: e2fc0a45a708a88d0444 - Time: 196ms
+5 unchanged chunks
+i ´Żówdm´Żú: Compiled successfully.
+
+2018-08-25 19:48:59.449 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Config  
+2018-08-25 19:48:59.451 +02:00 [INF] Route matched with {action = "GetList", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web)
+2018-08-25 19:48:59.453 +02:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:48:59.455 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:48:59.457 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:48:59.465 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 5), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:48:59.562 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:48:59.565 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."Id", "c"."DisplayName", "c"."Name", "c"."Type", "c"."Value"
+FROM "Configs" AS "c"
+2018-08-25 19:48:59.567 +02:00 [INF] Executed action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 112.2304ms.
+2018-08-25 19:48:59.568 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[LifeLike.Data.Models.Config, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.ConfigViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:48:59.570 +02:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) in 117.5673ms
+2018-08-25 19:48:59.571 +02:00 [INF] Request finished in 121.5477ms 200 application/json; charset=utf-8
+2018-08-25 19:48:59.627 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/info?t=1535219339624  
+2018-08-25 19:48:59.630 +02:00 [INF] Request finished in 3.3389ms 200 application/json; charset=UTF-8
+2018-08-25 19:48:59.638 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/775/5i2rdzxr/websocket  
+2018-08-25 19:49:05.159 +02:00 [INF] i ´Żówdm´Żú: Compiling...
+
+2018-08-25 19:49:05.557 +02:00 [INF] Date: 2018-08-25T17:49:05.550Z - Hash: e2fc0a45a708a88d0444 - Time: 184ms
+5 unchanged chunks
+i ´Żówdm´Żú: Compiled successfully.
+
+2018-08-25 19:49:05.621 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Home  
+2018-08-25 19:49:06.629 +02:00 [INF] Request finished in 1008.4231ms 304 
+2018-08-25 19:49:06.659 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/runtime.js  
+2018-08-25 19:49:06.659 +02:00 [INF] Request finished in 7021.0372ms 101 
+2018-08-25 19:49:06.660 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/polyfills.js  
+2018-08-25 19:49:06.660 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/styles.js  
+2018-08-25 19:49:06.661 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/vendor.js  
+2018-08-25 19:49:06.661 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/main.js  
+2018-08-25 19:49:06.664 +02:00 [INF] Request finished in 4.7877ms 304 
+2018-08-25 19:49:06.665 +02:00 [INF] Request finished in 5.6305ms 304 
+2018-08-25 19:49:06.666 +02:00 [INF] Request finished in 6.5134ms 304 
+2018-08-25 19:49:06.669 +02:00 [INF] Request finished in 8.7328ms 304 
+2018-08-25 19:49:07.677 +02:00 [INF] Request finished in 1016.6053ms 304 
+2018-08-25 19:49:09.405 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Config  
+2018-08-25 19:49:09.407 +02:00 [INF] Route matched with {action = "GetList", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web)
+2018-08-25 19:49:09.409 +02:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:49:09.411 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:49:09.413 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:49:09.418 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 5), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:49:09.512 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:49:09.517 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."Id", "c"."DisplayName", "c"."Name", "c"."Type", "c"."Value"
+FROM "Configs" AS "c"
+2018-08-25 19:49:09.524 +02:00 [INF] Executed action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 113.61500000000001ms.
+2018-08-25 19:49:09.525 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[LifeLike.Data.Models.Config, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.ConfigViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:49:09.526 +02:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) in 117.73110000000001ms
+2018-08-25 19:49:09.527 +02:00 [INF] Request finished in 122.0977ms 200 application/json; charset=utf-8
+2018-08-25 19:49:09.688 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/info?t=1535219349684  
+2018-08-25 19:49:09.692 +02:00 [INF] Request finished in 4.1729ms 200 application/json; charset=UTF-8
+2018-08-25 19:49:09.702 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/019/dxjbc4z0/websocket  
+2018-08-25 19:49:18.850 +02:00 [INF] i ´Żówdm´Żú: Compiling...
+
+2018-08-25 19:49:19.180 +02:00 [INF] Date: 2018-08-25T17:49:19.173Z - Hash: e2fc0a45a708a88d0444 - Time: 114ms
+5 unchanged chunks
+i ´Żówdm´Żú: Compiled successfully.
+
+2018-08-25 19:49:19.621 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Home  
+2018-08-25 19:49:20.627 +02:00 [INF] Request finished in 1005.9576ms 304 
+2018-08-25 19:49:20.648 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/runtime.js  
+2018-08-25 19:49:20.648 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/polyfills.js  
+2018-08-25 19:49:20.649 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/styles.js  
+2018-08-25 19:49:20.649 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/vendor.js  
+2018-08-25 19:49:20.649 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/main.js  
+2018-08-25 19:49:20.650 +02:00 [INF] Request finished in 2.5439ms 304 
+2018-08-25 19:49:20.652 +02:00 [INF] Request finished in 4.1207ms 304 
+2018-08-25 19:49:20.659 +02:00 [INF] Request finished in 10957.6422ms 101 
+2018-08-25 19:49:20.664 +02:00 [INF] Request finished in 15.0073ms 304 
+2018-08-25 19:49:21.657 +02:00 [INF] Request finished in 1007.1902ms 304 
+2018-08-25 19:49:21.657 +02:00 [INF] Request finished in 1008.158ms 304 
+2018-08-25 19:49:23.174 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Config  
+2018-08-25 19:49:23.176 +02:00 [INF] Route matched with {action = "GetList", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web)
+2018-08-25 19:49:23.177 +02:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) - Validation state: "Valid"
+2018-08-25 19:49:23.179 +02:00 [INF] Entity Framework Core 2.1.1-rtm-30846 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-08-25 19:49:23.182 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:49:23.187 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 5), @p1='?' (Size = 4), @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Stats" ("Action", "Controller", "Parameter", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Stats"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2018-08-25 19:49:23.296 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-08-25 19:49:23.298 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."Id", "c"."DisplayName", "c"."Name", "c"."Type", "c"."Value"
+FROM "Configs" AS "c"
+2018-08-25 19:49:23.301 +02:00 [INF] Executed action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 121.8296ms.
+2018-08-25 19:49:23.302 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[LifeLike.Data.Models.Config, LifeLike.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Web.ViewModel.ConfigViewModel, LifeLike.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-08-25 19:49:23.304 +02:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) in 126.3858ms
+2018-08-25 19:49:23.304 +02:00 [INF] Request finished in 130.2215ms 200 application/json; charset=utf-8
+2018-08-25 19:49:23.650 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/info?t=1535219363647  
+2018-08-25 19:49:23.653 +02:00 [INF] Request finished in 2.7503ms 200 application/json; charset=UTF-8
+2018-08-25 19:49:23.663 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/260/4gzhg1ne/websocket  
+2018-08-25 19:51:05.535 +02:00 [INF] Request finished in 101871.0566ms 101 

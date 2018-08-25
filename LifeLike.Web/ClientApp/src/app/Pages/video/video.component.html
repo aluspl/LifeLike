@@ -7,8 +7,7 @@
         <mat-card-title class="title">{{post.Name}}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <app-youtube-player [YoutubeID]="post.YoutubeId"
-
+        <app-youtube-player [YoutubeID]="post.YoutubeId"></app-youtube-player>
       </mat-card-content>
       <mat-card-footer>Published: {{post.Published  | date: 'dd/MM/yyyy'}}</mat-card-footer>
     </mat-card>

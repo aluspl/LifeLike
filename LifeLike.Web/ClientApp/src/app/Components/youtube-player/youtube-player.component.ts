@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {DomSanitizer} from "@angular/platform-browser";
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-youtube-player',
@@ -13,7 +13,7 @@ export class YoutubePlayerComponent implements OnInit {
   public video: any;
   public player: any;
   GetUrl() {
-    let link = 'http://www.youtube.com/embed/'.concat(this.YoutubeID);
+    const link = 'http://www.youtube.com/embed/'.concat(this.YoutubeID);
     return this.sanitizer.bypassSecurityTrustResourceUrl(link);
 
   }
