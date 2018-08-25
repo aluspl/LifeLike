@@ -1,20 +1,18 @@
-<mat-grid-list [cols]="3"  rowHeight="1:1">
-  <mat-grid-tile *ngFor="let post of List">
-    <mat-card class="dashboard-card" routerLink='{{post.ShortName}}'>
-      <mat-card-header>
-        <mat-card-title class="title">{{post.FullName}}</mat-card-title>
-      </mat-card-header>
-      <img *ngIf="post.ImageUrl != ''" src="{{post.ImageUrl}}">
-      <mat-card-content>
-        <p class="mat-body-1">
-          {{post.Summary}}
-        </p>
-      </mat-card-content>
-      <mat-card-footer>
-        <p class="caption">
-          Published: {{post.Published  | date: 'dd/MM/yyyy'}}
-        </p>
-      </mat-card-footer>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+<div class="row">
+  <div class="col-sm"  *ngFor="let post of List" >
+    <div class="card"  routerLink='{{post.ShortName}}'>
+      <div class="card-header">
+          {{post.FullName}}
+      </div>
+      <div class="card-body">
+          <img *ngIf="post.ImageUrl != ''" src="{{post.ImageUrl}}" class="card-img-top">
+          <p class="mat-body-1">
+            {{post.Summary}}
+          </p>
+          <p class="caption">
+            Published: {{post.Published  | date: 'dd/MM/yyyy'}}
+          </p>    
+      </div>
+    </div>
+  </div>
+</div>

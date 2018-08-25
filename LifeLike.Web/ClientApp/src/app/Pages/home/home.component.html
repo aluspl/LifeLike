@@ -1,8 +1,6 @@
-<section class="mat-typography">
-  <mat-grid-list [cols]="2" rowHeight="400px" >
-    <mat-grid-tile *ngFor="let config of Configs"  [style.background]="lightblue">
-      <app-youtube-player [YoutubeID]="config.Value" *ngIf="config.Type=='Video'"></app-youtube-player>
-      <app-intro-text [config]="config" *ngIf="config.Type=='Text'"></app-intro-text>
-    </mat-grid-tile>
-  </mat-grid-list>
-</section>
+    <div class="row">
+      <div class="col-sm" *ngFor="let config of Configs">
+        <app-youtube-player [YoutubeID]="config.Value" *ngIf="config.Type=='Video'"></app-youtube-player>
+        <app-intro-text [config]="config" *ngIf="config.Type=='Text'"></app-intro-text>
+      </div>
+    </div>

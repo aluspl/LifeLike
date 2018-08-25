@@ -1,5 +1,5 @@
 {
-  "name": "LifeLikeWeb",
+  "name": "lifelikeweb",
   "version": "6.6.6",
   "license": "MIT",
   "scripts": {
@@ -21,16 +21,18 @@
     "@angular/core": "6.1.0",
     "@angular/forms": "6.1.0",
     "@angular/http": "6.1.0",
-    "@angular/material": "6.4.1",
     "@angular/platform-browser": "6.1.0",
     "@angular/platform-browser-dynamic": "6.1.0",
     "@angular/router": "6.1.0",
+    "bootstrap": "^4.1.3",
     "core-js": "2.5.7",
     "hammerjs": "^2.0.8",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.3",
+    "reframe.js": "latest",
     "rxjs": "6.2.2",
     "rxjs-compat": "6.2.2",
-    "zone.js": "^0.8.26",
-    "reframe.js": "latest"
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.7.1",

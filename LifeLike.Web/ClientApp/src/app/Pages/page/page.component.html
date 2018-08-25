@@ -1,4 +1,4 @@
 <app-title Title="Project"></app-title>
 
-<mat-spinner *ngIf="IsLoading"></mat-spinner>
+<app-spinner *ngIf="IsLoading"></app-spinner>
 <app-post-list *ngIf="!IsLoading" [List]="Pages"></app-post-list>

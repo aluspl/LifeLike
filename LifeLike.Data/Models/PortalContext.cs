@@ -68,21 +68,21 @@ namespace LifeLike.Data.Models
             context.Add(new Config
             {
                 Name = Config.WelcomeText,
-                DisplayName = "Welcome Text",
-                Value = "Hello on Main Page", Type = ConfigType.Text
+                DisplayName = "HI",
+                Value = "Hi on my page , it is pure now, but it is great CMS :) ... it is gonna to be great cms", Type = ConfigType.Text
             });
-            context.Add(new Config
-            {
-                Name = Config.Rss1,
-                DisplayName = "First RSS Url",
-                Value = "http://kawowipodroznicy.pl/feed/", Type = ConfigType.RSS
-            });
-            context.Add(new Config
-            {
-                Name = Config.Rss2,
-                DisplayName = "Second RSS Url",
-                Value = "http://szymonmotyka.pl/feed/", Type = ConfigType.RSS
-            });
+            // context.Add(new Config
+            // {
+            //     Name = Config.Rss1,
+            //     DisplayName = "First RSS Url",
+            //     Value = "http://kawowipodroznicy.pl/feed/", Type = ConfigType.RSS
+            // });
+            // context.Add(new Config
+            // {
+            //     Name = Config.Rss2,
+            //     DisplayName = "Second RSS Url",
+            //     Value = "http://szymonmotyka.pl/feed/", Type = ConfigType.RSS
+            // });
         }
 
         private static void SetupLinks(PortalContext context)

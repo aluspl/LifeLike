@@ -155,7 +155,6 @@ namespace LifeLike.Web.Controllers
                 
                 if (!ModelState.IsValid) return BadRequest(ModelState);
                 var dto = _mapper.Map<Page>(model);
-//model: PageViewModel.DataModel(model)
                 var value = await _pages.Update(dto);
                 return Ok(value);
             }

@@ -1,4 +1,4 @@
 <app-title Title="News"></app-title>
-<mat-spinner *ngIf="IsLoading"></mat-spinner>
+<app-spinner *ngIf="IsLoading"></app-spinner>
 <app-post-list *ngIf="!IsLoading"  [List]="Posts"></app-post-list>
 <app-post-create *ngIf="CreateMode" ></app-post-create>
