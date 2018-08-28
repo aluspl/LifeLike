@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using AutoMapper;
@@ -53,10 +54,19 @@ namespace LifeLike.Web
             // Add framework services.
             services.AddLogging(loggingBuilder =>
                 loggingBuilder.AddSerilog(dispose: true));
-            services.AddDbContext<PortalContext>(options =>
-//                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), 
-//                        b => b.MigrationsAssembly("LifeLike.Web"))
+            if (Configuration["DB"]==null)
+            {
+                services.AddDbContext<PortalContext>(options =>              
                     options.UseSqlite("Data Source=lifelike.db"));
+                    Debug.WriteLine("Using SQLite");
+            }
+            else
+            {
+                services.AddDbContext<PortalContext>(options =>
+                       options.UseSqlServer(Configuration["DB"], 
+                       b => b.MigrationsAssembly("LifeLike.Web")));
+                    Debug.WriteLine("Using SQL");
+            }
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddScoped<IEventLogRepository, EventLogsRepository>();
