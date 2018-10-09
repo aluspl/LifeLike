@@ -20,3 +20,8 @@ https://hub.docker.com/r/aluspl/lifelike/
 # Build Status
 
 [![Build status](https://ci.appveyor.com/api/projects/status/sodo2b5y68naru2m/branch/master?svg=true)](https://ci.appveyor.com/project/aluspl/lifelike/branch/master)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Faluspl%2FLifeLike.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Faluspl%2FLifeLike?ref=badge_shield)
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Faluspl%2FLifeLike.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Faluspl%2FLifeLike?ref=badge_large)
