@@ -29,6 +29,7 @@ import { AdminPanelComponent } from './Pages/admin-panel/admin-panel.component';
 import { IntroTextComponent } from './Components/intro-text/intro-text.component';
 import {ConfigComponent} from './Pages/config/config.component';
 import { SpinnerComponent } from './Components/spinner/spinner.component';
+import { CountTitleComponent } from './Components/count-title/count-title.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { SpinnerComponent } from './Components/spinner/spinner.component';
     AdminPanelComponent,
     IntroTextComponent,
     ConfigComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    CountTitleComponent
   ],
   imports: [
     BrowserModule,

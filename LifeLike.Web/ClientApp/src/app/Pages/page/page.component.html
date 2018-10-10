@@ -2,3 +2,7 @@
 
 <app-spinner *ngIf="IsLoading"></app-spinner>
 <app-post-list *ngIf="!IsLoading" [List]="Pages"></app-post-list>
+
+<div class="row">
+    <app-count-title [Title]="ItemsCount"></app-count-title>        
+</div>

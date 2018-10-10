@@ -1,16 +1,19 @@
 <app-title Title="Videos"></app-title>
-<div class="row">
+<div class="row" *ngIf="HasValue" >
   <div class="col-sm"  *ngFor="let post of Videos" >
       <div class="card"  routerLink='{{post.ShortName}}'>
-          <div class="card-header">
+        <div class="card-header">
             {{post.Name}}
-          </div>
-          <div class="card-body">
+        </div>
+        <div class="card-body">
             <app-youtube-player [YoutubeID]="post.YoutubeId"></app-youtube-player>
             <p class="caption">
               Published: {{post.Published  | date: 'dd/MM/yyyy'}}
             </p>    
-          </div>
         </div>
+      </div>
   </div>  
+</div>
+<div class="row">
+    <app-count-title [Title]="VideoCount"></app-count-title>        
 </div>

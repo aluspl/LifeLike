@@ -5,22 +5,19 @@ import {MENUITEMS} from '../mock-data/MenuItems';
 import {MenuItem} from '../Models/MenuItem';
 import {Page} from '../Models/Page';
 import Log from '../Models/Log';
-import {Observable, of} from "rxjs/index";
-import Video from "../Models/Video";
-import {Config} from "../Models/Config";
+import {Observable, of} from 'rxjs/index';
+import Video from '../Models/Video';
+import {Config} from '../Models/Config';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 const PageDetail = '/Api/Page/Details';
-const LogDetail = '/Api/Log/Detail';
 
 const PageList = '/Api/Page/Pages';
 const PostList = '/Api/Page/Posts';
-const CreatePost = '/Api/Page/Create';
+const CreatePost = '/Api/Page/Cr';
 
-const MenuList = '/Api/Menu';
-const AlbumList = '/Api/Album/List';
 const ConfigList = '/Api/Config';
 const LogList = '/Api/Log/List';
 const VideoList = '/Api/Log/List';
@@ -52,7 +49,7 @@ export class RestService {
   }
 
 
-  createPost<Data>(model: Page): Observable<string> {
+  createPost(model: Page): Observable<string> {
     return this.http
       .post<string>(CreatePost, model, httpOptions)
       .pipe(
@@ -61,7 +58,7 @@ export class RestService {
       );
   }
 
-  getPostList<Data>(): Observable<Page[]> {
+  getPostList(): Observable<Page[]> {
     return this.http
       .get<Page[]>(PostList)
       .pipe(
@@ -70,7 +67,7 @@ export class RestService {
       );
   }
 
-  getPageList<Data>(): Observable<Page[]> {
+  getPageList(): Observable<Page[]> {
     return this.http
       .get<Page[]>(PageList)
       .pipe(
@@ -79,7 +76,7 @@ export class RestService {
       );
   }
 
-  getPageDetail<Data>(name: string): Observable<Page> {
+  getPageDetail(name: string): Observable<Page> {
     const url = `${PageDetail}/${name}`;
     RestService.log(url);
     return this.http
@@ -90,7 +87,7 @@ export class RestService {
       );
   }
 
-  getLogList<Data>(): Observable<Log[]> {
+  getLogList(): Observable<Log[]> {
     return this.http
       .get<Log[]>(LogList)
       .pipe(
@@ -98,7 +95,7 @@ export class RestService {
         catchError(RestService.handleError<Log[]>())
       );
   }
-  GetVideos<Data>(): Observable<Video[]> {
+  GetVideos(): Observable<Video[]> {
     return this.http
       .get<Video[]>(VideoList)
       .pipe(
@@ -110,11 +107,11 @@ export class RestService {
   }
 
 
-  removePost(page: Page) {
+  removePost() {
 
   }
 
-  editPost(page: Page) {
+  editPost() {
 
   }
 

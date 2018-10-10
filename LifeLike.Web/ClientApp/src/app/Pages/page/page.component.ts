@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Page } from '../../Models/Page';
 import { RestService } from '../../Services/rest.service';
-import { share } from 'rxjs/operators';
-import { Observable } from 'rxjs/index';
-import {map} from "rxjs/internal/operators";
+import {map} from 'rxjs/internal/operators';
 
 
 @Component({
@@ -13,29 +11,31 @@ import {map} from "rxjs/internal/operators";
 })
 export class PageComponent implements OnInit {
   Pages: Page[];
-   IsLoading: boolean;
+  IsLoading: boolean;
+  ItemsCount: number;
   constructor(private restService: RestService) { }
 
-  Edit(page: Page): void {
-    console.log("Edit");
-    console.log(page);
-    this.restService.editPost(page);
-  }
-  Remove(page: Page):  void{
-    console.log("Remove");
-    console.log(page);
-    this.restService.removePost(page);
-  }
+  // Edit(page: Page): void {
+  //   console.log('Edit');
+  //   console.log(page);
+  //   this.restService.editPost(page);
+  // }
+  // Remove(page: Page):  void {
+  //   console.log('Remove');
+  //   console.log(page);
+  //   this.restService.removePost(page);
+  // }
 
   GetPages(): void {
     this.restService.getPageList()
       .pipe(
-      map(data=> {
-        this.IsLoading=false;
+      map(data => {
+        this.IsLoading = false;
+        this.ItemsCount = data.length;
         console.log(data);
         return data;
       }))
-      .subscribe(p=> this.Pages = p);
+      .subscribe(p => this.Pages = p);
   }
 
   ngOnInit() {
