@@ -8,6 +8,8 @@
 
 # dependencies
 /node_modules
+/ClientApp/dist
+
 /ClientApp/node_modules
 /ClientApp/package-lock.json
 /package-lock.json

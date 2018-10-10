@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RestService} from '../../Services/rest.service';
 import {Page} from '../../Models/Page';
-import {map} from "rxjs/internal/operators";
+import {map} from 'rxjs/internal/operators';
 
 @Component({
   selector: 'app-post',
@@ -12,18 +12,19 @@ export class PostComponent implements OnInit {
   Posts: Page[];
   IsLoading: boolean;
   CreateMode: boolean;
-
+  ItemsCount: number;
   constructor(private restService: RestService) { }
   GetPosts(): void {
-    this.IsLoading=true;
+    this.IsLoading = true;
     this.restService.getPostList()
       .pipe(
-        map(data=> {
-          this.IsLoading=false;
+        map(data => {
+          this.IsLoading = false;
+          this.ItemsCount = data.length;
           console.log(data);
           return data;
         }))
-      .subscribe(p=> this.Posts = p);
+      .subscribe(p => this.Posts = p);
   }
   ngOnInit() {
     this.GetPosts();

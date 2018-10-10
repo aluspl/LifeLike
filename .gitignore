@@ -28,3 +28,4 @@ ClientApp/src/styles.css
 ClientApp/src/styles.css.map
 LifeLike.Web.sln
 LifeLike.Web/ClientApp/package-lock.json
+LifeLike.Web/*.txt

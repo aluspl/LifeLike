@@ -13,7 +13,7 @@ export class YoutubePlayerComponent implements OnInit {
   public video: any;
   public player: any;
   GetUrl() {
-    const link = 'http://www.youtube.com/embed/'.concat(this.YoutubeID);
+    const link = 'https://www.youtube.com/embed/'.concat(this.YoutubeID);
     return this.sanitizer.bypassSecurityTrustResourceUrl(link);
 
   }
