@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper.QueryableExtensions;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
+using LifeLike.Repositories.ViewModel;
 using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Repositories
@@ -38,7 +41,7 @@ namespace LifeLike.Repositories
         {
             try
             {
-                return await _context.Configs.ToListAsync();
+                return await _context.Configs.ProjectTo<Config>().ToListAsync();
             }
             catch (Exception e)
             {
@@ -49,7 +52,7 @@ namespace LifeLike.Repositories
 
         public async Task<Config> Get(long id)
         {
-            return await _context.Configs.FirstOrDefaultAsync(p => p.Name == id.ToString());
+            return await _context.Configs.Where(p => p.Id == id).ProjectTo<Config>().FirstOrDefaultAsync();
         }
 
         public async Task<Result> Update(Config model)
@@ -86,7 +89,7 @@ namespace LifeLike.Repositories
         {
             try
             {
-                return await _context.Configs.FirstOrDefaultAsync(config => config.Name == id);
+                return await _context.Configs.Where(p => p.Name == id).ProjectTo<Config>().FirstOrDefaultAsync();
             }
             catch (Exception e)
             {

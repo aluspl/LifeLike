@@ -5,8 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using LifeLike.Data.Models;
 using LifeLike.Repositories;
-using LifeLike.Web.Extensions;
-using LifeLike.Web.ViewModel;
+using LifeLike.Repositories.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,14 +16,14 @@ namespace LifeLike.Web.Controllers
     [Route("api/[controller]")]
     public class PageController : Controller
     {
-        private readonly IPageRepository _pages;
+        private readonly IPageRepository _pageRepository;
         private readonly IEventLogRepository _logger;
         private readonly ILinkRepository _links;
         private readonly IMapper _mapper;
 
         public PageController(IPageRepository pageRepository, IEventLogRepository logger, ILinkRepository links, IMapper mapper)
         {
-            _pages = pageRepository;
+            _pageRepository = pageRepository;
             _logger = logger;
             _links = links;
             _mapper = mapper;
@@ -36,7 +35,7 @@ namespace LifeLike.Web.Controllers
         public async Task<IActionResult> Posts()
         {
             await _logger.AddStat("Posts", "List", "Page");
-            var list = await _pages.List();
+            var list = await _pageRepository.List();
             var posts = list.Where(p => p.Category == PageCategory.Post).Select(_mapper.Map<PageViewModel>);
             return Ok(posts);
         }
@@ -51,11 +50,29 @@ namespace LifeLike.Web.Controllers
                 var isLogged = User.Identity.IsAuthenticated;
 
                 var list = 
-                // isLogged ? 
-                    await _pages.List();
-                    // await _pages.List(PageCategory.App | PageCategory.Game);
+                  await _pageRepository.List(PageCategory.Page);
+               
+                return Ok(list);
+            }
+            catch (Exception e)
+            {
+                await _logger.AddException(e);
+                return StatusCode(500);
+            }
+        }
+
+        [HttpGet("Projects")]
+        public async Task<IActionResult> Projects()
+        {
+            try
+            {
+                await _logger.AddStat("All", "List", "Projects");
+                var isLogged = User.Identity.IsAuthenticated;
+
+                var list = 
+                    await _pageRepository.List();
                 var pageList = list
-                    .Where(p => p.Category == PageCategory.Page)
+                    .Where(p => p.Category == PageCategory.Projects)
                     .Select(_mapper.Map<PageViewModel>);
                 return Ok(pageList);
             }
@@ -65,7 +82,6 @@ namespace LifeLike.Web.Controllers
                 return StatusCode(500);
             }
         }
-
         [HttpGet("Details/{id}")]
         public async Task<IActionResult> Details(string id)
         {
@@ -73,11 +89,11 @@ namespace LifeLike.Web.Controllers
             {
                 await _logger.AddStat(id, "Details", "Page");
                     
-                var page = await _pages.Get(id.ToLower());
+                var page = await _pageRepository.Get(id.ToLower());
                 if (page == null) return NotFound();
-                var dto = _mapper.Map<PageViewModel>(page);
+                var Entity = _mapper.Map<PageViewModel>(page);
 
-                return Ok(dto);
+                return Ok(Entity);
             }
             catch (Exception e)
             {
@@ -88,7 +104,7 @@ namespace LifeLike.Web.Controllers
 //TODO: CATEGORY IN DROPDPOWN IN ANGULAR
         [HttpPost]
         [Route("Create")]
-        public async Task<IActionResult> Create([FromBody] PageViewModel model)
+        public async Task<IActionResult> Create([FromBody] Page model)
         {
             try
             {
@@ -97,9 +113,7 @@ namespace LifeLike.Web.Controllers
                 if (model.Category == null) model.Category = "Post";
                 model.ShortName = model?.ShortName?.ToLower();
                 if (!ModelState.IsValid) return BadRequest(ModelState);
-//                var  dto=  PageViewModel.DataModel(model);
-                var dto = _mapper.Map<Page>(model);
-                var result = await _pages.Create(dto, model.Link);
+                var result = await _pageRepository.Create(model, model.Link);
                
                 return Ok(result);
             }
@@ -112,16 +126,14 @@ namespace LifeLike.Web.Controllers
 
         [HttpDelete]
         [Route("Delete")]
-        public async Task<IActionResult> Delete([FromBody] PageViewModel model)
+        public async Task<IActionResult> Delete([FromBody] Page model)
         {
             try
             {
                 await _logger.AddStat("Delete", "Page");
 
                 if (model == null) return BadRequest();
-                var datamodel = await _pages.Get(model.ShortName);
-                var link = await _links.Get(model.ShortName);
-                var result = await _pages.Delete(datamodel, link);
+                var result = await _pageRepository.Delete(model);
                 return Ok(result);
             }
             catch (Exception e)
@@ -135,8 +147,8 @@ namespace LifeLike.Web.Controllers
             try
             {
                 await _logger.AddStat("Update", "Page");
-                var page = await _pages.Get(id);
-                return Ok(_mapper.Map<PageViewModel>(page));
+                var page = await _pageRepository.Get(id);
+                return Ok(page);
             }
             catch (Exception e)
             {
@@ -147,15 +159,14 @@ namespace LifeLike.Web.Controllers
 
         [HttpPut]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update([FromBody] PageViewModel model)
+        public async Task<IActionResult> Update([FromBody] Page model)
         {
             try
             {
                 await _logger.AddStat("Update", "Page");
                 
                 if (!ModelState.IsValid) return BadRequest(ModelState);
-                var dto = _mapper.Map<Page>(model);
-                var value = await _pages.Update(dto);
+                var value = await _pageRepository.Update(model);
                 return Ok(value);
             }
             catch (Exception e)

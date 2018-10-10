@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
+using LifeLike.Repositories.ViewModel;
 using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Repositories
@@ -12,10 +14,12 @@ namespace LifeLike.Repositories
     {
         private readonly PortalContext _context;
         private readonly IEventLogRepository _logger;
+        private readonly IMapper _mapper;
 
-        public GalleryRepository(PortalContext context, IEventLogRepository logger)
+        public GalleryRepository(PortalContext context, IEventLogRepository logger, IMapper mapper)
         {
             _logger = logger;
+            _mapper = mapper;
             _context = context;
         }
 
@@ -36,9 +40,10 @@ namespace LifeLike.Repositories
 
         public async Task<IEnumerable<Gallery>> List()
         {
-            return await _context.Galleries
+            var items =  await _context.Galleries
                 .Include(p => p.Photos)
                 .ToListAsync();
+            return _mapper.Map<IEnumerable<Gallery>>(items);
         }
 
         public async Task<Gallery> Get(long id)
@@ -47,7 +52,7 @@ namespace LifeLike.Repositories
                 .Where(p => p.Id == id)
                 .Include(p => p.Photos)
                 .SingleOrDefaultAsync();
-            return gallery;
+            return _mapper.Map<Gallery>(gallery);
         }
 
         public async Task<Result> Update(Gallery model)
@@ -73,12 +78,12 @@ namespace LifeLike.Repositories
                 model = await Get(model.Id);
                 if (model == null) return Result.Failed;
 
-                foreach (var photo in model.Photos)
+                if (model.Photos!=null)
                 {
-                    _context.Remove(photo);
+                    var photo = _mapper.Map<IEnumerable<PhotoEntity>>(model);
+                    _context.RemoveRange(photo);
                 }
-
-                _context.Remove(model);
+                _context.Remove( _mapper.Map<GalleryEntity>(model));
                 await _context.SaveChangesAsync();
                 return Result.Success;
             }
@@ -98,7 +103,7 @@ namespace LifeLike.Repositories
                     .Where(p => p.ShortTitle == shortTitle)
                     .Include(p => p.Photos)
                     .SingleOrDefaultAsync();
-                return gallery;
+                return _mapper.Map<Gallery>(gallery);
             }
             catch (Exception e)
             {

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LifeLike.Data.Models
 {
-    public class Photo
+    public class PhotoEntity
     {
         [Key]
         public long Id { get; set; }
@@ -11,6 +11,6 @@ namespace LifeLike.Data.Models
         public string FileName { get; set; }
         public DateTime Created { get; set; }
         public string Camera { get; set; }
-        public  Gallery Gallery { get; set; }
+        public  GalleryEntity Gallery { get; set; }
     }
 }

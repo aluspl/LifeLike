@@ -2,11 +2,11 @@
 using System.ComponentModel.DataAnnotations;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
-using LifeLike.Web.Extensions;
+using LifeLike.Repositories.Extensions;
 
-namespace LifeLike.Web.ViewModel
+namespace LifeLike.Repositories.ViewModel
 {
-    public class PageViewModel
+    public class Page
     {
         
         public long Id { get; set; }
@@ -30,7 +30,7 @@ namespace LifeLike.Web.ViewModel
         {
             Name = FullName,
             Action = ShortName,
-            Category = LinkCategory.Menu,
+            Category = "Menu",
             IconName = IconName,
             Controller = "Page"
         };

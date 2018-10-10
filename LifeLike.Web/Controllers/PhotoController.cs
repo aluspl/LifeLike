@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories;
-using LifeLike.Web.ViewModel;
+using LifeLike.Repositories.ViewModel;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -37,7 +37,7 @@ namespace LifeLike.Web.Controllers
             await _logger.AddStat(id.ToString(), "Upload", "Photo");
 
             var gallery = await _gallery.Get(id);
-            return GalleryViewModel.GetViewForUpload(gallery);
+            return Gallery.GetViewForUpload(gallery);
         }
 
         [HttpPost]
@@ -79,8 +79,8 @@ namespace LifeLike.Web.Controllers
                 await _logger.AddStat($"{id}", action: "Detail", controller: "Photo");
 
                 var photo = await _photos.Get(id);
-                var selectedPhoto = PhotoViewModel.Get(photo);
-                return Ok(selectedPhoto);
+                // var selectedPhoto = Photo.Get(photo);
+                return Ok(photo);
             }
             catch (Exception e)
             {

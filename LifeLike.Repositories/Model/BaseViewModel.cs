@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace LifeLike.Web.ViewModel
+namespace LifeLike.Repositories.ViewModel
 {
     public class BaseViewModel
     {

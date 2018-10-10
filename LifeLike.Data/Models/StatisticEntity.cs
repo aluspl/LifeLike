@@ -2,7 +2,7 @@
 
 namespace LifeLike.Data.Models
 {
-    public class Statistic
+    public class StatisticEntity
     {
         [Key]
         public long Id { get; set; }

@@ -1,9 +1,10 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Xml;
 
 namespace LifeLike.Data.Models
 {
-    public class Page
+    public class PageEntity
     {        
         [Key]
         public long Id { get; set; }
@@ -26,6 +27,10 @@ namespace LifeLike.Data.Models
     [Flags]
     public enum PageCategory
     {
-        App, Game, Tutorial, Page, Post
+        App, Game, 
+        Tutorial, 
+        Page, 
+        Post,  
+        Projects = App | Game
     }
 }

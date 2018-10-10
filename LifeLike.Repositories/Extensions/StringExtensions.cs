@@ -1,6 +1,7 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Linq;
+using System.Text.RegularExpressions;
 
-namespace LifeLike.Web.Extensions
+namespace LifeLike.Repositories.Extensions
 {
     public static class StringExtensions
     {
@@ -29,6 +30,11 @@ namespace LifeLike.Web.Extensions
             // Links
             content = Regex.Replace(content, "/\\[(.*?)\\][\\[\\(].*?[\\]\\)]/g", "$1");
             return content;
+        }
+        
+          public static string GetYoutubeId(this string videoLink)
+        {
+            return videoLink.Contains('=') ? videoLink.Split('=').LastOrDefault() : videoLink;
         }
 
         public static string ToHTML(this string content)

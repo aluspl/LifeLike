@@ -1,4 +1,4 @@
-namespace LifeLike.Web.ViewModel
+namespace LifeLike.Repositories.ViewModel
 {
     public class PageConfigModel
     {

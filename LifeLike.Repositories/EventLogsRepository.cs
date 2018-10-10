@@ -24,7 +24,7 @@ namespace LifeLike.Repositories
             {
                 Debug.WriteLine(e);
 
-                return await Create(EventLog.Generate(e));
+                return await Create(EventLogEntity.Generate(e));
             }
             catch (Exception)
             {
@@ -49,7 +49,7 @@ namespace LifeLike.Repositories
         {
             try
             {
-                var model = new Statistic
+                var model = new StatisticEntity
                 {
                     Action = action,
                     Controller = controller,
@@ -65,7 +65,7 @@ namespace LifeLike.Repositories
             }
         }
 
-        public async Task<Result> Add(EventLog model)
+        public async Task<Result> Add(EventLogEntity model)
         {
             try
             {
@@ -77,7 +77,7 @@ namespace LifeLike.Repositories
             }
         }
 
-        public async Task<Result> Create(EventLog model)
+        public async Task<Result> Create(EventLogEntity model)
         {
             try
             {
@@ -92,12 +92,12 @@ namespace LifeLike.Repositories
             }
         }
 
-        public async Task<IEnumerable<EventLog>> List()
+        public async Task<IEnumerable<EventLogEntity>> List()
         {
             return await _context.EventLogs.ToListAsync();
         }
 
-        public async Task<IEnumerable<EventLog>> List(EventLogType type)
+        public async Task<IEnumerable<EventLogEntity>> List(EventLogType type)
         {
             return await _context.EventLogs.Where(p => p.Type == type).ToListAsync();
         }
@@ -106,7 +106,7 @@ namespace LifeLike.Repositories
         {
             try
             {
-                return await Create(EventLog.Generate(i, information));
+                return await Create(EventLogEntity.Generate(i, information));
             }
             catch (Exception e)
             {
@@ -119,7 +119,7 @@ namespace LifeLike.Repositories
         {
             try
             {
-                await Create(EventLog.Generate(result, message));
+                await Create(EventLogEntity.Generate(result, message));
                 return Result.Success;
             }
             catch (Exception e)
@@ -145,12 +145,12 @@ namespace LifeLike.Repositories
             }
         }
 
-        public async Task<EventLog> Get(long id)
+        public async Task<EventLogEntity> Get(long id)
         {
             return await _context.EventLogs.FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task<Result> Update(EventLog model)
+        public async Task<Result> Update(EventLogEntity model)
         {
             try
             {
@@ -165,7 +165,7 @@ namespace LifeLike.Repositories
             }
         }
 
-        public async Task<Result> Delete(EventLog model)
+        public async Task<Result> Delete(EventLogEntity model)
         {
             try
             {
@@ -196,15 +196,15 @@ namespace LifeLike.Repositories
         }
     }
 
-    public interface IEventLogRepository : IRepository<EventLog>
+    public interface IEventLogRepository : IRepository<EventLogEntity>
     {
         Task<Result> AddException(Exception e);
         Task<Result> AddStat(string id, string action, string controller);
         Task<Result> AddStat(string action, string controller);
 
-        Task<IEnumerable<EventLog>> List(EventLogType type);
+        Task<IEnumerable<EventLogEntity>> List(EventLogType type);
         Task<Result> LogInformation(EventLogType result, string message);
         Task<Result> ClearLogs();
-        Task<Result> Add(EventLog eventLog);
+        Task<Result> Add(EventLogEntity eventLog);
     }
 }

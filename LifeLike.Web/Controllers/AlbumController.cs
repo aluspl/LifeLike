@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories;
-using LifeLike.Web.ViewModel;
+using LifeLike.Repositories.ViewModel;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,7 +15,7 @@ namespace LifeLike.Web.Controllers
     public class AlbumController : Controller
     {
         private readonly IEventLogRepository _logger;
-        private readonly IGalleryRepository _gallery;
+        private readonly IGalleryRepository _galleryRepository;
 
 
         public AlbumController(IEventLogRepository logger,
@@ -24,7 +24,7 @@ namespace LifeLike.Web.Controllers
             IHostingEnvironment hosting)
         {
             _logger = logger;
-            _gallery = gallery;
+            _galleryRepository = gallery;
 
         }
 
@@ -34,8 +34,8 @@ namespace LifeLike.Web.Controllers
             try
             {
                 await _logger.AddStat("List", "Album");
-                var list = await _gallery.List();
-                return Json(list.Select(GalleryViewModel.Get));
+                var list = await _galleryRepository.List();
+                return Json(list);
             }
             catch (Exception e)
             {
@@ -51,8 +51,8 @@ namespace LifeLike.Web.Controllers
             {
                 await _logger.AddStat(id,"Detail", "Album");
 
-                var selectedgallery = await _gallery.Get(id);
-                return Ok(GalleryViewModel.Get(selectedgallery));
+                var selectedgallery = await _galleryRepository.Get(id);
+                return Ok(selectedgallery);
             }
             catch (Exception e)
             {
@@ -61,7 +61,7 @@ namespace LifeLike.Web.Controllers
             }
         }
         [HttpPost]
-        public async Task<IActionResult> CreateGallery(GalleryViewModel model)
+        public async Task<IActionResult> CreateGallery(Gallery model)
         {
 
             try
@@ -69,44 +69,49 @@ namespace LifeLike.Web.Controllers
                 await _logger.AddStat(model.ShortTitle,"Create", "Album");
                 model.Created=DateTime.Now;
                 model.ShortTitle=model.ShortTitle.Trim().Replace(" ","");
-                var gallery = GalleryViewModel.Get(model);
-                return Ok(await _gallery.Create(gallery));
+                return Ok(await _galleryRepository.Create(model));
             }
             catch (Exception e)
             {
                 await _logger.AddException(e);
                 return  new  BadRequestResult();
-
             }
         }
        
         [HttpDelete]
-        public async Task<Result> Delete(GalleryViewModel model)
+        public async Task<IActionResult> Delete(Gallery model)
         {
             try
-            {
-                return await _gallery.Delete(GalleryViewModel.Get(model));
-                 
-            }    
-            catch (Exception e)
-            {
-              await _logger.AddException(e);
-               return Result.Failed;
-            }
-        }     
-        [HttpPost]
-        public async Task<Result> Update(GalleryViewModel model)
-        {
-            try
-            {
-                return await _gallery.Update(GalleryViewModel.Get(model));
-                
+            {    
+                 if (ModelState.IsValid)
+                {            
+                    return Ok(await _galleryRepository.Delete(model));                 
+                }
+                return BadRequest();
 
             }
             catch (Exception e)
             {
-               await _logger.AddException(e);
-               return Result.Failed;
+                await _logger.AddException(e);
+                return BadRequest();
+            }
+        }     
+        [HttpPost]
+        public async Task<IActionResult> Update(Gallery model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                     return Ok(await _galleryRepository.Update(model));
+                }
+                return BadRequest();
+
+            }
+            catch (Exception e)
+            {
+                await _logger.AddException(e);
+                return BadRequest();
             }
         }
     }

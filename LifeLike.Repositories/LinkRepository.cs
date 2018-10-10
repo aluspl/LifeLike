@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
+using LifeLike.Repositories.ViewModel;
 using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Repositories
@@ -11,10 +14,12 @@ namespace LifeLike.Repositories
     
     public  class LinkRepository : ILinkRepository
     {
+        private readonly IMapper _mapper;
         private readonly PortalContext _context;
         private readonly IEventLogRepository _logger;
-        public LinkRepository(PortalContext context, IEventLogRepository logger)
+        public LinkRepository(PortalContext context, IEventLogRepository logger, IMapper mapper)
         {
+            _mapper = mapper;
             _context = context;
             _logger = logger;
         }
@@ -23,7 +28,7 @@ namespace LifeLike.Repositories
         {
             try
             {
-               await _context.AddAsync(model);
+               await _context.AddAsync(_mapper.Map<LinkEntity>(model));
                await _context.SaveChangesAsync();
                 return  Result.Success;
                 
@@ -38,22 +43,26 @@ namespace LifeLike.Repositories
 
         public async Task<IEnumerable<Link>> List()
         {
-            return await _context.Links.ToListAsync();
+            var items =  await _context.Links.ToListAsync();
+            return _mapper.Map<IEnumerable<Link>>(items);
+
         }
 
         public async Task<Link> Get(long id)
         {
-            return await _context.Links.FirstOrDefaultAsync(p=>p.Id==id);
+            return await _context.Links.Where(p=>p.Id==id).ProjectTo<Link>().FirstOrDefaultAsync();
         }
         public async Task<Link> Get(string id)
         {
-            return await _context.Links.FirstOrDefaultAsync(p => p.Action == id);
+            return  await _context.Links.Where(p => p.Action == id).ProjectTo<Link>().FirstOrDefaultAsync();
         }
         public async Task<Result> Update(Link model)
         {
             try
             {
-                _context.Update(model);
+                var item = await _context.Links.FindAsync(model.Id);
+                _mapper.Map(model,item);
+                _context.Update(item);
                 await _context.SaveChangesAsync();
                 return  Result.Success;
                 
@@ -69,15 +78,14 @@ namespace LifeLike.Repositories
         {
             try
             {
-                _context.Remove(model);
+                _context.Remove(_mapper.Map<LinkEntity>(model));
                 await _context.SaveChangesAsync();
                 return  Result.Success;
                 
             }
             catch (Exception e)
             {
-                             await _logger.AddException(e);
-
+                await _logger.AddException(e);
                 return   Result.Failed;
             }
         }
@@ -86,8 +94,7 @@ namespace LifeLike.Repositories
         {
             try
             {
-                return await _context.Links.Where(p=>p.Category==category).ToListAsync();
-
+               return  await _context.Links.Where(p=>p.Category==category).ProjectTo<Link>().ToListAsync();
             }
             catch (Exception e)
             {
@@ -95,11 +102,27 @@ namespace LifeLike.Repositories
                 throw;
             }
         }
+
+        public async Task DeleteAsync(string shortName)
+        {
+            try{    
+                var item = await _context.Links.Where(p => p.Action == shortName).FirstOrDefaultAsync();
+                _context.Remove(item);
+                await _context.SaveChangesAsync();
+            }
+            catch(Exception e)
+            {
+                await _logger.AddException(e);
+                throw;
+            }
+           
+        }
     }
     
     public interface ILinkRepository : IRepository<Link>
     {
         Task<IEnumerable<Link>> List(LinkCategory category);
         Task<Link> Get(string id);
+        Task DeleteAsync(string shortName);
     }
 }

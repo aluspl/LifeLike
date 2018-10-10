@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Repositories;
-using LifeLike.Web.ViewModel;
+using LifeLike.Repositories.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -41,7 +41,7 @@ namespace LifeLike.Web.Controllers
         [HttpPost]
         [Route("Register")]    
 
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task<IActionResult> Register(Register model)
         {
             try
             {
@@ -72,7 +72,7 @@ namespace LifeLike.Web.Controllers
 
         [HttpPost]
         [Route("Login")]    
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> Login(Login model)
         {
             try
             {
@@ -83,12 +83,12 @@ namespace LifeLike.Web.Controllers
                 }
 
                 Debug.WriteLine($"LOGIN: {model}");               
-                var result = await _signInManager.PasswordSignInAsync(model.Login,
+                var result = await _signInManager.PasswordSignInAsync(model.UserName,
                     model.Password, model.RememberMe, false);
                 if (result.Succeeded)
                 {
-                    var user=_userManager.Users.SingleOrDefault(p=>p.UserName == model.Login);
-                    return Ok(GenerateJwtToken(model.Login, user));
+                    var user=_userManager.Users.SingleOrDefault(p=>p.UserName == model.UserName);
+                    return Ok(GenerateJwtToken(model.UserName, user));
                 }
                 return Unauthorized();
 

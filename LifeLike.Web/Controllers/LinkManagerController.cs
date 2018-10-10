@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories;
-using LifeLike.Web.ViewModel;
+using LifeLike.Repositories.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,54 +24,56 @@ namespace LifeLike.Web.Controllers
         }
         // GET
         [Authorize]
-        public async Task<IEnumerable<LinkViewModel>> GetList()
+        public async Task<IActionResult> GetList()
         {
             try
             {
                 var list = await _repository.List();            
-                return  list.Select(LinkViewModel.Get);
+                return  Ok(list);
             }
             catch (Exception e)
             {
                await _logger.AddException(e);
-                return null;
+                return  BadRequest(e);
             }
        
         }
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<Result> Create(LinkViewModel model)
+        public async Task<IActionResult> Create(Link model)
         {
             try
             {
-                return ModelState.IsValid
-                    ? await _repository.Create(LinkViewModel.Get(model))
-                    : Result.Failed;
+                if (ModelState.IsValid)
+                {
+                    return Ok(await _repository.Create(model));
+                }
+              return BadRequest();
             }
             catch (Exception e)
             {
                 await _logger.AddException(e);
-                return Result.Failed;
+              return BadRequest(e);
             }
  
 
         }
         [Authorize]
-        public async Task<LinkViewModel> Update(long id)
+        public async Task<IActionResult> Update(long id)
         {
             var model =await _repository.Get(id);
-            return LinkViewModel.Get(model);
+            return Ok(model);
 
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<Result> Update(LinkViewModel model)
+        public async Task<Result> Update(Link model)
         {
             try
             {
                 return ModelState.IsValid
-                    ? await _repository.Update(LinkViewModel.Get(model))
+                    ? await _repository.Update(Link.Get(model))
                     : Result.Failed;
             }
             catch (Exception e)
@@ -82,12 +84,12 @@ namespace LifeLike.Web.Controllers
         }
        
         [HttpPost]
-        public async Task<Result> Delete(LinkViewModel model)
+        public async Task<Result> Delete(Link model)
         {
             try
             {
                 return ModelState.IsValid
-                    ? await _repository.Delete(LinkViewModel.Get(model))
+                    ? await _repository.Delete(Link.Get(model))
                     : Result.Failed;
             }
             catch (Exception e)

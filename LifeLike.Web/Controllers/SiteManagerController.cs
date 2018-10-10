@@ -25,7 +25,7 @@ namespace LifeLike.Web.Controllers
 
         // GET
         [Authorize]
-        public async Task<IEnumerable<Config>> GetList()
+        public async Task<IEnumerable<ConfigEntity>> GetList()
         {
             var configs = await _config.List();
             return configs;
@@ -34,7 +34,7 @@ namespace LifeLike.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<Result> Create(Config model)
+        public async Task<Result> Create(ConfigEntity model)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace LifeLike.Web.Controllers
         }
 
         [Authorize]
-        public async Task<Config> Update(string id)
+        public async Task<ConfigEntity> Update(string id)
         {
             var model = await _config.Get(id);
             return model;
@@ -56,7 +56,7 @@ namespace LifeLike.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<Result> Update(Config model)
+        public async Task<Result> Update(ConfigEntity model)
         {
             try
             {

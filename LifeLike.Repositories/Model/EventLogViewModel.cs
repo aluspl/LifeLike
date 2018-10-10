@@ -1,18 +1,18 @@
 ﻿using System;
 using LifeLike.Data.Models;
 
-namespace LifeLike.Web.ViewModel
+namespace LifeLike.Repositories.ViewModel
 {
-    public class EventLogViewModel
+    public class Log
     {
         public  long Id { get; set; }
         public EventLogType Type { get; set; }
         public string Messages { get; set; }
         public string StackTrace {  get; set; }
         public DateTime EventTime { get; set;  }
-        public static EventLogViewModel Get(EventLog model)
+        public static Log Get(EventLogEntity model)
         {
-            return new EventLogViewModel
+            return new Log
             {
                 Type = model.Type,
                 EventTime = model.EventTime,
@@ -20,12 +20,6 @@ namespace LifeLike.Web.ViewModel
                 Messages = model.Messages,
                 StackTrace = model.StackTrace
             };
-
-        }
-
-        public static EventLog Generate(EventLogApiModel model)
-        {
-            throw new NotImplementedException();
         }
     }
 }

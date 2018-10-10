@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace LifeLike.Web.ViewModel
+namespace LifeLike.Repositories.ViewModel
 {
-    public class ConfigViewModel
+    public class Config
     {
         [Key]       
         public string Name { get; set; }

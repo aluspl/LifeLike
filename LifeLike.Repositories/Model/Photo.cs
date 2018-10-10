@@ -3,34 +3,33 @@ using System.IO;
 using LifeLike.Data.Models;
 using LifeLike.Repositories;
 
-namespace LifeLike.Web.ViewModel
+namespace LifeLike.Repositories.ViewModel
 {
-    public class PhotoViewModel
+    public class Photo
     {
         public long Id { get; set; }
        
         public string Title { get; set; }
 
-        public string Url { get; set; }
+        public string Url { get=> Path.Combine(PhotoRepository.PhotoPath, FileName); }
         public string FileName { get; set; }
 
         public string ThumbUrl { get; set; }
         
         public DateTime Created { get; set; }
         public string Camera { get; set; }
-        public  virtual Gallery Gallery { get; set; }
+        public  virtual GalleryEntity Gallery { get; set; }
         public long GalleryId { get; set; }
 
-        public static PhotoViewModel Get(Photo model)
+        public static Photo Get(PhotoEntity model)
         {
-            return new PhotoViewModel
+            return new Photo
             {
                 Title = model.Title,
                 Id=model.Id,
                 Created = model.Created,
                 Camera = model.Camera,
-                FileName=model.FileName,
-                Url = Path.Combine(PhotoRepository.PhotoPath, model.FileName),
+                FileName = model.FileName,
                 GalleryId=model.Gallery.Id
             };
         }

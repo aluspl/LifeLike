@@ -8,10 +8,7 @@ namespace LifeLike.Web.Utils
 {
     public class HtmlUtils
     {
-        public static string GetYoutubeId(string videoLink)
-        {
-            return videoLink.Contains('=') ? videoLink.Split('=').LastOrDefault() : videoLink;
-        }
+      
 
         public static IEnumerable<SelectListItem> CategoryList
         {

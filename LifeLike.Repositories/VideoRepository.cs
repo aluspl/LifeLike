@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
+using LifeLike.Repositories.ViewModel;
 using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Repositories
@@ -12,11 +14,13 @@ namespace LifeLike.Repositories
     {
         private readonly PortalContext _context;
         private readonly IEventLogRepository _logger;
+        private IMapper _mapper;
 
-        public VideoRepository(PortalContext context, IEventLogRepository logger)
+        public VideoRepository(PortalContext context, IEventLogRepository logger, IMapper mapper )
         {
             _context = context;
             _logger = logger;
+            _mapper = mapper;
         }
 
         public async Task<Result> Create(Video model)
@@ -37,19 +41,22 @@ namespace LifeLike.Repositories
 
         public async Task<IEnumerable<Video>> List()
         {
-            return await _context.Videos.ToListAsync();
+            var items = await _context.Videos.ToListAsync();
+            return _mapper.Map<IEnumerable<Video>>(items);
+
         }
 
         public async Task<Video> Get(long id)
         {
-            return await _context.Videos.FirstOrDefaultAsync(p => p.Id == id);
+            var item = await _context.Videos.Where(p => p.Id == id).FirstOrDefaultAsync();
+            return _mapper.Map<Video>(item);
         }
 
         public async Task<Result> Update(Video model)
         {
             try
             {
-                _context.Update(model);
+                _context.Update(_mapper.Map<VideoEntity>(model));
                 await _context.SaveChangesAsync();
                 return Result.Success;
             }
@@ -64,7 +71,8 @@ namespace LifeLike.Repositories
         {
             try
             {
-                _context.Remove(model);
+                
+                _context.Remove(_mapper.Map<VideoEntity>(model));
                 await _context.SaveChangesAsync();
                 return Result.Success;
             }
@@ -80,7 +88,8 @@ namespace LifeLike.Repositories
         {
             try
             {
-                return await _context.Videos.Where(p => p.Category == category).ToListAsync();
+                var items =await _context.Videos.Where(p => p.Category == category).ToListAsync();
+                return _mapper.Map<IEnumerable<Video>>(items);
             }
             catch (Exception e)
             {

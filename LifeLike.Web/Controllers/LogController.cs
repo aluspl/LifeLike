@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using AutoMapper;
 using LifeLike.Data.Models;
 using LifeLike.Repositories;
-using LifeLike.Web.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

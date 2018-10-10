@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LifeLike.Data.Models
 {
-    public class Gallery
+    public class GalleryEntity
     {
         [Key]
         public long Id { get; set; }
@@ -13,7 +13,7 @@ namespace LifeLike.Data.Models
         public string Description { get; set; }
         public string Place { get; set; }
         
-        public ICollection<Photo> Photos { get; set; }
+        public ICollection<PhotoEntity> Photos { get; set; }
         public string ShortTitle { get; set; }
     }
 }

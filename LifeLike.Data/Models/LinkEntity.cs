@@ -3,7 +3,7 @@ using LifeLike.Data.Models.Enums;
 
 namespace LifeLike.Data.Models
 {
-    public class Link
+    public class LinkEntity
     {
         [Key]
         public long Id { get; set; }

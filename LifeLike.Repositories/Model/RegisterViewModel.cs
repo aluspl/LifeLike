@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace LifeLike.Web.ViewModel
+namespace LifeLike.Repositories.ViewModel
 {
-    public class RegisterViewModel : BaseViewModel
+    public class Register : BaseViewModel
     {
         [Required, MaxLength(256)] 
         public string Login { get; set; }  

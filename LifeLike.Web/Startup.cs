@@ -121,7 +121,7 @@ namespace LifeLike.Web
             
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.AddProfile(new DomainProfile());
+                cfg.AddProfile(new Profiles.Convert());
             });
 
             var mapper = config.CreateMapper();

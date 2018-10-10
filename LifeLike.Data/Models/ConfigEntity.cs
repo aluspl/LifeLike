@@ -3,7 +3,7 @@ using LifeLike.Data.Models.Enums;
 
 namespace LifeLike.Data.Models
 {
-    public class Config
+    public class ConfigEntity
     {
         public const string WelcomeVideo = "WelcomeVideo";
         public const string WelcomeText = "WelcomeText";

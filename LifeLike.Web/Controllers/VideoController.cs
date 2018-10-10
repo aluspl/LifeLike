@@ -6,8 +6,8 @@ using AutoMapper;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories;
-using LifeLike.Web.Extensions;
-using LifeLike.Web.ViewModel;
+using LifeLike.Repositories.Extensions;
+using LifeLike.Repositories.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LifeLike.Web.Controllers
@@ -27,14 +27,14 @@ namespace LifeLike.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(VideoViewModel model)
+        public async Task<IActionResult> Create(Video model)
         {
             try
             {
                 model.PublishDate = DateTime.Now;
 
                 if (!ModelState.IsValid) return BadRequest(Result.Failed);
-                var item = await _repository.Create(_mapper.Map<Video>(model));
+                var item = await _repository.Create(model);
                 return Ok(item);
             }
             catch (Exception e)
@@ -51,9 +51,7 @@ namespace LifeLike.Web.Controllers
             try
             {
                 var list = await _repository.List();
-                var items = list.Select(_mapper.Map);
-                Debug.WriteLine(items.ToJSON());
-                return Ok(items);
+                return Ok(list);
             }
             catch (Exception e)
             {

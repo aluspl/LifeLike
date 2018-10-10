@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace LifeLike.Web.Extensions
+namespace LifeLike.Repositories.Extensions
 {
     public static class JsonExtensions
     {

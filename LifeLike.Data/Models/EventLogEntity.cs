@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LifeLike.Data.Models
 {
-    public class EventLog
+    public class EventLogEntity
     {
         [Key]
         public long Id { get; set; }
@@ -13,9 +13,9 @@ namespace LifeLike.Data.Models
         public DateTime EventTime { get; set;  }
 
       
-        public static EventLog Generate(Exception model)
+        public static EventLogEntity Generate(Exception model)
         {
-            return new EventLog
+            return new EventLogEntity
             {
                 EventTime = DateTime.Now,
                 Type = EventLogType.Error,
@@ -25,9 +25,9 @@ namespace LifeLike.Data.Models
         }
 
       
-        public static EventLog Generate(EventLogType result, string message)
+        public static EventLogEntity Generate(EventLogType result, string message)
         {
-              return new EventLog
+              return new EventLogEntity
                         {
                             Type = result,
                             Messages = message,
@@ -35,9 +35,9 @@ namespace LifeLike.Data.Models
                         };        
         }
 
-        public static EventLog Generate(string id, string action, string controller)
+        public static EventLogEntity Generate(string id, string action, string controller)
         {
-            return new EventLog
+            return new EventLogEntity
             {
                 Type = EventLogType.Statistic,
                 Messages = $"{id}; {action}; {controller}",
@@ -45,9 +45,9 @@ namespace LifeLike.Data.Models
             };                
         }
 
-        public static EventLog Generate(int i, string information)
+        public static EventLogEntity Generate(int i, string information)
         {
-             return new EventLog
+             return new EventLogEntity
             {
                 Type = EventLogType.Info,
                 Messages = $"{i}; {information}",

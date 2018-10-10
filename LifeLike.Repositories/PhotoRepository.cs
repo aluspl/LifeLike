@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
+using LifeLike.Repositories.ViewModel;
 using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Repositories
@@ -12,12 +14,14 @@ namespace LifeLike.Repositories
     public  class PhotoRepository : IPhotoRepository
     {
         private readonly PortalContext _context;
+        private readonly IMapper _mapper;
         private readonly IEventLogRepository _logger;
 
-        public PhotoRepository(PortalContext context, IEventLogRepository logger)
+        public PhotoRepository(PortalContext context, IEventLogRepository logger, IMapper mapper)
         {
             _logger = logger;
             _context = context;
+            _mapper = mapper;
         }
 
         public static readonly string PhotoPath =  "/photos/";
@@ -27,7 +31,8 @@ namespace LifeLike.Repositories
         {
             try
             {
-                _context.Add(model);
+                
+                _context.Add(_mapper.Map<PhotoEntity>(model));
                 _context.SaveChanges();
                 return  Result.Success;
                 
@@ -41,14 +46,17 @@ namespace LifeLike.Repositories
 
         public async Task<IEnumerable<Photo>> List()
         {
-            return  await _context.Photos.ToListAsync();
+            var items =   await _context.Photos.ToListAsync();
+            return _mapper.Map<IEnumerable<Photo>>(items);
+
         }
 
         public async Task<Photo> Get(long id)
         {
             try
             {
-                return _context.Photos.FirstOrDefault(p => p.Id == id);                
+                var items=  await _context.Photos.FirstOrDefaultAsync(p => p.Id == id);       
+                return _mapper.Map<Photo>(items);
             }
             catch (Exception e)
             {
@@ -62,7 +70,7 @@ namespace LifeLike.Repositories
         {
             try
             {
-                _context.Update(model);
+                _context.Update(_mapper.Map<PhotoEntity>(model));
               await  _context.SaveChangesAsync();
                 return  Result.Success;
                 
@@ -79,7 +87,7 @@ namespace LifeLike.Repositories
         {
             try
             {
-                _context.Remove(model);
+                _context.Remove(_mapper.Map<PhotoEntity>(model));
                 await _context.SaveChangesAsync();
                 return  Result.Success;
                 
@@ -101,15 +109,13 @@ namespace LifeLike.Repositories
                     .Include(p=>p.Photos)
                     .SingleOrDefault();
                 if (gallery == null) return Result.Failed;
-                gallery.Photos.Add(photo);
-
+                gallery.Photos.Add(_mapper.Map<PhotoEntity>(photo));
                 _context.SaveChanges();
                 return  Result.Success;
             }
             catch (Exception e)
             {
-               await _logger.AddException(e);
-
+                await _logger.AddException(e);
                 return   Result.Failed;
             }           
         }
