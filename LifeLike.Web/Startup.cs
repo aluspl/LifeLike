@@ -21,6 +21,8 @@ using Newtonsoft.Json.Serialization;
 using Serilog;
 using Swashbuckle.AspNetCore.Swagger;
 using LifeLike.Web.Services.Swagger;
+using LifeLike.Repositories.Profiles;
+
 namespace LifeLike.Web
 {
     public class Startup
@@ -116,7 +118,7 @@ namespace LifeLike.Web
 
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.AddProfile(new Repositories.Profiles.DomainProfile());
+                cfg.AddProfile(new DomainProfile());
             });
 
             var mapper = config.CreateMapper();
