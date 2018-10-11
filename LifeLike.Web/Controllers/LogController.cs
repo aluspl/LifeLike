@@ -31,8 +31,7 @@ namespace LifeLike.Web.Controllers
             try
             {
                 var list=await _logger.List();
-                var items=list.Select(_mapper.Map<EventLogViewModel>);
-                return Ok(items);
+                return Ok(list);
             }
             catch (Exception e)
             {
@@ -49,7 +48,7 @@ namespace LifeLike.Web.Controllers
               var login=  User.Identity.IsAuthenticated;
 
                 var log = await _logger.Get(id);
-                return Ok ( _mapper.Map<EventLogViewModel>(log));
+                return Ok (log);
             }
             catch (Exception e)
             {

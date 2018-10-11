@@ -35,9 +35,8 @@ namespace LifeLike.Web.Controllers
         public async Task<IActionResult> Posts()
         {
             await _logger.AddStat("Posts", "List", "Page");
-            var list = await _pageRepository.List();
-            var posts = list.Where(p => p.Category == PageCategory.Post).Select(_mapper.Map<PageViewModel>);
-            return Ok(posts);
+            var list = await _pageRepository.List(PageCategory.Post);
+            return Ok(list);
         }
         // GET
 
@@ -70,11 +69,8 @@ namespace LifeLike.Web.Controllers
                 var isLogged = User.Identity.IsAuthenticated;
 
                 var list = 
-                    await _pageRepository.List();
-                var pageList = list
-                    .Where(p => p.Category == PageCategory.Projects)
-                    .Select(_mapper.Map<PageViewModel>);
-                return Ok(pageList);
+                    await _pageRepository.List(PageCategory.Projects);                
+                return Ok(list);
             }
             catch (Exception e)
             {
@@ -91,9 +87,7 @@ namespace LifeLike.Web.Controllers
                     
                 var page = await _pageRepository.Get(id.ToLower());
                 if (page == null) return NotFound();
-                var Entity = _mapper.Map<PageViewModel>(page);
-
-                return Ok(Entity);
+                return Ok(page);
             }
             catch (Exception e)
             {

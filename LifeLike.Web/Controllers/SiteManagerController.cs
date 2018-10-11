@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories;
+using LifeLike.Repositories.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,47 +26,51 @@ namespace LifeLike.Web.Controllers
 
         // GET
         [Authorize]
-        public async Task<IEnumerable<ConfigEntity>> GetList()
+        public async Task<IActionResult> GetList()
         {
             var configs = await _config.List();
-            return configs;
+            return Ok(configs);
         }
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<Result> Create(ConfigEntity model)
+        public async Task<IActionResult> Create(Config model)
         {
             try
             {
-                return ModelState.IsValid ? await _config.Create(model) : Result.Failed;
+                if (!ModelState.IsValid) return BadRequest();
+                await _config.Create(model);
+                 return Ok(); 
             }
             catch (Exception e)
             {
                 await _logger.AddException(e);
-                return Result.Failed;
+                return StatusCode(500);
             }
         }
 
         [Authorize]
-        public async Task<ConfigEntity> Update(string id)
+        public async Task<IActionResult> Update(string id)
         {
             var model = await _config.Get(id);
-            return model;
+            return Ok(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<Result> Update(ConfigEntity model)
+        public async Task<IActionResult> Update(Config model)
         {
             try
             {
-                return ModelState.IsValid ? await _config.Update(model) :  Result.Failed;
+                if (!ModelState.IsValid) return BadRequest();
+                await _config.Update(model);
+                 return Ok(); 
             }
             catch (Exception e)
             {
                 await _logger.AddException(e);
-                return Result.Failed;
+                return StatusCode(500);
             }
         }
     }

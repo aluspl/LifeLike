@@ -18,14 +18,12 @@ namespace LifeLike.Web.Controllers
         private readonly IConfigRepository _config;
         private readonly IEventLogRepository _logger;
         private readonly ILinkRepository _link;
-        private readonly IMapper _mapper;
 
-        public HomeController(IConfigRepository config, IEventLogRepository logger, IMapper mapper,
+        public HomeController(IConfigRepository config, IEventLogRepository logger, 
         SignInManager<User> signInManager,
         ILinkRepository link)
         {
             _link= link;
-            _mapper = mapper;
             _logger = logger;
             _config = config;
         }
@@ -44,7 +42,7 @@ namespace LifeLike.Web.Controllers
             await _logger.AddStat("Menu", "Index", "Home");
             var list = _link.List(LinkCategory.Menu);
 
-            return Json(list);
+            return Ok(list);
         }
 
 

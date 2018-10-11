@@ -73,7 +73,7 @@ namespace LifeLike.Web.Controllers
             try
             {
                 return ModelState.IsValid
-                    ? await _repository.Update(Link.Get(model))
+                    ? await _repository.Update(model)
                     : Result.Failed;
             }
             catch (Exception e)
@@ -89,7 +89,7 @@ namespace LifeLike.Web.Controllers
             try
             {
                 return ModelState.IsValid
-                    ? await _repository.Delete(Link.Get(model))
+                    ? await _repository.Delete(model)
                     : Result.Failed;
             }
             catch (Exception e)

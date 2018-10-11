@@ -5,12 +5,10 @@ using System.Text;
 using AutoMapper;
 using LifeLike.Data.Models;
 using LifeLike.Repositories;
-using LifeLike.Web.Profiles;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
@@ -22,7 +20,7 @@ using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using Serilog;
 using Swashbuckle.AspNetCore.Swagger;
-
+using LifeLike.Web.Services.Swagger;
 namespace LifeLike.Web
 {
     public class Startup
@@ -54,18 +52,18 @@ namespace LifeLike.Web
             // Add framework services.
             services.AddLogging(loggingBuilder =>
                 loggingBuilder.AddSerilog(dispose: true));
-            if (Configuration["DB"]==null)
+            if (Configuration["DB"] == null)
             {
-                services.AddDbContext<PortalContext>(options =>              
+                services.AddDbContext<PortalContext>(options =>
                     options.UseSqlite("Data Source=lifelike.db"));
-                    Debug.WriteLine("Using SQLite");
+                Debug.WriteLine("Using SQLite");
             }
             else
             {
                 services.AddDbContext<PortalContext>(options =>
-                       options.UseSqlServer(Configuration["DB"], 
+                       options.UseSqlServer(Configuration["DB"],
                        b => b.MigrationsAssembly("LifeLike.Web")));
-                    Debug.WriteLine("Using SQL");
+                Debug.WriteLine("Using SQL");
             }
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
@@ -85,9 +83,9 @@ namespace LifeLike.Web
             {
                 options.LoginPath = "/Account/Login";
                 options.LogoutPath = "/Account/Logout";
-                
-                options.ExpireTimeSpan=TimeSpan.FromDays(50);
-            });    
+
+                options.ExpireTimeSpan = TimeSpan.FromDays(50);
+            });
 
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // => remove default claims
             services
@@ -96,7 +94,7 @@ namespace LifeLike.Web
                     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
                     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                    
+
                 })
                 .AddJwtBearer(cfg =>
                 {
@@ -109,19 +107,16 @@ namespace LifeLike.Web
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtKey"])),
                         ClockSkew = TimeSpan.Zero // remove delay of token when expire
                     };
-                });    
+                });
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
-            }); 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new Info { Title = "QuickApp API", Version = "v1" });            
-            }); 
-            
+            });
+            services.AddSwaggerSetting();
+
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.AddProfile(new Profiles.Convert());
+                cfg.AddProfile(new Repositories.Profiles.DomainProfile());
             });
 
             var mapper = config.CreateMapper();
@@ -134,6 +129,7 @@ namespace LifeLike.Web
 
         }
 
+        
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory,
             PortalContext context)
@@ -144,26 +140,19 @@ namespace LifeLike.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();           
-                
+                app.UseBrowserLink();
+
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-                    
+
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
             app.UseAuthentication();
 
-
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "QuickApp API V1");
-            });
-
-
+            app.UseSwaggerSetting();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -172,7 +161,7 @@ namespace LifeLike.Web
             });
 
             app.UseSpa(spa =>
-            {              
+            {
                 spa.Options.SourcePath = "ClientApp";
 
                 if (env.IsDevelopment())
@@ -182,5 +171,7 @@ namespace LifeLike.Web
             });
             DbInitializer.Initialize(context);
         }
+
+       
     }
 }
