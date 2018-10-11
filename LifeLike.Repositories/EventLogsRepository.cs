@@ -3,18 +3,23 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
+using LifeLike.Repositories.ViewModel;
 using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Repositories
 {
     public class EventLogsRepository : IEventLogRepository
     {
+        private readonly IMapper _mapper;
         private readonly PortalContext _context;
 
-        public EventLogsRepository(PortalContext context)
+        public EventLogsRepository(PortalContext context, IMapper mapper)
         {
+            _mapper =mapper;
             _context = context;
         }
 
@@ -24,7 +29,7 @@ namespace LifeLike.Repositories
             {
                 Debug.WriteLine(e);
 
-                return await Create(EventLogEntity.Generate(e));
+                return await Create(Log.Generate(e));
             }
             catch (Exception)
             {
@@ -65,7 +70,7 @@ namespace LifeLike.Repositories
             }
         }
 
-        public async Task<Result> Add(EventLogEntity model)
+        public async Task<Result> Add(Log model)
         {
             try
             {
@@ -77,11 +82,11 @@ namespace LifeLike.Repositories
             }
         }
 
-        public async Task<Result> Create(EventLogEntity model)
+        public async Task<Result> Create(Log model)
         {
             try
             {
-                await _context.EventLogs.AddAsync(model);
+                await _context.EventLogs.AddAsync(_mapper.Map<EventLogEntity>(model));
                 await _context.SaveChangesAsync();
                 return Result.Success;
             }
@@ -92,21 +97,21 @@ namespace LifeLike.Repositories
             }
         }
 
-        public async Task<IEnumerable<EventLogEntity>> List()
+        public async Task<IEnumerable<Log>> List()
         {
-            return await _context.EventLogs.ToListAsync();
+            return await _context.EventLogs.ProjectTo<Log>().ToListAsync();
         }
 
-        public async Task<IEnumerable<EventLogEntity>> List(EventLogType type)
+        public async Task<IEnumerable<Log>> List(EventLogType type)
         {
-            return await _context.EventLogs.Where(p => p.Type == type).ToListAsync();
+            return await _context.EventLogs.Where(p => p.Type == type).ProjectTo<Log>().ToListAsync();
         }
 
         public async Task<Result> LogInformation(int i, string information)
         {
             try
             {
-                return await Create(EventLogEntity.Generate(i, information));
+                return await Create(Log.Generate(i, information));
             }
             catch (Exception e)
             {
@@ -119,7 +124,7 @@ namespace LifeLike.Repositories
         {
             try
             {
-                await Create(EventLogEntity.Generate(result, message));
+                await Create(Log.Generate(result, message));
                 return Result.Success;
             }
             catch (Exception e)
@@ -133,9 +138,7 @@ namespace LifeLike.Repositories
         {
             try
             {
-                _context.EventLogs.RemoveRange(_context.EventLogs.Where(p => p.Type != EventLogType.Statistic));
-
-                await _context.SaveChangesAsync();
+                await DeleteAll();
                 return Result.Success;
             }
             catch (Exception e)
@@ -145,12 +148,12 @@ namespace LifeLike.Repositories
             }
         }
 
-        public async Task<EventLogEntity> Get(long id)
+        public async Task<Log> Get(long id)
         {
-            return await _context.EventLogs.FirstOrDefaultAsync(p => p.Id == id);
+            return await _context.EventLogs.Where(p => p.Id == id).ProjectTo<Log>().FirstOrDefaultAsync();
         }
 
-        public async Task<Result> Update(EventLogEntity model)
+        public async Task<Result> Update(Log model)
         {
             try
             {
@@ -165,7 +168,7 @@ namespace LifeLike.Repositories
             }
         }
 
-        public async Task<Result> Delete(EventLogEntity model)
+        public async Task<Result> Delete(Log model)
         {
             try
             {
@@ -196,15 +199,15 @@ namespace LifeLike.Repositories
         }
     }
 
-    public interface IEventLogRepository : IRepository<EventLogEntity>
+    public interface IEventLogRepository : IRepository<Log>
     {
         Task<Result> AddException(Exception e);
         Task<Result> AddStat(string id, string action, string controller);
         Task<Result> AddStat(string action, string controller);
 
-        Task<IEnumerable<EventLogEntity>> List(EventLogType type);
+        Task<IEnumerable<Log>> List(EventLogType type);
         Task<Result> LogInformation(EventLogType result, string message);
         Task<Result> ClearLogs();
-        Task<Result> Add(EventLogEntity eventLog);
+        Task<Result> Add(Log eventLog);
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
@@ -12,11 +13,13 @@ namespace LifeLike.Repositories
 {
     public class ConfigRepository : IConfigRepository
     {
+        private readonly IMapper _mapper;
         private readonly IEventLogRepository _logger;
         private readonly PortalContext _context;
 
-        public ConfigRepository(PortalContext context, IEventLogRepository logger)
+        public ConfigRepository(PortalContext context, IEventLogRepository logger, IMapper mapper)
         {
+            _mapper = mapper;
             _logger = logger;
             _context = context;
         }
@@ -26,7 +29,7 @@ namespace LifeLike.Repositories
         {
             try
             {
-                await _context.AddAsync(model);
+                await _context.AddAsync(_mapper.Map<ConfigEntity>(model));
                 await _context.SaveChangesAsync();
                 return Result.Success;
             }
@@ -59,7 +62,9 @@ namespace LifeLike.Repositories
         {
             try
             {
-                _context.Update(model);
+                var item =  await _context.Configs.Where(p => p.Name == model.Name).FirstOrDefaultAsync();
+                _mapper.Map(model, item);
+                _context.Update(item);
                 _context.SaveChanges();
                 return Result.Success;
             }
@@ -74,8 +79,10 @@ namespace LifeLike.Repositories
         {
             try
             {
-                _context.Remove(model);
-                _context.SaveChanges();
+                var item =  await _context.Configs.Where(p => p.Name == model.Name).FirstOrDefaultAsync();
+
+                _context.Remove(item);
+                await _context.SaveChangesAsync();
                 return Result.Success;
             }
             catch (Exception e)
