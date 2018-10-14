@@ -26,7 +26,7 @@ namespace LifeLike.Web.Controllers
             _mapper = mapper;
         }
 
-        [HttpPost]
+        [HttpPost("Create")]
         public async Task<IActionResult> Create(Video model)
         {
             try
@@ -43,7 +43,21 @@ namespace LifeLike.Web.Controllers
                 return StatusCode(500);
             }
         }
-
+         [HttpDelete("Delete")]
+        public async Task<IActionResult> Delete(long id)
+        {
+            try
+            {
+                if (!ModelState.IsValid) return BadRequest(Result.Failed);
+                var item = await _repository.Delete(new Video { Id = id});
+                return Ok(item);
+            }
+            catch (Exception e)
+            {
+                await _logger.AddException(e);
+                return StatusCode(500);
+            }
+        }
         // GET
         [HttpGet("List")]
         public async Task<IActionResult> Get()

@@ -95,9 +95,7 @@ namespace LifeLike.Web.Controllers
                 return StatusCode(500);
             }
         }
-//TODO: CATEGORY IN DROPDPOWN IN ANGULAR
-        [HttpPost]
-        [Route("Create")]
+        [HttpPost("Create")]
         public async Task<IActionResult> Create([FromBody] Page model)
         {
             try
@@ -118,8 +116,7 @@ namespace LifeLike.Web.Controllers
             }
         }
 
-        [HttpDelete]
-        [Route("Delete")]
+        [HttpDelete("Delete")]
         public async Task<IActionResult> Delete([FromBody] Page model)
         {
             try
@@ -136,6 +133,7 @@ namespace LifeLike.Web.Controllers
                 return StatusCode(500);
             }
         }
+        [HttpGet("Update")]
         public async Task<IActionResult> Update(long id)
         {
             try
@@ -151,7 +149,7 @@ namespace LifeLike.Web.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPut("Update")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update([FromBody] Page model)
         {

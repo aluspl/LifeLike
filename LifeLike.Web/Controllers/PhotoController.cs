@@ -31,7 +31,7 @@ namespace LifeLike.Web.Controllers
             _gallery = gallery;
             Path.Combine("photos");
         }
-
+        [HttpGet("UploadFiles")]
         public async Task<UploadFileViewModel> UploadFiles(long id)
         {
             await _logger.AddStat(id.ToString(), "Upload", "Photo");
@@ -40,7 +40,7 @@ namespace LifeLike.Web.Controllers
             return Gallery.GetViewForUpload(gallery);
         }
 
-        [HttpPost]
+        [HttpPost("UploadFiles")]
         public async Task<IActionResult> UploadFiles(UploadFileViewModel model)
         {
             try
@@ -71,7 +71,7 @@ namespace LifeLike.Web.Controllers
 
             }
         }
-
+        [HttpGet("Detail")]
         public async Task<IActionResult> Detail(long id)
         {
             try
@@ -89,8 +89,7 @@ namespace LifeLike.Web.Controllers
             }
         }
 
-
-        public bool IsFileSupported(IFormFile file)
+        private bool IsFileSupported(IFormFile file)
         {
             var isSupported = false;
 

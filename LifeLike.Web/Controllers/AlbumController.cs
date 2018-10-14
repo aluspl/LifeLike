@@ -60,7 +60,7 @@ namespace LifeLike.Web.Controllers
                 return null;
             }
         }
-        [HttpPost]
+        [HttpPost("Create")]
         public async Task<IActionResult> CreateGallery(Gallery model)
         {
 
@@ -79,6 +79,7 @@ namespace LifeLike.Web.Controllers
         }
        
         [HttpDelete]
+        [Route("Delete")]
         public async Task<IActionResult> Delete(Gallery model)
         {
             try
@@ -96,7 +97,7 @@ namespace LifeLike.Web.Controllers
                 return BadRequest();
             }
         }     
-        [HttpPost]
+        [HttpPut("Update")]
         public async Task<IActionResult> Update(Gallery model)
         {
             try

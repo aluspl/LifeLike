@@ -24,6 +24,7 @@ namespace LifeLike.Web.Controllers
         }
         // GET
         [Authorize]
+        [HttpGet]
         public async Task<IActionResult> GetList()
         {
             try
@@ -59,6 +60,7 @@ namespace LifeLike.Web.Controllers
  
 
         }
+        [HttpGet("Update")]
         [Authorize]
         public async Task<IActionResult> Update(long id)
         {
@@ -66,9 +68,9 @@ namespace LifeLike.Web.Controllers
             return Ok(model);
 
         }
-        [HttpPost]
+        [HttpPut("Update")]
         [ValidateAntiForgeryToken]
-        public async Task<Result> Update(Link model)
+        public async Task<Result> Update([FromBody]Link model)
         {
             try
             {
@@ -83,8 +85,8 @@ namespace LifeLike.Web.Controllers
             } 
         }
        
-        [HttpPost]
-        public async Task<Result> Delete(Link model)
+        [HttpDelete("Delete")]
+        public async Task<Result> Delete([FromBody]Link model)
         {
             try
             {

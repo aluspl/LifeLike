@@ -25,6 +25,7 @@ namespace LifeLike.Web.Controllers
         }
 
         // GET
+        [HttpGet]
         [Authorize]
         public async Task<IActionResult> GetList()
         {
@@ -33,7 +34,7 @@ namespace LifeLike.Web.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost("Create")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Config model)
         {
@@ -49,7 +50,7 @@ namespace LifeLike.Web.Controllers
                 return StatusCode(500);
             }
         }
-
+        [HttpGet("Update")]
         [Authorize]
         public async Task<IActionResult> Update(string id)
         {
@@ -57,7 +58,7 @@ namespace LifeLike.Web.Controllers
             return Ok(model);
         }
 
-        [HttpPost]
+        [HttpPut("Update")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(Config model)
         {

@@ -39,8 +39,7 @@ namespace LifeLike.Web.Controllers
         }
 
         [HttpPost]
-        [Route("Register")]    
-
+        [Route("Register")]
         public async Task<IActionResult> Register(Register model)
         {
             try
