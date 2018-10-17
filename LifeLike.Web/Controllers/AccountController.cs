@@ -24,11 +24,11 @@ namespace LifeLike.Web.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        private readonly IEventLogRepository _logger;
+        private readonly ILogService _logger;
         private readonly IConfiguration _configuration;
 
         public AccountController(UserManager<User> userManager, SignInManager<User> signInManager,
-            IEventLogRepository logger,    
+            ILogService logger,    
             IConfiguration configuration
 )
         {

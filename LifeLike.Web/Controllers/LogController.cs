@@ -14,10 +14,10 @@ namespace LifeLike.Web.Controllers
     [Route("api/[controller]")]
     public class LogController : Controller
     {
-        private readonly IEventLogRepository _logger;
+        private readonly ILogService _logger;
         private readonly IMapper _mapper;
 
-        public LogController( IEventLogRepository logger, IMapper mapper)
+        public LogController( ILogService logger, IMapper mapper)
         {
             _logger = logger;
             _mapper=mapper;

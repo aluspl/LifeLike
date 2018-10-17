@@ -22,6 +22,7 @@ using Serilog;
 using Swashbuckle.AspNetCore.Swagger;
 using LifeLike.Web.Services.Swagger;
 using LifeLike.Repositories.Profiles;
+using LifeLike.Repositories.Services;
 
 namespace LifeLike.Web
 {
@@ -69,14 +70,14 @@ namespace LifeLike.Web
             }
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
-            services.AddScoped<IEventLogRepository, EventLogsRepository>();
-
+            services.AddScoped<ILogService, LogService>();
+            services.AddScoped<IRepository<T>, BaseREpository<T>();
             services.AddScoped<ILinkRepository, LinkRepository>();
-            services.AddScoped<IConfigRepository, ConfigRepository>();
-            services.AddScoped<IGalleryRepository, GalleryRepository>();
+            services.AddScoped<IConfigService, ConfigService>();
+            services.AddScoped<IAlbumService, AlbumService>();
             services.AddScoped<IPageRepository, PageRepository>();
-            services.AddScoped<IPhotoRepository, PhotoRepository>();
-            services.AddScoped<IVideoRepository, VideoRepository>();
+            services.AddScoped<IPhotoService, PhotoService>();
+            services.AddScoped<IVideoService, VideoService>();
 
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<PortalContext>()

@@ -11,13 +11,13 @@ using Microsoft.EntityFrameworkCore;
 namespace LifeLike.Repositories
 {
     
-    public  class PhotoRepository : IPhotoRepository
+    public  class PhotoService : IPhotoService
     {
         private readonly PortalContext _context;
         private readonly IMapper _mapper;
-        private readonly IEventLogRepository _logger;
+        private readonly ILogService _logger;
 
-        public PhotoRepository(PortalContext context, IEventLogRepository logger, IMapper mapper)
+        public PhotoService(PortalContext context, ILogService logger, IMapper mapper)
         {
             _logger = logger;
             _context = context;
@@ -121,7 +121,7 @@ namespace LifeLike.Repositories
         }
     }
     
-    public interface IPhotoRepository : IRepository<Photo>
+    public interface IPhotoService : IRepository<Photo>
     {
         Task<Result> Create(Photo photo, long modelGalleryId);
     }

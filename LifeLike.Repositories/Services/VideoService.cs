@@ -8,15 +8,15 @@ using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories.ViewModel;
 using Microsoft.EntityFrameworkCore;
 
-namespace LifeLike.Repositories
+namespace LifeLike.Repositories.Services
 {
-    public class VideoRepository : IVideoRepository
+    public class VideoService : IVideoService
     {
         private readonly PortalContext _context;
-        private readonly IEventLogRepository _logger;
+        private readonly ILogService _logger;
         private IMapper _mapper;
 
-        public VideoRepository(PortalContext context, IEventLogRepository logger, IMapper mapper )
+        public VideoService(PortalContext context, ILogService logger, IMapper mapper )
         {
             _context = context;
             _logger = logger;
@@ -99,7 +99,7 @@ namespace LifeLike.Repositories
         }
     }
 
-    public interface IVideoRepository : IRepository<Video>
+    public interface IVideoService
     {
         Task<IEnumerable<Video>> List(VideoCategory category);
     }

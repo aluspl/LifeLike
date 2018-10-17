@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories;
+using LifeLike.Repositories.Services;
 using LifeLike.Repositories.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -14,11 +15,11 @@ namespace LifeLike.Web.Controllers
     [Route("api/[controller]")]
     public class SiteManagerController : Controller
     {
-        private readonly IConfigRepository _config;
+        private readonly IConfigService _config;
 
-        private readonly IEventLogRepository _logger;
+        private readonly ILogService _logger;
 
-        public SiteManagerController(IConfigRepository configRepository, IEventLogRepository logger)
+        public SiteManagerController(IConfigService configRepository, ILogService logger)
         {
             _config = configRepository;
             _logger = logger;

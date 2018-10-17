@@ -55,7 +55,7 @@ namespace LifeLike.Repositories.ViewModel
         {
             var selectedPhoto = model?.Photos?.FirstOrDefault() != null
                 ?model.Photos.FirstOrDefault().Url
-                : Path.Combine(PhotoRepository.PhotoPath, "logo.png");
+                : Path.Combine(PhotoService.PhotoPath, "logo.png");
  
             return selectedPhoto;
         }

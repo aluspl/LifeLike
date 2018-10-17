@@ -11,7 +11,7 @@ namespace LifeLike.Repositories.ViewModel
        
         public string Title { get; set; }
 
-        public string Url { get=> Path.Combine(PhotoRepository.PhotoPath, FileName); }
+        public string Url { get=> Path.Combine(PhotoService.PhotoPath, FileName); }
         public string FileName { get; set; }
 
         public string ThumbUrl { get; set; }

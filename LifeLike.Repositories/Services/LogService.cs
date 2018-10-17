@@ -10,14 +10,14 @@ using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories.ViewModel;
 using Microsoft.EntityFrameworkCore;
 
-namespace LifeLike.Repositories
+namespace LifeLike.Repositories.Services
 {
-    public class EventLogsRepository : IEventLogRepository
+    public class LogService : ILogService
     {
         private readonly IMapper _mapper;
-        private readonly PortalContext _context;
+        private readonly IRepository<EventLogEntity> _context;
 
-        public EventLogsRepository(PortalContext context, IMapper mapper)
+        public LogService(IRepository<EventLogEntity> context, IMapper mapper)
         {
             _mapper =mapper;
             _context = context;
@@ -86,8 +86,7 @@ namespace LifeLike.Repositories
         {
             try
             {
-                await _context.EventLogs.AddAsync(_mapper.Map<EventLogEntity>(model));
-                await _context.SaveChangesAsync();
+                 _context.Add(_mapper.Map<EventLogEntity>(model));
                 return Result.Success;
             }
             catch (Exception e)
@@ -99,12 +98,12 @@ namespace LifeLike.Repositories
 
         public async Task<IEnumerable<Log>> List()
         {
-            return await _context.EventLogs.ProjectTo<Log>().ToListAsync();
+            return await _context.GetOverviewQuery().ProjectTo<Log>().ToListAsync();
         }
 
-        public async Task<IEnumerable<Log>> List(EventLogType type)
+        public IEnumerable<Log> List(EventLogType type)
         {
-            return await _context.EventLogs.Where(p => p.Type == type).ProjectTo<Log>().ToListAsync();
+            return _context.GetOverviewQuery(p => p.Type == type).ProjectTo<Log>().AsEnumerable();
         }
 
         public async Task<Result> LogInformation(int i, string information)
@@ -150,15 +149,17 @@ namespace LifeLike.Repositories
 
         public async Task<Log> Get(long id)
         {
-            return await _context.EventLogs.Where(p => p.Id == id).ProjectTo<Log>().FirstOrDefaultAsync();
+            var item = _context.GetDetail(p => p.Id == id);
+            return _mapper.Map<Log>(item);
         }
 
         public async Task<Result> Update(Log model)
         {
             try
             {
-                _context.Update(model);
-                await _context.SaveChangesAsync();
+                EventLogEntity item = GetEntity(model.Id);
+                _mapper.Map(model, item);
+                _context.Update(item);
                 return Result.Success;
             }
             catch (Exception e)
@@ -168,12 +169,12 @@ namespace LifeLike.Repositories
             }
         }
 
-        public async Task<Result> Delete(Log model)
+        public async Task<Result> Delete(long id)
         {
             try
             {
-                _context.Remove(model);
-                await _context.SaveChangesAsync();
+                EventLogEntity item = GetEntity(id);
+                _context.Delete(item);
                 return Result.Success;
             }
             catch (Exception e)
@@ -181,14 +182,18 @@ namespace LifeLike.Repositories
                 await AddException(e);
                 return Result.Failed;
             }
+        }
+
+        private EventLogEntity GetEntity(long id)
+        {
+            return _context.GetDetail(p => p.Id == id);
         }
 
         public async Task<Result> DeleteAll()
         {
             try
             {
-                _context.EventLogs.RemoveRange(_context.EventLogs.ToList());
-                await _context.SaveChangesAsync();
+                _context.DeleteAll();
                 return Result.Success;
             }
             catch (Exception e)
@@ -199,7 +204,7 @@ namespace LifeLike.Repositories
         }
     }
 
-    public interface IEventLogRepository : IRepository<Log>
+    public interface ILogService 
     {
         Task<Result> AddException(Exception e);
         Task<Result> AddStat(string id, string action, string controller);

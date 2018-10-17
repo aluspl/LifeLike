@@ -15,11 +15,11 @@ namespace LifeLike.Web.Controllers
     [AllowAnonymous]
     public class HomeController : Controller
     {
-        private readonly IConfigRepository _config;
-        private readonly IEventLogRepository _logger;
+        private readonly IConfigService _config;
+        private readonly ILogService _logger;
         private readonly ILinkRepository _link;
 
-        public HomeController(IConfigRepository config, IEventLogRepository logger, 
+        public HomeController(IConfigService config, ILogService logger, 
         SignInManager<User> signInManager,
         ILinkRepository link)
         {

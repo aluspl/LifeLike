@@ -16,10 +16,10 @@ namespace LifeLike.Repositories
         private readonly ILinkRepository _link;
         private readonly PortalContext _context;
         private readonly IMapper _mapper;
-        private readonly IEventLogRepository _logger;
+        private readonly ILogService _logger;
 
         public PageRepository(PortalContext context, 
-            IEventLogRepository logger,
+            ILogService logger,
             ILinkRepository link,
             IMapper mapper)
         {

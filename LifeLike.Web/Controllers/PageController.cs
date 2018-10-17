@@ -17,11 +17,11 @@ namespace LifeLike.Web.Controllers
     public class PageController : Controller
     {
         private readonly IPageRepository _pageRepository;
-        private readonly IEventLogRepository _logger;
+        private readonly ILogService _logger;
         private readonly ILinkRepository _links;
         private readonly IMapper _mapper;
 
-        public PageController(IPageRepository pageRepository, IEventLogRepository logger, ILinkRepository links, IMapper mapper)
+        public PageController(IPageRepository pageRepository, ILogService logger, ILinkRepository links, IMapper mapper)
         {
             _pageRepository = pageRepository;
             _logger = logger;

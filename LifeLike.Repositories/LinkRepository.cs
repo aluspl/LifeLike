@@ -16,8 +16,8 @@ namespace LifeLike.Repositories
     {
         private readonly IMapper _mapper;
         private readonly PortalContext _context;
-        private readonly IEventLogRepository _logger;
-        public LinkRepository(PortalContext context, IEventLogRepository logger, IMapper mapper)
+        private readonly ILogService _logger;
+        public LinkRepository(PortalContext context, ILogService logger, IMapper mapper)
         {
             _mapper = mapper;
             _context = context;

@@ -16,10 +16,10 @@ namespace LifeLike.Web.Controllers
     public class VideoController : Controller
     {
         private readonly IVideoRepository _repository;
-        private readonly IEventLogRepository _logger;
+        private readonly ILogService _logger;
         private readonly IMapper _mapper;
 
-        public VideoController(IVideoRepository repository, IEventLogRepository logger, IMapper mapper)
+        public VideoController(IVideoRepository repository, ILogService logger, IMapper mapper)
         {
             _repository = repository;
             _logger = logger;

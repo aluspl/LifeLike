@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using LifeLike.Data.Models.Enums;
 
@@ -6,12 +9,13 @@ namespace LifeLike.Repositories
 {
     public interface IRepository<T>
     {
-        Task<Result> Create(T model);
+        IEnumerable<T> GetOverview(Expression<Func<T, bool>> predicate);
+        IQueryable<T> GetOverviewQuery(Expression<Func<T, bool>> predicate);
 
-        Task<IEnumerable<T>> List();
-        Task<T> Get(long id);
-        Task<Result> Update(T model);
-        Task<Result> Delete(T model);
-        
+        T GetDetail(Func<T, bool> predicate);
+        void Add(T entity);
+        void Delete(T entity);
+        void Update(T entity);
+        void DeleteAll();
     }
 }

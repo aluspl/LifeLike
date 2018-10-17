@@ -15,9 +15,9 @@ namespace LifeLike.Web.Controllers
     public class LinkManagerController : Controller
     {
         private readonly ILinkRepository _repository;
-        private readonly IEventLogRepository _logger;
+        private readonly ILogService _logger;
 
-        public LinkManagerController(ILinkRepository repository, IEventLogRepository logger)
+        public LinkManagerController(ILinkRepository repository, ILogService logger)
         {
             _repository = repository;
             _logger = logger;

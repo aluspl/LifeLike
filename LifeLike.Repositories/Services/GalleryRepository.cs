@@ -8,15 +8,15 @@ using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories.ViewModel;
 using Microsoft.EntityFrameworkCore;
 
-namespace LifeLike.Repositories
+namespace LifeLike.Repositories.Services
 {
-    public class GalleryRepository : IGalleryRepository
+    public class AlbumService : IAlbumService
     {
         private readonly PortalContext _context;
-        private readonly IEventLogRepository _logger;
+        private readonly ILogService _logger;
         private readonly IMapper _mapper;
 
-        public GalleryRepository(PortalContext context, IEventLogRepository logger, IMapper mapper)
+        public AlbumService(PortalContext context, ILogService logger, IMapper mapper)
         {
             _logger = logger;
             _mapper = mapper;
@@ -113,7 +113,7 @@ namespace LifeLike.Repositories
         }
     }
 
-    public interface IGalleryRepository : IRepository<Gallery>
+    public interface IAlbumService
     {
         Task<Gallery> Get(string id);
     }

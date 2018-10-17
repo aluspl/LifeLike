@@ -9,18 +9,18 @@ using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories.ViewModel;
 using Microsoft.EntityFrameworkCore;
 
-namespace LifeLike.Repositories
+namespace LifeLike.Repositories.Services
 {
-    public class ConfigRepository : IConfigRepository
+    public class ConfigService : IConfigService
     {
         private readonly IMapper _mapper;
-        private readonly IEventLogRepository _logger;
-        private readonly PortalContext _context;
+        private readonly ILogService log;
+        private readonly IRepository<ConfigEntity> _context;
 
-        public ConfigRepository(PortalContext context, IEventLogRepository logger, IMapper mapper)
+        public ConfigService(IRepository<ConfigEntity> context, ILogService logger, IMapper mapper)
         {
             _mapper = mapper;
-            _logger = logger;
+            log = logger;
             _context = context;
         }
 
@@ -29,13 +29,12 @@ namespace LifeLike.Repositories
         {
             try
             {
-                await _context.AddAsync(_mapper.Map<ConfigEntity>(model));
-                await _context.SaveChangesAsync();
+                _context.Add(_mapper.Map<ConfigEntity>(model));
                 return Result.Success;
             }
             catch (Exception e)
             {
-                await _logger.AddException(e);
+                await log.AddException(e);
                 return Result.Failed;
             }
         }
@@ -44,50 +43,55 @@ namespace LifeLike.Repositories
         {
             try
             {
-                return await _context.Configs.ProjectTo<Config>().ToListAsync();
+                var item = _context.GetOverview();
+                 return null;
             }
             catch (Exception e)
             {
-                await _logger.AddException(e);
+                await log.AddException(e);
                 return new List<Config>();
             }
         }
 
         public async Task<Config> Get(long id)
         {
-            return await _context.Configs.Where(p => p.Id == id).ProjectTo<Config>().FirstOrDefaultAsync();
+            var item = _context.GetDetail(p => p.Id == id);
+            return _mapper.Map<Config>(item);
         }
 
         public async Task<Result> Update(Config model)
         {
             try
             {
-                var item =  await _context.Configs.Where(p => p.Name == model.Name).FirstOrDefaultAsync();
+                ConfigEntity item = GetEntity(model);
                 _mapper.Map(model, item);
                 _context.Update(item);
-                _context.SaveChanges();
                 return Result.Success;
             }
             catch (Exception e)
             {
-                await _logger.AddException(e);
+                await log.AddException(e);
                 return Result.Failed;
             }
+        }
+
+        private ConfigEntity GetEntity(Config model)
+        {
+            return _context.GetDetail(predicate => predicate.Name == model.Name);
         }
 
         public async Task<Result> Delete(Config model)
         {
             try
             {
-                var item =  await _context.Configs.Where(p => p.Name == model.Name).FirstOrDefaultAsync();
+                ConfigEntity item = GetEntity(model);
 
-                _context.Remove(item);
-                await _context.SaveChangesAsync();
+                _context.Delete(item);
                 return Result.Success;
             }
             catch (Exception e)
             {
-                await _logger.AddException(e);
+                await log.AddException(e);
                 return Result.Failed;
             }
         }
@@ -96,18 +100,21 @@ namespace LifeLike.Repositories
         {
             try
             {
-                return await _context.Configs.Where(p => p.Name == id).ProjectTo<Config>().FirstOrDefaultAsync();
+                return await _context.GetOverviewQuery(p => p.Name == id).ProjectTo<Config>().FirstOrDefaultAsync();
             }
             catch (Exception e)
             {
-                await _logger.AddException(e);
+                await log.AddException(e);
                 return null;
             }
         }
     }
 
-    public interface IConfigRepository : IRepository<Config>
+    public interface IConfigService 
     {
+        Task Create(Config model);
         Task<Config> Get(string id);
+        Task<IEnumerable<Config>> List();
+        Task Update(Config model);
     }
 }

@@ -14,13 +14,13 @@ namespace LifeLike.Web.Controllers
     [Route("api/[controller]")]
     public class AlbumController : Controller
     {
-        private readonly IEventLogRepository _logger;
-        private readonly IGalleryRepository _galleryRepository;
+        private readonly ILogService _logger;
+        private readonly IAlbumService _galleryRepository;
 
 
-        public AlbumController(IEventLogRepository logger,
-            IPhotoRepository photoRepository,
-            IGalleryRepository gallery,
+        public AlbumController(ILogService logger,
+            IPhotoService photoRepository,
+            IAlbumService gallery,
             IHostingEnvironment hosting)
         {
             _logger = logger;
