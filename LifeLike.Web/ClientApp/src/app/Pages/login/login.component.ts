@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../../Services/authentication.service';
-
+import UserLogin from '../../Models/UserLogin';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -40,7 +40,8 @@ export class LoginComponent implements OnInit {
       }
 
       this.loading = true;
-      this.authenticationService.login(this.f.username.value, this.f.password.value)
+      const account = new UserLogin (this.f.username.value, this.f.password.value);
+      this.authenticationService.login(account)
           .pipe(first())
           .subscribe(
               data => {

@@ -65,7 +65,6 @@ import { AuthenticationService } from './Services/authentication.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-
     HttpClientXsrfModule.withOptions({
       cookieName: 'My-Xsrf-Cookie',
       headerName: 'My-Xsrf-Header',
@@ -74,7 +73,7 @@ import { AuthenticationService } from './Services/authentication.service';
   ],
   exports: [
   ],
-  providers: [RestService, AuthenticationService],
+  providers: [RestService, AuthenticationService  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
