@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Primitives" Version="4.3.0" />
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="5.0.1" />  
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LifeLike.Data\LifeLike.Data.csproj">
+      <Project>{87DE8383-DE45-42A4-838F-3704BE3B2E42}</Project>
+      <Name>LifeLike.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

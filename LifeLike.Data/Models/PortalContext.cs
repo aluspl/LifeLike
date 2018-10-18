@@ -7,22 +7,28 @@ namespace LifeLike.Data.Models
 {
     public class PortalContext : IdentityDbContext<User>
     {
-        public DbSet<Link> Links { get; set; }
-        public DbSet<Changelog> Changelogs { get; set; }
-        public DbSet<EventLog> EventLogs { get; set; }
-        public DbSet<Gallery> Galleries { get; set; }
+        public DbSet<LinkEntity> Links { get; set; }
+        public DbSet<ChangelogEntity> Changelogs { get; set; }
+        public DbSet<EventLogEntity> EventLogs { get; set; }
+        public DbSet<GalleryEntity> Galleries { get; set; }
 
-        public DbSet<Page> Pages { get; set; }
+        public DbSet<PageEntity> Pages { get; set; }
 
-        public DbSet<Photo> Photos { get; set; }
-        public DbSet<Config> Configs { get; set; }
-        public DbSet<Video> Videos { get; set; }
+        public DbSet<PhotoEntity> Photos { get; set; }
+        public DbSet<ConfigEntity> Configs { get; set; }
+        public DbSet<VideoEntity> Videos { get; set; }
 
-        public DbSet<Statistic> Stats { get; set; }
+        public DbSet<StatisticEntity> Stats { get; set; }
 
         public PortalContext(DbContextOptions<PortalContext> options) : base(options)
         {
         }
+        //  protected override void OnModelCreating(ModelBuilder modelBuilder)
+        // {
+        //     // modelBuilder.Entity<ConfigEntity>(p=>{
+        //     //     p.HasIndex(s=>s.Name);
+        //     // });
+        // }
     }
 
     public static class DbInitializer
@@ -42,7 +48,7 @@ namespace LifeLike.Data.Models
 
             if (!context.Pages.Any())
             {               
-                context.Pages.Add(new Page
+                context.Pages.Add(new PageEntity
                     {
                         ShortName = "contact",
                         Category = PageCategory.Page,
@@ -58,105 +64,128 @@ namespace LifeLike.Data.Models
 
         private static void SetupConfigs(PortalContext context)
         {
-            context.Add(new Config
+            context.Add(new ConfigEntity
             {
-                Name = Config.WelcomeVideo,
+                Name = ConfigEntity.WelcomeVideo,
                 DisplayName = "Welcome Video",
-                Value = "Qi5tp0eZHt8", Type = ConfigType.Video
+                Value = "ISTWYjAhEHc", Type = ConfigType.Video
                 
             });
-            context.Add(new Config
+            context.Add(new ConfigEntity
             {
-                Name = Config.WelcomeText,
-                DisplayName = "HI",
+                Name = ConfigEntity.WelcomeText,
+                DisplayName = "HI!",
                 Value = "Hi on my page , it is pure now, but it is great CMS :) ... it is gonna to be great cms", Type = ConfigType.Text
             });
-            // context.Add(new Config
-            // {
-            //     Name = Config.Rss1,
-            //     DisplayName = "First RSS Url",
-            //     Value = "http://kawowipodroznicy.pl/feed/", Type = ConfigType.RSS
-            // });
-            // context.Add(new Config
-            // {
-            //     Name = Config.Rss2,
-            //     DisplayName = "Second RSS Url",
-            //     Value = "http://szymonmotyka.pl/feed/", Type = ConfigType.RSS
-            // });
+            context.Add(new ConfigEntity
+            {
+                Name = ConfigEntity.Rss1,
+                DisplayName = "First RSS Url",
+                Value = "http://kawowipodroznicy.pl/feed/", Type = ConfigType.RSS
+            });
+            context.Add(new ConfigEntity
+            {
+                Name = ConfigEntity.Rss2,
+                DisplayName = "Second RSS Url",
+                Value = "http://szymonmotyka.pl/feed/", Type = ConfigType.RSS
+            });
         }
 
-        private static void SetupLinks(PortalContext context)
-        {
-            //Menu
-            context.Add(new Link
-            {
-                Action = "Index",
-                Controller = "Video",
-                Name = "Video Projects",
-                IconName = "film",
-                Category = LinkCategory.Menu
-            });
-           
-            context.Add(new Link
+        private static void SetupLinks(PortalContext context)        
+        {         
+            context.Add(new LinkEntity          
+                {
+                    Action = "",
+                    Controller = "Posts",
+                    Name = "News",
+                    IconName = "newspaper",
+
+                    Category = LinkCategory.Menu
+                });
+            context.Add(new LinkEntity          
+                {
+                    Action = "",
+                    Controller = "Albums",
+                    Name = "Albums",
+                    IconName = "camera-retro",
+                    Category = LinkCategory.Menu
+                });
+            context.Add(new LinkEntity
+                {
+                    Action = "",
+                    Controller = "Videos",
+                    Name = "VIDEOS",
+                    IconName = "film",
+                    Category = LinkCategory.Menu
+                });
+            context.Add(new LinkEntity
+                {
+                    Action = "",
+                    Controller = "Pages",
+                    Name = "PROJECTS",
+                    IconName = "code",
+                    Category = LinkCategory.Menu
+                });            
+            context.Add(new LinkEntity
             {
                 Action = "",
-                Controller = "Posts",
-                Name = "News",
+                Controller = "Logs",
+                Name = "Logs",
+                IconName = "book",
                 Category = LinkCategory.Menu
             });
-            
-            context.Add(new Link
+            context.Add(new LinkEntity
             {
-                Action = "",
-                Controller = "Album",
-                Name = "Albums",
-                Category = LinkCategory.Menu, IconName = "camera-retro"
-            });
-                     
+                Action = "Contact",
+                Controller = "Page",
+                Name = "CONTACT",
+                IconName = "at",
+                Category = LinkCategory.Menu
+            });                             
             // Sidebar
-            context.Add(new Link
+            context.Add(new LinkEntity
             {
                 Url = "https://github.com/aluspl/",
                 IconName = "fire",
                 Name = "Github",
                 Category = LinkCategory.Sidebar
             });
-            context.Add(new Link
+            context.Add(new LinkEntity
             {
                 Url = "http://kawowipodroznicy.pl",
                 IconName = "globe",
                 Name = "Kawowi Podróżnicy",
                 Category = LinkCategory.Sidebar
             });
-            context.Add(new Link
+            context.Add(new LinkEntity
             {
                 Url = "http://szymonmotyka.pl",
                 IconName = "pencil",
                 Name = "Personal Blog",
                 Category = LinkCategory.Sidebar
             });
-            context.Add(new Link
+            context.Add(new LinkEntity
             {
                 Url = "https://www.linkedin.com/in/szymon-motyka-a7440b58/",
                 IconName = "comment",
                 Name = "LinkedIn",
                 Category = LinkCategory.Sidebar
             });
-            context.Add(new Link
+            context.Add(new LinkEntity
             {
                 Url = "https://www.facebook.com/SzymonMotykapl/",
                 IconName = "comment",
                 Name = "Facebook",
                 Category = LinkCategory.Sidebar
             });
-            context.Add(new Link
+            context.Add(new LinkEntity
             {
                 Url = "https://www.youtube.com/user/alusvanzuoo",
                 IconName = "play",
                 Name = "YT: Szymon Motyka",
                 Category = LinkCategory.Sidebar
             });
-            context.Add(new Link
+            context.Add(new LinkEntity
             {
                 Url = "https://www.youtube.com/channel/UC-F1oSvOzczOSLAAsCLBvVA",
                 IconName = "play",

@@ -4,7 +4,8 @@ using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories;
-using LifeLike.Web.ViewModel;
+using LifeLike.Services;
+using LifeLike.Services.ViewModel;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,37 +15,33 @@ namespace LifeLike.Web.Controllers
     [Route("api/[controller]")]
     public class PhotoController : Controller
     {
-        private readonly IEventLogRepository _logger;
-        private readonly IPhotoRepository _photos;
-        private readonly IGalleryRepository _gallery;
+        private readonly IPhotoService _photos;
+        private readonly IAlbumService _album;
         private readonly IHostingEnvironment _hostingEnv;
 
 
-        public PhotoController(IEventLogRepository logger,
-            IPhotoRepository photos,
-            IGalleryRepository gallery,
+        public PhotoController(ILogService logger,
+            IPhotoService photos,
+            IAlbumService album,
             IHostingEnvironment hosting)
         {
-            _logger = logger;
             _hostingEnv = hosting;
             _photos = photos;
-            _gallery = gallery;
+            _album = album;
             Path.Combine("photos");
         }
-
-        public async Task<UploadFileViewModel> UploadFiles(long id)
+        [HttpGet("UploadFiles")]
+        public UploadFileViewModel UploadFiles(long id)
         {
-            await _logger.AddStat(id.ToString(), "Upload", "Photo");
+            // await _logger.AddStat(id.ToString(), "Upload", "Photo");
 
-            var gallery = await _gallery.Get(id);
-            return GalleryViewModel.GetViewForUpload(gallery);
+            var gallery = _album.Get(id);
+            return Album.GetViewForUpload(gallery);
         }
 
-        [HttpPost]
+        [HttpPost("UploadFiles")]
         public async Task<IActionResult> UploadFiles(UploadFileViewModel model)
         {
-            try
-            {
                 if (!ModelState.IsValid) return BadRequest(Result.Failed);
 
                 var uploadPath = Path.Combine(_hostingEnv.WebRootPath, "photos");
@@ -61,36 +58,16 @@ namespace LifeLike.Web.Controllers
                     Created = DateTime.Now,
                     Title = model.Title
                 };
-                return Ok(await _photos.Create(photo, model.GalleryId));
-
-            }
-            catch (Exception e)
-            {
-                await _logger.AddException(e);
-                return StatusCode(500);
-
-            }
+                return Ok( _photos.Create(photo, model.GalleryId));
         }
-
-        public async Task<IActionResult> Detail(long id)
+        [HttpGet("Detail")]
+        public IActionResult Detail(long id)
         {
-            try
-            {
-                await _logger.AddStat($"{id}", action: "Detail", controller: "Photo");
-
-                var photo = await _photos.Get(id);
-                var selectedPhoto = PhotoViewModel.Get(photo);
-                return Ok(selectedPhoto);
-            }
-            catch (Exception e)
-            {
-                await _logger.AddException(e);
-                return StatusCode(500);
-            }
+                var photo = _photos.Get(id);
+                return Ok(photo);            
         }
 
-
-        public bool IsFileSupported(IFormFile file)
+        private bool IsFileSupported(IFormFile file)
         {
             var isSupported = false;
 

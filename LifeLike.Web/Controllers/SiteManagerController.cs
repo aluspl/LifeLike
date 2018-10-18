@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories;
+using LifeLike.Services;
+using LifeLike.Services.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,60 +15,46 @@ namespace LifeLike.Web.Controllers
     [Route("api/[controller]")]
     public class SiteManagerController : Controller
     {
-        private readonly IConfigRepository _config;
+        private readonly IConfigService _config;
 
-        private readonly IEventLogRepository _logger;
-
-        public SiteManagerController(IConfigRepository configRepository, IEventLogRepository logger)
+        public SiteManagerController(IConfigService configRepository)
         {
             _config = configRepository;
-            _logger = logger;
         }
 
         // GET
+        [HttpGet]
         [Authorize]
-        public async Task<IEnumerable<Config>> GetList()
+        public IActionResult GetList()
         {
-            var configs = await _config.List();
-            return configs;
+            var configs = _config.List();
+            return Ok(configs);
         }
 
 
-        [HttpPost]
+        [HttpPost("Create")]
         [ValidateAntiForgeryToken]
-        public async Task<Result> Create(Config model)
+        public IActionResult Create(Config model)
         {
-            try
-            {
-                return ModelState.IsValid ? await _config.Create(model) : Result.Failed;
-            }
-            catch (Exception e)
-            {
-                await _logger.AddException(e);
-                return Result.Failed;
-            }
+            if (!ModelState.IsValid) return BadRequest();
+            _config.Create(model);
+            return Ok();
         }
-
+        [HttpGet("Update")]
         [Authorize]
-        public async Task<Config> Update(string id)
+        public IActionResult Update(string id)
         {
-            var model = await _config.Get(id);
-            return model;
+            var model = _config.Get(id);
+            return Ok(model);
         }
 
-        [HttpPost]
+        [HttpPut("Update")]
         [ValidateAntiForgeryToken]
-        public async Task<Result> Update(Config model)
+        public IActionResult Update(Config model)
         {
-            try
-            {
-                return ModelState.IsValid ? await _config.Update(model) :  Result.Failed;
-            }
-            catch (Exception e)
-            {
-                await _logger.AddException(e);
-                return Result.Failed;
-            }
+            if (!ModelState.IsValid) return BadRequest();
+            _config.Update(model);
+            return Ok();
         }
     }
 }

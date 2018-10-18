@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Repositories;
-using LifeLike.Web.ViewModel;
+using LifeLike.Services.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -24,27 +24,20 @@ namespace LifeLike.Web.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        private readonly IEventLogRepository _logger;
         private readonly IConfiguration _configuration;
 
         public AccountController(UserManager<User> userManager, SignInManager<User> signInManager,
-            IEventLogRepository logger,    
-            IConfiguration configuration
-)
+            IConfiguration configuration)
         {
             _signInManager = signInManager;
             _userManager = userManager;
-            _logger = logger;
             _configuration = configuration;
         }
 
         [HttpPost]
-        [Route("Register")]    
-
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        [Route("Register")]
+        public async Task<IActionResult> Register(Register model)
         {
-            try
-            {
                 if (!ModelState.IsValid)
                 {
                     model.Info = "Invalid Model";
@@ -59,23 +52,15 @@ namespace LifeLike.Web.Controllers
                     await _signInManager.SignInAsync(user, false);
                     return Ok(GenerateJwtToken(model.Login, user));
                 }    
-                return Unauthorized();
-        
-            }
-            catch (Exception e)
-            {
-                await _logger.AddException(e);
-                return StatusCode(500, e);
-            }
+                return Unauthorized();                   
         }
 
 
         [HttpPost]
         [Route("Login")]    
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> Login(Login model)
         {
-            try
-            {
+
                 if (!ModelState.IsValid)
                 {
                     model.Info = "Invalid Model";
@@ -83,22 +68,14 @@ namespace LifeLike.Web.Controllers
                 }
 
                 Debug.WriteLine($"LOGIN: {model}");               
-                var result = await _signInManager.PasswordSignInAsync(model.Login,
+                var result = await _signInManager.PasswordSignInAsync(model.UserName,
                     model.Password, model.RememberMe, false);
                 if (result.Succeeded)
                 {
-                    var user=_userManager.Users.SingleOrDefault(p=>p.UserName == model.Login);
-                    return Ok(GenerateJwtToken(model.Login, user));
+                    var user=_userManager.Users.SingleOrDefault(p=>p.UserName == model.UserName);
+                    return Ok(GenerateJwtToken(model.UserName, user));
                 }
                 return Unauthorized();
-
-            }
-            catch(Exception e)
-            {
-                await _logger.AddException(e);
-                model.Info=e.Message;
-                return StatusCode(500, e);
-            }
         }
 
         private string GenerateJwtToken(string login, IdentityUser user)

@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeLike.Data", "LifeLike.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeLike.Web", "LifeLike.Web\LifeLike.Web.csproj", "{756FFCA7-81DC-4C97-A601-DFDA96BF5DD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeLike.Repositories", "LifeLike.Repositories\LifeLike.Repositories.csproj", "{B5FB45D9-07AC-4D2E-B387-C653538B08CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeLike.Services", "LifeLike.Services\LifeLike.Services.csproj", "{B5FB45D9-07AC-4D2E-B387-C653538B08CE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeLike.Test", "LifeLike.Test\LifeLike.Test.csproj", "{FC7E197F-FC0E-48B2-BB75-9BB61F9FAC9C}"
 EndProject

@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories;
-using LifeLike.Web.ViewModel;
+using LifeLike.Services;
+using LifeLike.Services.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,88 +15,58 @@ namespace LifeLike.Web.Controllers
     [Route("api/[controller]")]
     public class LinkManagerController : Controller
     {
-        private readonly ILinkRepository _repository;
-        private readonly IEventLogRepository _logger;
+        private readonly ILinkService service;
+        private readonly ILogService _logger;
 
-        public LinkManagerController(ILinkRepository repository, IEventLogRepository logger)
+        public LinkManagerController(ILinkService repository, ILogService logger)
         {
-            _repository = repository;
+            service = repository;
             _logger = logger;
         }
         // GET
         [Authorize]
-        public async Task<IEnumerable<LinkViewModel>> GetList()
+        [HttpGet]
+        public IActionResult GetList()
         {
-            try
-            {
-                var list = await _repository.List();            
-                return  list.Select(LinkViewModel.Get);
-            }
-            catch (Exception e)
-            {
-               await _logger.AddException(e);
-                return null;
-            }
-       
+            var list = service.List();
+            return Ok(list);          
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<Result> Create(LinkViewModel model)
+        public IActionResult Create(Link model)
         {
-            try
-            {
-                return ModelState.IsValid
-                    ? await _repository.Create(LinkViewModel.Get(model))
-                    : Result.Failed;
-            }
-            catch (Exception e)
-            {
-                await _logger.AddException(e);
-                return Result.Failed;
-            }
- 
-
+                if (ModelState.IsValid)
+                {
+                    return Ok(service.Create(model));
+                }
+                return BadRequest();        
         }
+        [HttpGet("Update")]
         [Authorize]
-        public async Task<LinkViewModel> Update(long id)
+        public IActionResult Update(long id)
         {
-            var model =await _repository.Get(id);
-            return LinkViewModel.Get(model);
+            var model = service.Get(id);
+            return Ok(model);
 
         }
-        [HttpPost]
+        [HttpPut("Update")]
         [ValidateAntiForgeryToken]
-        public async Task<Result> Update(LinkViewModel model)
+        public Result Update([FromBody]Link model)
         {
-            try
-            {
                 return ModelState.IsValid
-                    ? await _repository.Update(LinkViewModel.Get(model))
+                    ? service.Update(model)
                     : Result.Failed;
-            }
-            catch (Exception e)
-            {
-                await _logger.AddException(e);
-                return Result.Failed;
-            } 
         }
-       
-        [HttpPost]
-        public async Task<Result> Delete(LinkViewModel model)
-        {
-            try
-            {
+
+        [HttpDelete("Delete")]
+        public Result Delete([FromBody]Link model)
+        {    
                 return ModelState.IsValid
-                    ? await _repository.Delete(LinkViewModel.Get(model))
+                    ? service.Delete(model.Action)
                     : Result.Failed;
-            }
-            catch (Exception e)
-            {
-                await _logger.AddException(e);
-                return Result.Failed;
-            }
+          
         }
-        
+
     }
 }
