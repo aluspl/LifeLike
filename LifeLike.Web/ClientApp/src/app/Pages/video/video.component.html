@@ -1,6 +1,6 @@
 <app-title Title="Videos"></app-title>
 <div class="row" *ngIf="HasValue" >
-  <div class="col-sm"  *ngFor="let post of Videos" >
+  <div class="col-sm-4"  *ngFor="let post of Videos" >
       <div class="card"  routerLink='{{post.ShortName}}'>
         <div class="card-header">
             {{post.Name}}

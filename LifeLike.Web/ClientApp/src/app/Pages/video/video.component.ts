@@ -14,7 +14,7 @@ export class VideoComponent implements OnInit {
   Videos: Video[];
   IsLoading: boolean;
   HasValue: boolean;
-  VideoCount: number;
+  VideoCount = 0;
   constructor(private restService: RestService) { }
   GetPosts(): void {
     this.restService.GetVideos()

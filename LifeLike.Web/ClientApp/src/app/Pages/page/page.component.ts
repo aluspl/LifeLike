@@ -12,7 +12,7 @@ import {map} from 'rxjs/internal/operators';
 export class PageComponent implements OnInit {
   Pages: Page[];
   IsLoading: boolean;
-  ItemsCount: number;
+  ItemsCount = 0;
   constructor(private restService: RestService) { }
 
   // Edit(page: Page): void {

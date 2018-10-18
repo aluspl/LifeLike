@@ -43,12 +43,12 @@ namespace LifeLike.Services
             var items = GetAllEntities();
             Debug.WriteLine(items.ToJSON());
             return _mapper.Map<IEnumerable<Video>>(items);
-
         }
 
         public IEnumerable<Video> List(VideoCategory category)
         {
                 var items = _repo.GetOverviewQuery(p => p.Category == category).AsEnumerable();
+                Debug.WriteLine(items.ToJSON());
                 return _mapper.Map<IEnumerable<Video>>(items);            
         }
         public Video Get(long id)

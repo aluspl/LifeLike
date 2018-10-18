@@ -20,7 +20,7 @@ const CreatePost = '/Api/Page/Cr';
 
 const ConfigList = '/Api/Config';
 const LogList = '/Api/Log/List';
-const VideoList = '/Api/Log/List';
+const VideoList = '/Api/Video/List';
 
 
 @Injectable()
@@ -107,8 +107,8 @@ export class RestService {
   }
 
 
-  removePost() {
-
+  removePost(Id: number) {
+      // return this.http.delete()
   }
 
   editPost() {

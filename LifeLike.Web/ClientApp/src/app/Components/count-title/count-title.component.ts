@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./count-title.component.scss']
 })
 export class CountTitleComponent implements OnInit {
-  @Input() Title: string;
+  @Input() Title = 0;
   GetTitle(): string {
     return this.Title + ' items';
   }
