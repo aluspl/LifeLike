@@ -24,6 +24,7 @@ using LifeLike.Web.Services.Swagger;
 using LifeLike.Services;
 using LifeLike.Data;
 using LifeLike.Services.Profiles;
+using LifeLike.Web.Services.Logs;
 
 namespace LifeLike.Web
 {
@@ -35,14 +36,13 @@ namespace LifeLike.Web
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
                 .WriteTo.File("log.txt",
-                    rollingInterval: RollingInterval.Day,
+                    rollingInterval: RollingInterval.Month,
                     rollOnFileSizeLimit: true)
                 .CreateLogger();
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)     
                 .AddEnvironmentVariables()
                 .AddJsonFile("app.settings.json");
-
             // if (env.IsDevelopment())
                 // builder.AddUserSecrets<Startup>();
             Configuration = builder.Build();
@@ -56,6 +56,7 @@ namespace LifeLike.Web
             // Add framework services.
             services.AddLogging(loggingBuilder =>
                 loggingBuilder.AddSerilog(dispose: true));
+
             if (Configuration["DB"] == null)
             {
                 services.AddDbContext<PortalContext>(options =>
@@ -71,7 +72,7 @@ namespace LifeLike.Web
             }
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
-            services.AddSingleton<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ILogService, LogService>();
             services.AddScoped<ILinkService, LinkRepository>();
             services.AddScoped<IConfigService, ConfigService>();
@@ -155,7 +156,7 @@ namespace LifeLike.Web
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
             app.UseAuthentication();
-
+            app.UseExceptionMiddleware();
             app.UseSwaggerSetting();
             app.UseMvc(routes =>
             {

@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories;
+using LifeLike.Services;
 using LifeLike.Services.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,8 +16,7 @@ namespace LifeLike.Web.Controllers
     [Route("api/[controller]")]
     public class AlbumController : Controller
     {
-        private readonly ILogService _logger;
-        private readonly IAlbumService _galleryRepository;
+        private readonly IAlbumService service;
 
 
         public AlbumController(ILogService logger,
@@ -23,97 +24,57 @@ namespace LifeLike.Web.Controllers
             IAlbumService gallery,
             IHostingEnvironment hosting)
         {
-            _logger = logger;
-            _galleryRepository = gallery;
-
+            service = gallery;
         }
 
         [HttpGet("List")]
-        public async Task<IActionResult> List()
+        public IActionResult List()
         {
             try
             {
-                await _logger.AddStat("List", "Album");
-                var list = await _galleryRepository.List();
+                var list = service.List();
                 return Json(list);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-               await _logger.AddException(e);
                 return null;
             }
-          
+
         }
         [HttpGet("Detail/{id}")]
-        public async Task<IActionResult> Detail(string id)
-        {
-            try
-            {
-                await _logger.AddStat(id,"Detail", "Album");
-
-                var selectedgallery = await _galleryRepository.Get(id);
+        public IActionResult Detail(string id)
+        {           
+                var selectedgallery = service.Get(id);
                 return Ok(selectedgallery);
-            }
-            catch (Exception e)
-            {
-                await _logger.AddException(e);
-                return null;
-            }
+           
         }
         [HttpPost("Create")]
-        public async Task<IActionResult> CreateGallery(Gallery model)
+        public IActionResult CreateGallery(Album model)
         {
-
-            try
-            {
-                await _logger.AddStat(model.ShortTitle,"Create", "Album");
-                model.Created=DateTime.Now;
-                model.ShortTitle=model.ShortTitle.Trim().Replace(" ","");
-                return Ok(await _galleryRepository.Create(model));
-            }
-            catch (Exception e)
-            {
-                await _logger.AddException(e);
-                return  new  BadRequestResult();
-            }
+                model.Created = DateTime.Now;
+                model.ShortTitle = model.ShortTitle.Trim().Replace(" ", "");
+                return Ok(service.Create(model));      
         }
-       
+
         [HttpDelete]
         [Route("Delete")]
-        public async Task<IActionResult> Delete(Gallery model)
-        {
-            try
-            {    
-                 if (ModelState.IsValid)
-                {            
-                    return Ok(await _galleryRepository.Delete(model));                 
-                }
-                return BadRequest();
-
-            }
-            catch (Exception e)
-            {
-                await _logger.AddException(e);
-                return BadRequest();
-            }
-        }     
-        [HttpPut("Update")]
-        public async Task<IActionResult> Update(Gallery model)
-        {
-            try
-            {
+        public IActionResult Delete(Album model)
+        {           
                 if (ModelState.IsValid)
                 {
-                     return Ok(await _galleryRepository.Update(model));
+                    return Ok(service.Delete(model.Id));
+                }
+                return BadRequest();          
+        }
+        [HttpPut("Update")]
+        [Authorize]
+        public IActionResult Update(Album model)
+        {
+                if (ModelState.IsValid)
+                {
+                    return Ok(service.Update(model));
                 }
                 return BadRequest();
-
-            }
-            catch (Exception e)
-            {
-                await _logger.AddException(e);
-                return BadRequest();
-            }
         }
     }
 }

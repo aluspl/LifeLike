@@ -31,19 +31,17 @@ namespace LifeLike.Web.Controllers
             Path.Combine("photos");
         }
         [HttpGet("UploadFiles")]
-        public async Task<UploadFileViewModel> UploadFiles(long id)
+        public UploadFileViewModel UploadFiles(long id)
         {
             // await _logger.AddStat(id.ToString(), "Upload", "Photo");
 
-            var gallery = await _album.Get(id);
-            return Gallery.GetViewForUpload(gallery);
+            var gallery = _album.Get(id);
+            return Album.GetViewForUpload(gallery);
         }
 
         [HttpPost("UploadFiles")]
         public async Task<IActionResult> UploadFiles(UploadFileViewModel model)
         {
-            try
-            {
                 if (!ModelState.IsValid) return BadRequest(Result.Failed);
 
                 var uploadPath = Path.Combine(_hostingEnv.WebRootPath, "photos");
@@ -60,32 +58,13 @@ namespace LifeLike.Web.Controllers
                     Created = DateTime.Now,
                     Title = model.Title
                 };
-                return Ok(await _photos.Create(photo, model.GalleryId));
-
-            }
-            catch (Exception e)
-            {
-                // await _logger.AddException(e);
-                return StatusCode(500);
-
-            }
+                return Ok( _photos.Create(photo, model.GalleryId));
         }
         [HttpGet("Detail")]
-        public async Task<IActionResult> Detail(long id)
+        public IActionResult Detail(long id)
         {
-            try
-            {
-                // await _logger.AddStat($"{id}", action: "Detail", controller: "Photo");
-
-                var photo = await _photos.Get(id);
-                // var selectedPhoto = Photo.Get(photo);
-                return Ok(photo);
-            }
-            catch (Exception e)
-            {
-                // await _logger.AddException(e);
-                return StatusCode(500);
-            }
+                var photo = _photos.Get(id);
+                return Ok(photo);            
         }
 
         private bool IsFileSupported(IFormFile file)

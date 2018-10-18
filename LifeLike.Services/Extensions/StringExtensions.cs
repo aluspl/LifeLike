@@ -32,8 +32,9 @@ namespace LifeLike.Services.Extensions
             return content;
         }
         
-          public static string GetYoutubeId(this string videoLink)
+        public static string GetYoutubeId(this string videoLink)
         {
+            if (videoLink==null || videoLink==string.Empty) return null;
             return videoLink.Contains('=') ? videoLink.Split('=').LastOrDefault() : videoLink;
         }
 

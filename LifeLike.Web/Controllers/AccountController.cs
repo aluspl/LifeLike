@@ -24,17 +24,13 @@ namespace LifeLike.Web.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        private readonly ILogService _logger;
         private readonly IConfiguration _configuration;
 
         public AccountController(UserManager<User> userManager, SignInManager<User> signInManager,
-            ILogService logger,    
-            IConfiguration configuration
-)
+            IConfiguration configuration)
         {
             _signInManager = signInManager;
             _userManager = userManager;
-            _logger = logger;
             _configuration = configuration;
         }
 
@@ -42,8 +38,6 @@ namespace LifeLike.Web.Controllers
         [Route("Register")]
         public async Task<IActionResult> Register(Register model)
         {
-            try
-            {
                 if (!ModelState.IsValid)
                 {
                     model.Info = "Invalid Model";
@@ -58,14 +52,7 @@ namespace LifeLike.Web.Controllers
                     await _signInManager.SignInAsync(user, false);
                     return Ok(GenerateJwtToken(model.Login, user));
                 }    
-                return Unauthorized();
-        
-            }
-            catch (Exception e)
-            {
-                await _logger.AddException(e);
-                return StatusCode(500, e);
-            }
+                return Unauthorized();                   
         }
 
 
@@ -73,8 +60,7 @@ namespace LifeLike.Web.Controllers
         [Route("Login")]    
         public async Task<IActionResult> Login(Login model)
         {
-            try
-            {
+
                 if (!ModelState.IsValid)
                 {
                     model.Info = "Invalid Model";
@@ -90,14 +76,6 @@ namespace LifeLike.Web.Controllers
                     return Ok(GenerateJwtToken(model.UserName, user));
                 }
                 return Unauthorized();
-
-            }
-            catch(Exception e)
-            {
-                await _logger.AddException(e);
-                model.Info=e.Message;
-                return StatusCode(500, e);
-            }
         }
 
         private string GenerateJwtToken(string login, IdentityUser user)

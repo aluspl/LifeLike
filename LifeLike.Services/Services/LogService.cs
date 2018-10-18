@@ -15,11 +15,9 @@ namespace LifeLike.Services
 {
     public class LogService : BaseService<EventLogEntity>, ILogService
     {
-        private readonly IRepository<EventLogEntity> _context;
 
         public LogService(IUnitOfWork work, IMapper mapper) : base(work,mapper)
         {
-            _context = _unitOfWork.Get<EventLogEntity>();
         }
 
         public Result AddException(Exception e)
@@ -84,7 +82,8 @@ namespace LifeLike.Services
         {
             try
             {
-                _context.Add(_mapper.Map<EventLogEntity>(model));
+                var item =_mapper.Map<EventLogEntity>(model);
+                CreateEntity(item);
                 return Result.Success;
             }
             catch (Exception e)
@@ -96,12 +95,14 @@ namespace LifeLike.Services
 
         public IEnumerable<Log> List()
         {
-            return _context.GetOverviewQuery(null).ProjectTo<Log>().AsEnumerable();
+           var items = GetAllEntities();
+           return _mapper.Map<IEnumerable<Log>>(items);
         }
 
         public IEnumerable<Log> List(EventLogType type)
         {
-            return _context.GetOverviewQuery(p => p.Type == type).ProjectTo<Log>().AsEnumerable();
+            var items = _repo.GetOverview(p => p.Type == type);
+           return _mapper.Map<IEnumerable<Log>>(items);
         }
 
         public Result LogInformation(int i, string information)
@@ -147,7 +148,7 @@ namespace LifeLike.Services
 
         public Log Get(long id)
         {
-            var item = _context.GetDetail(p => p.Id == id);
+            var item =GetEntity(p=>p.Id==id);
             return _mapper.Map<Log>(item);
         }
 
@@ -155,9 +156,9 @@ namespace LifeLike.Services
         {
             try
             {
-                EventLogEntity item = GetEntity(model.Id);
+                var item =  GetEntity(p=>p.Id==model.Id);
                 _mapper.Map(model, item);
-                _context.Update(item);
+                _repo.Update(item);
                 return Result.Success;
             }
             catch (Exception e)
@@ -171,8 +172,8 @@ namespace LifeLike.Services
         {
             try
             {
-                EventLogEntity item = GetEntity(id);
-                _context.Delete(item);
+                EventLogEntity item = GetEntity(p=>p.Id==id);
+                _repo.Delete(item);
                 return Result.Success;
             }
             catch (Exception e)
@@ -182,16 +183,12 @@ namespace LifeLike.Services
             }
         }
 
-        private EventLogEntity GetEntity(long id)
-        {
-            return _context.GetDetail(p => p.Id == id);
-        }
 
         public Result DeleteAll()
         {
             try
             {
-                _context.DeleteAll();
+                _repo.DeleteAll();
                 return Result.Success;
             }
             catch (Exception e)
@@ -213,5 +210,7 @@ namespace LifeLike.Services
         Result LogInformation(EventLogType result, string message);
         Result ClearLogs();
         Result Add(Log eventLog);
+        IEnumerable<Log> List();
+        Log Get(long id);
     }
 }

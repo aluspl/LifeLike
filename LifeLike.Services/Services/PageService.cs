@@ -151,5 +151,7 @@ namespace LifeLike.Repositories
         IEnumerable<Page> List(PageCategory category);
         Page Get(string id);
         Result Create(Page model, Link link);
+        Result Delete(Page model);
+        Result Update(Page model);
     }
 }

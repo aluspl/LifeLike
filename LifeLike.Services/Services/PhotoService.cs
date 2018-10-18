@@ -119,5 +119,6 @@ namespace LifeLike.Services
     public interface IPhotoService
     {
         Result Create(Photo photo, long modelGalleryId);
+        Photo Get(long id);
     }
 }

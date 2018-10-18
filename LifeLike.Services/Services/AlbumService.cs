@@ -45,22 +45,13 @@ namespace LifeLike.Services
             return _mapper.Map<IEnumerable<Album>>(items);
         }
 
-        public Album Get(long id)
-        {
-            var gallery = _repo
-            .GetOverviewQuery(pp => pp.Id == id)
-            .Include(p => p.Photos)
-            .SingleOrDefault();
-
-            return _mapper.Map<Album>(gallery);
-        }
+        
 
         public Result Update(Album model)
         {
             try
             {
                 var item = GetEntity(pp => pp.Id == model.Id);
-
                 _mapper.Map(model, item);
                 UpdateEntity(item);
                 return Result.Success;
@@ -88,30 +79,34 @@ namespace LifeLike.Services
             }
         }
 
-        private GalleryEntity GetEntity(long id)
-        {
-            return  _repo.GetDetail(pp=>pp.Id==id);
-        }
-
         public Album Get(string shortTitle)
-        {
-            try
-            {
-                var gallery = _repo.GetOverviewQuery(p => p.ShortTitle == shortTitle)
+        {            
+                var gallery = _repo
+                .GetOverviewQuery(p => p.ShortTitle == shortTitle)
                     .Include(p => p.Photos)
                     .SingleOrDefault();
-                return _mapper.Map<Album>(gallery);
-            }
-            catch (Exception e)
-            {
-                _logger.AddException(e);
-                return null;
-            }
+                return _mapper.Map<Album>(gallery);          
         }
+        public Album Get(long id)
+        {
+            var gallery = _repo
+            .GetOverviewQuery(pp => pp.Id == id)
+            .Include(p => p.Photos)
+            .SingleOrDefault();
+
+            return _mapper.Map<Album>(gallery);
+        }
+
     }
 
     public interface IAlbumService
     {
+        Result Create(Album model);
+        Result Delete(long id);
         Album Get(string id);
+        Album Get(long id);
+
+        IEnumerable<Album> List();
+        Result Update(Album model);
     }
 }

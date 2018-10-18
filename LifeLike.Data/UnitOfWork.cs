@@ -31,7 +31,7 @@ namespace LifeLike.Data
                 db.SaveChanges();
                 return Result.Success;
             }
-            catch(Exception e)
+            catch (Exception)
             {
                 return Result.Failed;
             }

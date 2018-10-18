@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
+using LifeLike.Services;
+using LifeLike.Services.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -33,11 +35,10 @@ namespace LifeLike.Web.Controllers
         // }
         [HttpGet("Api/Menu")]
         [AllowAnonymous]
-        public async Task<IActionResult> GetMenuLinks()
+        public IActionResult GetMenuLinks()
         {
-            var   isLogged = User.Identity.IsAuthenticated;
+            var isLogged = User.Identity.IsAuthenticated;
 
-            await _logger.AddStat("Menu", "Index", "Home");
             var list = _link.List(LinkCategory.Menu);
 
             return Ok(list);
@@ -45,11 +46,10 @@ namespace LifeLike.Web.Controllers
 
 
         [HttpGet("Api/Config")]
-        public async Task<IActionResult> GetList()
+        public IActionResult GetList()
         {
-            await _logger.AddStat("Configs","Index", "Home");
-            var configs =await _config.List();
-            
+            var configs = _config.List();
+
             Debug.WriteLine(configs.ToJSON());
             return Ok(configs);
         }

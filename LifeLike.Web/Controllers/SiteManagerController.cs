@@ -17,63 +17,44 @@ namespace LifeLike.Web.Controllers
     {
         private readonly IConfigService _config;
 
-        private readonly ILogService _logger;
-
-        public SiteManagerController(IConfigService configRepository, ILogService logger)
+        public SiteManagerController(IConfigService configRepository)
         {
             _config = configRepository;
-            _logger = logger;
         }
 
         // GET
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> GetList()
+        public IActionResult GetList()
         {
-            var configs = await _config.List();
+            var configs = _config.List();
             return Ok(configs);
         }
 
 
         [HttpPost("Create")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Config model)
+        public IActionResult Create(Config model)
         {
-            try
-            {
-                if (!ModelState.IsValid) return BadRequest();
-                await _config.Create(model);
-                 return Ok(); 
-            }
-            catch (Exception e)
-            {
-                await _logger.AddException(e);
-                return StatusCode(500);
-            }
+            if (!ModelState.IsValid) return BadRequest();
+            _config.Create(model);
+            return Ok();
         }
         [HttpGet("Update")]
         [Authorize]
-        public async Task<IActionResult> Update(string id)
+        public IActionResult Update(string id)
         {
-            var model = await _config.Get(id);
+            var model = _config.Get(id);
             return Ok(model);
         }
 
         [HttpPut("Update")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(Config model)
+        public IActionResult Update(Config model)
         {
-            try
-            {
-                if (!ModelState.IsValid) return BadRequest();
-                await _config.Update(model);
-                 return Ok(); 
-            }
-            catch (Exception e)
-            {
-                await _logger.AddException(e);
-                return StatusCode(500);
-            }
+            if (!ModelState.IsValid) return BadRequest();
+            _config.Update(model);
+            return Ok();
         }
     }
 }

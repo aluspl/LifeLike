@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using LifeLike.Data.Models;
 using LifeLike.Repositories;
+using LifeLike.Services;
 using LifeLike.Services.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,15 +17,13 @@ namespace LifeLike.Web.Controllers
     [Route("api/[controller]")]
     public class PageController : Controller
     {
-        private readonly IPageService _pageRepository;
-        private readonly ILogService _logger;
+        private readonly IPageService service;
         private readonly ILinkService _links;
         private readonly IMapper _mapper;
 
-        public PageController(IPageService pageRepository, ILogService logger, ILinkService links, IMapper mapper)
+        public PageController(IPageService pageRepository, ILinkService links, IMapper mapper)
         {
-            _pageRepository = pageRepository;
-            _logger = logger;
+            service = pageRepository;
             _links = links;
             _mapper = mapper;
         }
@@ -32,141 +31,75 @@ namespace LifeLike.Web.Controllers
 
         // GET
         [HttpGet("Posts")]
-        public async Task<IActionResult> Posts()
+        public IActionResult Posts()
         {
-            await _logger.AddStat("Posts", "List", "Page");
-            var list = await _pageRepository.List(PageCategory.Post);
+            var list = service.List(PageCategory.Post);
             return Ok(list);
         }
         // GET
 
         [HttpGet("Pages")]
-        public async Task<IActionResult> Pages()
+        public IActionResult Pages()
         {
-            try
-            {
-                await _logger.AddStat("All", "List", "Page");
                 var isLogged = User.Identity.IsAuthenticated;
 
-                var list = 
-                  await _pageRepository.List(PageCategory.Page);
-               
+                var list =
+                   service.List(PageCategory.Page);
+
                 return Ok(list);
-            }
-            catch (Exception e)
-            {
-                await _logger.AddException(e);
-                return StatusCode(500);
-            }
         }
 
         [HttpGet("Projects")]
-        public async Task<IActionResult> Projects()
+        public IActionResult Projects()
         {
-            try
-            {
-                await _logger.AddStat("All", "List", "Projects");
                 var isLogged = User.Identity.IsAuthenticated;
 
-                var list = 
-                    await _pageRepository.List(PageCategory.Projects);                
+                var list =
+                     service.List(PageCategory.Projects);
                 return Ok(list);
-            }
-            catch (Exception e)
-            {
-                await _logger.AddException(e);
-                return StatusCode(500);
-            }
+            
         }
         [HttpGet("Details/{id}")]
-        public async Task<IActionResult> Details(string id)
+        public IActionResult Details(string id)
         {
-            try
-            {
-                await _logger.AddStat(id, "Details", "Page");
-                    
-                var page = await _pageRepository.Get(id.ToLower());
+                var page = service.Get(id.ToLower());
                 if (page == null) return NotFound();
-                return Ok(page);
-            }
-            catch (Exception e)
-            {
-                await _logger.AddException(e);
-                return StatusCode(500);
-            }
+                return Ok(page);            
         }
         [HttpPost("Create")]
-        public async Task<IActionResult> Create([FromBody] Page model)
+        public IActionResult Create([FromBody] Page model)
         {
-            try
-            {
-                await _logger.AddStat("Create", "Page");
                 model.Published = DateTime.Now;
-                if (model.Category == null) model.Category = "Post";
                 model.ShortName = model?.ShortName?.ToLower();
-                if (!ModelState.IsValid) return BadRequest(ModelState);
-                var result = await _pageRepository.Create(model, model.Link);
-               
-                return Ok(result);
-            }
-            catch (Exception e)
-            {
-                await _logger.AddException(e);
-                return StatusCode(500);
-            }
+                if (model.Category == null) model.Category = "Post";
+                if (!ModelState.IsValid) 
+                    return BadRequest(ModelState);
+                var result = service.Create(model, model.Link);
+
+                return Ok(result);        
         }
 
         [HttpDelete("Delete")]
-        public async Task<IActionResult> Delete([FromBody] Page model)
+        public IActionResult Delete([FromBody] Page model)
         {
-            try
-            {
-                await _logger.AddStat("Delete", "Page");
-
                 if (model == null) return BadRequest();
-                var result = await _pageRepository.Delete(model);
+                var result = service.Delete(model);
                 return Ok(result);
-            }
-            catch (Exception e)
-            {
-                await _logger.AddException(e);
-                return StatusCode(500);
-            }
         }
         [HttpGet("Update")]
-        public async Task<IActionResult> Update(long id)
+        public IActionResult Update(string id)
         {
-            try
-            {
-                await _logger.AddStat("Update", "Page");
-                var page = await _pageRepository.Get(id);
-                return Ok(page);
-            }
-            catch (Exception e)
-            {
-                await _logger.AddException(e);
-                return StatusCode(500);
-            }
+            var page = service.Get(id);
+            return Ok(page);
         }
 
         [HttpPut("Update")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update([FromBody] Page model)
+        public IActionResult Update([FromBody] Page model)
         {
-            try
-            {
-                await _logger.AddStat("Update", "Page");
-                
-                if (!ModelState.IsValid) return BadRequest(ModelState);
-                var value = await _pageRepository.Update(model);
-                return Ok(value);
-            }
-            catch (Exception e)
-            {
-                await _logger.AddException(e);
-
-                return StatusCode(500);
-            }
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            var value = service.Update(model);
+            return Ok(value);
         }
     }
 }

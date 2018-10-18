@@ -11,7 +11,7 @@ using LifeLike.Services.ViewModel;
 using Microsoft.EntityFrameworkCore;
 using LifeLike.Data;
 
-namespace LifeLike.Repositories
+namespace LifeLike.Services
 {
     
     public  class LinkRepository : BaseService<LinkEntity>, ILinkService
@@ -123,5 +123,8 @@ namespace LifeLike.Repositories
         Link Get(string id);
         Result Delete(string shortName);
         Result Create(Link link);
+        IEnumerable<Link> List();
+        Link Get(long id);
+        Result Update(Link model);
     }
 }

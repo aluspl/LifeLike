@@ -12,7 +12,6 @@ namespace LifeLike.Services
         public readonly IMapper _mapper;
         public readonly IUnitOfWork _unitOfWork;
         public readonly IRepository<T> _repo;
-        private readonly ILogService log;
         public BaseService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _mapper = mapper;
