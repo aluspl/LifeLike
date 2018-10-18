@@ -6,8 +6,8 @@ using AutoMapper;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories;
-using LifeLike.Repositories.Extensions;
-using LifeLike.Repositories.ViewModel;
+using LifeLike.Services.Extensions;
+using LifeLike.Services.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LifeLike.Web.Controllers

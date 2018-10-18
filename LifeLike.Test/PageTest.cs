@@ -5,9 +5,9 @@ namespace LifeLike.Test
 {
     public class PageTest
     {
-        private IPageRepository _pageRepository;
+        private IPageService _pageRepository;
 
-        public PageTest(IPageRepository pageRepository)
+        public PageTest(IPageService pageRepository)
         {
             _pageRepository = pageRepository;
         }

@@ -17,7 +17,7 @@ COPY *.sln .
 COPY LifeLike.Web/*.csproj ./LifeLike.Web/
 COPY LifeLike.Test/*.csproj ./LifeLike.Test/
 COPY LifeLike.Data/*.csproj ./LifeLike.Data/
-COPY LifeLike.Repositories/*.csproj ./LifeLike.Repositories/
+COPY LifeLike.Services/*.csproj ./LifeLike.Services/
 
 RUN dotnet restore
 

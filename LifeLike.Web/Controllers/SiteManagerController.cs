@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories;
-using LifeLike.Repositories.Services;
-using LifeLike.Repositories.ViewModel;
+using LifeLike.Services;
+using LifeLike.Services.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

@@ -11,7 +11,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LifeLike.Data\LifeLike.Data.csproj" />
-    <ProjectReference Include="..\LifeLike.Repositories\LifeLike.Repositories.csproj" />
+    <ProjectReference Include="..\LifeLike.Repositories\LifeLike.Services.csproj" />
     <ProjectReference Include="..\LifeLike.Web\LifeLike.Web.csproj" />
   </ItemGroup>
 </Project>

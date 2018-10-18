@@ -3,8 +3,6 @@ using System.Threading.Tasks;
 using AutoMapper;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
-using LifeLike.Repositories;
-using LifeLike.Repositories.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -17,11 +15,11 @@ namespace LifeLike.Web.Controllers
     {
         private readonly IConfigService _config;
         private readonly ILogService _logger;
-        private readonly ILinkRepository _link;
+        private readonly ILinkService _link;
 
         public HomeController(IConfigService config, ILogService logger, 
         SignInManager<User> signInManager,
-        ILinkRepository link)
+        ILinkService link)
         {
             _link= link;
             _logger = logger;

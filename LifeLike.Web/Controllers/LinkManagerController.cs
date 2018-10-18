@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories;
-using LifeLike.Repositories.ViewModel;
+using LifeLike.Services;
+using LifeLike.Services.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,10 +15,10 @@ namespace LifeLike.Web.Controllers
     [Route("api/[controller]")]
     public class LinkManagerController : Controller
     {
-        private readonly ILinkRepository _repository;
+        private readonly ILinkService _repository;
         private readonly ILogService _logger;
 
-        public LinkManagerController(ILinkRepository repository, ILogService logger)
+        public LinkManagerController(ILinkService repository, ILogService logger)
         {
             _repository = repository;
             _logger = logger;

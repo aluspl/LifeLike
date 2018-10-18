@@ -21,8 +21,9 @@ using Newtonsoft.Json.Serialization;
 using Serilog;
 using Swashbuckle.AspNetCore.Swagger;
 using LifeLike.Web.Services.Swagger;
-using LifeLike.Repositories.Profiles;
-using LifeLike.Repositories.Services;
+using LifeLike.Services;
+using LifeLike.Data;
+using LifeLike.Services.Profiles;
 
 namespace LifeLike.Web
 {
@@ -70,12 +71,12 @@ namespace LifeLike.Web
             }
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+            services.AddSingleton<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ILogService, LogService>();
-            services.AddScoped<IRepository<T>, BaseREpository<T>();
-            services.AddScoped<ILinkRepository, LinkRepository>();
+            services.AddScoped<ILinkService, LinkRepository>();
             services.AddScoped<IConfigService, ConfigService>();
             services.AddScoped<IAlbumService, AlbumService>();
-            services.AddScoped<IPageRepository, PageRepository>();
+            services.AddScoped<IPageService, PageService>();
             services.AddScoped<IPhotoService, PhotoService>();
             services.AddScoped<IVideoService, VideoService>();
 

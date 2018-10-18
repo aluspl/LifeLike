@@ -4,7 +4,8 @@ using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Repositories;
-using LifeLike.Repositories.ViewModel;
+using LifeLike.Services;
+using LifeLike.Services.ViewModel;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,29 +15,27 @@ namespace LifeLike.Web.Controllers
     [Route("api/[controller]")]
     public class PhotoController : Controller
     {
-        private readonly ILogService _logger;
         private readonly IPhotoService _photos;
-        private readonly IAlbumService _gallery;
+        private readonly IAlbumService _album;
         private readonly IHostingEnvironment _hostingEnv;
 
 
         public PhotoController(ILogService logger,
             IPhotoService photos,
-            IAlbumService gallery,
+            IAlbumService album,
             IHostingEnvironment hosting)
         {
-            _logger = logger;
             _hostingEnv = hosting;
             _photos = photos;
-            _gallery = gallery;
+            _album = album;
             Path.Combine("photos");
         }
         [HttpGet("UploadFiles")]
         public async Task<UploadFileViewModel> UploadFiles(long id)
         {
-            await _logger.AddStat(id.ToString(), "Upload", "Photo");
+            // await _logger.AddStat(id.ToString(), "Upload", "Photo");
 
-            var gallery = await _gallery.Get(id);
+            var gallery = await _album.Get(id);
             return Gallery.GetViewForUpload(gallery);
         }
 
@@ -66,7 +65,7 @@ namespace LifeLike.Web.Controllers
             }
             catch (Exception e)
             {
-                await _logger.AddException(e);
+                // await _logger.AddException(e);
                 return StatusCode(500);
 
             }
@@ -76,7 +75,7 @@ namespace LifeLike.Web.Controllers
         {
             try
             {
-                await _logger.AddStat($"{id}", action: "Detail", controller: "Photo");
+                // await _logger.AddStat($"{id}", action: "Detail", controller: "Photo");
 
                 var photo = await _photos.Get(id);
                 // var selectedPhoto = Photo.Get(photo);
@@ -84,7 +83,7 @@ namespace LifeLike.Web.Controllers
             }
             catch (Exception e)
             {
-                await _logger.AddException(e);
+                // await _logger.AddException(e);
                 return StatusCode(500);
             }
         }

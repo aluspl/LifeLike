@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using LifeLike.Data.Models;
 using LifeLike.Repositories;
-using LifeLike.Repositories.ViewModel;
+using LifeLike.Services.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,12 +16,12 @@ namespace LifeLike.Web.Controllers
     [Route("api/[controller]")]
     public class PageController : Controller
     {
-        private readonly IPageRepository _pageRepository;
+        private readonly IPageService _pageRepository;
         private readonly ILogService _logger;
-        private readonly ILinkRepository _links;
+        private readonly ILinkService _links;
         private readonly IMapper _mapper;
 
-        public PageController(IPageRepository pageRepository, ILogService logger, ILinkRepository links, IMapper mapper)
+        public PageController(IPageService pageRepository, ILogService logger, ILinkService links, IMapper mapper)
         {
             _pageRepository = pageRepository;
             _logger = logger;

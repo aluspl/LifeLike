@@ -28,7 +28,7 @@
   <ItemGroup>
     <ProjectReference Include="..\LifeLike.Data\LifeLike.Data.csproj">
     </ProjectReference>
-    <ProjectReference Include="..\LifeLike.Repositories\LifeLike.Repositories.csproj">
+    <ProjectReference Include="..\LifeLike.Services\LifeLike.Services.csproj">
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
