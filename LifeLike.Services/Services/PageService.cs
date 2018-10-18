@@ -45,8 +45,6 @@ namespace LifeLike.Repositories
             }
         }
 
-
-
         public Result Create(Page model, Link link)
         {
             try
@@ -135,7 +133,8 @@ namespace LifeLike.Repositories
         {
             try
             {
-                return _repo.GetOverviewQuery(p => p.Category == category).ProjectTo<Page>().AsEnumerable();
+                var items =  _repo.GetOverview(p => p.Category == category);
+                return _mapper.Map<IEnumerable<Page>>(items);
             }
             catch (Exception e)
             {
@@ -153,5 +152,6 @@ namespace LifeLike.Repositories
         Result Create(Page model, Link link);
         Result Delete(Page model);
         Result Update(Page model);
+        IEnumerable<Page> List();
     }
 }

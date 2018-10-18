@@ -37,7 +37,12 @@ namespace LifeLike.Web.Controllers
             return Ok(list);
         }
         // GET
-
+        [HttpGet("All")]
+        public IActionResult All()
+        {
+            var list = service.List();
+            return Ok(list);
+        }
         [HttpGet("Pages")]
         public IActionResult Pages()
         {

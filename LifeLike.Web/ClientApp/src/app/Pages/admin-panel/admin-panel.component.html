@@ -1,48 +1,10 @@
-<div class="accordion" id="adminPanel">
-    <div class="card">
-        <div class="card-header" id="headingOne">
-          <h5 class="mb-0">
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Logs 
-           </button>
-          </h5>
-        </div>
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-              <div class="card-body">
-                  <app-log></app-log>
-              </div>
-        </div>
-    </div>   
-    <div class="card">
-        <div class="card-header" id="headingTwo">
-          <h5 class="mb-0">
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Configs 
-           </button>
-          </h5>
-        </div>
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
-          <div class="card-body">
-            <app-config></app-config>
-          </div>
-        </div>
-    </div>   
-    <div class="card">
-        <div class="card-header" id="headingTwo">
-          <h5 class="mb-0">
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Post and Pages 
-           </button>
-          </h5>
-        </div>
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
-          <div class="card-body">
-            <button  routerLink='/CreatePost'>Add New Post/Page</button>
-            <app-post-list></app-post-list>
-          </div>
-        </div>
-    </div>   
-
+<div >
+    <h5>Logs</h5>            
+    <app-log></app-log>
+    <h5>Logs</h5>            
+    <app-config></app-config>
+    <h5>Pages</h5>            
+    <button  routerLink='/CreatePost'>Add New Post/Page</button>
+  <app-admin-page></app-admin-page>
 </div>
-
-
+      

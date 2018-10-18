@@ -1,0 +1,30 @@
+<app-spinner *ngIf="IsLoading"></app-spinner>
+<table *ngIf="!IsLoading" class="table table-striped">
+        <thead class="thead-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Short Name</th>
+                  <th scope="col">Full Name</th>
+                  <th scope="col">Category</th>
+
+                  <th scope="col">Publish Date</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let page of Pages">
+                  <th scope="row">{{page.Id}}</th>
+                  <td>{{page.ShortName}}</td>
+                  <td>{{page.FullName}}</td>
+                  <td>{{page.Category}}</td>       
+
+                  <td>{{page.Published | date: 'dd/MM/yyyy'}}</td>       
+                </tr>      
+    </tbody>
+</table>
+
+
+<div class="row">
+    <app-count-title [Title]="Count"></app-count-title>        
+</div>
+      

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Page } from '../../Models/Page';
 import { RestService } from '../../Services/rest.service';
-import {map} from 'rxjs/internal/operators';
+import { map } from 'rxjs/internal/operators';
 
 
 @Component({

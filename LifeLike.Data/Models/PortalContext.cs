@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using LifeLike.Data.Models.Enums;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -54,6 +55,7 @@ namespace LifeLike.Data.Models
                         Category = PageCategory.Page,
                         FullName = "Contact Me",
                         PageOrder = 0,
+                        Published = DateTime.Now,
                         Content = "Phone: 600836095"
                     }
                 );

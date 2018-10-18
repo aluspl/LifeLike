@@ -19,7 +19,6 @@ import {MenuComponent} from './Layout/menu/menu.component';
 import {RestService} from './Services/rest.service';
 import {YoutubePlayerComponent} from './Components/youtube-player/youtube-player.component';
 import {FormsModule} from '@angular/forms';
-import {AuthService} from './Services/auth.service';
 import {PostCreateComponent} from './Pages/post-create/post-create.component';
 import { TitleComponent } from './Components/title/title.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -30,6 +29,9 @@ import { IntroTextComponent } from './Components/intro-text/intro-text.component
 import {ConfigComponent} from './Pages/config/config.component';
 import { SpinnerComponent } from './Components/spinner/spinner.component';
 import { CountTitleComponent } from './Components/count-title/count-title.component';
+import { AdminPageComponent } from './Pages/admin-page/admin-page.component';
+import { LoginComponent } from './Pages/login/login.component';
+import { AuthenticationService } from './Services/authentication.service';
 
 
 @NgModule({
@@ -54,14 +56,15 @@ import { CountTitleComponent } from './Components/count-title/count-title.compon
     IntroTextComponent,
     ConfigComponent,
     SpinnerComponent,
-    CountTitleComponent
+    CountTitleComponent,
+    AdminPageComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    HttpClientModule,
 
     HttpClientXsrfModule.withOptions({
       cookieName: 'My-Xsrf-Cookie',
@@ -71,7 +74,7 @@ import { CountTitleComponent } from './Components/count-title/count-title.compon
   ],
   exports: [
   ],
-  providers: [RestService, AuthService],
+  providers: [RestService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

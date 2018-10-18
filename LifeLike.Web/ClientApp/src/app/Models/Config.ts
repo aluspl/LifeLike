@@ -4,5 +4,4 @@ export  class Config {
   Value: string;
   DisplayName: string;
   Type: string;
- 
 }

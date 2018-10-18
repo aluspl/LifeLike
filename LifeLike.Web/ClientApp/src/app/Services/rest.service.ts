@@ -25,7 +25,6 @@ const VideoList = '/Api/Video/List';
 
 @Injectable()
 export class RestService {
-
   private static log(message: string) {
     console.log(message);
     // this.messageService.add('HeroService: ' + message);
@@ -75,7 +74,14 @@ export class RestService {
         catchError(RestService.handleError<Page[]>())
       );
   }
-
+  GetAllPagesList(): Observable<Page[]> {
+    return this.http
+      .get<Page[]>(PageList)
+      .pipe(
+        tap(_ => RestService.log(`fetched All Pages`)),
+        catchError(RestService.handleError<Page[]>())
+      );
+  }
   getPageDetail(name: string): Observable<Page> {
     const url = `${PageDetail}/${name}`;
     RestService.log(url);
