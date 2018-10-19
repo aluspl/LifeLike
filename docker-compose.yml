@@ -2,7 +2,7 @@ version: '3'
 services:
   backend:
     build:
-      context: Lifelike.Frontend
+      context: Lifelike.Api
     ports:
       - 5000:80
     networks:
