@@ -1,11 +1,11 @@
-<app-title Title="{{Page.FullName}}"></app-title>
+<app-title [Title]="Page.FullName"></app-title>
 
 <section class="mat-typography"  *ngIf="Page">
-  <img *ngIf=" Page.ImageUrl != ''" src="{{Page.ImageUrl}}">
+  <img *ngIf="Page.ImageUrl != null" src="{{Page.ImageUrl}}">
 
-  <p class="body-1">
+<p class="body-1">
    {{Page.Content}}
- </p>
-  Published: {{Page.Published  | date: 'dd/MM/yyyy'}}
+</p>
+Published: {{Page.Published  | date: 'dd/MM/yyyy'}}
   <!--<p class="lead">  {{Page.Category}}      </p>-->
 </section>

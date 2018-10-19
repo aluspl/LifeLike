@@ -6,6 +6,7 @@ packages/
 .DS_Store
 wwwroot/.DS_Store
 .vs/
+node_modules/
 ClientApp/src/app/Components/post-list/post-list.component.css
 ClientApp/src/app/Components/post-list/post-list.component.css.map
 ClientApp/src/app/Components/youtube-player/youtube-player.component.css
@@ -27,6 +28,7 @@ ClientApp/src/app/app.component.css.map
 ClientApp/src/styles.css
 ClientApp/src/styles.css.map
 LifeLike.Web.sln
+LifeLike.Frontend/node_modules/
 LifeLike.Web/ClientApp/package-lock.json
 LifeLike.Web/*.txt
 yarn.lock

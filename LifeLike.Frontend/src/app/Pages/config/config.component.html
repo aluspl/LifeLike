@@ -1,29 +1,31 @@
 <app-title Title="Configs"></app-title>
 <app-spinner *ngIf="IsLoading"></app-spinner>
-<table *ngIf="!IsLoading"  class="mat-elevation-z8">
-<!-- 
+Name: string;
+Value: string;
+DisplayName: string;
+Type: string;
+<table *ngIf="!IsLoading"  class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">DisplayName</th>
+        <th scope="col">Type</th>
+        <th scope="col">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let config of Configs">
+        <th scope="row">{{config.Id}}</th>
+        <td>{{config.Name}}</td>
+        <td>{{config.DisplayName}}</td>
+        <td>{{config.Type}}</td>
+        <td>{{config.Value}}</td>
 
-  <ng-container matColumnDef="Name" >
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="DisplayName">
-    <th mat-header-cell *matHeaderCellDef> Display Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.DisplayName}} </td>
-  </ng-container>
-  <ng-container matColumnDef="Value" >
-    <th mat-header-cell *matHeaderCellDef> Value </th>
-    <td mat-cell *matCellDef="let element"> {{element.Value}} </td>
-  </ng-container>
-  <ng-container matColumnDef="Type">
-    <th mat-header-cell *matHeaderCellDef> Type </th>
-    <td mat-cell *matCellDef="let element"> {{element.Type}} </td>
-  </ng-container>
-
-
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
-</table>
+      </tr>      
+    </tbody>
+  </table>
+<div class="row">
+  <app-count-title [Title]="Count"></app-count-title>        
+</div>
 

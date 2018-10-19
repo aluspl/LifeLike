@@ -12,20 +12,21 @@ import {Config} from '../Models/Config';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-const PageDetail = 'http://localhost:5000/Api/Page/Details';
 
-const PageList = 'http://localhost:5000/Api/Page/Pages';
-const PostList = 'http://localhost:5000/Api/Page/Posts';
-const CreatePost = 'http://localhost:5000/Api/Page/Cr';
+const host = "http://localhost:5000";
+const PageDetail = host + '/Api/Page/Details';
 
-const ConfigList = 'http://localhost:5000/Api/Config';
-const LogList = 'http://localhost:5000/Api/Log/List';
-const VideoList = 'http://localhost:5000/Api/Log/List';
+const PageList = host + '/Api/Page/Pages';
+const PostList = host + '/Api/Page/Posts';
+const CreatePost = host + '/Api/Page/Cr';
+
+const ConfigList = host + '/Api/Config';
+const LogList = host + '/Api/Log/List';
+const VideoList = host + '/Api/Video/List';
 
 
 @Injectable()
 export class RestService {
-
   private static log(message: string) {
     console.log(message);
     // this.messageService.add('HeroService: ' + message);
@@ -75,7 +76,14 @@ export class RestService {
         catchError(RestService.handleError<Page[]>())
       );
   }
-
+  GetAllPagesList(): Observable<Page[]> {
+    return this.http
+      .get<Page[]>(PageList)
+      .pipe(
+        tap(_ => RestService.log(`fetched All Pages`)),
+        catchError(RestService.handleError<Page[]>())
+      );
+  }
   getPageDetail(name: string): Observable<Page> {
     const url = `${PageDetail}/${name}`;
     RestService.log(url);
@@ -107,8 +115,8 @@ export class RestService {
   }
 
 
-  removePost() {
-
+  removePost(Id: number) {
+      // return this.http.delete()
   }
 
   editPost() {

@@ -1,0 +1,722 @@
+2018-10-18 21:21:55.750 +02:00 [INF] User profile is available. Using '/Users/szymonmotyka/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2018-10-18 21:21:56.703 +02:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-10-18 21:21:56.832 +02:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:21:56.845 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:21:56.852 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2018-10-18 21:21:56.944 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:21:56.953 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:21:56.972 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:21:56.974 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:21:56.979 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:21:56.980 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:23:09.197 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/  
+2018-10-18 21:23:09.497 +02:00 [INF] Sending file. Request path: '/index.html'. Physical path: '/Users/szymonmotyka/Dev/LifeLike/LifeLike.Web/ClientApp/dist/index.html'
+2018-10-18 21:23:09.527 +02:00 [INF] Request finished in 333.7172ms 200 text/html
+2018-10-18 21:23:09.611 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/runtime.a66f828dca56eeb90e02.js  
+2018-10-18 21:23:09.611 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/styles.41eaffca8ecee33a210f.css  
+2018-10-18 21:23:09.612 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/polyfills.a19b2f1d90e9baecaab8.js  
+2018-10-18 21:23:09.613 +02:00 [INF] Sending file. Request path: '/runtime.a66f828dca56eeb90e02.js'. Physical path: '/Users/szymonmotyka/Dev/LifeLike/LifeLike.Web/ClientApp/dist/runtime.a66f828dca56eeb90e02.js'
+2018-10-18 21:23:09.614 +02:00 [INF] Request finished in 3.3296ms 200 application/javascript
+2018-10-18 21:23:09.614 +02:00 [INF] Sending file. Request path: '/polyfills.a19b2f1d90e9baecaab8.js'. Physical path: '/Users/szymonmotyka/Dev/LifeLike/LifeLike.Web/ClientApp/dist/polyfills.a19b2f1d90e9baecaab8.js'
+2018-10-18 21:23:09.615 +02:00 [INF] Request finished in 3.5103ms 200 application/javascript
+2018-10-18 21:23:09.624 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/main.a293e312cfd19762a0a5.js  
+2018-10-18 21:23:09.624 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/scripts.ee7fed27c36eaa5fa8a9.js  
+2018-10-18 21:23:09.629 +02:00 [INF] Sending file. Request path: '/scripts.ee7fed27c36eaa5fa8a9.js'. Physical path: '/Users/szymonmotyka/Dev/LifeLike/LifeLike.Web/ClientApp/dist/scripts.ee7fed27c36eaa5fa8a9.js'
+2018-10-18 21:23:09.628 +02:00 [INF] Sending file. Request path: '/styles.41eaffca8ecee33a210f.css'. Physical path: '/Users/szymonmotyka/Dev/LifeLike/LifeLike.Web/ClientApp/dist/styles.41eaffca8ecee33a210f.css'
+2018-10-18 21:23:09.629 +02:00 [INF] Request finished in 5.8942ms 200 application/javascript
+2018-10-18 21:23:09.630 +02:00 [INF] Request finished in 18.6678ms 200 text/css
+2018-10-18 21:23:09.632 +02:00 [INF] Sending file. Request path: '/main.a293e312cfd19762a0a5.js'. Physical path: '/Users/szymonmotyka/Dev/LifeLike/LifeLike.Web/ClientApp/dist/main.a293e312cfd19762a0a5.js'
+2018-10-18 21:23:09.633 +02:00 [INF] Request finished in 9.0099ms 200 application/javascript
+2018-10-18 21:23:10.167 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Config  
+2018-10-18 21:23:10.218 +02:00 [INF] Route matched with {action = "GetList", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web)
+2018-10-18 21:23:10.285 +02:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-10-18 21:23:10.344 +02:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) - Validation state: "Valid"
+2018-10-18 21:23:10.484 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:23:10.490 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."Id", "c"."DisplayName", "c"."Name", "c"."Type", "c"."Value"
+FROM "Configs" AS "c"
+2018-10-18 21:23:10.624 +02:00 [INF] Executed action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 247.56230000000002ms.
+2018-10-18 21:23:10.638 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[LifeLike.Services.ViewModel.Config, LifeLike.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-18 21:23:10.685 +02:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) in 454.0946ms
+2018-10-18 21:23:10.696 +02:00 [INF] Request finished in 528.624ms 200 application/json; charset=utf-8
+2018-10-18 21:23:17.806 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Page/Details/Contact  
+2018-10-18 21:23:17.838 +02:00 [INF] Route matched with {action = "Details", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web)
+2018-10-18 21:23:17.841 +02:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-10-18 21:23:17.888 +02:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) with arguments (["Contact"]) - Validation state: "Valid"
+2018-10-18 21:23:17.927 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:23:17.933 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (Size = 7)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Category", "p"."Content", "p"."FullName", "p"."ImageUrl", "p"."LinkId", "p"."PageOrder", "p"."Published", "p"."ShortName"
+FROM "Pages" AS "p"
+WHERE "p"."ShortName" = @__id_0
+LIMIT 1
+2018-10-18 21:23:17.969 +02:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 73.1786ms.
+2018-10-18 21:23:17.969 +02:00 [INF] Executing ObjectResult, writing value of type 'LifeLike.Services.ViewModel.Page'.
+2018-10-18 21:23:17.992 +02:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) in 152.9675ms
+2018-10-18 21:23:17.995 +02:00 [INF] Request finished in 188.3453ms 200 application/json; charset=utf-8
+2018-10-18 21:24:04.050 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Page/Contact  
+2018-10-18 21:24:04.054 +02:00 [INF] Sending file. Request path: '/index.html'. Physical path: '/Users/szymonmotyka/Dev/LifeLike/LifeLike.Web/ClientApp/dist/index.html'
+2018-10-18 21:24:04.054 +02:00 [INF] Request finished in 4.4181ms 200 text/html
+2018-10-18 21:24:04.457 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Page/Details/Contact  
+2018-10-18 21:24:04.459 +02:00 [INF] Route matched with {action = "Details", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web)
+2018-10-18 21:24:04.461 +02:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-10-18 21:24:04.463 +02:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) with arguments (["Contact"]) - Validation state: "Valid"
+2018-10-18 21:24:04.470 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:24:04.472 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (Size = 7)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Category", "p"."Content", "p"."FullName", "p"."ImageUrl", "p"."LinkId", "p"."PageOrder", "p"."Published", "p"."ShortName"
+FROM "Pages" AS "p"
+WHERE "p"."ShortName" = @__id_0
+LIMIT 1
+2018-10-18 21:24:04.475 +02:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 11.740400000000001ms.
+2018-10-18 21:24:04.476 +02:00 [INF] Executing ObjectResult, writing value of type 'LifeLike.Services.ViewModel.Page'.
+2018-10-18 21:24:04.477 +02:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) in 17.032500000000002ms
+2018-10-18 21:24:04.478 +02:00 [INF] Request finished in 21.2726ms 200 application/json; charset=utf-8
+2018-10-18 21:24:04.638 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico  
+2018-10-18 21:24:04.640 +02:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: '/Users/szymonmotyka/Dev/LifeLike/LifeLike.Web/ClientApp/dist/favicon.ico'
+2018-10-18 21:24:04.640 +02:00 [INF] Request finished in 2.0899ms 200 image/x-icon
+2018-10-18 21:24:06.090 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Page/Contact  
+2018-10-18 21:24:06.097 +02:00 [INF] The file /index.html was not modified
+2018-10-18 21:24:06.101 +02:00 [INF] Request finished in 11.0844ms 304 text/html
+2018-10-18 21:24:06.299 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Page/Details/Contact  
+2018-10-18 21:24:06.300 +02:00 [INF] Route matched with {action = "Details", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web)
+2018-10-18 21:24:06.303 +02:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-10-18 21:24:06.304 +02:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) with arguments (["Contact"]) - Validation state: "Valid"
+2018-10-18 21:24:06.306 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:24:06.310 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (Size = 7)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Category", "p"."Content", "p"."FullName", "p"."ImageUrl", "p"."LinkId", "p"."PageOrder", "p"."Published", "p"."ShortName"
+FROM "Pages" AS "p"
+WHERE "p"."ShortName" = @__id_0
+LIMIT 1
+2018-10-18 21:24:06.311 +02:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 6.3031000000000006ms.
+2018-10-18 21:24:06.313 +02:00 [INF] Executing ObjectResult, writing value of type 'LifeLike.Services.ViewModel.Page'.
+2018-10-18 21:24:06.314 +02:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) in 13.2615ms
+2018-10-18 21:24:06.315 +02:00 [INF] Request finished in 16.3797ms 200 application/json; charset=utf-8
+2018-10-18 21:24:06.479 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico  
+2018-10-18 21:24:06.481 +02:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: '/Users/szymonmotyka/Dev/LifeLike/LifeLike.Web/ClientApp/dist/favicon.ico'
+2018-10-18 21:24:06.482 +02:00 [INF] Request finished in 3.6239ms 200 image/x-icon
+2018-10-18 21:24:20.494 +02:00 [INF] User profile is available. Using '/Users/szymonmotyka/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2018-10-18 21:24:21.407 +02:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-10-18 21:24:21.468 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:24:21.484 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:24:21.486 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2018-10-18 21:24:21.567 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:24:21.582 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:24:21.605 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:24:21.606 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:24:21.611 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:24:21.612 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:28:59.431 +02:00 [INF] User profile is available. Using '/Users/szymonmotyka/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2018-10-18 21:29:00.334 +02:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-10-18 21:29:00.419 +02:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:29:00.430 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:29:00.436 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2018-10-18 21:29:00.545 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:29:00.553 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:29:00.568 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:29:00.569 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:29:00.573 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:29:00.575 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:29:21.516 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Config  
+2018-10-18 21:29:21.865 +02:00 [INF] Route matched with {action = "GetList", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web)
+2018-10-18 21:29:21.885 +02:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-10-18 21:29:21.922 +02:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) - Validation state: "Valid"
+2018-10-18 21:29:22.026 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:29:22.028 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."Id", "c"."DisplayName", "c"."Name", "c"."Type", "c"."Value"
+FROM "Configs" AS "c"
+2018-10-18 21:29:22.097 +02:00 [INF] Executed action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 170.56900000000002ms.
+2018-10-18 21:29:22.108 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[LifeLike.Services.ViewModel.Config, LifeLike.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-18 21:29:22.133 +02:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) in 261.9049ms
+2018-10-18 21:29:22.141 +02:00 [INF] Request finished in 628.8111ms 200 application/json; charset=utf-8
+2018-10-18 21:29:39.810 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Page/Details/Contact  
+2018-10-18 21:29:39.829 +02:00 [INF] Route matched with {action = "Details", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web)
+2018-10-18 21:29:39.830 +02:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-10-18 21:29:39.867 +02:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) with arguments (["Contact"]) - Validation state: "Valid"
+2018-10-18 21:29:39.920 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:29:39.927 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (Size = 7)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Category", "p"."Content", "p"."FullName", "p"."ImageUrl", "p"."LinkId", "p"."PageOrder", "p"."Published", "p"."ShortName"
+FROM "Pages" AS "p"
+WHERE "p"."ShortName" = @__id_0
+LIMIT 1
+2018-10-18 21:29:39.977 +02:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 99.5536ms.
+2018-10-18 21:29:39.979 +02:00 [INF] Executing ObjectResult, writing value of type 'LifeLike.Services.ViewModel.Page'.
+2018-10-18 21:29:40.009 +02:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) in 178.4614ms
+2018-10-18 21:29:40.010 +02:00 [INF] Request finished in 199.9666ms 200 application/json; charset=utf-8
+2018-10-18 21:32:22.331 +02:00 [INF] User profile is available. Using '/Users/szymonmotyka/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2018-10-18 21:32:23.284 +02:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-10-18 21:32:23.383 +02:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:32:23.399 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:32:23.404 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2018-10-18 21:32:23.496 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:32:23.509 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:32:23.531 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:32:23.532 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:32:23.538 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:32:23.539 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:32:49.307 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Page/Contact  
+2018-10-18 21:32:49.762 +02:00 [INF] Request finished in 424.1547ms 500 application/json
+2018-10-18 21:32:49.887 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico  
+2018-10-18 21:32:49.896 +02:00 [INF] Request finished in 9.5456ms 500 application/json
+2018-10-18 21:33:55.731 +02:00 [INF] User profile is available. Using '/Users/szymonmotyka/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2018-10-18 21:33:56.333 +02:00 [INF] Starting @angular/cli on port 65440...
+2018-10-18 21:33:56.795 +02:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-10-18 21:33:56.935 +02:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:33:56.963 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:33:56.969 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2018-10-18 21:33:57.143 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:33:57.157 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:33:57.180 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:33:57.182 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:33:57.191 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:33:57.195 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:34:01.883 +02:00 [INF] > lifelikeweb@6.6.6 start /Users/szymonmotyka/Dev/LifeLike/LifeLike.Web/ClientApp
+> ng serve "--port" "65440"
+
+** Angular Live Development Server is listening on localhost:65440, open your browser on http://localhost:65440/ **
+
+2018-10-18 21:34:10.486 +02:00 [INF] Date: 2018-10-18T19:34:10.440Z
+Hash: 6cb0bb8cac2dd0bab127
+Time: 8328ms
+chunk {main} main.js, main.js.map (main) 1.94 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 701 bytes [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 6.22 kB [entry] [rendered]
+chunk {scripts} scripts.js, scripts.js.map (scripts) 138 kB  [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 148 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 326 kB [initial] [rendered]
+ℹ ｢wdm｣: Failed to compile.
+
+2018-10-18 21:34:28.717 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Page/Contact  
+2018-10-18 21:34:29.366 +02:00 [INF] Request finished in 653.1318ms 404 text/html; charset=utf-8
+2018-10-18 21:34:29.600 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico  
+2018-10-18 21:34:29.620 +02:00 [INF] Request finished in 20.2175ms 404 text/html; charset=utf-8
+2018-10-18 21:34:42.224 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Config  
+2018-10-18 21:34:42.277 +02:00 [INF] Route matched with {action = "GetList", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web)
+2018-10-18 21:34:42.312 +02:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-10-18 21:34:42.370 +02:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) - Validation state: "Valid"
+2018-10-18 21:34:42.533 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:34:42.535 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."Id", "c"."DisplayName", "c"."Name", "c"."Type", "c"."Value"
+FROM "Configs" AS "c"
+2018-10-18 21:34:42.609 +02:00 [INF] Executed action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 232.13410000000002ms.
+2018-10-18 21:34:42.622 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[LifeLike.Services.ViewModel.Config, LifeLike.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-18 21:34:42.636 +02:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) in 353.8589ms
+2018-10-18 21:34:42.640 +02:00 [INF] Request finished in 416.0061ms 200 application/json; charset=utf-8
+2018-10-18 21:34:45.381 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Page/Details/Contact  
+2018-10-18 21:34:45.416 +02:00 [INF] Route matched with {action = "Details", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web)
+2018-10-18 21:34:45.418 +02:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-10-18 21:34:45.471 +02:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) with arguments (["Contact"]) - Validation state: "Valid"
+2018-10-18 21:34:45.509 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:34:45.514 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (Size = 7)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Category", "p"."Content", "p"."FullName", "p"."ImageUrl", "p"."LinkId", "p"."PageOrder", "p"."Published", "p"."ShortName"
+FROM "Pages" AS "p"
+WHERE "p"."ShortName" = @__id_0
+LIMIT 1
+2018-10-18 21:34:45.552 +02:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 72.9696ms.
+2018-10-18 21:34:45.553 +02:00 [INF] Executing ObjectResult, writing value of type 'LifeLike.Services.ViewModel.Page'.
+2018-10-18 21:34:45.573 +02:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) in 156.31560000000002ms
+2018-10-18 21:34:45.575 +02:00 [INF] Request finished in 193.4397ms 200 application/json; charset=utf-8
+2018-10-18 21:36:51.437 +02:00 [INF] User profile is available. Using '/Users/szymonmotyka/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2018-10-18 21:36:52.145 +02:00 [INF] Starting @angular/cli on port 49176...
+2018-10-18 21:36:52.679 +02:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-10-18 21:36:52.819 +02:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:36:52.837 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:36:52.844 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2018-10-18 21:36:52.990 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:36:53.006 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:36:53.033 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:36:53.034 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:36:53.043 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:36:53.044 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:36:57.350 +02:00 [INF] > lifelikeweb@6.6.6 start /Users/szymonmotyka/Dev/LifeLike/LifeLike.Web/ClientApp
+> ng serve "--port" "49176"
+
+** Angular Live Development Server is listening on localhost:49176, open your browser on http://localhost:49176/ **
+
+2018-10-18 21:37:05.581 +02:00 [INF] Date: 2018-10-18T19:37:05.533Z
+Hash: 6cb0bb8cac2dd0bab127
+Time: 7937ms
+chunk {main} main.js, main.js.map (main) 1.94 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 701 bytes [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 6.22 kB [entry] [rendered]
+chunk {scripts} scripts.js, scripts.js.map (scripts) 138 kB  [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 148 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 326 kB [initial] [rendered]
+ℹ ｢wdm｣: Failed to compile.
+
+2018-10-18 21:56:52.453 +02:00 [INF] User profile is available. Using '/Users/szymonmotyka/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2018-10-18 21:56:53.340 +02:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-10-18 21:56:53.431 +02:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:56:53.447 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:56:53.453 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2018-10-18 21:56:53.531 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:56:53.543 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:56:53.567 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:56:53.568 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:56:53.574 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:56:53.575 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:57:55.302 +02:00 [INF] User profile is available. Using '/Users/szymonmotyka/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2018-10-18 21:57:55.905 +02:00 [INF] Starting @angular/cli on port 49448...
+2018-10-18 21:57:56.260 +02:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-10-18 21:57:56.370 +02:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:57:56.382 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:57:56.390 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2018-10-18 21:57:56.508 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:57:56.518 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:57:56.538 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:57:56.544 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:57:56.550 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:57:56.551 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:58:01.580 +02:00 [INF] > lifelikeweb@6.6.6 start /Users/szymonmotyka/Dev/LifeLike/LifeLike.Web/ClientApp
+> ng serve "--port" "49448"
+
+** Angular Live Development Server is listening on localhost:49448, open your browser on http://localhost:49448/ **
+
+2018-10-18 21:58:12.987 +02:00 [INF] Date: 2018-10-18T19:58:12.960Z
+Hash: e644742083253fa0c3c1
+Time: 11182ms
+chunk {main} main.js, main.js.map (main) 134 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 227 kB [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 6.22 kB [entry] [rendered]
+chunk {scripts} scripts.js, scripts.js.map (scripts) 138 kB  [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 148 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 4.72 MB [initial] [rendered]
+ℹ ｢wdm｣: Compiled successfully.
+
+2018-10-18 21:58:29.999 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Config  
+2018-10-18 21:58:30.379 +02:00 [INF] Route matched with {action = "GetList", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web)
+2018-10-18 21:58:30.398 +02:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-10-18 21:58:30.426 +02:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) - Validation state: "Valid"
+2018-10-18 21:58:30.510 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:58:30.513 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."Id", "c"."DisplayName", "c"."Name", "c"."Type", "c"."Value"
+FROM "Configs" AS "c"
+2018-10-18 21:58:30.577 +02:00 [INF] Executed action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 146.7426ms.
+2018-10-18 21:58:30.588 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[LifeLike.Services.ViewModel.Config, LifeLike.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2018-10-18 21:58:30.608 +02:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) in 224.26430000000002ms
+2018-10-18 21:58:30.615 +02:00 [INF] Request finished in 618.3723ms 200 application/json; charset=utf-8
+2018-10-18 21:58:32.861 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Page/Details/Contact  
+2018-10-18 21:58:32.904 +02:00 [INF] Route matched with {action = "Details", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web)
+2018-10-18 21:58:32.911 +02:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-10-18 21:58:32.966 +02:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) with arguments (["Contact"]) - Validation state: "Valid"
+2018-10-18 21:58:33.007 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:58:33.013 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (Size = 7)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Category", "p"."Content", "p"."FullName", "p"."ImageUrl", "p"."LinkId", "p"."PageOrder", "p"."Published", "p"."ShortName"
+FROM "Pages" AS "p"
+WHERE "p"."ShortName" = @__id_0
+LIMIT 1
+2018-10-18 21:58:33.048 +02:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 73.647ms.
+2018-10-18 21:58:33.049 +02:00 [INF] Executing ObjectResult, writing value of type 'LifeLike.Services.ViewModel.Page'.
+2018-10-18 21:58:33.068 +02:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) in 163.3117ms
+2018-10-18 21:58:33.069 +02:00 [INF] Request finished in 208.3648ms 200 application/json; charset=utf-8
+2018-10-18 21:59:30.340 +02:00 [INF] User profile is available. Using '/Users/szymonmotyka/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2018-10-18 21:59:30.851 +02:00 [INF] Starting @angular/cli on port 49487...
+2018-10-18 21:59:31.231 +02:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-10-18 21:59:31.326 +02:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:59:31.351 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:59:31.356 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2018-10-18 21:59:31.456 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:59:31.472 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:59:31.499 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:59:31.500 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:59:31.507 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 21:59:31.508 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 21:59:36.339 +02:00 [INF] > lifelikeweb@6.6.6 start /Users/szymonmotyka/Dev/LifeLike/LifeLike.Web/ClientApp
+> ng serve "--port" "49487"
+
+** Angular Live Development Server is listening on localhost:49487, open your browser on http://localhost:49487/ **
+
+2018-10-18 21:59:47.854 +02:00 [INF] Date: 2018-10-18T19:59:47.828Z
+Hash: e644742083253fa0c3c1
+Time: 11303ms
+chunk {main} main.js, main.js.map (main) 134 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 227 kB [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 6.22 kB [entry] [rendered]
+chunk {scripts} scripts.js, scripts.js.map (scripts) 138 kB  [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 148 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 4.72 MB [initial] [rendered]
+ℹ ｢wdm｣: Compiled successfully.
+
+2018-10-18 22:00:14.168 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/  
+2018-10-18 22:00:14.458 +02:00 [INF] Request finished in 290.5734ms 200 text/html; charset=UTF-8
+2018-10-18 22:00:14.470 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/runtime.js  
+2018-10-18 22:00:14.477 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/polyfills.js  
+2018-10-18 22:00:14.479 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/styles.js  
+2018-10-18 22:00:14.487 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/scripts.js  
+2018-10-18 22:00:14.488 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/vendor.js  
+2018-10-18 22:00:14.490 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/main.js  
+2018-10-18 22:00:14.518 +02:00 [INF] Request finished in 48.6439ms 200 application/javascript; charset=UTF-8
+2018-10-18 22:00:14.531 +02:00 [INF] Request finished in 52.1894ms 200 application/javascript; charset=UTF-8
+2018-10-18 22:00:14.531 +02:00 [INF] Request finished in 43.8995ms 200 application/javascript; charset=UTF-8
+2018-10-18 22:00:14.531 +02:00 [INF] Request finished in 40.969ms 200 application/javascript; charset=UTF-8
+2018-10-18 22:00:14.534 +02:00 [INF] Request finished in 57.1519ms 200 application/javascript; charset=UTF-8
+2018-10-18 22:00:14.566 +02:00 [INF] Request finished in 78.6086ms 200 application/javascript; charset=UTF-8
+2018-10-18 22:00:15.759 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/info?t=1539892815756  
+2018-10-18 22:00:15.775 +02:00 [INF] Request finished in 16.4331ms 200 application/json; charset=UTF-8
+2018-10-18 22:00:15.798 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/816/bvadxcyz/websocket  
+2018-10-18 22:00:24.261 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/  
+2018-10-18 22:00:24.269 +02:00 [INF] Request finished in 7.9227ms 200 text/html; charset=UTF-8
+2018-10-18 22:00:24.308 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/polyfills.js  
+2018-10-18 22:00:24.317 +02:00 [INF] Request finished in 8.9936ms 304 
+2018-10-18 22:00:24.320 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/scripts.js  
+2018-10-18 22:00:24.322 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/main.js  
+2018-10-18 22:00:24.323 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/styles.js  
+2018-10-18 22:00:24.325 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/runtime.js  
+2018-10-18 22:00:24.325 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/vendor.js  
+2018-10-18 22:00:24.325 +02:00 [INF] Request finished in 6.9279ms 304 
+2018-10-18 22:00:24.338 +02:00 [INF] Request finished in 16.4707ms 304 
+2018-10-18 22:00:24.342 +02:00 [INF] Request finished in 17.8621ms 304 
+2018-10-18 22:00:24.342 +02:00 [INF] Request finished in 19.2438ms 304 
+2018-10-18 22:00:24.358 +02:00 [INF] Request finished in 33.8003ms 304 
+2018-10-18 22:00:24.367 +02:00 [INF] Request finished in 8568.7757ms 101 
+2018-10-18 22:00:24.846 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/info?t=1539892824843  
+2018-10-18 22:00:24.852 +02:00 [INF] Request finished in 6.4918ms 200 application/json; charset=UTF-8
+2018-10-18 22:00:24.863 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/348/svhglfgr/websocket  
+2018-10-18 22:00:35.061 +02:00 [INF] Request finished in 10197.2716ms 101 
+2018-10-18 22:01:57.793 +02:00 [INF] User profile is available. Using '/Users/szymonmotyka/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2018-10-18 22:01:58.374 +02:00 [INF] Starting @angular/cli on port 49593...
+2018-10-18 22:01:58.782 +02:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-10-18 22:01:58.880 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 22:01:58.905 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 22:01:58.915 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2018-10-18 22:01:59.082 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 22:01:59.099 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 22:01:59.136 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 22:01:59.137 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 22:01:59.158 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 22:01:59.160 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 22:02:03.626 +02:00 [INF] > lifelikeweb@6.6.6 start /Users/szymonmotyka/Dev/LifeLike/LifeLike.Web/ClientApp
+> ng serve "--port" "49593"
+
+** Angular Live Development Server is listening on localhost:49593, open your browser on http://localhost:49593/ **
+
+2018-10-18 22:02:24.210 +02:00 [INF] Date: 2018-10-18T20:02:24.168Z
+Hash: e644742083253fa0c3c1
+Time: 20349ms
+chunk {main} main.js, main.js.map (main) 134 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 227 kB [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 6.22 kB [entry] [rendered]
+chunk {scripts} scripts.js, scripts.js.map (scripts) 138 kB  [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 148 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 4.72 MB [initial] [rendered]
+ℹ ｢wdm｣: Compiled successfully.
+
+2018-10-18 22:03:44.471 +02:00 [INF] User profile is available. Using '/Users/szymonmotyka/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2018-10-18 22:03:44.984 +02:00 [INF] Starting @angular/cli on port 49656...
+2018-10-18 22:03:45.399 +02:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2018-10-18 22:03:45.474 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 22:03:45.492 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 22:03:45.495 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2018-10-18 22:03:45.609 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 22:03:45.618 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 22:03:45.643 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 22:03:45.645 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 22:03:45.652 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2018-10-18 22:03:45.653 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2018-10-18 22:03:49.830 +02:00 [INF] > lifelikeweb@6.6.6 start /Users/szymonmotyka/Dev/LifeLike/LifeLike.Web/ClientApp
+> ng serve "--port" "49656"
+
+** Angular Live Development Server is listening on localhost:49656, open your browser on http://localhost:49656/ **
+
+2018-10-18 22:04:05.107 +02:00 [INF] Date: 2018-10-18T20:04:05.082Z
+Hash: e644742083253fa0c3c1
+Time: 15062ms
+chunk {main} main.js, main.js.map (main) 134 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 227 kB [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 6.22 kB [entry] [rendered]
+chunk {scripts} scripts.js, scripts.js.map (scripts) 138 kB  [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 148 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 4.72 MB [initial] [rendered]
+ℹ ｢wdm｣: Compiled successfully.
+
+2018-10-18 22:04:22.436 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/  
+2018-10-18 22:04:22.436 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/  
+2018-10-18 22:04:22.725 +02:00 [INF] Request finished in 292.1044ms 0 
+2018-10-18 22:04:22.768 +02:00 [INF] Request finished in 335.4531ms 200 text/html; charset=UTF-8
+2018-10-18 22:04:22.794 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/runtime.js  
+2018-10-18 22:04:22.835 +02:00 [INF] Request finished in 41.1811ms 304 
+2018-10-18 22:04:22.835 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/styles.js  
+2018-10-18 22:04:22.836 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/scripts.js  
+2018-10-18 22:04:22.837 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/polyfills.js  
+2018-10-18 22:04:22.840 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/main.js  
+2018-10-18 22:04:22.842 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/vendor.js  
+2018-10-18 22:04:22.845 +02:00 [INF] Request finished in 9.5836ms 304 
+2018-10-18 22:04:22.854 +02:00 [INF] Request finished in 17.9083ms 304 
+2018-10-18 22:04:22.855 +02:00 [INF] Request finished in 17.8061ms 304 
+2018-10-18 22:04:22.864 +02:00 [INF] Request finished in 23.7976ms 304 
+2018-10-18 22:04:22.901 +02:00 [INF] Request finished in 58.4662ms 304 
+2018-10-18 22:04:23.705 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/info?t=1539893063699  
+2018-10-18 22:04:23.722 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/sockjs-node/923/cg5ug2r2/websocket  
+2018-10-18 22:04:23.715 +02:00 [INF] Request finished in 10.7613ms 200 application/json; charset=UTF-8

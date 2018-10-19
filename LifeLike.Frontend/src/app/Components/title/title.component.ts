@@ -7,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class TitleComponent implements OnInit {
 
-  @Input() Title: string;
+  @Input() Title = '';
   GetTitle(): string {
     return this.Title;
   }

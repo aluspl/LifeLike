@@ -12,7 +12,7 @@ export class PostComponent implements OnInit {
   Posts: Page[];
   IsLoading: boolean;
   CreateMode: boolean;
-  ItemsCount: number;
+  ItemsCount = 0;
   constructor(private restService: RestService) { }
   GetPosts(): void {
     this.IsLoading = true;
