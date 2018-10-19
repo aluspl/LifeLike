@@ -1,0 +1,7 @@
+<app-title Title="News"></app-title>
+<app-spinner *ngIf="IsLoading"></app-spinner>
+<app-post-list *ngIf="!IsLoading"  [List]="Posts"></app-post-list>
+<!-- <app-post-create *ngIf="CreateMode" ></app-post-create> -->
+<div class="row">
+    <app-count-title [Title]="ItemsCount"></app-count-title>        
+</div>

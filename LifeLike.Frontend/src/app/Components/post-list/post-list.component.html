@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-sm"  *ngFor="let post of List" >
+    <div class="card"  routerLink='{{post.ShortName}}'>
+      <div class="card-header">
+          {{post.FullName}}
+      </div>
+      <div class="card-body">
+          <img *ngIf="post.ImageUrl != ''" src="{{post.ImageUrl}}" class="card-img-top">
+          <p class="mat-body-1">
+            {{post.Summary}}
+          </p>
+          <p class="caption">
+            Published: {{post.Published  | date: 'dd/MM/yyyy'}}
+          </p>    
+      </div>
+    </div>
+  </div>
+</div>

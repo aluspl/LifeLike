@@ -25,6 +25,7 @@ using LifeLike.Services;
 using LifeLike.Data;
 using LifeLike.Services.Profiles;
 using LifeLike.Web.Services.Logs;
+using Microsoft.AspNetCore.Rewrite;
 
 namespace LifeLike.Web
 {
@@ -80,7 +81,7 @@ namespace LifeLike.Web
             services.AddScoped<IPageService, PageService>();
             services.AddScoped<IPhotoService, PhotoService>();
             services.AddScoped<IVideoService, VideoService>();
-
+            services.AddCors();
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<PortalContext>()
                 .AddDefaultTokenProviders();
@@ -113,10 +114,10 @@ namespace LifeLike.Web
                         ClockSkew = TimeSpan.Zero // remove delay of token when expire
                     };
                 });
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/dist";
-            });
+            // services.AddSpaStaticFiles(configuration =>
+            // {
+            //     configuration.RootPath = "ClientApp/dist";
+            // });
             services.AddSwaggerSetting();
 
             var config = new MapperConfiguration(cfg =>
@@ -154,10 +155,18 @@ namespace LifeLike.Web
             }
 
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
+            // app.UseSpaStaticFiles();
             app.UseAuthentication();
             app.UseExceptionMiddleware();
             app.UseSwaggerSetting();
+            var option = new RewriteOptions().AddRedirect("^$", "swagger");
+            app.UseRewriter(option);
+            app.UseHttpsRedirection();
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials());
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -165,15 +174,15 @@ namespace LifeLike.Web
                     template: "{controller}/{action=Index}/{id?}");
             });
 
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "ClientApp";
+            // app.UseSpa(spa =>
+            // {
+            //     spa.Options.SourcePath = "ClientApp";
 
-                if (env.IsDevelopment())
-                {
-                    spa.UseAngularCliServer(npmScript: "start");
-                }
-            });
+            //     if (env.IsDevelopment())
+            //     {
+            //         spa.UseAngularCliServer(npmScript: "start");
+            //     }
+            // });
             DbInitializer.Initialize(context);
         }
 
