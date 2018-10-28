@@ -1,15 +1,15 @@
 version: '3'
 services:
-  backend:
+  api:
     build:
-      context: Lifelike.Api
+      context: LifeLike.Api
     ports:
       - 5000:80
     networks:
       - app-network
   frontend:
     build:
-      context: Lifelike.Frontend
+      context: LifeLike.Frontend
     ports:
       - 4200:80
     networks:
@@ -21,12 +21,11 @@ services:
       - 443:443
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
-    # links:
-    #   - frontend
-    #   - backend
+      - ./logs:/var/log/nginx:rw
+      - /etc/letsencrypt:/etc/letsencrypt:rw
+      - ./www:/var/www/letsencrypt 
     networks:
       - app-network
-
 networks:
   app-network:
     driver: bridge
