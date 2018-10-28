@@ -7,23 +7,19 @@ services:
       - 5000:80
     networks:
       - app-network
-  frontend:
-    build:
-      context: LifeLike.Frontend
-    ports:
-      - 4200:80
-    networks:
-      - app-network
   proxy:
-    image: nginx:latest
+    build:
+      context: LifeLike.Frontend    
     ports:
       - 80:80
       - 443:443
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
       - ./logs:/var/log/nginx:rw
-      - /etc/letsencrypt:/etc/letsencrypt:rw
+      - ./letsencrypt:/etc/letsencrypt:rw
       - ./www:/var/www/letsencrypt 
+    links:
+      - api
     networks:
       - app-network
 networks:

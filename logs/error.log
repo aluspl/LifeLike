@@ -1,0 +1,9 @@
+2018/10/28 20:51:59 [emerg] 1#1: host not found in upstream "backend" in /etc/nginx/conf.d/default.conf:26
+2018/10/28 20:56:10 [emerg] 1#1: BIO_new_file("/etc/letsencrypt/live/lifelike.pl/fullchain.pem") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/letsencrypt/live/lifelike.pl/fullchain.pem','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+2018/10/28 21:04:06 [emerg] 1#1: BIO_new_file("/etc/letsencrypt/live/lifelike.pl/fullchain.pem") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/letsencrypt/live/lifelike.pl/fullchain.pem','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+2018/10/28 21:04:30 [emerg] 1#1: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/conf.d/default.conf:8
+2018/10/28 21:06:36 [emerg] 1#1: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/conf.d/default.conf:8
+2018/10/28 21:08:05 [emerg] 1#1: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/conf.d/default.conf:8
+2018/10/28 21:14:19 [emerg] 1#1: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/conf.d/default.conf:8
+2018/10/28 21:27:36 [error] 6#6: *4 connect() failed (111: Connection refused) while connecting to upstream, client: 172.18.0.1, server: , request: "GET /api HTTP/1.1", upstream: "http://127.0.0.1:5000/api", host: "localhost"
+2018/10/28 21:27:36 [crit] 6#6: *4 connect() to [::1]:5000 failed (99: Address not available) while connecting to upstream, client: 172.18.0.1, server: , request: "GET /api HTTP/1.1", upstream: "http://[::1]:5000/api", host: "localhost"
