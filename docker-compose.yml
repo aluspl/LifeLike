@@ -1,5 +1,14 @@
 version: '3'
 services:
+  db:
+    image: "microsoft/mssql-server-linux"
+    environment:
+       SA_PASSWORD: "Ab12345678"
+       ACCEPT_EULA: "Y"
+    volumes:
+      - ./db:/var/opt/mssql/data/
+    networks:
+      - app-network  
   api:
     build:
       context: LifeLike.Api
@@ -24,13 +33,7 @@ services:
       - ./www:/var/www/letsencrypt 
     networks:
       - app-network
-  db:
-    image: "microsoft/mssql-server-linux"
-     environment:
-       SA_PASSWORD: "123"
-       ACCEPT_EULA: "Y"
-    networks:
-      - app-network
+
 networks:
   app-network:
     driver: bridge

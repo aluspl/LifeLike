@@ -155,7 +155,6 @@ namespace LifeLike.Web
             }
 
             app.UseStaticFiles();
-            // app.UseSpaStaticFiles();
             app.UseAuthentication();
             app.UseExceptionMiddleware();
             app.UseSwaggerSetting();

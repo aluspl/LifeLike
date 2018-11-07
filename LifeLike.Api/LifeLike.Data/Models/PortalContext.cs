@@ -24,12 +24,10 @@ namespace LifeLike.Data.Models
         public PortalContext(DbContextOptions<PortalContext> options) : base(options)
         {
         }
-        //  protected override void OnModelCreating(ModelBuilder modelBuilder)
-        // {
-        //     // modelBuilder.Entity<ConfigEntity>(p=>{
-        //     //     p.HasIndex(s=>s.Name);
-        //     // });
-        // }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+                base.OnModelCreating(modelBuilder);
+        }
     }
 
     public static class DbInitializer
