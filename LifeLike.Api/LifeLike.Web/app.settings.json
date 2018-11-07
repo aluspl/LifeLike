@@ -7,5 +7,8 @@
           "LogLevel": {
               "Default": "Warning"
           }
-      }   
+      },
+    "ConnectionStrings": {
+        "DB": "Server=db;Database=master;User=sa;Password=123;"
+    }
   }

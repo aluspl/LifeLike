@@ -5,8 +5,12 @@ services:
       context: LifeLike.Api
     ports:
       - 5000:80
+      - 44394:443
     networks:
       - app-network
+    volumes:
+      - ./letsencrypt:/etc/letsencrypt:ro
+      - ./www:/var/www/letsencrypt 
   proxy:
     build:
       context: LifeLike.Frontend    
@@ -18,8 +22,13 @@ services:
       - ./logs:/var/log/nginx:rw
       - ./letsencrypt:/etc/letsencrypt:rw
       - ./www:/var/www/letsencrypt 
-    links:
-      - api
+    networks:
+      - app-network
+  db:
+    image: "microsoft/mssql-server-linux"
+     environment:
+       SA_PASSWORD: "123"
+       ACCEPT_EULA: "Y"
     networks:
       - app-network
 networks:

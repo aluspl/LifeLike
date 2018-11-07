@@ -57,8 +57,8 @@ namespace LifeLike.Web
             // Add framework services.
             services.AddLogging(loggingBuilder =>
                 loggingBuilder.AddSerilog(dispose: true));
-
-            if (Configuration["DB"] == null)
+            var connection = Configuration.GetConnectionString("DB");
+            if (connection == null)
             {
                 services.AddDbContext<PortalContext>(options =>
                     options.UseSqlite("Data Source=lifelike.db"));
@@ -67,7 +67,7 @@ namespace LifeLike.Web
             else
             {
                 services.AddDbContext<PortalContext>(options =>
-                       options.UseSqlServer(Configuration["DB"],
+                       options.UseSqlServer(connection,
                        b => b.MigrationsAssembly("LifeLike.Web")));
                 Debug.WriteLine("Using SQL");
             }
