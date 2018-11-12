@@ -8,6 +8,7 @@ wwwroot/.DS_Store
 .vs/
 node_modules/
 db/
+logs/
 ClientApp/src/*.css
 ClientApp/src/*.css.map
 LifeLike.Web.sln

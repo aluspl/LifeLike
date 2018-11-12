@@ -140,6 +140,8 @@ namespace LifeLike.Web
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory,
             PortalContext context)
         {
+            GenerateDB(app);
+
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
@@ -185,6 +187,21 @@ namespace LifeLike.Web
             DbInitializer.Initialize(context);
         }
 
-       
+        private static void GenerateDB(IApplicationBuilder app)
+        {
+            try
+            {
+                using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
+                .CreateScope())
+                {
+                    serviceScope.ServiceProvider.GetService<PortalContext>().Database.Migrate();
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Failed to migrate or seed database");
+            }
+        }
+
     }
 }

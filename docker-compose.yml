@@ -5,22 +5,22 @@ services:
     environment:
        SA_PASSWORD: "Ab12345678"
        ACCEPT_EULA: "Y"
-    volumes:
-      - ./db:/var/opt/mssql/data/
+    # volumes:
+    #   - ./db:/var/opt/mssql/data/:rw
     networks:
-      - app-network  
+      - app-network
   api:
     build:
       context: LifeLike.Api
     ports:
       - 5000:80
-      - 44394:443
+      # - 443:443
     networks:
       - app-network
     volumes:
       - ./letsencrypt:/etc/letsencrypt:ro
-      - ./www:/var/www/letsencrypt 
-  proxy:
+      - ./www:/var/www/letsencrypt
+  frontend:
     build:
       context: LifeLike.Frontend    
     ports:
@@ -33,7 +33,16 @@ services:
       - ./www:/var/www/letsencrypt 
     networks:
       - app-network
-
+  # certbot:
+  #   build:
+  #     context: Certbot
+  #   environment:
+  #     - VIRTUAL_HOST=lifelike.pl
+  #     - LETSENCRYPT_HOST=lifelike.pl
+  #     - LETSENCRYPT_EMAIL=szymon@Lifelike.pl
+  #   volumes:
+  #     - ./letsencrypt:/etc/letsencrypt:rw
+  #     - ./www:/var/www/letsencrypt
 networks:
   app-network:
     driver: bridge
