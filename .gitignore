@@ -5,7 +5,7 @@ bin/
 packages/
 .DS_Store
 wwwroot/.DS_Store
-.vs/
+.vs
 node_modules/
 db/
 logs/
@@ -17,3 +17,4 @@ LifeLike.Web/ClientApp/package-lock.json
 LifeLike.Web/*.txt
 yarn.lock
 package-lock.json
+.vscode

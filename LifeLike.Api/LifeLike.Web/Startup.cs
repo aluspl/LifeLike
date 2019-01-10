@@ -26,6 +26,7 @@ using LifeLike.Data;
 using LifeLike.Services.Profiles;
 using LifeLike.Web.Services.Logs;
 using Microsoft.AspNetCore.Rewrite;
+using System.Net;
 
 namespace LifeLike.Web
 {
@@ -127,6 +128,11 @@ namespace LifeLike.Web
 
             var mapper = config.CreateMapper();
             services.AddSingleton(mapper);
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
+                options.KnownProxies.Add(IPAddress.Parse("172.22.0.1"));
+            });
             services.AddMvc();
             services.AddMvc().AddJsonOptions(options =>
             {

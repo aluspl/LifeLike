@@ -1,48 +1,66 @@
 version: '3'
 services:
-  db:
+  db:    
+    container_name: db
     image: "microsoft/mssql-server-linux"
     environment:
        SA_PASSWORD: "Ab12345678"
        ACCEPT_EULA: "Y"
-    # volumes:
-    #   - ./db:/var/opt/mssql/data/:rw
+    volumes:
+      - ./db:/var/opt/mssql/data/:rw
+    ports:
+      - "1433:1433"
+    expose: 
+      - 1433
     networks:
       - app-network
   api:
+    container_name: api
     build:
       context: LifeLike.Api
-    ports:
-      - 5000:80
-      # - 443:443
     networks:
       - app-network
     volumes:
       - ./letsencrypt:/etc/letsencrypt:ro
       - ./www:/var/www/letsencrypt
-  frontend:
+    depends_on:
+      - db
+  web:
+    container_name: web
     build:
       context: LifeLike.Frontend    
+    networks:
+      - app-network
+  proxy:
+    container_name: proxy
+    image: nginx:latest
     ports:
-      - 80:80
-      - 443:443
+      - "80:80"
+    expose:
+      - 80
+    links:
+      - web
+      - api
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - /nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./logs:/var/log/nginx:rw
       - ./letsencrypt:/etc/letsencrypt:rw
       - ./www:/var/www/letsencrypt 
     networks:
-      - app-network
-  # certbot:
-  #   build:
-  #     context: Certbot
-  #   environment:
-  #     - VIRTUAL_HOST=lifelike.pl
-  #     - LETSENCRYPT_HOST=lifelike.pl
-  #     - LETSENCRYPT_EMAIL=szymon@Lifelike.pl
-  #   volumes:
-  #     - ./letsencrypt:/etc/letsencrypt:rw
-  #     - ./www:/var/www/letsencrypt
+      - app-network  
+  certbot:
+    container_name: certbot
+    build:
+      context: Certbot
+    environment:
+      - VIRTUAL_HOST=lifelike.pl
+      - LETSENCRYPT_HOST=lifelike.pl
+      - LETSENCRYPT_EMAIL=szymon@Lifelike.pl
+    volumes:
+      - ./letsencrypt:/etc/letsencrypt:rw
+      - ./www:/var/www/letsencrypt
+    networks:
+      - app-network  
 networks:
   app-network:
     driver: bridge

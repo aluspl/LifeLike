@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LifeLike.Web.Controllers
 {
+    [Route("api/[controller]")]
     [Authorize]
     [AllowAnonymous]
     public class HomeController : Controller
