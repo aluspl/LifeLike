@@ -146,7 +146,7 @@ namespace LifeLike.Web
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory,
             PortalContext context)
         {
-            GenerateDB(app);
+            // GenerateDB(app);
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -168,7 +168,7 @@ namespace LifeLike.Web
             app.UseSwaggerSetting();
             var option = new RewriteOptions().AddRedirect("^$", "swagger");
             app.UseRewriter(option);
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
             app.UseCors(builder => builder
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
