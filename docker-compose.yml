@@ -20,8 +20,6 @@ services:
     container_name: api
     build:
       context: LifeLike.Api
-    networks:
-      - app-network
     volumes:
       - ./letsencrypt:/etc/letsencrypt:ro
       - ./www:/var/www/letsencrypt
@@ -31,8 +29,6 @@ services:
     container_name: web
     build:
       context: LifeLike.Frontend    
-    networks:
-      - app-network
     volumes:
       - node_modules:/app/node_modules
 
@@ -51,8 +47,6 @@ services:
       - ./logs:/var/log/nginx:rw
       - ./letsencrypt:/etc/letsencrypt:rw
       - ./www:/var/www/letsencrypt 
-    networks:
-      - app-network  
   certbot:
     container_name: certbot
     build:
@@ -64,8 +58,3 @@ services:
     volumes:
       - ./letsencrypt:/etc/letsencrypt:rw
       - ./www:/var/www/letsencrypt
-    networks:
-      - app-network  
-networks:
-  app-network:
-    driver: bridge
