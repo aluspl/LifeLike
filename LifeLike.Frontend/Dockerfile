@@ -6,9 +6,7 @@ WORKDIR /app
 COPY ./package.json ./package-lock.json /app/
 RUN npm install
 COPY . /app
-RUN npm run build:universal
-RUN npm run generate:prerender
-
+RUN npm run build:ssr
 
 FROM node:alpine
 
@@ -23,8 +21,8 @@ COPY --from=buildContainer /app/static /app/static
 COPY --from=buildContainer /app/dist-server /app/dist-server
 
 # Expose the port the app runs in
-EXPOSE 8000
+EXPOSE 8080
 
 # Serve the app
-CMD ["npm", "run", "server"]
+CMD ["npm", "run", "serve:ssr"]
     
