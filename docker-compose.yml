@@ -24,7 +24,7 @@ services:
       - ./letsencrypt:/etc/letsencrypt:ro
       - ./www:/var/www/letsencrypt
     ports:
-      - "5000:5000"
+      - "5000:80"
     # depends_on:
     #   - db
   web:
@@ -32,7 +32,7 @@ services:
     build:
       context: LifeLike.Frontend    
     ports:
-      - "4200:4200"
+      - "8080:80"
     volumes:
       - node_modules:/app/node_modules
 
@@ -40,7 +40,7 @@ services:
     container_name: proxy
     image: nginx:latest
     ports:
-      - "8080:80"
+      - "80:80"
     expose:
       - 80
     links:
