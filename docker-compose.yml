@@ -23,12 +23,16 @@ services:
     volumes:
       - ./letsencrypt:/etc/letsencrypt:ro
       - ./www:/var/www/letsencrypt
+    ports:
+      - "5000:5000"
     # depends_on:
     #   - db
   web:
     container_name: web
     build:
       context: LifeLike.Frontend    
+    ports:
+      - "4200:4200"
     volumes:
       - node_modules:/app/node_modules
 
@@ -47,14 +51,14 @@ services:
       - ./logs:/var/log/nginx:rw
       - ./letsencrypt:/etc/letsencrypt:rw
       - ./www:/var/www/letsencrypt 
-  certbot:
-    container_name: certbot
-    build:
-      context: Certbot
-    environment:
-      - VIRTUAL_HOST=lifelike.pl
-      - LETSENCRYPT_HOST=lifelike.pl
-      - LETSENCRYPT_EMAIL=szymon@Lifelike.pl
-    volumes:
-      - ./letsencrypt:/etc/letsencrypt:rw
-      - ./www:/var/www/letsencrypt
+  # certbot:
+  #   container_name: certbot
+  #   build:
+  #     context: Certbot
+  #   environment:
+  #     - VIRTUAL_HOST=lifelike.pl
+  #     - LETSENCRYPT_HOST=lifelike.pl
+  #     - LETSENCRYPT_EMAIL=szymon@Lifelike.pl
+  #   volumes:
+  #     - ./letsencrypt:/etc/letsencrypt:rw
+  #     - ./www:/var/www/letsencrypt
