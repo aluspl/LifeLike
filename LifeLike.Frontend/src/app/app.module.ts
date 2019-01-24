@@ -3,68 +3,25 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
-import { HomeComponent } from './Pages/home/home.component';
-import { LogComponent } from './Pages/log/log.component';
-import { PostDetailComponent } from './Pages/post-detail/post-detail.component';
-import { VideoComponent } from './Pages/video/video.component';
-import { LogDetailComponent } from './Pages/log-detail/log-detail.component';
-import { AlbumDetailComponent } from './Pages/album-detail/album-detail.component';
-import { AlbumComponent } from './Pages/album/album.component';
-import { PostComponent } from './Pages/post/post.component';
-import { PageComponent } from './Pages/page/page.component';
-import { MenuComponent } from './Layout/menu/menu.component';
 import { RestService } from './Services/rest.service';
-import { YoutubePlayerComponent } from './Components/youtube-player/youtube-player.component';
-import { FormsModule } from '@angular/forms';
-import { PostCreateComponent } from './Pages/post-create/post-create.component';
-import { TitleComponent } from './Components/title/title.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PostEditComponent } from './Pages/post-edit/post-edit.component';
-import { PostListComponent } from './Components/post-list/post-list.component';
-import { AdminPanelComponent } from './Pages/admin-panel/admin-panel.component';
-import { IntroTextComponent } from './Components/intro-text/intro-text.component';
-import { ConfigComponent } from './Pages/config/config.component';
-import { SpinnerComponent } from './Components/spinner/spinner.component';
-import { CountTitleComponent } from './Components/count-title/count-title.component';
-import { AdminPageComponent } from './Pages/admin-page/admin-page.component';
-import { LoginComponent } from './Pages/login/login.component';
 import { AuthenticationService } from './Services/authentication.service';
 import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { CoreModule } from './Core/core.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MenuComponent,
-    PageComponent,
-    PostComponent,
-    AlbumComponent,
-    VideoComponent,
-    PostDetailComponent,
-    HomeComponent,
-    LogComponent,
-    YoutubePlayerComponent,
-    LogDetailComponent,
-    AlbumDetailComponent,
-    PostCreateComponent,
-    TitleComponent,
-    PostEditComponent,
-    PostListComponent,
-    AdminPanelComponent,
-    IntroTextComponent,
-    ConfigComponent,
-    SpinnerComponent,
-    CountTitleComponent,
-    AdminPageComponent,
-    LoginComponent
+    AppComponent, 
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'lifelike' }),
-
+    CoreModule,
+    SharedModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'My-Xsrf-Cookie',
       headerName: 'My-Xsrf-Header',

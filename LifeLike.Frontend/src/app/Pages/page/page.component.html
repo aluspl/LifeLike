@@ -1,8 +1,21 @@
 <app-title Title="Project"></app-title>
 
 <app-spinner *ngIf="IsLoading"></app-spinner>
-<app-post-list *ngIf="!IsLoading" [List]="Pages"></app-post-list>
-
-<div class="row">
-    <app-count-title [Title]="ItemsCount"></app-count-title>        
-</div>
+<div class="row" *ngIf="!IsLoading">
+    <div class="col-sm"  *ngFor="let post of Pages" >
+      <div class="card"  routerLink='{{post.ShortName}}'>
+        <div class="card-header">
+            {{post.FullName}}
+        </div>
+        <div class="card-body">
+            <img *ngIf="post.ImageUrl != ''" src="{{post.ImageUrl}}" class="card-img-top">
+            <p class="mat-body-1">
+              {{post.Summary}}
+            </p>
+            <p class="caption">
+              Published: {{post.Published  | date: 'dd/MM/yyyy'}}
+            </p>    
+        </div>
+      </div>
+    </div>
+  </div>
