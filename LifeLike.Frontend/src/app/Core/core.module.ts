@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { PagesModule } from '../Pages/pages.module';
 
 @NgModule({
-  declarations: [     MenuComponent  ],
+  declarations: [       ],
   imports: [
     CommonModule,
     PagesModule,

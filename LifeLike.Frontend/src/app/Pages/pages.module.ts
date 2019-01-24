@@ -14,7 +14,6 @@ import { LoginComponent } from './login/login.component';
 import { PostCreateComponent } from './post-create/post-create.component';
 import { ConfigComponent } from './config/config.component';
 import { PostEditComponent } from './post-edit/post-edit.component';
-import { ComponentsModule } from '../Components/components.module';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -36,8 +35,7 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,    
-    ComponentsModule,     FormsModule,
-
+    FormsModule,
   ],
   exports: [
   ]
