@@ -19,10 +19,8 @@ const routes: Routes = [
   { path: 'Page', component: PageComponent },
   { path: 'Post', component: PostComponent },
   { path: 'CreatePost', component: PostCreateComponent },
-
   { path: 'Log', component: LogComponent },
   { path: 'Login', component: LoginComponent },
-
   { path: 'Album', component: AlbumComponent },
   { path: 'Video', component: VideoComponent },
   { path: 'Log/:id', component: LogDetailComponent },

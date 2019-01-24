@@ -3,16 +3,26 @@ FROM node:alpine as builder
 RUN npm install -g @angular/cli
 
 WORKDIR /app
-COPY package*.json /app/
+COPY ./package.json ./package-lock.json /app/
 RUN npm install
-COPY ./ /app/
-ARG configuration=production
-RUN npm run build -- --output-path=./dist/ --configuration 
+COPY . /app
+RUN npm run build:ssr
 
 FROM node:alpine
 
-RUN rm -rf /usr/share/nginx/html/*
-COPY --from=builder /app/dist /usr/share/nginx/html
-EXPOSE 80
-EXPOSE 443
-CMD ["nginx", "-g", "daemon off;"]
+WORKDIR /app
+# Copy dependency definitions
+COPY --from=buildContainer /app/package.json /app
+COPY --from=buildContainer /app/server.js /app
+
+# Get all the code needed to run the app
+COPY --from=buildContainer /app/dist /app/dist
+COPY --from=buildContainer /app/static /app/static
+COPY --from=buildContainer /app/dist-server /app/dist-server
+
+# Expose the port the app runs in
+EXPOSE 8080
+
+# Serve the app
+CMD ["npm", "run", "serve:ssr"]
+    
