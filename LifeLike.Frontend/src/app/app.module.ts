@@ -3,11 +3,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
-import { RestService } from './Services/rest.service';
-import { AuthenticationService } from './Services/authentication.service';
 import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { CoreModule } from './Core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { APP_CONFIG, AppConfig } from './configs/app.config';
 
@@ -17,7 +14,6 @@ import { APP_CONFIG, AppConfig } from './configs/app.config';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'lifelike' }),
-    CoreModule,
     SharedModule,
     AppRoutingModule,
     HttpClientModule,
@@ -28,15 +24,15 @@ import { APP_CONFIG, AppConfig } from './configs/app.config';
   ],
   exports: [
   ],
-  providers: [RestService, AuthenticationService,    
+  providers: [  
      {provide: APP_CONFIG, useValue: AppConfig},
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(
-    @Inject(PLATFORM_ID) private platformId: Object,
-    @Inject(APP_ID) private appId: string) {
+    @Inject(PLATFORM_ID) platformId: Object,
+    @Inject(APP_ID) appId: string) {
     const platform = isPlatformBrowser(platformId) ?
       'in the browser' : 'on the server';
     console.log(`Running ${platform} with appId=${appId}`);

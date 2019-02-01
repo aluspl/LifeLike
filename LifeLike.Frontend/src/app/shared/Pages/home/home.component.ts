@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {map} from 'rxjs/internal/operators';
-import {Config} from '../../Models/Config';
-import {RestService} from '../../Services/rest.service';
+import { Config } from '../../models/Config';
+import { RestService } from '../../services/rest.service';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   public IsLoading: boolean;
   public Configs: Config[];
   constructor(private restService: RestService) { }
+  
   GetLogs(): void {
     this.IsLoading = true;
     this.restService

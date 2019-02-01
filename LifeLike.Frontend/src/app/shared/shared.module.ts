@@ -6,12 +6,16 @@ import { IntroTextComponent } from './Components/intro-text/intro-text.component
 import { YoutubePlayerComponent } from './Components/youtube-player/youtube-player.component';
 import { MenuComponent } from './menu/menu.component';
 import { RouterModule } from '@angular/router';
+import { RestService } from './services/rest.service';
+import { AuthenticationService } from './services/authentication.service';
+import { HomeComponent } from './Pages/home/home.component';
 
 @NgModule({
   declarations: [
     SpinnerComponent,
     TitleComponent,
     MenuComponent,
+    HomeComponent,
     YoutubePlayerComponent,
     IntroTextComponent
   ],
@@ -26,6 +30,9 @@ import { RouterModule } from '@angular/router';
     MenuComponent,
     YoutubePlayerComponent,
     IntroTextComponent
+  ],
+  providers:[
+    RestService, AuthenticationService
   ]
 })
 export class SharedModule { }

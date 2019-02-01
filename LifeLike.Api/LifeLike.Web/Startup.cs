@@ -166,9 +166,9 @@ namespace LifeLike.Web
             app.UseAuthentication();
             app.UseExceptionMiddleware();
             app.UseSwaggerSetting();
-            var option = new RewriteOptions().AddRedirect("^$", "swagger");
-            app.UseRewriter(option);
-            // app.UseHttpsRedirection();
+            // var option = new RewriteOptions().AddRedirect("^$", "swagger");
+            // app.UseRewriter(option);
+          app.UseHttpsRedirection();
             app.UseCors(builder => builder
                 .AllowAnyOrigin()
                 .AllowAnyMethod()

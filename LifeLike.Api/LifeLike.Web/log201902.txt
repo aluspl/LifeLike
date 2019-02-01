@@ -1,0 +1,193 @@
+2019-02-01 12:23:37.513 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-02-01 12:23:37.591 +01:00 [INF] Creating key "c803c9a0-3567-4df5-8fb4-0f3e03affccf" with creation date "2019-02-01T11:23:37.5867117+00:00", activation date "2019-02-01T11:23:37.5794090+00:00", and expiration date "2019-05-02T11:23:37.5794090+00:00".
+2019-02-01 12:23:37.636 +01:00 [INF] Writing data to file 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys\key-c803c9a0-3567-4df5-8fb4-0f3e03affccf.xml'.
+2019-02-01 12:23:38.498 +01:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-02-01 12:23:38.652 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 12:23:38.661 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 12:23:38.670 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-02-01 12:23:38.749 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 12:23:38.763 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-02-01 12:23:38.788 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 12:23:38.797 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-02-01 12:23:38.814 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 12:23:38.824 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-02-01 12:44:38.760 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-02-01 12:44:39.117 +01:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-02-01 12:44:39.155 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 12:44:39.168 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 12:44:39.180 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-02-01 12:44:39.242 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 12:44:39.256 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-02-01 12:44:39.277 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 12:44:39.289 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-02-01 12:44:39.306 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 12:44:39.318 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-02-01 12:44:49.588 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/  
+2019-02-01 12:44:49.673 +01:00 [INF] Request was redirected to /swagger
+2019-02-01 12:44:49.720 +01:00 [INF] Request finished in 133.153ms 302 
+2019-02-01 12:44:49.728 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger  
+2019-02-01 12:44:49.737 +01:00 [INF] Request finished in 9.5543ms 301 
+2019-02-01 12:44:49.742 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/index.html  
+2019-02-01 12:44:49.758 +01:00 [INF] Request finished in 15.6388ms 200 text/html
+2019-02-01 12:44:49.788 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui.css  
+2019-02-01 12:44:49.788 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui-bundle.js  
+2019-02-01 12:44:49.790 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/swagger-ui-standalone-preset.js  
+2019-02-01 12:44:49.830 +01:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2019-02-01 12:44:49.830 +01:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2019-02-01 12:44:49.831 +01:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2019-02-01 12:44:49.839 +01:00 [INF] Request finished in 51.5962ms 200 text/css
+2019-02-01 12:44:49.840 +01:00 [INF] Request finished in 49.6202ms 200 application/javascript
+2019-02-01 12:44:49.850 +01:00 [INF] Request finished in 61.4006ms 200 application/javascript
+2019-02-01 12:44:50.207 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json  
+2019-02-01 12:44:50.255 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/favicon-32x32.png  
+2019-02-01 12:44:50.264 +01:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2019-02-01 12:44:50.269 +01:00 [INF] Request finished in 14.0393ms 200 image/png
+2019-02-01 12:44:50.273 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/favicon-16x16.png  
+2019-02-01 12:44:50.278 +01:00 [INF] Sending file. Request path: '/favicon-16x16.png'. Physical path: 'N/A'
+2019-02-01 12:44:50.286 +01:00 [INF] Request finished in 13.6619ms 200 image/png
+2019-02-01 12:44:50.717 +01:00 [INF] Request finished in 509.9174ms 200 application/json;charset=utf-8
+2019-02-01 12:46:02.869 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-02-01 12:46:03.225 +01:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-02-01 12:46:03.271 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 12:46:03.284 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 12:46:03.292 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-02-01 12:46:03.360 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 12:46:03.372 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-02-01 12:46:03.391 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 12:46:03.400 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-02-01 12:46:03.418 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 12:46:03.426 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-02-01 12:46:11.597 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/index.html  
+2019-02-01 12:46:11.666 +01:00 [INF] Request finished in 68.6324ms 200 text/html
+2019-02-01 12:46:12.116 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json  
+2019-02-01 12:46:12.123 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/favicon-32x32.png  
+2019-02-01 12:46:12.138 +01:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2019-02-01 12:46:12.145 +01:00 [INF] Request finished in 22.3856ms 200 image/png
+2019-02-01 12:46:12.321 +01:00 [INF] Request finished in 205.1087ms 200 application/json;charset=utf-8
+2019-02-01 12:46:21.840 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Menu  
+2019-02-01 12:46:21.888 +01:00 [INF] Route matched with {action = "GetMenuLinks", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetMenuLinks (LifeLike.Web)
+2019-02-01 12:46:21.906 +01:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-02-01 12:46:21.928 +01:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetMenuLinks (LifeLike.Web) - Validation state: "Valid"
+2019-02-01 12:46:22.074 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 12:46:22.101 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?', @p1='?' (Size = 356), @p2='?' (Size = 459), @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "EventLogs" ("EventTime", "Messages", "StackTrace", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "EventLogs"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2019-02-01 12:46:22.134 +01:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetMenuLinks (LifeLike.Web) in 237.6271ms
+2019-02-01 12:46:22.141 +01:00 [INF] Request finished in 300.4791ms 500 application/json
+2019-02-01 12:46:24.268 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Menu  
+2019-02-01 12:46:24.273 +01:00 [INF] Route matched with {action = "GetMenuLinks", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetMenuLinks (LifeLike.Web)
+2019-02-01 12:46:24.279 +01:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-02-01 12:46:24.285 +01:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetMenuLinks (LifeLike.Web) - Validation state: "Valid"
+2019-02-01 12:46:24.295 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 12:46:24.315 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[@p0='?', @p1='?' (Size = 356), @p2='?' (Size = 459), @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "EventLogs" ("EventTime", "Messages", "StackTrace", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "EventLogs"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2019-02-01 12:46:24.331 +01:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetMenuLinks (LifeLike.Web) in 53.000600000000006ms
+2019-02-01 12:46:24.337 +01:00 [INF] Request finished in 68.689ms 500 application/json
+2019-02-01 12:46:59.052 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Config  
+2019-02-01 12:46:59.058 +01:00 [INF] Route matched with {action = "GetList", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web)
+2019-02-01 12:46:59.069 +01:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-02-01 12:46:59.075 +01:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) - Validation state: "Valid"
+2019-02-01 12:46:59.104 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 12:46:59.114 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."Id", "c"."DisplayName", "c"."Name", "c"."Type", "c"."Value"
+FROM "Configs" AS "c"
+2019-02-01 12:46:59.134 +01:00 [INF] Executed action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 51.4546ms.
+2019-02-01 12:46:59.144 +01:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[LifeLike.Services.ViewModel.Config, LifeLike.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-02-01 12:46:59.151 +01:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) in 82.6742ms
+2019-02-01 12:46:59.155 +01:00 [INF] Request finished in 102.6595ms 200 application/json; charset=utf-8
+2019-02-01 12:47:58.546 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Menu  
+2019-02-01 12:47:58.552 +01:00 [INF] Route matched with {action = "GetMenuLinks", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetMenuLinks (LifeLike.Web)
+2019-02-01 12:47:58.556 +01:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-02-01 12:47:58.561 +01:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetMenuLinks (LifeLike.Web) - Validation state: "Valid"
+2019-02-01 12:47:58.567 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 12:47:58.582 +01:00 [INF] Executed DbCommand (9ms) [Parameters=[@p0='?', @p1='?' (Size = 356), @p2='?' (Size = 459), @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "EventLogs" ("EventTime", "Messages", "StackTrace", "Type")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "EventLogs"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2019-02-01 12:47:58.602 +01:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetMenuLinks (LifeLike.Web) in 46.9516ms
+2019-02-01 12:47:58.611 +01:00 [INF] Request finished in 64.5331ms 500 application/json
