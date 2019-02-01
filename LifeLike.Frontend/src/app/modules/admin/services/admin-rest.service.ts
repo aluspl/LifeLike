@@ -2,11 +2,11 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, tap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs/index';
-import Log from 'src/app/shared/models/Log';
-import  Config  from 'src/app/shared/models/Config';
-import { RestService } from 'src/app/shared/services/rest.service';
-import  Page  from 'src/app/shared/models/Page';
-import { AppConfig } from 'src/app/configs/app.config';
+import Log from '../../../shared/models/Log';
+import  Config  from '../../../shared/models/Config';
+import { RestService } from '../../../shared/services/rest.service';
+import  Page  from '../../../shared/models/Page';
+import { AppConfig } from '../../../configs/app.config';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

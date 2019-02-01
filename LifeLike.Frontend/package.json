@@ -4,13 +4,13 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json",
+    "start": "ng serve",
     "test": "ng test",
     "lint": "tslint ./src/**/*.ts -t verbose",
     "e2e": "ng e2e",
     "build:ssr": "npm run build:cas && npm run webpack:server",
     "serve:ssr": "node dist/server.js",
-    "build:cas": "ng build --prod && ng run lifelike-web:serve",
+    "build:cas": "ng build --prod && ng run lifelike-web:server",
     "webpack:server": "webpack --config webpack.server.config.js --progress --colors"
   },
   "private": true,

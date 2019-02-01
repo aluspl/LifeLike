@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PostDetailComponent } from './pages/post-detail/post-detail.component';
 import { PostComponent } from './pages/post/post.component';
 import { PageComponent } from './pages/page/page.component';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { PostRoutingModule } from './post-routing.module';
 import { PostRestService } from './services/post-rest.service';

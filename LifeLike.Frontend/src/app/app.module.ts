@@ -7,9 +7,6 @@ import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
 import { APP_CONFIG, AppConfig } from './configs/app.config';
-import { VideoModule } from './modules/video/video.module';
-import { PostModule } from './modules/post/post.module';
-import { AdminModule } from './modules/admin/admin.module';
 import { CustomErrorHandler } from './core/custom.errorhandler';
 
 @NgModule({
@@ -18,10 +15,7 @@ import { CustomErrorHandler } from './core/custom.errorhandler';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'lifelike-web' }),
-    SharedModule,
-    VideoModule,
-    PostModule,
-    AdminModule,
+    SharedModule,    
     AppRoutingModule,
     HttpClientModule,
     HttpClientXsrfModule.withOptions({

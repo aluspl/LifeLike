@@ -5,7 +5,7 @@ import MenuItem from '../Models/MenuItem';
 import { Observable, of } from 'rxjs/index';
 import Video from '../Models/Video';
 import Config from '../Models/Config';
-import { AppConfig } from 'src/app/configs/app.config';
+import { AppConfig } from '../../configs/app.config';
 
 
 

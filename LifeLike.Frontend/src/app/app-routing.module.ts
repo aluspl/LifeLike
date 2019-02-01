@@ -9,7 +9,6 @@ const routes: Routes = [
   { path: 'Post', loadChildren: './modules/post/post.module#PostModule' },  
   { path: 'Page', loadChildren: './modules/post/post.module#PostModule' },  
   { path: 'Album', loadChildren: './modules/photo/photo.module#PhotoModule' },
-  { path: 'Video', loadChildren: './modules/video/video.module#VideoModule' } 
 ];
 @NgModule({
   imports: [  RouterModule.forRoot(routes, {

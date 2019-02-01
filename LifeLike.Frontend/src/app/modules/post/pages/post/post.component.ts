@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {map} from 'rxjs/internal/operators';
 import { PostRestService } from '../../services/post-rest.service';
-import  Page  from 'src/app/shared/models/Page';
+import  Page  from '../../../../shared/models/Page';
 
 @Component({
   selector: 'app-post',
