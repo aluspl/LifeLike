@@ -8,10 +8,9 @@ import { PagesModule } from '../Pages/pages.module';
   imports: [
     CommonModule,
     PagesModule,
-    ,
   ],
   exports: [
-       RouterModule  
+    RouterModule  
   ]
 })
 export class CoreModule { }

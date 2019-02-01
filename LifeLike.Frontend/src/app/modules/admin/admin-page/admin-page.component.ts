@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './admin-page.component.html',
   styleUrls: ['./admin-page.component.scss']
 })
-export class AdminPageComponent implements OnInit {
+export class AdminPage implements OnInit {
     Pages: Page[];
     IsLoading: boolean;
     Count = 0;

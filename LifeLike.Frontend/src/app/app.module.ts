@@ -4,12 +4,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { RestService } from './Services/rest.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthenticationService } from './Services/authentication.service';
 import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { CoreModule } from './Core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { APP_CONFIG, AppConfig } from './configs/app.config';
 
 @NgModule({
   declarations: [
@@ -19,18 +19,18 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule.withServerTransition({ appId: 'lifelike' }),
     CoreModule,
     SharedModule,
-    BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'My-Xsrf-Cookie',
       headerName: 'My-Xsrf-Header',
     }),
-    BrowserAnimationsModule
   ],
   exports: [
   ],
-  providers: [RestService, AuthenticationService],
+  providers: [RestService, AuthenticationService,    
+     {provide: APP_CONFIG, useValue: AppConfig},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
