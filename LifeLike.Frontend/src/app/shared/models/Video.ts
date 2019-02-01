@@ -1,4 +1,4 @@
-export  class Video {
+export  default class Video {
   Id: number;
   Type: number;
 

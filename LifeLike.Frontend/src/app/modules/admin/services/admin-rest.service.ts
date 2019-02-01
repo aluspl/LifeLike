@@ -3,21 +3,21 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, tap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs/index';
 import Log from 'src/app/shared/models/Log';
-import { Config } from 'src/app/shared/models/Config';
+import  Config  from 'src/app/shared/models/Config';
 import { RestService } from 'src/app/shared/services/rest.service';
-import { Page } from 'src/app/shared/models/Page';
+import  Page  from 'src/app/shared/models/Page';
+import { AppConfig } from 'src/app/configs/app.config';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-const host = "http://localhost";
 
-const CreatePost = host + '/Api/Page/Create';
-const EditPost = host + '/Api/Page/Edit';
+const CreatePost = AppConfig.host + '/Api/Page/Create';
+const EditPost = AppConfig.host + '/Api/Page/Edit';
 
-const ConfigList = host + '/Api/Config';
-const LogList = host + '/Api/Log/List';
+const ConfigList = AppConfig.host + '/Api/Config';
+const LogList = AppConfig.host + '/Api/Log/List';
 
 
 @Injectable()

@@ -1,4 +1,5 @@
 <app-title Title="News"></app-title>
+
 <app-spinner *ngIf="IsLoading"></app-spinner>
 <div class="row" *ngIf="!IsLoading">
     <div class="col-sm"  *ngFor="let post of Posts" >

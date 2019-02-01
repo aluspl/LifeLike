@@ -24,7 +24,7 @@ services:
       - ./letsencrypt:/etc/letsencrypt:ro
       - ./www:/var/www/letsencrypt
     ports:
-      - "5000:80"
+      - "8000:80"
     # depends_on:
     #   - db
   web:

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/internal/operators';
-import { Page } from 'src/app/shared/models/Page';
+import  Page  from 'src/app/shared/models/Page';
 import { PostRestService } from '../../services/post-rest.service';
 
 
@@ -12,7 +12,6 @@ import { PostRestService } from '../../services/post-rest.service';
 export class PageComponent implements OnInit {
   Pages: Page[];
   IsLoading: boolean;
-  ItemsCount = 0;
   constructor(private restService: PostRestService) { }
 
   GetPages(): void {
@@ -20,7 +19,6 @@ export class PageComponent implements OnInit {
       .pipe(
       map((data: Page[]) => {
         this.IsLoading = false;
-        this.ItemsCount = data.length;
         console.log(data);
         return data;
       }))

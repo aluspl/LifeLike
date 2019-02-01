@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {map} from 'rxjs/internal/operators';
-import { Page } from 'src/app/shared/models/Page';
+import  Page  from 'src/app/shared/models/Page';
 import { PostRestService } from '../../services/post-rest.service';
 
 @Component({
@@ -19,8 +19,7 @@ export class PostDetailComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     console.log('Article ID ' + id);
    this.restService.getPageDetail(id)
-     .pipe(
-     map(data => {
+     .pipe(map(data => {
        this.IsLoading = false;
        console.log(data);
        return data;

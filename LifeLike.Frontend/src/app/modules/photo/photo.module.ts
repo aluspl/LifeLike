@@ -4,6 +4,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { AlbumComponent } from './pages/album/album.component';
 import { AlbumDetailComponent } from './pages/album-detail/album-detail.component';
 import { PhotoRoutingModule } from './photo-routing.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { PhotoRoutingModule } from './photo-routing.module';
     CommonModule,
     SharedModule,
     PhotoRoutingModule
-  ]
+  ],
+
 })
 export class PhotoModule { }

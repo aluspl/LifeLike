@@ -13,6 +13,7 @@ ClientApp/src/*.css
 ClientApp/src/*.css.map
 LifeLike.Web.sln
 LifeLike.Frontend/node_modules/
+LifeLike.Frontend/dist/
 LifeLike.Web/ClientApp/package-lock.json
 LifeLike.Web/*.txt
 yarn.lock

@@ -3,17 +3,17 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, tap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs/index';
 import { RestService } from 'src/app/shared/services/rest.service';
-import { Page } from 'src/app/shared/models/Page';
+import  Page  from 'src/app/shared/models/Page';
+import { AppConfig } from 'src/app/configs/app.config';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-const host = "http://localhost:5000";
-const PageDetail = host + '/Api/Page/Details';
+const PageDetail = AppConfig.host + '/api/Page/Details';
 
-const PageList = host + '/Api/Page/Pages';
-const PostList = host + '/Api/Page/Posts';
+const PageList = AppConfig.host + '/api/Page/Pages';
+const PostList = AppConfig.host + '/api/Page/Posts';
 
 
 

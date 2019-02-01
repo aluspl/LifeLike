@@ -9,6 +9,8 @@ import { PostCreateComponent } from './pages/post-create/post-create.component';
 import { PostEditComponent } from './pages/post-edit/post-edit.component';
 import { AdminRestService } from './services/admin-rest.service';
 import { ConfigComponent } from './pages/config/config.component';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,10 @@ import { ConfigComponent } from './pages/config/config.component';
     CommonModule,
     SharedModule,
     AdminRoutingModule,
+    FormsModule
+  ],
+  exports: [
+    RouterModule
   ],
   providers: [ AdminRestService ]
 })

@@ -191,3 +191,382 @@ FROM "EventLogs"
 WHERE changes() = 1 AND "Id" = last_insert_rowid();
 2019-02-01 12:47:58.602 +01:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetMenuLinks (LifeLike.Web) in 46.9516ms
 2019-02-01 12:47:58.611 +01:00 [INF] Request finished in 64.5331ms 500 application/json
+2019-02-01 13:08:55.876 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-02-01 13:08:56.286 +01:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-02-01 13:08:56.330 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 13:08:56.350 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 13:08:56.360 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-02-01 13:08:56.426 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 13:08:56.439 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-02-01 13:08:56.468 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 13:08:56.478 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-02-01 13:08:56.495 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 13:08:56.507 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-02-01 13:17:44.379 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/index.html  
+2019-02-01 13:17:44.424 +01:00 [INF] Request finished in 44.9276ms 200 text/html
+2019-02-01 13:17:44.791 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/v1/swagger.json  
+2019-02-01 13:17:44.811 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/swagger/favicon-32x32.png  
+2019-02-01 13:17:44.824 +01:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2019-02-01 13:17:44.829 +01:00 [INF] Request finished in 18.8989ms 200 image/png
+2019-02-01 13:17:44.981 +01:00 [INF] Request finished in 190.7761ms 200 application/json;charset=utf-8
+2019-02-01 13:17:51.359 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Menu  
+2019-02-01 13:17:51.366 +01:00 [INF] Request finished in 6.8685ms 307 
+2019-02-01 13:17:56.672 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Menu  
+2019-02-01 13:17:56.677 +01:00 [INF] Request finished in 4.9921ms 307 
+2019-02-01 13:18:06.963 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Menu  
+2019-02-01 13:18:06.966 +01:00 [INF] Request finished in 3.6395ms 307 
+2019-02-01 13:18:08.278 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Menu  
+2019-02-01 13:18:08.281 +01:00 [INF] Request finished in 3.4934ms 307 
+2019-02-01 13:18:09.108 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/Api/Menu  
+2019-02-01 13:18:09.114 +01:00 [INF] Request finished in 5.9215ms 307 
+2019-02-01 13:46:58.498 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-02-01 13:46:58.888 +01:00 [INF] Entity Framework Core 2.1.4-rtm-31024 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-02-01 13:46:58.939 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 13:46:59.020 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 13:46:59.028 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetRoles" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_AspNetRoles" PRIMARY KEY,
+    "Name" TEXT NULL,
+    "NormalizedName" TEXT NULL,
+    "ConcurrencyStamp" TEXT NULL
+);
+2019-02-01 13:46:59.039 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUsers" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_AspNetUsers" PRIMARY KEY,
+    "UserName" TEXT NULL,
+    "NormalizedUserName" TEXT NULL,
+    "Email" TEXT NULL,
+    "NormalizedEmail" TEXT NULL,
+    "EmailConfirmed" INTEGER NOT NULL,
+    "PasswordHash" TEXT NULL,
+    "SecurityStamp" TEXT NULL,
+    "ConcurrencyStamp" TEXT NULL,
+    "PhoneNumber" TEXT NULL,
+    "PhoneNumberConfirmed" INTEGER NOT NULL,
+    "TwoFactorEnabled" INTEGER NOT NULL,
+    "LockoutEnd" TEXT NULL,
+    "LockoutEnabled" INTEGER NOT NULL,
+    "AccessFailedCount" INTEGER NOT NULL
+);
+2019-02-01 13:46:59.058 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Changelogs" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_Changelogs" PRIMARY KEY AUTOINCREMENT,
+    "Name" TEXT NULL,
+    "Description" TEXT NULL,
+    "Published" TEXT NOT NULL,
+    "Link" TEXT NULL
+);
+2019-02-01 13:46:59.072 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Configs" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_Configs" PRIMARY KEY AUTOINCREMENT,
+    "Name" TEXT NULL,
+    "Value" TEXT NULL,
+    "DisplayName" TEXT NULL,
+    "Type" INTEGER NOT NULL
+);
+2019-02-01 13:46:59.083 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "EventLogs" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_EventLogs" PRIMARY KEY AUTOINCREMENT,
+    "Type" INTEGER NOT NULL,
+    "Messages" TEXT NULL,
+    "StackTrace" TEXT NULL,
+    "EventTime" TEXT NOT NULL
+);
+2019-02-01 13:46:59.096 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Galleries" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_Galleries" PRIMARY KEY AUTOINCREMENT,
+    "Title" TEXT NULL,
+    "Created" TEXT NOT NULL,
+    "Description" TEXT NULL,
+    "Place" TEXT NULL,
+    "ShortTitle" TEXT NULL
+);
+2019-02-01 13:46:59.111 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Links" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_Links" PRIMARY KEY AUTOINCREMENT,
+    "Controller" TEXT NULL,
+    "Action" TEXT NULL,
+    "Name" TEXT NULL,
+    "Url" TEXT NULL,
+    "IconName" TEXT NULL,
+    "Order" INTEGER NOT NULL,
+    "Category" INTEGER NOT NULL
+);
+2019-02-01 13:46:59.126 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Pages" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_Pages" PRIMARY KEY AUTOINCREMENT,
+    "ShortName" TEXT NOT NULL,
+    "FullName" TEXT NULL,
+    "Content" TEXT NULL,
+    "PageOrder" INTEGER NOT NULL,
+    "Category" INTEGER NOT NULL,
+    "LinkId" INTEGER NOT NULL,
+    "Published" TEXT NOT NULL,
+    "ImageUrl" TEXT NULL
+);
+2019-02-01 13:46:59.145 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Stats" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_Stats" PRIMARY KEY AUTOINCREMENT,
+    "Action" TEXT NULL,
+    "Controller" TEXT NULL,
+    "Parameter" TEXT NULL,
+    "Type" INTEGER NOT NULL
+);
+2019-02-01 13:46:59.162 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Videos" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_Videos" PRIMARY KEY AUTOINCREMENT,
+    "Name" TEXT NULL,
+    "Url" TEXT NULL,
+    "Description" TEXT NULL,
+    "PublishDate" TEXT NOT NULL,
+    "Category" INTEGER NOT NULL
+);
+2019-02-01 13:46:59.177 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetRoleClaims" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_AspNetRoleClaims" PRIMARY KEY AUTOINCREMENT,
+    "RoleId" TEXT NOT NULL,
+    "ClaimType" TEXT NULL,
+    "ClaimValue" TEXT NULL,
+    CONSTRAINT "FK_AspNetRoleClaims_AspNetRoles_RoleId" FOREIGN KEY ("RoleId") REFERENCES "AspNetRoles" ("Id") ON DELETE CASCADE
+);
+2019-02-01 13:46:59.189 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUserClaims" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_AspNetUserClaims" PRIMARY KEY AUTOINCREMENT,
+    "UserId" TEXT NOT NULL,
+    "ClaimType" TEXT NULL,
+    "ClaimValue" TEXT NULL,
+    CONSTRAINT "FK_AspNetUserClaims_AspNetUsers_UserId" FOREIGN KEY ("UserId") REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE
+);
+2019-02-01 13:46:59.199 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUserLogins" (
+    "LoginProvider" TEXT NOT NULL,
+    "ProviderKey" TEXT NOT NULL,
+    "ProviderDisplayName" TEXT NULL,
+    "UserId" TEXT NOT NULL,
+    CONSTRAINT "PK_AspNetUserLogins" PRIMARY KEY ("LoginProvider", "ProviderKey"),
+    CONSTRAINT "FK_AspNetUserLogins_AspNetUsers_UserId" FOREIGN KEY ("UserId") REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE
+);
+2019-02-01 13:46:59.210 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUserRoles" (
+    "UserId" TEXT NOT NULL,
+    "RoleId" TEXT NOT NULL,
+    CONSTRAINT "PK_AspNetUserRoles" PRIMARY KEY ("UserId", "RoleId"),
+    CONSTRAINT "FK_AspNetUserRoles_AspNetRoles_RoleId" FOREIGN KEY ("RoleId") REFERENCES "AspNetRoles" ("Id") ON DELETE CASCADE,
+    CONSTRAINT "FK_AspNetUserRoles_AspNetUsers_UserId" FOREIGN KEY ("UserId") REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE
+);
+2019-02-01 13:46:59.223 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUserTokens" (
+    "UserId" TEXT NOT NULL,
+    "LoginProvider" TEXT NOT NULL,
+    "Name" TEXT NOT NULL,
+    "Value" TEXT NULL,
+    CONSTRAINT "PK_AspNetUserTokens" PRIMARY KEY ("UserId", "LoginProvider", "Name"),
+    CONSTRAINT "FK_AspNetUserTokens_AspNetUsers_UserId" FOREIGN KEY ("UserId") REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE
+);
+2019-02-01 13:46:59.237 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Photos" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_Photos" PRIMARY KEY AUTOINCREMENT,
+    "Title" TEXT NULL,
+    "FileName" TEXT NULL,
+    "Created" TEXT NOT NULL,
+    "Camera" TEXT NULL,
+    "GalleryId" INTEGER NULL,
+    CONSTRAINT "FK_Photos_Galleries_GalleryId" FOREIGN KEY ("GalleryId") REFERENCES "Galleries" ("Id") ON DELETE RESTRICT
+);
+2019-02-01 13:46:59.252 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_AspNetRoleClaims_RoleId" ON "AspNetRoleClaims" ("RoleId");
+2019-02-01 13:46:59.257 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "RoleNameIndex" ON "AspNetRoles" ("NormalizedName");
+2019-02-01 13:46:59.268 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_AspNetUserClaims_UserId" ON "AspNetUserClaims" ("UserId");
+2019-02-01 13:46:59.274 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_AspNetUserLogins_UserId" ON "AspNetUserLogins" ("UserId");
+2019-02-01 13:46:59.283 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_AspNetUserRoles_RoleId" ON "AspNetUserRoles" ("RoleId");
+2019-02-01 13:46:59.292 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "EmailIndex" ON "AspNetUsers" ("NormalizedEmail");
+2019-02-01 13:46:59.302 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "UserNameIndex" ON "AspNetUsers" ("NormalizedUserName");
+2019-02-01 13:46:59.309 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_Photos_GalleryId" ON "Photos" ("GalleryId");
+2019-02-01 13:46:59.392 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 13:46:59.403 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-02-01 13:46:59.476 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 13:46:59.484 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-02-01 13:46:59.504 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 13:46:59.512 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-02-01 13:46:59.567 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-01 13:46:59.591 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 13), @p1='?' (Size = 4), @p2='?', @p3='?' (Size = 32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Configs" ("DisplayName", "Name", "Type", "Value")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Configs"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2019-02-01 13:46:59.609 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 3), @p1='?' (Size = 11), @p2='?', @p3='?' (Size = 86)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Configs" ("DisplayName", "Name", "Type", "Value")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Configs"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2019-02-01 13:46:59.622 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 13), @p1='?' (Size = 12), @p2='?', @p3='?' (Size = 11)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Configs" ("DisplayName", "Name", "Type", "Value")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Configs"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2019-02-01 13:46:59.633 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 14), @p1='?' (Size = 4), @p2='?', @p3='?' (Size = 28)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Configs" ("DisplayName", "Name", "Type", "Value")
+VALUES (@p0, @p1, @p2, @p3);
+SELECT "Id"
+FROM "Configs"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2019-02-01 13:46:59.646 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?', @p2='?' (Size = 5), @p3='?' (Size = 9), @p4='?' (Size = 4), @p5='?', @p6='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT "Id"
+FROM "Links"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2019-02-01 13:46:59.666 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?', @p1='?', @p2='?', @p3='?' (Size = 4), @p4='?' (Size = 21), @p5='?', @p6='?' (Size = 56)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT "Id"
+FROM "Links"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2019-02-01 13:46:59.685 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?', @p1='?', @p2='?', @p3='?' (Size = 4), @p4='?' (Size = 17), @p5='?', @p6='?' (Size = 40)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT "Id"
+FROM "Links"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2019-02-01 13:46:59.702 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?', @p1='?', @p2='?', @p3='?' (Size = 7), @p4='?' (Size = 8), @p5='?', @p6='?' (Size = 40)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT "Id"
+FROM "Links"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2019-02-01 13:46:59.713 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?', @p1='?', @p2='?', @p3='?' (Size = 7), @p4='?' (Size = 8), @p5='?', @p6='?' (Size = 51)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT "Id"
+FROM "Links"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2019-02-01 13:46:59.727 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?', @p1='?', @p2='?', @p3='?' (Size = 6), @p4='?' (Size = 13), @p5='?', @p6='?' (Size = 22)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT "Id"
+FROM "Links"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2019-02-01 13:46:59.741 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?', @p1='?', @p2='?', @p3='?' (Size = 4), @p4='?' (Size = 6), @p5='?', @p6='?' (Size = 26)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT "Id"
+FROM "Links"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2019-02-01 13:46:59.753 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 7), @p1='?', @p2='?' (Size = 4), @p3='?' (Size = 2), @p4='?' (Size = 7), @p5='?', @p6='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT "Id"
+FROM "Links"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2019-02-01 13:46:59.765 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?', @p1='?', @p2='?' (Size = 4), @p3='?' (Size = 4), @p4='?' (Size = 4), @p5='?', @p6='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT "Id"
+FROM "Links"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2019-02-01 13:46:59.776 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?', @p1='?', @p2='?' (Size = 5), @p3='?' (Size = 4), @p4='?' (Size = 8), @p5='?', @p6='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT "Id"
+FROM "Links"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2019-02-01 13:46:59.793 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?', @p1='?', @p2='?' (Size = 6), @p3='?' (Size = 4), @p4='?' (Size = 6), @p5='?', @p6='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT "Id"
+FROM "Links"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2019-02-01 13:46:59.806 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?', @p1='?', @p2='?' (Size = 6), @p3='?' (Size = 12), @p4='?' (Size = 6), @p5='?', @p6='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT "Id"
+FROM "Links"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2019-02-01 13:46:59.817 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?', @p1='?', @p2='?', @p3='?' (Size = 5), @p4='?' (Size = 17), @p5='?', @p6='?' (Size = 26)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+SELECT "Id"
+FROM "Links"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2019-02-01 13:46:59.828 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?', @p1='?' (Size = 16), @p2='?' (Size = 10), @p3='?', @p4='?', @p5='?', @p6='?', @p7='?' (Size = 7)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Pages" ("Category", "Content", "FullName", "ImageUrl", "LinkId", "PageOrder", "Published", "ShortName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT "Id"
+FROM "Pages"
+WHERE changes() = 1 AND "Id" = last_insert_rowid();
+2019-02-01 13:51:09.089 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Page/Posts  
+2019-02-01 13:51:09.127 +01:00 [INF] Request finished in 38.6998ms 307 
+2019-02-01 13:51:34.326 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Page/Posts  
+2019-02-01 13:51:34.329 +01:00 [INF] Request finished in 2.9841ms 307 
+2019-02-01 13:51:39.866 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Page/Posts  
+2019-02-01 13:51:39.877 +01:00 [INF] Request finished in 10.7273ms 307 
+2019-02-01 13:51:55.791 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Config  
+2019-02-01 13:51:55.796 +01:00 [INF] Request finished in 5.4872ms 307 
+2019-02-01 14:46:51.627 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Video/List  
+2019-02-01 14:46:51.635 +01:00 [INF] Request finished in 9.0183ms 307 
+2019-02-01 14:50:16.466 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Video/List  
+2019-02-01 14:50:16.471 +01:00 [INF] Request finished in 4.5052ms 307 
+2019-02-01 14:51:37.548 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Video/List  
+2019-02-01 14:51:37.555 +01:00 [INF] Request finished in 6.3808ms 307 
+2019-02-01 14:53:03.921 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Video/List  
+2019-02-01 14:53:03.926 +01:00 [INF] Request finished in 5.4165ms 307 
+2019-02-01 14:57:15.448 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Video/List  
+2019-02-01 14:57:15.453 +01:00 [INF] Request finished in 4.667ms 307 

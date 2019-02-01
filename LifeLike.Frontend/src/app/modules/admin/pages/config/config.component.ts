@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {map} from 'rxjs/internal/operators';
-import Log from 'src/app/shared/models/Log';
 import { AdminRestService } from '../../services/admin-rest.service';
-import { Config } from 'src/app/shared/models/Config';
+import  Config  from 'src/app/shared/models/Config';
 
 @Component({
   selector: 'app-config',

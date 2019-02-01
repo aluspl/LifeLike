@@ -21,6 +21,7 @@ import { HomeComponent } from './Pages/home/home.component';
   ],
   imports: [
     CommonModule,
+    
     RouterModule
   ],
   exports: [

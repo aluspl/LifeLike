@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Location} from '@angular/common';
-import { Page } from 'src/app/shared/models/Page';
+import  Page  from 'src/app/shared/models/Page';
 import { AdminRestService } from '../../services/admin-rest.service';
 
 @Component({

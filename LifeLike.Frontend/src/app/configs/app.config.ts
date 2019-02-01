@@ -1,5 +1,4 @@
 import {InjectionToken} from '@angular/core';
-import { MenuItem } from "../shared/models/MenuItem";
 
 export let APP_CONFIG = new InjectionToken('app.config');
 
@@ -13,7 +12,7 @@ export const AppConfig: any = {
   votesLimit: 3,
   topHeroesLimit: 4,
   snackBarDuration: 3000,
-  host: 'localhost:5000',
+  host: 'http://localhost',
   MenuItems: [
     {
        Id: 1,
