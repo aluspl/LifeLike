@@ -18,11 +18,15 @@ export class PostDetailComponent implements OnInit {
   GetPage(): void {
     const id = this.route.snapshot.paramMap.get('id');
     console.log('Article ID ' + id);
+
    this.restService.getPageDetail(id)
-     .pipe(map(data => {
+     .pipe(map((data: Page) => {
        this.IsLoading = false;
        console.log(data);
-       return data;
+       if (data != null)
+         return data;
+       else 
+         return null;
      }))
      .subscribe(p => this.Page = p);
   }

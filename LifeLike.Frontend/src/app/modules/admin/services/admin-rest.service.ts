@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, tap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs/index';
-import Log from '../../../shared/models/Log';
+import Log from '../models/Log';
 import  Config  from '../../../shared/models/Config';
 import { RestService } from '../../../shared/services/rest.service';
 import  Page  from '../../../shared/models/Page';
@@ -72,8 +72,13 @@ export class AdminRestService {
       // return this.http.delete()
   }
 
-  editPost() {
-
+  editPost(page: Page) {
+    return this.http
+    .put<Config[]>(ConfigList, page)
+    .pipe(
+      tap(_ => RestService.log(`fetched Configs`)),
+      catchError(RestService.handleError<Config[]>())
+    );
   }
 
   getConfigs(): Observable<Config[]> {

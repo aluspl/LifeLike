@@ -1,9 +1,7 @@
-export default class Photo
+export default class album
 {
-    
     Id: number;
     Type: number;
-
     Name: string;
     Messages: string;
     StackTrace: string;

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import UserLogin from '../Models/UserLogin';
+import UserLogin from '../models/UserLogin';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +16,9 @@ export class AuthenticationService {
             return user;
         }));
 }
-
 logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
 }
-
   constructor(private http: HttpClient) { }
 }

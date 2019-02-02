@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
-import MenuItem from '../Models/MenuItem';
 import { Observable, of } from 'rxjs/index';
-import Video from '../Models/Video';
-import Config from '../Models/Config';
+import MenuItem from '../models/MenuItem';
+import Video from '../../modules/video/models/Video';
+import Config from '../models/Config';
 import { AppConfig } from '../../configs/app.config';
-
-
 
 const ConfigList = AppConfig.host + '/api/Config';
 const VideoList = AppConfig.host + '/api/Video/List';
@@ -15,6 +13,10 @@ const VideoList = AppConfig.host + '/api/Video/List';
 
 @Injectable()
 export class RestService {
+  public static httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    withCredentials: true
+  };
   public static log(message: string) {
     console.log(message);
   }
@@ -22,7 +24,7 @@ export class RestService {
   public static handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
-      return of(result as T);
+      return new Observable<any>();
     };
   }
 
@@ -32,7 +34,7 @@ export class RestService {
 
   GetVideos(): Observable<Video[]> {
     return this.http
-      .get<Video[]>(VideoList)
+      .get<Video[]>(VideoList, RestService.httpOptions)
       .pipe(
         tap(_ => RestService.log(`fetched Videos`)),
         catchError(RestService.handleError<Video[]>())
@@ -40,7 +42,7 @@ export class RestService {
   }
   getConfigs(): Observable<Config[]> {
     return this.http
-      .get<Config[]>(ConfigList)
+      .get<Config[]>(ConfigList, RestService.httpOptions )
       .pipe(
         tap(_ => RestService.log(`fetched Configs`)),
         catchError(RestService.handleError<Config[]>())

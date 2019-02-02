@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {map} from 'rxjs/internal/operators';
-import Video from '../../../../shared/models/Video';
+import Video from '../../models/Video';
 import { RestService } from '../../../../shared/services/rest.service';
 
 @Component({

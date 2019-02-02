@@ -14,7 +14,7 @@ namespace LifeLike.Web
         private static IWebHost BuildWebHost(string[] args)
         {
             return WebHost.CreateDefaultBuilder(args)
-                .UseUrls("http://*:80", "https://*:443")
+                .UseUrls("http://*:80")
                 .UseKestrel()
                 .UseIISIntegration()
                 .UseContentRoot(Directory.GetCurrentDirectory())

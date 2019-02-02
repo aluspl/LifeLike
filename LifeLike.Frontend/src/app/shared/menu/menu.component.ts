@@ -18,5 +18,4 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     this.getMenuItems();
   }
-
 }

@@ -33,7 +33,7 @@ namespace LifeLike.Web
     public class Startup
     {
         public Startup(IHostingEnvironment env)
-        {  
+        {
             Log.Logger = new LoggerConfiguration()
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
@@ -42,11 +42,10 @@ namespace LifeLike.Web
                     rollOnFileSizeLimit: true)
                 .CreateLogger();
             var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)     
+                .SetBasePath(env.ContentRootPath)
                 .AddEnvironmentVariables()
                 .AddJsonFile("app.settings.json");
-            // if (env.IsDevelopment())
-                // builder.AddUserSecrets<Startup>();
+
             Configuration = builder.Build();
         }
 
@@ -115,10 +114,6 @@ namespace LifeLike.Web
                         ClockSkew = TimeSpan.Zero // remove delay of token when expire
                     };
                 });
-            // services.AddSpaStaticFiles(configuration =>
-            // {
-            //     configuration.RootPath = "ClientApp/dist";
-            // });
             services.AddSwaggerSetting();
 
             var config = new MapperConfiguration(cfg =>
@@ -128,10 +123,15 @@ namespace LifeLike.Web
 
             var mapper = config.CreateMapper();
             services.AddSingleton(mapper);
-            services.Configure<ForwardedHeadersOptions>(options =>
+
+            services.AddCors(options =>
             {
-                options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
-                options.KnownProxies.Add(IPAddress.Parse("172.22.0.1"));
+                options.AddPolicy("CorsPolicy",
+                    builder => builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
             });
             services.AddMvc();
             services.AddMvc().AddJsonOptions(options =>
@@ -141,7 +141,7 @@ namespace LifeLike.Web
 
         }
 
-        
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory,
             PortalContext context)
@@ -155,7 +155,6 @@ namespace LifeLike.Web
             {
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
-
             }
             else
             {
@@ -166,30 +165,17 @@ namespace LifeLike.Web
             app.UseAuthentication();
             app.UseExceptionMiddleware();
             app.UseSwaggerSetting();
+            
             // var option = new RewriteOptions().AddRedirect("^$", "swagger");
             // app.UseRewriter(option);
-          app.UseHttpsRedirection();
-            app.UseCors(builder => builder
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .AllowCredentials());
+            // app.UseHttpsRedirection();
+            app.UseCors("CorsPolicy");
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller}/{action=Index}/{id?}");
-            });
-
-            // app.UseSpa(spa =>
-            // {
-            //     spa.Options.SourcePath = "ClientApp";
-
-            //     if (env.IsDevelopment())
-            //     {
-            //         spa.UseAngularCliServer(npmScript: "start");
-            //     }
-            // });
+            });         
             DbInitializer.Initialize(context);
         }
 

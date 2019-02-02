@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {map} from 'rxjs/internal/operators';
-import Log from '../../../../shared/models/Log';
+import Log from '../../models/Log';
 import { AdminRestService } from '../../services/admin-rest.service';
 
 @Component({

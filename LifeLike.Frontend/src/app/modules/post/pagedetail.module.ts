@@ -2,24 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { PostComponent } from './pages/post/post.component';
+import { PostDetailComponent } from './pages/post-detail/post-detail.component';
 import { SharedModule } from '../../shared/shared.module';
-import { PostRoutingModule } from './post-routing.module';
 import { PostRestService } from './services/post-rest.service';
-import { PageDetailModule } from './pagedetail.module';
+import { PageRoutingModule } from './page-routing.module';
 
 @NgModule({
   declarations: [
-    PostComponent,
+    PostDetailComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
     RouterModule,
-    PageDetailModule,
-    PostRoutingModule
   ],
   
   providers: [PostRestService]
 })
-export class PostModule { }
+export class PageDetailModule { }

@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './shared/Pages/home/home.component';
+import { HomeComponent } from './shared/pages/home/home.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
   { path: 'Home', component: HomeComponent },
   { path: 'Admin', loadChildren: './modules/admin/admin.module#AdminModule' },  
   { path: 'Post', loadChildren: './modules/post/post.module#PostModule' },  
-  { path: 'Page', loadChildren: './modules/post/post.module#PostModule' },  
+  { path: 'Page', loadChildren: './modules/post/page.module#PageModule' },  
   { path: 'Album', loadChildren: './modules/photo/photo.module#PhotoModule' },
+  { path: 'Video', loadChildren: './modules/video/video.module#VideoModule' },
+
 ];
 @NgModule({
   imports: [  RouterModule.forRoot(routes, {

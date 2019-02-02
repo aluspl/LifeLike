@@ -11,5 +11,4 @@ export class AlbumDetailComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

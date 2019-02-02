@@ -6,9 +6,7 @@ import { RestService } from '../../../shared/services/rest.service';
 import  Page  from '../../../shared/models/Page';
 import { AppConfig } from '../../../configs/app.config';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+
 
 const PageDetail = AppConfig.host + '/api/Page/Details';
 
@@ -22,7 +20,7 @@ export class PostRestService {
  
   getPostList(): Observable<Page[]> {
     return this.http
-      .get<Page[]>(PostList)
+      .get<Page[]>(PostList, RestService.httpOptions)
       .pipe(
         tap(_ => RestService.log(`fetched News`)),
         catchError(RestService.handleError<Page[]>())
@@ -31,7 +29,7 @@ export class PostRestService {
 
   getPageList(): Observable<Page[]> {
     return this.http
-      .get<Page[]>(PageList)
+      .get<Page[]>(PageList, RestService.httpOptions)
       .pipe(
         tap(_ => RestService.log(`fetched Pages`)),
         catchError(RestService.handleError<Page[]>())
@@ -42,14 +40,12 @@ export class PostRestService {
     const url = `${PageDetail}/${name}`;
     RestService.log(url);
     return this.http
-      .get<Page>(url)
+      .get<Page>(url, RestService.httpOptions)
       .pipe(
         tap(_ => RestService.log(`fetched Page id=${name}`)),
         catchError(RestService.handleError<Page>())
       );
   }
-
-  
   constructor(private http: HttpClient) {
   }
   
