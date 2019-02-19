@@ -7,10 +7,11 @@ import Video from '../../modules/video/models/Video';
 import Config from '../models/Config';
 import { AppConfig } from '../../configs/app.config';
 import { LoggerService } from 'src/app/core/services/logger.service';
+import UserLogin from '../models/UserLogin';
 
 const ConfigList = AppConfig.host + '/api/Config';
 const VideoList = AppConfig.host + '/api/Video/List';
-
+const LoginLink=  AppConfig.host + '/api/Account/Login';
 
 @Injectable()
 export class RestService {
@@ -18,9 +19,6 @@ export class RestService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     withCredentials: true
   };
-  public static log(message: string) {
-    console.log(message);
-  }
 
   public static handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -46,7 +44,7 @@ export class RestService {
     return this.http
       .get<Video[]>(VideoList, RestService.httpOptions)
       .pipe(
-        tap(_ => RestService.log(`fetched Videos`)),
+        tap(_ => LoggerService.log(`fetched Videos`)),
         catchError(RestService.handleError<Video[]>())
       );
   }
@@ -54,11 +52,18 @@ export class RestService {
     return this.http
       .get<Config[]>(ConfigList, RestService.httpOptions )
       .pipe(
-        tap(_ => RestService.log(`fetched Configs`)),
+        tap(_ => LoggerService.log(`fetched Configs`)),
         catchError(RestService.handleError<Config[]>())
       );
   }
-
+  login(login: UserLogin) {
+    return this.http
+      .post<any>(LoginLink, login, RestService.httpOptions )
+      .pipe(
+        tap(_ => LoggerService.log(`Login`)),
+        catchError(RestService.handleError<any>())
+      );
+  }
   constructor(private http: HttpClient) {
   }
 }

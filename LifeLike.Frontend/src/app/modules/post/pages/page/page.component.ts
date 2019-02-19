@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/internal/operators';
-import  Page  from '../../../../shared/models/Page';
+import Page from '../../../../shared/models/Page';
 import { PostRestService } from '../../services/post-rest.service';
+import { ActivatedRoute, RouterState, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -10,23 +12,47 @@ import { PostRestService } from '../../services/post-rest.service';
   styleUrls: ['./page.component.scss']
 })
 export class PageComponent implements OnInit {
+  [x: string]: any;
   Pages: Page[];
   IsLoading: boolean;
-  constructor(private restService: PostRestService) { }
-
-  GetPages(): void {
-    this.restService.getPageList()
+  Title: string;
+  constructor(private restService: PostRestService, private route: Router) {
+  }
+  GetPosts(PostType: string): void {
+    this.IsLoading = true;
+    this.restService.getPostList(PostType)
       .pipe(
-      map((data: Page[]) => {
-        this.IsLoading = false;
-        console.log(data);
-        return data;
-      }))
+        map((data: Page[]) => {
+          this.IsLoading = false;
+          console.log(data);
+          return data;
+        }))
       .subscribe(p => this.Pages = p);
   }
 
   ngOnInit() {
-    this.GetPages();
+    switch (this.route.url) {
+      case "/Post":
+        {
+          this.Title = "Blog";
+          this.GetPosts("Posts");
+
+          break;
+        }
+      case "/Project":
+        {
+          this.Title = "Projects"
+          this.GetPosts("Projects");
+          break;
+        }
+      case "/Page":
+        {
+          this.Title = "Pages"
+          this.GetPosts("Pages");
+          break;
+
+        }
+    }
   }
 
 }

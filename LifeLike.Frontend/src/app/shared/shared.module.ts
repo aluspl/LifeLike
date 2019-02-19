@@ -9,6 +9,11 @@ import { MenuComponent } from './menu/menu.component';
 import { RestService } from './services/rest.service';
 import { AuthenticationService } from './services/authentication.service';
 import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from '../core/interceptors/jwt.interceptor';
+import { ErrorInterceptor } from '../core/interceptors/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -17,11 +22,13 @@ import { HomeComponent } from './pages/home/home.component';
     MenuComponent,
     HomeComponent,
     YoutubePlayerComponent,
-    IntroTextComponent
+    IntroTextComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
-    
+    ReactiveFormsModule,
+
     RouterModule
   ],
   exports: [
@@ -33,7 +40,9 @@ import { HomeComponent } from './pages/home/home.component';
     IntroTextComponent
   ],
   providers:[
-    RestService, AuthenticationService
+    RestService, AuthenticationService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ]
 })
 export class SharedModule { }

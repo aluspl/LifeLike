@@ -62,7 +62,6 @@ namespace LifeLike.Web.Controllers
                 var list =
                      service.List(PageCategory.Projects);
                 return Ok(list);
-            
         }
         [HttpGet("Details/{id}")]
         public IActionResult Details(string id)

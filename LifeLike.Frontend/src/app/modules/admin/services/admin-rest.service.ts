@@ -7,6 +7,7 @@ import  Config  from '../../../shared/models/Config';
 import { RestService } from '../../../shared/services/rest.service';
 import  Page  from '../../../shared/models/Page';
 import { AppConfig } from '../../../configs/app.config';
+import { LoggerService } from 'src/app/core/services/logger.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -47,7 +48,7 @@ export class AdminRestService {
     return this.http
       .post<string>(CreatePost, model, httpOptions)
       .pipe(
-        tap(_ => RestService.log(`create Post`)),
+        tap(_ => LoggerService.log(`create Post`)),
         catchError(RestService.handleError<string>())
       );
   }
@@ -55,7 +56,7 @@ export class AdminRestService {
     return this.http
       .get<Log[]>(LogList)
       .pipe(
-        tap(_ => RestService.log(`fetched Logs`)),
+        tap(_ => LoggerService.log(`fetched Logs`)),
         catchError(RestService.handleError<Log[]>())
       );
   }
@@ -63,7 +64,7 @@ export class AdminRestService {
     return this.http
     .get<Log[]>(LogList)
     .pipe(
-      tap(_ => RestService.log(`fetched PAges`)),
+      tap(_ => LoggerService.log(`fetched PAges`)),
       catchError(RestService.handleError<Log[]>())
     );
   }
@@ -76,7 +77,7 @@ export class AdminRestService {
     return this.http
     .put<Config[]>(ConfigList, page)
     .pipe(
-      tap(_ => RestService.log(`fetched Configs`)),
+      tap(_ => LoggerService.log(`fetched Configs`)),
       catchError(RestService.handleError<Config[]>())
     );
   }
@@ -85,7 +86,7 @@ export class AdminRestService {
     return this.http
       .get<Config[]>(ConfigList)
       .pipe(
-        tap(_ => RestService.log(`fetched Configs`)),
+        tap(_ => LoggerService.log(`fetched Configs`)),
         catchError(RestService.handleError<Config[]>())
       );
   }
