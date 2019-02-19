@@ -1,6 +1,7 @@
 export default class UserLogin {
     UserName: string;
     Password: string;
+    RememberMe: boolean;
     FirstName: string;
     LastName: string;
     Token?: string;
@@ -8,5 +9,4 @@ export default class UserLogin {
         this.UserName = Username;
         this.Password = Password;
     }
-
 }

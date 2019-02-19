@@ -56,9 +56,9 @@ export class RestService {
         catchError(RestService.handleError<Config[]>())
       );
   }
-  login(login: UserLogin) {
+  login(login: UserLogin): Observable<any> {
     return this.http
-      .post<any>(LoginLink, login, RestService.httpOptions )
+      .post<any>(LoginLink, {login}, RestService.httpOptions )
       .pipe(
         tap(_ => LoggerService.log(`Login`)),
         catchError(RestService.handleError<any>())
