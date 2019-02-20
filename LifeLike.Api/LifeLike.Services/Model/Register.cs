@@ -5,7 +5,7 @@ namespace LifeLike.Services.ViewModel
     public class Register : BaseViewModel
     {
         [Required, MaxLength(256)] 
-        public string Login { get; set; }  
+        public string Username { get; set; }  
    
         [Required, DataType(DataType.Password)] 
         public string Password { get; set; }  

@@ -4,7 +4,7 @@ export default class UserLogin {
     RememberMe: boolean;
     FirstName: string;
     LastName: string;
-    Token?: string;
+    Token: string;
     constructor(Username: string, Password: string) {
         this.UserName = Username;
         this.Password = Password;

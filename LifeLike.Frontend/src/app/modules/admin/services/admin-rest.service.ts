@@ -9,10 +9,6 @@ import  Page  from '../../../shared/models/Page';
 import { AppConfig } from '../../../configs/app.config';
 import { LoggerService } from 'src/app/core/services/logger.service';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
-
 
 const CreatePost = AppConfig.host + '/Api/Page/Create';
 const EditPost = AppConfig.host + '/Api/Page/Edit';
@@ -46,7 +42,7 @@ export class AdminRestService {
 
   createPost(model: Page): Observable<string> {
     return this.http
-      .post<string>(CreatePost, model, httpOptions)
+      .post<string>(CreatePost, model, RestService.httpOptions)
       .pipe(
         tap(_ => LoggerService.log(`create Post`)),
         catchError(RestService.handleError<string>())

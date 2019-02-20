@@ -36,7 +36,7 @@ namespace LifeLike.Web.Controllers
 
         [HttpPost]
         [Route("Register")]
-        public async Task<IActionResult> Register(Register model)
+        public async Task<IActionResult> Register([FromBody]Register model)
         {
                 if (!ModelState.IsValid)
                 {
@@ -44,13 +44,13 @@ namespace LifeLike.Web.Controllers
                     return BadRequest(model);
                 }
                 Debug.WriteLine($"LOGIN: {model}");               
-                var user = new User {UserName = model.Login, Email = model.Email, EmailConfirmed = true};
+                var user = new User {UserName = model.Username, Email = model.Email, EmailConfirmed = true};
                 var result = await _userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, false);
-                    return Ok(GenerateJwtToken(model.Login, user));
+                    return Ok(GenerateJwtToken(model.Username, user));
                 }    
                 return Unauthorized();                   
         }
@@ -58,10 +58,9 @@ namespace LifeLike.Web.Controllers
 
         [HttpPost]
         [Route("Login")]    
-        public async Task<IActionResult> Login(Login model)
+        public async Task<IActionResult> Login([FromBody]Login model)
         {
-
-                if (!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 {
                     model.Info = "Invalid Model";
                     return BadRequest(model);

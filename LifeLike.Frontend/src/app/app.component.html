@@ -2,3 +2,10 @@
 <div class="container">
   <router-outlet></router-outlet>
 </div>
+<footer class="bottom">
+  <div class="btn-group">
+    <a *ngIf="!IsLogin" class="btn btn-info " routerLink="Login">Login</a>
+    <a *ngIf="!IsLogin" class="btn btn-warning " routerLink="Register">Register</a>
+    <a *ngIf="IsLogin" class="btn btn-secondary " onclick="Logout()">Logout</a>
+  </div>
+</footer>

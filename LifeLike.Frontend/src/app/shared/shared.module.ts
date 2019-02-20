@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from '../core/interceptors/jwt.interceptor';
 import { ErrorInterceptor } from '../core/interceptors/error.interceptor';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ErrorInterceptor } from '../core/interceptors/error.interceptor';
     HomeComponent,
     YoutubePlayerComponent,
     IntroTextComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +42,8 @@ import { ErrorInterceptor } from '../core/interceptors/error.interceptor';
     IntroTextComponent
   ],
   providers:[
-    RestService, AuthenticationService,
+    RestService, 
+    AuthenticationService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ]

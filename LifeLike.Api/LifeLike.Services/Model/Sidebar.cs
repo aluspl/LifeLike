@@ -2,7 +2,7 @@
 
 namespace LifeLike.Services.ViewModel
 {
-    public class SidebarViewModel
+    public class Sidebar
     {
         public IEnumerable<Link> Links { get; set; }        
     }

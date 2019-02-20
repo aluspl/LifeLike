@@ -8,13 +8,16 @@ import Config from '../models/Config';
 import { AppConfig } from '../../configs/app.config';
 import { LoggerService } from 'src/app/core/services/logger.service';
 import UserLogin from '../models/UserLogin';
+import UserRegister from '../models/UserRegister';
 
 const ConfigList = AppConfig.host + '/api/Config';
 const VideoList = AppConfig.host + '/api/Video/List';
 const LoginLink=  AppConfig.host + '/api/Account/Login';
+const RegisterLink=  AppConfig.host + '/api/Account/Register';
 
 @Injectable()
 export class RestService {
+
   public static httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     withCredentials: true
@@ -56,13 +59,19 @@ export class RestService {
         catchError(RestService.handleError<Config[]>())
       );
   }
-  login(login: UserLogin): Observable<any> {
+  login(login: UserLogin): Observable<string> {
     return this.http
-      .post<any>(LoginLink, {login}, RestService.httpOptions )
+      .post<string>(LoginLink, login, RestService.httpOptions )
       .pipe(
-        tap(_ => LoggerService.log(`Login`)),
-        catchError(RestService.handleError<any>())
+        tap(_ => LoggerService.log(`Login`))
       );
+  }
+  register(user: UserRegister): Observable<string> {
+    return this.http
+    .post<string>(RegisterLink, user, RestService.httpOptions )
+    .pipe(
+      tap(_ => LoggerService.log(`Register`))
+    );
   }
   constructor(private http: HttpClient) {
   }

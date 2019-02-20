@@ -4,11 +4,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import UserLogin from '../models/UserLogin';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { RestService } from './rest.service';
+import UserRegister from '../models/UserRegister';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
+    
   private currentUserSubject: BehaviorSubject<UserLogin>;
   public currentUser: Observable<UserLogin>;
 
@@ -19,17 +21,38 @@ export class AuthenticationService {
   public get currentUserValue(): UserLogin {
     return this.currentUserSubject.value;
   }
-  login(login: UserLogin) {
-    return this.rest.login(login)
-      .pipe(map(user => {
-        if (user && user.token) {
+  public get IsLogin(): Boolean {
+    return this.currentUserSubject.value!=null;
+  }
+  login(username: string, password: string): any  {
+    var user = new UserLogin(username, password);
+
+    return this.rest.login(user)
+      .pipe(map(token => {
+        if (token != null) {
           console.log(user);
-          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          user.Token=token;
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUserSubject.next(user);
         }
         return user;
       }));
+  }
+  register(username: string, password: string, email: string): any {
+    var registerUser = new UserRegister(username, password, email);
+    return this.rest.register(registerUser)
+    .pipe(map(token => {
+      if (token != null) {
+        console.log(user);
+      
+        var user = new UserLogin(username, password);
+        user.Token=token;
+
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.currentUserSubject.next(user);
+      }
+      return user;
+    }));
   }
   logout() {
     // remove user from local storage to log user out

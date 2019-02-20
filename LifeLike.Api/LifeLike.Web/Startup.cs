@@ -32,7 +32,9 @@ namespace LifeLike.Web
 {
     public class Startup
     {
-        public Startup(IHostingEnvironment env)
+        public readonly IConfiguration Configuration;
+
+        public Startup(IHostingEnvironment env, IConfiguration config)
         {
             Log.Logger = new LoggerConfiguration()
                 .Enrich.FromLogContext()
@@ -41,16 +43,8 @@ namespace LifeLike.Web
                     rollingInterval: RollingInterval.Month,
                     rollOnFileSizeLimit: true)
                 .CreateLogger();
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddEnvironmentVariables()
-                .AddJsonFile("app.settings.json");
-
-            Configuration = builder.Build();
+            Configuration = config;
         }
-
-        public IConfigurationRoot Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -71,6 +65,7 @@ namespace LifeLike.Web
                        b => b.MigrationsAssembly("LifeLike.Web")));
                 Debug.WriteLine("Using SQL");
             }
+            
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -81,7 +76,6 @@ namespace LifeLike.Web
             services.AddScoped<IPageService, PageService>();
             services.AddScoped<IPhotoService, PhotoService>();
             services.AddScoped<IVideoService, VideoService>();
-            services.AddCors();
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<PortalContext>()
                 .AddDefaultTokenProviders();
@@ -124,6 +118,7 @@ namespace LifeLike.Web
             var mapper = config.CreateMapper();
             services.AddSingleton(mapper);
 
+            services.AddCors();
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
@@ -150,7 +145,6 @@ namespace LifeLike.Web
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -159,15 +153,14 @@ namespace LifeLike.Web
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-            }
-
+            }            
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseExceptionMiddleware();
             app.UseSwaggerSetting();
-            
-            // var option = new RewriteOptions().AddRedirect("^$", "swagger");
-            // app.UseRewriter(option);
+
+            var option = new RewriteOptions().AddRedirect("^$", "swagger");
+            app.UseRewriter(option);
             // app.UseHttpsRedirection();
             app.UseCors("CorsPolicy");
             app.UseMvc(routes =>

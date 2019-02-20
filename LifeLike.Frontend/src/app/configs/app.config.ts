@@ -55,13 +55,6 @@ export const AppConfig: any = {
             Controller: 'Page',
             Name: 'CONTACT',
             Icon: 'at',
-        },
-        {
-            Id: 7,
-            Action: '',
-            Controller: 'Login',
-            Name: 'LOGIN',
-            Icon: 'sign-in-alt',
         }
     ]
 };
