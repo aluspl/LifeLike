@@ -10,5 +10,7 @@ namespace LifeLike.Services.ViewModel
         public string Password { get; set; }
         public bool RememberMe { get; set; }
         public string Info { get;  set; }
+        public string Token { get; set; }
+        public string Id { get; set; }
     }
 }
