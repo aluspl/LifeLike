@@ -59,16 +59,16 @@ export class RestService {
         catchError(RestService.handleError<Config[]>())
       );
   }
-  login(login: UserLogin): Observable<string> {
+  login(login: UserLogin): Observable<UserLogin> {
     return this.http
-      .post<string>(LoginLink, login, RestService.httpOptions )
+      .post<UserLogin>(LoginLink, login, RestService.httpOptions )
       .pipe(
         tap(_ => LoggerService.log(`Login`))
       );
   }
-  register(user: UserRegister): Observable<string> {
+  register(user: UserRegister): Observable<UserLogin> {
     return this.http
-    .post<string>(RegisterLink, user, RestService.httpOptions )
+    .post<UserLogin>(RegisterLink, user, RestService.httpOptions )
     .pipe(
       tap(_ => LoggerService.log(`Register`))
     );

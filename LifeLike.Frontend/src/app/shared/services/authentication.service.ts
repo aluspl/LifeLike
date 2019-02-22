@@ -25,13 +25,13 @@ export class AuthenticationService {
     return this.currentUserSubject.value!=null;
   }
   login(username: string, password: string): any  {
-    var user = new UserLogin(username, password);
+    var userLogin = new UserLogin(username, password);
 
-    return this.rest.login(user)
-      .pipe(map(token => {
-        if (token != null) {
+    return this.rest.login(userLogin)
+      .pipe(map(user => {
+        if (user && user.Token != null) {
           console.log(user);
-          user.Token=token;
+
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUserSubject.next(user);
         }
@@ -41,13 +41,9 @@ export class AuthenticationService {
   register(username: string, password: string, email: string): any {
     var registerUser = new UserRegister(username, password, email);
     return this.rest.register(registerUser)
-    .pipe(map(token => {
-      if (token != null) {
-        console.log(user);
-      
-        var user = new UserLogin(username, password);
-        user.Token=token;
-
+    .pipe(map(user => {
+      if (user && user.Token != null) {
+        console.log(user);      
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
       }

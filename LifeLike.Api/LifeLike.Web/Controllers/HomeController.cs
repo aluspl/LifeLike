@@ -46,9 +46,11 @@ namespace LifeLike.Web.Controllers
 
 
         [HttpGet("Api/Config")]
+        [AllowAnonymous]
         public IActionResult GetList()
         {
             var configs = _config.List();
+            var isLogged = User.Identity.IsAuthenticated;
 
             Debug.WriteLine(configs.ToJSON());
             return Ok(configs);

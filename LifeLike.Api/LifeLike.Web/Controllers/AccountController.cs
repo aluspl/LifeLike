@@ -54,6 +54,8 @@ namespace LifeLike.Web.Controllers
                 {
                     Token = token,
                     Id = user.Id,
+                    UserName = model.Username,
+                    Email = model.Email
                 };
                 return Ok(loginModel);
             }
