@@ -48,9 +48,14 @@ namespace LifeLike.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
             services.AddLogging(loggingBuilder =>
-                loggingBuilder.AddSerilog(dispose: true));
+            {
+                loggingBuilder.AddSerilog(dispose: true);
+                loggingBuilder.AddConfiguration(Configuration.GetSection("Logging"));
+                loggingBuilder.AddConsole();
+                loggingBuilder.AddDebug();
+            });
+
             var connection = Configuration.GetConnectionString("DB");
             if (connection == null)
             {
@@ -143,8 +148,6 @@ namespace LifeLike.Web
         {
             // GenerateDB(app);
 
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -154,6 +157,7 @@ namespace LifeLike.Web
             {
                 app.UseExceptionHandler("/Home/Error");
             }            
+            
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseExceptionMiddleware();
