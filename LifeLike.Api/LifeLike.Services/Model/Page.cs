@@ -7,8 +7,7 @@ using LifeLike.Services.Extensions;
 namespace LifeLike.Services.ViewModel
 {
     public class Page
-    {
-        
+    {  
         public long Id { get; set; }
         [DataType(DataType.Text)] 
         public string ShortName { get; set; }
@@ -23,9 +22,7 @@ namespace LifeLike.Services.ViewModel
         public DateTime Published { get; set; }
         public string Summary => Content.Summary();
         public string ContentInHTML => Content.ToHTML();
-
-
-      
+   
         public Link Link => new Link
         {
             Name = FullName,

@@ -1,36 +1,30 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './Pages/home/home.component';
-import { PageComponent } from './Pages/page/page.component';
-import { LogComponent } from './Pages/log/log.component';
-import { PostComponent } from './Pages/post/post.component';
-import { AlbumComponent } from './Pages/album/album.component';
-import { VideoComponent } from './Pages/video/video.component';
-import { LogDetailComponent } from './Pages/log-detail/log-detail.component';
-import { PostDetailComponent } from './Pages/post-detail/post-detail.component';
-import { AlbumDetailComponent } from './Pages/album-detail/album-detail.component';
-import { PostCreateComponent } from './Pages/post-create/post-create.component';
-import {AdminPanelComponent} from './Pages/admin-panel/admin-panel.component';
-import { LoginComponent } from './Pages/login/login.component';
+import { HomeComponent } from './shared/pages/home/home.component';
+import { LoginComponent } from './shared/pages/login/login.component';
+import { RegisterComponent } from './shared/pages/register/register.component';
+import { AuthGuard } from './shared/services/AuthGuard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
   { path: 'Home', component: HomeComponent },
-  { path: 'Page', component: PageComponent },
-  { path: 'Post', component: PostComponent },
-  { path: 'CreatePost', component: PostCreateComponent },
-  { path: 'Log', component: LogComponent },
-  { path: 'Login', component: LoginComponent },
-  { path: 'Album', component: AlbumComponent },
-  { path: 'Video', component: VideoComponent },
-  { path: 'Log/:id', component: LogDetailComponent },
-  { path: 'Album/:id', component: AlbumDetailComponent },
-  { path: 'Page/:id', component: PostDetailComponent },
-  { path: 'Post/:id', component: PostDetailComponent },
-  { path: 'Admin', component: AdminPanelComponent },
+  { path: 'Login', component: LoginComponent },  
+  { path: 'Register', component: RegisterComponent },  
+
+  { path: 'Admin', loadChildren: './modules/admin/admin.module#AdminModule', canActivate: [AuthGuard] },  
+  { path: 'Post', loadChildren: './modules/post/page.module#PageModule' },  
+  { path: 'Page', loadChildren: './modules/post/page.module#PageModule' },  
+  { path: 'Project', loadChildren: './modules/post/page.module#PageModule' },  
+
+  { path: 'Album', loadChildren: './modules/photo/photo.module#PhotoModule' },
+  { path: 'Video', loadChildren: './modules/video/video.module#VideoModule' },
+
 ];
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
+  imports: [  RouterModule.forRoot(routes, {
+    scrollPositionRestoration: 'enabled',
+    anchorScrolling: 'enabled'
+  })],
   exports: [ RouterModule ]
 })
 export class AppRoutingModule { }

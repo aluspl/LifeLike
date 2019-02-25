@@ -41,8 +41,16 @@ namespace LifeLike.Services
 
         public IEnumerable<Link> List()
         {
-            var items = GetAllEntities();
-            return _mapper.Map<IEnumerable<Link>>(items);
+            try
+            {
+                var items = GetAllEntities();
+                return _mapper.Map<IEnumerable<Link>>(items);
+            }
+            catch (Exception e)
+            {
+                _logger.AddException(e);
+                throw;
+            }          
         }
         public IEnumerable<Link> List(LinkCategory category)
         {

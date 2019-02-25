@@ -20,7 +20,7 @@ FROM microsoft/dotnet:2.1-aspnetcore-runtime AS runtime
 WORKDIR /out
 COPY --from=build /out .
 
-ENV ASPNETCORE_URLS=http://+:5000
-EXPOSE 5000
+ENV ASPNETCORE_URLS=http://+:8000
+EXPOSE 8000
 
 ENTRYPOINT ["dotnet", "LifeLike.Web.dll"]

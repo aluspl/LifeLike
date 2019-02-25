@@ -32,8 +32,10 @@ namespace LifeLike.Web
 {
     public class Startup
     {
-        public Startup(IHostingEnvironment env)
-        {  
+        public readonly IConfiguration Configuration;
+
+        public Startup(IHostingEnvironment env, IConfiguration config)
+        {
             Log.Logger = new LoggerConfiguration()
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
@@ -41,23 +43,19 @@ namespace LifeLike.Web
                     rollingInterval: RollingInterval.Month,
                     rollOnFileSizeLimit: true)
                 .CreateLogger();
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)     
-                .AddEnvironmentVariables()
-                .AddJsonFile("app.settings.json");
-            // if (env.IsDevelopment())
-                // builder.AddUserSecrets<Startup>();
-            Configuration = builder.Build();
+            Configuration = config;
         }
-
-        public IConfigurationRoot Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
             services.AddLogging(loggingBuilder =>
-                loggingBuilder.AddSerilog(dispose: true));
+            {
+                loggingBuilder.AddSerilog(dispose: true);
+                loggingBuilder.AddConfiguration(Configuration.GetSection("Logging"));
+                loggingBuilder.AddConsole();
+                loggingBuilder.AddDebug();
+            });
+
             var connection = Configuration.GetConnectionString("DB");
             if (connection == null)
             {
@@ -72,6 +70,7 @@ namespace LifeLike.Web
                        b => b.MigrationsAssembly("LifeLike.Web")));
                 Debug.WriteLine("Using SQL");
             }
+            
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -82,7 +81,6 @@ namespace LifeLike.Web
             services.AddScoped<IPageService, PageService>();
             services.AddScoped<IPhotoService, PhotoService>();
             services.AddScoped<IVideoService, VideoService>();
-            services.AddCors();
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<PortalContext>()
                 .AddDefaultTokenProviders();
@@ -115,10 +113,6 @@ namespace LifeLike.Web
                         ClockSkew = TimeSpan.Zero // remove delay of token when expire
                     };
                 });
-            // services.AddSpaStaticFiles(configuration =>
-            // {
-            //     configuration.RootPath = "ClientApp/dist";
-            // });
             services.AddSwaggerSetting();
 
             var config = new MapperConfiguration(cfg =>
@@ -128,10 +122,16 @@ namespace LifeLike.Web
 
             var mapper = config.CreateMapper();
             services.AddSingleton(mapper);
-            services.Configure<ForwardedHeadersOptions>(options =>
+
+            services.AddCors();
+            services.AddCors(options =>
             {
-                options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
-                options.KnownProxies.Add(IPAddress.Parse("172.22.0.1"));
+                options.AddPolicy("CorsPolicy",
+                    builder => builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
             });
             services.AddMvc();
             services.AddMvc().AddJsonOptions(options =>
@@ -141,55 +141,38 @@ namespace LifeLike.Web
 
         }
 
-        
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory,
             PortalContext context)
         {
             // GenerateDB(app);
 
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
-
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-            }
-
+            }            
+            
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseExceptionMiddleware();
             app.UseSwaggerSetting();
+
             var option = new RewriteOptions().AddRedirect("^$", "swagger");
             app.UseRewriter(option);
             // app.UseHttpsRedirection();
-            app.UseCors(builder => builder
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .AllowCredentials());
+            app.UseCors("CorsPolicy");
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller}/{action=Index}/{id?}");
-            });
-
-            // app.UseSpa(spa =>
-            // {
-            //     spa.Options.SourcePath = "ClientApp";
-
-            //     if (env.IsDevelopment())
-            //     {
-            //         spa.UseAngularCliServer(npmScript: "start");
-            //     }
-            // });
+            });         
             DbInitializer.Initialize(context);
         }
 

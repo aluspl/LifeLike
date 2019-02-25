@@ -23,8 +23,6 @@ namespace LifeLike.Services.Profiles
             CreateMap<Config, ConfigEntity>();
             CreateMap<LinkEntity, Link>()
                 .ForMember(x => x.Category, d => d.MapFrom(src => src.Category.ToString()));
-            CreateMap<Link, LinkEntity>()
-                .ForMember(x => x.Category, d => d.ResolveUsing(src=> src.Category.ToEnum(LinkCategory.Menu)));
         }    
     }
 }

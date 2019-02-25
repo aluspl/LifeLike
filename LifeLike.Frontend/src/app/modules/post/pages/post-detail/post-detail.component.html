@@ -1,0 +1,17 @@
+<app-spinner *ngIf="IsLoading"></app-spinner>
+<section  *ngIf="Page">
+  <app-title [Title]="Page.FullName"></app-title>
+
+  <img *ngIf="Page.ImageUrl != null" src="{{Page.ImageUrl}}">
+
+  <p class="body-1">
+    {{Page.Content}}
+  </p>
+
+  <div class="alert alert-primary" role="alert">
+      Published: {{Page.Published  | date: 'dd/MM/yyyy'}} 
+  </div>
+  <div class="alert alert-dark" role="alert">
+      Category: {{Page.Category}}
+  </div>
+</section>

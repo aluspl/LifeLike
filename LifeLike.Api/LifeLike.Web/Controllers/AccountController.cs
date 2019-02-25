@@ -1,4 +1,11 @@
-﻿using System;
+﻿using LifeLike.Data.Models;
+using LifeLike.Services.ViewModel;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
@@ -6,14 +13,6 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using LifeLike.Data.Models;
-using LifeLike.Repositories;
-using LifeLike.Services.ViewModel;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
 
 namespace LifeLike.Web.Controllers
 {
@@ -36,46 +35,55 @@ namespace LifeLike.Web.Controllers
 
         [HttpPost]
         [Route("Register")]
-        public async Task<IActionResult> Register(Register model)
+        public async Task<IActionResult> Register([FromBody]Register model)
         {
-                if (!ModelState.IsValid)
-                {
-                    model.Info = "Invalid Model";
-                    return BadRequest(model);
-                }
-                Debug.WriteLine($"LOGIN: {model}");               
-                var user = new User {UserName = model.Login, Email = model.Email, EmailConfirmed = true};
-                var result = await _userManager.CreateAsync(user, model.Password);
+            if (!ModelState.IsValid)
+            {
+                model.Info = "Invalid Model";
+                return BadRequest(model);
+            }
+            Debug.WriteLine($"LOGIN: {model}");
+            var user = new User { UserName = model.Username, Email = model.Email, EmailConfirmed = true };
+            var result = await _userManager.CreateAsync(user, model.Password);
 
-                if (result.Succeeded)
+            if (result.Succeeded)
+            {
+                await _signInManager.SignInAsync(user, false);
+                var token = GenerateJwtToken(model.Username, user);
+                var loginModel = new Login()
                 {
-                    await _signInManager.SignInAsync(user, false);
-                    return Ok(GenerateJwtToken(model.Login, user));
-                }    
-                return Unauthorized();                   
+                    Token = token,
+                    Id = user.Id,
+                    UserName = model.Username,
+                    Email = model.Email
+                };
+                return Ok(loginModel);
+            }
+            return Unauthorized();
         }
 
 
         [HttpPost]
-        [Route("Login")]    
-        public async Task<IActionResult> Login(Login model)
+        [Route("Login")]
+        public async Task<IActionResult> Login([FromBody]Login model)
         {
-
-                if (!ModelState.IsValid)
-                {
-                    model.Info = "Invalid Model";
-                    return BadRequest(model);
-                }
-
-                Debug.WriteLine($"LOGIN: {model}");               
-                var result = await _signInManager.PasswordSignInAsync(model.UserName,
-                    model.Password, model.RememberMe, false);
-                if (result.Succeeded)
-                {
-                    var user=_userManager.Users.SingleOrDefault(p=>p.UserName == model.UserName);
-                    return Ok(GenerateJwtToken(model.UserName, user));
-                }
-                return Unauthorized();
+            if (!ModelState.IsValid)
+            {
+                model.Info = "Invalid Model";
+                return BadRequest(model);
+            }
+            Debug.WriteLine($"LOGIN: {model}");
+            var result = await _signInManager.PasswordSignInAsync(model.UserName,
+                model.Password, model.RememberMe, false);
+            if (result.Succeeded)
+            {
+                var user = _userManager.Users.SingleOrDefault(p => p.UserName == model.UserName);
+                var token = GenerateJwtToken(model.UserName, user);
+                model.Token = token;
+                model.Id = user.Id;
+                return Ok(model);
+            }
+            return Unauthorized();
         }
 
         private string GenerateJwtToken(string login, IdentityUser user)
@@ -100,6 +108,6 @@ namespace LifeLike.Web.Controllers
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
-        }        
+        }
     }
 }
