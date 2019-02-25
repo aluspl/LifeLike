@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import  Page  from '../../../../shared/models/Page';
+import { Component, Input, OnInit } from '@angular/core';
+import Page from '../../../../shared/models/Page';
 import { AdminRestService } from '../../services/admin-rest.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-create',
@@ -9,9 +10,9 @@ import { AdminRestService } from '../../services/admin-rest.service';
 })
 export class PostCreateComponent implements OnInit {
   model = new Page();
-  @Input() CreateMode: boolean;
   loading = false;
-  categories = [ 'App', 'Game', 'Tutorial', 'Page', 'Post'];
+  categories = ['App', 'Game', 'Tutorial', 'Page', 'Post'];
+  returnUrl: any;
 
   onSubmit() {
     console.log(this.diagnostic);
@@ -19,14 +20,20 @@ export class PostCreateComponent implements OnInit {
     this.restService.createPost(this.model).subscribe(p => {
       this.loading = false;
       console.log(p);
-      this.CreateMode = false;
+      this.router.navigate([this.returnUrl]);
+
     });
   }
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.model); }
 
   constructor(
-    private restService: AdminRestService) { }
+    private restService: AdminRestService,
+    private route: ActivatedRoute,
+    private router: Router) {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
+  }
 
   ngOnInit() {
   }

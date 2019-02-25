@@ -10,8 +10,9 @@ import { AppConfig } from '../../../configs/app.config';
 import { LoggerService } from 'src/app/core/services/logger.service';
 
 
-const CreatePost = AppConfig.host + '/Api/Page/Create';
-const EditPost = AppConfig.host + '/Api/Page/Edit';
+const CreatePost = AppConfig.host + '/Api/Page';
+
+const AllPost = AppConfig.host + '/Api/Page/All';
 
 const ConfigList = AppConfig.host + '/Api/Config';
 const LogList = AppConfig.host + '/Api/Log/List';
@@ -56,25 +57,28 @@ export class AdminRestService {
         catchError(RestService.handleError<Log[]>())
       );
   }
-  getPages(): any {
+  getPages(): Observable<Page[]> {
     return this.http
-    .get<Log[]>(LogList)
+    .get<Page[]>(AllPost)
     .pipe(
-      tap(_ => LoggerService.log(`fetched PAges`)),
-      catchError(RestService.handleError<Log[]>())
+      tap(_ => LoggerService.log(`fetched PAges`))
     );
   }
 
-  removePost(Id: number) {
-      // return this.http.delete()
+  removePost(id: number) {
+    const url = `${CreatePost}/${id}`; 
+    return this.http
+      .delete(url, RestService.httpOptions)
+      .pipe(
+        tap(_ => LoggerService.log(`Remove Post`))
+      );
   }
 
   editPost(page: Page) {
     return this.http
-    .put<Config[]>(ConfigList, page)
+    .put<string>(CreatePost, page)
     .pipe(
       tap(_ => LoggerService.log(`fetched Configs`)),
-      catchError(RestService.handleError<Config[]>())
     );
   }
 

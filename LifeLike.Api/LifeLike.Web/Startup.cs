@@ -1,17 +1,18 @@
-﻿using System;
-using System.Diagnostics;
-using System.IdentityModel.Tokens.Jwt;
-using System.Text;
-using AutoMapper;
+﻿using AutoMapper;
+using LifeLike.Data;
 using LifeLike.Data.Models;
 using LifeLike.Repositories;
+using LifeLike.Services;
+using LifeLike.Services.Profiles;
+using LifeLike.Web.Services.Logs;
+using LifeLike.Web.Services.Swagger;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,14 +20,10 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using Serilog;
-using Swashbuckle.AspNetCore.Swagger;
-using LifeLike.Web.Services.Swagger;
-using LifeLike.Services;
-using LifeLike.Data;
-using LifeLike.Services.Profiles;
-using LifeLike.Web.Services.Logs;
-using Microsoft.AspNetCore.Rewrite;
-using System.Net;
+using System;
+using System.Diagnostics;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
 
 namespace LifeLike.Web
 {
@@ -70,7 +67,7 @@ namespace LifeLike.Web
                        b => b.MigrationsAssembly("LifeLike.Web")));
                 Debug.WriteLine("Using SQL");
             }
-            
+
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -128,12 +125,15 @@ namespace LifeLike.Web
             {
                 options.AddPolicy("CorsPolicy",
                     builder => builder
-                    .AllowAnyOrigin()
+                    .WithOrigins(Configuration["Frontend"])
+                    //.AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader()
-                    .AllowCredentials());
+                    .AllowCredentials()
+                    );
             });
             services.AddMvc();
+            services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddMvc().AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
@@ -156,8 +156,8 @@ namespace LifeLike.Web
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-            }            
-            
+            }
+
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseExceptionMiddleware();
@@ -167,12 +167,14 @@ namespace LifeLike.Web
             app.UseRewriter(option);
             // app.UseHttpsRedirection();
             app.UseCors("CorsPolicy");
+           
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller}/{action=Index}/{id?}");
-            });         
+            });
+
             DbInitializer.Initialize(context);
         }
 

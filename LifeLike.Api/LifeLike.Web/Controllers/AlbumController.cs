@@ -18,7 +18,6 @@ namespace LifeLike.Web.Controllers
     {
         private readonly IAlbumService service;
 
-
         public AlbumController(ILogService logger,
             IPhotoService photoRepository,
             IAlbumService gallery,
@@ -48,7 +47,7 @@ namespace LifeLike.Web.Controllers
                 return Ok(selectedgallery);
            
         }
-        [HttpPost("Create")]
+        [HttpPost]
         public IActionResult CreateGallery(Album model)
         {
                 model.Created = DateTime.Now;
@@ -56,17 +55,17 @@ namespace LifeLike.Web.Controllers
                 return Ok(service.Create(model));      
         }
 
-        [HttpDelete]
-        [Route("Delete")]
-        public IActionResult Delete(Album model)
+        [HttpDelete("Id")]
+        [Authorize]
+        public IActionResult Delete(long id)
         {           
                 if (ModelState.IsValid)
                 {
-                    return Ok(service.Delete(model.Id));
+                    return Ok(service.Delete(id));
                 }
                 return BadRequest();          
         }
-        [HttpPut("Update")]
+        [HttpPut]
         [Authorize]
         public IActionResult Update(Album model)
         {
