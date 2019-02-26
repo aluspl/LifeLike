@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using AutoMapper;
 using LifeLike.Data;
+using LifeLike.Shared;
 
 namespace LifeLike.Services
 {

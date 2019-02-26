@@ -8,14 +8,16 @@ import { RestService } from '../../../shared/services/rest.service';
 import  Page  from '../../../shared/models/Page';
 import { AppConfig } from '../../../configs/app.config';
 import { LoggerService } from 'src/app/core/services/logger.service';
+import Photo from '../../photo/models/Photo';
 
 
 const CreatePost = AppConfig.host + '/Api/Page';
 
 const AllPost = AppConfig.host + '/Api/Page/All';
 
-const ConfigList = AppConfig.host + '/Api/Config';
+const ConfigApi = AppConfig.host + '/Api/Config';
 const LogList = AppConfig.host + '/Api/Log/List';
+const PhotoApi = AppConfig.host + '/Api/Photo';
 
 
 @Injectable()
@@ -81,15 +83,60 @@ export class AdminRestService {
       tap(_ => LoggerService.log(`fetched Configs`)),
     );
   }
+  getPhotos(): Observable<Photo[]> {
+    return this.http
+    .get<Photo[]>(PhotoApi, RestService.httpOptions)
+    .pipe(
+      tap(_ => LoggerService.log(`fetched Photos`))
+    );
+  }
+  createPhoto(photo: Photo) {
+    return this.http
+    .post<Photo[]>(PhotoApi, RestService.httpOptions)
+    .pipe(
+      tap(_ => LoggerService.log(`fetched Photos`))
+    );
+  }
+  editPhoto(photo: Photo) {
+    return this.http
+    .put<string>(PhotoApi, photo, RestService.httpOptions)
+    .pipe(
+      tap(_ => LoggerService.log(`Edit Photo`)),
+    );
+  }
+  deletePhoto(id: number) {
+    const url = `${PhotoApi}/${id}`; 
+    return this.http
+      .delete(url, RestService.httpOptions)
+      .pipe(
+        tap(_ => LoggerService.log(`Delete Photo`))
+      );
+  }
 
   getConfigs(): Observable<Config[]> {
     return this.http
-      .get<Config[]>(ConfigList)
+      .get<Config[]>(ConfigApi)
       .pipe(
-        tap(_ => LoggerService.log(`fetched Configs`)),
+        tap(_ => LoggerService.log(`Get Configs`)),
         catchError(RestService.handleError<Config[]>())
       );
   }
+  editConfig(config: Config) {
+    return this.http
+    .put<string>(ConfigApi, config, RestService.httpOptions)
+    .pipe(
+      tap(_ => LoggerService.log(`Edit Config`)),
+    );
+  }
+  deleteConfig(id: number) {
+    const url = `${ConfigApi}/${id}`; 
+    return this.http
+      .delete(url, RestService.httpOptions)
+      .pipe(
+        tap(_ => LoggerService.log(`Delete Config`))
+      );
+  }
+
   constructor(private http: HttpClient) {
   }
 }

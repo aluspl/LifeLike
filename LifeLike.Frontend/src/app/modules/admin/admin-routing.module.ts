@@ -11,6 +11,8 @@ const heroesRoutes: Routes = [
   { path: '', component: AdminPage },
   { path: 'PostCreate', component: PostCreateComponent },
   { path: 'PostEdit:id', component: PostEditComponent },
+  { path: 'PhotoEdit:id', component: PostEditComponent },
+
   { path: 'config', component: ConfigComponent },
   { path: 'log', component: LogComponent },
   { path: 'log:id', component: LogDetailComponent },

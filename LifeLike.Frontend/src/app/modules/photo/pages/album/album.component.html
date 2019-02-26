@@ -1,1 +1,21 @@
 <app-title Title="Photos"></app-title>
+
+<app-spinner *ngIf="IsLoading"></app-spinner>
+<div class="row" *ngIf="!IsLoading">
+    <div class="col-sm"  *ngFor="let photo of Photos" >
+      <div class="card"  routerLink='{{photo.ShortName}}'>
+        <div class="card-header">
+            {{photo.FullName}}
+        </div>
+        <div class="card-body">
+            <img *ngIf="photo.Url != ''" src="{{photo.ImageUrl}}" class="card-img-top">
+            <p class="mat-body-1">
+              {{photo.Summary}}
+            </p>
+            <p class="caption">
+              Published: {{post.Published  | date: 'dd/MM/yyyy'}}
+            </p>    
+        </div>
+      </div>
+    </div>
+  </div>

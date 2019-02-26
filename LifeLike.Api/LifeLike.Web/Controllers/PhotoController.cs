@@ -1,14 +1,14 @@
-using System;
-using System.IO;
-using System.Threading.Tasks;
-using LifeLike.Data.Models;
-using LifeLike.Data.Models.Enums;
-using LifeLike.Repositories;
 using LifeLike.Services;
 using LifeLike.Services.ViewModel;
+using LifeLike.Shared.Enums;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace LifeLike.Web.Controllers
 {
@@ -16,57 +16,65 @@ namespace LifeLike.Web.Controllers
     public class PhotoController : Controller
     {
         private readonly IPhotoService _photos;
-        private readonly IAlbumService _album;
         private readonly IHostingEnvironment _hostingEnv;
-
 
         public PhotoController(ILogService logger,
             IPhotoService photos,
-            IAlbumService album,
             IHostingEnvironment hosting)
         {
             _hostingEnv = hosting;
             _photos = photos;
-            _album = album;
-            Path.Combine("photos");
-        }
-        [HttpGet("UploadFiles")]
-        public UploadFileViewModel UploadFiles(long id)
-        {
-            // await _logger.AddStat(id.ToString(), "Upload", "Photo");
-
-            var gallery = _album.Get(id);
-            return Album.GetViewForUpload(gallery);
         }
 
-        [HttpPost("UploadFiles")]
-        public async Task<IActionResult> UploadFiles(UploadFileViewModel model)
+        [HttpPost("Create")]
+        public async Task<IActionResult> Create(UploadFile model)
         {
-                if (!ModelState.IsValid) return BadRequest(Result.Failed);
+            if (!ModelState.IsValid) return BadRequest(Result.Failed);
 
-                var uploadPath = Path.Combine(_hostingEnv.WebRootPath, "photos");
+            var photo = new Photo
+            {
+                FileName = model.PhotoStream.FileName,
+                Created = DateTime.Now,
+                Title = model.Name,
+                Stream = model.PhotoStream,
+                Tags = model.Tags,
+                City = model.City,
+                Camera = model.Camera
+            };
+            var item = await _photos.Create(photo);
+            return Ok(item);
+        }
 
-                if (model.Photo.Length <= 0) return BadRequest(Result.Failed);
-                using (var fileStream = new FileStream(Path.Combine(uploadPath, model.Photo.FileName), FileMode.Create))
-                {
-                    await model.Photo.CopyToAsync(fileStream);
-                }
-
-                var photo = new Photo
-                {
-                    FileName = model.Photo.FileName,
-                    Created = DateTime.Now,
-                    Title = model.Title
-                };
-                return Ok( _photos.Create(photo, model.GalleryId));
+        [HttpGet]
+        public IActionResult List()
+        {
+            var photo = _photos.List();
+            return Ok(photo);
         }
         [HttpGet("Detail")]
         public IActionResult Detail(long id)
         {
-                var photo = _photos.Get(id);
-                return Ok(photo);            
+            var photo = _photos.Get(id);
+            return Ok(photo);
+        }
+        [HttpDelete("{id}")]
+        [Authorize]
+        public IActionResult Delete(long? id)
+        {
+            if (id == null) return BadRequest();
+            var result = _photos.Delete(id.Value);
+            return Ok(result);
         }
 
+        [HttpPut]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update([FromBody] Photo model)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            var value = _photos.Update(model);
+            return Ok(value);
+        }
         private bool IsFileSupported(IFormFile file)
         {
             var isSupported = false;
@@ -84,7 +92,6 @@ namespace LifeLike.Web.Controllers
                 case ("image/png"):
                     isSupported = true;
                     break;
-
 
                 case ("audio/mp3"):
                     isSupported = true;

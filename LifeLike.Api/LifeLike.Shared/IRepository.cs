@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
-using LifeLike.Data.Models.Enums;
 
-namespace LifeLike.Data
+namespace LifeLike.Shared
 {
     public interface IRepository<T>
     {

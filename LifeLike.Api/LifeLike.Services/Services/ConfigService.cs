@@ -8,6 +8,8 @@ using LifeLike.Data;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Services.ViewModel;
+using LifeLike.Shared;
+using LifeLike.Shared.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Services
@@ -17,11 +19,9 @@ namespace LifeLike.Services
         private readonly ILogService log;
 
         public ConfigService(IUnitOfWork context, ILogService logger, IMapper mapper) : base(context, mapper)
-        {
-            
+        {            
             log = logger;
         }
-
 
         public Result Create(Config model)
         {
@@ -36,9 +36,7 @@ namespace LifeLike.Services
                 return Result.Failed;
             }
         }
-
       
-
         public Config Get(long id)
         {
             var item = _repo.GetDetail(p => p.Id == id);
@@ -66,7 +64,6 @@ namespace LifeLike.Services
             try
             {
                 DeleteEntity(p => p.Name == id);
-
                 return Result.Success;
             }
             catch (Exception e)
@@ -94,7 +91,6 @@ namespace LifeLike.Services
         {
             var items= GetAllEntities();
             return _mapper.Map<IEnumerable<Config>>(items);
-
         }
 
        

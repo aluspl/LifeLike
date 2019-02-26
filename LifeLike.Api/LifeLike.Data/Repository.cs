@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
-
+using LifeLike.Shared;
 using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Data

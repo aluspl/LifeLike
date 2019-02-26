@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
+using LifeLike.CloudService.BlobStorage;
 using LifeLike.Data;
 using LifeLike.Data.Models;
 using LifeLike.Repositories;
 using LifeLike.Services;
 using LifeLike.Services.Profiles;
+using LifeLike.Shared;
+using LifeLike.Shared.Services;
 using LifeLike.Web.Services.Logs;
 using LifeLike.Web.Services.Swagger;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -71,10 +74,10 @@ namespace LifeLike.Web
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IBlobStorage, BlobStorage>();
             services.AddScoped<ILogService, LogService>();
             services.AddScoped<ILinkService, LinkRepository>();
             services.AddScoped<IConfigService, ConfigService>();
-            services.AddScoped<IAlbumService, AlbumService>();
             services.AddScoped<IPageService, PageService>();
             services.AddScoped<IPhotoService, PhotoService>();
             services.AddScoped<IVideoService, VideoService>();

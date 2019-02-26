@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using LifeLike.Data;
 using LifeLike.Data.Models;
-using LifeLike.Data.Models.Enums;
 using LifeLike.Services;
 using LifeLike.Services.ViewModel;
+using LifeLike.Shared;
+using LifeLike.Shared.Enums;
 using System;
 using System.Collections.Generic;
 
@@ -45,7 +45,6 @@ namespace LifeLike.Repositories
         {
             try
             {
-
                 _link.Create(link);
                 Create(model);
                 return Result.Success;
@@ -53,7 +52,6 @@ namespace LifeLike.Repositories
             catch (Exception e)
             {
                 _logger.AddException(e);
-
                 return Result.Failed;
             }
         }

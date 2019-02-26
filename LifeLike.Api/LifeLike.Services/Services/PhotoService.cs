@@ -1,52 +1,32 @@
-﻿using System;
+﻿using AutoMapper;
+using LifeLike.Data.Models;
+using LifeLike.Services.ViewModel;
+using LifeLike.Shared;
+using LifeLike.Shared.Enums;
+using LifeLike.Shared.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper;
-using LifeLike.Data;
-using LifeLike.Data.Models;
-using LifeLike.Data.Models.Enums;
-using LifeLike.Services.ViewModel;
-using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Services
 {
-    public  class PhotoService : BaseService<PhotoEntity>, IPhotoService
+    public class PhotoService : BaseService<PhotoEntity>, IPhotoService
     {
         //TODO USE any blob storage api 
         private readonly ILogService _logger;
+        private readonly IBlobStorage _storage;
 
-        public PhotoService(IUnitOfWork uow, ILogService logger, IMapper mapper) : base(uow, mapper)
+        public PhotoService(IUnitOfWork uow, ILogService logger, IMapper mapper, IBlobStorage storage) : base(uow, mapper)
         {
             _logger = logger;
+            _storage = storage;
         }
-
-        public static readonly string PhotoPath =  "/photos/";
-
-
-        public Result Create(Photo model)
+        public ICollection<Photo> List()
         {
-            try
-            {
-                var item = _mapper.Map<PhotoEntity>(model);
-                _repo.Add(item);
-                return Result.Success;
-
-            }
-            catch (Exception e)
-            {
-                _logger.AddException(e);
-                return Result.Failed;
-            }
+            var items = _repo.GetOverview().ToList();
+            return _mapper.Map<ICollection<Photo>>(items);
         }
-
-        public IEnumerable<Photo> List()
-        {
-            var items = _repo.GetOverview().AsEnumerable();
-            return _mapper.Map<IEnumerable<Photo>>(items);
-
-        }
-
         public Photo Get(long id)
         {
             try
@@ -71,7 +51,6 @@ namespace LifeLike.Services
                 _mapper.Map(model, item);
                 UpdateEntity(item);
                 return Result.Success;
-
             }
             catch (Exception e)
             {
@@ -81,30 +60,16 @@ namespace LifeLike.Services
             }
         }
 
-        public Result Delete(Photo model)
-        {
-            try
-            {
-                DeleteEntity(p => p.Id == model.Id);
-                return Result.Success;
-
-            }
-            catch (Exception e)
-            {
-                _logger.AddException(e);
-
-                return Result.Failed;
-            }
-        }
-
-        public Result Create(Photo model, long modelGalleryId)
+        public async Task<Result> Create(Photo model)
         {
             try
             {
                 var photo = _mapper.Map<PhotoEntity>(model);
-                // if (gallery == null) return Result.Failed;
-                // gallery.Photos.Add();
-                photo.Gallery = _unitOfWork.Get<GalleryEntity>().GetDetail(p=>p.Id==modelGalleryId);
+                using (var stream = model.Stream.OpenReadStream())
+                {
+                    string name = model.Stream?.FileName;
+                    photo.Url = await _storage.Create(stream, name);
+                }
                 CreateEntity(photo);
                 return Result.Success;
             }
@@ -114,11 +79,30 @@ namespace LifeLike.Services
                 return Result.Failed;
             }
         }
+        public Result Delete(long id)
+        {
+            try
+            {
+                var entity = GetEntity(p => p.Id == id);
+                _storage.Remove(entity.FileName);
+                DeleteEntity(p => p.Id == id);
+                return Result.Success;
+            }
+            catch (Exception e)
+            {
+                _logger.AddException(e);
+                return Result.Failed;
+            }
+        }
     }
-    
+
     public interface IPhotoService
     {
-        Result Create(Photo photo, long modelGalleryId);
+        Task<Result> Create(Photo photo);
         Photo Get(long id);
+        ICollection<Photo> List();
+        Result Update(Photo photo);
+        Result Delete(long id);
+
     }
 }

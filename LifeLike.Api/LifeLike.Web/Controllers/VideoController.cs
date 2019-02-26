@@ -1,14 +1,7 @@
 using System;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using LifeLike.Data.Models;
-using LifeLike.Data.Models.Enums;
-using LifeLike.Repositories;
 using LifeLike.Services;
-using LifeLike.Services.Extensions;
 using LifeLike.Services.ViewModel;
+using LifeLike.Shared.Enums;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LifeLike.Web.Controllers

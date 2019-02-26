@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace LifeLike.Data.Models
@@ -11,6 +12,8 @@ namespace LifeLike.Data.Models
         public string FileName { get; set; }
         public DateTime Created { get; set; }
         public string Camera { get; set; }
-        public  GalleryEntity Gallery { get; set; }
+        public string Tags { get; set; }
+        public string City { get; set; }
+        public string Url { get; set; }
     }
 }

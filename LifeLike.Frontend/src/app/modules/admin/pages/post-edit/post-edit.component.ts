@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AdminRestService } from '../../services/admin-rest.service';
 import Page from '../../../../shared/models/Page';
-import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({

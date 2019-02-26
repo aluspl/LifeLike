@@ -9,6 +9,8 @@ using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Services.Extensions;
 using LifeLike.Services.ViewModel;
+using LifeLike.Shared;
+using LifeLike.Shared.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Services
@@ -33,7 +35,6 @@ namespace LifeLike.Services
             catch (Exception e)
             {
                 _logger.AddException(e);
-
                 return Result.Failed;
             }
         }
@@ -83,7 +84,6 @@ namespace LifeLike.Services
             catch (Exception e)
             {
                 _logger.AddException(e);
-
                 return Result.Failed;
             }
         }       
