@@ -8,5 +8,6 @@
     "LogLevel": {
       "Default": "Warning"
     }
-  }
+  },
+  "BlobStorage": "xxxxx"
 }
