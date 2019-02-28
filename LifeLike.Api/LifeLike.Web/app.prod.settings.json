@@ -1,0 +1,12 @@
+{
+  "JwtKey": "Ab123456789101112131415",
+  "JwtIssuer": "http://lifelike.pl",
+  "JwtExpireDays": 30,
+  "frontend": "http://localhost:4200",
+  "Logging": {
+    "IncludeScopes": false,
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  },
+"BlobStorage": "DefaultEndpointsProtocol=https;AccountName=lifelikeresource;AccountKey=3BDGOUNeG3WhdKSdFeqFlGR46tNCDMloYW1GOgWLJC/knlmREO1pywAQavKhqxx8Dx5QvwQFrvumCphK21dhHQ==;EndpointSuffix=core.windows.net" }

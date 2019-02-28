@@ -13,11 +13,11 @@ namespace LifeLike.Web.Controllers
 {
     
     [Route("api/[controller]")]
-    public class SiteManagerController : Controller
+    public class ConfigController : Controller
     {
         private readonly IConfigService _config;
 
-        public SiteManagerController(IConfigService configRepository)
+        public ConfigController(IConfigService configRepository)
         {
             _config = configRepository;
         }
@@ -32,25 +32,23 @@ namespace LifeLike.Web.Controllers
         }
 
 
-        [HttpPost("Create")]
-        [ValidateAntiForgeryToken]
+        [HttpPost]
         public IActionResult Create(Config model)
         {
             if (!ModelState.IsValid) return BadRequest();
             _config.Create(model);
             return Ok();
         }
-        [HttpGet("Update")]
-        [Authorize]
-        public IActionResult Update(string id)
-        {
-            var model = _config.Get(id);
-            return Ok(model);
-        }
-
-        [HttpPut("Update")]
-        [ValidateAntiForgeryToken]
+       
+        [HttpPut]
         public IActionResult Update(Config model)
+        {
+            if (!ModelState.IsValid) return BadRequest();
+            _config.Update(model);
+            return Ok();
+        }
+        [HttpDelete]
+        public IActionResult Delete(Config model)
         {
             if (!ModelState.IsValid) return BadRequest();
             _config.Update(model);

@@ -1,4 +1,5 @@
 ﻿using LifeLike.Services;
+using LifeLike.Services.Structures;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,20 +23,12 @@ namespace LifeLike.Web.Controllers
         {
             var list = _logger.List();
             return Ok(list);
-        }
-        //Get
-        [HttpGet("Detail/{id}")]
-        public IActionResult Detail(long id)
-        {
-
-            var log = _logger.Get(id);
-            return Ok(log);
-        }
+        }  
         [Authorize]
         [HttpGet("Clear")]
         public IActionResult Clear()
         {
-            var list = _logger.ClearLogs();
+            var list = _logger.DeleteAll();
             return Ok(list);
         }
     }

@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using LifeLike.Data;
 using LifeLike.Data.Models;
-using LifeLike.Data.Models.Enums;
+using LifeLike.Services.Structures;
 using LifeLike.Services.ViewModel;
 using LifeLike.Shared;
 using LifeLike.Shared.Enums;
-using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Services
 {

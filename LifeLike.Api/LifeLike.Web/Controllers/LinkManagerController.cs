@@ -1,4 +1,5 @@
 ﻿using LifeLike.Services;
+using LifeLike.Services.Structures;
 using LifeLike.Services.ViewModel;
 using LifeLike.Shared.Enums;
 using Microsoft.AspNetCore.Authorization;
@@ -27,7 +28,6 @@ namespace LifeLike.Web.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Create(Link model)
         {
             if (ModelState.IsValid)
@@ -36,30 +36,19 @@ namespace LifeLike.Web.Controllers
             }
             return BadRequest();
         }
-        [HttpGet("Update")]
-        [Authorize]
-        public IActionResult Update(long id)
-        {
-            var model = service.Get(id);
-            return Ok(model);
-
-        }
-        [HttpPut("Update")]
-        [ValidateAntiForgeryToken]
+        [HttpPut]
         public Result Update([FromBody]Link model)
         {
             return ModelState.IsValid
                 ? service.Update(model)
                 : Result.Failed;
         }
-
-        [HttpDelete("Delete")]
+        [HttpDelete]
         public Result Delete([FromBody]Link model)
         {
             return ModelState.IsValid
                 ? service.Delete(model.Action)
                 : Result.Failed;
-
         }
 
     }

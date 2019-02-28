@@ -8,6 +8,7 @@ using LifeLike.Data;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Services.Extensions;
+using LifeLike.Services.Structures;
 using LifeLike.Services.ViewModel;
 using LifeLike.Shared;
 using LifeLike.Shared.Enums;

@@ -4,6 +4,7 @@ using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Services.Extensions;
 using LifeLike.Services.ViewModel;
+using LifeLike.Shared.Models;
 
 namespace LifeLike.Services.Profiles
 {
@@ -13,6 +14,8 @@ namespace LifeLike.Services.Profiles
         {
             CreateMap<PageEntity, Page>();
             CreateMap<Page, PageEntity>();
+            CreateMap<PhotoEntity, Photo>();
+            CreateMap<Photo, PhotoEntity>();
             CreateMap<PhotoEntity, Photo>();
             CreateMap<Photo, PhotoEntity>();
             CreateMap<EventLogEntity, Log>();

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using LifeLike.Data.Models;
 using LifeLike.Services;
+using LifeLike.Services.Structures;
 using LifeLike.Services.ViewModel;
 using LifeLike.Shared;
 using LifeLike.Shared.Enums;

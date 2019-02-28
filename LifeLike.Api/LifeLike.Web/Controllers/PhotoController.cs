@@ -1,6 +1,8 @@
 using LifeLike.Services;
+using LifeLike.Services.Structures;
 using LifeLike.Services.ViewModel;
 using LifeLike.Shared.Enums;
+using LifeLike.Shared.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -52,17 +54,17 @@ namespace LifeLike.Web.Controllers
             return Ok(photo);
         }
         [HttpGet("Detail")]
-        public IActionResult Detail(long id)
+        public IActionResult Detail(string id)
         {
             var photo = _photos.Get(id);
             return Ok(photo);
         }
         [HttpDelete("{id}")]
         [Authorize]
-        public IActionResult Delete(long? id)
+        public IActionResult Delete(string id)
         {
             if (id == null) return BadRequest();
-            var result = _photos.Delete(id.Value);
+            var result = _photos.Delete(id);
             return Ok(result);
         }
 

@@ -1,13 +1,16 @@
+using LifeLike.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LifeLike.Data.Models
 {
     public class PhotoEntity
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        public long Id { get; set; }
+        public string Id { get; set; }
         public string Title { get; set; }
         public string FileName { get; set; }
         public DateTime Created { get; set; }

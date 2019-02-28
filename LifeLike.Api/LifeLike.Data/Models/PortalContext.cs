@@ -15,8 +15,6 @@ namespace LifeLike.Data.Models
         public DbSet<PhotoEntity> Photos { get; set; }
         public DbSet<ConfigEntity> Configs { get; set; }
         public DbSet<VideoEntity> Videos { get; set; }
-        public DbSet<StatisticEntity> Stats { get; set; }
-
         public PortalContext(DbContextOptions<PortalContext> options) : base(options)
         {
         }

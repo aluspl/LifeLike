@@ -1,10 +1,13 @@
 ﻿using AutoMapper;
 using LifeLike.CloudService.BlobStorage;
+using LifeLike.CloudService.TableStorage;
 using LifeLike.Data;
 using LifeLike.Data.Models;
 using LifeLike.Repositories;
 using LifeLike.Services;
+using LifeLike.Services.Cloud;
 using LifeLike.Services.Profiles;
+using LifeLike.Services.Structures;
 using LifeLike.Shared;
 using LifeLike.Shared.Services;
 using LifeLike.Web.Services.Logs;
@@ -75,11 +78,14 @@ namespace LifeLike.Web
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IBlobStorage, BlobStorage>();
+            services.AddScoped<ITableStorage, TableStorage>();
             services.AddScoped<ILogService, LogService>();
             services.AddScoped<ILinkService, LinkRepository>();
             services.AddScoped<IConfigService, ConfigService>();
             services.AddScoped<IPageService, PageService>();
             services.AddScoped<IPhotoService, PhotoService>();
+            services.AddScoped<IStatisticService, StatisticCloudService>();
+
             services.AddScoped<IVideoService, VideoService>();
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<PortalContext>()

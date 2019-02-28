@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LifeLike.Data.Models;
+using LifeLike.Services.Structures;
 using LifeLike.Services.ViewModel;
 using LifeLike.Shared;
 using LifeLike.Shared.Enums;
@@ -13,7 +14,6 @@ namespace LifeLike.Services
 {
     public class PhotoService : BaseService<PhotoEntity>, IPhotoService
     {
-        //TODO USE any blob storage api 
         private readonly ILogService _logger;
         private readonly IBlobStorage _storage;
 
@@ -27,7 +27,7 @@ namespace LifeLike.Services
             var items = _repo.GetOverview().ToList();
             return _mapper.Map<ICollection<Photo>>(items);
         }
-        public Photo Get(long id)
+        public Photo Get(string id)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace LifeLike.Services
         {
             try
             {
-                var item = GetEntity(p => p.Id == model.Id);
+                var item = GetEntity(p => p.Id == model.RowKey);
                 _mapper.Map(model, item);
                 UpdateEntity(item);
                 return Result.Success;
@@ -79,7 +79,7 @@ namespace LifeLike.Services
                 return Result.Failed;
             }
         }
-        public Result Delete(long id)
+        public Result Delete(string id)
         {
             try
             {
@@ -96,13 +96,5 @@ namespace LifeLike.Services
         }
     }
 
-    public interface IPhotoService
-    {
-        Task<Result> Create(Photo photo);
-        Photo Get(long id);
-        ICollection<Photo> List();
-        Result Update(Photo photo);
-        Result Delete(long id);
-
-    }
+    
 }

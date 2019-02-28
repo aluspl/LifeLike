@@ -39,7 +39,7 @@ namespace LifeLike.CloudService.BlobStorage
                 Task.Run(async () => await blob.DeleteAsync());
                 return Result.Success;
             }
-            catch (Exception e)        
+            catch (Exception)        
             {
                 return Result.Failed;
             }        
