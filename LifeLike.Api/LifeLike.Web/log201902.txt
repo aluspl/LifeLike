@@ -23428,3 +23428,45 @@ END
 2019-02-28 15:18:00.766 +01:00 [INF] Request finished in 406.9201ms 200 text/html
 2019-02-28 15:18:01.246 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/v1/swagger.json  
 2019-02-28 15:18:01.682 +01:00 [INF] Request finished in 435.763ms 200 application/json;charset=utf-8
+2019-02-28 15:19:48.246 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-02-28 15:19:49.733 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-02-28 15:19:49.826 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-28 15:19:49.840 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-28 15:19:49.846 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-02-28 15:19:49.924 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-28 15:19:49.938 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN 1 ELSE 0
+END
+2019-02-28 15:19:49.962 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-28 15:19:49.968 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN 1 ELSE 0
+END
+2019-02-28 15:19:49.976 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-02-28 15:19:49.983 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN 1 ELSE 0
+END
+2019-02-28 15:19:51.024 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/  
+2019-02-28 15:19:51.263 +01:00 [INF] Request was redirected to /swagger
+2019-02-28 15:19:51.337 +01:00 [INF] Request finished in 314.0922ms 302 
+2019-02-28 15:19:51.380 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/index.html  
+2019-02-28 15:19:52.008 +01:00 [INF] Request finished in 627.9838ms 200 text/html
+2019-02-28 15:19:52.442 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/v1/swagger.json  
+2019-02-28 15:19:52.933 +01:00 [INF] Request finished in 490.9844ms 200 application/json;charset=utf-8

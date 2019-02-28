@@ -19,3 +19,4 @@ LifeLike.Web/*.txt
 yarn.lock
 package-lock.json
 .vscode
+LifeLike.Api/LifeLike.Web/app.prod.settings.json
