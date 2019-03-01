@@ -39,7 +39,7 @@ namespace LifeLike.Services
         }
         public bool IsAnyEntity(Expression<Func<T, bool>> predicate = null)
         {
-            return _repo.GetOverviewQuery(predicate).Any();
+            return _repo.GetDetail(predicate) != null;
         }
         public void UpdateEntity(T item)
         {

@@ -51,12 +51,16 @@ namespace LifeLike.CloudService.CosmosDB
             _client.DeleteDocumentCollectionAsync(GetCollection()).Wait();
         }
 
-        public T GetDetail(Expression<Func<T, bool>> predicate = null)
+        public T GetDetail(Expression<Func<T, bool>> predicate)
         {
             var queryOptions = new FeedOptions { MaxItemCount = 1 };
-
+            T ReturnItem = default(T);
             var query = this._client.CreateDocumentQuery<T>(GetCollection()).Where(predicate);
-            return query.Single();
+            foreach (var item in query)
+            {
+                ReturnItem= item;
+            }
+            return ReturnItem;
         }
 
         public IEnumerable<T> GetOverview(Expression<Func<T, bool>> predicate = null)
