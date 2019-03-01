@@ -63,17 +63,12 @@ namespace LifeLike.Services
                 throw;
             }
         }
-
-        public Link Get(long id)
-        {
-            var item = GetEntity(p => p.Id == id);
-            return _mapper.Map<Link>(item);
-        }
         public Link Get(string id)
         {
             var item = GetEntity(p => p.Action == id);
             return _mapper.Map<Link>(item);
         }
+     
         public Result Update(Link model)
         {
             try
@@ -95,7 +90,7 @@ namespace LifeLike.Services
         {
             try
             {
-                DeleteEntity(p => p.Id == model.Id);
+                DeleteEntity(p=>p.Id==model.Id);
                 return Result.Success;
 
             }
@@ -108,10 +103,9 @@ namespace LifeLike.Services
         public Result Delete(string shortName)
         {
             try
-            {
+            {               
                 DeleteEntity(p => p.Action == shortName);
                 return Result.Success;
-
             }
             catch (Exception e)
             {
@@ -131,7 +125,6 @@ namespace LifeLike.Services
         Result Delete(string shortName);
         Result Create(Link link);
         IEnumerable<Link> List();
-        Link Get(long id);
         Result Update(Link model);
     }
 }

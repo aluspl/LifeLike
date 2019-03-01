@@ -6,6 +6,5 @@ namespace LifeLike.Shared
     {
         IRepository<T> Get<T>()  where T : class;
         Result Save();
-
     }
 }

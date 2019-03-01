@@ -32,7 +32,7 @@ namespace LifeLike.Services
             }
         }
       
-        public Config Get(long id)
+        public Config Get(string id)
         {
             var item = _repo.GetDetail(p => p.Id == id);
             return _mapper.Map<Config>(item);
@@ -42,7 +42,7 @@ namespace LifeLike.Services
         {
             try
             {
-                ConfigEntity item = GetEntity(p => p.Name == model.Name);
+                var item = GetEntity(p => p.Name == model.Name);
                 _mapper.Map(model, item);
                 _repo.Update(item);
                 return Result.Success;
@@ -67,21 +67,7 @@ namespace LifeLike.Services
                 return Result.Failed;
             }
         }
-
-        public Config Get(string id)
-        {
-            try
-            {
-                var item = GetEntity(p => p.Name == id);
-                return _mapper.Map<Config>(item);
-            }
-            catch (Exception e)
-            {
-                log.AddException(e);
-                return null;
-            }
-        }
-
+     
         public IEnumerable<Config> List()
         {
             var items= GetAllEntities();

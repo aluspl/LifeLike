@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LifeLike.Shared.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -12,7 +13,7 @@ namespace LifeLike.Shared
 
         T GetDetail(Expression<Func<T, bool>> predicate = null);
         void Add(T entity);
-        void Delete(T entity);
+        void Delete(Entity entity);
         void Update(T entity);
         void DeleteAll();
     }

@@ -104,7 +104,7 @@ export class AdminRestService {
       tap(_ => LoggerService.log(`Edit Photo`)),
     );
   }
-  deletePhoto(id: number) {
+  deletePhoto(id: string) {
     const url = `${PhotoApi}/${id}`; 
     return this.http
       .delete(url, RestService.httpOptions)

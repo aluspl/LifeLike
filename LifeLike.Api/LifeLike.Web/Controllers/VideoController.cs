@@ -27,7 +27,7 @@ namespace LifeLike.Web.Controllers
 
         }
         [HttpDelete("Delete")]
-        public IActionResult Delete(long id)
+        public IActionResult Delete(string id)
         {
             if (!ModelState.IsValid) return BadRequest(Result.Failed);
             var item = service.Delete(id);

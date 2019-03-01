@@ -2,20 +2,29 @@
 
 <app-spinner *ngIf="IsLoading"></app-spinner>
 <div class="row" *ngIf="!IsLoading">
-    <div class="col-sm"  *ngFor="let photo of Photos" >
-      <div class="card"  routerLink='{{photo.ShortName}}'>
-        <div class="card-header">
-            {{photo.FullName}}
-        </div>
-        <div class="card-body">
-            <img *ngIf="photo.Url != ''" src="{{photo.ImageUrl}}" class="card-img-top">
-            <p class="mat-body-1">
-              {{photo.Summary}}
-            </p>
-            <p class="caption">
-              Published: {{post.Published  | date: 'dd/MM/yyyy'}}
-            </p>    
-        </div>
+  <div class="col-sm" *ngFor="let photo of Photos">
+    <div class="card" routerLink='{{photo.Id}}'>
+      <div class="card-header">
+        {{photo.Title}}
+      </div>
+      <div class="card-body">
+        <img *ngIf="photo.Url != ''" src="{{photo.Url}}" class="card-img-top">
+        <p>
+         <b>FileName</b> {{photo.FileName}}
+        </p>
+        <p>
+          <b>Camera</b> {{photo.Camera}}
+        </p>
+        <p>
+          <b>City</b> {{photo.City}}
+        </p>
+        <p>
+          <b>Tags</b> {{photo.Tags}}
+        </p>
+        <p class="caption">
+          Published: {{photo.Published  | date: 'dd/MM/yyyy'}}
+        </p>
       </div>
     </div>
   </div>
+</div>

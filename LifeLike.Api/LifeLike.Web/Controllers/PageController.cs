@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using LifeLike.Data.Models;
 using LifeLike.Repositories;
 using LifeLike.Services;
 using LifeLike.Services.ViewModel;
+using LifeLike.Shared.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -76,17 +76,17 @@ namespace LifeLike.Web.Controllers
             if (model.Category == null) model.Category = "Post";
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var result = service.Create(model, model.Link);
+            var result = service.Create(model);
 
             return Ok(result);
         }
 
         [HttpDelete("{id}")]
         [Authorize]
-        public IActionResult Delete(long? id)
+        public IActionResult Delete(string id)
         {
             if (id == null) return BadRequest();
-            var result = service.Delete(id.Value);
+            var result = service.Delete(id);
             return Ok(result);
         }
 

@@ -16,8 +16,6 @@ namespace LifeLike.Services.Profiles
             CreateMap<Page, PageEntity>();
             CreateMap<PhotoEntity, Photo>();
             CreateMap<Photo, PhotoEntity>();
-            CreateMap<PhotoEntity, Photo>();
-            CreateMap<Photo, PhotoEntity>();
             CreateMap<EventLogEntity, Log>();
             CreateMap<Log, EventLogEntity>();
             CreateMap<VideoEntity, Video>();
@@ -25,6 +23,8 @@ namespace LifeLike.Services.Profiles
             CreateMap<ConfigEntity, Config>();
             CreateMap<Config, ConfigEntity>();
             CreateMap<LinkEntity, Link>()
+                .ForMember(x => x.Category, d => d.MapFrom(src => src.Category.ToString()));
+            CreateMap<Link, LinkEntity>()
                 .ForMember(x => x.Category, d => d.MapFrom(src => src.Category.ToString()));
         }    
     }

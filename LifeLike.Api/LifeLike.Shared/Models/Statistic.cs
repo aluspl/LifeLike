@@ -6,6 +6,7 @@ namespace LifeLike.Shared.Models
 {
     public class Statistic : IStatistic
     {
+        public string Id { get; set; }
         public string RowKey { get; set; }
         public string Params { get; set; }
         public string Action { get; set; }

@@ -108,7 +108,7 @@ namespace LifeLike.Repositories
 
 
 
-        public Result Delete(long id)
+        public Result Delete(string id)
         {
             try
             {
@@ -147,7 +147,9 @@ namespace LifeLike.Repositories
         IEnumerable<Page> List(PageCategory category);
         Page Get(string id);
         Result Create(Page model, Link link);
-        Result Delete(long id);
+        Result Create(Page model);
+
+        Result Delete(string id);
         Result Update(Page model);
         IEnumerable<Page> List();
     }

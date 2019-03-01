@@ -4,46 +4,57 @@ using LifeLike.Services.Structures;
 using LifeLike.Services.ViewModel;
 using LifeLike.Shared;
 using LifeLike.Shared.Enums;
-using LifeLike.Shared.Services;
+using LifeLike.Shared.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace LifeLike.Services
 {
-    public class PhotoService : BaseService<PhotoEntity>, IPhotoService
+    public class StatisticService : BaseService<StatisticEntity>, IStatisticService
     {
-        private readonly ILogService _logger;
-        private readonly IBlobStorage _storage;
+        private ILogService _logger;
 
-        public PhotoService(IUnitOfWork uow, ILogService logger, IMapper mapper, IBlobStorage storage) : base(uow, mapper)
+        public StatisticService(IUnitOfWork work, ILogService logger, IMapper mapper) : base(work, mapper)
         {
             _logger = logger;
-            _storage = storage;
         }
-        public ICollection<Photo> List()
-        {
-            var items = _repo.GetOverview().ToList();
-            return _mapper.Map<ICollection<Photo>>(items);
-        }
-        public Photo Get(string id)
+
+        public Result Create(Statistic model)
         {
             try
             {
-                var items = GetEntity(p => p.Id == id);
-                return _mapper.Map<Photo>(items);
+                var item = _mapper.Map<StatisticEntity>(model);
+                CreateEntity(item);
+                return Result.Success;
             }
             catch (Exception e)
             {
                 _logger.AddException(e);
-
-                return null;
+                return Result.Failed;
             }
         }
 
+        public ICollection<Statistic> List()
+        {
+            try
+            {
+                var items = GetAllEntities();
+                return _mapper.Map<ICollection<Statistic>>(items);
+            }
+            catch (Exception e)
+            {
+                _logger.AddException(e);
+                return new List<Statistic>();
+            }
+        }
 
-        public Result Update(Photo model)
+        public Link Get(string id)
+        {
+            var item = GetEntity(p => p.Action == id);
+            return _mapper.Map<Link>(item);
+        }
+
+        public Result Update(Statistic model)
         {
             try
             {
@@ -55,22 +66,15 @@ namespace LifeLike.Services
             catch (Exception e)
             {
                 _logger.AddException(e);
-
                 return Result.Failed;
             }
         }
 
-        public async Task<Result> Create(Photo model)
+        public Result Delete(Statistic model)
         {
             try
             {
-                var photo = _mapper.Map<PhotoEntity>(model);
-                using (var stream = model.Stream.OpenReadStream())
-                {
-                    string name = model.Stream?.FileName;
-                    photo.Url = await _storage.Create(stream, name);
-                }
-                CreateEntity(photo);
+                DeleteEntity(p => p.Id == model.Id);
                 return Result.Success;
             }
             catch (Exception e)
@@ -79,13 +83,11 @@ namespace LifeLike.Services
                 return Result.Failed;
             }
         }
-        public Result Delete(string id)
+        public Result Delete(string shortName)
         {
             try
             {
-                var entity = GetEntity(p => p.Id == id);
-                _storage.Remove(entity.FileName);
-                DeleteEntity(p => p.Id == id);
+                DeleteEntity(p => p.Action == shortName);
                 return Result.Success;
             }
             catch (Exception e)
@@ -95,6 +97,4 @@ namespace LifeLike.Services
             }
         }
     }
-
-    
 }

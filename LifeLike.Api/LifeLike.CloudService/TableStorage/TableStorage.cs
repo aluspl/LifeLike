@@ -34,7 +34,7 @@ namespace LifeLike.CloudService.TableStorage
         private CloudTable GetTable(string tableName)
         {
             var _table = _tableClient.GetTableReference("photos");
-            Task.Run(async () => await _table.CreateIfNotExistsAsync());
+            _table.CreateIfNotExistsAsync().Wait();
             return _table;
         }
 

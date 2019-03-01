@@ -1,4 +1,5 @@
 using LifeLike.Data.Models.Enums;
+using LifeLike.Shared.Enums;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;

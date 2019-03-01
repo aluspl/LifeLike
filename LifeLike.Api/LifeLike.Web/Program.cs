@@ -17,7 +17,7 @@ namespace LifeLike.Web
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddEnvironmentVariables()
-                .AddJsonFile("app.prod.settings.json")
+                .AddJsonFile("app.settings.json")
                 .Build();
 
             return WebHost.CreateDefaultBuilder(args)

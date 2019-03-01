@@ -1,0 +1,1506 @@
+2019-03-01 11:21:41.708 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-01 11:21:43.807 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-03-01 11:21:44.099 +01:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 11:21:44.116 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 11:21:44.123 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-03-01 11:21:44.242 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 11:21:44.261 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN 1 ELSE 0
+END
+2019-03-01 11:21:44.286 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 11:21:44.292 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN 1 ELSE 0
+END
+2019-03-01 11:21:44.305 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 11:21:44.310 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN 1 ELSE 0
+END
+2019-03-01 11:21:46.058 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/  
+2019-03-01 11:21:46.313 +01:00 [INF] Request was redirected to /swagger
+2019-03-01 11:21:46.363 +01:00 [INF] Request finished in 308.703ms 302 
+2019-03-01 11:21:46.392 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/index.html  
+2019-03-01 11:21:46.756 +01:00 [INF] Request finished in 364.995ms 200 text/html
+2019-03-01 11:21:47.069 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/v1/swagger.json  
+2019-03-01 11:21:47.462 +01:00 [INF] Request finished in 392.9786ms 200 application/json;charset=utf-8
+2019-03-01 11:22:05.056 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost/api/Photo/Create?Name=Test&Tags=Test&City=Test%20&Camera=Test multipart/form-data; boundary=----WebKitFormBoundaryAz1FLVFvztlhEKDy 2149091
+2019-03-01 11:22:05.062 +01:00 [INF] CORS policy execution failed.
+2019-03-01 11:22:05.064 +01:00 [INF] Request origin http://localhost does not have permission to access the resource.
+2019-03-01 11:22:05.143 +01:00 [INF] Route matched with {action = "Create", controller = "Photo"}. Executing action LifeLike.Web.Controllers.PhotoController.Create (LifeLike.Web)
+2019-03-01 11:22:07.103 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PhotoController.Create (LifeLike.Web) with arguments (["LifeLike.Web.Controllers.UploadFile"]) - Validation state: "Valid"
+2019-03-01 11:22:31.785 +01:00 [INF] Executed action method LifeLike.Web.Controllers.PhotoController.Create (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 24669.8911ms.
+2019-03-01 11:22:31.802 +01:00 [INF] Executing ObjectResult, writing value of type 'LifeLike.Shared.Enums.Result'.
+2019-03-01 11:22:31.815 +01:00 [INF] Executed action LifeLike.Web.Controllers.PhotoController.Create (LifeLike.Web) in 26665.8918ms
+2019-03-01 11:22:31.825 +01:00 [INF] Request finished in 26769.3493ms 200 application/json; charset=utf-8
+2019-03-01 11:25:27.000 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-01 11:25:28.157 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-03-01 11:25:28.269 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 11:25:28.288 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 11:25:28.295 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-03-01 11:25:28.395 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 11:25:28.409 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN 1 ELSE 0
+END
+2019-03-01 11:25:28.429 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 11:25:28.436 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN 1 ELSE 0
+END
+2019-03-01 11:25:28.447 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 11:25:28.453 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN 1 ELSE 0
+END
+2019-03-01 11:25:29.866 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/  
+2019-03-01 11:25:30.121 +01:00 [INF] Request was redirected to /swagger
+2019-03-01 11:25:30.162 +01:00 [INF] Request finished in 307.1886ms 302 
+2019-03-01 11:25:30.166 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/index.html  
+2019-03-01 11:25:30.619 +01:00 [INF] Request finished in 453.4351ms 200 text/html
+2019-03-01 11:25:31.007 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/v1/swagger.json  
+2019-03-01 11:25:31.404 +01:00 [INF] Request finished in 397.0846ms 200 application/json;charset=utf-8
+2019-03-01 11:26:33.929 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost/api/Photo/Create?Name=Test&Tags=test&City=test&Camera=test multipart/form-data; boundary=----WebKitFormBoundarygrvdsdHQBGy187yc 2149091
+2019-03-01 11:26:33.935 +01:00 [INF] CORS policy execution failed.
+2019-03-01 11:26:33.938 +01:00 [INF] Request origin http://localhost does not have permission to access the resource.
+2019-03-01 11:26:34.021 +01:00 [INF] Route matched with {action = "Create", controller = "Photo"}. Executing action LifeLike.Web.Controllers.PhotoController.Create (LifeLike.Web)
+2019-03-01 11:26:42.948 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PhotoController.Create (LifeLike.Web) with arguments (["LifeLike.Web.Controllers.UploadFile"]) - Validation state: "Valid"
+2019-03-01 11:27:14.278 +01:00 [INF] Executed action method LifeLike.Web.Controllers.PhotoController.Create (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 31315.6503ms.
+2019-03-01 11:27:14.293 +01:00 [INF] Executing ObjectResult, writing value of type 'LifeLike.Shared.Enums.Result'.
+2019-03-01 11:27:14.307 +01:00 [INF] Executed action LifeLike.Web.Controllers.PhotoController.Create (LifeLike.Web) in 40280.9493ms
+2019-03-01 11:27:14.318 +01:00 [INF] Request finished in 40389.1213ms 200 application/json; charset=utf-8
+2019-03-01 11:27:41.141 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost/api/Photo/Create?Name=Test&Tags=test&City=test&Camera=test multipart/form-data; boundary=----WebKitFormBoundary8yAl2I01oUZEFqnv 2149091
+2019-03-01 11:27:41.153 +01:00 [INF] CORS policy execution failed.
+2019-03-01 11:27:41.158 +01:00 [INF] Request origin http://localhost does not have permission to access the resource.
+2019-03-01 11:27:41.161 +01:00 [INF] Route matched with {action = "Create", controller = "Photo"}. Executing action LifeLike.Web.Controllers.PhotoController.Create (LifeLike.Web)
+2019-03-01 11:28:14.366 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-01 11:28:15.485 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-03-01 11:28:15.582 +01:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 11:28:15.600 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 11:28:15.606 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-03-01 11:28:15.708 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 11:28:15.721 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN 1 ELSE 0
+END
+2019-03-01 11:28:15.739 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 11:28:15.743 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN 1 ELSE 0
+END
+2019-03-01 11:28:15.751 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 11:28:15.755 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN 1 ELSE 0
+END
+2019-03-01 11:28:16.725 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/  
+2019-03-01 11:28:16.962 +01:00 [INF] Request was redirected to /swagger
+2019-03-01 11:28:16.997 +01:00 [INF] Request finished in 274.6497ms 302 
+2019-03-01 11:28:17.026 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/index.html  
+2019-03-01 11:28:17.529 +01:00 [INF] Request finished in 502.8082ms 200 text/html
+2019-03-01 11:28:17.934 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/v1/swagger.json  
+2019-03-01 11:28:18.293 +01:00 [INF] Request finished in 358.7588ms 200 application/json;charset=utf-8
+2019-03-01 11:28:39.105 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost/api/Photo/Create?Name=Test&Tags=test&City=test&Camera=test multipart/form-data; boundary=----WebKitFormBoundaryDMOG65GfuBqsYCcG 2149091
+2019-03-01 11:28:39.111 +01:00 [INF] CORS policy execution failed.
+2019-03-01 11:28:39.113 +01:00 [INF] Request origin http://localhost does not have permission to access the resource.
+2019-03-01 11:28:39.186 +01:00 [INF] Route matched with {action = "Create", controller = "Photo"}. Executing action LifeLike.Web.Controllers.PhotoController.Create (LifeLike.Web)
+2019-03-01 11:28:40.887 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PhotoController.Create (LifeLike.Web) with arguments (["LifeLike.Web.Controllers.UploadFile"]) - Validation state: "Valid"
+2019-03-01 11:28:59.907 +01:00 [INF] Executed action method LifeLike.Web.Controllers.PhotoController.Create (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 19009.425ms.
+2019-03-01 11:28:59.938 +01:00 [INF] Executing ObjectResult, writing value of type 'LifeLike.Shared.Enums.Result'.
+2019-03-01 11:28:59.949 +01:00 [INF] Executed action LifeLike.Web.Controllers.PhotoController.Create (LifeLike.Web) in 20757.5796ms
+2019-03-01 11:28:59.959 +01:00 [INF] Request finished in 20854.3968ms 200 application/json; charset=utf-8
+2019-03-01 11:29:10.247 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Photo  
+2019-03-01 11:29:10.258 +01:00 [INF] Route matched with {action = "List", controller = "Photo"}. Executing action LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web)
+2019-03-01 11:29:11.100 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 11:33:53.264 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-01 11:33:54.397 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-03-01 11:33:54.499 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 11:33:54.517 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 11:33:54.524 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-03-01 11:33:54.647 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 11:33:54.666 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN 1 ELSE 0
+END
+2019-03-01 11:33:54.691 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 11:33:54.699 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN 1 ELSE 0
+END
+2019-03-01 11:33:54.709 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 11:33:54.716 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN 1 ELSE 0
+END
+2019-03-01 11:33:55.876 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/  
+2019-03-01 11:33:56.101 +01:00 [INF] Request was redirected to /swagger
+2019-03-01 11:33:56.168 +01:00 [INF] Request finished in 294.4496ms 302 
+2019-03-01 11:33:56.190 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/index.html  
+2019-03-01 11:33:56.538 +01:00 [INF] Request finished in 348.005ms 200 text/html
+2019-03-01 11:33:56.834 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/v1/swagger.json  
+2019-03-01 11:33:57.181 +01:00 [INF] Request finished in 347.1978ms 200 application/json;charset=utf-8
+2019-03-01 11:34:03.943 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Photo  
+2019-03-01 11:34:04.005 +01:00 [INF] Route matched with {action = "List", controller = "Photo"}. Executing action LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web)
+2019-03-01 11:34:05.183 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 11:34:05.604 +01:00 [INF] Executed action method LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 415.1729ms.
+2019-03-01 11:34:05.615 +01:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[LifeLike.Services.ViewModel.Photo, LifeLike.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-01 11:34:05.638 +01:00 [INF] Executed action LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web) in 1626.8837ms
+2019-03-01 11:34:05.641 +01:00 [INF] Request finished in 1698.4864ms 200 application/json; charset=utf-8
+2019-03-01 13:37:56.771 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-01 13:37:57.940 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-03-01 13:37:58.043 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:37:58.057 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:37:58.062 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-03-01 13:37:58.160 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:37:58.173 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN 1 ELSE 0
+END
+2019-03-01 13:37:58.194 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:37:58.200 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN 1 ELSE 0
+END
+2019-03-01 13:37:58.209 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:37:58.217 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN 1 ELSE 0
+END
+2019-03-01 13:37:59.225 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/  
+2019-03-01 13:37:59.375 +01:00 [INF] Request was redirected to /swagger
+2019-03-01 13:37:59.407 +01:00 [INF] Request finished in 183.5407ms 302 
+2019-03-01 13:37:59.425 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/index.html  
+2019-03-01 13:37:59.771 +01:00 [INF] Request finished in 346.8061ms 200 text/html
+2019-03-01 13:38:00.102 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/v1/swagger.json  
+2019-03-01 13:38:00.521 +01:00 [INF] Request finished in 418.6829ms 200 application/json;charset=utf-8
+2019-03-01 13:38:05.627 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Config  
+2019-03-01 13:38:05.674 +01:00 [ERR] Request matched multiple actions resulting in ambiguity. Matching actions: LifeLike.Web.Controllers.ConfigController.GetList (LifeLike.Web)
+LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web)
+2019-03-01 13:38:05.724 +01:00 [INF] Request finished in 96.7208ms 500 application/json
+2019-03-01 13:40:47.148 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/Api/Menu  
+2019-03-01 13:40:47.173 +01:00 [INF] Route matched with {action = "GetMenuLinks", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetMenuLinks (LifeLike.Web)
+2019-03-01 13:40:49.750 +01:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetMenuLinks (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 13:42:17.022 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-01 13:42:17.873 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-03-01 13:42:17.961 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:42:17.977 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:42:17.984 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-03-01 13:42:18.052 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:42:18.066 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN 1 ELSE 0
+END
+2019-03-01 13:42:18.088 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:42:18.093 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN 1 ELSE 0
+END
+2019-03-01 13:42:18.100 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:42:18.104 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN 1 ELSE 0
+END
+2019-03-01 13:42:19.399 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/  
+2019-03-01 13:42:19.566 +01:00 [INF] Request was redirected to /swagger
+2019-03-01 13:42:19.614 +01:00 [INF] Request finished in 217.4945ms 302 
+2019-03-01 13:42:19.626 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/index.html  
+2019-03-01 13:42:19.985 +01:00 [INF] Request finished in 358.7523ms 200 text/html
+2019-03-01 13:42:20.289 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/v1/swagger.json  
+2019-03-01 13:42:20.646 +01:00 [INF] Request finished in 356.3335ms 200 application/json;charset=utf-8
+2019-03-01 13:42:49.122 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/Api/Config  
+2019-03-01 13:42:49.168 +01:00 [ERR] Request matched multiple actions resulting in ambiguity. Matching actions: LifeLike.Web.Controllers.ConfigController.GetList (LifeLike.Web)
+LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web)
+2019-03-01 13:42:49.214 +01:00 [INF] Request finished in 92.0538ms 500 application/json
+2019-03-01 13:43:47.762 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-01 13:43:48.646 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-03-01 13:43:48.723 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:43:48.737 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:43:48.744 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-03-01 13:43:48.819 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:43:48.831 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN 1 ELSE 0
+END
+2019-03-01 13:43:48.846 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:43:48.851 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN 1 ELSE 0
+END
+2019-03-01 13:43:48.858 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:43:48.862 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN 1 ELSE 0
+END
+2019-03-01 13:43:49.766 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/  
+2019-03-01 13:43:49.957 +01:00 [INF] Request was redirected to /swagger
+2019-03-01 13:43:49.994 +01:00 [INF] Request finished in 231.4408ms 302 
+2019-03-01 13:43:50.010 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/index.html  
+2019-03-01 13:43:50.362 +01:00 [INF] Request finished in 352.3594ms 200 text/html
+2019-03-01 13:43:50.707 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/v1/swagger.json  
+2019-03-01 13:43:51.042 +01:00 [INF] Request finished in 335.412ms 200 application/json;charset=utf-8
+2019-03-01 13:43:56.550 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/Api/Config  
+2019-03-01 13:43:56.609 +01:00 [INF] Route matched with {action = "GetList", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web)
+2019-03-01 13:43:58.434 +01:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 13:44:02.832 +01:00 [INF] Executed action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 4392.9049ms.
+2019-03-01 13:44:02.848 +01:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[LifeLike.Services.ViewModel.Config, LifeLike.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-01 13:44:02.862 +01:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) in 6247.5511000000006ms
+2019-03-01 13:44:02.865 +01:00 [INF] Request finished in 6315.4294ms 200 application/json; charset=utf-8
+2019-03-01 13:44:21.611 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Log/List  
+2019-03-01 13:44:21.622 +01:00 [INF] Route matched with {action = "List", controller = "Log"}. Executing action LifeLike.Web.Controllers.LogController.List (LifeLike.Web)
+2019-03-01 13:44:21.628 +01:00 [INF] Executing action method LifeLike.Web.Controllers.LogController.List (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 13:44:21.775 +01:00 [INF] Executed action method LifeLike.Web.Controllers.LogController.List (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 144.91740000000001ms.
+2019-03-01 13:44:21.782 +01:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[LifeLike.CloudService.TableStorage.LogEntity, LifeLike.CloudService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Shared.Models.Log, LifeLike.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-01 13:44:21.795 +01:00 [INF] Executed action LifeLike.Web.Controllers.LogController.List (LifeLike.Web) in 168.6685ms
+2019-03-01 13:44:21.799 +01:00 [INF] Request finished in 187.657ms 200 application/json; charset=utf-8
+2019-03-01 13:45:18.030 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost/api/Photo/Create?Name=dfg&Tags=sdg&City=sdfg&Camera=sdfg multipart/form-data; boundary=----WebKitFormBoundaryf18kVPW39xnQomSJ 2149091
+2019-03-01 13:45:18.036 +01:00 [INF] CORS policy execution failed.
+2019-03-01 13:45:18.041 +01:00 [INF] Request origin http://localhost does not have permission to access the resource.
+2019-03-01 13:45:18.067 +01:00 [INF] Route matched with {action = "Create", controller = "Photo"}. Executing action LifeLike.Web.Controllers.PhotoController.Create (LifeLike.Web)
+2019-03-01 13:45:18.963 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PhotoController.Create (LifeLike.Web) with arguments (["LifeLike.Web.Controllers.UploadFile"]) - Validation state: "Valid"
+2019-03-01 13:45:26.813 +01:00 [INF] Executed action method LifeLike.Web.Controllers.PhotoController.Create (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 7838.4065ms.
+2019-03-01 13:45:26.822 +01:00 [INF] Executing ObjectResult, writing value of type 'LifeLike.Shared.Enums.Result'.
+2019-03-01 13:45:26.828 +01:00 [INF] Executed action LifeLike.Web.Controllers.PhotoController.Create (LifeLike.Web) in 8754.9052000000011ms
+2019-03-01 13:45:26.839 +01:00 [INF] Request finished in 8809.2742ms 200 application/json; charset=utf-8
+2019-03-01 13:46:09.084 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Photo  
+2019-03-01 13:46:09.090 +01:00 [INF] Route matched with {action = "List", controller = "Photo"}. Executing action LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web)
+2019-03-01 13:46:09.698 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 13:46:09.868 +01:00 [INF] Executed action method LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 165.2127ms.
+2019-03-01 13:46:09.873 +01:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[LifeLike.Services.ViewModel.Photo, LifeLike.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-01 13:46:09.878 +01:00 [INF] Executed action LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web) in 780.29140000000007ms
+2019-03-01 13:46:09.882 +01:00 [INF] Request finished in 798.0333ms 200 application/json; charset=utf-8
+2019-03-01 13:48:02.559 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-01 13:48:03.415 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-03-01 13:48:03.493 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:48:03.508 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:48:03.514 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-03-01 13:48:03.583 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:48:03.595 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN 1 ELSE 0
+END
+2019-03-01 13:48:03.610 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:48:03.614 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN 1 ELSE 0
+END
+2019-03-01 13:48:03.621 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:48:03.626 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN 1 ELSE 0
+END
+2019-03-01 13:48:04.418 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/  
+2019-03-01 13:48:04.633 +01:00 [INF] Request was redirected to /swagger
+2019-03-01 13:48:04.674 +01:00 [INF] Request finished in 258.4346ms 302 
+2019-03-01 13:48:04.697 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/index.html  
+2019-03-01 13:48:05.053 +01:00 [INF] Request finished in 355.961ms 200 text/html
+2019-03-01 13:48:05.362 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/v1/swagger.json  
+2019-03-01 13:48:05.724 +01:00 [INF] Request finished in 361.7542ms 200 application/json;charset=utf-8
+2019-03-01 13:49:09.841 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost/api/Config?Name=TestConfig&Value=Test%20Config%20Value&DisplayName=Test%20Config%20Value&Type=Text  0
+2019-03-01 13:49:09.849 +01:00 [INF] CORS policy execution failed.
+2019-03-01 13:49:09.853 +01:00 [INF] Request origin http://localhost does not have permission to access the resource.
+2019-03-01 13:49:09.918 +01:00 [INF] Route matched with {action = "Create", controller = "Config"}. Executing action LifeLike.Web.Controllers.ConfigController.Create (LifeLike.Web)
+2019-03-01 13:49:11.220 +01:00 [INF] Executing action method LifeLike.Web.Controllers.ConfigController.Create (LifeLike.Web) with arguments (["LifeLike.Services.ViewModel.Config"]) - Validation state: "Valid"
+2019-03-01 13:49:15.759 +01:00 [INF] Executed action method LifeLike.Web.Controllers.ConfigController.Create (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkResult in 4526.1925ms.
+2019-03-01 13:49:15.773 +01:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 200
+2019-03-01 13:49:15.780 +01:00 [INF] Executed action LifeLike.Web.Controllers.ConfigController.Create (LifeLike.Web) in 5854.9448ms
+2019-03-01 13:49:15.784 +01:00 [INF] Request finished in 5943.6207ms 200 
+2019-03-01 13:49:30.491 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/Api/Config  
+2019-03-01 13:49:30.498 +01:00 [INF] Route matched with {action = "GetList", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web)
+2019-03-01 13:49:31.686 +01:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 13:50:17.849 +01:00 [INF] Executed action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 46156.233100000005ms.
+2019-03-01 13:50:17.872 +01:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[LifeLike.Services.ViewModel.Config, LifeLike.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-01 13:50:17.899 +01:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) in 47389.690500000004ms
+2019-03-01 13:50:17.903 +01:00 [INF] Request finished in 47409.6515ms 200 application/json; charset=utf-8
+2019-03-01 13:50:41.262 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Log/List  
+2019-03-01 13:50:41.266 +01:00 [INF] Route matched with {action = "List", controller = "Log"}. Executing action LifeLike.Web.Controllers.LogController.List (LifeLike.Web)
+2019-03-01 13:50:41.273 +01:00 [INF] Executing action method LifeLike.Web.Controllers.LogController.List (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 13:50:41.431 +01:00 [INF] Executed action method LifeLike.Web.Controllers.LogController.List (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 150.9136ms.
+2019-03-01 13:50:41.436 +01:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[LifeLike.CloudService.TableStorage.LogEntity, LifeLike.CloudService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Shared.Models.Log, LifeLike.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-01 13:50:41.445 +01:00 [INF] Executed action LifeLike.Web.Controllers.LogController.List (LifeLike.Web) in 172.8428ms
+2019-03-01 13:50:41.448 +01:00 [INF] Request finished in 186.5959ms 200 application/json; charset=utf-8
+2019-03-01 13:51:06.423 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Log/Clear  
+2019-03-01 13:51:06.427 +01:00 [INF] Route matched with {action = "Clear", controller = "Log"}. Executing action LifeLike.Web.Controllers.LogController.Clear (LifeLike.Web)
+2019-03-01 13:51:06.431 +01:00 [INF] Executing action method LifeLike.Web.Controllers.LogController.Clear (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 13:51:06.445 +01:00 [INF] Executed action method LifeLike.Web.Controllers.LogController.Clear (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3.9679ms.
+2019-03-01 13:51:06.450 +01:00 [INF] Executing ObjectResult, writing value of type 'LifeLike.Shared.Enums.Result'.
+2019-03-01 13:51:06.453 +01:00 [INF] Executed action LifeLike.Web.Controllers.LogController.Clear (LifeLike.Web) in 22.0517ms
+2019-03-01 13:51:06.456 +01:00 [INF] Request finished in 33.3274ms 200 application/json; charset=utf-8
+2019-03-01 13:51:11.112 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Log/List  
+2019-03-01 13:51:11.115 +01:00 [INF] Route matched with {action = "List", controller = "Log"}. Executing action LifeLike.Web.Controllers.LogController.List (LifeLike.Web)
+2019-03-01 13:51:11.118 +01:00 [INF] Executing action method LifeLike.Web.Controllers.LogController.List (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 13:51:11.271 +01:00 [INF] Executed action method LifeLike.Web.Controllers.LogController.List (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 146.828ms.
+2019-03-01 13:51:11.276 +01:00 [INF] Executing ObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[LifeLike.CloudService.TableStorage.LogEntity, LifeLike.CloudService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[LifeLike.Shared.Models.Log, LifeLike.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-01 13:51:11.278 +01:00 [INF] Executed action LifeLike.Web.Controllers.LogController.List (LifeLike.Web) in 160.18030000000002ms
+2019-03-01 13:51:11.283 +01:00 [INF] Request finished in 170.6646ms 200 application/json; charset=utf-8
+2019-03-01 13:51:15.468 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Log/Clear  
+2019-03-01 13:51:15.471 +01:00 [INF] Route matched with {action = "Clear", controller = "Log"}. Executing action LifeLike.Web.Controllers.LogController.Clear (LifeLike.Web)
+2019-03-01 13:51:15.474 +01:00 [INF] Executing action method LifeLike.Web.Controllers.LogController.Clear (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 13:51:15.477 +01:00 [INF] Executed action method LifeLike.Web.Controllers.LogController.Clear (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.39790000000000003ms.
+2019-03-01 13:51:15.492 +01:00 [INF] Executing ObjectResult, writing value of type 'LifeLike.Shared.Enums.Result'.
+2019-03-01 13:51:15.495 +01:00 [INF] Executed action LifeLike.Web.Controllers.LogController.Clear (LifeLike.Web) in 21.154700000000002ms
+2019-03-01 13:51:15.501 +01:00 [INF] Request finished in 32.4022ms 200 application/json; charset=utf-8
+2019-03-01 13:51:24.126 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Log/List  
+2019-03-01 13:51:24.127 +01:00 [INF] Route matched with {action = "List", controller = "Log"}. Executing action LifeLike.Web.Controllers.LogController.List (LifeLike.Web)
+2019-03-01 13:51:24.131 +01:00 [INF] Executing action method LifeLike.Web.Controllers.LogController.List (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 13:52:42.525 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-01 13:52:43.440 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-03-01 13:52:43.522 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:52:43.536 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:52:43.542 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-03-01 13:52:43.616 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:52:43.629 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN 1 ELSE 0
+END
+2019-03-01 13:52:43.646 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:52:43.650 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN 1 ELSE 0
+END
+2019-03-01 13:52:43.658 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 13:52:43.663 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN 1 ELSE 0
+END
+2019-03-01 13:52:44.696 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/  
+2019-03-01 13:52:44.857 +01:00 [INF] Request was redirected to /swagger
+2019-03-01 13:52:44.893 +01:00 [INF] Request finished in 200.0051ms 302 
+2019-03-01 13:52:44.908 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/index.html  
+2019-03-01 13:52:45.238 +01:00 [INF] Request finished in 330.0439ms 200 text/html
+2019-03-01 13:52:45.539 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/v1/swagger.json  
+2019-03-01 13:52:45.914 +01:00 [INF] Request finished in 375.1533ms 200 application/json;charset=utf-8
+2019-03-01 14:03:47.012 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Video/List  
+2019-03-01 14:03:47.081 +01:00 [INF] Route matched with {action = "Get", controller = "Video"}. Executing action LifeLike.Web.Controllers.VideoController.Get (LifeLike.Web)
+2019-03-01 14:03:48.763 +01:00 [INF] Executing action method LifeLike.Web.Controllers.VideoController.Get (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 14:03:49.163 +01:00 [INF] Executed action method LifeLike.Web.Controllers.VideoController.Get (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 393.8786ms.
+2019-03-01 14:03:49.178 +01:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[LifeLike.Services.ViewModel.Video, LifeLike.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-01 14:03:49.194 +01:00 [INF] Executed action LifeLike.Web.Controllers.VideoController.Get (LifeLike.Web) in 2105.5153ms
+2019-03-01 14:03:49.199 +01:00 [INF] Request finished in 2186.5833ms 200 application/json; charset=utf-8
+2019-03-01 14:05:01.574 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost/api/Page application/json-patch+json 225
+2019-03-01 14:05:01.580 +01:00 [INF] CORS policy execution failed.
+2019-03-01 14:05:01.582 +01:00 [INF] Request origin http://localhost does not have permission to access the resource.
+2019-03-01 14:05:01.603 +01:00 [INF] Route matched with {action = "Create", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Create (LifeLike.Web)
+2019-03-01 14:05:03.315 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Create (LifeLike.Web) with arguments (["LifeLike.Services.ViewModel.Page"]) - Validation state: "Valid"
+2019-03-01 14:05:08.631 +01:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Create (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 5304.843ms.
+2019-03-01 14:05:08.635 +01:00 [INF] Executing ObjectResult, writing value of type 'LifeLike.Shared.Enums.Result'.
+2019-03-01 14:05:08.637 +01:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Create (LifeLike.Web) in 7029.0029ms
+2019-03-01 14:05:08.640 +01:00 [INF] Request finished in 7065.2806ms 200 application/json; charset=utf-8
+2019-03-01 14:13:52.416 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-01 14:13:53.471 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-03-01 14:13:53.556 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:13:53.570 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:13:53.577 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-03-01 14:13:53.653 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:13:53.666 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN 1 ELSE 0
+END
+2019-03-01 14:13:53.684 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:13:53.690 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN 1 ELSE 0
+END
+2019-03-01 14:13:53.697 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:13:53.703 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN 1 ELSE 0
+END
+2019-03-01 14:13:54.905 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/  
+2019-03-01 14:13:55.044 +01:00 [INF] Request was redirected to /swagger
+2019-03-01 14:13:55.082 +01:00 [INF] Request finished in 179.6172ms 302 
+2019-03-01 14:13:55.093 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/index.html  
+2019-03-01 14:13:55.437 +01:00 [INF] Request finished in 344.5065ms 200 text/html
+2019-03-01 14:13:55.719 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/v1/swagger.json  
+2019-03-01 14:13:56.120 +01:00 [INF] Request finished in 401.6207ms 200 application/json;charset=utf-8
+2019-03-01 14:14:00.343 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Config  
+2019-03-01 14:14:00.353 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:14:00.367 +01:00 [INF] Request finished in 24.3016ms 204 
+2019-03-01 14:14:00.376 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Config application/json 
+2019-03-01 14:14:00.435 +01:00 [INF] Successfully validated the token.
+2019-03-01 14:14:00.439 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:14:00.500 +01:00 [INF] Route matched with {action = "GetList", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web)
+2019-03-01 14:14:02.321 +01:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 14:14:03.308 +01:00 [INF] Executed action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 976.1322ms.
+2019-03-01 14:14:03.331 +01:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[LifeLike.Services.ViewModel.Config, LifeLike.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-01 14:14:03.351 +01:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) in 2844.1661ms
+2019-03-01 14:14:03.355 +01:00 [INF] Request finished in 2979.424ms 200 application/json; charset=utf-8
+2019-03-01 14:14:14.012 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Posts  
+2019-03-01 14:14:14.015 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:14:14.017 +01:00 [INF] Request finished in 4.7401ms 204 
+2019-03-01 14:14:14.035 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Page/Posts application/json 
+2019-03-01 14:14:14.040 +01:00 [INF] Successfully validated the token.
+2019-03-01 14:14:14.043 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:14:14.050 +01:00 [INF] Route matched with {action = "Posts", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web)
+2019-03-01 14:14:15.206 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 14:14:15.423 +01:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 213.4162ms.
+2019-03-01 14:14:15.428 +01:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[LifeLike.Services.ViewModel.Page, LifeLike.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-01 14:14:15.431 +01:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web) in 1374.2423000000001ms
+2019-03-01 14:14:15.435 +01:00 [INF] Request finished in 1399.7425ms 200 application/json; charset=utf-8
+2019-03-01 14:14:17.432 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Photo  
+2019-03-01 14:14:17.435 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:14:17.437 +01:00 [INF] Request finished in 4.916ms 204 
+2019-03-01 14:14:17.457 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Photo application/json 
+2019-03-01 14:14:17.461 +01:00 [INF] Successfully validated the token.
+2019-03-01 14:14:17.466 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:14:17.470 +01:00 [INF] Route matched with {action = "List", controller = "Photo"}. Executing action LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web)
+2019-03-01 14:14:18.027 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 14:14:18.171 +01:00 [INF] Executed action method LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 140.52110000000002ms.
+2019-03-01 14:14:18.175 +01:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[LifeLike.Services.ViewModel.Photo, LifeLike.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-01 14:14:18.184 +01:00 [INF] Executed action LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web) in 711.7743ms
+2019-03-01 14:14:18.187 +01:00 [INF] Request finished in 729.718ms 200 application/json; charset=utf-8
+2019-03-01 14:14:35.828 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:14:35.831 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:14:35.833 +01:00 [INF] Request finished in 4.5625ms 204 
+2019-03-01 14:14:35.845 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Page/Details/Contact application/json 
+2019-03-01 14:14:35.849 +01:00 [INF] Successfully validated the token.
+2019-03-01 14:14:35.853 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:14:35.869 +01:00 [INF] Route matched with {action = "Details", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web)
+2019-03-01 14:14:36.981 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) with arguments (["Contact"]) - Validation state: "Valid"
+2019-03-01 14:24:49.158 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-01 14:24:50.104 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-03-01 14:24:50.212 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:24:50.234 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:24:50.240 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-03-01 14:24:50.340 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:24:50.357 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN 1 ELSE 0
+END
+2019-03-01 14:24:50.377 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:24:50.382 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN 1 ELSE 0
+END
+2019-03-01 14:24:50.391 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:24:50.396 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN 1 ELSE 0
+END
+2019-03-01 14:24:51.431 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/  
+2019-03-01 14:24:51.681 +01:00 [INF] Request was redirected to /swagger
+2019-03-01 14:24:51.718 +01:00 [INF] Request finished in 288.5329ms 302 
+2019-03-01 14:24:51.725 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/index.html  
+2019-03-01 14:24:52.061 +01:00 [INF] Request finished in 335.3547ms 200 text/html
+2019-03-01 14:24:52.359 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/v1/swagger.json  
+2019-03-01 14:24:52.803 +01:00 [INF] Request finished in 444.0151ms 200 application/json;charset=utf-8
+2019-03-01 14:28:37.771 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-01 14:28:38.741 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-03-01 14:28:38.834 +01:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:28:38.851 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:28:38.857 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-03-01 14:28:38.937 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:28:38.953 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN 1 ELSE 0
+END
+2019-03-01 14:28:38.975 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:28:38.981 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN 1 ELSE 0
+END
+2019-03-01 14:28:38.990 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:28:38.998 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN 1 ELSE 0
+END
+2019-03-01 14:28:39.991 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/  
+2019-03-01 14:28:40.230 +01:00 [INF] Request was redirected to /swagger
+2019-03-01 14:28:40.287 +01:00 [INF] Request finished in 296.5081ms 302 
+2019-03-01 14:28:40.309 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/index.html  
+2019-03-01 14:28:40.727 +01:00 [INF] Request finished in 418.3376ms 200 text/html
+2019-03-01 14:28:41.130 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/v1/swagger.json  
+2019-03-01 14:28:41.494 +01:00 [INF] Request finished in 363.6234ms 200 application/json;charset=utf-8
+2019-03-01 14:29:12.443 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Config  
+2019-03-01 14:29:12.449 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:29:12.454 +01:00 [INF] Request finished in 11.9686ms 204 
+2019-03-01 14:29:12.478 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Config application/json 
+2019-03-01 14:29:12.550 +01:00 [INF] Successfully validated the token.
+2019-03-01 14:29:12.554 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:29:12.624 +01:00 [INF] Route matched with {action = "GetList", controller = "Home"}. Executing action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web)
+2019-03-01 14:29:14.608 +01:00 [INF] Executing action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 14:29:15.566 +01:00 [INF] Executed action method LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 952.1028ms.
+2019-03-01 14:29:15.580 +01:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[LifeLike.Services.ViewModel.Config, LifeLike.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-01 14:29:15.593 +01:00 [INF] Executed action LifeLike.Web.Controllers.HomeController.GetList (LifeLike.Web) in 2963.5668ms
+2019-03-01 14:29:15.597 +01:00 [INF] Request finished in 3119.8985ms 200 application/json; charset=utf-8
+2019-03-01 14:29:18.073 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Posts  
+2019-03-01 14:29:18.075 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:29:18.077 +01:00 [INF] Request finished in 4.6451ms 204 
+2019-03-01 14:29:18.100 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Page/Posts application/json 
+2019-03-01 14:29:18.103 +01:00 [INF] Successfully validated the token.
+2019-03-01 14:29:18.106 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:29:18.109 +01:00 [INF] Route matched with {action = "Posts", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web)
+2019-03-01 14:29:19.236 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 14:29:19.474 +01:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 234.0745ms.
+2019-03-01 14:29:19.480 +01:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[LifeLike.Services.ViewModel.Page, LifeLike.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-01 14:29:19.484 +01:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web) in 1371.7605ms
+2019-03-01 14:29:19.487 +01:00 [INF] Request finished in 1387.1984ms 200 application/json; charset=utf-8
+2019-03-01 14:29:19.684 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Photo  
+2019-03-01 14:29:19.686 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:29:19.689 +01:00 [INF] Request finished in 5.4361ms 204 
+2019-03-01 14:29:19.705 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Photo application/json 
+2019-03-01 14:29:19.708 +01:00 [INF] Successfully validated the token.
+2019-03-01 14:29:19.711 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:29:19.721 +01:00 [INF] Route matched with {action = "List", controller = "Photo"}. Executing action LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web)
+2019-03-01 14:29:20.271 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 14:29:20.429 +01:00 [INF] Executed action method LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 153.4694ms.
+2019-03-01 14:29:20.432 +01:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[LifeLike.Services.ViewModel.Photo, LifeLike.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-01 14:29:20.443 +01:00 [INF] Executed action LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web) in 718.20390000000009ms
+2019-03-01 14:29:20.447 +01:00 [INF] Request finished in 742.0108ms 200 application/json; charset=utf-8
+2019-03-01 14:30:51.178 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:30:51.182 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:30:51.199 +01:00 [INF] Request finished in 20.8685ms 204 
+2019-03-01 14:30:51.259 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Page/Details/Contact application/json 
+2019-03-01 14:30:51.269 +01:00 [INF] Successfully validated the token.
+2019-03-01 14:30:51.272 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:30:51.301 +01:00 [INF] Route matched with {action = "Details", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web)
+2019-03-01 14:30:52.718 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) with arguments (["Contact"]) - Validation state: "Valid"
+2019-03-01 14:36:17.889 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:17.892 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:17.925 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:17.935 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:17.939 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:17.941 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:17.947 +01:00 [INF] Request finished in 22.4868ms 0 
+2019-03-01 14:36:17.949 +01:00 [INF] Request finished in 13.8732ms 0 
+2019-03-01 14:36:17.953 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:17.940 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:17.956 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:17.957 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:17.961 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:17.924 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:17.926 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:17.932 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:17.933 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:17.938 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:17.965 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:17.967 +01:00 [INF] Request finished in 14.1603ms 0 
+2019-03-01 14:36:17.969 +01:00 [INF] Request finished in 28.9609ms 0 
+2019-03-01 14:36:17.970 +01:00 [INF] Request finished in 81.6043ms 0 
+2019-03-01 14:36:17.971 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:17.973 +01:00 [INF] Request finished in 82.557ms 0 
+2019-03-01 14:36:17.974 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:17.977 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:17.979 +01:00 [INF] Request finished in 22.677ms 204 
+2019-03-01 14:36:17.980 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:17.982 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:17.987 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:17.989 +01:00 [INF] Request finished in 62.5553ms 0 
+2019-03-01 14:36:17.990 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:17.992 +01:00 [INF] Request finished in 60.0302ms 0 
+2019-03-01 14:36:17.993 +01:00 [INF] Request finished in 55.4878ms 0 
+2019-03-01 14:36:17.996 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:18.003 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:18.006 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:18.007 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:18.011 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:18.012 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:18.015 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:18.017 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:18.019 +01:00 [INF] Request finished in 38.7693ms 0 
+2019-03-01 14:36:18.021 +01:00 [INF] Request finished in 38.4743ms 0 
+2019-03-01 14:36:18.022 +01:00 [INF] Request finished in 35.3058ms 0 
+2019-03-01 14:36:18.025 +01:00 [INF] Request finished in 34.5709ms 0 
+2019-03-01 14:36:18.027 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:18.028 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:18.034 +01:00 [INF] Request finished in 38.6245ms 0 
+2019-03-01 14:36:18.036 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:18.038 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:18.063 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:18.069 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:18.040 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:18.041 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:18.044 +01:00 [INF] Request finished in 31.9608ms 0 
+2019-03-01 14:36:18.053 +01:00 [INF] Request finished in 37.6077ms 0 
+2019-03-01 14:36:18.078 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:18.083 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:18.086 +01:00 [INF] Request finished in 49.4716ms 0 
+2019-03-01 14:36:18.088 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:18.090 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:18.095 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:18.098 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:18.100 +01:00 [INF] Request finished in 62.6988ms 0 
+2019-03-01 14:36:18.103 +01:00 [INF] Request finished in 39.9658ms 0 
+2019-03-01 14:36:18.105 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:18.107 +01:00 [INF] Request finished in 67.693ms 0 
+2019-03-01 14:36:18.110 +01:00 [INF] Request finished in 68.5072ms 0 
+2019-03-01 14:36:18.114 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:18.120 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:18.125 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:18.128 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:36:18.130 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:18.134 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Photo  
+2019-03-01 14:36:18.139 +01:00 [INF] Request finished in 44.2263ms 0 
+2019-03-01 14:36:18.141 +01:00 [INF] Request finished in 43.3319ms 0 
+2019-03-01 14:36:18.145 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:18.147 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:18.149 +01:00 [INF] Request finished in 44.1139ms 0 
+2019-03-01 14:36:18.163 +01:00 [INF] Request finished in 35.4667ms 204 
+2019-03-01 14:36:18.159 +01:00 [INF] Request finished in 34.2454ms 0 
+2019-03-01 14:36:18.151 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:18.170 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Page/Details/Contact application/json 
+2019-03-01 14:36:18.184 +01:00 [INF] Request finished in 50.2803ms 204 
+2019-03-01 14:36:18.188 +01:00 [INF] Successfully validated the token.
+2019-03-01 14:36:18.190 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Photo application/json 
+2019-03-01 14:36:18.192 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:18.195 +01:00 [INF] Successfully validated the token.
+2019-03-01 14:36:18.198 +01:00 [INF] Route matched with {action = "Details", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web)
+2019-03-01 14:36:18.200 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:36:18.206 +01:00 [INF] Route matched with {action = "List", controller = "Photo"}. Executing action LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web)
+2019-03-01 14:44:35.633 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-01 14:44:36.929 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-03-01 14:44:37.061 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:44:37.082 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:44:37.089 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-03-01 14:44:37.236 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:44:37.259 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN 1 ELSE 0
+END
+2019-03-01 14:44:37.281 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:44:37.287 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN 1 ELSE 0
+END
+2019-03-01 14:44:37.297 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:44:37.303 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN 1 ELSE 0
+END
+2019-03-01 14:44:38.873 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/  
+2019-03-01 14:44:39.059 +01:00 [INF] Request was redirected to /swagger
+2019-03-01 14:44:39.111 +01:00 [INF] Request finished in 246.3801ms 302 
+2019-03-01 14:44:39.125 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/index.html  
+2019-03-01 14:44:39.545 +01:00 [INF] Request finished in 419.968ms 200 text/html
+2019-03-01 14:44:39.898 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/v1/swagger.json  
+2019-03-01 14:44:40.452 +01:00 [INF] Request finished in 554.3667ms 200 application/json;charset=utf-8
+2019-03-01 14:46:06.644 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-01 14:46:07.712 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-03-01 14:46:07.810 +01:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:46:07.825 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:46:07.831 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-03-01 14:46:07.908 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:46:07.924 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN 1 ELSE 0
+END
+2019-03-01 14:46:07.942 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:46:07.947 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN 1 ELSE 0
+END
+2019-03-01 14:46:07.956 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:46:07.962 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN 1 ELSE 0
+END
+2019-03-01 14:46:09.394 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/  
+2019-03-01 14:46:09.620 +01:00 [INF] Request was redirected to /swagger
+2019-03-01 14:46:09.657 +01:00 [INF] Request finished in 268.9693ms 302 
+2019-03-01 14:46:09.672 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/index.html  
+2019-03-01 14:46:10.149 +01:00 [INF] Request finished in 476.9675ms 200 text/html
+2019-03-01 14:46:10.459 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/v1/swagger.json  
+2019-03-01 14:46:10.814 +01:00 [INF] Request finished in 355.2743ms 200 application/json;charset=utf-8
+2019-03-01 14:47:14.102 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-01 14:47:15.255 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-03-01 14:47:15.344 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:47:15.358 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:47:15.363 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-03-01 14:47:15.442 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:47:15.459 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN 1 ELSE 0
+END
+2019-03-01 14:47:15.479 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:47:15.484 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN 1 ELSE 0
+END
+2019-03-01 14:47:15.497 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 14:47:15.504 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN 1 ELSE 0
+END
+2019-03-01 14:47:16.554 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/  
+2019-03-01 14:47:16.745 +01:00 [INF] Request was redirected to /swagger
+2019-03-01 14:47:16.801 +01:00 [INF] Request finished in 249.727ms 302 
+2019-03-01 14:47:16.818 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/index.html  
+2019-03-01 14:47:17.224 +01:00 [INF] Request finished in 405.3144ms 200 text/html
+2019-03-01 14:47:17.565 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/v1/swagger.json  
+2019-03-01 14:47:17.884 +01:00 [INF] Request finished in 318.6048ms 200 application/json;charset=utf-8
+2019-03-01 14:47:49.516 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Photo  
+2019-03-01 14:47:49.526 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:47:49.530 +01:00 [INF] Request finished in 13.8193ms 204 
+2019-03-01 14:47:49.535 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Photo application/json 
+2019-03-01 14:47:49.594 +01:00 [INF] Successfully validated the token.
+2019-03-01 14:47:49.598 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:47:49.662 +01:00 [INF] Route matched with {action = "List", controller = "Photo"}. Executing action LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web)
+2019-03-01 14:47:50.911 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 14:47:51.319 +01:00 [INF] Executed action method LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 400.9961ms.
+2019-03-01 14:47:51.331 +01:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[LifeLike.Services.ViewModel.Photo, LifeLike.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-01 14:47:51.354 +01:00 [INF] Executed action LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web) in 1686.0521ms
+2019-03-01 14:47:51.358 +01:00 [INF] Request finished in 1822.4488ms 200 application/json; charset=utf-8
+2019-03-01 14:48:14.816 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Photo  
+2019-03-01 14:48:14.819 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:48:14.827 +01:00 [INF] Request finished in 11.2594ms 204 
+2019-03-01 14:48:14.863 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Photo application/json 
+2019-03-01 14:48:14.867 +01:00 [INF] Successfully validated the token.
+2019-03-01 14:48:14.870 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:48:14.873 +01:00 [INF] Route matched with {action = "List", controller = "Photo"}. Executing action LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web)
+2019-03-01 14:48:15.452 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 14:48:15.587 +01:00 [INF] Executed action method LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 132.00050000000002ms.
+2019-03-01 14:48:15.591 +01:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[LifeLike.Services.ViewModel.Photo, LifeLike.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-01 14:48:15.594 +01:00 [INF] Executed action LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web) in 714.05630000000008ms
+2019-03-01 14:48:15.596 +01:00 [INF] Request finished in 732.9387ms 200 application/json; charset=utf-8
+2019-03-01 14:50:21.529 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Photo  
+2019-03-01 14:50:21.534 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:50:21.537 +01:00 [INF] Request finished in 9.0187ms 204 
+2019-03-01 14:50:21.561 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Photo application/json 
+2019-03-01 14:50:21.564 +01:00 [INF] Successfully validated the token.
+2019-03-01 14:50:21.569 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:50:21.573 +01:00 [INF] Route matched with {action = "List", controller = "Photo"}. Executing action LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web)
+2019-03-01 14:50:22.331 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 14:50:22.456 +01:00 [INF] Executed action method LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 121.55430000000001ms.
+2019-03-01 14:50:22.459 +01:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[LifeLike.Services.ViewModel.Photo, LifeLike.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-01 14:50:22.464 +01:00 [INF] Executed action LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web) in 879.3508ms
+2019-03-01 14:50:22.470 +01:00 [INF] Request finished in 909.0565ms 200 application/json; charset=utf-8
+2019-03-01 14:51:20.979 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost/api/Photo/Create?Name=Szczepionki&Tags=Internet%2C%20Meme&City=noone&Camera=Internet multipart/form-data; boundary=----WebKitFormBoundaryjFpg8q2BJAosz6AI 163426
+2019-03-01 14:51:20.984 +01:00 [INF] CORS policy execution failed.
+2019-03-01 14:51:20.994 +01:00 [INF] Request origin http://localhost does not have permission to access the resource.
+2019-03-01 14:51:21.020 +01:00 [INF] Route matched with {action = "Create", controller = "Photo"}. Executing action LifeLike.Web.Controllers.PhotoController.Create (LifeLike.Web)
+2019-03-01 14:51:21.822 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PhotoController.Create (LifeLike.Web) with arguments (["LifeLike.Web.Controllers.UploadFile"]) - Validation state: "Valid"
+2019-03-01 14:51:29.955 +01:00 [INF] Executed action method LifeLike.Web.Controllers.PhotoController.Create (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 8123.2126000000007ms.
+2019-03-01 14:51:29.968 +01:00 [INF] Executing ObjectResult, writing value of type 'LifeLike.Shared.Enums.Result'.
+2019-03-01 14:51:29.973 +01:00 [INF] Executed action LifeLike.Web.Controllers.PhotoController.Create (LifeLike.Web) in 8950.188ms
+2019-03-01 14:51:29.987 +01:00 [INF] Request finished in 9008.6245ms 200 application/json; charset=utf-8
+2019-03-01 14:51:36.575 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Photo  
+2019-03-01 14:51:36.578 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:51:36.583 +01:00 [INF] Request finished in 7.027ms 204 
+2019-03-01 14:51:36.600 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Photo application/json 
+2019-03-01 14:51:36.603 +01:00 [INF] Successfully validated the token.
+2019-03-01 14:51:36.609 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:51:36.613 +01:00 [INF] Route matched with {action = "List", controller = "Photo"}. Executing action LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web)
+2019-03-01 14:51:37.278 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 14:51:37.409 +01:00 [INF] Executed action method LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 128.428ms.
+2019-03-01 14:51:37.413 +01:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[LifeLike.Services.ViewModel.Photo, LifeLike.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-01 14:51:37.416 +01:00 [INF] Executed action LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web) in 798.72890000000007ms
+2019-03-01 14:51:37.418 +01:00 [INF] Request finished in 817.8227ms 200 application/json; charset=utf-8
+2019-03-01 14:54:02.068 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/All  
+2019-03-01 14:54:02.071 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:54:02.074 +01:00 [INF] Request finished in 5.804ms 204 
+2019-03-01 14:54:02.105 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Page/All application/json 
+2019-03-01 14:54:02.108 +01:00 [INF] Successfully validated the token.
+2019-03-01 14:54:02.110 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:54:02.115 +01:00 [INF] Route matched with {action = "All", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.All (LifeLike.Web)
+2019-03-01 14:54:03.524 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.All (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 14:54:03.658 +01:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.All (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 128.374ms.
+2019-03-01 14:54:03.662 +01:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[LifeLike.Services.ViewModel.Page, LifeLike.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-01 14:54:03.666 +01:00 [INF] Executed action LifeLike.Web.Controllers.PageController.All (LifeLike.Web) in 1546.3600000000001ms
+2019-03-01 14:54:03.669 +01:00 [INF] Request finished in 1563.5878ms 200 application/json; charset=utf-8
+2019-03-01 14:54:06.745 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 14:54:06.748 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:54:06.750 +01:00 [INF] Request finished in 5.1507ms 204 
+2019-03-01 14:54:06.768 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Page/Details/Contact application/json 
+2019-03-01 14:54:06.772 +01:00 [INF] Successfully validated the token.
+2019-03-01 14:54:06.775 +01:00 [INF] CORS policy execution successful.
+2019-03-01 14:54:06.781 +01:00 [INF] Route matched with {action = "Details", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web)
+2019-03-01 14:54:07.872 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) with arguments (["Contact"]) - Validation state: "Valid"
+2019-03-01 14:54:20.031 +01:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) in 13246.3155ms
+2019-03-01 14:54:20.063 +01:00 [INF] Request finished in 13294.3313ms 500 application/json
+2019-03-01 15:08:14.199 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-01 15:08:15.216 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-03-01 15:08:15.322 +01:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:08:15.341 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:08:15.348 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-03-01 15:08:15.423 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:08:15.437 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN 1 ELSE 0
+END
+2019-03-01 15:08:15.454 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:08:15.459 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN 1 ELSE 0
+END
+2019-03-01 15:08:15.469 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:08:15.475 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN 1 ELSE 0
+END
+2019-03-01 15:08:16.685 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/  
+2019-03-01 15:08:16.869 +01:00 [INF] Request was redirected to /swagger
+2019-03-01 15:08:16.906 +01:00 [INF] Request finished in 223.6523ms 302 
+2019-03-01 15:08:16.924 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/index.html  
+2019-03-01 15:08:17.319 +01:00 [INF] Request finished in 395.4022ms 200 text/html
+2019-03-01 15:08:17.669 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/v1/swagger.json  
+2019-03-01 15:08:18.032 +01:00 [INF] Request finished in 362.5385ms 200 application/json;charset=utf-8
+2019-03-01 15:09:52.558 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-01 15:09:53.512 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-03-01 15:09:53.593 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:09:53.608 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:09:53.614 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-03-01 15:09:53.688 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:09:53.702 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN 1 ELSE 0
+END
+2019-03-01 15:09:53.719 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:09:53.723 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN 1 ELSE 0
+END
+2019-03-01 15:09:53.731 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:09:53.737 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN 1 ELSE 0
+END
+2019-03-01 15:09:54.836 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/  
+2019-03-01 15:09:54.996 +01:00 [INF] Request was redirected to /swagger
+2019-03-01 15:09:55.031 +01:00 [INF] Request finished in 197.2444ms 302 
+2019-03-01 15:09:55.042 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/index.html  
+2019-03-01 15:09:55.417 +01:00 [INF] Request finished in 375.4465ms 200 text/html
+2019-03-01 15:09:55.774 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/v1/swagger.json  
+2019-03-01 15:09:56.204 +01:00 [INF] Request finished in 429.9077ms 200 application/json;charset=utf-8
+2019-03-01 15:10:03.332 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Details/Contact  
+2019-03-01 15:10:03.341 +01:00 [INF] CORS policy execution successful.
+2019-03-01 15:10:03.347 +01:00 [INF] Request finished in 14.4312ms 204 
+2019-03-01 15:10:03.354 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Page/Details/Contact application/json 
+2019-03-01 15:10:03.447 +01:00 [INF] Successfully validated the token.
+2019-03-01 15:10:03.451 +01:00 [INF] CORS policy execution successful.
+2019-03-01 15:10:03.542 +01:00 [INF] Route matched with {action = "Details", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web)
+2019-03-01 15:10:03.698 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-03-01 15:10:03.736 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) with arguments (["Contact"]) - Validation state: "Valid"
+2019-03-01 15:10:03.806 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:10:03.817 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (Size = 7)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Category", "p"."Content", "p"."FullName", "p"."ImageUrl", "p"."LinkId", "p"."PageOrder", "p"."Published", "p"."ShortName"
+FROM "Pages" AS "p"
+WHERE "p"."ShortName" = @__id_0
+LIMIT 1
+2019-03-01 15:10:03.899 +01:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Details (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 146.51860000000002ms.
+2019-03-01 15:10:03.913 +01:00 [INF] Executing ObjectResult, writing value of type 'LifeLike.Services.ViewModel.Page'.
+2019-03-01 15:10:03.940 +01:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Details (LifeLike.Web) in 390.6576ms
+2019-03-01 15:10:03.944 +01:00 [INF] Request finished in 590.2378ms 200 application/json; charset=utf-8
+2019-03-01 15:10:07.521 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Page/Posts  
+2019-03-01 15:10:07.524 +01:00 [INF] CORS policy execution successful.
+2019-03-01 15:10:07.526 +01:00 [INF] Request finished in 4.9635ms 204 
+2019-03-01 15:10:07.550 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Page/Posts application/json 
+2019-03-01 15:10:07.553 +01:00 [INF] Successfully validated the token.
+2019-03-01 15:10:07.559 +01:00 [INF] CORS policy execution successful.
+2019-03-01 15:10:07.568 +01:00 [INF] Route matched with {action = "Posts", controller = "Page"}. Executing action LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web)
+2019-03-01 15:10:07.620 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-03-01 15:10:07.627 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 15:10:07.657 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:10:07.664 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__category_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Category", "p"."Content", "p"."FullName", "p"."ImageUrl", "p"."LinkId", "p"."PageOrder", "p"."Published", "p"."ShortName"
+FROM "Pages" AS "p"
+WHERE "p"."Category" = @__category_0
+2019-03-01 15:10:07.671 +01:00 [INF] Executed action method LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 40.2644ms.
+2019-03-01 15:10:07.676 +01:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[LifeLike.Services.ViewModel.Page, LifeLike.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-01 15:10:07.682 +01:00 [INF] Executed action LifeLike.Web.Controllers.PageController.Posts (LifeLike.Web) in 108.00070000000001ms
+2019-03-01 15:10:07.687 +01:00 [INF] Request finished in 136.8117ms 200 application/json; charset=utf-8
+2019-03-01 15:10:12.060 +01:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost/api/Photo  
+2019-03-01 15:10:12.063 +01:00 [INF] CORS policy execution successful.
+2019-03-01 15:10:12.065 +01:00 [INF] Request finished in 4.9756ms 204 
+2019-03-01 15:10:12.085 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Photo application/json 
+2019-03-01 15:10:12.089 +01:00 [INF] Successfully validated the token.
+2019-03-01 15:10:12.093 +01:00 [INF] CORS policy execution successful.
+2019-03-01 15:10:12.099 +01:00 [INF] Route matched with {action = "List", controller = "Photo"}. Executing action LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web)
+2019-03-01 15:16:25.636 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-01 15:16:26.745 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-03-01 15:16:26.850 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:16:26.868 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:16:26.873 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2019-03-01 15:16:26.952 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:16:26.966 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN 1 ELSE 0
+END
+2019-03-01 15:16:26.987 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:16:26.991 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN 1 ELSE 0
+END
+2019-03-01 15:16:27.000 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:16:27.004 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN 1 ELSE 0
+END
+2019-03-01 15:16:28.291 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/  
+2019-03-01 15:16:28.469 +01:00 [INF] Request was redirected to /swagger
+2019-03-01 15:16:28.499 +01:00 [INF] Request finished in 210.7318ms 302 
+2019-03-01 15:16:28.521 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/index.html  
+2019-03-01 15:16:28.837 +01:00 [INF] Request finished in 315.4862ms 200 text/html
+2019-03-01 15:16:29.178 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/v1/swagger.json  
+2019-03-01 15:16:29.550 +01:00 [INF] Request finished in 372.5334ms 200 application/json;charset=utf-8
+2019-03-01 15:16:36.473 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Photo  
+2019-03-01 15:16:36.531 +01:00 [INF] Route matched with {action = "List", controller = "Photo"}. Executing action LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web)
+2019-03-01 15:16:36.616 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-03-01 15:16:36.638 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 15:16:36.655 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:16:36.711 +01:00 [ERR] Failed executing DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Camera", "p"."City", "p"."Created", "p"."FileName", "p"."Tags", "p"."Title", "p"."Url"
+FROM "Photos" AS "p"
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such column: p.Id'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+2019-03-01 15:16:36.750 +01:00 [ERR] An exception occurred while iterating over the results of a query for context type 'LifeLike.Data.Models.PortalContext'.
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such column: p.Id'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such column: p.Id'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+2019-03-01 15:17:39.684 +01:00 [INF] User profile is available. Using 'C:\Users\smotyka\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-01 15:17:40.795 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-03-01 15:17:40.911 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:17:41.003 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:17:41.014 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetRoles" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_AspNetRoles" PRIMARY KEY,
+    "Name" TEXT NULL,
+    "NormalizedName" TEXT NULL,
+    "ConcurrencyStamp" TEXT NULL
+);
+2019-03-01 15:17:41.018 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUsers" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_AspNetUsers" PRIMARY KEY,
+    "UserName" TEXT NULL,
+    "NormalizedUserName" TEXT NULL,
+    "Email" TEXT NULL,
+    "NormalizedEmail" TEXT NULL,
+    "EmailConfirmed" INTEGER NOT NULL,
+    "PasswordHash" TEXT NULL,
+    "SecurityStamp" TEXT NULL,
+    "ConcurrencyStamp" TEXT NULL,
+    "PhoneNumber" TEXT NULL,
+    "PhoneNumberConfirmed" INTEGER NOT NULL,
+    "TwoFactorEnabled" INTEGER NOT NULL,
+    "LockoutEnd" TEXT NULL,
+    "LockoutEnabled" INTEGER NOT NULL,
+    "AccessFailedCount" INTEGER NOT NULL,
+    "Firstname" TEXT NULL,
+    "Lastname" TEXT NULL
+);
+2019-03-01 15:17:41.028 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Changelogs" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_Changelogs" PRIMARY KEY,
+    "Name" TEXT NULL,
+    "Description" TEXT NULL,
+    "Published" TEXT NOT NULL,
+    "Link" TEXT NULL
+);
+2019-03-01 15:17:41.036 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Configs" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_Configs" PRIMARY KEY,
+    "Name" TEXT NULL,
+    "Value" TEXT NULL,
+    "DisplayName" TEXT NULL,
+    "Type" INTEGER NOT NULL
+);
+2019-03-01 15:17:41.045 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "EventLogs" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_EventLogs" PRIMARY KEY,
+    "Type" INTEGER NOT NULL,
+    "Messages" TEXT NULL,
+    "StackTrace" TEXT NULL,
+    "EventTime" TEXT NOT NULL
+);
+2019-03-01 15:17:41.050 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Links" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_Links" PRIMARY KEY,
+    "Controller" TEXT NULL,
+    "Action" TEXT NULL,
+    "Name" TEXT NULL,
+    "Url" TEXT NULL,
+    "IconName" TEXT NULL,
+    "Order" INTEGER NOT NULL,
+    "Category" INTEGER NOT NULL
+);
+2019-03-01 15:17:41.060 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Pages" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_Pages" PRIMARY KEY,
+    "ShortName" TEXT NOT NULL,
+    "FullName" TEXT NULL,
+    "Content" TEXT NULL,
+    "PageOrder" INTEGER NOT NULL,
+    "Category" INTEGER NOT NULL,
+    "LinkId" INTEGER NOT NULL,
+    "Published" TEXT NOT NULL,
+    "ImageUrl" TEXT NULL
+);
+2019-03-01 15:17:41.068 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Photos" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_Photos" PRIMARY KEY,
+    "Title" TEXT NULL,
+    "FileName" TEXT NULL,
+    "Created" TEXT NOT NULL,
+    "Camera" TEXT NULL,
+    "Tags" TEXT NULL,
+    "City" TEXT NULL,
+    "Url" TEXT NULL
+);
+2019-03-01 15:17:41.080 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Videos" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_Videos" PRIMARY KEY,
+    "Name" TEXT NULL,
+    "Url" TEXT NULL,
+    "Description" TEXT NULL,
+    "PublishDate" TEXT NOT NULL,
+    "Category" INTEGER NOT NULL
+);
+2019-03-01 15:17:41.089 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetRoleClaims" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_AspNetRoleClaims" PRIMARY KEY AUTOINCREMENT,
+    "RoleId" TEXT NOT NULL,
+    "ClaimType" TEXT NULL,
+    "ClaimValue" TEXT NULL,
+    CONSTRAINT "FK_AspNetRoleClaims_AspNetRoles_RoleId" FOREIGN KEY ("RoleId") REFERENCES "AspNetRoles" ("Id") ON DELETE CASCADE
+);
+2019-03-01 15:17:41.099 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUserClaims" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_AspNetUserClaims" PRIMARY KEY AUTOINCREMENT,
+    "UserId" TEXT NOT NULL,
+    "ClaimType" TEXT NULL,
+    "ClaimValue" TEXT NULL,
+    CONSTRAINT "FK_AspNetUserClaims_AspNetUsers_UserId" FOREIGN KEY ("UserId") REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE
+);
+2019-03-01 15:17:41.111 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUserLogins" (
+    "LoginProvider" TEXT NOT NULL,
+    "ProviderKey" TEXT NOT NULL,
+    "ProviderDisplayName" TEXT NULL,
+    "UserId" TEXT NOT NULL,
+    CONSTRAINT "PK_AspNetUserLogins" PRIMARY KEY ("LoginProvider", "ProviderKey"),
+    CONSTRAINT "FK_AspNetUserLogins_AspNetUsers_UserId" FOREIGN KEY ("UserId") REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE
+);
+2019-03-01 15:17:41.118 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUserRoles" (
+    "UserId" TEXT NOT NULL,
+    "RoleId" TEXT NOT NULL,
+    CONSTRAINT "PK_AspNetUserRoles" PRIMARY KEY ("UserId", "RoleId"),
+    CONSTRAINT "FK_AspNetUserRoles_AspNetRoles_RoleId" FOREIGN KEY ("RoleId") REFERENCES "AspNetRoles" ("Id") ON DELETE CASCADE,
+    CONSTRAINT "FK_AspNetUserRoles_AspNetUsers_UserId" FOREIGN KEY ("UserId") REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE
+);
+2019-03-01 15:17:41.129 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUserTokens" (
+    "UserId" TEXT NOT NULL,
+    "LoginProvider" TEXT NOT NULL,
+    "Name" TEXT NOT NULL,
+    "Value" TEXT NULL,
+    CONSTRAINT "PK_AspNetUserTokens" PRIMARY KEY ("UserId", "LoginProvider", "Name"),
+    CONSTRAINT "FK_AspNetUserTokens_AspNetUsers_UserId" FOREIGN KEY ("UserId") REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE
+);
+2019-03-01 15:17:41.138 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_AspNetRoleClaims_RoleId" ON "AspNetRoleClaims" ("RoleId");
+2019-03-01 15:17:41.145 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "RoleNameIndex" ON "AspNetRoles" ("NormalizedName");
+2019-03-01 15:17:41.150 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_AspNetUserClaims_UserId" ON "AspNetUserClaims" ("UserId");
+2019-03-01 15:17:41.160 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_AspNetUserLogins_UserId" ON "AspNetUserLogins" ("UserId");
+2019-03-01 15:17:41.166 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_AspNetUserRoles_RoleId" ON "AspNetUserRoles" ("RoleId");
+2019-03-01 15:17:41.174 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "EmailIndex" ON "AspNetUsers" ("NormalizedEmail");
+2019-03-01 15:17:41.180 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "UserNameIndex" ON "AspNetUsers" ("NormalizedUserName");
+2019-03-01 15:17:41.288 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:17:41.302 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN 1 ELSE 0
+END
+2019-03-01 15:17:41.360 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:17:41.366 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN 1 ELSE 0
+END
+2019-03-01 15:17:41.393 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:17:41.398 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN 1 ELSE 0
+END
+2019-03-01 15:17:41.490 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:17:41.513 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 13), @p2='?' (Size = 4), @p3='?', @p4='?' (Size = 32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Configs" ("Id", "DisplayName", "Name", "Type", "Value")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2019-03-01 15:17:41.523 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 3), @p2='?' (Size = 11), @p3='?', @p4='?' (Size = 86)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Configs" ("Id", "DisplayName", "Name", "Type", "Value")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2019-03-01 15:17:41.535 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 13), @p2='?' (Size = 12), @p3='?', @p4='?' (Size = 11)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Configs" ("Id", "DisplayName", "Name", "Type", "Value")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2019-03-01 15:17:41.546 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?', @p4='?' (Size = 28)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Configs" ("Id", "DisplayName", "Name", "Type", "Value")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2019-03-01 15:17:41.554 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?', @p3='?' (Size = 5), @p4='?' (Size = 9), @p5='?' (Size = 4), @p6='?', @p7='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-03-01 15:17:41.563 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?', @p3='?', @p4='?' (Size = 4), @p5='?' (Size = 21), @p6='?', @p7='?' (Size = 56)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-03-01 15:17:41.570 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?', @p3='?', @p4='?' (Size = 4), @p5='?' (Size = 17), @p6='?', @p7='?' (Size = 40)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-03-01 15:17:41.580 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?', @p3='?', @p4='?' (Size = 7), @p5='?' (Size = 8), @p6='?', @p7='?' (Size = 40)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-03-01 15:17:41.587 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?', @p3='?', @p4='?' (Size = 7), @p5='?' (Size = 8), @p6='?', @p7='?' (Size = 51)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-03-01 15:17:41.595 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?', @p3='?', @p4='?' (Size = 6), @p5='?' (Size = 13), @p6='?', @p7='?' (Size = 22)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-03-01 15:17:41.603 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?', @p3='?', @p4='?' (Size = 4), @p5='?' (Size = 6), @p6='?', @p7='?' (Size = 26)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-03-01 15:17:41.613 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 7), @p2='?', @p3='?' (Size = 4), @p4='?' (Size = 2), @p5='?' (Size = 7), @p6='?', @p7='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-03-01 15:17:41.623 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?', @p3='?' (Size = 4), @p4='?' (Size = 4), @p5='?' (Size = 4), @p6='?', @p7='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-03-01 15:17:41.631 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?', @p3='?' (Size = 5), @p4='?' (Size = 4), @p5='?' (Size = 8), @p6='?', @p7='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-03-01 15:17:41.637 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?', @p3='?' (Size = 6), @p4='?' (Size = 4), @p5='?' (Size = 6), @p6='?', @p7='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-03-01 15:17:41.647 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?', @p3='?' (Size = 6), @p4='?' (Size = 12), @p5='?' (Size = 6), @p6='?', @p7='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-03-01 15:17:41.655 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?', @p3='?', @p4='?' (Size = 5), @p5='?' (Size = 17), @p6='?', @p7='?' (Size = 26)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-03-01 15:17:41.665 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?' (Size = 16), @p3='?' (Size = 10), @p4='?', @p5='?', @p6='?', @p7='?', @p8='?' (Size = 7)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Pages" ("Id", "Category", "Content", "FullName", "ImageUrl", "LinkId", "PageOrder", "Published", "ShortName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2019-03-01 15:17:43.284 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/  
+2019-03-01 15:17:43.564 +01:00 [INF] Request was redirected to /swagger
+2019-03-01 15:17:43.661 +01:00 [INF] Request finished in 380.5881ms 302 
+2019-03-01 15:17:43.702 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/index.html  
+2019-03-01 15:17:44.226 +01:00 [INF] Request finished in 523.5295ms 200 text/html
+2019-03-01 15:17:44.668 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/v1/swagger.json  
+2019-03-01 15:17:45.063 +01:00 [INF] Request finished in 395.5201ms 200 application/json;charset=utf-8
+2019-03-01 15:18:26.757 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/api/Photo  
+2019-03-01 15:18:26.821 +01:00 [INF] Route matched with {action = "List", controller = "Photo"}. Executing action LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web)
+2019-03-01 15:18:26.938 +01:00 [INF] Entity Framework Core 2.2.2-servicing-10034 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-03-01 15:18:26.967 +01:00 [INF] Executing action method LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web) - Validation state: "Valid"
+2019-03-01 15:18:26.994 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-03-01 15:18:27.001 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Camera", "p"."City", "p"."Created", "p"."FileName", "p"."Tags", "p"."Title", "p"."Url"
+FROM "Photos" AS "p"
+2019-03-01 15:18:27.056 +01:00 [INF] Executed action method LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 82.6932ms.
+2019-03-01 15:18:27.073 +01:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[LifeLike.Services.ViewModel.Photo, LifeLike.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-01 15:18:27.090 +01:00 [INF] Executed action LifeLike.Web.Controllers.PhotoController.List (LifeLike.Web) in 260.6113ms
+2019-03-01 15:18:27.094 +01:00 [INF] Request finished in 336.9958ms 200 application/json; charset=utf-8

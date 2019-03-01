@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using LifeLike.Data;
+﻿using AutoMapper;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Services.Extensions;
@@ -12,7 +6,10 @@ using LifeLike.Services.Structures;
 using LifeLike.Services.ViewModel;
 using LifeLike.Shared;
 using LifeLike.Shared.Enums;
-using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 
 namespace LifeLike.Services
 {
@@ -20,7 +17,7 @@ namespace LifeLike.Services
     {
         private readonly ILogService _logger;
 
-        public VideoService(IUnitOfWork uow, ILogService logger, IMapper mapper ) : base(uow, mapper)
+        public VideoService(IUnitOfWork uow, ILogService logger, IMapper mapper) : base(uow, mapper)
         {
             _logger = logger;
         }
@@ -49,11 +46,11 @@ namespace LifeLike.Services
 
         public IEnumerable<Video> List(VideoCategory category)
         {
-                var items = _repo.GetOverviewQuery(p => p.Category == category).AsEnumerable();
-                Debug.WriteLine(items.ToJSON());
-                return _mapper.Map<IEnumerable<Video>>(items);            
+            var items = _repo.GetOverviewQuery(p => p.Category == category).AsEnumerable();
+            Debug.WriteLine(items.ToJSON());
+            return _mapper.Map<IEnumerable<Video>>(items);
         }
-        public Video Get(long id)
+        public Video Get(string id)
         {
             var item = GetEntity(o => o.Id == id);
             return _mapper.Map<Video>(item);
@@ -75,7 +72,7 @@ namespace LifeLike.Services
             }
         }
 
-        public Result Delete(long id)
+        public Result Delete(string id)
         {
             try
             {
@@ -87,13 +84,13 @@ namespace LifeLike.Services
                 _logger.AddException(e);
                 return Result.Failed;
             }
-        }       
+        }
     }
 
     public interface IVideoService
     {
         Result Create(Video model);
-        Result Delete(long id);
+        Result Delete(string id);
         IEnumerable<Video> List(VideoCategory category);
         IEnumerable<Video> List();
     }

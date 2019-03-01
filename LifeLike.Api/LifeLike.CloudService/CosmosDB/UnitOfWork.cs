@@ -1,31 +1,27 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using LifeLike.Data.Models;
-using LifeLike.Data.Models.Enums;
+using LifeLike.CloudService.CosmosDB;
 using LifeLike.Shared;
 using LifeLike.Shared.Enums;
-using LifeLike.Shared.Models;
+using Microsoft.Extensions.Configuration;
 
-namespace LifeLike.Data
+namespace LifeLike.CloudService.CosmosDB
 {
-    public class UnitOfWork : IUnitOfWork 
+    public class CosmosUnitOfWork : IUnitOfWork 
     {
-        public UnitOfWork(PortalContext db)
+        public CosmosUnitOfWork(IConfiguration configuration)
         {
-            this.db= db;
+            _configuration = configuration;
         }
 
         public IRepository<T> Get<T>() where T : class
         {
-            IRepository<T> repo = new Repository<T>(db);
+            IRepository<T> repo = new DocumentDBRepository<T>(_configuration);
             return repo;
         }
         public Result Save()
         {
             try
             {
-                db.SaveChanges();
                 return Result.Success;
             }
             catch (Exception)
@@ -33,7 +29,7 @@ namespace LifeLike.Data
                 return Result.Failed;
             }
         }
-        private readonly PortalContext db;
+        private readonly IConfiguration _configuration;
     }
        
 }

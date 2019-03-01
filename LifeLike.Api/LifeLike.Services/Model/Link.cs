@@ -7,7 +7,7 @@ namespace LifeLike.Services.ViewModel
 {
     public class Link
     {
-        public long Id { get; set; }
+        public string Id { get; set; }
         public string Controller { get; set; }
         public string Action { get; set; }
         

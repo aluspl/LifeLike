@@ -1,6 +1,6 @@
 export default class Photo
 {    
-    Id: number;
+    Id: string;
     Title: string;
     FileName: string;
     ThumbUrl: string;
@@ -8,6 +8,5 @@ export default class Photo
     Camera: string;
     Tags: string;
     City: string;
-
     Created: Date;
 }

@@ -14,8 +14,8 @@ namespace LifeLike.CloudService.BlobStorage
     {
         public BlobStorage(IConfiguration configuration)
         {
-            var storageAccount = CloudStorageAccount.Parse(configuration["BlobStorage"]);
 
+            var storageAccount = CloudStorageAccount.Parse(configuration["BlobStorage"]);
             BlobClient = storageAccount.CreateCloudBlobClient();
             Container = BlobClient.GetContainerReference("images");
             Task.Run(async ()=>await Container.CreateIfNotExistsAsync());

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LifeLike.CloudService.BlobStorage;
+using LifeLike.CloudService.CosmosDB;
 using LifeLike.CloudService.TableStorage;
 using LifeLike.Data;
 using LifeLike.Data.Models;
@@ -7,6 +8,7 @@ using LifeLike.Repositories;
 using LifeLike.Services;
 using LifeLike.Services.Cloud;
 using LifeLike.Services.Profiles;
+using LifeLike.Services.Services;
 using LifeLike.Services.Structures;
 using LifeLike.Shared;
 using LifeLike.Shared.Services;
@@ -76,15 +78,27 @@ namespace LifeLike.Web
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<IBlobStorage, BlobStorage>();
+            if (Configuration["CosmosDBEndpoint"] != null)
+                services.AddScoped<IUnitOfWork, CosmosUnitOfWork>();
+            else
+                services.AddScoped<IUnitOfWork, UnitOfWork>();
+            if (Configuration["BlobStorage"] != null)
+            {
+                services.AddScoped<IStatisticService, StatisticCloudService>();
+                services.AddScoped<IBlobStorage, BlobStorage>();
+            }
+            else
+            {
+                services.AddScoped<IStatisticService, StatisticService>();
+                services.AddScoped<IBlobStorage, LocalBlobStorage>();
+            }
+
             services.AddScoped<ITableStorage, TableStorage>();
             services.AddScoped<ILogService, LogService>();
             services.AddScoped<ILinkService, LinkRepository>();
             services.AddScoped<IConfigService, ConfigService>();
             services.AddScoped<IPageService, PageService>();
             services.AddScoped<IPhotoService, PhotoService>();
-            services.AddScoped<IStatisticService, StatisticCloudService>();
 
             services.AddScoped<IVideoService, VideoService>();
             services.AddIdentity<User, IdentityRole>()
@@ -176,7 +190,7 @@ namespace LifeLike.Web
             app.UseRewriter(option);
             // app.UseHttpsRedirection();
             app.UseCors("CorsPolicy");
-           
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

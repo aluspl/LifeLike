@@ -21,17 +21,7 @@ namespace LifeLike.Web.Controllers
         {
             _config = configRepository;
         }
-
-        // GET
-        [HttpGet]
-        [Authorize]
-        public IActionResult GetList()
-        {
-            var configs = _config.List();
-            return Ok(configs);
-        }
-
-
+         
         [HttpPost]
         public IActionResult Create(Config model)
         {

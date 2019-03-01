@@ -6,11 +6,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LifeLike.Data.Models
 {
-    public class PhotoEntity
+    public class PhotoEntity : Entity
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Key]
-        public string Id { get; set; }
         public string Title { get; set; }
         public string FileName { get; set; }
         public DateTime Created { get; set; }
