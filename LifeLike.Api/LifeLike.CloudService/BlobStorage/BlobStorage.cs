@@ -1,6 +1,5 @@
 ﻿using LifeLike.Shared.Enums;
 using LifeLike.Shared.Services;
-using LifeLike.Structures.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -10,39 +9,46 @@ using System.Threading.Tasks;
 
 namespace LifeLike.CloudService.BlobStorage
 {
-    public class BlobStorage: IBlobStorage
+    public class BlobStorage : IBlobStorage
     {
         public BlobStorage(IConfiguration configuration)
         {
 
             var storageAccount = CloudStorageAccount.Parse(configuration["BlobStorage"]);
             BlobClient = storageAccount.CreateCloudBlobClient();
-            Container = BlobClient.GetContainerReference("images");
-            Task.Run(async ()=>await Container.CreateIfNotExistsAsync());
+        }
+
+        private CloudBlobContainer GetContainer(string folder)
+        {
+            var container = BlobClient.GetContainerReference(folder);
+            Task.Run(async () => await container.CreateIfNotExistsAsync());
+            return container;
         }
 
         public CloudBlobClient BlobClient { get; }
-        public CloudBlobContainer Container { get; }
 
-        public async Task<string> Create(Stream stream, string name)
+        public async Task<string> Create(Stream stream, string name, string folder)
         {
-            var blob = Container.GetBlockBlobReference(name);
+            var container = GetContainer(folder);
+            var blob = container.GetBlockBlobReference(name);
             await blob.UploadFromStreamAsync(stream);
             return blob.Uri.AbsoluteUri;
         }
 
-        public Result Remove(string name)
+        public Result Remove(string name, string folder)
         {
             try
             {
-                var blob = Container.GetBlockBlobReference(name);
-                Task.Run(async () => await blob.DeleteAsync());
+                var container = GetContainer(folder);
+
+                var blob = container.GetBlockBlobReference(name);
+                blob.DeleteAsync().Wait();
                 return Result.Success;
             }
-            catch (Exception)        
+            catch (Exception)
             {
                 return Result.Failed;
-            }        
+            }
         }
     }
 }

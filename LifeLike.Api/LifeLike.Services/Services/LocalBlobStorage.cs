@@ -15,18 +15,18 @@ namespace LifeLike.Services.Services
         {
             _hostingEnv = hosting;
         }
-        public async Task<string> Create(Stream stream, string fileName)
+        public async Task<string> Create(Stream stream, string fileName, string folder)
         {
-            var uploadPath = Path.Combine(_hostingEnv.WebRootPath, "photos");
+            var uploadPath = Path.Combine(_hostingEnv.WebRootPath, folder);
 
             using (var fileStream = new FileStream(Path.Combine(uploadPath, fileName), FileMode.Create))
             {
                 await stream.CopyToAsync(fileStream);
             }
-            return uploadPath;
+            return $"http://localhost/{folder}/{fileName}";
         }
 
-        public Result Remove(string fileName)
+        public Result Remove(string fileName, string folder)
         {
             return Result.Success;
         }

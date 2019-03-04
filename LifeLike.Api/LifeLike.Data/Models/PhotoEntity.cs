@@ -15,5 +15,6 @@ namespace LifeLike.Data.Models
         public string Tags { get; set; }
         public string City { get; set; }
         public string Url { get; set; }
+        public string ThumbUrl { get; set; }
     }
 }

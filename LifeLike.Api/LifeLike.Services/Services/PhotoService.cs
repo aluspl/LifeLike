@@ -68,7 +68,8 @@ namespace LifeLike.Services
                 using (var stream = model.Stream.OpenReadStream())
                 {
                     string name = model.Stream?.FileName;
-                    photo.Url = await _storage.Create(stream, name);
+                    photo.Url = await _storage.Create(stream, name, "photos");
+                    photo.ThumbUrl = await _storage.Create(stream, name, "thumbs");
                 }
                 CreateEntity(photo);
                 return Result.Success;
@@ -84,7 +85,7 @@ namespace LifeLike.Services
             try
             {
                 var entity = GetEntity(p => p.Id == id);
-                _storage.Remove(entity.FileName);
+                _storage.Remove(entity.FileName,"photos");
                 DeleteEntity(p => p.Id == id);
                 return Result.Success;
             }

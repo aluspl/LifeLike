@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'Page', loadChildren: './modules/post/page.module#PageModule' },  
   { path: 'Project', loadChildren: './modules/post/page.module#PageModule' },  
 
-  { path: 'Album', loadChildren: './modules/photo/photo.module#PhotoModule' },
+  { path: 'Photo', loadChildren: './modules/photo/photo.module#PhotoModule' },
   { path: 'Video', loadChildren: './modules/video/video.module#VideoModule' },
 
 ];

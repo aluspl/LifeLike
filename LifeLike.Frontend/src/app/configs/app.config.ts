@@ -24,7 +24,7 @@ export const AppConfig: any = {
         {
             Id: 2,
             Action: '',
-            Controller: 'Album',
+            Controller: 'Photo',
             Name: 'PHOTOS',
             Icon: 'camera-retro',
         },
