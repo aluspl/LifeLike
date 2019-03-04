@@ -21,7 +21,7 @@ namespace LifeLike.CloudService.BlobStorage
         private CloudBlobContainer GetContainer(string folder)
         {
             var container = BlobClient.GetContainerReference(folder);
-            Task.Run(async () => await container.CreateIfNotExistsAsync());
+            container.CreateIfNotExistsAsync().Wait();
             return container;
         }
 

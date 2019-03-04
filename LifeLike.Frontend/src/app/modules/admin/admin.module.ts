@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { PagesComponent } from './pages/pages/pages.component';
 import { PhotoCreateComponent } from './pages/photo-create/photo-create.component';
 import { PhotosComponent } from './pages/photos/photos.component';
+import { PhotoEditComponent } from './pages/photo-edit/photo-edit.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { PhotosComponent } from './pages/photos/photos.component';
     ConfigComponent,
     PagesComponent,
     PhotoCreateComponent,
+    PhotoEditComponent,
     PhotosComponent
   ],
   imports: [

@@ -31,6 +31,8 @@ namespace LifeLike.Web.Controllers
         [HttpPost("Create")]
         public async Task<IActionResult> Create(UploadFile model)
         {
+            var doc = Request.Form["PhotoStream"];
+            //model.PhotoStream = doc.;
             if (!ModelState.IsValid) return BadRequest(Result.Failed);
 
             var photo = new Photo

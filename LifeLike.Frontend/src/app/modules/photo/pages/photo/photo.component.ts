@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import Photo from '../../models/Photo';
 import { map } from 'rxjs/operators';
-import { RestService } from '../../../../shared/services/rest.service';
+import { PhotoRestService } from '../../services/photo-rest.service';
 
 @Component({
-  selector: 'app-album',
-  templateUrl: './album.component.html',
-  styleUrls: ['./album.component.scss']
+  selector: 'app-photo',
+  templateUrl: './photo.component.html',
+  styleUrls: ['./photo.component.scss']
 })
-export class AlbumComponent implements OnInit {
+export class PhotoComponent implements OnInit {
   IsLoading: boolean;
+  IsOpen: boolean;
   Photos: Photo[];
-
-  constructor(private restService: RestService) { }
+  CurrentPhoto: Photo;
+  constructor(private restService: PhotoRestService) { }
   GetPhotos() {
     this.IsLoading = true;
     this.restService.GetPhotos()
@@ -24,7 +25,13 @@ export class AlbumComponent implements OnInit {
         }))
       .subscribe((p: Photo[]) => this.Photos = p);
   }
+  OpenPhoto(photo: Photo)
+  {
+    this.IsOpen = true;
+    this.CurrentPhoto = photo;
+  }
   ngOnInit() {
+    this.IsOpen = false;
     this.GetPhotos();
   }
 

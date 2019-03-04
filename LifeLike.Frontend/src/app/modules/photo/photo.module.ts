@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared.module';
-import { AlbumComponent } from './pages/album/album.component';
-import { AlbumDetailComponent } from './pages/album-detail/album-detail.component';
 import { PhotoRoutingModule } from './photo-routing.module';
 import { PhotoRestService } from './services/photo-rest.service';
+import { PhotoDetailComponent } from './components/album-detail/photo-detail.component';
+import { PhotoComponent } from './pages/photo/photo.component';
 
 @NgModule({
   declarations: [
-    AlbumComponent,
-    AlbumDetailComponent
+    PhotoComponent,
+    PhotoDetailComponent
   ],
   imports: [
     CommonModule,

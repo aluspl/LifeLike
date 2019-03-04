@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
-import Page from '../../../../shared/models/Page';
 import { AdminRestService } from '../../services/admin-rest.service';
 import Photo from 'src/app/modules/photo/models/Photo';
 
@@ -11,7 +10,11 @@ import Photo from 'src/app/modules/photo/models/Photo';
 })
 export class PhotosComponent implements OnInit {
   Photos: Photo[];
+  SelectedPhoto: Photo;
+
   IsLoading: boolean;
+  IsEditMode: boolean;
+  IsCreateMode: boolean;
   error: any;
   constructor(private restService: AdminRestService) { }
 
@@ -30,6 +33,16 @@ export class PhotosComponent implements OnInit {
           this.IsLoading = false;
       });
   }
+  Edit(photo: Photo): void {
+    console.log('Edit');
+    console.log(photo);
+    this.IsEditMode= true;
+    this.SelectedPhoto = photo;
+  }
+  Create() : void {
+    console.log('Create');
+    this.IsCreateMode = true;
+  }
   GetPhotos(): void {
     this.restService.getPhotos()
       .pipe(
@@ -42,6 +55,8 @@ export class PhotosComponent implements OnInit {
   }
   ngOnInit() {
     this.GetPhotos();
+    this.IsEditMode=false;
+    this.IsCreateMode=false;
   }
 
 }

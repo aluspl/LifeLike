@@ -9,4 +9,5 @@ export default class Photo
     Tags: string;
     City: string;
     Created: Date;
+    PhotoStream: File;
 }

@@ -29,4 +29,13 @@
   </tbody>
 </table>
 <a class="btn btn-success" (click)="Create()"> Create </a>
+
+<div class="row" *ngIf="IsCreateMode">
+      <app-photo-create [IsCreateMode]="IsCreateMode"></app-photo-create>
+</div>
+<div class="row" *ngIf="IsEditMode">
+      <app-photo-edit [IsEditMode]="IsEditMode" [model]="SelectedPhoto"></app-photo-edit>
+</div>
+   
+
 <div *ngIf="error" class="alert alert-danger">{{error}}</div>

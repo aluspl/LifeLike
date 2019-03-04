@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { AdminRestService } from '../../services/admin-rest.service';
 import Photo from '../../../../modules/photo/models/Photo';
 
@@ -10,14 +9,10 @@ import Photo from '../../../../modules/photo/models/Photo';
 })
 export class PhotoEditComponent implements OnInit {
   @Input() model: Photo;
+  @Input() IsEditMode: boolean;
   loading = false;
-  returnUrl: any;
 
-  constructor(private restService: AdminRestService,
-    private route: ActivatedRoute,
-    private router: Router) {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-
+  constructor(private restService: AdminRestService) {
   }
 
   onSubmit() {
@@ -25,8 +20,8 @@ export class PhotoEditComponent implements OnInit {
     this.restService.editPhoto(this.model).subscribe(p => {
       this.loading = false;
       console.log(p);
-      this.router.navigate([this.returnUrl]);
-
+      this.IsEditMode = false;
+      this.model=null;
     });
   }
   ngOnInit() {
