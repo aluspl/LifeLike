@@ -8,10 +8,11 @@ namespace LifeLike.Services.ViewModel
         public string UserName { get; set; }
         [Required, MaxLength(256)]
         public string Password { get; set; }
-        public bool RememberMe { get; set; }
         public string Info { get;  set; }
         public string Token { get; set; }
         public string Id { get; set; }
         public string Email { get; set; }
+        public string Lastname { get; set; }
+        public string Firstname { get; set; }
     }
 }

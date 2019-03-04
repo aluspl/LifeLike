@@ -1,0 +1,32 @@
+<app-title Title="Photos"></app-title>
+
+<app-spinner *ngIf="IsLoading"></app-spinner>
+<table *ngIf="!IsLoading" class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Url</th>
+      <th scope="col">Tags</th>
+      <th scope="col">Created</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let photo of Photos">
+      <th scope="row">{{photo.Id}}</th>
+      <td>{{photo.Title}}</td>
+      <td>{{photo.Url}}</td>
+      <td>{{photo.Tags}}</td>
+      <td>{{photo.Created | date: 'dd/MM/yyyy'}}</td>
+      <td>
+        <div class="btn-group">
+          <a class="btn btn-success" [routerLink]="['PhotoEdit/'+ photo.Id ]"> Edit </a>
+          <a class="btn btn-warning" (click)='Remove(photo)'>Delete </a>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<a class="btn btn-success" (click)="Create()"> Create </a>
+<div *ngIf="error" class="alert alert-danger">{{error}}</div>

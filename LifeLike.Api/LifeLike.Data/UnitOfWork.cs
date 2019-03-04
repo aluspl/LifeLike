@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
+using LifeLike.Shared;
+using LifeLike.Shared.Enums;
+using LifeLike.Shared.Models;
 
 namespace LifeLike.Data
 {

@@ -1,9 +1,12 @@
 export default class Photo
 {    
-    Id: number;
-    Type: number;
-    Name: string;
-    Messages: string;
-    StackTrace: string;
-    EventTime: Date;
+    Id: string;
+    Title: string;
+    FileName: string;
+    ThumbUrl: string;
+    Url: string;
+    Camera: string;
+    Tags: string;
+    City: string;
+    Created: Date;
 }

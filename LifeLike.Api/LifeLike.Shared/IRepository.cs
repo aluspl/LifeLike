@@ -1,11 +1,10 @@
-﻿using System;
+﻿using LifeLike.Shared.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
-using LifeLike.Data.Models.Enums;
 
-namespace LifeLike.Data
+namespace LifeLike.Shared
 {
     public interface IRepository<T>
     {
@@ -14,7 +13,7 @@ namespace LifeLike.Data
 
         T GetDetail(Expression<Func<T, bool>> predicate = null);
         void Add(T entity);
-        void Delete(T entity);
+        void Delete(Entity entity);
         void Update(T entity);
         void DeleteAll();
     }

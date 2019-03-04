@@ -1,12 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 using LifeLike.Data.Models.Enums;
+using LifeLike.Shared.Models;
 
 namespace LifeLike.Data.Models
 {
-    public class LinkEntity
+    public class LinkEntity : Entity
     {
-        [Key]
-        public long Id { get; set; }
         public string Controller { get; set; }
         public string Action { get; set; }
         public string Name { get; set; }
@@ -15,6 +14,5 @@ namespace LifeLike.Data.Models
         public int Order { get; set; }
         public LinkCategory Category { get; set; }
         
-      
     }
 }

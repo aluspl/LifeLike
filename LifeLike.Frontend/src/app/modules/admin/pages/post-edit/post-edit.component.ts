@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AdminRestService } from '../../services/admin-rest.service';
-import  Page  from '../../../../shared/models/Page';
+import Page from '../../../../shared/models/Page';
 
 
 @Component({
@@ -10,19 +11,24 @@ import  Page  from '../../../../shared/models/Page';
 })
 export class PostEditComponent implements OnInit {
   @Input() model: Page;
-  @Input() EditMode: boolean;
   loading = false;
-  categories = [ 'App', 'Game', 'Tutorial', 'Page', 'Post'];
+  categories = ['App', 'Game', 'Tutorial', 'Page', 'Post'];
+  returnUrl: any;
 
-  constructor(private restService: AdminRestService) {
+  constructor(private restService: AdminRestService,
+    private route: ActivatedRoute,
+    private router: Router) {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
   }
 
   onSubmit() {
     this.loading = true;
-    this.restService.createPost(this.model).subscribe(p => {
+    this.restService.editPost(this.model).subscribe(p => {
       this.loading = false;
       console.log(p);
-      this.EditMode = false;
+      this.router.navigate([this.returnUrl]);
+
     });
   }
   ngOnInit() {

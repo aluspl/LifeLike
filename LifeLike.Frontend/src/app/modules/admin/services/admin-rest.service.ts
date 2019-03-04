@@ -8,13 +8,16 @@ import { RestService } from '../../../shared/services/rest.service';
 import  Page  from '../../../shared/models/Page';
 import { AppConfig } from '../../../configs/app.config';
 import { LoggerService } from 'src/app/core/services/logger.service';
+import Photo from '../../photo/models/Photo';
 
 
-const CreatePost = AppConfig.host + '/Api/Page/Create';
-const EditPost = AppConfig.host + '/Api/Page/Edit';
+const CreatePost = AppConfig.host + '/Api/Page';
 
-const ConfigList = AppConfig.host + '/Api/Config';
+const AllPost = AppConfig.host + '/Api/Page/All';
+
+const ConfigApi = AppConfig.host + '/Api/Config';
 const LogList = AppConfig.host + '/Api/Log/List';
+const PhotoApi = AppConfig.host + '/Api/Photo';
 
 
 @Injectable()
@@ -56,36 +59,84 @@ export class AdminRestService {
         catchError(RestService.handleError<Log[]>())
       );
   }
-  getPages(): any {
+  getPages(): Observable<Page[]> {
     return this.http
-    .get<Log[]>(LogList)
+    .get<Page[]>(AllPost)
     .pipe(
-      tap(_ => LoggerService.log(`fetched PAges`)),
-      catchError(RestService.handleError<Log[]>())
+      tap(_ => LoggerService.log(`fetched PAges`))
     );
   }
 
-  removePost(Id: number) {
-      // return this.http.delete()
+  removePost(id: number) {
+    const url = `${CreatePost}/${id}`; 
+    return this.http
+      .delete(url, RestService.httpOptions)
+      .pipe(
+        tap(_ => LoggerService.log(`Remove Post`))
+      );
   }
 
   editPost(page: Page) {
     return this.http
-    .put<Config[]>(ConfigList, page)
+    .put<string>(CreatePost, page)
     .pipe(
       tap(_ => LoggerService.log(`fetched Configs`)),
-      catchError(RestService.handleError<Config[]>())
     );
+  }
+  getPhotos(): Observable<Photo[]> {
+    return this.http
+    .get<Photo[]>(PhotoApi, RestService.httpOptions)
+    .pipe(
+      tap(_ => LoggerService.log(`fetched Photos`))
+    );
+  }
+  createPhoto(photo: Photo) {
+    return this.http
+    .post<Photo[]>(PhotoApi, RestService.httpOptions)
+    .pipe(
+      tap(_ => LoggerService.log(`fetched Photos`))
+    );
+  }
+  editPhoto(photo: Photo) {
+    return this.http
+    .put<string>(PhotoApi, photo, RestService.httpOptions)
+    .pipe(
+      tap(_ => LoggerService.log(`Edit Photo`)),
+    );
+  }
+  deletePhoto(id: string) {
+    const url = `${PhotoApi}/${id}`; 
+    return this.http
+      .delete(url, RestService.httpOptions)
+      .pipe(
+        tap(_ => LoggerService.log(`Delete Photo`))
+      );
   }
 
   getConfigs(): Observable<Config[]> {
     return this.http
-      .get<Config[]>(ConfigList)
+      .get<Config[]>(ConfigApi)
       .pipe(
-        tap(_ => LoggerService.log(`fetched Configs`)),
+        tap(_ => LoggerService.log(`Get Configs`)),
         catchError(RestService.handleError<Config[]>())
       );
   }
+  editConfig(config: Config) {
+    return this.http
+    .put<string>(ConfigApi, config, RestService.httpOptions)
+    .pipe(
+      tap(_ => LoggerService.log(`Edit Config`)),
+    );
+  }
+  deleteConfig(id: number) {
+    const url = `${ConfigApi}/${id}`; 
+    return this.http
+      .delete(url, RestService.httpOptions)
+      .pipe(
+        tap(_ => LoggerService.log(`Delete Config`))
+      );
+  }
+
   constructor(private http: HttpClient) {
   }
 }

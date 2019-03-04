@@ -15,7 +15,11 @@ LifeLike.Web.sln
 LifeLike.Frontend/node_modules/
 LifeLike.Frontend/dist/
 LifeLike.Web/ClientApp/package-lock.json
-LifeLike.Web/*.txt
 yarn.lock
 package-lock.json
 .vscode
+LifeLike.Api/LifeLike.Web/app.prod.settings.json
+LifeLike.Api/LifeLike.Web/*.txt
+LifeLike.Api/LifeLike.Web/wwwroot/photos/*
+LifeLike.Api/LifeLike.Web/wwwroot/thumbs/*
+LifeLike.Api/LifeLike.Web/app.prod.sql.settings.json

@@ -1,0 +1,12 @@
+{
+    "bindings": [
+      {
+        "name": "original",
+        "type": "blobTrigger",
+        "direction": "in",
+        "path": "photos/{name}",
+        "connection": "ImageRepository"
+      }
+    ],
+    "disabled": false
+  }

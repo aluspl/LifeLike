@@ -4,10 +4,12 @@ using System.Linq;
 using System.Linq.Expressions;
 using AutoMapper;
 using LifeLike.Data;
+using LifeLike.Shared;
+using LifeLike.Shared.Models;
 
 namespace LifeLike.Services
 {
-    public class BaseService<T> where T : class
+    public class BaseService<T> where T : Entity
     {
         public readonly IMapper _mapper;
         public readonly IUnitOfWork _unitOfWork;
@@ -22,7 +24,7 @@ namespace LifeLike.Services
         {
            return _repo.GetDetail(predicate);
         }
-        public void DeleteEntity(Expression<Func<T, bool>> predicate = null)
+        public void DeleteEntity(Expression<Func<T, bool>> predicate)
         {
             var item =_repo.GetDetail(predicate);    
             _repo.Delete(item);   
@@ -37,7 +39,7 @@ namespace LifeLike.Services
         }
         public bool IsAnyEntity(Expression<Func<T, bool>> predicate = null)
         {
-            return _repo.GetOverviewQuery(predicate).Any();
+            return _repo.GetDetail(predicate) != null;
         }
         public void UpdateEntity(T item)
         {

@@ -11,6 +11,9 @@ import { AdminRestService } from './services/admin-rest.service';
 import { ConfigComponent } from './pages/config/config.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { PagesComponent } from './pages/pages/pages.component';
+import { PhotoCreateComponent } from './pages/photo-create/photo-create.component';
+import { PhotosComponent } from './pages/photos/photos.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { RouterModule } from '@angular/router';
     LogDetailComponent,
     PostCreateComponent,
     PostEditComponent,
-    ConfigComponent
+    ConfigComponent,
+    PagesComponent,
+    PhotoCreateComponent,
+    PhotosComponent
   ],
   imports: [
     CommonModule,

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using LifeLike.Data.Models;
-using LifeLike.Data.Models.Enums;
-using LifeLike.Repositories;
-using LifeLike.Services;
+﻿using LifeLike.Services;
+using LifeLike.Services.Structures;
 using LifeLike.Services.ViewModel;
+using LifeLike.Shared.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,43 +24,31 @@ namespace LifeLike.Web.Controllers
         public IActionResult GetList()
         {
             var list = service.List();
-            return Ok(list);          
+            return Ok(list);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Create(Link model)
         {
-                if (ModelState.IsValid)
-                {
-                    return Ok(service.Create(model));
-                }
-                return BadRequest();        
+            if (ModelState.IsValid)
+            {
+                return Ok(service.Create(model));
+            }
+            return BadRequest();
         }
-        [HttpGet("Update")]
-        [Authorize]
-        public IActionResult Update(long id)
-        {
-            var model = service.Get(id);
-            return Ok(model);
-
-        }
-        [HttpPut("Update")]
-        [ValidateAntiForgeryToken]
+        [HttpPut]
         public Result Update([FromBody]Link model)
         {
-                return ModelState.IsValid
-                    ? service.Update(model)
-                    : Result.Failed;
+            return ModelState.IsValid
+                ? service.Update(model)
+                : Result.Failed;
         }
-
-        [HttpDelete("Delete")]
+        [HttpDelete]
         public Result Delete([FromBody]Link model)
-        {    
-                return ModelState.IsValid
-                    ? service.Delete(model.Action)
-                    : Result.Failed;
-          
+        {
+            return ModelState.IsValid
+                ? service.Delete(model.Action)
+                : Result.Failed;
         }
 
     }

@@ -1,12 +1,10 @@
-using LifeLike.Data;
-using LifeLike.Data.Models.Enums;
+using LifeLike.Shared.Enums;
 
-namespace LifeLike.Data
+namespace LifeLike.Shared
 {
     public interface IUnitOfWork
     {
         IRepository<T> Get<T>()  where T : class;
         Result Save();
-
     }
 }

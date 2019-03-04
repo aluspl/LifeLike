@@ -4,6 +4,7 @@ using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Services.Extensions;
 using LifeLike.Services.ViewModel;
+using LifeLike.Shared.Models;
 
 namespace LifeLike.Services.Profiles
 {
@@ -22,6 +23,8 @@ namespace LifeLike.Services.Profiles
             CreateMap<ConfigEntity, Config>();
             CreateMap<Config, ConfigEntity>();
             CreateMap<LinkEntity, Link>()
+                .ForMember(x => x.Category, d => d.MapFrom(src => src.Category.ToString()));
+            CreateMap<Link, LinkEntity>()
                 .ForMember(x => x.Category, d => d.MapFrom(src => src.Category.ToString()));
         }    
     }

@@ -1,9 +1,5 @@
 <app-title Title="Configs"></app-title>
 <app-spinner *ngIf="IsLoading"></app-spinner>
-Name: string;
-Value: string;
-DisplayName: string;
-Type: string;
 <table *ngIf="!IsLoading"  class="table table-striped">
     <thead class="thead-dark">
       <tr>
@@ -12,6 +8,7 @@ Type: string;
         <th scope="col">DisplayName</th>
         <th scope="col">Type</th>
         <th scope="col">Value</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -21,8 +18,14 @@ Type: string;
         <td>{{config.DisplayName}}</td>
         <td>{{config.Type}}</td>
         <td>{{config.Value}}</td>
-
+        <td>
+          <div class="btn-group">
+            <a class="btn btn-success" [routerLink]="['ConfigEdit/'+ config.Id ]"> Edit </a>
+            <a class="btn btn-warning" (click)='Remove(config)'>Delete </a>
+          </div>
+        </td>
       </tr>      
     </tbody>
   </table>
-
+  <a class="btn btn-success" (click)="Create()"> Create </a>
+  <div *ngIf="error" class="alert alert-danger">{{error}}</div>

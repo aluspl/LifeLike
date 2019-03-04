@@ -4,6 +4,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { AlbumComponent } from './pages/album/album.component';
 import { AlbumDetailComponent } from './pages/album-detail/album-detail.component';
 import { PhotoRoutingModule } from './photo-routing.module';
+import { PhotoRestService } from './services/photo-rest.service';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,8 @@ import { PhotoRoutingModule } from './photo-routing.module';
     SharedModule,
     PhotoRoutingModule
   ],
-
+  providers:[
+    PhotoRestService
+  ]
 })
 export class PhotoModule { }

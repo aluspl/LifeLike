@@ -1,4 +1,4 @@
-﻿namespace LifeLike.Data.Models.Enums
+﻿namespace LifeLike.Shared.Enums
 {
     
     public enum Result

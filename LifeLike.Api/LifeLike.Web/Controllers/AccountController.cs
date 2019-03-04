@@ -43,7 +43,14 @@ namespace LifeLike.Web.Controllers
                 return BadRequest(model);
             }
             Debug.WriteLine($"LOGIN: {model}");
-            var user = new User { UserName = model.Username, Email = model.Email, EmailConfirmed = true };
+            var user = new User
+            {
+                UserName = model.Username,
+                Email = model.Email,
+                EmailConfirmed = true,
+                Firstname = model.Firstname,
+                Lastname = model.Lastname
+            };
             var result = await _userManager.CreateAsync(user, model.Password);
 
             if (result.Succeeded)
@@ -55,7 +62,9 @@ namespace LifeLike.Web.Controllers
                     Token = token,
                     Id = user.Id,
                     UserName = model.Username,
-                    Email = model.Email
+                    Email = model.Email,
+                    Firstname = model.Firstname,
+                    Lastname = model.Lastname
                 };
                 return Ok(loginModel);
             }
@@ -74,13 +83,16 @@ namespace LifeLike.Web.Controllers
             }
             Debug.WriteLine($"LOGIN: {model}");
             var result = await _signInManager.PasswordSignInAsync(model.UserName,
-                model.Password, model.RememberMe, false);
+                model.Password, true, false);
             if (result.Succeeded)
             {
                 var user = _userManager.Users.SingleOrDefault(p => p.UserName == model.UserName);
                 var token = GenerateJwtToken(model.UserName, user);
                 model.Token = token;
                 model.Id = user.Id;
+                model.Password = null;
+                model.Firstname = user.Firstname;
+                model.Lastname = user.Lastname;
                 return Ok(model);
             }
             return Unauthorized();

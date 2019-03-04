@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using AutoMapper.QueryableExtensions;
+﻿using AutoMapper;
 using LifeLike.Data.Models;
-using LifeLike.Data.Models.Enums;
 using LifeLike.Services;
+using LifeLike.Services.Structures;
 using LifeLike.Services.ViewModel;
-using Microsoft.EntityFrameworkCore;
-using LifeLike.Data;
+using LifeLike.Shared;
+using LifeLike.Shared.Enums;
+using System;
+using System.Collections.Generic;
 
 namespace LifeLike.Repositories
 {
@@ -18,10 +15,10 @@ namespace LifeLike.Repositories
         private readonly ILinkService _link;
         private readonly ILogService _logger;
 
-        public PageService(IUnitOfWork work, 
+        public PageService(IUnitOfWork work,
             ILogService logger,
             ILinkService link,
-            IMapper mapper) : base(work,mapper)
+            IMapper mapper) : base(work, mapper)
         {
             _link = link;
             _logger = logger;
@@ -49,7 +46,6 @@ namespace LifeLike.Repositories
         {
             try
             {
-
                 _link.Create(link);
                 Create(model);
                 return Result.Success;
@@ -57,7 +53,6 @@ namespace LifeLike.Repositories
             catch (Exception e)
             {
                 _logger.AddException(e);
-
                 return Result.Failed;
             }
         }
@@ -77,7 +72,7 @@ namespace LifeLike.Repositories
         }
         private Page GetItem(Page model)
         {
-            var item = GetEntity(p=>p.Id==model.Id);
+            var item = GetEntity(p => p.Id == model.Id);
             return _mapper.Map<Page>(item);
         }
         public Page Get(long id)
@@ -111,12 +106,14 @@ namespace LifeLike.Repositories
             }
         }
 
-       
 
-        public Result Delete(Page model)
+
+        public Result Delete(string id)
         {
             try
             {
+                var model = GetEntity(p => p.Id == id);
+                if (model == null) return Result.Failed;
                 _link.Delete(model.ShortName);
                 DeleteEntity(query => query.Id == model.Id);
                 return Result.Success;
@@ -133,7 +130,7 @@ namespace LifeLike.Repositories
         {
             try
             {
-                var items =  _repo.GetOverview(p => p.Category == category);
+                var items = _repo.GetOverview(p => p.Category == category);
                 return _mapper.Map<IEnumerable<Page>>(items);
             }
             catch (Exception e)
@@ -150,7 +147,9 @@ namespace LifeLike.Repositories
         IEnumerable<Page> List(PageCategory category);
         Page Get(string id);
         Result Create(Page model, Link link);
-        Result Delete(Page model);
+        Result Create(Page model);
+
+        Result Delete(string id);
         Result Update(Page model);
         IEnumerable<Page> List();
     }

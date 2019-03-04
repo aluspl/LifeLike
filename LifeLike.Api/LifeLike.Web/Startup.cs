@@ -1,17 +1,26 @@
-﻿using System;
-using System.Diagnostics;
-using System.IdentityModel.Tokens.Jwt;
-using System.Text;
-using AutoMapper;
+﻿using AutoMapper;
+using LifeLike.CloudService.BlobStorage;
+using LifeLike.CloudService.CosmosDB;
+using LifeLike.CloudService.TableStorage;
+using LifeLike.Data;
 using LifeLike.Data.Models;
 using LifeLike.Repositories;
+using LifeLike.Services;
+using LifeLike.Services.Cloud;
+using LifeLike.Services.Profiles;
+using LifeLike.Services.Services;
+using LifeLike.Services.Structures;
+using LifeLike.Shared;
+using LifeLike.Shared.Services;
+using LifeLike.Web.Services.Logs;
+using LifeLike.Web.Services.Swagger;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,14 +28,10 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using Serilog;
-using Swashbuckle.AspNetCore.Swagger;
-using LifeLike.Web.Services.Swagger;
-using LifeLike.Services;
-using LifeLike.Data;
-using LifeLike.Services.Profiles;
-using LifeLike.Web.Services.Logs;
-using Microsoft.AspNetCore.Rewrite;
-using System.Net;
+using System;
+using System.Diagnostics;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
 
 namespace LifeLike.Web
 {
@@ -56,7 +61,7 @@ namespace LifeLike.Web
                 loggingBuilder.AddDebug();
             });
 
-            var connection = Configuration.GetConnectionString("DB");
+            var connection = Configuration["DB"];
             if (connection == null)
             {
                 services.AddDbContext<PortalContext>(options =>
@@ -70,49 +75,34 @@ namespace LifeLike.Web
                        b => b.MigrationsAssembly("LifeLike.Web")));
                 Debug.WriteLine("Using SQL");
             }
-            
+
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            if (Configuration["CosmosDBEndpoint"] != null)
+                services.AddScoped<IUnitOfWork, CosmosUnitOfWork>();
+            else
+                services.AddScoped<IUnitOfWork, UnitOfWork>();
+            if (Configuration["BlobStorage"] != null)
+            {
+                services.AddScoped<IStatisticService, StatisticCloudService>();
+                services.AddScoped<IBlobStorage, BlobStorage>();
+            }
+            else
+            {
+                services.AddScoped<IStatisticService, StatisticService>();
+                services.AddScoped<IBlobStorage, LocalBlobStorage>();
+            }
+
+            services.AddScoped<ITableStorage, TableStorage>();
             services.AddScoped<ILogService, LogService>();
             services.AddScoped<ILinkService, LinkRepository>();
             services.AddScoped<IConfigService, ConfigService>();
-            services.AddScoped<IAlbumService, AlbumService>();
             services.AddScoped<IPageService, PageService>();
             services.AddScoped<IPhotoService, PhotoService>();
+
             services.AddScoped<IVideoService, VideoService>();
-            services.AddIdentity<User, IdentityRole>()
-                .AddEntityFrameworkStores<PortalContext>()
-                .AddDefaultTokenProviders();
-            services.ConfigureApplicationCookie(options =>
-            {
-                options.LoginPath = "/Account/Login";
-                options.LogoutPath = "/Account/Logout";
 
-                options.ExpireTimeSpan = TimeSpan.FromDays(50);
-            });
-
-            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // => remove default claims
-            services
-                .AddAuthentication(options =>
-                {
-                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-
-                })
-                .AddJwtBearer(cfg =>
-                {
-                    cfg.RequireHttpsMetadata = false;
-                    cfg.SaveToken = true;
-                    cfg.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidIssuer = Configuration["JwtIssuer"],
-                        ValidAudience = Configuration["JwtIssuer"],
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtKey"])),
-                        ClockSkew = TimeSpan.Zero // remove delay of token when expire
-                    };
-                });
+            SetupIdentity(services);
             services.AddSwaggerSetting();
 
             var config = new MapperConfiguration(cfg =>
@@ -122,18 +112,9 @@ namespace LifeLike.Web
 
             var mapper = config.CreateMapper();
             services.AddSingleton(mapper);
-
-            services.AddCors();
-            services.AddCors(options =>
-            {
-                options.AddPolicy("CorsPolicy",
-                    builder => builder
-                    .AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials());
-            });
+            SetupCORS(services);
             services.AddMvc();
+            services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddMvc().AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
@@ -156,8 +137,8 @@ namespace LifeLike.Web
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-            }            
-            
+            }
+
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseExceptionMiddleware();
@@ -167,12 +148,14 @@ namespace LifeLike.Web
             app.UseRewriter(option);
             // app.UseHttpsRedirection();
             app.UseCors("CorsPolicy");
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller}/{action=Index}/{id?}");
-            });         
+            });
+
             DbInitializer.Initialize(context);
         }
 
@@ -190,6 +173,56 @@ namespace LifeLike.Web
             {
                 Log.Error(ex, "Failed to migrate or seed database");
             }
+        }
+
+        private void SetupCORS(IServiceCollection services)
+        {
+            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder
+                    .WithOrigins(Configuration["Frontend"])
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials()
+                    );
+            });
+        }
+
+        private void SetupIdentity(IServiceCollection services)
+        {
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<PortalContext>()
+                .AddDefaultTokenProviders();
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Account/Login";
+                options.LogoutPath = "/Account/Logout";
+
+                options.ExpireTimeSpan = TimeSpan.FromDays(50);
+            });
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // => remove default claims
+            services
+                .AddAuthentication(options =>
+                {
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+                })
+                .AddJwtBearer(cfg =>
+                {
+                    cfg.RequireHttpsMetadata = false;
+                    cfg.SaveToken = true;
+                    cfg.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidIssuer = Configuration["JwtIssuer"],
+                        ValidAudience = Configuration["JwtIssuer"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtKey"])),
+                        ClockSkew = TimeSpan.Zero // remove delay of token when expire
+                    };
+                });
         }
 
     }

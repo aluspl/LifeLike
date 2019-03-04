@@ -1,10 +1,8 @@
-﻿using System.Diagnostics;
-using System.Threading.Tasks;
-using AutoMapper;
-using LifeLike.Data.Models;
+﻿using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Services;
-using LifeLike.Services.Extensions;
+using LifeLike.Services.Structures;
+using LifeLike.Shared.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -51,8 +49,7 @@ namespace LifeLike.Web.Controllers
         {
             var configs = _config.List();
             var isLogged = User.Identity.IsAuthenticated;
-
-            Debug.WriteLine(configs.ToJSON());
+            _logger.LogInformation(EventLogType.Info, "Get Configs");
             return Ok(configs);
         }
     }

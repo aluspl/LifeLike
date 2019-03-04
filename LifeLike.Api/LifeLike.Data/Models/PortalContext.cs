@@ -1,8 +1,9 @@
-using System;
-using System.Linq;
 using LifeLike.Data.Models.Enums;
+using LifeLike.Shared.Enums;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
 
 namespace LifeLike.Data.Models
 {
@@ -11,22 +12,16 @@ namespace LifeLike.Data.Models
         public DbSet<LinkEntity> Links { get; set; }
         public DbSet<ChangelogEntity> Changelogs { get; set; }
         public DbSet<EventLogEntity> EventLogs { get; set; }
-        public DbSet<GalleryEntity> Galleries { get; set; }
-
         public DbSet<PageEntity> Pages { get; set; }
-
         public DbSet<PhotoEntity> Photos { get; set; }
         public DbSet<ConfigEntity> Configs { get; set; }
         public DbSet<VideoEntity> Videos { get; set; }
-
-        public DbSet<StatisticEntity> Stats { get; set; }
-
         public PortalContext(DbContextOptions<PortalContext> options) : base(options)
         {
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-                base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
         }
     }
 
@@ -46,16 +41,16 @@ namespace LifeLike.Data.Models
             }
 
             if (!context.Pages.Any())
-            {               
+            {
                 context.Pages.Add(new PageEntity
-                    {
-                        ShortName = "contact",
-                        Category = PageCategory.Page,
-                        FullName = "Contact Me",
-                        PageOrder = 0,
-                        Published = DateTime.Now,
-                        Content = "Phone: 600836095"
-                    }
+                {
+                    ShortName = "contact",
+                    Category = PageCategory.Page,
+                    FullName = "Contact Me",
+                    PageOrder = 0,
+                    Published = DateTime.Now,
+                    Content = "Phone: 600836095"
+                }
                 );
             }
 
@@ -68,64 +63,68 @@ namespace LifeLike.Data.Models
             {
                 Name = ConfigEntity.WelcomeVideo,
                 DisplayName = "Welcome Video",
-                Value = "ISTWYjAhEHc", Type = ConfigType.Video
-                
+                Value = "ISTWYjAhEHc",
+                Type = ConfigType.Video
+
             });
             context.Add(new ConfigEntity
             {
                 Name = ConfigEntity.WelcomeText,
                 DisplayName = "HI!",
-                Value = "Hi on my page , it is pure now, but it is great CMS :) ... it is gonna to be great cms", Type = ConfigType.Text
+                Value = "Hi on my page , it is pure now, but it is great CMS :) ... it is gonna to be great cms",
+                Type = ConfigType.Text
             });
             context.Add(new ConfigEntity
             {
                 Name = ConfigEntity.Rss1,
                 DisplayName = "First RSS Url",
-                Value = "http://kawowipodroznicy.pl/feed/", Type = ConfigType.RSS
+                Value = "http://kawowipodroznicy.pl/feed/",
+                Type = ConfigType.RSS
             });
             context.Add(new ConfigEntity
             {
                 Name = ConfigEntity.Rss2,
                 DisplayName = "Second RSS Url",
-                Value = "http://szymonmotyka.pl/feed/", Type = ConfigType.RSS
+                Value = "http://szymonmotyka.pl/feed/",
+                Type = ConfigType.RSS
             });
         }
 
-        private static void SetupLinks(PortalContext context)        
-        {         
-            context.Add(new LinkEntity          
-                {
-                    Action = "",
-                    Controller = "Posts",
-                    Name = "News",
-                    IconName = "newspaper",
+        private static void SetupLinks(PortalContext context)
+        {
+            context.Add(new LinkEntity
+            {
+                Action = "",
+                Controller = "Posts",
+                Name = "News",
+                IconName = "newspaper",
 
-                    Category = LinkCategory.Menu
-                });
-            context.Add(new LinkEntity          
-                {
-                    Action = "",
-                    Controller = "Albums",
-                    Name = "Albums",
-                    IconName = "camera-retro",
-                    Category = LinkCategory.Menu
-                });
+                Category = LinkCategory.Menu
+            });
             context.Add(new LinkEntity
-                {
-                    Action = "",
-                    Controller = "Videos",
-                    Name = "VIDEOS",
-                    IconName = "film",
-                    Category = LinkCategory.Menu
-                });
+            {
+                Action = "",
+                Controller = "Albums",
+                Name = "Albums",
+                IconName = "camera-retro",
+                Category = LinkCategory.Menu
+            });
             context.Add(new LinkEntity
-                {
-                    Action = "",
-                    Controller = "Pages",
-                    Name = "PROJECTS",
-                    IconName = "code",
-                    Category = LinkCategory.Menu
-                });            
+            {
+                Action = "",
+                Controller = "Videos",
+                Name = "VIDEOS",
+                IconName = "film",
+                Category = LinkCategory.Menu
+            });
+            context.Add(new LinkEntity
+            {
+                Action = "",
+                Controller = "Pages",
+                Name = "PROJECTS",
+                IconName = "code",
+                Category = LinkCategory.Menu
+            });
             context.Add(new LinkEntity
             {
                 Action = "",
@@ -141,7 +140,7 @@ namespace LifeLike.Data.Models
                 Name = "CONTACT",
                 IconName = "at",
                 Category = LinkCategory.Menu
-            });                             
+            });
             // Sidebar
             context.Add(new LinkEntity
             {

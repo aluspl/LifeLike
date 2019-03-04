@@ -5,7 +5,8 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
-
+using LifeLike.Shared;
+using LifeLike.Shared.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Data
@@ -30,11 +31,10 @@ namespace LifeLike.Data
             _dbset.Update(entity);
             _context.SaveChanges();
         }
-        public void Delete(T entity)
+        public void Delete(Entity entity)
         {
-            _dbset.Remove(entity);
+            _context.Remove(entity);
             _context.SaveChanges();
-
         }
         public T GetDetail(Expression<Func<T, bool>> predicate)
         {

@@ -1,26 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
-using LifeLike.Services;
+using LifeLike.Services.Structures;
 using LifeLike.Services.ViewModel;
-using Microsoft.EntityFrameworkCore;
-using LifeLike.Data;
+using LifeLike.Shared;
+using LifeLike.Shared.Enums;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LifeLike.Services
 {
-    
-    public  class LinkRepository : BaseService<LinkEntity>, ILinkService
+
+    public class LinkRepository : BaseService<LinkEntity>, ILinkService
     {
         private ILogService _logger;
 
         public LinkRepository(IUnitOfWork work, ILogService logger, IMapper mapper) : base(work, mapper)
         {
-           _logger = logger;
+            _logger = logger;
         }
 
         public Result Create(Link model)
@@ -50,7 +49,7 @@ namespace LifeLike.Services
             {
                 _logger.AddException(e);
                 throw;
-            }          
+            }
         }
         public IEnumerable<Link> List(LinkCategory category)
         {
@@ -64,17 +63,12 @@ namespace LifeLike.Services
                 throw;
             }
         }
-
-        public Link Get(long id)
-        {
-            var item = GetEntity(p => p.Id == id);
-            return _mapper.Map<Link>(item);
-        }
         public Link Get(string id)
         {
             var item = GetEntity(p => p.Action == id);
             return _mapper.Map<Link>(item);
         }
+     
         public Result Update(Link model)
         {
             try
@@ -96,7 +90,7 @@ namespace LifeLike.Services
         {
             try
             {
-                DeleteEntity(p => p.Id == model.Id);
+                DeleteEntity(p=>p.Id==model.Id);
                 return Result.Success;
 
             }
@@ -108,23 +102,22 @@ namespace LifeLike.Services
         }
         public Result Delete(string shortName)
         {
-           try
-            {
+            try
+            {               
                 DeleteEntity(p => p.Action == shortName);
                 return Result.Success;
-
             }
             catch (Exception e)
             {
                 _logger.AddException(e);
                 return Result.Failed;
-            }       
+            }
         }
-      
 
-       
+
+
     }
-    
+
     public interface ILinkService
     {
         IEnumerable<Link> List(LinkCategory category);
@@ -132,7 +125,6 @@ namespace LifeLike.Services
         Result Delete(string shortName);
         Result Create(Link link);
         IEnumerable<Link> List();
-        Link Get(long id);
         Result Update(Link model);
     }
 }

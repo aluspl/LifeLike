@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using LifeLike.Data;
 using LifeLike.Data.Models;
-using LifeLike.Data.Models.Enums;
+using LifeLike.Services.Structures;
 using LifeLike.Services.ViewModel;
-using Microsoft.EntityFrameworkCore;
+using LifeLike.Shared;
+using LifeLike.Shared.Enums;
 
 namespace LifeLike.Services
 {
@@ -17,11 +14,9 @@ namespace LifeLike.Services
         private readonly ILogService log;
 
         public ConfigService(IUnitOfWork context, ILogService logger, IMapper mapper) : base(context, mapper)
-        {
-            
+        {            
             log = logger;
         }
-
 
         public Result Create(Config model)
         {
@@ -36,10 +31,8 @@ namespace LifeLike.Services
                 return Result.Failed;
             }
         }
-
       
-
-        public Config Get(long id)
+        public Config Get(string id)
         {
             var item = _repo.GetDetail(p => p.Id == id);
             return _mapper.Map<Config>(item);
@@ -49,7 +42,7 @@ namespace LifeLike.Services
         {
             try
             {
-                ConfigEntity item = GetEntity(p => p.Name == model.Name);
+                var item = GetEntity(p => p.Name == model.Name);
                 _mapper.Map(model, item);
                 _repo.Update(item);
                 return Result.Success;
@@ -66,7 +59,6 @@ namespace LifeLike.Services
             try
             {
                 DeleteEntity(p => p.Name == id);
-
                 return Result.Success;
             }
             catch (Exception e)
@@ -75,26 +67,11 @@ namespace LifeLike.Services
                 return Result.Failed;
             }
         }
-
-        public Config Get(string id)
-        {
-            try
-            {
-                var item = GetEntity(p => p.Name == id);
-                return _mapper.Map<Config>(item);
-            }
-            catch (Exception e)
-            {
-                log.AddException(e);
-                return null;
-            }
-        }
-
+     
         public IEnumerable<Config> List()
         {
             var items= GetAllEntities();
             return _mapper.Map<IEnumerable<Config>>(items);
-
         }
 
        

@@ -16,7 +16,10 @@
           </a>
         </li>
         <li class="nav-item" *ngFor="let menu of MenuItems">
-          <a class="nav-link"[routerLink]="[ menu.Controller + '/' + menu.Action ]" ><i class="fas fa-{{menu.Icon}}" ></i> {{menu.Name}}</a>
+          <a class="nav-link"[routerLink]="[ menu.Controller + '/' + menu.Action ]" ><i class="fas fa-{{menu.Icon}}" ></i> {{menu.Name | uppercase }}</a>
+        </li>
+        <li *ngIf="IsLogin" class="nav-item">
+          <a class="nav-link" routerLink="Admin" > Hello {{CurrentUser.UserName | uppercase }}</a>
         </li>
       </ul>
     </div>

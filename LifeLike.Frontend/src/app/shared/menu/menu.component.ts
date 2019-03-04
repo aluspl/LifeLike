@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../services/rest.service';
 import  MenuItem  from '../models/MenuItem';
+import { AuthenticationService } from '../services/authentication.service';
+import UserLogin from '../models/UserLogin';
 
 
 @Component({
@@ -10,7 +12,16 @@ import  MenuItem  from '../models/MenuItem';
 })
 export class MenuComponent implements OnInit {
   MenuItems: MenuItem[];
-  constructor(private restService: RestService) { }
+  IsLogin: Boolean;
+  CurrentUser: UserLogin;
+  constructor(private restService: RestService,
+    private authService: AuthenticationService) {
+      this.IsLogin = authService.IsLogin;
+      authService.currentUser.subscribe(x=>{
+        this.CurrentUser=x
+        this.IsLogin = x!=null;      
+      })
+    }
   getMenuItems(): void {
     this.restService.getMenuItems()
       .subscribe(items => this.MenuItems = items);
