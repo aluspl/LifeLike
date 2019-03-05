@@ -1,6 +1,6 @@
 <app-title Title="Configs"></app-title>
 <app-spinner *ngIf="IsLoading"></app-spinner>
-<table *ngIf="!IsLoading"  class="table table-striped">
+<table   class="table table-striped">
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
@@ -11,7 +11,7 @@
         <th scope="col">Actions</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="!IsLoading">
       <tr *ngFor="let config of Configs">
         <th scope="row">{{config.Id}}</th>
         <td>{{config.Name}}</td>

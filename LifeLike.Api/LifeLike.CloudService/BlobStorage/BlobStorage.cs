@@ -31,9 +31,10 @@ namespace LifeLike.CloudService.BlobStorage
         {
             var container = GetContainer(folder);
             var blob = container.GetBlockBlobReference(name);
-            await blob.UploadFromStreamAsync(stream);
+            await blob.UploadFromStreamAsync(stream);            
             return blob.Uri.AbsoluteUri;
         }
+
 
         public Result Remove(string name, string folder)
         {
@@ -49,6 +50,17 @@ namespace LifeLike.CloudService.BlobStorage
             {
                 return Result.Failed;
             }
+        }
+
+        public async Task<string> CreateThumb(string name, string folder)
+        {
+            var mainContainer = GetContainer("photos");
+            var max = mainContainer.GetBlockBlobReference("name");
+            var thumbContainer = GetContainer(folder);
+            var thumb = thumbContainer.GetBlockBlobReference(name);
+
+            await thumb.StartCopyAsync(max.Uri);
+            return thumb.Uri.AbsoluteUri;
         }
     }
 }

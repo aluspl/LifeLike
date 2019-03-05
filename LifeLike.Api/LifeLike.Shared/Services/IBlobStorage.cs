@@ -7,7 +7,8 @@ namespace LifeLike.Shared.Services
 {
     public interface IBlobStorage
     {
-        Task<String> Create(Stream stream, string fileName, string folder);
+        Task<string> Create(Stream stream, string fileName, string folder);
         Result Remove(string fileName, string folder);
+        Task<string> CreateThumb(string name, string folder);
     }
 }

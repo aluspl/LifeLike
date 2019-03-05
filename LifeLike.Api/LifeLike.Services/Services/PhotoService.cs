@@ -69,7 +69,7 @@ namespace LifeLike.Services
                 {
                     string name = model.Stream?.FileName;
                     photo.Url = await _storage.Create(stream, name, "photos");
-                    photo.ThumbUrl = await _storage.Create(stream, name, "thumbs");
+                    photo.ThumbUrl = await _storage.CreateThumb(name, "thumbs");
                 }
                 CreateEntity(photo);
                 return Result.Success;

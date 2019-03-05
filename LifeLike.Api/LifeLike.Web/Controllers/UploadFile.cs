@@ -5,7 +5,6 @@ namespace LifeLike.Web.Controllers
 {
     public class UploadFile
     {
-        [Required]
         public IFormFile PhotoStream { get; set; }
         [Required]
         public string Name { get; set; }

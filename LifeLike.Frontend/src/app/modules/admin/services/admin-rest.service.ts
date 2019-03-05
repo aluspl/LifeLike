@@ -95,7 +95,7 @@ export class AdminRestService {
   }
   createPhoto(file: FileUpload){    
     const formData: FormData = new FormData();
-    formData.append('PhotoStream', file.PhotoStream, file.PhotoStream.name);
+    formData.append(file.PhotoStream.name, file.PhotoStream);
     formData.append('Name', file.Name);
     formData.append('Camera', file.Camera);
     formData.append('City', file.City);
@@ -128,8 +128,7 @@ export class AdminRestService {
     return this.http
       .get<Config[]>(ConfigApi)
       .pipe(
-        tap(_ => LoggerService.log(`Get Configs`)),
-        catchError(RestService.handleError<Config[]>())
+        tap(_ => LoggerService.log(`Get Configs`))
       );
   }
   editConfig(config: Config) {
