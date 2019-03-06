@@ -6,9 +6,9 @@ import MenuItem from '../models/MenuItem';
 import Video from '../../modules/video/models/Video';
 import Config from '../models/Config';
 import { AppConfig } from '../../configs/app.config';
-import { LoggerService } from 'src/app/core/services/logger.service';
 import UserLogin from '../models/UserLogin';
 import UserRegister from '../models/UserRegister';
+import { LoggerService } from '../../core/services/logger.service';
 
 const ConfigList = AppConfig.host + '/api/Config';
 const VideoList = AppConfig.host + '/api/Video/List';

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { AdminRestService } from '../../services/admin-rest.service';
-import Photo from 'src/app/modules/photo/models/Photo';
+import Photo from '../../../../modules/photo/models/Photo';
 
 @Component({
   selector: 'app-admin-photos',
