@@ -8,7 +8,7 @@ COPY LifeLike.Test/*.csproj ./LifeLike.Test/
 COPY LifeLike.Data/*.csproj ./LifeLike.Data/
 COPY LifeLike.Services/*.csproj ./LifeLike.Services/
 COPY LifeLike.Shared/*.csproj ./LifeLike.Shared/
-COPY LifeLike.LifeLike.CloudService/*.csproj ./LifeLike.LifeLike.CloudService/
+COPY LifeLike.CloudService/*.csproj ./LifeLike.CloudService/
 
 RUN dotnet restore
 

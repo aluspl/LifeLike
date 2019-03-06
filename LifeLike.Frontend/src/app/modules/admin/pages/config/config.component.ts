@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {map} from 'rxjs/internal/operators';
+import { map } from 'rxjs/internal/operators';
 import { AdminRestService } from '../../services/admin-rest.service';
-import  Config  from '../../../../shared/models/Config';
+import Config from '../../../../shared/models/Config';
 
 @Component({
   selector: 'app-config',
@@ -13,21 +13,27 @@ export class ConfigComponent implements OnInit {
   displayedColumns = ['Name', 'Value', 'DisplayName', 'Type'];
   IsLoading: boolean;
   Configs: Config[];
+  error: string;
+
   constructor(private restService: AdminRestService) { }
   GetLogs(): void {
     this.IsLoading = true;
-     this.restService
-       .getConfigs()
-       .pipe(
-         map(data => {
-           this.IsLoading = false;
-           console.log(data);
-           return data;
-         },
-         error => {
-           console.log(error);
-             this.IsLoading = false;
-         })).subscribe(p => this.Configs = p);
+    this.restService
+      .getConfigs()
+      .pipe(
+        map(data => {
+          this.IsLoading = false;
+          console.log(data);
+          return data;
+        },
+          error => {
+            console.log(error);
+            error= error;
+            this.IsLoading = false;
+          })).subscribe(p => this.Configs = p);
+
+  }
+  Create() {
 
   }
   ngOnInit() {

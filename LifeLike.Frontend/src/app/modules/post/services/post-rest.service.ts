@@ -5,7 +5,7 @@ import {Observable, of} from 'rxjs/index';
 import { RestService } from '../../../shared/services/rest.service';
 import  Page  from '../../../shared/models/Page';
 import { AppConfig } from '../../../configs/app.config';
-import { LoggerService } from 'src/app/core/services/logger.service';
+import { LoggerService } from '../../../core/services/logger.service';
 
 
 

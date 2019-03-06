@@ -7,7 +7,7 @@ import  Config  from '../../../shared/models/Config';
 import { RestService } from '../../../shared/services/rest.service';
 import  Page  from '../../../shared/models/Page';
 import { AppConfig } from '../../../configs/app.config';
-import { LoggerService } from 'src/app/core/services/logger.service';
+import { LoggerService } from '../../../core/services/logger.service';
 import Photo from '../../photo/models/Photo';
 import FileUpload from '../models/FileUpload';
 import { ok } from 'assert';
