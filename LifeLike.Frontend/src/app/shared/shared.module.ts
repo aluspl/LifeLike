@@ -18,9 +18,9 @@ import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
-    SpinnerComponent,
-    TitleComponent,
-    MenuComponent,
+    // SpinnerComponent,
+    // TitleComponent,
+    // MenuComponent,
     HomeComponent,
     YoutubePlayerComponent,
     IntroTextComponent,
@@ -30,11 +30,9 @@ import { RegisterComponent } from './pages/register/register.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-
     RouterModule
   ],
   exports: [
-    CommonModule,
     SpinnerComponent,
     TitleComponent,
     MenuComponent,

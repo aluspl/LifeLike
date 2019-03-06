@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.1-sdk AS build
+FROM microsoft/dotnet:2.2-sdk AS build
 WORKDIR /app
 
 COPY *.sln .
@@ -18,7 +18,7 @@ WORKDIR /app/LifeLike.Web
 RUN dotnet publish -c Release -o /out
 
 
-FROM microsoft/dotnet:2.1-aspnetcore-runtime AS runtime
+FROM microsoft/dotnet:2.2-aspnetcore-runtime AS runtime
 WORKDIR /out
 COPY --from=build /out .
 
