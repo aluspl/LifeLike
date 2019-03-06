@@ -1,19 +1,15 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {catchError, tap} from 'rxjs/operators';
-import {Observable, of} from 'rxjs/index';
-import { RestService } from '../../../shared/services/rest.service';
+import {HttpClient} from '@angular/common/http';
 import { AppConfig } from '../../../configs/app.config';
-import { LoggerService } from 'src/app/core/services/logger.service';
+import Photo from '../models/Photo';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { RestService } from '../../../shared/services/rest.service';
+import { LoggerService } from '../../../core/services/logger.service';
 
 
-
-const PageDetail = AppConfig.host + '/api/Page/Details';
-
-const ProjectList = AppConfig.host + '/api/Page/Projects';
-const PostList = AppConfig.host + '/api/Page/Posts';
-const PageList = AppConfig.host + '/api/Page/All';
-
+const PhotoList = AppConfig.host + '/api/Photo';
+const PhotoCreate = AppConfig.host + '/api/Photo/Create';
 
 
 @Injectable()
@@ -27,6 +23,21 @@ export class PhotoRestService {
   //       catchError(RestService.handleError<Page[]>())
   //     );
   // }
+PostPhoto(photo: Photo)
+{
+  return this.http
+  .post<any>(PhotoCreate, photo, RestService.httpOptions)
+  .pipe(
+    tap(_ => LoggerService.log(`fetched Photos`))
+  );
+}
+GetPhotos(): Observable<Photo[]> {
+  return this.http
+  .get<Photo[]>(PhotoList, RestService.httpOptions)
+  .pipe(
+    tap(_ => LoggerService.log(`fetched Photos`))
+  );
+}
 
   // getPageDetail(name: string): Observable<Page> {
   //   const url = `${PageDetail}/${name}`;

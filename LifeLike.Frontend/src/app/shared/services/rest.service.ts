@@ -9,10 +9,8 @@ import { AppConfig } from '../../configs/app.config';
 import { LoggerService } from 'src/app/core/services/logger.service';
 import UserLogin from '../models/UserLogin';
 import UserRegister from '../models/UserRegister';
-import Photo from 'src/app/modules/photo/models/Photo';
 
 const ConfigList = AppConfig.host + '/api/Config';
-const PhotoList = AppConfig.host + '/api/Photo';
 const VideoList = AppConfig.host + '/api/Video/List';
 const LoginLink=  AppConfig.host + '/api/Account/Login';
 const RegisterLink=  AppConfig.host + '/api/Account/Register';
@@ -44,14 +42,7 @@ export class RestService {
   getMenuItems(): Observable<MenuItem[]> {
     return of(AppConfig.MenuItems);
   }
-  GetPhotos(): Observable<Photo[]> {
-    return this.http
-    .get<Photo[]>(PhotoList, RestService.httpOptions)
-    .pipe(
-      tap(_ => LoggerService.log(`fetched Photos`))
-    );
-  }
-
+ 
   GetVideos(): Observable<Video[]> {
     return this.http
       .get<Video[]>(VideoList, RestService.httpOptions)

@@ -23,6 +23,10 @@ export class ConfigComponent implements OnInit {
            this.IsLoading = false;
            console.log(data);
            return data;
+         },
+         error => {
+           console.log(error);
+             this.IsLoading = false;
          })).subscribe(p => this.Configs = p);
 
   }

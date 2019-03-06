@@ -1,15 +1,11 @@
-using LifeLike.Services;
 using LifeLike.Services.Structures;
 using LifeLike.Services.ViewModel;
 using LifeLike.Shared.Enums;
-using LifeLike.Shared.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
 
 namespace LifeLike.Web.Controllers
@@ -28,10 +24,20 @@ namespace LifeLike.Web.Controllers
             _photos = photos;
         }
 
-        [HttpPost("Create")]
+        [HttpPost("Create"), DisableRequestSizeLimit]
         public async Task<IActionResult> Create(UploadFile model)
         {
-            if (!ModelState.IsValid) return BadRequest(Result.Failed);
+            if (model.PhotoStream == null)
+            {
+                if (Request.Form.Files.Count == 0) model.PhotoStream = null;
+                else
+                {
+                    var doc = Request.Form.Files[0];
+                    model.PhotoStream = doc;
+                }
+            }
+            if (!ModelState.IsValid)
+                return BadRequest(Result.Failed);
 
             var photo = new Photo
             {

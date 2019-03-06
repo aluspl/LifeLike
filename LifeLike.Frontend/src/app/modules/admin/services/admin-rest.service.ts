@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpRequest, HttpEventType, HttpResponse} from '@angular/common/http';
 import {catchError, tap} from 'rxjs/operators';
-import {Observable, of} from 'rxjs/index';
+import {Observable, of, Subject} from 'rxjs/index';
 import Log from '../models/Log';
 import  Config  from '../../../shared/models/Config';
 import { RestService } from '../../../shared/services/rest.service';
@@ -9,6 +9,8 @@ import  Page  from '../../../shared/models/Page';
 import { AppConfig } from '../../../configs/app.config';
 import { LoggerService } from 'src/app/core/services/logger.service';
 import Photo from '../../photo/models/Photo';
+import FileUpload from '../models/FileUpload';
+import { ok } from 'assert';
 
 
 const CreatePost = AppConfig.host + '/Api/Page';
@@ -18,6 +20,7 @@ const AllPost = AppConfig.host + '/Api/Page/All';
 const ConfigApi = AppConfig.host + '/Api/Config';
 const LogList = AppConfig.host + '/Api/Log/List';
 const PhotoApi = AppConfig.host + '/Api/Photo';
+const CreatePhotoApi = AppConfig.host + '/Api/Photo/Create';
 
 
 @Injectable()
@@ -90,12 +93,20 @@ export class AdminRestService {
       tap(_ => LoggerService.log(`fetched Photos`))
     );
   }
-  createPhoto(photo: Photo) {
-    return this.http
-    .post<Photo[]>(PhotoApi, RestService.httpOptions)
-    .pipe(
-      tap(_ => LoggerService.log(`fetched Photos`))
-    );
+  createPhoto(file: FileUpload){    
+    const formData: FormData = new FormData();
+    formData.append(file.PhotoStream.name, file.PhotoStream);
+    formData.append('Name', file.Name);
+    formData.append('Camera', file.Camera);
+    formData.append('City', file.City);
+    formData.append('Tags', file.Tags);
+
+    
+    const req = new HttpRequest('POST', CreatePhotoApi, formData, {
+      reportProgress: true
+    });
+
+    return this.http.request(req);
   }
   editPhoto(photo: Photo) {
     return this.http
@@ -117,8 +128,7 @@ export class AdminRestService {
     return this.http
       .get<Config[]>(ConfigApi)
       .pipe(
-        tap(_ => LoggerService.log(`Get Configs`)),
-        catchError(RestService.handleError<Config[]>())
+        tap(_ => LoggerService.log(`Get Configs`))
       );
   }
   editConfig(config: Config) {

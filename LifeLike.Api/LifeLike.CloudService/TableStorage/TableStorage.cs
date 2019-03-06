@@ -28,7 +28,6 @@ namespace LifeLike.CloudService.TableStorage
             {
                 _tableClient = null;
             }
-
         }
 
         private CloudTable GetTable(string tableName)
