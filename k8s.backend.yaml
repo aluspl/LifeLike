@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lifelikebackend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lifelikebackend
+  template:
+    metadata:
+      labels:
+        app: lifelikebackend
+    spec:
+      containers:
+      - name: lifelikebackend
+        image:  aluspl/lifelike:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 80
+        env:
+          - name: frontend
+            value: "lifelikefrontend:8080"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name:  lifelikebackend
+  labels:
+    apps: lifelikebackend
+spec:
+  type: LoadBalancer
+  selector:
+    app:  lifelikebackend
+  ports:
+  - name:  lifelikeports
+    port:  80
+    targetPort:  8081
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lifelikefronted
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app:  lifelikefronted
+  template:
+    metadata:
+      labels:
+        app:  lifelikefronted
+    spec:
+      containers:
+      - name: lifelikefronted
+        image:  aluspl/lifelike:frontend
+        imagePullPolicy:  Always
+        ports:
+          - containerPort: 80
+        env:
+          - name: Server
+            value:  "lifelikebackend:8081"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lifelikefronted
+  labels:
+    apps: lifelikefronted
+spec:
+  selector:
+    app:  lifelikefronted
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 8080
