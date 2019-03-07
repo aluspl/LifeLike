@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, tap, map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs/index';
 import MenuItem from '../models/MenuItem';
 import Video from '../../modules/video/models/Video';
@@ -12,12 +12,12 @@ import { LoggerService } from '../../core/services/logger.service';
 
 const ConfigList = AppConfig.host + '/api/Config';
 const VideoList = AppConfig.host + '/api/Video/List';
-const LoginLink=  AppConfig.host + '/api/Account/Login';
-const RegisterLink=  AppConfig.host + '/api/Account/Register';
+const LoginLink = AppConfig.host + '/api/Account/Login';
+const RegisterLink = AppConfig.host + '/api/Account/Register';
 
 @Injectable()
 export class RestService {
-  
+
   public static httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     withCredentials: true
@@ -25,24 +25,24 @@ export class RestService {
 
   public static handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-       // TODO: send the error to remote logging infrastructure
-       console.error(error); // log to console instead
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
 
-       // TODO: better job of transforming error for user consumption
-       LoggerService.log(`${operation} failed: ${error.message}`);
- 
-       if (error.status >= 500) {
-         throw error;
-       }
- 
-       return of(result as T);
+      // TODO: better job of transforming error for user consumption
+      LoggerService.log(`${operation} failed: ${error.message}`);
+
+      if (error.status >= 500) {
+        throw error;
+      }
+
+      return of(result as T);
     };
   }
 
   getMenuItems(): Observable<MenuItem[]> {
     return of(AppConfig.MenuItems);
   }
- 
+
   GetVideos(): Observable<Video[]> {
     return this.http
       .get<Video[]>(VideoList, RestService.httpOptions)
@@ -53,7 +53,7 @@ export class RestService {
   }
   getConfigs(): Observable<Config[]> {
     return this.http
-      .get<Config[]>(ConfigList, RestService.httpOptions )
+      .get<Config[]>(ConfigList, RestService.httpOptions)
       .pipe(
         tap(_ => LoggerService.log(`fetched Configs`)),
         catchError(RestService.handleError<Config[]>())
@@ -61,18 +61,18 @@ export class RestService {
   }
   login(login: UserLogin): Observable<UserLogin> {
     return this.http
-      .post<UserLogin>(LoginLink, login, RestService.httpOptions )
+      .post<UserLogin>(LoginLink, login, RestService.httpOptions)
       .pipe(
         tap(_ => LoggerService.log(`Login`))
       );
   }
   register(user: UserRegister): Observable<UserLogin> {
     return this.http
-    .post<UserLogin>(RegisterLink, user, RestService.httpOptions )
-    .pipe(
-      tap(_ => LoggerService.log(`Register`))
-    );
+      .post<UserLogin>(RegisterLink, user, RestService.httpOptions)
+      .pipe(
+        tap(_ => LoggerService.log(`Register`))
+      );
   }
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) {   
   }
 }

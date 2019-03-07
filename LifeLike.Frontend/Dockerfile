@@ -9,8 +9,8 @@ RUN ng build --prod
 
 FROM nginx:alpine
 
-COPY nginx.conf /etc/nginx/nginx.conf
+ENV ENV=Dockerfile
 
-WORKDIR /app
+COPY --from=buildContainer /app/nginx.conf /etc/nginx/nginx.conf
 # Get all the code needed to run the app
 COPY --from=buildContainer /app/dist /usr/share/nginx/html
