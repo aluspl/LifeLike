@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { SpinnerComponent } from './components/spinner/spinner.component';
 import { TitleComponent } from './components/title/title.component';
 import { IntroTextComponent } from './components/intro-text/intro-text.component';
 import { YoutubePlayerComponent } from './components/youtube-player/youtube-player.component';
@@ -15,6 +14,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from '../core/interceptors/jwt.interceptor';
 import { ErrorInterceptor } from '../core/interceptors/error.interceptor';
 import { RegisterComponent } from './pages/register/register.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
