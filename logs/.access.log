@@ -88,3 +88,5 @@
 172.21.0.1 - - [24/Jan/2019:11:43:38 +0000] "GET /main.e8ea79c2933a9ef926f9.js HTTP/1.1" 304 0 "http://localhost/Video" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
 172.21.0.1 - - [24/Jan/2019:11:43:38 +0000] "GET /favicon.ico HTTP/1.1" 200 11736 "http://localhost/Video" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
 172.21.0.1 - - [24/Jan/2019:11:43:40 +0000] "GET /favicon.ico HTTP/1.1" 304 0 "http://localhost/Page" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+172.18.0.1 - - [07/Mar/2019:11:23:12 +0000] "GET / HTTP/1.1" 502 559 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
+172.18.0.1 - - [07/Mar/2019:11:23:12 +0000] "GET /favicon.ico HTTP/1.1" 502 559 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"

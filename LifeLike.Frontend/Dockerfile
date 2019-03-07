@@ -5,21 +5,14 @@ RUN npm install -g @angular/cli
 WORKDIR /app
 COPY . /app
 RUN npm install
-RUN npm run build:ssr
+RUN ng build --prod
 
-FROM node:alpine
+FROM nginx:alpine
 
 WORKDIR /app
 # Copy dependency definitions
-COPY --from=buildContainer /app/package.json /app
-COPY --from=buildContainer /app/dist/server.js /app
+COPY nginx.conf /etc/nginx/nginx.conf
 
 # Get all the code needed to run the app
-COPY --from=buildContainer /app/dist /app/dist
-
-# Expose the port the app runs in
-EXPOSE 80
-
-# Serve the app
-CMD ["npm", "run", "serve:ssr"]
+COPY --from=buildContainer /app/dist /usr/share/nginx/html
     
