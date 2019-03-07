@@ -18,7 +18,7 @@ COPY --from=buildContainer /app/dist/server.js /app
 COPY --from=buildContainer /app/dist /app/dist
 
 # Expose the port the app runs in
-EXPOSE 8080
+EXPOSE 80
 
 # Serve the app
 CMD ["npm", "run", "serve:ssr"]
