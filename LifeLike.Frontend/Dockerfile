@@ -9,10 +9,8 @@ RUN ng build --prod
 
 FROM nginx:alpine
 
-WORKDIR /app
-# Copy dependency definitions
 COPY nginx.conf /etc/nginx/nginx.conf
 
+WORKDIR /app
 # Get all the code needed to run the app
 COPY --from=buildContainer /app/dist /usr/share/nginx/html
-    

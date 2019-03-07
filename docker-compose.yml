@@ -25,17 +25,14 @@ services:
       - ./www:/var/www/letsencrypt
     ports:
       - "81:80"
-    expose:
-      - 81
-
   web:
     container_name: web
     build:
       context: LifeLike.Frontend    
     ports:
-      - "80:80"
-     expose:
-      - 81
+      - "4000:80"
+    expose:
+      - 80 
     volumes:
       - node_modules:/app/node_modules
 
