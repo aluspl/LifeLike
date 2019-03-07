@@ -10,17 +10,17 @@ import { AppConfig } from '../../../configs/app.config';
 import { LoggerService } from '../../../core/services/logger.service';
 import Photo from '../../photo/models/Photo';
 import FileUpload from '../models/FileUpload';
-import { ok } from 'assert';
+import { environment } from '../../../../environments/environment';
 
 
-const CreatePost = AppConfig.host + '/Api/Page';
+const CreatePost = environment.API + '/Api/Page';
 
-const AllPost = AppConfig.host + '/Api/Page/All';
+const AllPost = environment.API + '/Api/Page/All';
 
-const ConfigApi = AppConfig.host + '/Api/Config';
-const LogList = AppConfig.host + '/Api/Log/List';
-const PhotoApi = AppConfig.host + '/Api/Photo';
-const CreatePhotoApi = AppConfig.host + '/Api/Photo/Create';
+const ConfigApi = environment.API + '/Api/Config';
+const LogList = environment.API + '/Api/Log/List';
+const PhotoApi = environment.API + '/Api/Photo';
+const CreatePhotoApi = environment.API + '/Api/Photo/Create';
 
 
 @Injectable()

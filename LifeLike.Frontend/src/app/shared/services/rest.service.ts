@@ -9,11 +9,12 @@ import { AppConfig } from '../../configs/app.config';
 import UserLogin from '../models/UserLogin';
 import UserRegister from '../models/UserRegister';
 import { LoggerService } from '../../core/services/logger.service';
+import { environment } from '../../../environments/environment';
 
-const ConfigList = AppConfig.host + '/api/Config';
-const VideoList = AppConfig.host + '/api/Video/List';
-const LoginLink = AppConfig.host + '/api/Account/Login';
-const RegisterLink = AppConfig.host + '/api/Account/Register';
+const ConfigList = environment.API + '/api/Config';
+const VideoList = environment.API + '/api/Video/List';
+const LoginLink = environment.API + '/api/Account/Login';
+const RegisterLink = environment.API + '/api/Account/Register';
 
 @Injectable()
 export class RestService {

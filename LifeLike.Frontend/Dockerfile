@@ -11,6 +11,6 @@ FROM nginx:alpine
 
 ENV ENV=Dockerfile
 
-COPY --from=buildContainer /app/nginx.conf /etc/nginx/nginx.conf
+COPY --from=buildContainer /app/nginx.conf /etc/nginx/conf.d/default.conf
 # Get all the code needed to run the app
-COPY --from=buildContainer /app/dist /usr/share/nginx/html
+COPY --from=buildContainer /app/dist/browser /usr/share/nginx/html
