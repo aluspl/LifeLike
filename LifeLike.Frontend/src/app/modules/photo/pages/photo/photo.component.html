@@ -9,17 +9,14 @@
 
 
 <div class="row" *ngIf="!IsLoading">
-  <div class="col-sm" *ngFor="let photo of Photos">
+  <div class="col-sm-3" *ngFor="let photo of Photos">
     <div class="card" 
     (click)=OpenPhoto(photo)>
       <div class="card-header">
         {{photo.Title}}
       </div>
       <div class="card-body">
-        <img *ngIf="photo.ThumbUrl != ''" src="{{photo.ThumbUrl}}" class="img-fluid img-thumbnail">    
-        <p>
-          <b>Tags</b> {{photo.Tags}}
-        </p>
+        <img *ngIf="photo.ThumbUrl != ''" src="{{photo.ThumbUrl}}" class="img-fluid img-thumbnail">         
         <p class="caption">
           Published: {{photo.Created  | date: 'dd/MM/yyyy'}}
         </p>

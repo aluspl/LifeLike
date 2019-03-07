@@ -55,7 +55,7 @@ namespace LifeLike.CloudService.BlobStorage
         public async Task<string> CreateThumb(string name, string folder)
         {
             var mainContainer = GetContainer("photos");
-            var max = mainContainer.GetBlockBlobReference("name");
+            var max = mainContainer.GetBlockBlobReference(name);
             var thumbContainer = GetContainer(folder);
             var thumb = thumbContainer.GetBlockBlobReference(name);
 

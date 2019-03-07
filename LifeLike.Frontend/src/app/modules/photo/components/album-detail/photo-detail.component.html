@@ -1,14 +1,10 @@
-<div class="card">
+<div >
   <img src="{{photo.Url}}" class="img-fluid">
   <p>
-      <b>FileName</b> {{photo.FileName}}
-      <b>Camera</b> {{photo.Camera}}
-  </p>
-  <p>
-    <b>City</b> {{photo.City}}
-    <b>Tags</b> {{photo.Tags}}
-  </p>
-  <p class="caption">
-    Published: {{photo.Created  | date: 'dd/MM/yyyy'}}
+    <b>FileName:</b> {{photo.FileName}}
+    <b>Camera:</b> {{photo.Camera}}
+    <b>City:</b> {{photo.City}}
+    <b>Tags:</b> {{photo.Tags}}
+    <b>Published:</b> {{photo.Created  | date: 'dd/MM/yyyy'}}
   </p>
 </div>

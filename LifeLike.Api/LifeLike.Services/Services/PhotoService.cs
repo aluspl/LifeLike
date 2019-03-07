@@ -5,8 +5,12 @@ using LifeLike.Services.ViewModel;
 using LifeLike.Shared;
 using LifeLike.Shared.Enums;
 using LifeLike.Shared.Services;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats.Jpeg;
+using SixLabors.ImageSharp.Processing;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -65,11 +69,20 @@ namespace LifeLike.Services
             try
             {
                 var photo = _mapper.Map<PhotoEntity>(model);
+                string name = model.Stream?.FileName;
                 using (var stream = model.Stream.OpenReadStream())
                 {
-                    string name = model.Stream?.FileName;
                     photo.Url = await _storage.Create(stream, name, "photos");
+                }
+                using (var stream = model.Stream.OpenReadStream())
+                {
                     photo.ThumbUrl = await _storage.CreateThumb(name, "thumbs");
+                    //using (var thumb = Image.Load(stream))
+                    //using (var thumbStream = new MemoryStream())
+                    //{
+                    //    thumb.Mutate(ctx => ctx.Resize(thumb.Width / 10, thumb.Height / 10));
+                    //    thumb.Save(thumbStream, new JpegEncoder());
+                    //}
                 }
                 CreateEntity(photo);
                 return Result.Success;
@@ -85,7 +98,7 @@ namespace LifeLike.Services
             try
             {
                 var entity = GetEntity(p => p.Id == id);
-                _storage.Remove(entity.FileName,"photos");
+                _storage.Remove(entity.FileName, "photos");
                 DeleteEntity(p => p.Id == id);
                 return Result.Success;
             }
@@ -97,5 +110,5 @@ namespace LifeLike.Services
         }
     }
 
-    
+
 }

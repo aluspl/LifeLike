@@ -9,9 +9,6 @@ export const AppConfig: any = {
 
         error404: '404'
     },
-    votesLimit: 3,
-    topHeroesLimit: 4,
-    snackBarDuration: 3000,
     host: 'http://localhost',
     MenuItems: [
         {
@@ -42,19 +39,19 @@ export const AppConfig: any = {
             Name: 'PROJECTS',
             Icon: 'code'
         },
-        {
-            Id: 5,
-            Action: '',
-            Controller: 'Page',
-            Name: 'PAGES',
-            Icon: 'code'
-        },
-        {
-            Id: 6,
-            Action: 'Contact',
-            Controller: 'Page',
-            Name: 'CONTACT',
-            Icon: 'at',
-        }
+        // {
+        //     Id: 5,
+        //     Action: '',
+        //     Controller: 'Page',
+        //     Name: 'PAGES',
+        //     Icon: 'code'
+        // },
+        // {
+        //     Id: 6,
+        //     Action: 'Contact',
+        //     Controller: 'Page',
+        //     Name: 'CONTACT',
+        //     Icon: 'at',
+        // }
     ]
 };
