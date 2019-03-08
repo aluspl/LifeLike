@@ -9,6 +9,9 @@ export const AppConfig: any = {
 
         error404: '404'
     },
+    /**
+     *
+     */
     host: 'http://localhost',
     MenuItems: [
         {

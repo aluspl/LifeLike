@@ -8,5 +8,8 @@ namespace LifeLike.Shared.Services
     {
         IEnumerable<string> ReadMessages(string name);
         void SendMessage(string message, string name);
+        void SendNotification(string v);
+        IEnumerable<string> ReadNotifications();
+
     }
 }

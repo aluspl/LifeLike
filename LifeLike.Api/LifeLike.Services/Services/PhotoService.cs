@@ -20,11 +20,13 @@ namespace LifeLike.Services
     {
         private readonly ILogService _logger;
         private readonly IBlobStorage _storage;
+        private readonly IQueueService _queue;
 
-        public PhotoService(IUnitOfWork uow, ILogService logger, IMapper mapper, IBlobStorage storage) : base(uow, mapper)
+        public PhotoService(IUnitOfWork uow, ILogService logger, IMapper mapper, IBlobStorage storage, IQueueService queue) : base(uow, mapper)
         {
             _logger = logger;
             _storage = storage;
+            _queue = queue;
         }
         public ICollection<Photo> List()
         {
@@ -73,10 +75,10 @@ namespace LifeLike.Services
                 using (var stream = model.Stream.OpenReadStream())
                 {
                     photo.Url = await _storage.Create(stream, name, "photos");
+                    photo.ThumbUrl = await _storage.CreateThumb(name, "thumbs");
                 }
                 using (var stream = model.Stream.OpenReadStream())
                 {
-                    photo.ThumbUrl = await _storage.CreateThumb(name, "thumbs");
                     //using (var thumb = Image.Load(stream))
                     //using (var thumbStream = new MemoryStream())
                     //{
@@ -85,6 +87,7 @@ namespace LifeLike.Services
                     //}
                 }
                 CreateEntity(photo);
+                _queue.SendNotification($"Photo: {photo.Id}");
                 return Result.Success;
             }
             catch (Exception e)

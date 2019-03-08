@@ -88,13 +88,13 @@ namespace LifeLike.Web
             {
                 services.AddScoped<IStatisticService, StatisticCloudService>();
                 services.AddScoped<IBlobStorage, BlobStorage>();
-                services.AddScoped<IQueueService, QueueStorage>();
+                services.AddScoped<IQueueService, CloudService.Queue.QueueService>();
             }
             else
             {
                 services.AddScoped<IStatisticService, StatisticService>();
                 services.AddScoped<IBlobStorage, LocalBlobStorage>();
-                services.AddScoped<IQueueService, QueueService>();
+                services.AddScoped<IQueueService, LifeLike.Services.CloudServices.QueueService>();
             }
 
             services.AddScoped<ITableStorage, TableStorage>();

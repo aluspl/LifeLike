@@ -9,11 +9,12 @@ using System.Text;
 
 namespace LifeLike.CloudService.Queue
 {
-    public class QueueStorage : IQueueService
+    public class QueueService : IQueueService
     {
         private readonly CloudQueueClient _queueClient;
+        private const string NOTIFICATION= "NOTIFICATION";
 
-        public QueueStorage(IConfiguration configuration)
+        public QueueService(IConfiguration configuration)
         {
             var storageAccount = CloudStorageAccount.Parse(configuration["BlobStorage"]);
             _queueClient=storageAccount.CreateCloudQueueClient();            
@@ -35,6 +36,16 @@ namespace LifeLike.CloudService.Queue
             var messages = queue.GetMessagesAsync(10).Result;
            
             return messages.Select(o => o.AsString);
+        }
+
+        public void SendNotification(string v)
+        {
+            SendMessage(v, NOTIFICATION);
+        }
+
+        public IEnumerable<string> ReadNotifications()
+        {
+           return ReadMessages(NOTIFICATION);
         }
     }
 }

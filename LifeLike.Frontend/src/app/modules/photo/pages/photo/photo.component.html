@@ -1,7 +1,7 @@
 <app-title Title="Photos"></app-title>
 
 <app-spinner *ngIf="IsLoading"></app-spinner>
-<div class="row" *ngIf="IsOpen">
+<div class="row" *ngIf="CurrentPhoto">
   <div class="col-lg">
     <app-photo-detail [photo]=CurrentPhoto></app-photo-detail>
   </div>
@@ -11,7 +11,8 @@
 <div class="row" *ngIf="!IsLoading">
   <div class="col-sm-3" *ngFor="let photo of Photos">
     <div class="card" 
-    (click)=OpenPhoto(photo)>
+    (click)=OpenPhoto(photo)
+    [class.selected]="photo === CurrentPhoto">
       <div class="card-header">
         {{photo.Title}}
       </div>

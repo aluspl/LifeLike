@@ -4,9 +4,8 @@
 
 export const environment = {
   production: false,
-  ENV: process.env.ENV != undefined ? process.env.ENV : "ENV File",
-  API: process.env.API != undefined ?  process.env.API : "http://localhost",
-
+  ENV: process.env.ENV || "ENV File",
+  API: process.env.API || "http://localhost",
 };
 
 /*
