@@ -26,9 +26,9 @@ namespace LifeLike.Services.Services
             return $"http://localhost/{folder}/{fileName}";
         }
 
-        public Task<string> CreateThumb(string name, string folder)
+        public async Task<string> CreateThumb(string name, string folder)
         {
-            throw new NotImplementedException();
+            return $"http://localhost/{folder}/{name}";
         }
 
         public Result Remove(string fileName, string folder)
