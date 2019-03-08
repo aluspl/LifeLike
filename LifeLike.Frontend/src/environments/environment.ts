@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  ENV: "DEV",
-  API: "http://lifelikebackend.azurewebsites.net"
+  ENV: process.env.ENV != undefined ? process.env.ENV : "ENV File",
+  API: process.env.API != undefined ?  process.env.API : "http://localhost",
 
 };
 

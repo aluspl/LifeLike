@@ -9,8 +9,11 @@ RUN ng build --prod
 
 FROM nginx:alpine
 
-ENV ENV=Dockerfile
+VOLUME  /var/cache/nginx
 
+ENV ENV="Docker Image"
+ENV API="http://localhost"
 COPY --from=buildContainer /app/nginx.conf /etc/nginx/conf.d/default.conf
 # Get all the code needed to run the app
 COPY --from=buildContainer /app/dist/browser /usr/share/nginx/html
+EXPOSE 80

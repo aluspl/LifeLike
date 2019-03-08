@@ -182,8 +182,9 @@ namespace LifeLike.Web
             {
                 options.AddPolicy("CorsPolicy",
                     builder => builder
-                    .WithOrigins(Configuration["Frontend"])
+                     .WithOrigins(Configuration["Frontend"])
                     .AllowAnyMethod()
+                    //.AllowAnyOrigin()
                     .AllowAnyHeader()
                     .AllowCredentials()
                     );

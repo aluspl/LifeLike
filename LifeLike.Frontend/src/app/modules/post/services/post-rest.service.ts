@@ -6,14 +6,14 @@ import { RestService } from '../../../shared/services/rest.service';
 import  Page  from '../../../shared/models/Page';
 import { AppConfig } from '../../../configs/app.config';
 import { LoggerService } from '../../../core/services/logger.service';
+import { environment } from 'src/environments/environment';
 
 
 
-const PageDetail = AppConfig.host + '/api/Page/Details';
-
-const ProjectList = AppConfig.host + '/api/Page/Projects';
-const PostList = AppConfig.host + '/api/Page/Posts';
-const PageList = AppConfig.host + '/api/Page/All';
+const PageDetail = environment.API + '/api/Page/Details';
+const ProjectList = environment.API + '/api/Page/Projects';
+const PostList = environment.API + '/api/Page/Posts';
+const PageList = environment.API + '/api/Page/All';
 
 
 

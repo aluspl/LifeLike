@@ -5,7 +5,7 @@ const webpack = require('webpack');
 module.exports = {
   plugins: [
     new webpack.DefinePlugin({
-      ENV: {
+      'process.env': {
         ENV: JSON.stringify(process.env.ENV),
         API: JSON.stringify(process.env.API),
       }
