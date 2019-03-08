@@ -29,6 +29,5 @@ namespace LifeLike.Web
                 .UseStartup<Startup>()
                 .Build();
         }
-
     }
 }

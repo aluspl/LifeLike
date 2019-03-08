@@ -32,6 +32,7 @@ export class PhotoCreateComponent implements OnInit {
         this.IsCreateMode = false;
       }
       else {
+        console.log(event);
         this.IsCreateMode = true;
       }
     }

@@ -12,10 +12,10 @@ namespace LifeLike.CloudService.Queue
     public class QueueService : IQueueService
     {
         private readonly CloudQueueClient _queueClient;
-        private const string NOTIFICATION= "NOTIFICATION";
+        private const string NOTIFICATION= "notifications";
 
         public QueueService(IConfiguration configuration)
-        {
+        {   
             var storageAccount = CloudStorageAccount.Parse(configuration["BlobStorage"]);
             _queueClient=storageAccount.CreateCloudQueueClient();            
         }
