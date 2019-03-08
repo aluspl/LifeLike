@@ -6,7 +6,7 @@ import { RestService } from '../../../shared/services/rest.service';
 import  Page  from '../../../shared/models/Page';
 import { AppConfig } from '../../../configs/app.config';
 import { LoggerService } from '../../../core/services/logger.service';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../../environments/environment';
 
 
 
@@ -68,6 +68,7 @@ export class PostRestService {
       );
   }
   constructor(private http: HttpClient) {
+    console.log(environment);
   }
   
 }

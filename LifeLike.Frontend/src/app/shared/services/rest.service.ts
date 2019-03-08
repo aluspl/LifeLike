@@ -26,16 +26,12 @@ export class RestService {
 
   public static handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
+      
       LoggerService.log(`${operation} failed: ${error.message}`);
 
-      if (error.status >= 500) {
-        throw error;
-      }
-
+      // if (error.status >= 500) {
+      //   throw error;
+      // }
       return of(result as T);
     };
   }
@@ -75,5 +71,6 @@ export class RestService {
       );
   }
   constructor(private http: HttpClient) {   
+    console.log(environment);
   }
 }

@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
 using LifeLike.CloudService.BlobStorage;
 using LifeLike.CloudService.CosmosDB;
+using LifeLike.CloudService.Queue;
 using LifeLike.CloudService.TableStorage;
 using LifeLike.Data;
 using LifeLike.Data.Models;
 using LifeLike.Repositories;
 using LifeLike.Services;
 using LifeLike.Services.Cloud;
+using LifeLike.Services.CloudServices;
 using LifeLike.Services.Profiles;
 using LifeLike.Services.Services;
 using LifeLike.Services.Structures;
@@ -86,11 +88,13 @@ namespace LifeLike.Web
             {
                 services.AddScoped<IStatisticService, StatisticCloudService>();
                 services.AddScoped<IBlobStorage, BlobStorage>();
+                services.AddScoped<IQueueService, QueueStorage>();
             }
             else
             {
                 services.AddScoped<IStatisticService, StatisticService>();
                 services.AddScoped<IBlobStorage, LocalBlobStorage>();
+                services.AddScoped<IQueueService, QueueService>();
             }
 
             services.AddScoped<ITableStorage, TableStorage>();
