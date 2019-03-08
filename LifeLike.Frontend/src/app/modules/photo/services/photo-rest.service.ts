@@ -6,10 +6,11 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { RestService } from '../../../shared/services/rest.service';
 import { LoggerService } from '../../../core/services/logger.service';
+import { environment } from '../../../../environments/environment';
 
 
-const PhotoList = AppConfig.host + '/api/Photo';
-const PhotoCreate = AppConfig.host + '/api/Photo/Create';
+const PhotoList = environment.API + '/api/Photo';
+const PhotoCreate = environment.API + '/api/Photo/Create';
 
 
 @Injectable()
@@ -50,6 +51,7 @@ GetPhotos(): Observable<Photo[]> {
   //     );
   // }
   constructor(private http: HttpClient) {
+    console.log(environment);
   }
   
 }
