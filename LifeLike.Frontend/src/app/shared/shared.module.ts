@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import {MatButtonModule } from '@angular/material';
+
 import { TitleComponent } from './components/title/title.component';
 import { IntroTextComponent } from './components/intro-text/intro-text.component';
 import { YoutubePlayerComponent } from './components/youtube-player/youtube-player.component';
@@ -30,14 +32,16 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    MatButtonModule
   ],
   exports: [
     SpinnerComponent,
     TitleComponent,
     MenuComponent,
     YoutubePlayerComponent,
-    IntroTextComponent
+    IntroTextComponent,
+    MatButtonModule
   ],
   providers:[
     RestService, 

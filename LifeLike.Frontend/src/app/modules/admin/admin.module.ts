@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {MatButtonModule } from '@angular/material';
+
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminPage } from './pages/admin-page/admin-page.component';
 import { LogComponent } from './pages/log/log.component';
@@ -33,10 +35,13 @@ import { PhotoEditComponent } from './pages/photo-edit/photo-edit.component';
     CommonModule,
     SharedModule,
     AdminRoutingModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule
   ],
   exports: [
-    RouterModule
+    RouterModule,
+    MatButtonModule
+
   ],
   providers: [ AdminRestService ]
 })

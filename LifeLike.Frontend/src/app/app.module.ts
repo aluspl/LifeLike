@@ -8,6 +8,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
 import { APP_CONFIG, AppConfig } from './configs/app.config';
 import { CustomErrorHandler } from './core/custom.errorhandler';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -15,9 +16,11 @@ import { CustomErrorHandler } from './core/custom.errorhandler';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'lifelike-web' }),
+    
     SharedModule,    
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'My-Xsrf-Cookie',
       headerName: 'My-Xsrf-Header',
