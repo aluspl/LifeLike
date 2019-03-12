@@ -17,6 +17,7 @@ import { PagesComponent } from './pages/pages/pages.component';
 import { PhotoCreateComponent } from './pages/photo-create/photo-create.component';
 import { PhotosComponent } from './pages/photos/photos.component';
 import { PhotoEditComponent } from './pages/photo-edit/photo-edit.component';
+import { MyMaterialModule } from 'src/material.module';
 
 @NgModule({
   declarations: [
@@ -36,12 +37,10 @@ import { PhotoEditComponent } from './pages/photo-edit/photo-edit.component';
     SharedModule,
     AdminRoutingModule,
     FormsModule,
-    MatButtonModule
+    MyMaterialModule
   ],
   exports: [
     RouterModule,
-    MatButtonModule
-
   ],
   providers: [ AdminRestService ]
 })

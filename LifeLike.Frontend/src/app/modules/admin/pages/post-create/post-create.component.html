@@ -1,50 +1,30 @@
 <div class="form-container">
   <form (ngSubmit)="onSubmit()" #createPostForm="ngForm">
     <app-title Title="Create Page/Post: {{model.FullName}}"></app-title>
-      <div class="form-group">
-        <input class="form-control"
-               placeholder="Post Name"
-               [(ngModel)]="model.FullName"
-               name="model.FullName"
-               required>
-      </div>
-      <div class="form-group">
-        <input class="form-control"
-               placeholder="Short Name"
-               id="ShortName"
-               [(ngModel)]="model.ShortName"
-               name="ShortName" required>
-      </div>
-      <div class="form-group">
-        <input class="form-control"
-               placeholder="Image URL"
-               id="ImageUrl"
-               [(ngModel)]="model.ImageUrl"
-               name="ImageUrl">
-    </div>
-    
-    <div class="form-group">
-      <select class="form-control"
-                    id="Category" title="Category"
-                    placeholder="Category"
-                    name="Category"
-                    required
-                    [value]="model.Category"
-                    [(ngModel)]="model.Category">
-        <option   *ngFor="let category of categories">
-            {{category}}
-        </option>
-      </select>
-    </div>
+    <mat-form-field>
+      <input matInput placeholder="Post Name" [(ngModel)]="model.FullName" name="model.FullName" required />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Short Name" [(ngModel)]="model.ShortName" name="model.ShortName" required />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="ImageUrl" [(ngModel)]="model.ImageUrl" name="model.ImageUrl" required />
+    </mat-form-field>
 
-        <div class="form-group">
-            <textarea        
-        id="Content"
-        placeholder="Content"
-        rows="10"
-        [(ngModel)]="model.Content"
+    <mat-form-field>
+      <mat-select class="form-control" id="Category" title="Category" placeholder="Category" name="Category" required
+        [value]="model.Category" [(ngModel)]="model.Category">
+        <mat-option *ngFor="let category of categories" value="{{category}}">
+          {{category}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea id="Content" matInput placeholder="Content" rows="10" [(ngModel)]="model.Content"
         name="Content"></textarea>
-        </div>
-    <button  class="btn btn-primary" type="submit" [disabled]="!createPostForm.form.valid">Submit</button>
+    </mat-form-field>
+    <button mat-flat-button color="primary" type="submit" [disabled]="!createPostForm.form.valid">Add</button>
+    <button mat-flat-button color="warn" (click)="onNoClick()">Cancel</button>
   </form>
 </div>

@@ -12,6 +12,9 @@ export class PagesComponent implements OnInit {
   Pages: Page[];
   IsLoading: boolean;
   error: any;
+  IsEditMode: boolean;
+  IsCreateMode: boolean;
+  SelectedPage: Page;
   constructor(private restService: AdminRestService) { }
 
   Remove(page: Page): void {
@@ -29,6 +32,17 @@ export class PagesComponent implements OnInit {
           this.IsLoading = false;
       });
   }
+  Edit(page: Page): void {
+    console.log('Edit');
+    console.log(page);
+    this.IsEditMode= true;
+    this.SelectedPage = page;
+  }
+  PostCreate() : void {
+    console.log('Create');
+    this.IsCreateMode = true;
+  }
+
   GetPages(): void {
     this.restService.getPages()
       .pipe(

@@ -18,7 +18,7 @@ export class AppComponent {
     this.IsLogin = authService.IsLogin;
     authService.currentUser.subscribe(x=>{
       this.CurrentUser=x
-      this.IsLogin = x!=null;      
+      this.IsLogin = x!=null;
     });
   }
   logout() {

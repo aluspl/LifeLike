@@ -12,16 +12,17 @@ export class PostCreateComponent implements OnInit {
   model = new Page();
   loading = false;
   categories = ['App', 'Game', 'Tutorial', 'Page', 'Post'];
-  returnUrl: any;
-
+  @Input() IsCreateMode: boolean;
   onSubmit() {
     console.log(this.diagnostic);
     this.loading = true;
     this.restService.createPost(this.model).subscribe(p => {
       this.loading = false;
       console.log(p);
-      this.router.navigate([this.returnUrl]);
-
+      this.IsCreateMode = false;
+    }, error => {
+      this.loading = false;
+      console.log(error);
     });
   }
   // TODO: Remove this when we're done
@@ -29,12 +30,11 @@ export class PostCreateComponent implements OnInit {
 
   constructor(
     private restService: AdminRestService,
-    private route: ActivatedRoute,
     private router: Router) {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+  }
+  onNoClick(): void {
 
   }
-
   ngOnInit() {
   }
 

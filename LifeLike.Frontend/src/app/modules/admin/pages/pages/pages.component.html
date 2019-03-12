@@ -21,12 +21,14 @@
       <td>{{page.Published | date: 'dd/MM/yyyy'}}</td>
       <td>
         <div class="btn-group">
-          <a class="btn btn-success" [routerLink]="['PostEdit/'+ page.Id ]"> Edit </a>
-          <a class="btn btn-warning" (click)='Remove(page)'>Delete </a>
+          <button mat-flat-button color="primary" [routerLink]="Edit(page)"> Edit </button>
+          <button mat-flat-button color="warn" (click)='Remove(page)'>Delete </button>
         </div>
       </td>
     </tr>
   </tbody>
 </table>
-<a class="btn btn-success" routerLink="PostCreate">Create</a>
-<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+<button mat-flat-button color="primary" (click)="PostCreate()">Create</button>
+<div class="row" *ngIf="IsCreateMode">
+    <app-post-create [IsCreateMode]="IsCreateMode"></app-post-create>
+</div>

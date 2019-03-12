@@ -28,7 +28,7 @@
     </tr>
   </tbody>
 </table>
-<a class="btn btn-success" (click)="Create()"> Create </a>
+<button mat-flat-button color="primary" (click)="Create()"> Create </button>
 
 <div class="row" *ngIf="IsCreateMode">
       <app-photo-create [IsCreateMode]="IsCreateMode"></app-photo-create>
@@ -36,6 +36,6 @@
 <div class="row" *ngIf="IsEditMode">
       <app-photo-edit [IsEditMode]="IsEditMode" [model]="SelectedPhoto"></app-photo-edit>
 </div>
-   
+
 
 <div *ngIf="error" class="alert alert-danger">{{error}}</div>

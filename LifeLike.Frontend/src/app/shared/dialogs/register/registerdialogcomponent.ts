@@ -1,37 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import { map, first } from 'rxjs/internal/operators';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../services/authentication.service';
+import { first } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  selector: 'app-registerdialog',
+  templateUrl: './registerdialog.component.html'
 })
-export class RegisterComponent implements OnInit {
+export class RegisterDialogComponent implements OnInit {
   registerForm: FormGroup;
   loading = false;
   submitted = false;
   returnUrl: string;
   error = '';
-
   constructor(
+    public dialogRef: MatDialogRef<RegisterDialogComponent>,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
     private authenticationService: AuthenticationService
   ) { }
-
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
       email: ['', Validators.required]
     });
-
-    // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   // convenience getter for easy access to form fields
@@ -50,8 +46,9 @@ export class RegisterComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate([this.returnUrl]);
           this.loading = false;
+          this.dialogRef.close();
+
         },
         error => {
           this.error = error;

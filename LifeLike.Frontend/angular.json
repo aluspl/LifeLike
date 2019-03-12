@@ -24,8 +24,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/web.config",
-              "src/typings.d.ts"
+              "src/web.config"
             ],
             "styles": [
               "src/styles.scss"
