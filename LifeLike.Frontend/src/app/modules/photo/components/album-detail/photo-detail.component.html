@@ -1,5 +1,7 @@
-<div >
-  <img src="{{photo.Url}}" class="img-fluid">
+<button mat-mini-fab color="warn" (click)="close()">X</button>
+
+<div class="card" *ngIf="photo">
+  <img  src="{{photo.Url}}">
   <p>
     <b>FileName:</b> {{photo.FileName}}
     <b>Camera:</b> {{photo.Camera}}

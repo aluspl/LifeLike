@@ -1,27 +1,14 @@
 <app-title Title="Photos"></app-title>
 
 <app-spinner *ngIf="IsLoading"></app-spinner>
-<div class="row" *ngIf="CurrentPhoto">
-  <div class="col-lg">
-    <app-photo-detail [photo]=CurrentPhoto></app-photo-detail>
-  </div>
-</div>
 
-
-<div class="row" *ngIf="!IsLoading">
-  <div class="col-sm-3" *ngFor="let photo of Photos">
-    <div class="card" 
-    (click)=OpenPhoto(photo)
-    [class.selected]="photo === CurrentPhoto">
-      <div class="card-header">
-        {{photo.Title}}
-      </div>
-      <div class="card-body">
-        <img *ngIf="photo.ThumbUrl != ''" src="{{photo.ThumbUrl}}" class="img-fluid img-thumbnail">         
-        <p class="caption">
-          Published: {{photo.Created  | date: 'dd/MM/yyyy'}}
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
+<mat-grid-list cols=3 rowHeight="1:1" *ngIf="!IsLoading">
+  <mat-grid-tile *ngFor="let photo of Photos">
+    <mat-card  (click)=OpenPhoto(photo) class="card">
+      <mat-card-header>
+        <mat-card-title> {{photo.Title}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image *ngIf="photo.ThumbUrl != ''" src="{{photo.ThumbUrl}}">
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

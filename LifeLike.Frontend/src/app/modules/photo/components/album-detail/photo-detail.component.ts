@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import Photo from '../../models/Photo';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-photo-detail',
@@ -8,9 +9,18 @@ import Photo from '../../models/Photo';
 })
 export class PhotoDetailComponent implements OnInit {
   @Input() photo: Photo;
-
-  constructor() { }
+  constructor(
+    public dialogRef: MatDialogRef<PhotoDetailComponent>,    @Inject(MAT_DIALOG_DATA) data
+  ) {
+    this.photo = data;
+  }
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 
   ngOnInit() {
+  }
+  close() {
+    this.dialogRef.close();
   }
 }

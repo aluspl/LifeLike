@@ -39,7 +39,7 @@ export class MenuComponent implements OnInit {
   }
   logout() {
     this.authService.logout();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
   login() {
     let dialogRef = this.dialog.open(LoginDialogComponent, {

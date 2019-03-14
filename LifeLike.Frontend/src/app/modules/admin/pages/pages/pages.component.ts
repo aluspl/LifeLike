@@ -48,7 +48,6 @@ export class PagesComponent implements OnInit {
       .pipe(
         map((data: Page[]) => {
           this.IsLoading = false;
-          console.log(data);
           return data;
         }))
       .subscribe((p: Page[]) => this.Pages = p);

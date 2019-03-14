@@ -5,6 +5,7 @@ import { PhotoRoutingModule } from './photo-routing.module';
 import { PhotoRestService } from './services/photo-rest.service';
 import { PhotoDetailComponent } from './components/album-detail/photo-detail.component';
 import { PhotoComponent } from './pages/photo/photo.component';
+import { MyMaterialModule } from 'src/material.module';
 
 @NgModule({
   declarations: [
@@ -14,10 +15,12 @@ import { PhotoComponent } from './pages/photo/photo.component';
   imports: [
     CommonModule,
     SharedModule,
-    PhotoRoutingModule
+    PhotoRoutingModule,
+    MyMaterialModule
   ],
   providers:[
     PhotoRestService
-  ]
+  ],
+  entryComponents: [PhotoDetailComponent]
 })
 export class PhotoModule { }

@@ -21,10 +21,10 @@
         <td>
           <div class="btn-group">
             <a class="btn btn-success" [routerLink]="['ConfigEdit/'+ config.Id ]"> Edit </a>
-            <a class="btn btn-warning" (click)='Remove(config)'>Delete </a>
+            <a mat-flat-button color="warn" (click)='Remove(config)'>Delete </a>
           </div>
         </td>
-      </tr>      
+      </tr>
     </tbody>
   </table>
   <a class="btn btn-success" (click)="Create()"> Create </a>

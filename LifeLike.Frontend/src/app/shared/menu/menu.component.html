@@ -7,7 +7,7 @@
 </mat-nav-list>
 <mat-menu #appMenu="matMenu">
     <button mat-menu-item color="accent" *ngIf="!IsLogin" (click)="login()">Login</button>
-    <button mat-menu-item color="primary" *ngIf="!IsLogin" (click)="register()">Register</button>
+    <!-- <button mat-menu-item color="primary" *ngIf="!IsLogin" (click)="register()">Register</button> -->
     <button mat-menu-item color="primary" *ngIf="IsLogin" routerLink="Admin"> {{CurrentUser.UserName | uppercase }}</button>
     <button mat-menu-item color="accent" *ngIf="IsLogin" (click)="logout()">Logout</button>
   </mat-menu>

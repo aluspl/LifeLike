@@ -21,7 +21,7 @@
       <td>{{page.Published | date: 'dd/MM/yyyy'}}</td>
       <td>
         <div class="btn-group">
-          <button mat-flat-button color="primary" [routerLink]="Edit(page)"> Edit </button>
+          <button mat-flat-button color="primary" (click)="Edit(page)"> Edit </button>
           <button mat-flat-button color="warn" (click)='Remove(page)'>Delete </button>
         </div>
       </td>
@@ -31,4 +31,7 @@
 <button mat-flat-button color="primary" (click)="PostCreate()">Create</button>
 <div class="row" *ngIf="IsCreateMode">
     <app-post-create [IsCreateMode]="IsCreateMode"></app-post-create>
+</div>
+<div class="row" *ngIf="IsEditMode">
+    <app-post-edit [IsEditMode]="IsEditMode" [model]="selectedPage" ></app-post-edit>
 </div>

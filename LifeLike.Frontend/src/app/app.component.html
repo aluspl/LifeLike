@@ -23,7 +23,7 @@
 <footer class="bottom">
   <div class="btn-group">
     <button mat-fab *ngIf="!IsLogin" class="btn btn-info" routerLink="Login">Login</button>
-    <button mat-fab *ngIf="!IsLogin" class="btn btn-warning" routerLink="Register">Register</button>
+    <button mat-fab *ngIf="!IsLogin" mat-flat-button color="warn" routerLink="Register">Register</button>
     <button mat-fab *ngIf="IsLogin" class="btn btn-secondary" (click)="logout()">Logout</button>
   </div>
 </footer> -->

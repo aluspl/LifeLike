@@ -11,6 +11,8 @@ import Page from '../../../../shared/models/Page';
 })
 export class PostEditComponent implements OnInit {
   @Input() model: Page;
+  @Input() IsEditMode: boolean;
+
   loading = false;
   categories = ['App', 'Game', 'Tutorial', 'Page', 'Post'];
   returnUrl: any;
@@ -27,8 +29,11 @@ export class PostEditComponent implements OnInit {
     this.restService.editPost(this.model).subscribe(p => {
       this.loading = false;
       console.log(p);
-      this.router.navigate([this.returnUrl]);
-
+      this.IsEditMode=false;
+    },error=>
+    {
+      this.loading = false;
+      console.log(error);
     });
   }
   ngOnInit() {
