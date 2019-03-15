@@ -1,4 +1,6 @@
 <app-title Title="Configs"></app-title>
+<button mat-flat-button color="primary" (click)="Create()">Create</button>
+
 <app-spinner *ngIf="IsLoading"></app-spinner>
 <table mat-table [dataSource]="Configs">
   <ng-container matColumnDef="Name">
@@ -27,5 +29,4 @@
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </table >
-<button mat-flat-button color="primary" (click)="create()">Create</button>
 <div *ngIf="error" class="alert alert-danger">{{error}}</div>
