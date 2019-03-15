@@ -35,8 +35,9 @@ export class PostCreateComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data ) {
 
   }
-  onNoClick(): void {
-
+  onNoClick()
+  {
+    this.dialogRef.close();
   }
   ngOnInit() {
   }
