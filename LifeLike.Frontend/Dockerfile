@@ -5,6 +5,7 @@ RUN npm install -g @angular/cli
 WORKDIR /app
 COPY . /app
 RUN npm install
+RUN npm rebuild node-sass
 RUN ng build --prod
 
 FROM nginx:alpine

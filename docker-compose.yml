@@ -24,7 +24,7 @@ services:
       - ./letsencrypt:/etc/letsencrypt:ro
       - ./www:/var/www/letsencrypt
     environment:
-      - frontend:http://localhost:80
+      - frontend:http://localhost:4200
     ports:
       - "81:80"
     expose: 

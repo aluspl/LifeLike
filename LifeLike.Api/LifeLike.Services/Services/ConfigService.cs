@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using LifeLike.Data.Models;
 using LifeLike.Services.Structures;
@@ -68,10 +69,10 @@ namespace LifeLike.Services
             }
         }
      
-        public IEnumerable<Config> List()
+        public IList<Config> List()
         {
-            var items= GetAllEntities();
-            return _mapper.Map<IEnumerable<Config>>(items);
+            var items = GetAllEntities().ToList();
+            return _mapper.Map<IList<Config>>(items);
         }
 
        
@@ -81,7 +82,7 @@ namespace LifeLike.Services
     {
         Result Create(Config model);
         Config Get(string id);
-        IEnumerable<Config> List();
+        IList<Config> List();
         Result Update(Config model);
     }
 }

@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Inject } from '@angular/core';
 import Page from '../../../../shared/models/Page';
 import { AdminRestService } from '../../services/admin-rest.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-post-create',
@@ -12,16 +13,17 @@ export class PostCreateComponent implements OnInit {
   model = new Page();
   loading = false;
   categories = ['App', 'Game', 'Tutorial', 'Page', 'Post'];
-  returnUrl: any;
-
+  @Input() IsCreateMode: boolean;
   onSubmit() {
     console.log(this.diagnostic);
     this.loading = true;
     this.restService.createPost(this.model).subscribe(p => {
       this.loading = false;
       console.log(p);
-      this.router.navigate([this.returnUrl]);
-
+      this.dialogRef.close();
+    }, error => {
+      this.loading = false;
+      console.log(error);
     });
   }
   // TODO: Remove this when we're done
@@ -29,12 +31,13 @@ export class PostCreateComponent implements OnInit {
 
   constructor(
     private restService: AdminRestService,
-    private route: ActivatedRoute,
-    private router: Router) {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    public dialogRef: MatDialogRef<PostCreateComponent>,
+    @Inject(MAT_DIALOG_DATA) data ) {
 
   }
+  onNoClick(): void {
 
+  }
   ngOnInit() {
   }
 

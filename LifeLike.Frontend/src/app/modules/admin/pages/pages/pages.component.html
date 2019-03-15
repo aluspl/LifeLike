@@ -1,32 +1,38 @@
 <app-title Title="Pages"></app-title>
 
 <app-spinner *ngIf="IsLoading"></app-spinner>
-<table  class="table table-striped">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Short Name</th>
-      <th scope="col">Full Name</th>
-      <th scope="col">Category</th>
-      <th scope="col">Publish Date</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody *ngIf="!IsLoading">
-    <tr *ngFor="let page of Pages">
-      <th scope="row">{{page.Id}}</th>
-      <td>{{page.ShortName}}</td>
-      <td>{{page.FullName}}</td>
-      <td>{{page.Category}}</td>
-      <td>{{page.Published | date: 'dd/MM/yyyy'}}</td>
-      <td>
-        <div class="btn-group">
-          <a class="btn btn-success" [routerLink]="['PostEdit/'+ page.Id ]"> Edit </a>
-          <a class="btn btn-warning" (click)='Remove(page)'>Delete </a>
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<a class="btn btn-success" routerLink="PostCreate">Create</a>
-<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+
+<button mat-flat-button color="primary" (click)="PostCreate()">Create</button>
+
+<mat-table [dataSource]="Pages">
+  <ng-container matColumnDef="Id">
+    <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.Id}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="ShortName">
+    <mat-header-cell *matHeaderCellDef>Short Name</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.ShortName}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="FullName">
+    <mat-header-cell *matHeaderCellDef>Full Name</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.FullName}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Category">
+    <mat-header-cell *matHeaderCellDef>Category</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.Category}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Created">
+    <mat-header-cell *matHeaderCellDef>Published</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.Published | date: 'dd/MM/yyyy'}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Actions">
+    <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-button color="primary" (click)="Edit(element)"> Edit </button>
+      <button mat-button color="warn" (click)='Remove(element)'>Delete </button>
+    </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+

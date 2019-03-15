@@ -69,7 +69,7 @@ namespace LifeLike.CloudService.TableStorage
         {
             var model = LogEntity.Convert(item);
 
-            TableOperation delete = TableOperation.Delete(model);
+            var delete = TableOperation.Delete(model);
             await GetTable("Log").ExecuteAsync(delete);
             return Result.Success;
         }

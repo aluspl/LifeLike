@@ -1,29 +1,27 @@
-<div class="form-container">
-  <form (ngSubmit)="onSubmit()" #createPostForm="ngForm">
+<form (ngSubmit)="onSubmit()" #createPostForm="ngForm">
+  <div mat-dialog-content class="form-container">
     <app-title Title="Add Photo: {{model.Name}}"></app-title>
-    <div class="form-group">
-      <input class="form-control" placeholder="Photo Name" [(ngModel)]="model.Name" name="model.Name" required>
-    </div>
-    <div class="form-group">
-      <input class="form-control" placeholder="City" id="City" [(ngModel)]="model.City" name="City" >
-    </div>
-    <div class="form-group">
-      <input class="form-control" placeholder="Camera" id="Camera" [(ngModel)]="model.Camera" name="Camera" >
-    </div>
-    <div class="form-group">
-      <input class="form-control" placeholder="Image Tags" id="Tags" [(ngModel)]="model.Tags" name="Tags" >
-    </div>
-    <div class="form-group">
-    <input type="file" #file type="file" multiple (change)="upload(file.files)"
-        name="PhotoStream">
-    </div>
-    <button class="btn btn-primary" type="submit" [disabled]="!createPostForm.form.valid && !submitEnabled">Submit</button>
+    <mat-form-field>
+      <input matInput placeholder="Photo Name" [(ngModel)]="model.Name" name="model.Name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="City" id="City" [(ngModel)]="model.City" name="City">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Camera" id="Camera" [(ngModel)]="model.Camera" name="Camera">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Image Tags" id="Tags" [(ngModel)]="model.Tags" name="Tags">
+    </mat-form-field>
+    <input mat-flat-button type="file" #file type="file" multiple (change)="upload(file.files)" name="PhotoStream">
+    <button mat-flat-button color="primary" type="submit"
+      [disabled]="!createPostForm.form.valid && !submitEnabled">Submit</button>
     <span style="font-weight:bold;color:green;" *ngIf="loading">
       {{progress}}%
     </span>
-    
+
     <span style="font-weight:bold;color:green;" *ngIf="message">
       {{message}}
     </span>
-  </form>
-</div>
+  </div>
+</form>

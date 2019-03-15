@@ -40,6 +40,7 @@ namespace LifeLike.Services.Extensions
 
         public static string ToHTML(this string content)
         {
+            if (content == null) content = string.Empty;
             // Headers
             content = Regex.Replace(content, "/\n={2,}/g", "\n");
             // Strikethrough

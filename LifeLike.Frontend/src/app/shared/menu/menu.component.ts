@@ -3,6 +3,9 @@ import { RestService } from '../services/rest.service';
 import  MenuItem  from '../models/MenuItem';
 import { AuthenticationService } from '../services/authentication.service';
 import UserLogin from '../models/UserLogin';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { RegisterDialogComponent } from '../dialogs/register/registerdialogcomponent';
 
 
 @Component({
@@ -15,11 +18,12 @@ export class MenuComponent implements OnInit {
   IsLogin: Boolean;
   CurrentUser: UserLogin;
   constructor(private restService: RestService,
-    private authService: AuthenticationService) {
+    authService: AuthenticationService,
+    public dialog: MatDialog) {
       this.IsLogin = authService.IsLogin;
       authService.currentUser.subscribe(x=>{
         this.CurrentUser=x
-        this.IsLogin = x!=null;      
+        this.IsLogin = x!=null;
       })
     }
   getMenuItems(): void {
@@ -28,5 +32,11 @@ export class MenuComponent implements OnInit {
   }
   ngOnInit() {
     this.getMenuItems();
+  }
+
+  register() {
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log(`Dialog result: ${result}`); // Pizza!
+    // });
   }
 }

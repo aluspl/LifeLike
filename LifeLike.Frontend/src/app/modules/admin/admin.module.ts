@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {MatButtonModule } from '@angular/material';
+
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminPage } from './pages/admin-page/admin-page.component';
 import { LogComponent } from './pages/log/log.component';
@@ -15,6 +17,7 @@ import { PagesComponent } from './pages/pages/pages.component';
 import { PhotoCreateComponent } from './pages/photo-create/photo-create.component';
 import { PhotosComponent } from './pages/photos/photos.component';
 import { PhotoEditComponent } from './pages/photo-edit/photo-edit.component';
+import { MyMaterialModule } from 'src/material.module';
 
 @NgModule({
   declarations: [
@@ -33,11 +36,13 @@ import { PhotoEditComponent } from './pages/photo-edit/photo-edit.component';
     CommonModule,
     SharedModule,
     AdminRoutingModule,
-    FormsModule
+    FormsModule,
+    MyMaterialModule
   ],
   exports: [
-    RouterModule
+    RouterModule,
   ],
-  providers: [ AdminRestService ]
+  providers: [ AdminRestService ],
+  entryComponents: [PhotoCreateComponent, PhotoEditComponent, PostCreateComponent, PostEditComponent]
 })
 export class AdminModule { }

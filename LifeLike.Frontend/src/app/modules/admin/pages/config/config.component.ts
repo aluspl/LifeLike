@@ -10,7 +10,7 @@ import Config from '../../../../shared/models/Config';
 })
 
 export class ConfigComponent implements OnInit {
-  displayedColumns = ['Name', 'Value', 'DisplayName', 'Type'];
+  displayedColumns = ['Name', 'Value', 'DisplayName', 'Type','Actions'];
   IsLoading: boolean;
   Configs: Config[];
   error: string;

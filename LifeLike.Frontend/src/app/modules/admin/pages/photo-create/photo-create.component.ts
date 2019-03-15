@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Inject } from '@angular/core';
 import { AdminRestService } from '../../services/admin-rest.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import FileUpload from '../../models/FileUpload';
 import { HttpEventType, HttpResponseBase } from '@angular/common/http';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 @Component({
   selector: 'app-photo-create',
   templateUrl: './photo-create.component.html',
@@ -10,7 +11,6 @@ import { HttpEventType, HttpResponseBase } from '@angular/common/http';
 })
 export class PhotoCreateComponent implements OnInit {
   model = new FileUpload();
-  @Input() IsCreateMode: boolean;
   loading = false;
   progress: number;
   message: string;
@@ -29,11 +29,11 @@ export class PhotoCreateComponent implements OnInit {
       this.loading = false;
       if (event.status == 200) {
         console.log(event);
-        this.IsCreateMode = false;
+        this.dialogRef.close();
       }
       else {
         console.log(event);
-        this.IsCreateMode = true;
+        this.message=event;
       }
     }
   }
@@ -53,7 +53,8 @@ export class PhotoCreateComponent implements OnInit {
   get diagnostic() { return JSON.stringify(this.model); }
 
   constructor(
-    private restService: AdminRestService) {
+    private restService: AdminRestService,
+    public dialogRef: MatDialogRef<PhotoCreateComponent>) {
   }
 
   ngOnInit() {
