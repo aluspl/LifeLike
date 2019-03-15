@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Inject } from '@angular/core';
 import Page from '../../../../shared/models/Page';
 import { AdminRestService } from '../../services/admin-rest.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-post-create',
@@ -19,7 +20,7 @@ export class PostCreateComponent implements OnInit {
     this.restService.createPost(this.model).subscribe(p => {
       this.loading = false;
       console.log(p);
-      this.IsCreateMode = false;
+      this.dialogRef.close();
     }, error => {
       this.loading = false;
       console.log(error);
@@ -30,7 +31,9 @@ export class PostCreateComponent implements OnInit {
 
   constructor(
     private restService: AdminRestService,
-    private router: Router) {
+    public dialogRef: MatDialogRef<PostCreateComponent>,
+    @Inject(MAT_DIALOG_DATA) data ) {
+
   }
   onNoClick(): void {
 

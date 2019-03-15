@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Inject } from '@angular/core';
 import { AdminRestService } from '../../services/admin-rest.service';
 import Photo from '../../../../modules/photo/models/Photo';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-photo-edit',
@@ -8,11 +9,13 @@ import Photo from '../../../../modules/photo/models/Photo';
   styleUrls: ['./photo-edit.component.scss']
 })
 export class PhotoEditComponent implements OnInit {
-  @Input() model: Photo;
-  @Input() IsEditMode: boolean;
+  model: Photo;
   loading = false;
 
-  constructor(private restService: AdminRestService) {
+  constructor(private restService: AdminRestService,
+    public dialogRef: MatDialogRef<PhotoEditComponent>,
+    @Inject(MAT_DIALOG_DATA) data) {
+      this.model=data
   }
 
   onSubmit() {
@@ -20,8 +23,10 @@ export class PhotoEditComponent implements OnInit {
     this.restService.editPhoto(this.model).subscribe(p => {
       this.loading = false;
       console.log(p);
-      this.IsEditMode = false;
-      this.model=null;
+      this.dialogRef.close();
+    }, error=>{
+      this.loading=false;
+      console.log(error);
     });
   }
   ngOnInit() {

@@ -33,7 +33,6 @@ export class PhotoComponent implements OnInit {
     dialogConfig.data = photo;
     dialogConfig.width = '90%';
     dialogConfig.height = '90%';
-    dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     this.dialog.open(PhotoDetailComponent, dialogConfig )
   }

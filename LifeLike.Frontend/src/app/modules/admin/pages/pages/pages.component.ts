@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import Page from '../../../../shared/models/Page';
 import { AdminRestService } from '../../services/admin-rest.service';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+import { PostEditComponent } from '../post-edit/post-edit.component';
+import { PostCreateComponent } from '../post-create/post-create.component';
 
 @Component({
   selector: 'app-admin-pages',
@@ -16,7 +19,7 @@ export class PagesComponent implements OnInit {
   IsEditMode: boolean;
   IsCreateMode: boolean;
   SelectedPage: Page;
-  constructor(private restService: AdminRestService) { }
+  constructor(private restService: AdminRestService, public dialog: MatDialog) { }
 
   Remove(page: Page): void {
     console.log('Remove');
@@ -36,12 +39,23 @@ export class PagesComponent implements OnInit {
   Edit(page: Page): void {
     console.log('Edit');
     console.log(page);
-    this.IsEditMode= true;
-    this.SelectedPage = page;
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = page;
+    dialogConfig.width = '90%';
+    dialogConfig.height = '90%';
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+   this.dialog.open(PostEditComponent, dialogConfig );
+
   }
   PostCreate() : void {
     console.log('Create');
-    this.IsCreateMode = true;
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '90%';
+    dialogConfig.height = '90%';
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+   this.dialog.open(PostCreateComponent, dialogConfig );
   }
 
   GetPages(): void {

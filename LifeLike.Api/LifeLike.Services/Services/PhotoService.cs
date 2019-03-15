@@ -77,15 +77,6 @@ namespace LifeLike.Services
                     photo.Url = await _storage.Create(stream, name, "photos");
                     photo.ThumbUrl = await _storage.CreateThumb(name, "thumbs");
                 }
-                using (var stream = model.Stream.OpenReadStream())
-                {
-                    //using (var thumb = Image.Load(stream))
-                    //using (var thumbStream = new MemoryStream())
-                    //{
-                    //    thumb.Mutate(ctx => ctx.Resize(thumb.Width / 10, thumb.Height / 10));
-                    //    thumb.Save(thumbStream, new JpegEncoder());
-                    //}
-                }
                 CreateEntity(photo);
                 _queue.SendNotification($"Photo: {photo.Id}");
                 return Result.Success;

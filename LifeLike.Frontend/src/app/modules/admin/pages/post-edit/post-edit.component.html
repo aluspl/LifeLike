@@ -20,7 +20,7 @@
   </mat-form-field>
 
   <mat-form-field>
-    <textarea id="Content" matInput placeholder="Content" rows="10" [(ngModel)]="model.Content"
+    <textarea id="Content" matInput placeholder="Content" rows="10" [(ngModel)]="model.Content" required
       name="Content"></textarea>
   </mat-form-field>
   <button mat-flat-button color="primary" type="submit" [disabled]="!createPostForm.form.valid">Add</button>

@@ -42,6 +42,7 @@ import { MyMaterialModule } from 'src/material.module';
   exports: [
     RouterModule,
   ],
-  providers: [ AdminRestService ]
+  providers: [ AdminRestService ],
+  entryComponents: [PhotoCreateComponent, PhotoEditComponent, PostCreateComponent, PostEditComponent]
 })
 export class AdminModule { }

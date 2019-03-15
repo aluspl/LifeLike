@@ -1,6 +1,9 @@
 <app-title Title="Pages"></app-title>
 
 <app-spinner *ngIf="IsLoading"></app-spinner>
+
+<button mat-flat-button color="primary" (click)="PostCreate()">Create</button>
+
 <mat-table [dataSource]="Pages">
   <ng-container matColumnDef="Id">
     <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
@@ -11,7 +14,7 @@
     <mat-cell *matCellDef="let element"> {{element.ShortName}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="FullName">
-    <mat-header-cell *matHeaderCellDef>Full Nam</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef>Full Name</mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.FullName}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="Category">
@@ -25,18 +28,11 @@
   <ng-container matColumnDef="Actions">
     <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
     <mat-cell *matCellDef="let element">
-      <button mat-flat-button color="primary" (click)="Edit(element)"> Edit </button>
-      <button mat-flat-button color="warn" (click)='Remove(element)'>Delete </button>
+      <button mat-button color="primary" (click)="Edit(element)"> Edit </button>
+      <button mat-button color="warn" (click)='Remove(element)'>Delete </button>
     </mat-cell>
   </ng-container>
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
 
-<button mat-flat-button color="primary" (click)="PostCreate()">Create</button>
-<div class="row" *ngIf="IsCreateMode">
-  <app-post-create [IsCreateMode]="IsCreateMode"></app-post-create>
-</div>
-<div class="row" *ngIf="IsEditMode">
-  <app-post-edit [IsEditMode]="IsEditMode" [model]="selectedPage"></app-post-edit>
-</div>

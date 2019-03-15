@@ -1,5 +1,5 @@
-<div class="form-container">
-  <form (ngSubmit)="onSubmit()" #createPostForm="ngForm">
+<form (ngSubmit)="onSubmit()" #createPostForm="ngForm">
+  <div class="form-container">
     <app-title Title="Create Page/Post: {{model.FullName}}"></app-title>
     <mat-form-field>
       <input matInput placeholder="Post Name" [(ngModel)]="model.FullName" name="model.FullName" required />
@@ -21,10 +21,10 @@
     </mat-form-field>
 
     <mat-form-field>
-      <textarea id="Content" matInput placeholder="Content" rows="10" [(ngModel)]="model.Content"
+      <textarea id="Content" matInput placeholder="Content" rows="10" [(ngModel)]="model.Content" required
         name="Content"></textarea>
     </mat-form-field>
     <button mat-flat-button color="primary" type="submit" [disabled]="!createPostForm.form.valid">Add</button>
     <button mat-flat-button color="warn" (click)="onNoClick()">Cancel</button>
-  </form>
-</div>
+  </div>
+</form>

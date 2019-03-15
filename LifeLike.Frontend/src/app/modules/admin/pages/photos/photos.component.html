@@ -1,4 +1,5 @@
 <app-title Title="Photos"></app-title>
+<button mat-flat-button color="primary" (click)="Create()"> Create </button>
 
 <app-spinner *ngIf="IsLoading"></app-spinner>
 <mat-table [dataSource]="Photos">
@@ -21,22 +22,11 @@
   <ng-container matColumnDef="Actions">
     <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
     <mat-cell *matCellDef="let element">
-      <button mat-flat-button color="primary" (click)="Edit(element)"> Edit </button>
-      <button mat-flat-button color="warn" (click)='Remove(element)'>Delete </button>
+      <button mat-button color="primary" (click)="Edit(element)"> Edit </button>
+      <button mat-button color="warn" (click)='Remove(element)'>Delete </button>
     </mat-cell>
   </ng-container>
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
 
-<button mat-flat-button color="primary" (click)="Create()"> Create </button>
-
-<div class="row" *ngIf="IsCreateMode">
-  <app-photo-create [IsCreateMode]="IsCreateMode"></app-photo-create>
-</div>
-<div class="row" *ngIf="IsEditMode">
-  <app-photo-edit [IsEditMode]="IsEditMode" [model]="SelectedPhoto"></app-photo-edit>
-</div>
-
-
-<div *ngIf="error" class="alert alert-danger">{{error}}</div>

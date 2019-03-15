@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminRestService } from '../../services/admin-rest.service';
 import Page from '../../../../shared/models/Page';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 
 @Component({
@@ -10,18 +11,17 @@ import Page from '../../../../shared/models/Page';
   styleUrls: ['./post-edit.component.scss']
 })
 export class PostEditComponent implements OnInit {
-  @Input() model: Page;
-  @Input() IsEditMode: boolean;
+  model: Page;
+
 
   loading = false;
   categories = ['App', 'Game', 'Tutorial', 'Page', 'Post'];
   returnUrl: any;
 
   constructor(private restService: AdminRestService,
-    private route: ActivatedRoute,
-    private router: Router) {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-
+    public dialogRef: MatDialogRef<PostEditComponent>,
+    @Inject(MAT_DIALOG_DATA) data) {
+      this.model=data
   }
 
   onSubmit() {
@@ -29,7 +29,7 @@ export class PostEditComponent implements OnInit {
     this.restService.editPost(this.model).subscribe(p => {
       this.loading = false;
       console.log(p);
-      this.IsEditMode=false;
+      this.dialogRef.close();
     },error=>
     {
       this.loading = false;
