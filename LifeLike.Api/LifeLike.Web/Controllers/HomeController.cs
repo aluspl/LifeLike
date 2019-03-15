@@ -48,8 +48,6 @@ namespace LifeLike.Web.Controllers
         public IActionResult GetList()
         {
             var configs = _config.List();
-            var isLogged = User.Identity.IsAuthenticated;
-            _logger.LogInformation(EventLogType.Info, "Get Configs");
             return Ok(configs);
         }
     }

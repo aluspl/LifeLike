@@ -29,6 +29,7 @@ namespace LifeLike.CloudService.TableStorage
         {
             return new Log
             {
+                Id =item.RowKey,
                 Messages = item.Messages,
                 StackTrace = item.StackTrace,
                 RowKey = item.RowKey,

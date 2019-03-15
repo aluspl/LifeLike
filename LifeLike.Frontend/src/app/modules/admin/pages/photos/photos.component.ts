@@ -11,7 +11,7 @@ import Photo from '../../../../modules/photo/models/Photo';
 export class PhotosComponent implements OnInit {
   Photos: Photo[];
   SelectedPhoto: Photo;
-
+  displayedColumns: string[] = ['Id', 'Title', 'Url', 'Created','Actions'];
   IsLoading: boolean;
   IsEditMode: boolean;
   IsCreateMode: boolean;

@@ -1,8 +1,5 @@
 using LifeLike.Shared.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LifeLike.Data.Models
 {

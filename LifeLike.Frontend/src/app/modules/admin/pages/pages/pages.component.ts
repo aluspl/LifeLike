@@ -11,6 +11,7 @@ import { AdminRestService } from '../../services/admin-rest.service';
 export class PagesComponent implements OnInit {
   Pages: Page[];
   IsLoading: boolean;
+  displayedColumns: string[] = ['Id','ShortName', 'FullName', 'Category', 'Created','Actions'];
   error: any;
   IsEditMode: boolean;
   IsCreateMode: boolean;

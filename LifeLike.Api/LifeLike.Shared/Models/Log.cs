@@ -5,7 +5,7 @@ namespace LifeLike.Shared.Models
 {
     public class Log
     {
-        public long Id { get; set; }
+        public string Id { get; set; }
         public EventLogType Type { get; set; }
         public string Messages { get; set; }
         public string StackTrace { get; set; }

@@ -9,7 +9,7 @@ import { AdminRestService } from '../../services/admin-rest.service';
   styleUrls: ['./log.component.scss']
 })
 export class LogComponent implements OnInit {
-  displayedColumns = ['name', 'message'];
+  displayedColumns = ['Id','Messages', 'EventTime'];
   IsLoading: boolean;
   Logs: Log[];
   constructor(private restService: AdminRestService) { }
