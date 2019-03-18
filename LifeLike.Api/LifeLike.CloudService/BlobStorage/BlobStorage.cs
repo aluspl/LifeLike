@@ -1,10 +1,13 @@
 ﻿using LifeLike.Shared.Enums;
+using LifeLike.Shared.Models;
 using LifeLike.Shared.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LifeLike.CloudService.BlobStorage
@@ -27,23 +30,38 @@ namespace LifeLike.CloudService.BlobStorage
 
         public CloudBlobClient BlobClient { get; }
 
-        public async Task<string> Create(Stream stream, string name, string folder)
+        public async Task<string> Create(BlobItem item)
+        {
+            var container = GetContainer(item.Container);
+            var blob = container.GetBlockBlobReference(item.Name);
+            await blob.UploadFromStreamAsync(item.Stream);            
+            return blob.Uri.AbsoluteUri;
+        }
+        public async Task<IEnumerable<BlobItem>> GetList(string folder)
+        {
+            var container = GetContainer(folder);
+            var blob = await container.ListBlobsSegmentedAsync(null);
+            return blob.Results.Select(p =>new BlobItem
+            {
+                StorageUri = p.StorageUri.PrimaryUri,
+                Uri = p.Uri,
+                Container = p.Container.Name
+            });
+        }
+        public BlobItem Get(string name, string folder)
         {
             var container = GetContainer(folder);
             var blob = container.GetBlockBlobReference(name);
-            await blob.UploadFromStreamAsync(stream);            
-            return blob.Uri.AbsoluteUri;
+
+            return GenerateBlob(blob);
         }
-
-
-        public Result Remove(string name, string folder)
-        {
+        public async Task<Result> Update(BlobItem item)
+        {          
             try
             {
-                var container = GetContainer(folder);
-
-                var blob = container.GetBlockBlobReference(name);
-                blob.DeleteAsync().Wait();
+                var container = GetContainer(item.Container);
+                var blob = container.GetBlockBlobReference(item.Name);
+                await blob.UploadFromStreamAsync(item.Stream);
                 return Result.Success;
             }
             catch (Exception)
@@ -52,6 +70,33 @@ namespace LifeLike.CloudService.BlobStorage
             }
         }
 
+        private static BlobItem GenerateBlob(CloudBlockBlob blob)
+        {
+            return new BlobItem
+            {
+                Container = blob.Container.Name,
+                StorageUri = blob.StorageUri.PrimaryUri,
+                Uri = blob.Uri,
+                Name = blob.Name
+            };
+        }
+
+
+        public async Task<Result> Remove(string name, string folder)
+        {
+            try
+            {
+                var container = GetContainer(folder);
+
+                var blob = container.GetBlockBlobReference(name);
+                await blob.DeleteAsync();
+                return Result.Success;
+            }
+            catch (Exception)
+            {
+                return Result.Failed;
+            }
+        }
         public async Task<string> CreateThumb(string name, string folder)
         {
             var mainContainer = GetContainer("photos");

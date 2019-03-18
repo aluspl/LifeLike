@@ -59,5 +59,11 @@ namespace LifeLike.Data
         {
              _context.Database.ExecuteSqlCommand($"TRUNCATE TABLE {typeof(T).Name}");
         }
+
+        public void Update(Entity query, T entity)
+        {
+            _dbset.Update(entity);
+            _context.SaveChanges();
+        }
     }
 }

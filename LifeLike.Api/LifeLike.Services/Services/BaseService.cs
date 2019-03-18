@@ -43,7 +43,7 @@ namespace LifeLike.Services
         }
         public void UpdateEntity(T item)
         {
-            _repo.Update(item);
+            _repo.Update(item,item);
         }
     }
 }

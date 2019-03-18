@@ -13,16 +13,17 @@ namespace LifeLike.CloudService.CosmosDB
     public class DocumentDBRepository<T> : IRepository<T>
     {
         private readonly IConfiguration _configuration;
-        private readonly string _CosmosDBName;
 
-        private DocumentClient _client { get; }
+        public string _CosmosDBName { get; }
+
+        private readonly DocumentClient _client;
 
         public DocumentDBRepository(IConfiguration configuration)
         {
             _configuration = configuration;
             var EndpointUri = configuration["CosmosDBEndpoint"];
             var CosmosDBKey = configuration["CosmosDBKey"];
-            _CosmosDBName = configuration["CosmosDBName"];
+             _CosmosDBName = configuration["CosmosDBName"];
 
             _client = new DocumentClient(new Uri(EndpointUri), CosmosDBKey);
             _client.CreateDatabaseIfNotExistsAsync(new Database { Id = _CosmosDBName }).Wait();
@@ -77,9 +78,9 @@ namespace LifeLike.CloudService.CosmosDB
             return query;
         }
 
-        public void Update(T entity)
+        public void Update(Entity query, T entity)
         {
-            _client.ReplaceDocumentAsync(GetDocument("0"), entity).Wait();
+            _client.ReplaceDocumentAsync(GetDocument(query.Id), entity).Wait();
         }
     }
 }

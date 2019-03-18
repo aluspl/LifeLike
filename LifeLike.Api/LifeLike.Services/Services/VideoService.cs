@@ -93,5 +93,6 @@ namespace LifeLike.Services
         Result Delete(string id);
         IEnumerable<Video> List(VideoCategory category);
         IEnumerable<Video> List();
+        Result Update(Video item);
     }
 }

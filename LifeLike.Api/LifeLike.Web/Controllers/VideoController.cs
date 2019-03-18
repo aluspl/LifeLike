@@ -16,7 +16,7 @@ namespace LifeLike.Web.Controllers
             service = repository;
         }
 
-        [HttpPost("Create")]
+        [HttpPost]
         public IActionResult Create(Video model)
         {
             model.PublishDate = DateTime.Now;
@@ -26,11 +26,18 @@ namespace LifeLike.Web.Controllers
             return Ok(item);
 
         }
-        [HttpDelete("Delete")]
+        [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
             if (!ModelState.IsValid) return BadRequest(Result.Failed);
             var item = service.Delete(id);
+            return Ok(item);
+        }
+        [HttpPut]
+        public IActionResult Delete([FromBody] Video item)
+        {
+            if (!ModelState.IsValid) return BadRequest(Result.Failed);
+            var result = service.Update(item);
             return Ok(item);
         }
         // GET

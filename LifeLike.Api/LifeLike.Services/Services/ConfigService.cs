@@ -7,6 +7,7 @@ using LifeLike.Services.Structures;
 using LifeLike.Services.ViewModel;
 using LifeLike.Shared;
 using LifeLike.Shared.Enums;
+using LifeLike.Shared.Models;
 
 namespace LifeLike.Services
 {
@@ -45,7 +46,7 @@ namespace LifeLike.Services
             {
                 var item = GetEntity(p => p.Name == model.Name);
                 _mapper.Map(model, item);
-                _repo.Update(item);
+                _repo.Update(item,item);
                 return Result.Success;
             }
             catch (Exception e)

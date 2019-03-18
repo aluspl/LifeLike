@@ -10,12 +10,9 @@ namespace LifeLike.Shared.Services
     public interface ITableStorage
     {
         bool IsWorking { get;  }
-
-        Task<IEnumerable<Statistic>> StatisticList();
-        Task<IEnumerable<Log>> LogList();
-        Task<IEnumerable<Log>> LogList(EventLogType type);
-        Task<Result> Create(Statistic item);
-        Task<Result> Delete(Statistic item);
+        Task<IEnumerable<Log>> List();
+        Task<IEnumerable<Log>> List(string type);
+        Task<Result> Update(string id, Log value);
         Task<Result> Create(Log item);
         Task<Result> Delete(Log item);
         Task<Result> DeleteAll(string v);
