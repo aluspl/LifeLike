@@ -19,6 +19,7 @@ import { PhotosComponent } from './pages/photos/photos.component';
 import { PhotoEditComponent } from './pages/photo-edit/photo-edit.component';
 import { MyMaterialModule } from 'src/material.module';
 import { VideoCreateComponent } from './pages/videos-create/video-create.component';
+import { VideoComponent } from '../video/pages/video/video.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import { VideoCreateComponent } from './pages/videos-create/video-create.compone
     PagesComponent,
     PhotoCreateComponent,
     PhotoEditComponent,
-    PhotosComponent
+    PhotosComponent,
+    VideoComponent,
+    VideoCreateComponent
   ],
   imports: [
     CommonModule,
