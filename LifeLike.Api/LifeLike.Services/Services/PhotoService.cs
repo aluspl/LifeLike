@@ -93,21 +93,11 @@ namespace LifeLike.Services
         {
             try
             {
-                var encoder = new PngEncoder();
-                var decoder = new PngEncoder();
-                using (var outputStream = new MemoryStream())
                 using (var image = Image.Load(stream))
                 {
                     var metadata = image.MetaData;
-                    using (var thumb = image.Clone())
-                    {
-                        thumb.Mutate(p => p.Resize(image.Width / 10, image.Height / 10));
-                        thumb.Save(outputStream, encoder);
-                        photo.ThumbUrl = await _storage.Create(new BlobItem { Container = "thumbs", Stream = outputStream, Name = photo.FileName });
-                    }
-                    image.Mutate(p => p.Resize(image.Width / 4, image.Height / 4));
-                    image.Save(outputStream, encoder);
-                    photo.Url = await _storage.Create(new BlobItem { Container = "photos", Stream = outputStream, Name = photo.FileName });
+                    await CreateThumb(photo, image);
+                    await CreateImage(photo, image);
                 };
 
             }
@@ -117,6 +107,41 @@ namespace LifeLike.Services
             }
 
 
+        }
+
+        private async Task CreateImage(PhotoEntity photo,Image<SixLabors.ImageSharp.PixelFormats.Rgba32> image)
+        {
+            using (var outputStream = new MemoryStream())
+            {
+                image.Mutate(p => p.Resize(image.Width / 4, image.Height / 4));
+                image.Save(outputStream, PngFormat.Instance);
+                outputStream.Seek(0, SeekOrigin.Begin);
+
+                photo.Url = await _storage.Create(new BlobItem
+                {
+                    Container = "photos",
+                    Stream = outputStream,
+                    Name = photo.FileName
+                });
+            }          
+        }
+
+        private async Task CreateThumb(PhotoEntity photo, Image<SixLabors.ImageSharp.PixelFormats.Rgba32> image)
+        {
+            using (var thumb = image.Clone())
+            using (var outputStream = new MemoryStream())
+            {
+                thumb.Mutate(p => p.Resize(image.Width / 10, image.Height / 10));
+                thumb.Save(outputStream, PngFormat.Instance);
+                outputStream.Seek(0, SeekOrigin.Begin);
+                photo.ThumbUrl = await _storage.Create(
+                    new BlobItem
+                    {
+                        Container = "thumbs",
+                        Stream = outputStream,
+                        Name = photo.FileName
+                    });
+            }
         }
 
         public Result Delete(string id)

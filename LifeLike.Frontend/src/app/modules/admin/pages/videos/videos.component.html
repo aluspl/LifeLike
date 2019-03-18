@@ -1,0 +1,32 @@
+<app-title Title="Videos"></app-title>
+<button mat-flat-button color="primary" (click)="Create()"> Create </button>
+
+<app-spinner *ngIf="IsLoading"></app-spinner>
+<mat-table [dataSource]="Videos">
+  <ng-container matColumnDef="Id">
+    <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.Id}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Title">
+    <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.Title}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Url">
+    <mat-header-cell *matHeaderCellDef>Url</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.Url}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Created">
+    <mat-header-cell *matHeaderCellDef>Created</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.Created}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Actions">
+    <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-button color="primary" (click)="Edit(element)"> Edit </button>
+      <button mat-button color="warn" (click)='Remove(element)'>Delete </button>
+    </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+

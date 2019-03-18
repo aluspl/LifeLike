@@ -56,7 +56,7 @@ namespace LifeLike.CloudService.CosmosDB
         {
             var queryOptions = new FeedOptions { MaxItemCount = 1 };
             T ReturnItem = default(T);
-            var query = this._client.CreateDocumentQuery<T>(GetCollection()).Where(predicate);
+            var query = _client.CreateDocumentQuery<T>(GetCollection()).Where(predicate);
             foreach (var item in query)
             {
                 ReturnItem= item;

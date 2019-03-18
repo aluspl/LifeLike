@@ -18,6 +18,7 @@ import { PhotoCreateComponent } from './pages/photo-create/photo-create.componen
 import { PhotosComponent } from './pages/photos/photos.component';
 import { PhotoEditComponent } from './pages/photo-edit/photo-edit.component';
 import { MyMaterialModule } from 'src/material.module';
+import { VideoCreateComponent } from './pages/videos-create/video-create.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,6 @@ import { MyMaterialModule } from 'src/material.module';
     RouterModule,
   ],
   providers: [ AdminRestService ],
-  entryComponents: [PhotoCreateComponent, PhotoEditComponent, PostCreateComponent, PostEditComponent]
+  entryComponents: [PhotoCreateComponent, PhotoEditComponent, PostCreateComponent, PostEditComponent, VideoCreateComponent]
 })
 export class AdminModule { }
