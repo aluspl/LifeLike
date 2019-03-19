@@ -26,7 +26,7 @@ namespace LifeLike.Services
         {
             try
             {
-                var item = _mapper.Map<VideoEntity>(model);
+                var item = _mapper.Map<VideoEntity>(model);               
                 CreateEntity(item);
                 return Result.Success;
             }

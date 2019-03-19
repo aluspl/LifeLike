@@ -7,6 +7,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { PostRestService } from './services/post-rest.service';
 import { PageRoutingModule } from './page-routing.module';
 import { PageDetailModule } from './pagedetail.module';
+import { MyMaterialModule } from 'src/material.module';
 
 @NgModule({
   declarations: [
@@ -18,8 +19,9 @@ import { PageDetailModule } from './pagedetail.module';
     RouterModule,
     PageDetailModule,
     PageRoutingModule,
+    MyMaterialModule
   ],
-  
+
   providers: [PostRestService]
 })
 export class PageModule { }

@@ -9,28 +9,26 @@ import { RestService } from '../../../../shared/services/rest.service';
   styleUrls: ['./video.component.scss']
 })
 export class VideoComponent implements OnInit {
-
-
   Videos: Video[];
   IsLoading: boolean;
-  HasValue: boolean;
+
   constructor(private restService: RestService) { }
-  GetPosts(): void {
+  GetVideos(){
+    this.IsLoading=true;
     this.restService.GetVideos()
-      .pipe(
-        map((data: Video[]) => {
-          this.IsLoading = false;
-          if (data != null) {
-            this.HasValue = true;
-          } else {
-            this.HasValue = false;
-          }
-          console.log(data);
-          return data;
-        }))
-      .subscribe(p => this.Videos = p);
+
+      .subscribe(p => {
+        this.IsLoading=false;
+        console.log(p);
+        this.Videos = p
+      },
+      error=>
+      {
+        this.IsLoading=false;
+        console.log(error);
+      });
   }
   ngOnInit() {
-    this.GetPosts();
+    this.GetVideos();
   }
 }

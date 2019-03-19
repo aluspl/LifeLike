@@ -1,11 +1,11 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpRequest} from '@angular/common/http';
-import {catchError, tap} from 'rxjs/operators';
-import {Observable, of} from 'rxjs/index';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpRequest } from '@angular/common/http';
+import { catchError, tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs/index';
 import Log from '../models/Log';
-import  Config  from '../../../shared/models/Config';
+import Config from '../../../shared/models/Config';
 import { RestService } from '../../../shared/services/rest.service';
-import  Page  from '../../../shared/models/Page';
+import Page from '../../../shared/models/Page';
 import { LoggerService } from '../../../core/services/logger.service';
 import Photo from '../../photo/models/Photo';
 import FileUpload from '../models/FileUpload';
@@ -23,12 +23,11 @@ const ClearLogs = environment.API + '/Api/Log/Clear';
 
 const PhotoApi = environment.API + '/Api/Photo';
 const CreatePhotoApi = environment.API + '/Api/Photo/Create';
-const CreateVideo= environment.API + '/Api/Video';
+const CreateVideo = environment.API + '/Api/Video';
 
 
 @Injectable()
 export class AdminRestService {
-
 
   private static log(message: string) {
     console.log(message);
@@ -37,23 +36,14 @@ export class AdminRestService {
 
 
 
-  createVideo(model: Video):  Observable<string> {
+  createVideo(model: Video): Observable<string> {
     return this.http
-    .post<string>(CreateVideo, model, RestService.httpOptions)
-    .pipe(
-      tap(_ => LoggerService.log(`create Video`)),
-      catchError(RestService.handleError<string>())
-    );
+      .post<string>(CreateVideo, model, RestService.httpOptions)
+      .pipe(
+        tap(_ => LoggerService.log(`create Video`)),
+        catchError(RestService.handleError<string>())
+      );
   }
-  getVideos(): Observable<Video[]> {
-    return this.http
-    .get<Video[]>(CreateVideo)
-    .pipe(
-      tap(_ => LoggerService.log(`fetched Logs`)),
-      catchError(RestService.handleError<Video[]>())
-    );
-  }
-
   createPost(model: Page): Observable<string> {
     return this.http
       .post<string>(CreatePost, model, RestService.httpOptions)
@@ -62,6 +52,30 @@ export class AdminRestService {
         catchError(RestService.handleError<string>())
       );
   }
+  createPhoto(file: FileUpload) {
+    const formData: FormData = new FormData();
+    formData.append(file.PhotoStream.name, file.PhotoStream);
+    formData.append('Name', file.Name);
+    formData.append('Camera', file.Camera);
+    formData.append('City', file.City);
+    formData.append('Tags', file.Tags);
+    const req = new HttpRequest('POST', CreatePhotoApi, formData, {
+      reportProgress: true
+    });
+
+    return this.http.request(req);
+  }
+
+  getVideos(): Observable<Video[]> {
+    return this.http
+      .get<Video[]>(CreateVideo)
+      .pipe(
+        tap(_ => LoggerService.log(`fetched Logs`)),
+        catchError(RestService.handleError<Video[]>())
+      );
+  }
+
+
   getLogList(): Observable<Log[]> {
     return this.http
       .get<Log[]>(LogList)
@@ -70,73 +84,21 @@ export class AdminRestService {
         catchError(RestService.handleError<Log[]>())
       );
   }
-  ClearLogs(): Observable<any> {
+
+
+  getPhotos(): Observable<Photo[]> {
     return this.http
-    .post<any>(ClearLogs,RestService.httpOptions)
-    .pipe(
-      tap(_ => LoggerService.log(`clear Logs`))
-    );
+      .get<Photo[]>(PhotoApi, RestService.httpOptions)
+      .pipe(
+        tap(_ => LoggerService.log(`fetched Photos`))
+      );
   }
 
   getPages(): Observable<Page[]> {
     return this.http
-    .get<Page[]>(AllPost)
-    .pipe(
-      tap(_ => LoggerService.log(`fetched PAges`))
-    );
-  }
-
-  removePost(id: number) {
-    const url = `${CreatePost}/${id}`;
-    return this.http
-      .delete(url, RestService.httpOptions)
+      .get<Page[]>(AllPost)
       .pipe(
-        tap(_ => LoggerService.log(`Remove Post`))
-      );
-  }
-
-  editPost(page: Page) {
-    return this.http
-    .put<string>(CreatePost, page)
-    .pipe(
-      tap(_ => LoggerService.log(`fetched Configs`)),
-    );
-  }
-  getPhotos(): Observable<Photo[]> {
-    return this.http
-    .get<Photo[]>(PhotoApi, RestService.httpOptions)
-    .pipe(
-      tap(_ => LoggerService.log(`fetched Photos`))
-    );
-  }
-  createPhoto(file: FileUpload){
-    const formData: FormData = new FormData();
-    formData.append(file.PhotoStream.name, file.PhotoStream);
-    formData.append('Name', file.Name);
-    formData.append('Camera', file.Camera);
-    formData.append('City', file.City);
-    formData.append('Tags', file.Tags);
-
-
-    const req = new HttpRequest('POST', CreatePhotoApi, formData, {
-      reportProgress: true
-    });
-
-    return this.http.request(req);
-  }
-  editPhoto(photo: Photo) {
-    return this.http
-    .put<string>(PhotoApi, photo, RestService.httpOptions)
-    .pipe(
-      tap(_ => LoggerService.log(`Edit Photo`)),
-    );
-  }
-  deletePhoto(id: string) {
-    const url = `${PhotoApi}/${id}`;
-    return this.http
-      .delete(url, RestService.httpOptions)
-      .pipe(
-        tap(_ => LoggerService.log(`Delete Photo`))
+        tap(_ => LoggerService.log(`fetched PAges`))
       );
   }
 
@@ -147,13 +109,71 @@ export class AdminRestService {
         tap(_ => LoggerService.log(`Get Configs`))
       );
   }
+
+  ClearLogs(): Observable<any> {
+    return this.http
+      .post<any>(ClearLogs, RestService.httpOptions)
+      .pipe(
+        tap(_ => LoggerService.log(`clear Logs`))
+      );
+  }
+
+
+  editPost(page: Page) {
+    return this.http
+      .put<string>(CreatePost, page)
+      .pipe(
+        tap(_ => LoggerService.log(`fetched Configs`)),
+      );
+  }
+  editVideo(model: Video): any {
+    return this.http
+      .put<string>(CreateVideo, model)
+      .pipe(
+        tap(_ => LoggerService.log(`edited Video`)),
+      );
+  }
+  editPhoto(photo: Photo) {
+    return this.http
+      .put<string>(PhotoApi, photo, RestService.httpOptions)
+      .pipe(
+        tap(_ => LoggerService.log(`Edit Photo`)),
+      );
+  }
   editConfig(config: Config) {
     return this.http
-    .put<string>(ConfigApi, config, RestService.httpOptions)
-    .pipe(
-      tap(_ => LoggerService.log(`Edit Config`)),
-    );
+      .put<string>(ConfigApi, config, RestService.httpOptions)
+      .pipe(
+        tap(_ => LoggerService.log(`Edit Config`)),
+      );
   }
+
+  removePost(id: number) {
+    const url = `${CreatePost}/${id}`;
+    return this.http
+      .delete(url, RestService.httpOptions)
+      .pipe(
+        tap(_ => LoggerService.log(`Remove Post`))
+      );
+  }
+  removeVideo(Id: number): any {
+    const url = `${CreateVideo}/${Id}`;
+    return this.http
+      .delete(url, RestService.httpOptions)
+      .pipe(
+        tap(_ => LoggerService.log(`Remove Video`))
+      );
+  }
+
+  deletePhoto(id: string) {
+    const url = `${PhotoApi}/${id}`;
+    return this.http
+      .delete(url, RestService.httpOptions)
+      .pipe(
+        tap(_ => LoggerService.log(`Delete Photo`))
+      );
+  }
+
   deleteConfig(id: number) {
     const url = `${ConfigApi}/${id}`;
     return this.http

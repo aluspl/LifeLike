@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { AdminRestService } from '../../services/admin-rest.service';
 import Photo from '../../../../modules/photo/models/Photo';
-import { PhotoCreateComponent } from '../photo-create/photo-create.component';
 import { MatDialogConfig, MatDialog } from '@angular/material';
-import { PhotoEditComponent } from '../photo-edit/photo-edit.component';
+import { PhotoEditComponent } from '../../dialogs/photo-edit/photo-edit.component';
+import { PhotoCreateComponent } from '../../dialogs/photo-create/photo-create.component';
 
 @Component({
   selector: 'app-admin-photos',
@@ -41,6 +41,8 @@ export class PhotosComponent implements OnInit {
     console.log(photo);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = photo;
+    dialogConfig.width = '90%';
+
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
    let dialogRef = this.dialog.open(PhotoEditComponent, dialogConfig);
@@ -52,6 +54,7 @@ export class PhotosComponent implements OnInit {
     console.log('Create');
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
+    dialogConfig.width = '90%';
     dialogConfig.autoFocus = true;
    let dialogRef = this.dialog.open(PhotoCreateComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {

@@ -2,32 +2,31 @@ import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { AdminRestService } from '../../services/admin-rest.service';
 import Photo from '../../../photo/models/Photo';
-import { PhotoCreateComponent } from '../photo-create/photo-create.component';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import Video from '../../../../modules/video/models/Video';
-import { VideoCreateComponent } from '../videos-create/video-create.component';
+import { VideoCreateComponent } from '../../dialogs/videos-create/video-create.component';
+import { VideoEditComponent } from '../../dialogs/videos-edit/video-edit.component';
 
 @Component({
-  selector: 'app-admin-videos',
+  selector: 'app-videos',
   templateUrl: './videos.component.html',
   styleUrls: ['./videos.component.scss']
 })
 export class VideosComponent implements OnInit {
   Videos: Video[];
-  displayedColumns: string[] = ['Id', 'Title', 'Url', 'Created', 'Actions'];
+  displayedColumns: string[] = ['Id', 'Name', 'Url', 'Created', 'Actions'];
   IsLoading: boolean;
-  IsEditMode: boolean;
-  IsCreateMode: boolean;
   error: any;
-  constructor(private restService: AdminRestService, private dialog: MatDialog) { }
+  constructor(private restService: AdminRestService,
+    private dialog: MatDialog) { }
 
-  Remove(photo: Photo): void {
+  Remove(video: Video): void {
     console.log('Remove');
-    console.log(photo);
+    console.log(video);
     this.IsLoading = true;
-    this.restService.deletePhoto(photo.Id)
+    this.restService.removeVideo(video.Id)
       .subscribe(
-        data => {
+        () => {
           this.IsLoading = false;
           this.GetVideos();
         },
@@ -43,8 +42,8 @@ export class VideosComponent implements OnInit {
     dialogConfig.data = model;
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    let dialogRef = this.dialog.open(VideoCreateComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe(result => {
+    let dialogRef = this.dialog.open(VideoEditComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(() => {
       this.GetVideos();
     });
   }
@@ -53,8 +52,9 @@ export class VideosComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
+    dialogConfig.width = '90%';
     let dialogRef = this.dialog.open(VideoCreateComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(() => {
       this.GetVideos();
     });
   }
@@ -71,8 +71,5 @@ export class VideosComponent implements OnInit {
   }
   ngOnInit() {
     this.GetVideos();
-    this.IsEditMode = false;
-    this.IsCreateMode = false;
   }
-
 }

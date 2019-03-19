@@ -4,17 +4,19 @@ import { SharedModule } from '../../shared/shared.module';
 import { VideoComponent } from './pages/video/video.component';
 import { RouterModule } from '@angular/router';
 import { VideoRoutingModule } from './video-routing.module';
+import { MyMaterialModule } from 'src/material.module';
 
 @NgModule({
   declarations: [
     VideoComponent
   ],
   imports: [
-    CommonModule,    
+    CommonModule,
     SharedModule,
     VideoRoutingModule,
-    RouterModule
+    RouterModule,
+    MyMaterialModule
   ],
- 
+
 })
 export class VideoModule { }

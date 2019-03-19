@@ -8,8 +8,6 @@ namespace LifeLike.Web.Utils
 {
     public class HtmlUtils
     {
-      
-
         public static IEnumerable<SelectListItem> CategoryList
         {
             get

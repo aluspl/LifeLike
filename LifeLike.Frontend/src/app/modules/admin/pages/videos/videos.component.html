@@ -7,17 +7,17 @@
     <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.Id}}</mat-cell>
   </ng-container>
-  <ng-container matColumnDef="Title">
+  <ng-container matColumnDef="Name">
     <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.Title}}</mat-cell>
+    <mat-cell *matCellDef="let element"> {{element.Name}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="Url">
     <mat-header-cell *matHeaderCellDef>Url</mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.Url}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="Created">
-    <mat-header-cell *matHeaderCellDef>Created</mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.Created}}</mat-cell>
+    <mat-header-cell *matHeaderCellDef>Published</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.PublishDate}}</mat-cell>
   </ng-container>
   <ng-container matColumnDef="Actions">
     <mat-header-cell *matHeaderCellDef>#</mat-header-cell>

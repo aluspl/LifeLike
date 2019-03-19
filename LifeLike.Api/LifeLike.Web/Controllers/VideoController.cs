@@ -17,11 +17,11 @@ namespace LifeLike.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Video model)
+        public IActionResult Create([FromBody] Video model)
         {
             model.PublishDate = DateTime.Now;
-
-            if (!ModelState.IsValid) return BadRequest(Result.Failed);
+            if (!ModelState.IsValid)
+                return BadRequest(Result.Failed);
             var item = service.Create(model);
             return Ok(item);
 
@@ -34,14 +34,14 @@ namespace LifeLike.Web.Controllers
             return Ok(item);
         }
         [HttpPut]
-        public IActionResult Delete([FromBody] Video item)
+        public IActionResult Update([FromBody] Video item)
         {
             if (!ModelState.IsValid) return BadRequest(Result.Failed);
             var result = service.Update(item);
             return Ok(item);
         }
         // GET
-        [HttpGet("List")]
+        [HttpGet]
         public IActionResult Get()
         {
             var list = service.List();

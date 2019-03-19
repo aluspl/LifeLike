@@ -8,6 +8,7 @@ using LifeLike.Shared.Models;
 using LifeLike.Shared.Services;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats.Png;
+using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
 using System;
 using System.Collections.Generic;
@@ -113,7 +114,7 @@ namespace LifeLike.Services
         {
             using (var outputStream = new MemoryStream())
             {
-                image.Mutate(p => p.Resize(image.Width / 4, image.Height / 4));
+                Resize(image, 1920);
                 image.Save(outputStream, PngFormat.Instance);
                 outputStream.Seek(0, SeekOrigin.Begin);
 
@@ -123,7 +124,20 @@ namespace LifeLike.Services
                     Stream = outputStream,
                     Name = photo.FileName
                 });
-            }          
+            }
+        }
+
+        private void Resize(Image<Rgba32> image, int v)
+        {
+            var ratio = GetRatio(image.Width,v);
+      
+            image.Mutate(p => p.Resize(image.Width*v, image.Height*v));
+
+        }
+
+        private object GetRatio(int width, int newWidth)
+        {
+            return width / newWidth;
         }
 
         private async Task CreateThumb(PhotoEntity photo, Image<SixLabors.ImageSharp.PixelFormats.Rgba32> image)

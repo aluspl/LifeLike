@@ -15,25 +15,24 @@ export class VideoCreateComponent implements OnInit {
   progress: number;
   message: string;
   submitEnabled: boolean;
-  model: Video;
+  model = new Video();
+  categories = ['VLOG', 'TRAVEL', 'TUTORIAL', 'TRAILER'];
+
   onSubmit() {
     this.loading = true;
-    this.restService.createVideo(this.model).subscribe(event => {
-      this.VideoCreateCompleted(event);
+    this.restService.createVideo(this.model).subscribe(p => {
+      this.loading = false;
+      console.log(p);
+      this.dialogRef.close();
+    }, error => {
+      this.loading = false;
+      console.log(error);
     });
   }
-  VideoCreateCompleted(event: any): any {
-    this.loading = false;
-    if (event.status == 200) {
-      console.log(event);
-      this.dialogRef.close();
-    }
-    else {
-      console.log(event);
-      this.message=event;
-    }
+  onNoClick()
+  {
+    this.dialogRef.close();
   }
-
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.model); }
 
