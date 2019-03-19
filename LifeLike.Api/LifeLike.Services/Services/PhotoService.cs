@@ -131,16 +131,16 @@ namespace LifeLike.Services
         {
             var ratio = GetRatio(image.Width,v);
       
-            image.Mutate(p => p.Resize(image.Width*v, image.Height*v));
+            image.Mutate(p => p.Resize((int)(image.Width / ratio), (int)(image.Height / ratio)));
 
         }
 
-        private object GetRatio(int width, int newWidth)
+        private static double GetRatio(double width, double newWidth)
         {
             return width / newWidth;
         }
 
-        private async Task CreateThumb(PhotoEntity photo, Image<SixLabors.ImageSharp.PixelFormats.Rgba32> image)
+        private async Task CreateThumb(PhotoEntity photo, Image<Rgba32> image)
         {
             using (var thumb = image.Clone())
             using (var outputStream = new MemoryStream())
