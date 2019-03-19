@@ -1,16 +1,14 @@
 <app-title Title="Videos"></app-title>
-<div class="row" *ngIf="HasValue" >
-  <div class="col-sm-4"  *ngFor="let post of Videos" >
-      <div class="card"  routerLink='{{post.ShortName}}'>
-        <div class="card-header">
-            {{post.Name}}
-        </div>
-        <div class="card-body">
-            <app-youtube-player [YoutubeID]="post.YoutubeId"></app-youtube-player>
-            <p class="caption">
-              Published: {{post.Published  | date: 'dd/MM/yyyy'}}
-            </p>    
-        </div>
-      </div>
-  </div>  
+<app-spinner *ngIf="IsLoading"></app-spinner>
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+  <mat-card  fxFlex="40%" *ngFor="let video of Videos">
+    <mat-card-header>
+      <mat-card-title> {{video.Name}}</mat-card-title>
+      <mat-card-subtitle>{{video.Category}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <app-youtube-player [YoutubeID]="video.YoutubeId"></app-youtube-player>
+      Published: {{video.PublishDate  | date: 'dd/MM/yyyy'}}
+    </mat-card-content>
+  </mat-card>
 </div>

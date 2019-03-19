@@ -73,7 +73,6 @@ namespace LifeLike.Web.Controllers
         {
             model.Published = DateTime.Now;
             model.ShortName = model?.ShortName?.ToLower();
-            if (model.Category == null) model.Category = "Post";
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var result = service.Create(model);

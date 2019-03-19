@@ -1,14 +1,11 @@
 ﻿using AutoMapper;
 using LifeLike.CloudService.BlobStorage;
 using LifeLike.CloudService.CosmosDB;
-using LifeLike.CloudService.Queue;
 using LifeLike.CloudService.TableStorage;
 using LifeLike.Data;
 using LifeLike.Data.Models;
 using LifeLike.Repositories;
 using LifeLike.Services;
-using LifeLike.Services.Cloud;
-using LifeLike.Services.CloudServices;
 using LifeLike.Services.Profiles;
 using LifeLike.Services.Services;
 using LifeLike.Services.Structures;
@@ -31,7 +28,6 @@ using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using Serilog;
 using System;
-using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 
@@ -68,14 +64,12 @@ namespace LifeLike.Web
             {
                 services.AddDbContext<PortalContext>(options =>
                     options.UseSqlite("Data Source=lifelike.db"));
-                Debug.WriteLine("Using SQLite");
             }
             else
             {
                 services.AddDbContext<PortalContext>(options =>
                        options.UseSqlServer(connection,
                        b => b.MigrationsAssembly("LifeLike.Web")));
-                Debug.WriteLine("Using SQL");
             }
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -86,24 +80,21 @@ namespace LifeLike.Web
                 services.AddScoped<IUnitOfWork, UnitOfWork>();
             if (Configuration["BlobStorage"] != null)
             {
-                services.AddScoped<IStatisticService, StatisticCloudService>();
                 services.AddScoped<IBlobStorage, BlobStorage>();
                 services.AddScoped<IQueueService, CloudService.Queue.QueueService>();
             }
             else
             {
-                services.AddScoped<IStatisticService, StatisticService>();
                 services.AddScoped<IBlobStorage, LocalBlobStorage>();
                 services.AddScoped<IQueueService, LifeLike.Services.CloudServices.QueueService>();
             }
-
+            services.AddScoped<IStatisticService, StatisticService>();
             services.AddScoped<ITableStorage, TableStorage>();
             services.AddScoped<ILogService, LogService>();
             services.AddScoped<ILinkService, LinkRepository>();
             services.AddScoped<IConfigService, ConfigService>();
             services.AddScoped<IPageService, PageService>();
             services.AddScoped<IPhotoService, PhotoService>();
-
             services.AddScoped<IVideoService, VideoService>();
 
             SetupIdentity(services);
@@ -163,21 +154,6 @@ namespace LifeLike.Web
             DbInitializer.Initialize(context);
         }
 
-        private static void GenerateDB(IApplicationBuilder app)
-        {
-            try
-            {
-                using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
-                .CreateScope())
-                {
-                    serviceScope.ServiceProvider.GetService<PortalContext>().Database.Migrate();
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex, "Failed to migrate or seed database");
-            }
-        }
 
         private void SetupCORS(IServiceCollection services)
         {

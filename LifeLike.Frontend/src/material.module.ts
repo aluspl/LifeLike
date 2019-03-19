@@ -9,6 +9,7 @@ import { CdkTableModule } from "@angular/cdk/table";
 import { CdkTreeModule } from "@angular/cdk/tree";
 import { PortalModule } from "@angular/cdk/portal";
 import { ScrollingModule } from "@angular/cdk/scrolling";
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
   imports: [CommonModule, A11yModule,
@@ -51,7 +52,8 @@ import { ScrollingModule } from "@angular/cdk/scrolling";
     MatTooltipModule,
     MatTreeModule,
     PortalModule,
-    ScrollingModule
+    ScrollingModule,
+    FlexLayoutModule
   ],
   exports: [CommonModule, A11yModule,
     CdkStepperModule,
@@ -93,7 +95,8 @@ import { ScrollingModule } from "@angular/cdk/scrolling";
     MatTooltipModule,
     MatTreeModule,
     PortalModule,
-    ScrollingModule
+    ScrollingModule,
+    FlexLayoutModule
   ],
 })
 export class MyMaterialModule { }

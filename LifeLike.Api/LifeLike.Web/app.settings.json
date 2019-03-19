@@ -1,6 +1,6 @@
 {
   "JwtKey": "Ab123456789101112131415",
-  "JwtIssuer": "http://lifelike.pl",
+  "JwtIssuer": "http://lifelike.dev",
   "JwtExpireDays": 30,
   "frontend": "http://localhost:4200",
   "Logging": {
@@ -8,5 +8,12 @@
     "LogLevel": {
       "Default": "Warning"
     }
-  }
+  },
+  "KeyVaultName": "lifelikekv",
+  "AzureADApplicationId": "7268ad8d-94e7-4f75-82e1-a10accdfb158",
+  "AzureADPassword": "7FBvaw8BTktp6WYzEeb2sSZBhuEnajBVD9KiGI6P9o4=",
+  "B2CId": "a8d4e70e-643b-495a-a179-25520ca2c2de",
+  "TenantId": "0968fd0f-aaf5-4ff3-a90a-dfa57d916dfe",
+  "B2CPass": "c5ASy3savW+3K3L/iAT1n6HwzlBC8hZ2VIGyqyWcQRQ=",
+  "OAuthEndpoint": "https://login.microsoftonline.com/0968fd0f-aaf5-4ff3-a90a-dfa57d916dfe/oauth2/v2.0/authorize"
 }

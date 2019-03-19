@@ -23,7 +23,12 @@ export class LogComponent implements OnInit {
             console.log(data);
             return data;
          })).subscribe(p => this.Logs = p);
-
+  }
+  ClearLogs(): void {
+    this.IsLoading = true;
+     this.restService
+       .ClearLogs()
+       .subscribe(p => this.Logs = p);
   }
   ngOnInit() {
     this.GetLogs();

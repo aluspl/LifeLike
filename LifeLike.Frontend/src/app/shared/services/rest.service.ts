@@ -12,7 +12,7 @@ import { LoggerService } from '../../core/services/logger.service';
 import { environment } from '../../../environments/environment';
 
 const ConfigList = environment.API + '/api/Config';
-const VideoList = environment.API + '/api/Video/List';
+const VideoList = environment.API + '/api/Video';
 const LoginLink = environment.API + '/api/Account/Login';
 const RegisterLink = environment.API + '/api/Account/Register';
 
@@ -26,7 +26,7 @@ export class RestService {
 
   public static handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      
+
       LoggerService.log(`${operation} failed: ${error.message}`);
 
       // if (error.status >= 500) {
@@ -44,8 +44,7 @@ export class RestService {
     return this.http
       .get<Video[]>(VideoList, RestService.httpOptions)
       .pipe(
-        tap(_ => LoggerService.log(`fetched Videos`)),
-        catchError(RestService.handleError<Video[]>())
+        tap(_ => LoggerService.log(`fetched Videos`))
       );
   }
   getConfigs(): Observable<Config[]> {
@@ -70,7 +69,7 @@ export class RestService {
         tap(_ => LoggerService.log(`Register`))
       );
   }
-  constructor(private http: HttpClient) {   
+  constructor(private http: HttpClient) {
     console.log(environment);
   }
 }

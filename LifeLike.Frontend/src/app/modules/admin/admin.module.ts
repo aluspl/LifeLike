@@ -1,23 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatButtonModule } from '@angular/material';
-
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminPage } from './pages/admin-page/admin-page.component';
 import { LogComponent } from './pages/log/log.component';
-import { LogDetailComponent } from './pages/log-detail/log-detail.component';
 import { SharedModule } from '../../shared/shared.module';
-import { PostCreateComponent } from './pages/post-create/post-create.component';
-import { PostEditComponent } from './pages/post-edit/post-edit.component';
 import { AdminRestService } from './services/admin-rest.service';
 import { ConfigComponent } from './pages/config/config.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { PagesComponent } from './pages/pages/pages.component';
-import { PhotoCreateComponent } from './pages/photo-create/photo-create.component';
 import { PhotosComponent } from './pages/photos/photos.component';
-import { PhotoEditComponent } from './pages/photo-edit/photo-edit.component';
 import { MyMaterialModule } from 'src/material.module';
+import { VideosComponent } from './pages/videos/videos.component';
+import { PostsComponent } from './pages/posts/posts.component';
+import { LogDetailComponent } from './dialogs/log-detail/log-detail.component';
+import { PostCreateComponent } from './dialogs/post-create/post-create.component';
+import { PostEditComponent } from './dialogs/post-edit/post-edit.component';
+import { PhotoCreateComponent } from './dialogs/photo-create/photo-create.component';
+import { PhotoEditComponent } from './dialogs/photo-edit/photo-edit.component';
+import { VideoCreateComponent } from './dialogs/videos-create/video-create.component';
+import { VideoEditComponent } from './dialogs/videos-edit/video-edit.component';
 
 @NgModule({
   declarations: [
@@ -27,10 +28,13 @@ import { MyMaterialModule } from 'src/material.module';
     PostCreateComponent,
     PostEditComponent,
     ConfigComponent,
-    PagesComponent,
+    PostsComponent,
     PhotoCreateComponent,
     PhotoEditComponent,
-    PhotosComponent
+    PhotosComponent,
+    VideosComponent,
+    VideoEditComponent,
+    VideoCreateComponent
   ],
   imports: [
     CommonModule,
@@ -43,6 +47,6 @@ import { MyMaterialModule } from 'src/material.module';
     RouterModule,
   ],
   providers: [ AdminRestService ],
-  entryComponents: [PhotoCreateComponent, PhotoEditComponent, PostCreateComponent, PostEditComponent]
+  entryComponents: [PhotoCreateComponent, PhotoEditComponent, PostCreateComponent, PostEditComponent, VideoCreateComponent, VideoEditComponent]
 })
 export class AdminModule { }

@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { AdminRestService } from '../../services/admin-rest.service';
 import Photo from '../../../../modules/photo/models/Photo';
-import { PhotoCreateComponent } from '../photo-create/photo-create.component';
 import { MatDialogConfig, MatDialog } from '@angular/material';
+import { PhotoEditComponent } from '../../dialogs/photo-edit/photo-edit.component';
+import { PhotoCreateComponent } from '../../dialogs/photo-create/photo-create.component';
 
 @Component({
   selector: 'app-admin-photos',
@@ -41,19 +42,24 @@ export class PhotosComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = photo;
     dialogConfig.width = '90%';
-    dialogConfig.height = '90%';
+
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-   this.dialog.open(PhotoCreateComponent, dialogConfig );
+   let dialogRef = this.dialog.open(PhotoEditComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(result => {
+      this.GetPhotos();
+    });
   }
   Create() : void {
     console.log('Create');
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = '90%';
-    dialogConfig.height = '90%';
     dialogConfig.disableClose = true;
+    dialogConfig.width = '90%';
     dialogConfig.autoFocus = true;
-   this.dialog.open(PhotoCreateComponent, dialogConfig );
+   let dialogRef = this.dialog.open(PhotoCreateComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(result => {
+      this.GetPhotos();
+    });
   }
 
   GetPhotos(): void {

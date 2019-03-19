@@ -1,4 +1,5 @@
 ﻿using LifeLike.Shared.Enums;
+using LifeLike.Shared.Models;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -7,8 +8,8 @@ namespace LifeLike.Shared.Services
 {
     public interface IBlobStorage
     {
-        Task<string> Create(Stream stream, string fileName, string folder);
-        Result Remove(string fileName, string folder);
+        Task<string> Create(BlobItem item);
+        Task<Result> Remove(string fileName, string folder);
         Task<string> CreateThumb(string name, string folder);
     } 
 }

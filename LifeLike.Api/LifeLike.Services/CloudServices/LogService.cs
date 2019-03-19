@@ -51,19 +51,21 @@ namespace LifeLike.Services
         {
             if (!_storage.IsWorking) return new List<Log>();
 
-            return _storage.LogList().Result;
+            return _storage.List().Result;
         }
 
         public IEnumerable<Log> List(EventLogType type)
         {
             if (!_storage.IsWorking) return new List<Log>();
-            return _storage.LogList(type).Result;
+            return _storage.List(type.ToString()).Result;
         }
 
         public Result LogInformation(EventLogType result, string information)
         {
             try
             {
+                if (!_storage.IsWorking) return Result.Success;
+
                 Create(Log.Generate(result, information));
                 return Result.Success;
             }

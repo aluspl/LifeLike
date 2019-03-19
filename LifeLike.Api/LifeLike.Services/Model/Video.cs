@@ -1,5 +1,6 @@
 using System;
 using LifeLike.Data.Models.Enums;
+using LifeLike.Services.Extensions;
 
 namespace LifeLike.Services.ViewModel
 {
@@ -9,7 +10,8 @@ namespace LifeLike.Services.ViewModel
         public string Name { get; set; }
         public string Url { get; set; }
         public string Description { get; set; }
-        public VideoCategory Category { get; set; }
+        public string Category { get; set; }
         public DateTime PublishDate { get; set; }
+        public string YoutubeId   => Url.GetYoutubeId();
     }
 }

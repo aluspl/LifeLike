@@ -25,7 +25,7 @@ namespace LifeLike.Web.Controllers
             return Ok(list);
         }  
         [Authorize]
-        [HttpGet("Clear")]
+        [HttpPost("Clear")]
         public IActionResult Clear()
         {
             var list = _logger.DeleteAll();
