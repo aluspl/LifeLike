@@ -157,14 +157,16 @@ namespace LifeLike.Web
 
         private void SetupCORS(IServiceCollection services)
         {
-            services.AddCors();
+            // services.AddCors();
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
                     builder => builder
                      .WithOrigins(Configuration["Frontend"])
+
                     .AllowAnyMethod()
-                    //.AllowAnyOrigin()
+                    .SetIsOriginAllowed((host) => true)
+                   //.AllowAnyOrigin()
                     .AllowAnyHeader()
                     .AllowCredentials()
                     );
