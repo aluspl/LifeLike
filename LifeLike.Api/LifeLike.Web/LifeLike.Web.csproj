@@ -7,8 +7,7 @@
     <ApplicationInsightsAnnotationResourceId>/subscriptions/2546c5a96cdbda82-9a3c-4ce7-b45d-c56734266a27/resourcegroups/LifeLike/providers/microsoft.insights/components/DotNetCore</ApplicationInsightsAnnotationResourceId>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.ApplicationInsights.Web" Version="2.9.1" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.2.3" />
+    <PackageReference Include="Microsoft.AspNetCore.All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
     <PackageReference Include="SixLabors.ImageSharp.Web" Version="1.0.0-beta0007" />
     <PackageReference Include="System.ComponentModel.Primitives" Version="4.3.0" />
@@ -20,6 +19,7 @@
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.2-dev-00792" />
     <PackageReference Include="Serilog.Sinks.File" Version="4.1.0-dev-00817" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-beta" />
+    <PackageReference Include="Microsoft.ApplicationInsights.Web" Version="2.9.1" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
@@ -34,6 +34,9 @@
   <ItemGroup>
     <Folder Include="wwwroot\thumbs\" />
     <Folder Include="wwwroot\photos\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\lifelikebackend - Web Deploy.pubxml.user" />
   </ItemGroup>
   
 </Project>

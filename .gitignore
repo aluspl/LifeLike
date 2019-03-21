@@ -27,3 +27,4 @@ LifeLike.Api/LifeLike.Web/lifelike.db
 k8s.prod.yaml
 logs/error.log
 logs/.access.log
+/LifeLike.Api/LifeLike.Web/Properties/PublishProfiles
