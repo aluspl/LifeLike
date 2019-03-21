@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using LifeLike.CloudService;
 using LifeLike.CloudService.BlobStorage;
 using LifeLike.CloudService.CosmosDB;
 using LifeLike.CloudService.TableStorage;
@@ -80,13 +81,11 @@ namespace LifeLike.Web
                 services.AddScoped<IUnitOfWork, UnitOfWork>();
             if (Configuration["BlobStorage"] != null)
             {
-                services.AddScoped<IBlobStorage, BlobStorage>();
-                services.AddScoped<IQueueService, CloudService.Queue.QueueService>();
+                Config.SetupCloudServices(services);
             }
             else
             {
-                services.AddScoped<IBlobStorage, LocalBlobStorage>();
-                services.AddScoped<IQueueService, LifeLike.Services.CloudServices.QueueService>();
+                SetupLocalServices(services);
             }
             services.AddScoped<IStatisticService, StatisticService>();
             services.AddScoped<ITableStorage, TableStorage>();
@@ -116,6 +115,14 @@ namespace LifeLike.Web
             });
 
         }
+
+        private static void SetupLocalServices(IServiceCollection services)
+        {
+            services.AddScoped<IBlobStorage, LocalBlobStorage>();
+            services.AddScoped<IQueueService, LifeLike.Services.CloudServices.QueueService>();
+        }
+
+       
 
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

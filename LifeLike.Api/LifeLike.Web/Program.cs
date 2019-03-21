@@ -23,6 +23,7 @@ namespace LifeLike.Web
             return WebHost.CreateDefaultBuilder(args)
                 .UseUrls("http://*:80")
                 .UseKestrel()
+                .UseApplicationInsights()
                 .UseIISIntegration()
                 .UseConfiguration(builder)
                 .ConfigureAppConfiguration((context, config) =>
