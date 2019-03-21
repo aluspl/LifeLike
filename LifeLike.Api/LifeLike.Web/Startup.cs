@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using LifeLike.CloudService;
-using LifeLike.CloudService.BlobStorage;
 using LifeLike.CloudService.CosmosDB;
 using LifeLike.CloudService.TableStorage;
 using LifeLike.Data;
@@ -76,12 +75,12 @@ namespace LifeLike.Web
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             if (Configuration["CosmosDBEndpoint"] != null)
-                services.AddScoped<IUnitOfWork, CosmosUnitOfWork>();
+                services.SetupCosmosDB();
             else
                 services.AddScoped<IUnitOfWork, UnitOfWork>();
             if (Configuration["BlobStorage"] != null)
             {
-                Config.SetupCloudServices(services);
+                services.SetupCloudServices();
             }
             else
             {
@@ -115,6 +114,8 @@ namespace LifeLike.Web
             });
 
         }
+
+   
 
         private static void SetupLocalServices(IServiceCollection services)
         {

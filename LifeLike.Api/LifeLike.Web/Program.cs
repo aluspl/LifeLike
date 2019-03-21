@@ -26,7 +26,7 @@ namespace LifeLike.Web
                 .UseApplicationInsights()
                 .UseIISIntegration()
                 .UseConfiguration(builder)
-                .ConfigureAppConfiguration(
+                //.ConfigureAppConfiguration()
                 //     (context, config) =>
                 // {
                 //     var builtConfig = config.Build();
@@ -36,7 +36,7 @@ namespace LifeLike.Web
                 //         builtConfig["AzureADApplicationId"],
                 //         builtConfig["AzureADPassword"]);
                 // }
-                )
+               // )
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseStartup<Startup>()
                 .Build();
