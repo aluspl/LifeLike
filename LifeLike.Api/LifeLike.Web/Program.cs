@@ -1,7 +1,7 @@
-﻿using System.IO;
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace LifeLike.Web
 {
@@ -9,7 +9,7 @@ namespace LifeLike.Web
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();         
+            BuildWebHost(args).Run();
         }
 
         private static IWebHost BuildWebHost(string[] args)
@@ -26,17 +26,17 @@ namespace LifeLike.Web
                 .UseApplicationInsights()
                 .UseIISIntegration()
                 .UseConfiguration(builder)
-                //.ConfigureAppConfiguration()
-                //     (context, config) =>
-                // {
-                //     var builtConfig = config.Build();
+                .UseApplicationInsights()
+                .ConfigureAppConfiguration((context, config) =>
+                 {
+                     var builtConfig = config.Build();
 
-                //     config.AddAzureKeyVault(
-                //         $"https://{builtConfig["KeyVaultName"]}.vault.azure.net/",
-                //         builtConfig["AzureADApplicationId"],
-                //         builtConfig["AzureADPassword"]);
-                // }
-               // )
+                     config.AddAzureKeyVault(
+                         $"https://{builtConfig["KeyVaultName"]}.vault.azure.net/",
+                         builtConfig["AzureADApplicationId"],
+                         builtConfig["AzureADPassword"]);
+                 }
+                )
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseStartup<Startup>()
                 .Build();
