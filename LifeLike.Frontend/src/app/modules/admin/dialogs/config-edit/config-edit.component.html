@@ -1,0 +1,23 @@
+<form (ngSubmit)="onSubmit()" #createPostForm="ngForm">
+  <app-title Title="Edit Page: {{model.Name}}"></app-title>
+  <mat-form-field>
+    <input matInput placeholder="Name" [(ngModel)]="model.Name" name="model.Name" required />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="DisplayName" [(ngModel)]="model.DisplayName" name="model.DisplayName" required />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Value" [(ngModel)]="model.Value" name="model.Value" required />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select class="form-control" id="Type" title="Type" placeholder="Type" name="Type" required
+      [value]="model.Type" [(ngModel)]="model.Type">
+      <mat-option *ngFor="let category of categories" value="{{category}}">
+        {{category}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-flat-button color="primary" type="submit" [disabled]="!createPostForm.form.valid">Add</button>
+  <button mat-flat-button color="warn" (click)="onNoClick()">Cancel</button>
+</form>

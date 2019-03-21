@@ -8,9 +8,11 @@
       <input matInput placeholder="Short Name" [(ngModel)]="model.ShortName" name="model.ShortName" required />
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="ImageUrl" [(ngModel)]="model.ImageUrl" name="model.ImageUrl" required />
+      <input matInput placeholder="Image Url" [(ngModel)]="model.ImageUrl" name="model.ImageUrl" />
     </mat-form-field>
-
+    <!-- <mat-form-field>
+      <app-uploadfiles placeholder = "Url" [(ngModel)]="model.ImageUrl"></app-uploadfiles>
+    </mat-form-field> -->
     <mat-form-field>
       <mat-select class="form-control" id="Category" title="Category" placeholder="Category" name="Category" required
         [value]="model.Category" [(ngModel)]="model.Category">
@@ -19,7 +21,6 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-
     <mat-form-field>
       <textarea id="Content" matInput placeholder="Content" rows="10" [(ngModel)]="model.Content" required
         name="Content"></textarea>

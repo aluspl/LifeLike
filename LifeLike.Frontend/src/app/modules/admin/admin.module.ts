@@ -19,6 +19,9 @@ import { PhotoCreateComponent } from './dialogs/photo-create/photo-create.compon
 import { PhotoEditComponent } from './dialogs/photo-edit/photo-edit.component';
 import { VideoCreateComponent } from './dialogs/videos-create/video-create.component';
 import { VideoEditComponent } from './dialogs/videos-edit/video-edit.component';
+import { ConfigEditComponent } from './dialogs/config-edit/config-edit.component';
+import { ConfigCreateComponent } from './dialogs/config-create/config-create.component';
+import { UploadFileComponent } from './components/upload-file/upload-files.component';
 
 @NgModule({
   declarations: [
@@ -34,19 +37,24 @@ import { VideoEditComponent } from './dialogs/videos-edit/video-edit.component';
     PhotosComponent,
     VideosComponent,
     VideoEditComponent,
-    VideoCreateComponent
+    VideoCreateComponent,
+    ConfigCreateComponent,
+    ConfigEditComponent,
+    UploadFileComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     AdminRoutingModule,
     FormsModule,
-    MyMaterialModule
+    MyMaterialModule,
   ],
   exports: [
     RouterModule,
   ],
   providers: [ AdminRestService ],
-  entryComponents: [PhotoCreateComponent, PhotoEditComponent, PostCreateComponent, PostEditComponent, VideoCreateComponent, VideoEditComponent]
+  entryComponents: [PhotoCreateComponent,
+    PhotoEditComponent, PostCreateComponent,
+    PostEditComponent, VideoCreateComponent, VideoEditComponent, ConfigEditComponent, ConfigCreateComponent]
 })
 export class AdminModule { }

@@ -1,0 +1,25 @@
+.form-container {
+  display: flex;
+}
+
+.form-container > * {
+  width: 100%;
+}
+.progress {
+  color: green($color: #000000);
+}
+:host {
+  display: inline-block;
+}
+:host:not(.file-input-disabled) {
+    cursor: pointer;
+}
+
+input {
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}

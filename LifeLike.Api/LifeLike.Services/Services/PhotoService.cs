@@ -6,6 +6,7 @@ using LifeLike.Shared;
 using LifeLike.Shared.Enums;
 using LifeLike.Shared.Models;
 using LifeLike.Shared.Services;
+using Microsoft.AspNetCore.Http;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats.Png;
 using SixLabors.ImageSharp.PixelFormats;
@@ -80,7 +81,6 @@ namespace LifeLike.Services
                     await ImageSetup(photo, stream);
                 }
                 CreateEntity(photo);
-                //_queue.SendNotification($"Photo: {photo.Id}");
                 return Result.Success;
             }
             catch (Exception e)
@@ -127,18 +127,7 @@ namespace LifeLike.Services
             }
         }
 
-        private void Resize(Image<Rgba32> image, int v)
-        {
-            var ratio = GetRatio(image.Width,v);
-      
-            image.Mutate(p => p.Resize((int)(image.Width / ratio), (int)(image.Height / ratio)));
-
-        }
-
-        private static double GetRatio(double width, double newWidth)
-        {
-            return width / newWidth;
-        }
+     
 
         private async Task CreateThumb(PhotoEntity photo, Image<Rgba32> image)
         {
@@ -172,6 +161,54 @@ namespace LifeLike.Services
                 _logger.AddException(e);
                 return Result.Failed;
             }
+        }
+
+        public async Task<string> Upload(IFormFile file)
+        {
+            try
+            {
+                using (var image = Image.Load(file.OpenReadStream()))
+                {
+                    var metadata = image.MetaData;
+                    return await CreateImage(image, file.Name,  480);
+                };
+            }
+            catch (Exception e)
+            {
+                _logger.AddException(e);
+                throw e;
+            }
+        }
+
+        private async Task<string> CreateImage(Image<Rgba32> image, string name, int width)
+        {
+            using (var outputStream = new MemoryStream())
+            {
+                Resize(image, width);
+                image.Save(outputStream, PngFormat.Instance);
+                outputStream.Seek(0, SeekOrigin.Begin);
+
+                var Url = await _storage.Create(new BlobItem
+                {
+                    Container = "pages",
+                    Stream = outputStream,
+                    Name = name
+                });
+                return Url;
+            }
+        }
+
+        private void Resize(Image<Rgba32> image, int v)
+        {
+            var ratio = GetRatio(image.Width, v);
+
+            image.Mutate(p => p.Resize((int)(image.Width / ratio), (int)(image.Height / ratio)));
+
+        }
+
+        private static double GetRatio(double width, double newWidth)
+        {
+            return width / newWidth;
         }
     }
 

@@ -25,14 +25,18 @@ namespace LifeLike.Services.Profiles
               .ForMember(x => x.Category, d => d.MapFrom(src => src.Category.ToString()));
 
             CreateMap<Video, VideoEntity>()
-                .ForMember(x => x.Category, d => d.MapFrom(src => src.Category.ToEnum<VideoCategory>(VideoCategory.VLOG)));
+                .ForMember(x => x.Category, d => d.MapFrom(src => src.Category.ToEnum(VideoCategory.VLOG)));
 
-            CreateMap<ConfigEntity, Config>();
-            CreateMap<Config, ConfigEntity>();
+            CreateMap<ConfigEntity, Config>()
+                .ForMember(x => x.Type, d => d.MapFrom(src => src.Type.ToString()));
+
+            CreateMap<Config, ConfigEntity>()
+                 .ForMember(x => x.Type, d => d.MapFrom(src => src.Type.ToEnum(ConfigType.Text)));
+
             CreateMap<LinkEntity, Link>()
                 .ForMember(x => x.Category, d => d.MapFrom(src => src.Category.ToString()));
             CreateMap<Link, LinkEntity>()
-                .ForMember(x => x.Category, d => d.MapFrom(src => src.Category.ToString()));
+                .ForMember(x => x.Category, d => d.MapFrom(src => src.Category.ToEnum(LinkCategory.Menu)));
         }    
 
     }
