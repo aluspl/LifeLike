@@ -8,8 +8,6 @@
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.2.3" />
     <PackageReference Include="Microsoft.Azure.DocumentDB.Core" Version="2.2.3" />
     <PackageReference Include="Microsoft.Azure.Search" Version="7.0.0-preview" />
-    <PackageReference Include="MongoDB.Driver" Version="2.9.0-beta1" />
-    <PackageReference Include="MongoDB.Driver.Core" Version="2.9.0-beta1" />
   </ItemGroup>
 
   <ItemGroup>
