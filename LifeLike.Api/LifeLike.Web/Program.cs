@@ -26,15 +26,17 @@ namespace LifeLike.Web
                 .UseApplicationInsights()
                 .UseIISIntegration()
                 .UseConfiguration(builder)
-                .ConfigureAppConfiguration((context, config) =>
-                {
-                    var builtConfig = config.Build();
+                .ConfigureAppConfiguration(
+                //     (context, config) =>
+                // {
+                //     var builtConfig = config.Build();
 
-                    config.AddAzureKeyVault(
-                        $"https://{builtConfig["KeyVaultName"]}.vault.azure.net/",
-                        builtConfig["AzureADApplicationId"],
-                        builtConfig["AzureADPassword"]);
-                })
+                //     config.AddAzureKeyVault(
+                //         $"https://{builtConfig["KeyVaultName"]}.vault.azure.net/",
+                //         builtConfig["AzureADApplicationId"],
+                //         builtConfig["AzureADPassword"]);
+                // }
+                )
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseStartup<Startup>()
                 .Build();
