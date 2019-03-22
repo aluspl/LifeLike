@@ -1,0 +1,14 @@
+<span><a mat-button routerLink="/">LifeLike.Dev</a></span>
+<a mat-list-item *ngFor="let menu of MenuItems" [routerLink]="[ menu.Controller + '/' + menu.Action ]">
+  <i class="fas fa-{{menu.Icon}}"> </i> {{menu.Name | uppercase }}
+</a>
+<span class="setting-spacer"></span>
+<mat-menu #appMenu="matMenu">
+  <button mat-menu-item color="accent" *ngIf="!IsLogin" (click)="login()">Login</button>
+  <button mat-menu-item color="primary" *ngIf="IsLogin"
+    routerLink="Admin">{{CurrentUser.UserName | uppercase }}</button>
+  <button mat-menu-item color="accent" *ngIf="IsLogin" (click)="logout()">Logout</button>
+</mat-menu>
+<button mat-icon-button [matMenuTriggerFor]="appMenu">
+  <mat-icon class="setting-icon">more_vert</mat-icon>
+</button>
