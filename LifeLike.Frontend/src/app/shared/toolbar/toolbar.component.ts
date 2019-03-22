@@ -4,11 +4,13 @@ import MenuItem from '../models/MenuItem';
 import { AuthenticationService } from '../services/authentication.service';
 import UserLogin from '../models/UserLogin';
 import { MatDialog } from '@angular/material';
+import { style } from '@angular/animations';
 
 
 @Component({
   selector: 'app-toolbar',
   templateUrl: './template.html',
+  styleUrls: ["./style.scss"]
 })
 export class ToolbarComponent implements OnInit {
   MenuItems: MenuItem[];
