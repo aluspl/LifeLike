@@ -1,6 +1,5 @@
 <mat-nav-list>
   <a mat-list-item *ngFor="let menu of MenuItems" [routerLink]="[ menu.Controller + '/' + menu.Action ]">
-    <i class="fas fa-{{menu.Icon}}"></i>
-    {{menu.Name | uppercase }}
+    <i class="fas fa-{{menu.Icon}}"> </i>    {{menu.Name | uppercase }}
   </a>
 </mat-nav-list>

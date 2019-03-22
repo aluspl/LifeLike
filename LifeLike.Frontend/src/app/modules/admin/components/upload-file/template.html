@@ -1,0 +1,5 @@
+  <p>{{placeholder}} {{url}}</p>
+  <input #file type="file"  (change)="upload(file.files)" name="files" [disabled]="IsDisabled">
+  <span class="progress" *ngIf="IsLoading">
+    {{progress}} %
+  </span>

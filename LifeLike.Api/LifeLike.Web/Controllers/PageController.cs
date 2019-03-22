@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using LifeLike.Repositories;
 using LifeLike.Services;
+using LifeLike.Services.Extensions;
 using LifeLike.Services.ViewModel;
 using LifeLike.Shared.Enums;
 using Microsoft.AspNetCore.Authorization;
@@ -72,7 +73,8 @@ namespace LifeLike.Web.Controllers
         public IActionResult Create([FromBody] Page model)
         {
             model.Published = DateTime.Now;
-            model.ShortName = model?.ShortName?.ToLower();
+            model.ShortName = model?.ShortName.RemoveAllWhiteSpaces();
+
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var result = service.Create(model);
@@ -91,7 +93,6 @@ namespace LifeLike.Web.Controllers
 
         [HttpPut]
         [Authorize]
-        [ValidateAntiForgeryToken]
         public IActionResult Update([FromBody] Page model)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);

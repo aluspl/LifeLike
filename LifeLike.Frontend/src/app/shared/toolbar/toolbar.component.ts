@@ -3,17 +3,16 @@ import { RestService } from '../services/rest.service';
 import MenuItem from '../models/MenuItem';
 import { AuthenticationService } from '../services/authentication.service';
 import UserLogin from '../models/UserLogin';
-import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
-import { RegisterDialogComponent } from '../dialogs/register/registerdialogcomponent';
+import { style } from '@angular/animations';
 
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss'],
+  selector: 'app-toolbar',
+  templateUrl: './template.html',
+  styleUrls: ["./style.scss"]
 })
-export class MenuComponent implements OnInit {
+export class ToolbarComponent implements OnInit {
   MenuItems: MenuItem[];
   IsLogin: Boolean;
   CurrentUser: UserLogin;

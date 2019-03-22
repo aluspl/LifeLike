@@ -23,7 +23,7 @@ namespace LifeLike.Web.Controllers
         }
          
         [HttpPost]
-        public IActionResult Create(Config model)
+        public IActionResult Create([FromBody]Config model)
         {
             if (!ModelState.IsValid) return BadRequest();
             _config.Create(model);
@@ -31,17 +31,22 @@ namespace LifeLike.Web.Controllers
         }
        
         [HttpPut]
-        public IActionResult Update(Config model)
+        public IActionResult Update([FromBody]Config model)
         {
             if (!ModelState.IsValid) return BadRequest();
             _config.Update(model);
             return Ok();
         }
-        [HttpDelete]
-        public IActionResult Delete(Config model)
+        [HttpDelete("{id}")]
+        public IActionResult Delete(string id)
         {
-            if (!ModelState.IsValid) return BadRequest();
-            _config.Update(model);
+            _config.Delete(id);
+            return Ok();
+        }
+        [HttpPost("Clear")]
+        public IActionResult Clear()
+        {
+            _config.DeleteAll();
             return Ok();
         }
     }

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using LifeLike.CloudService.BlobStorage;
+using LifeLike.CloudService;
 using LifeLike.CloudService.CosmosDB;
 using LifeLike.CloudService.TableStorage;
 using LifeLike.Data;
@@ -42,6 +42,8 @@ namespace LifeLike.Web
             Log.Logger = new LoggerConfiguration()
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
+                 //.WriteTo.AzureBlobStorage(config["BlobStorage"])
+
                 .WriteTo.File("log.txt",
                     rollingInterval: RollingInterval.Month,
                     rollOnFileSizeLimit: true)
@@ -75,18 +77,16 @@ namespace LifeLike.Web
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             if (Configuration["CosmosDBEndpoint"] != null)
-                services.AddScoped<IUnitOfWork, CosmosUnitOfWork>();
+                services.SetupCosmosDB();
             else
                 services.AddScoped<IUnitOfWork, UnitOfWork>();
             if (Configuration["BlobStorage"] != null)
             {
-                services.AddScoped<IBlobStorage, BlobStorage>();
-                services.AddScoped<IQueueService, CloudService.Queue.QueueService>();
+                services.SetupCloudServices();
             }
             else
             {
-                services.AddScoped<IBlobStorage, LocalBlobStorage>();
-                services.AddScoped<IQueueService, LifeLike.Services.CloudServices.QueueService>();
+                SetupLocalServices(services);
             }
             services.AddScoped<IStatisticService, StatisticService>();
             services.AddScoped<ITableStorage, TableStorage>();
@@ -116,6 +116,16 @@ namespace LifeLike.Web
             });
 
         }
+
+   
+
+        private static void SetupLocalServices(IServiceCollection services)
+        {
+            services.AddScoped<IBlobStorage, LocalBlobStorage>();
+            services.AddScoped<IQueueService, LifeLike.Services.CloudServices.QueueService>();
+        }
+
+       
 
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -162,10 +172,8 @@ namespace LifeLike.Web
             {
                 options.AddPolicy("CorsPolicy",
                     builder => builder
-                     .WithOrigins(Configuration["Frontend"])
-
+                     .WithOrigins(Configuration["Frontend"])                    
                     .AllowAnyMethod()
-                    .SetIsOriginAllowed((host) => true)
                    //.AllowAnyOrigin()
                     .AllowAnyHeader()
                     .AllowCredentials()

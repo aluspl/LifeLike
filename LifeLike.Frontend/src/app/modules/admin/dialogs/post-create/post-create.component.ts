@@ -13,7 +13,6 @@ export class PostCreateComponent implements OnInit {
   model = new Page();
   loading = false;
   categories = ['App', 'Game', 'Tutorial', 'Page', 'Post'];
-  @Input() IsCreateMode: boolean;
   onSubmit() {
     console.log(this.diagnostic);
     this.loading = true;

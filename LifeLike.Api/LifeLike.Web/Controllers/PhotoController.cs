@@ -52,7 +52,19 @@ namespace LifeLike.Web.Controllers
             var item = await _photos.Create(photo);
             return Ok(item);
         }
-
+        [HttpPost("Upload"), DisableRequestSizeLimit]
+        public async Task<IActionResult> Upload()
+        {
+            IFormFile file;
+            if (Request.Form.Files.Count == 0) file = null;
+            else
+            {
+                var doc = Request.Form.Files[0];
+                file = doc;
+            }
+            var item = await _photos.Upload(file);
+            return Ok(item);
+        }
         [HttpGet]
         public IActionResult List()
         {

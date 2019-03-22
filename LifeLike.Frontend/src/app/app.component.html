@@ -4,24 +4,14 @@
 </div> -->
 
 <mat-toolbar>
-    <mat-toolbar-row>
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="primary">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span><a mat-button routerLink="/">LifeLike.Dev</a></span>
-
-      <span class="setting-spacer"></span>
-      <mat-menu #appMenu="matMenu">
-          <button mat-menu-item color="accent" *ngIf="!IsLogin" (click)="login()">Login</button>
-          <button mat-menu-item color="primary" *ngIf="IsLogin" routerLink="Admin">{{CurrentUser.UserName | uppercase }}</button>
-          <button mat-menu-item color="accent" *ngIf="IsLogin" (click)="logout()">Logout</button>
-        </mat-menu>
-      <button mat-icon-button [matMenuTriggerFor]="appMenu">
-          <mat-icon class="setting-icon">more_vert</mat-icon>
-      </button>
-    </mat-toolbar-row>
-  </mat-toolbar>
-  <mat-sidenav-container class="container">
+  <mat-toolbar-row>
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="primary">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    <app-toolbar></app-toolbar>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container class="container">
   <mat-sidenav #drawer mode="side">
     <app-menu></app-menu>
   </mat-sidenav>

@@ -75,15 +75,20 @@ namespace LifeLike.Services
             var items = GetAllEntities().ToList();
             return _mapper.Map<IList<Config>>(items);
         }
-
+        public Result DeleteAll()
+        {
+            return DeleteAll();
+        }
        
     }
 
     public interface IConfigService 
     {
         Result Create(Config model);
+        Result Delete(string id);
         Config Get(string id);
         IList<Config> List();
         Result Update(Config model);
+        Result DeleteAll();
     }
 }

@@ -2,9 +2,8 @@
 
 <app-spinner *ngIf="IsLoading"></app-spinner>
 
-<div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
-
-  <mat-card fxFlex="20%" *ngFor="let photo of Photos" (click)=OpenPhoto(photo) class="card">
+<div fxLayout="row" class="container" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+  <mat-card fxFlex="30%" *ngFor="let photo of Photos" (click)=OpenPhoto(photo)>
     <mat-card-header>
       <mat-card-title> {{photo.Title}}</mat-card-title>
     </mat-card-header>

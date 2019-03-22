@@ -1,5 +1,6 @@
 ﻿using LifeLike.Services.ViewModel;
 using LifeLike.Shared.Enums;
+using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -12,6 +13,6 @@ namespace LifeLike.Services.Structures
         ICollection<Photo> List();
         Result Update(Photo photo);
         Result Delete(string id);
-
+        Task<string> Upload(IFormFile file);
     }
 }

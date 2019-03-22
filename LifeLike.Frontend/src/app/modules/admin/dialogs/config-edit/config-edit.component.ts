@@ -1,23 +1,24 @@
-import { Component, Input, OnInit, Inject } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, Inject } from '@angular/core';
 import { AdminRestService } from '../../services/admin-rest.service';
-import Page from '../../../../shared/models/Page';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import Config from '../../../../shared/models/Config';
 
 
 @Component({
-  selector: 'app-post-edit',
-  templateUrl: './post-edit.component.html',
-  styleUrls: ['./post-edit.component.scss']
+  selector: 'app-config-edit',
+  templateUrl: './config-edit.component.html',
+  styleUrls: ['./config-edit.component.scss']
 })
-export class PostEditComponent implements OnInit {
-  model: Page;
+export class ConfigEditComponent implements OnInit {
+  model: Config;
+
+
   loading = false;
-  categories = ['App', 'Game', 'Tutorial', 'Page', 'Post'];
+  categories = ['RSS', 'Text', 'Image', 'Video', 'URL'];
   returnUrl: any;
 
   constructor(private restService: AdminRestService,
-    public dialogRef: MatDialogRef<PostEditComponent>,
+    public dialogRef: MatDialogRef<ConfigEditComponent>,
     @Inject(MAT_DIALOG_DATA) data) {
       this.model=data
   }
@@ -27,7 +28,7 @@ export class PostEditComponent implements OnInit {
   }
   onSubmit() {
     this.loading = true;
-    this.restService.editPost(this.model).subscribe(p => {
+    this.restService.editConfig(this.model).subscribe(p => {
       this.loading = false;
       console.log(p);
       this.dialogRef.close();

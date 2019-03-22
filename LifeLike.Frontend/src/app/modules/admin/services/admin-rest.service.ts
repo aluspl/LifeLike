@@ -24,10 +24,11 @@ const ClearLogs = environment.API + '/Api/Log/Clear';
 const PhotoApi = environment.API + '/Api/Photo';
 const CreatePhotoApi = environment.API + '/Api/Photo/Create';
 const CreateVideo = environment.API + '/Api/Video';
-
+const UploadPhotoApi = environment.API + '/Api/Photo/Upload';
 
 @Injectable()
 export class AdminRestService {
+
 
   private static log(message: string) {
     console.log(message);
@@ -35,7 +36,14 @@ export class AdminRestService {
   }
 
 
-
+  createConfig(model: Config): any {
+    return this.http
+    .post<string>(ConfigApi, model, RestService.httpOptions)
+    .pipe(
+      tap(_ => LoggerService.log(`create Video`)),
+      catchError(RestService.handleError<string>())
+    );
+  }
   createVideo(model: Video): Observable<string> {
     return this.http
       .post<string>(CreateVideo, model, RestService.httpOptions)
@@ -52,6 +60,18 @@ export class AdminRestService {
         catchError(RestService.handleError<string>())
       );
   }
+  uploadPhoto(file: File) {
+    const formData: FormData = new FormData();
+    formData.append(file.name, file);
+    const req = new HttpRequest('POST', UploadPhotoApi, formData, {
+      reportProgress: true,
+      responseType: "text",
+
+    });
+
+    return this.http.request(req);
+  }
+
   createPhoto(file: FileUpload) {
     const formData: FormData = new FormData();
     formData.append(file.PhotoStream.name, file.PhotoStream);
@@ -124,6 +144,7 @@ export class AdminRestService {
       .put<string>(CreatePost, page)
       .pipe(
         tap(_ => LoggerService.log(`fetched Configs`)),
+        catchError(RestService.handleError<string>())
       );
   }
   editVideo(model: Video): any {

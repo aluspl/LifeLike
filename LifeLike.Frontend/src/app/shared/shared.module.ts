@@ -20,6 +20,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { LoginDialogComponent } from './dialogs/login/logindialog.component';
 import { RegisterDialogComponent } from './dialogs/register/registerdialogcomponent';
 import { MyMaterialModule } from '../../material.module';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { MyMaterialModule } from '../../material.module';
     LoginComponent,
     RegisterComponent,
     LoginDialogComponent,
-    RegisterDialogComponent
+    RegisterDialogComponent,
+    ToolbarComponent
   ],
   imports: [
     CommonModule,
@@ -47,7 +49,8 @@ import { MyMaterialModule } from '../../material.module';
     YoutubePlayerComponent,
     IntroTextComponent,
     LoginDialogComponent,
-    RegisterDialogComponent
+    RegisterDialogComponent,
+    ToolbarComponent,
   ],
   entryComponents: [LoginDialogComponent, LoginComponent, RegisterComponent,
     RegisterDialogComponent],
