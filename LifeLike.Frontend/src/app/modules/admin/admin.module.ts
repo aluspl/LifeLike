@@ -52,7 +52,7 @@ import { UploadFileComponent } from './components/upload-file/upload-files.compo
   exports: [
     RouterModule,
   ],
-  providers: [ AdminRestService ],
+  providers: [ AdminRestService, ],
   entryComponents: [PhotoCreateComponent,
     PhotoEditComponent, PostCreateComponent,
     PostEditComponent, VideoCreateComponent, VideoEditComponent, ConfigEditComponent, ConfigCreateComponent]

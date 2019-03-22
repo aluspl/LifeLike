@@ -8,6 +8,7 @@ import { PostRestService } from './services/post-rest.service';
 import { PageRoutingModule } from './page-routing.module';
 import { PageDetailModule } from './pagedetail.module';
 import { MyMaterialModule } from 'src/material.module';
+import { NgxMdModule } from 'ngx-md';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MyMaterialModule } from 'src/material.module';
     RouterModule,
     PageDetailModule,
     PageRoutingModule,
-    MyMaterialModule
+    MyMaterialModule,
+
   ],
 
   providers: [PostRestService]

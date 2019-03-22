@@ -64,7 +64,9 @@ export class AdminRestService {
     const formData: FormData = new FormData();
     formData.append(file.name, file);
     const req = new HttpRequest('POST', UploadPhotoApi, formData, {
-      reportProgress: true
+      reportProgress: true,
+      responseType: "text",
+
     });
 
     return this.http.request(req);
@@ -142,6 +144,7 @@ export class AdminRestService {
       .put<string>(CreatePost, page)
       .pipe(
         tap(_ => LoggerService.log(`fetched Configs`)),
+        catchError(RestService.handleError<string>())
       );
   }
   editVideo(model: Video): any {

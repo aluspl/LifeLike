@@ -10,6 +10,7 @@ import { APP_CONFIG, AppConfig } from './configs/app.config';
 import { CustomErrorHandler } from './core/custom.errorhandler';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyMaterialModule } from '../material.module';
+import { NgxMdModule } from 'ngx-md';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MyMaterialModule } from '../material.module';
       cookieName: 'My-Xsrf-Cookie',
       headerName: 'My-Xsrf-Header',
     }),
-    MyMaterialModule
+    MyMaterialModule,
+
   ],
   exports: [
   ],

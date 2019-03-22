@@ -12,8 +12,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class PostEditComponent implements OnInit {
   model: Page;
-
-
   loading = false;
   categories = ['App', 'Game', 'Tutorial', 'Page', 'Post'];
   returnUrl: any;

@@ -1,7 +1,5 @@
-<div class="form-container">
-  <p>{{placeholder}}</p>
-  <input mat-flat-button type="file" #file type="file" (change)="upload(file.files)" name="PhotoStream">
+  <p>{{placeholder}} {{url}}</p>
+  <input #file type="file"  (change)="upload(file.files)" name="files" [disabled]="IsDisabled">
   <span class="progress" *ngIf="IsLoading">
-    {{progress}}%
+    {{progress}} %
   </span>
-</div>
