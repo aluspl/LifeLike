@@ -42,8 +42,6 @@ namespace LifeLike.Web
             Log.Logger = new LoggerConfiguration()
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
-                 //.WriteTo.AzureBlobStorage(config["BlobStorage"])
-
                 .WriteTo.File("log.txt",
                     rollingInterval: RollingInterval.Month,
                     rollOnFileSizeLimit: true)
@@ -132,8 +130,6 @@ namespace LifeLike.Web
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory,
             PortalContext context)
         {
-            // GenerateDB(app);
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

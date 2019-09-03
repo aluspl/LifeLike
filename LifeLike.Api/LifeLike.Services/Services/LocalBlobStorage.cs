@@ -29,11 +29,13 @@ namespace LifeLike.Services.Services
 
         public async Task<string> CreateThumb(string name, string folder)
         {
+            await Task.Delay(100);
             return $"http://localhost/{folder}/{name}";
         }
 
         public async Task<Result> Remove(string fileName, string folder)
         {
+            await Task.Delay(100);
             return Result.Success;
         }
     }

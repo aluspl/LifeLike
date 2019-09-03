@@ -66,7 +66,6 @@ export class AdminRestService {
     const req = new HttpRequest('POST', UploadPhotoApi, formData, {
       reportProgress: true,
       responseType: "text",
-
     });
 
     return this.http.request(req);

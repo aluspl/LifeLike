@@ -1,5 +1,3 @@
-declare var process: Process;
-
 interface Process {
   env: Env
 }
