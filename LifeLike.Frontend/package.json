@@ -15,7 +15,6 @@
   },
   "private": true,
   "dependencies": {
-
     "@angular/animations": "^8.2.4",
     "@angular/cdk": "^8.1.4",
     "@angular/common": "^8.2.4",
@@ -30,6 +29,7 @@
     "@angular/upgrade": "^8.2.4",
     "ajv": "^6.10.2",
     "angular-tslint-rules": "^1.18.0",
+    "classlist.js": "^1.1.20150312",
     "codelyzer": "^5.1.0",
     "core-js": "^3.2.1",
     "cors": "^2.8.5",

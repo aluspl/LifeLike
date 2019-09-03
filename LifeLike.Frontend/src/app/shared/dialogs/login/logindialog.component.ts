@@ -5,7 +5,7 @@ import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
-  selector: 'dialog-login',
+  selector: 'app-dialog-login',
   templateUrl: './logindialog.component.html',
 })
 export class LoginDialogComponent implements OnInit {

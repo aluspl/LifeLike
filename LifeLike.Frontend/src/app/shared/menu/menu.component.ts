@@ -14,14 +14,9 @@ import { RestService } from '../services/rest.service';
 })
 export class MenuComponent implements OnInit {
   MenuItems: MenuItem[];
-  IsLogin: Boolean;
-  CurrentUser: UserLogin;
+
   constructor(private readonly restService: RestService, authService: AuthenticationService, public dialog: MatDialog) {
-    this.IsLogin = authService.IsLogin;
-    authService.currentUser.subscribe((x) => {
-      this.CurrentUser = x;
-      this.IsLogin = x != undefined;
-    });
+
   }
   getMenuItems(): void {
     this.restService.getMenuItems()

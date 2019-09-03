@@ -13,7 +13,7 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
   get IsLogin(): boolean {
-    return this.currentUserSubject.value !== undefined;
+    return this.currentUserSubject.value !== null;
   }
   currentUser: Observable<UserLogin>;
 
@@ -28,8 +28,7 @@ export class AuthenticationService {
 
     return this.rest.login(userLogin)
       .pipe(map((user) => {
-        if (user && user.Token !== undefined) {
-
+        if (user && user.Token !== null) {
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUserSubject.next(user);
         }
@@ -40,7 +39,7 @@ export class AuthenticationService {
     const registerUser = new UserRegister(username, password, email);
     return this.rest.register(registerUser)
       .pipe(map((user) => {
-        if (user && user.Token !== undefined) {
+        if (user && user.Token !== null) {
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUserSubject.next(user);
         }

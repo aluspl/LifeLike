@@ -1,33 +1,42 @@
-import { style } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
-import MenuItem from '../models/MenuItem';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+import { Subscription } from 'rxjs';
 import UserLogin from '../models/UserLogin';
+import { LoginComponent } from '../pages/login/login.component';
 import { AuthenticationService } from '../services/authentication.service';
-import { RestService } from '../services/rest.service';
 
 @Component({
   selector: 'app-toolbar',
   templateUrl: './template.html',
   styleUrls: ['./style.scss'],
 })
-export class ToolbarComponent implements OnInit {
-  MenuItems: MenuItem[];
+export class ToolbarComponent implements OnInit, OnDestroy {
+
   IsLogin: boolean;
   CurrentUser: UserLogin;
-  constructor(private readonly restService: RestService, authService: AuthenticationService, public dialog: MatDialog) {
-    this.IsLogin = authService.IsLogin;
-    authService.currentUser.subscribe((x) => {
+  UserSub: Subscription;
+  constructor(private authService: AuthenticationService, private dialog: MatDialog) {
+    this.UserSub = authService.currentUser.subscribe((x) => {
       this.CurrentUser = x;
-      this.IsLogin = x !== undefined;
+      this.IsLogin = authService.IsLogin;
     });
   }
-  getMenuItems(): void {
-    this.restService.getMenuItems()
-      .subscribe((items) => this.MenuItems = items);
+  logout(): void {
+    this.authService.logout();
+    this.IsLogin = false;
+  }
+  login(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '90%';
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    this.dialog.open(LoginComponent, dialogConfig);
   }
   ngOnInit() {
-    this.getMenuItems();
-  }
 
+  }
+  ngOnDestroy() {
+    this.UserSub.unsubscribe();
+  }
 }

@@ -22,8 +22,6 @@ export class PhotosComponent implements OnInit {
   constructor(private readonly restService: AdminRestService, private readonly dialog: MatDialog) { }
 
   Remove(photo: Photo): void {
-    console.log('Remove');
-    console.log(photo);
     this.IsLoading = true;
     this.restService.deletePhoto(photo.Id)
       .subscribe(
@@ -37,8 +35,7 @@ export class PhotosComponent implements OnInit {
       });
   }
   Edit(photo: Photo): void {
-    console.log('Edit');
-    console.log(photo);
+
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = photo;
     dialogConfig.width = '90%';
@@ -51,7 +48,6 @@ export class PhotosComponent implements OnInit {
     });
   }
   Create(): void {
-    console.log('Create');
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.width = '90%';
@@ -67,8 +63,6 @@ export class PhotosComponent implements OnInit {
       .pipe(
         map((data: Photo[]) => {
           this.IsLoading = false;
-          console.log(data);
-
           return data;
         }))
       .subscribe((p: Photo[]) => this.Photos = p);
