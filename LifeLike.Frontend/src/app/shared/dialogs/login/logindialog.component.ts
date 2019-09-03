@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthenticationService } from '../../services/authentication.service';
+import { MatDialogRef } from '@angular/material';
 import { first } from 'rxjs/operators';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'dialog-login',
@@ -17,7 +17,7 @@ export class LoginDialogComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
 
     // reset login status
@@ -27,8 +27,8 @@ export class LoginDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<LoginDialogComponent>,
-    private formBuilder: FormBuilder,
-    private authenticationService: AuthenticationService) {
+    private readonly formBuilder: FormBuilder,
+    private readonly authenticationService: AuthenticationService) {
 
   }
   onNoClick(): void {
@@ -46,11 +46,11 @@ export class LoginDialogComponent implements OnInit {
     this.authenticationService.login(this.f.username.value, this.f.password.value)
       .pipe(first())
       .subscribe(
-        data => {
+        (data) => {
           this.loading = false;
           this.dialogRef.close();
         },
-        error => {
+        (error) => {
           this.error = error;
           this.loading = false;
         });

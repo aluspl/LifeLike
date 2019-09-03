@@ -1,5 +1,4 @@
-export default class Photo
-{    
+export default class Photo {
     Id: string;
     Title: string;
     FileName: string;

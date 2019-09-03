@@ -1,12 +1,12 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import { LogComponent } from './pages/log/log.component';
-import { AdminPage } from './pages/admin-page/admin-page.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { ConfigComponent } from './pages/config/config.component';
+import { LogComponent } from './pages/log/log.component';
 import { VideosComponent } from './pages/videos/videos.component';
 
 const heroesRoutes: Routes = [
-  { path: '', component: AdminPage },
+  { path: '', component: AdminPageComponent },
   { path: 'video', component: VideosComponent },
   { path: 'config', component: ConfigComponent },
   { path: 'log', component: LogComponent },
@@ -14,11 +14,11 @@ const heroesRoutes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forChild(heroesRoutes)
+    RouterModule.forChild(heroesRoutes),
   ],
   exports: [
-    RouterModule
-  ]
+    RouterModule,
+  ],
 })
 
 export class AdminRoutingModule {

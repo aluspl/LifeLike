@@ -7,7 +7,7 @@ export const AppConfig: any = {
         admin: 'admin',
         post: 'post',
 
-        error404: '404'
+        error404: '404',
     },
     /**
      *
@@ -19,7 +19,7 @@ export const AppConfig: any = {
             Action: '',
             Controller: 'Post',
             Name: 'NEWS',
-            Icon: 'newspaper'
+            Icon: 'newspaper',
         },
         {
             Id: 2,
@@ -40,7 +40,7 @@ export const AppConfig: any = {
             Action: '',
             Controller: 'Project',
             Name: 'PROJECTS',
-            Icon: 'code'
+            Icon: 'code',
         },
         // {
         //     Id: 5,
@@ -56,5 +56,5 @@ export const AppConfig: any = {
         //     Name: 'CONTACT',
         //     Icon: 'at',
         // }
-    ]
+    ],
 };

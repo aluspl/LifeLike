@@ -1,14 +1,14 @@
-import { Component, Input, OnInit, Inject } from '@angular/core';
-import { AdminRestService } from '../../services/admin-rest.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import FileUpload from '../../models/FileUpload';
 import { HttpEventType, HttpResponseBase } from '@angular/common/http';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Component, Inject, Input, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { ActivatedRoute, Router } from '@angular/router';
 import Video from '../../../video/models/Video';
+import FileUpload from '../../models/FileUpload';
+import { AdminRestService } from '../../services/admin-rest.service';
 @Component({
   selector: 'app-video-edit',
   templateUrl: './video-edit.component.html',
-  styleUrls: ['./video-edit.component.scss']
+  styleUrls: ['./video-edit.component.scss'],
 })
 export class VideoEditComponent implements OnInit {
   loading = false;
@@ -20,26 +20,23 @@ export class VideoEditComponent implements OnInit {
 
   onSubmit() {
     this.loading = true;
-    this.restService.editVideo(this.model).subscribe(p => {
+    this.restService.editVideo(this.model).subscribe((p) => {
       this.loading = false;
-      console.log(p);
       this.dialogRef.close();
-    }, error => {
+    }, (error) => {
       this.loading = false;
-      console.log(error);
     });
   }
-  onNoClick()
-  {
+  onNoClick() {
     this.dialogRef.close();
   }
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.model); }
 
   constructor(
-    private restService: AdminRestService,
+    private readonly restService: AdminRestService,
     public dialogRef: MatDialogRef<VideoEditComponent>, @Inject(MAT_DIALOG_DATA) data) {
-      this.model=data;
+      this.model = data;
   }
 
   ngOnInit() {

@@ -1,16 +1,16 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ErrorHandler } from '@angular/core';
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
-import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { SharedModule } from './shared/shared.module';
+import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
+import { ErrorHandler, NgModule } from '@angular/core';
+import { APP_ID, Inject, PLATFORM_ID } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxMdModule } from 'ngx-md';
+import { MyMaterialModule } from '../material.module';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { APP_CONFIG, AppConfig } from './configs/app.config';
 import { CustomErrorHandler } from './core/custom.errorhandler';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MyMaterialModule } from '../material.module';
-import { NgxMdModule } from 'ngx-md';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -34,16 +34,15 @@ import { NgxMdModule } from 'ngx-md';
   ],
   providers: [
      {provide: APP_CONFIG, useValue: AppConfig},
-     {provide: ErrorHandler, useClass: CustomErrorHandler}
+     {provide: ErrorHandler, useClass: CustomErrorHandler},
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
   constructor(
-    @Inject(PLATFORM_ID) platformId: Object,
+    @Inject(PLATFORM_ID) platformId: string,
     @Inject(APP_ID) appId: string) {
     const platform = isPlatformBrowser(platformId) ?
       'in the browser' : 'on the server';
-    console.log(`Running ${platform} with appId=${appId}`);
   }
 }

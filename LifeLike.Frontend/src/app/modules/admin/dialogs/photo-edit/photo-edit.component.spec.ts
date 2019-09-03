@@ -8,7 +8,7 @@ describe('PhotoEditComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PhotoEditComponent ]
+      declarations: [ PhotoEditComponent ],
     })
     .compileComponents();
   }));
