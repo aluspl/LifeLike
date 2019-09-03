@@ -8,7 +8,7 @@ describe('ConfigEditComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConfigEditComponent ]
+      declarations: [ ConfigEditComponent ],
     })
     .compileComponents();
   }));

@@ -1,13 +1,13 @@
-import {TestBed} from '@angular/core/testing';
-import {UtilsHelperService} from './utils-helper.service';
+import { TestBed } from '@angular/core/testing';
+import { UtilsHelperService } from './utils-helper.service';
 
 describe('UtilsHelperService', () => {
   let utilsHelperService;
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        UtilsHelperService
-      ]
+        UtilsHelperService,
+      ],
     });
 
     utilsHelperService = TestBed.get(UtilsHelperService);

@@ -1,5 +1,4 @@
-export default class UserRegister
-{
+export default class UserRegister {
     Username: string;
     Password: string;
     ConfirmPassword: string;

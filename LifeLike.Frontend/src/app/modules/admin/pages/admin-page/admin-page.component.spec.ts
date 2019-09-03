@@ -8,7 +8,7 @@ describe('AdminPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminPage ]
+      declarations: [ AdminPage ],
     })
     .compileComponents();
   }));

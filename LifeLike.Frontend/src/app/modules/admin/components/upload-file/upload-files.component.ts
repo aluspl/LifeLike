@@ -1,7 +1,7 @@
-import { Component, Input, forwardRef } from '@angular/core';
-import { AdminRestService } from '../../services/admin-rest.service';
 import { HttpEventType } from '@angular/common/http';
+import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { AdminRestService } from '../../services/admin-rest.service';
 
 @Component({
   selector: 'app-uploadfiles',
@@ -12,20 +12,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     provide: NG_VALUE_ACCESSOR,
     multi: true,
     useExisting: forwardRef(() => UploadFileComponent),
-  }]
+  }],
 })
 export class UploadFileComponent  implements ControlValueAccessor {
-
-  IsLoading: boolean;
-  @Input('value') url: string;
-  @Input() placeholder: string;
-  IsDisabled: boolean;
-  progress: number;
-  constructor(private restService: AdminRestService) { }
-
-  // Both onChange and onTouched are functions
-  onChange: any = () => { };
-  onTouched: any = () => { };
 
   get value() {
     return this.url;
@@ -36,6 +25,17 @@ export class UploadFileComponent  implements ControlValueAccessor {
     this.onChange(val);
     this.onTouched();
   }
+
+  IsLoading: boolean;
+  @Input('value') url: string;
+  @Input() placeholder: string;
+  IsDisabled: boolean;
+  progress: number;
+  constructor(private readonly restService: AdminRestService) { }
+
+  // Both onChange and onTouched are functions
+  onChange: any = () => { };
+  onTouched: any = () => { };
   registerOnChange(fn) {
     this.onChange = fn;
   }
@@ -53,35 +53,32 @@ export class UploadFileComponent  implements ControlValueAccessor {
     this.IsDisabled = isDisabled;
   }
 
-  private PhotoUpload(event) {
-    if (event.type === HttpEventType.UploadProgress)
-      this.progress = Math.round(100 * event.loaded / event.total);
-    else if (event.type === HttpEventType.Response) {
-      this.IsLoading = false;
-      if (event.status == 200) {
-        this.value=event.body;
-      }
-      else if (event.status != 200) {
-        console.log(event);
+  upload(files: File[]) {
+    this.IsLoading = true;
+
+    if (files.length > 0) {
+      for (const file of files) {
+        this.restService.uploadPhoto(file).subscribe(
+        (event) => {
+          this.PhotoUpload(event);
+        }
+        , (response) => {
+        }, () => {
+          this.IsDisabled = true;
+        });
       }
     }
   }
 
-  upload(files: File[]) {
-    this.IsLoading = true;
-
-    if (files.length > 0)
-      for (let file of files) {
-        this.restService.uploadPhoto(file).subscribe(
-        event => {
-          this.PhotoUpload(event);
-        }
-        ,response =>{
-          console.log("Error " + response)
-        }, ()=>{
-          this.IsDisabled=true;
-          console.log(this.value);
-        });
+  private PhotoUpload(event) {
+    if (event.type === HttpEventType.UploadProgress) {
+      this.progress = Math.round(100 * event.loaded / event.total);
+    } else if (event.type === HttpEventType.Response) {
+      this.IsLoading = false;
+      if (event.status === 200) {
+        this.value = event.body;
+      } else if (event.status !== 200) {
       }
+    }
   }
 }

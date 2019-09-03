@@ -1,14 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { VideoEditComponent } from './video-edit.component';
 
-
 describe('VideoEditComponent', () => {
   let component: VideoEditComponent;
   let fixture: ComponentFixture<VideoEditComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VideoEditComponent ]
+      declarations: [ VideoEditComponent ],
     })
     .compileComponents();
   }));

@@ -1,14 +1,13 @@
-import { Component, Input, OnInit, Inject } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AdminRestService } from '../../services/admin-rest.service';
 import Page from '../../../../shared/models/Page';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-
+import { AdminRestService } from '../../services/admin-rest.service';
 
 @Component({
   selector: 'app-post-edit',
   templateUrl: './post-edit.component.html',
-  styleUrls: ['./post-edit.component.scss']
+  styleUrls: ['./post-edit.component.scss'],
 })
 export class PostEditComponent implements OnInit {
   model: Page;
@@ -16,23 +15,21 @@ export class PostEditComponent implements OnInit {
   categories = ['App', 'Game', 'Tutorial', 'Page', 'Post'];
   returnUrl: any;
 
-  constructor(private restService: AdminRestService,
-    public dialogRef: MatDialogRef<PostEditComponent>,
-    @Inject(MAT_DIALOG_DATA) data) {
-      this.model=data
+  constructor(private readonly restService: AdminRestService,
+              public dialogRef: MatDialogRef<PostEditComponent>,
+              @Inject(MAT_DIALOG_DATA) data) {
+      this.model = data;
   }
-  onNoClick()
-  {
+  onNoClick() {
     this.dialogRef.close();
   }
   onSubmit() {
     this.loading = true;
-    this.restService.editPost(this.model).subscribe(p => {
+    this.restService.editPost(this.model).subscribe((p) => {
       this.loading = false;
       console.log(p);
       this.dialogRef.close();
-    },error=>
-    {
+    }, (error) => {
       this.loading = false;
       console.log(error);
     });

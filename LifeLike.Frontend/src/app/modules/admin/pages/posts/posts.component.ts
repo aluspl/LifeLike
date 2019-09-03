@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 import { map } from 'rxjs/operators';
 import Page from '../../../../shared/models/Page';
-import { AdminRestService } from '../../services/admin-rest.service';
-import { MatDialog, MatDialogConfig } from '@angular/material';
-import { PostEditComponent } from '../../dialogs/post-edit/post-edit.component';
 import { PostCreateComponent } from '../../dialogs/post-create/post-create.component';
-
+import { PostEditComponent } from '../../dialogs/post-edit/post-edit.component';
+import { AdminRestService } from '../../services/admin-rest.service';
 
 @Component({
   selector: 'app-admin-posts',
   templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.scss']
+  styleUrls: ['./posts.component.scss'],
 })
 export class PostsComponent implements OnInit {
   Pages: Page[];
@@ -20,7 +19,7 @@ export class PostsComponent implements OnInit {
   IsEditMode: boolean;
   IsCreateMode: boolean;
   SelectedPage: Page;
-  constructor(private restService: AdminRestService, public dialog: MatDialog) { }
+  constructor(private readonly restService: AdminRestService, public dialog: MatDialog) { }
 
   Remove(page: Page): void {
     console.log('Remove');
@@ -28,11 +27,11 @@ export class PostsComponent implements OnInit {
     this.IsLoading = true;
     this.restService.removePost(page.Id)
       .subscribe(
-        data => {
+        (data) => {
           this.IsLoading = false;
           this.GetPages();
         },
-        error => {
+        (error) => {
           this.error = error;
           this.IsLoading = false;
         });
@@ -45,8 +44,8 @@ export class PostsComponent implements OnInit {
     dialogConfig.width = '90%';
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    let dialogRef = this.dialog.open(PostEditComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe(result => {
+    const dialogRef = this.dialog.open(PostEditComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe((result) => {
       this.GetPages();
     });
   }
@@ -56,8 +55,8 @@ export class PostsComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.width = '90%';
     dialogConfig.autoFocus = true;
-    let dialogRef = this.dialog.open(PostCreateComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe(result => {
+    const dialogRef = this.dialog.open(PostCreateComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe((result) => {
       this.GetPages();
     });
   }
@@ -67,6 +66,7 @@ export class PostsComponent implements OnInit {
       .pipe(
         map((data: Page[]) => {
           this.IsLoading = false;
+
           return data;
         }))
       .subscribe((p: Page[]) => this.Pages = p);

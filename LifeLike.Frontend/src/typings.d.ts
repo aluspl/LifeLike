@@ -1,3 +1,5 @@
+declare var envprocess: Process;
+
 interface Process {
   env: Env
 }

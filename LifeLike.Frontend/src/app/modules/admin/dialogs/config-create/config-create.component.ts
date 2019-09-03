@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AdminRestService } from '../../services/admin-rest.service';
 import { MatDialogRef } from '@angular/material';
 import Config from '../../../../shared/models/Config';
+import { AdminRestService } from '../../services/admin-rest.service';
 
 @Component({
   selector: 'app-config-create',
   templateUrl: './config-create.component.html',
-  styleUrls: ['./config-create.component.scss']
+  styleUrls: ['./config-create.component.scss'],
 })
 export class ConfigCreateComponent implements OnInit {
   model = new Config();
@@ -15,11 +15,11 @@ export class ConfigCreateComponent implements OnInit {
   onSubmit() {
     console.log(this.diagnostic);
     this.loading = true;
-    this.restService.createConfig(this.model).subscribe(p => {
+    this.restService.createConfig(this.model).subscribe((p) => {
       this.loading = false;
       console.log(p);
       this.dialogRef.close();
-    }, error => {
+    }, (error) => {
       this.loading = false;
       console.log(error);
     });
@@ -28,12 +28,11 @@ export class ConfigCreateComponent implements OnInit {
   get diagnostic() { return JSON.stringify(this.model); }
 
   constructor(
-    private restService: AdminRestService,
-    public dialogRef: MatDialogRef<ConfigCreateComponent> ) {
+    private readonly restService: AdminRestService,
+    public dialogRef: MatDialogRef<ConfigCreateComponent>) {
 
   }
-  onNoClick()
-  {
+  onNoClick() {
     this.dialogRef.close();
   }
   ngOnInit() {

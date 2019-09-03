@@ -1,22 +1,22 @@
-import {Injectable} from '@angular/core';
-import {animate, AnimationTriggerMetadata, style, transition, trigger} from '@angular/animations';
+import { animate, AnimationTriggerMetadata, style, transition, trigger } from '@angular/animations';
+import { Injectable } from '@angular/core';
 
 declare const require;
 const bowser = require('bowser');
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UtilsHelperService {
   static fadeInOut(): AnimationTriggerMetadata {
     return trigger('fadeInOut', [
       transition(':enter', [
         style({opacity: 0}),
-        animate(500, style({opacity: 1}))
+        animate(500, style({opacity: 1})),
       ]),
       transition(':leave', [
-        animate(500, style({opacity: 0}))
-      ])
+        animate(500, style({opacity: 0})),
+      ]),
     ]);
   }
 
@@ -27,21 +27,23 @@ export class UtilsHelperService {
         return false;
       }
     }
+
     return true;
   }
 
   static isBrowserValid() {
     const browser = bowser.getParser(window.navigator.userAgent);
+
     return browser.satisfies({
       windows: {
         'internet explorer': '>10',
       },
       macos: {
-        safari: '>10.1'
+        safari: '>10.1',
       },
       chrome: '>20.1.1432',
       firefox: '>31',
-      opera: '>22'
+      opera: '>22',
     });
   }
 }

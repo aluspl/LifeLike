@@ -1,11 +1,11 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 
 import { AdminRestService } from './admin-rest.service';
 
 describe('AdminRestService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AdminRestService]
+      providers: [AdminRestService],
     });
   });
 

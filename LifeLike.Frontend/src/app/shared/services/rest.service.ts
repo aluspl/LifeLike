@@ -1,15 +1,15 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, tap, map } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs/index';
-import MenuItem from '../models/MenuItem';
+import { catchError, map, tap } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
+import { AppConfig } from '../../configs/app.config';
+import { LoggerService } from '../../core/services/logger.service';
 import Video from '../../modules/video/models/Video';
 import Config from '../models/Config';
-import { AppConfig } from '../../configs/app.config';
+import MenuItem from '../models/MenuItem';
 import UserLogin from '../models/UserLogin';
 import UserRegister from '../models/UserRegister';
-import { LoggerService } from '../../core/services/logger.service';
-import { environment } from '../../../environments/environment';
 
 const ConfigList = environment.API + '/api/Config';
 const VideoList = environment.API + '/api/Video';
@@ -19,12 +19,12 @@ const RegisterLink = environment.API + '/api/Account/Register';
 @Injectable()
 export class RestService {
 
-  public static httpOptions = {
+  static httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-    withCredentials: true
+    withCredentials: true,
   };
 
-  public static handleError<T>(operation = 'operation', result?: T) {
+  static handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       LoggerService.log(`${operation} failed: ${error.message}`);
@@ -32,7 +32,7 @@ export class RestService {
       // if (error.status >= 500) {
       //   throw error;
       // }
-      return of(result as T);
+      return of(result);
     };
   }
 
@@ -44,32 +44,31 @@ export class RestService {
     return this.http
       .get<Video[]>(VideoList, RestService.httpOptions)
       .pipe(
-        tap(_ => LoggerService.log(`fetched Videos`))
+        tap((_) => LoggerService.log('fetched Videos')),
       );
   }
   getConfigs(): Observable<Config[]> {
     return this.http
       .get<Config[]>(ConfigList, RestService.httpOptions)
       .pipe(
-        tap(_ => LoggerService.log(`fetched Configs`)),
-        catchError(RestService.handleError<Config[]>())
+        tap((_) => LoggerService.log('fetched Configs')),
+        catchError(RestService.handleError<Config[]>()),
       );
   }
   login(login: UserLogin): Observable<UserLogin> {
     return this.http
       .post<UserLogin>(LoginLink, login, RestService.httpOptions)
       .pipe(
-        tap(_ => LoggerService.log(`Login`))
+        tap((_) => LoggerService.log('Login')),
       );
   }
   register(user: UserRegister): Observable<UserLogin> {
     return this.http
       .post<UserLogin>(RegisterLink, user, RestService.httpOptions)
       .pipe(
-        tap(_ => LoggerService.log(`Register`))
+        tap((_) => LoggerService.log('Register')),
       );
   }
-  constructor(private http: HttpClient) {
-    console.log(environment);
+  constructor(private readonly http: HttpClient) {
   }
 }
