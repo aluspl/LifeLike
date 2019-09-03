@@ -1,5 +1,4 @@
 using System;
-using LifeLike.CloudService.CosmosDB;
 using LifeLike.Shared;
 using LifeLike.Shared.Enums;
 using Microsoft.Extensions.Configuration;

@@ -1,14 +1,14 @@
- .btn-group-sm .btn-fab{
-    position: fixed !important;
-    right: 29px;
+  .container {
+    top: 0;
+    bottom: 0;
+    left:0;
+    right: 0;
+    height: 100%;
   }
-  .btn-group .btn-fab{
-    position: fixed !important;
-    right: 20px;
+  .setting-icon {
+    padding: 0 14px;
   }
-  .bottom
-  {
-      position: absolute;
-      bottom: 50px;
-      right: 50px;
+
+  .setting-spacer {
+    flex: 1 1 auto;
   }

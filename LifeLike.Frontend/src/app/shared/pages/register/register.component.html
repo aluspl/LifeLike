@@ -1,0 +1,19 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <h1 mat-dialog-title>Register</h1>
+  <div mat-dialog-content>
+      <mat-form-field>
+        <input matInput type="text" formControlName="username" class="form-control" placeholder="Username"  />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" formControlName="password" class="form-control" placeholder="Password"  />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="email" formControlName="email" class="form-control"   placeholder="Email"  />
+      </mat-form-field>
+
+      <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+  </div>
+  <div mat-dialog-actions>
+      <button mat-flat-button	color="primary" [disabled]="loading" >Register</button>
+  </div>
+  </form>

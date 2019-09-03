@@ -14,7 +14,7 @@ namespace LifeLike.Shared
         T GetDetail(Expression<Func<T, bool>> predicate = null);
         void Add(T entity);
         void Delete(Entity entity);
-        void Update(T entity);
+        void Update(Entity query, T entity);
         void DeleteAll();
     }
 }

@@ -3,8 +3,8 @@
     "version": "6.6.6",
     "license": "MIT",
     "scripts": {
-        "debug:backend" : "cd LifeLike.Api && dotnet run --project LifeLike.Web",
-        "debug:frontend" : "cd LifeLike.Frontend && ng serve",
+        "debug:backend": "cd LifeLike.Api && dotnet run --project LifeLike.Web",
+        "debug:frontend": "cd LifeLike.Frontend && ng serve",
         "debug:all": "npm run debug:backend && npm run debug:frontend"
     }
 }

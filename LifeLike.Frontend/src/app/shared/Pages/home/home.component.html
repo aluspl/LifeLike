@@ -1,6 +1,0 @@
-    <div class="row">
-      <div class="col-sm-5" *ngFor="let config of Configs">
-        <app-youtube-player [YoutubeID]="config.Value" *ngIf="config.Type=='Video'"></app-youtube-player>
-        <app-intro-text [config]="config" *ngIf="config.Type=='Text'"></app-intro-text>
-      </div>
-    </div>

@@ -7,11 +7,11 @@ export const AppConfig: any = {
         admin: 'admin',
         post: 'post',
 
-        error404: '404'
+        error404: '404',
     },
-    votesLimit: 3,
-    topHeroesLimit: 4,
-    snackBarDuration: 3000,
+    /**
+     *
+     */
     host: 'http://localhost',
     MenuItems: [
         {
@@ -19,7 +19,7 @@ export const AppConfig: any = {
             Action: '',
             Controller: 'Post',
             Name: 'NEWS',
-            Icon: 'newspaper'
+            Icon: 'newspaper',
         },
         {
             Id: 2,
@@ -40,21 +40,21 @@ export const AppConfig: any = {
             Action: '',
             Controller: 'Project',
             Name: 'PROJECTS',
-            Icon: 'code'
+            Icon: 'code',
         },
-        {
-            Id: 5,
-            Action: '',
-            Controller: 'Page',
-            Name: 'PAGES',
-            Icon: 'code'
-        },
-        {
-            Id: 6,
-            Action: 'Contact',
-            Controller: 'Page',
-            Name: 'CONTACT',
-            Icon: 'at',
-        }
-    ]
+        // {
+        //     Id: 5,
+        //     Action: '',
+        //     Controller: 'Page',
+        //     Name: 'PAGES',
+        //     Icon: 'code'
+        // },
+        // {
+        //     Id: 6,
+        //     Action: 'Contact',
+        //     Controller: 'Page',
+        //     Name: 'CONTACT',
+        //     Icon: 'at',
+        // }
+    ],
 };

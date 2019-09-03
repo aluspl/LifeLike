@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  ENV: 'ENV File',
+  API: 'https://lifelikebackend.azurewebsites.net',
 };

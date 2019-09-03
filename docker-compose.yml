@@ -23,34 +23,40 @@ services:
     volumes:
       - ./letsencrypt:/etc/letsencrypt:ro
       - ./www:/var/www/letsencrypt
+    environment:
+      - frontend:http://localhost:4200
     ports:
-      - "8000:80"
-    # depends_on:
-    #   - db
+      - "81:80"
+    expose: 
+      - 81
   web:
     container_name: web
     build:
       context: LifeLike.Frontend    
     ports:
-      - "8080:80"
+      - "80:80"
+    environment:
+      - API:http://localhost:81
+    expose:
+      - 80 
     volumes:
       - node_modules:/app/node_modules
 
-  proxy:
-    container_name: proxy
-    image: nginx:latest
-    ports:
-      - "80:80"
-    expose:
-      - 80
-    links:
-      - web
-      - api
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./logs:/var/log/nginx:rw
-      - ./letsencrypt:/etc/letsencrypt:rw
-      - ./www:/var/www/letsencrypt 
+  # proxy:
+  #   container_name: proxy
+  #   image: nginx:latest
+  #   ports:
+  #     - "80:80"
+  #   expose:
+  #     - 80
+  #   links:
+  #     - web
+  #     - api
+  #   volumes:
+  #     - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+  #     - ./logs:/var/log/nginx:rw
+  #     - ./letsencrypt:/etc/letsencrypt:rw
+  #     - ./www:/var/www/letsencrypt 
   # certbot:
   #   container_name: certbot
   #   build:

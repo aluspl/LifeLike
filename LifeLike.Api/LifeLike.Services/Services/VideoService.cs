@@ -26,7 +26,7 @@ namespace LifeLike.Services
         {
             try
             {
-                var item = _mapper.Map<VideoEntity>(model);
+                var item = _mapper.Map<VideoEntity>(model);               
                 CreateEntity(item);
                 return Result.Success;
             }
@@ -93,5 +93,6 @@ namespace LifeLike.Services
         Result Delete(string id);
         IEnumerable<Video> List(VideoCategory category);
         IEnumerable<Video> List();
+        Result Update(Video item);
     }
 }

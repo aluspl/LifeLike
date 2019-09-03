@@ -1,0 +1,13 @@
+.progress {
+  color: green($color: #000000);
+}
+:host {
+  display: inline-block;
+}
+:host:not(.file-input-disabled) {
+    cursor: pointer;
+}
+
+input {
+
+}

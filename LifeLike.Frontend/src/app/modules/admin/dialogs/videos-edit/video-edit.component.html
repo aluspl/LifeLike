@@ -1,0 +1,26 @@
+<form (ngSubmit)="onSubmit()" #createPostForm="ngForm">
+  <div mat-dialog-content class="form-container">
+    <mat-form-field>
+      <input matInput placeholder="Name" [(ngModel)]="model.Name" name="model.Name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Url" id="Url" [(ngModel)]="model.Url" name="Url">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Description" id="Description" [(ngModel)]="model.Description" name="Description">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select class="form-control" id="Category" title="Category" placeholder="Category" name="Category" required
+          [value]="model.Category" [(ngModel)]="model.Category">
+          <mat-option *ngFor="let category of categories" value="{{category}}">
+            {{category}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    <button mat-flat-button color="primary" type="submit" [disabled]="!createPostForm.form.valid">Add</button>
+    <button mat-flat-button color="warn" (click)="onNoClick()">Cancel</button>
+    <div *ngIf="message">
+      <p>{{message}}</p>
+    </div>
+  </div>
+</form>

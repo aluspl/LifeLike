@@ -4,6 +4,7 @@ using LifeLike.Data.Models;
 using LifeLike.Data.Models.Enums;
 using LifeLike.Services.Extensions;
 using LifeLike.Services.ViewModel;
+using LifeLike.Shared.Enums;
 using LifeLike.Shared.Models;
 
 namespace LifeLike.Services.Profiles
@@ -12,20 +13,31 @@ namespace LifeLike.Services.Profiles
     {
         public DomainProfile()
         {
-            CreateMap<PageEntity, Page>();
-            CreateMap<Page, PageEntity>();
+            CreateMap<PageEntity, Page>()
+               .ForMember(x => x.Category, d => d.MapFrom(src => src.Category.ToString()));
+            CreateMap<Page, PageEntity>()
+              .ForMember(x => x.Category, d => d.MapFrom(src => src.Category.ToEnum<PageCategory>(PageCategory.Page)));
             CreateMap<PhotoEntity, Photo>();
             CreateMap<Photo, PhotoEntity>();
             CreateMap<EventLogEntity, Log>();
             CreateMap<Log, EventLogEntity>();
-            CreateMap<VideoEntity, Video>();
-            CreateMap<Video, VideoEntity>();
-            CreateMap<ConfigEntity, Config>();
-            CreateMap<Config, ConfigEntity>();
+            CreateMap<VideoEntity, Video>()
+              .ForMember(x => x.Category, d => d.MapFrom(src => src.Category.ToString()));
+
+            CreateMap<Video, VideoEntity>()
+                .ForMember(x => x.Category, d => d.MapFrom(src => src.Category.ToEnum(VideoCategory.VLOG)));
+
+            CreateMap<ConfigEntity, Config>()
+                .ForMember(x => x.Type, d => d.MapFrom(src => src.Type.ToString()));
+
+            CreateMap<Config, ConfigEntity>()
+                 .ForMember(x => x.Type, d => d.MapFrom(src => src.Type.ToEnum(ConfigType.Text)));
+
             CreateMap<LinkEntity, Link>()
                 .ForMember(x => x.Category, d => d.MapFrom(src => src.Category.ToString()));
             CreateMap<Link, LinkEntity>()
-                .ForMember(x => x.Category, d => d.MapFrom(src => src.Category.ToString()));
+                .ForMember(x => x.Category, d => d.MapFrom(src => src.Category.ToEnum(LinkCategory.Menu)));
         }    
+
     }
 }

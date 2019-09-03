@@ -1,12 +1,14 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { PageComponent } from './pages/page/page.component';
+import { NgxMdModule } from 'ngx-md';
+import { MyMaterialModule } from 'src/material.module';
 import { SharedModule } from '../../shared/shared.module';
-import { PostRestService } from './services/post-rest.service';
 import { PageRoutingModule } from './page-routing.module';
 import { PageDetailModule } from './pagedetail.module';
+import { PageComponent } from './pages/page/page.component';
+import { PostRestService } from './services/post-rest.service';
 
 @NgModule({
   declarations: [
@@ -18,8 +20,10 @@ import { PageDetailModule } from './pagedetail.module';
     RouterModule,
     PageDetailModule,
     PageRoutingModule,
+    MyMaterialModule,
+
   ],
-  
-  providers: [PostRestService]
+
+  providers: [PostRestService],
 })
 export class PageModule { }

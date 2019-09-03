@@ -1,41 +1,32 @@
 <app-title Title="Photos"></app-title>
+<button mat-flat-button color="primary" (click)="Create()"> Create </button>
 
 <app-spinner *ngIf="IsLoading"></app-spinner>
-<table *ngIf="!IsLoading" class="table table-striped">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Title</th>
-      <th scope="col">Url</th>
-      <th scope="col">Tags</th>
-      <th scope="col">Created</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let photo of Photos">
-      <th scope="row">{{photo.Id}}</th>
-      <td>{{photo.Title}}</td>
-      <td>{{photo.Url}}</td>
-      <td>{{photo.Tags}}</td>
-      <td>{{photo.Created | date: 'dd/MM/yyyy'}}</td>
-      <td>
-        <div class="btn-group">
-          <a class="btn btn-success" [routerLink]="['PhotoEdit/'+ photo.Id ]"> Edit </a>
-          <a class="btn btn-warning" (click)='Remove(photo)'>Delete </a>
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<a class="btn btn-success" (click)="Create()"> Create </a>
+<mat-table [dataSource]="Photos">
+  <ng-container matColumnDef="Id">
+    <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.Id}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Title">
+    <mat-header-cell *matHeaderCellDef>Title</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.Title}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Url">
+    <mat-header-cell *matHeaderCellDef>Url</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.Url}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Created">
+    <mat-header-cell *matHeaderCellDef>Created</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.Created}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Actions">
+    <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-button color="primary" (click)="Edit(element)"> Edit </button>
+      <button mat-button color="warn" (click)='Remove(element)'>Delete </button>
+    </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
 
-<div class="row" *ngIf="IsCreateMode">
-      <app-photo-create [IsCreateMode]="IsCreateMode"></app-photo-create>
-</div>
-<div class="row" *ngIf="IsEditMode">
-      <app-photo-edit [IsEditMode]="IsEditMode" [model]="SelectedPhoto"></app-photo-edit>
-</div>
-   
-
-<div *ngIf="error" class="alert alert-danger">{{error}}</div>

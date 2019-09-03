@@ -1,11 +1,11 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 
 import { PhotoRestService } from './photo-rest.service';
 
 describe('RestService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [PhotoRestService]
+      providers: [PhotoRestService],
     });
   });
 

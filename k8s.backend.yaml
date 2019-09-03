@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lifelikebackend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lifelikebackend
+  template:
+    metadata:
+      labels:
+        app: lifelikebackend
+    spec:
+      containers:
+      - name: lifelikebackend
+        image:  aluspl/lifelike:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 80
+        env:
+          - name: frontend
+            value: "lifelikefrontend:8080"
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name:  lifelikebackend
+  labels:
+    apps: lifelikebackend
+spec:
+  type: LoadBalancer
+  selector:
+    app:  lifelikebackend
+  ports:
+  - name:  lifelikeports
+    port:  80
+    targetPort:  8081

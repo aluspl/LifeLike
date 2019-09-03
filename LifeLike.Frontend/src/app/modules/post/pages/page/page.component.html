@@ -1,21 +1,16 @@
 <app-title Title="{{Title}}"></app-title>
 
 <app-spinner *ngIf="IsLoading"></app-spinner>
-<div class="row" *ngIf="!IsLoading">
-    <div class="col-sm"  *ngFor="let post of Pages" >
-      <div class="card"  routerLink='{{post.ShortName}}'>
-        <div class="card-header">
-            {{post.FullName}}
-        </div>
-        <div class="card-body">
-            <img *ngIf="post.ImageUrl != ''" src="{{post.ImageUrl}}" class="card-img-top">
-            <p class="mat-body-1">
-              {{post.Summary}}
-            </p>
-            <p class="caption">
-              Published: {{post.Published  | date: 'dd/MM/yyyy'}}
-            </p>    
-        </div>
-      </div>
-    </div>
-  </div>
+
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+  <mat-card fxFlex="30%" *ngFor="let post of Pages" routerLink='{{post.ShortName}}'>
+    <mat-card-header>
+      <mat-card-title> {{post.FullName}} </mat-card-title>
+      <mat-card-subtitle> {{post.Published  | date: 'dd/MM/yyyy'}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image *ngIf="post.ImageUrl!=undefined" src="{{post.ImageUrl}}">
+    <mat-card-content>
+      {{post.Summary}}
+    </mat-card-content>
+  </mat-card>
+</div>

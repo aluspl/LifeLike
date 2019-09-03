@@ -1,31 +1,32 @@
 <app-title Title="Configs"></app-title>
+<button mat-flat-button color="primary" (click)="Create()">Create</button>
+
 <app-spinner *ngIf="IsLoading"></app-spinner>
-<table   class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">DisplayName</th>
-        <th scope="col">Type</th>
-        <th scope="col">Value</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody *ngIf="!IsLoading">
-      <tr *ngFor="let config of Configs">
-        <th scope="row">{{config.Id}}</th>
-        <td>{{config.Name}}</td>
-        <td>{{config.DisplayName}}</td>
-        <td>{{config.Type}}</td>
-        <td>{{config.Value}}</td>
-        <td>
-          <div class="btn-group">
-            <a class="btn btn-success" [routerLink]="['ConfigEdit/'+ config.Id ]"> Edit </a>
-            <a class="btn btn-warning" (click)='Remove(config)'>Delete </a>
-          </div>
-        </td>
-      </tr>      
-    </tbody>
-  </table>
-  <a class="btn btn-success" (click)="Create()"> Create </a>
-  <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+<table mat-table [dataSource]="Configs">
+  <ng-container matColumnDef="Name">
+    <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.Name}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="DisplayName">
+    <mat-header-cell *matHeaderCellDef>Display Name</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.DisplayName}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Type">
+    <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.Type}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Value">
+    <mat-header-cell *matHeaderCellDef>Value</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.Value}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="Actions">
+    <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-flat-button color="primary" (click)="Edit(element)"> Edit </button>
+      <button mat-flat-button color="warn" (click)='Remove(element)'>Delete </button>
+    </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</table >
+<div *ngIf="error" class="alert alert-danger">{{error}}</div>

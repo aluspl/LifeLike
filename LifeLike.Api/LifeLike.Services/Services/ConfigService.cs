@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using LifeLike.Data.Models;
 using LifeLike.Services.Structures;
 using LifeLike.Services.ViewModel;
 using LifeLike.Shared;
 using LifeLike.Shared.Enums;
+using LifeLike.Shared.Models;
 
 namespace LifeLike.Services
 {
@@ -44,7 +46,7 @@ namespace LifeLike.Services
             {
                 var item = GetEntity(p => p.Name == model.Name);
                 _mapper.Map(model, item);
-                _repo.Update(item);
+                _repo.Update(item,item);
                 return Result.Success;
             }
             catch (Exception e)
@@ -68,20 +70,25 @@ namespace LifeLike.Services
             }
         }
      
-        public IEnumerable<Config> List()
+        public IList<Config> List()
         {
-            var items= GetAllEntities();
-            return _mapper.Map<IEnumerable<Config>>(items);
+            var items = GetAllEntities().ToList();
+            return _mapper.Map<IList<Config>>(items);
         }
-
+        public Result DeleteAll()
+        {
+            return DeleteAll();
+        }
        
     }
 
     public interface IConfigService 
     {
         Result Create(Config model);
+        Result Delete(string id);
         Config Get(string id);
-        IEnumerable<Config> List();
+        IList<Config> List();
         Result Update(Config model);
+        Result DeleteAll();
     }
 }

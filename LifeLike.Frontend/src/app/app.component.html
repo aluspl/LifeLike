@@ -1,11 +1,16 @@
-<app-menu></app-menu>
-<div class="container">
-  <router-outlet></router-outlet>
-</div>
-<footer class="bottom">
-  <div class="btn-group">
-    <a *ngIf="!IsLogin" class="btn btn-info" routerLink="Login">Login</a>
-    <a *ngIf="!IsLogin" class="btn btn-warning" routerLink="Register">Register</a>
-    <a *ngIf="IsLogin" class="btn btn-secondary" (click)="logout()">Logout</a>
-  </div>
-</footer>
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="primary">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    <app-toolbar></app-toolbar>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container class="container">
+  <mat-sidenav #drawer mode="side">
+    <app-menu></app-menu>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

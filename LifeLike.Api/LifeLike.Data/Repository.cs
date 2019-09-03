@@ -38,7 +38,7 @@ namespace LifeLike.Data
         }
         public T GetDetail(Expression<Func<T, bool>> predicate)
         {
-            return _dbset.First(predicate);
+            return _dbset.FirstOrDefault(predicate);
         }
 
         public IEnumerable<T> GetOverview(Expression<Func<T, bool>> predicate=null)
@@ -58,6 +58,12 @@ namespace LifeLike.Data
         public void DeleteAll()
         {
              _context.Database.ExecuteSqlCommand($"TRUNCATE TABLE {typeof(T).Name}");
+        }
+
+        public void Update(Entity query, T entity)
+        {
+            _dbset.Update(entity);
+            _context.SaveChanges();
         }
     }
 }
