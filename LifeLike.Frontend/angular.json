@@ -13,6 +13,13 @@
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+            "customWebpackConfig":{
+              "path": "custom-config.js",
+                "replaceDuplicatePlugins": true,
+                "mergeStrategies": {
+                " externals": "prepend"
+                }
+            },
             "outputPath": "dist/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -49,7 +56,7 @@
           }
         },
         "serve": {
-          "builder": "@angular-builders/dev-server:generic",
+          "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "lifelike-web:build"
           },
