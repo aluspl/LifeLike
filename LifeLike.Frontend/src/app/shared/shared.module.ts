@@ -16,7 +16,6 @@ import { LoginDialogComponent } from './dialogs/login/logindialog.component';
 import { RegisterDialogComponent } from './dialogs/register/registerdialogcomponent';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { AuthenticationService } from './services/authentication.service';
 import { RestService } from './services/rest.service';
@@ -30,7 +29,6 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     HomeComponent,
     YoutubePlayerComponent,
     IntroTextComponent,
-    LoginComponent,
     RegisterComponent,
     LoginDialogComponent,
     RegisterDialogComponent,
@@ -52,7 +50,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     RegisterDialogComponent,
     ToolbarComponent,
   ],
-  entryComponents: [LoginDialogComponent, LoginComponent, RegisterComponent,
+  entryComponents: [LoginDialogComponent, RegisterComponent,
                     RegisterDialogComponent],
 
   providers: [

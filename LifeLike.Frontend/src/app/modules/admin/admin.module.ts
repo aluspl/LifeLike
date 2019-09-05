@@ -8,6 +8,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { UploadFileComponent } from './components/upload-file/upload-files.component';
 import { ConfigCreateComponent } from './dialogs/config-create/config-create.component';
 import { ConfigEditComponent } from './dialogs/config-edit/config-edit.component';
+import { ConfirmDeleteComponent } from './dialogs/confirm-delete/confirm-delete.component';
 import { LogDetailComponent } from './dialogs/log-detail/log-detail.component';
 import { PhotoCreateComponent } from './dialogs/photo-create/photo-create.component';
 import { PhotoEditComponent } from './dialogs/photo-edit/photo-edit.component';
@@ -41,6 +42,7 @@ import { AdminRestService } from './services/admin-rest.service';
     ConfigCreateComponent,
     ConfigEditComponent,
     UploadFileComponent,
+    ConfirmDeleteComponent,
   ],
   imports: [
     CommonModule,
@@ -55,6 +57,6 @@ import { AdminRestService } from './services/admin-rest.service';
   providers: [AdminRestService],
   entryComponents: [PhotoCreateComponent,
     PhotoEditComponent, PostCreateComponent,
-    PostEditComponent, VideoCreateComponent, VideoEditComponent, ConfigEditComponent, ConfigCreateComponent],
+    PostEditComponent, VideoCreateComponent, VideoEditComponent, ConfigEditComponent, ConfigCreateComponent, ConfirmDeleteComponent],
 })
 export class AdminModule { }

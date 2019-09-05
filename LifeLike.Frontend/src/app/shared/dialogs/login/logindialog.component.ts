@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
-import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
@@ -44,7 +43,6 @@ export class LoginDialogComponent implements OnInit {
 
     this.loading = true;
     this.authenticationService.login(this.f.username.value, this.f.password.value)
-      .pipe(first())
       .subscribe(
         (data) => {
           this.loading = false;

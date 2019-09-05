@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using LifeLike.Data.Models;
-using LifeLike.Data.Models.Enums;
-using LifeLike.Repositories;
-using LifeLike.Services;
+﻿using LifeLike.Services;
 using LifeLike.Services.ViewModel;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LifeLike.Web.Controllers
 {
-    
+
     [Route("api/[controller]")]
     public class ConfigController : Controller
     {

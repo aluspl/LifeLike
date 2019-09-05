@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { Subscription } from 'rxjs';
+import { LoginDialogComponent } from '../dialogs/login/logindialog.component';
 import UserLogin from '../models/UserLogin';
-import { LoginComponent } from '../pages/login/login.component';
 import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
@@ -31,7 +31,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    this.dialog.open(LoginComponent, dialogConfig);
+    this.dialog.open(LoginDialogComponent, dialogConfig);
   }
   ngOnInit() {
 

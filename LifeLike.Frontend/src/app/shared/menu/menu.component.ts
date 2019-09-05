@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
-import { RegisterDialogComponent } from '../dialogs/register/registerdialogcomponent';
 import MenuItem from '../models/MenuItem';
-import UserLogin from '../models/UserLogin';
 import { AuthenticationService } from '../services/authentication.service';
 import { RestService } from '../services/rest.service';
 

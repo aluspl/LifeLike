@@ -5,6 +5,8 @@ namespace LifeLike.Services.ViewModel
     public class Config
     {
         [Key]       
+        public string Id { get; set; }
+
         [Required]
         public string Name { get; set; }
         [Required]

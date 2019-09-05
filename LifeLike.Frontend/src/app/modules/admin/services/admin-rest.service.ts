@@ -188,7 +188,7 @@ export class AdminRestService {
       );
   }
 
-  deleteConfig(id: number) {
+  deleteConfig(id: string) {
     const url = `${ConfigApi}/${id}`;
     return this.http
       .delete(url, RestService.httpOptions)
