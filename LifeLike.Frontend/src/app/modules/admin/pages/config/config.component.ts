@@ -4,6 +4,7 @@ import { map } from 'rxjs/internal/operators';
 import Config from '../../../../shared/models/Config';
 import { ConfigCreateComponent } from '../../dialogs/config-create/config-create.component';
 import { ConfigEditComponent } from '../../dialogs/config-edit/config-edit.component';
+import { ConfirmDeleteComponent } from '../../dialogs/confirm-delete/confirm-delete.component';
 import { AdminRestService } from '../../services/admin-rest.service';
 
 @Component({
@@ -26,12 +27,9 @@ export class ConfigComponent implements OnInit {
       .pipe(
         map((data) => {
           this.IsLoading = false;
-          console.log(data);
-
           return data;
         },
           (error) => {
-            console.log(error);
             error = error;
             this.IsLoading = false;
           })).subscribe((p) => this.Configs = p);
@@ -53,17 +51,27 @@ export class ConfigComponent implements OnInit {
     dialogConfig.width = '90%';
     dialogConfig.autoFocus = true;
     const dialogRef = this.dialog.open(ConfigEditComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe((result) => {
+    dialogRef.afterClosed().subscribe(() => {
       this.GetConfigs();
     });
   }
+
   Remove(config: Config) {
-    this.restService.deleteConfig(config.Id)
-    .subscribe((result) => {
-      console.log(result);
-      this.GetConfigs();
-    },
-    (error) => {console.log(error); });
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = config.Name;
+    dialogConfig.autoFocus = true;
+    const dialogRef = this.dialog.open(ConfirmDeleteComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.restService.deleteConfig(config.Name)
+          .subscribe(() => {
+            this.GetConfigs();
+          }, (error) => {
+            this.error = error;
+          });
+      }
+    });
+
   }
   ngOnInit() {
     this.GetConfigs();

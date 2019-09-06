@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { map } from 'rxjs/operators';
 import Photo from '../../../../modules/photo/models/Photo';
+import { ConfirmDeleteComponent } from '../../dialogs/confirm-delete/confirm-delete.component';
 import { PhotoCreateComponent } from '../../dialogs/photo-create/photo-create.component';
 import { PhotoEditComponent } from '../../dialogs/photo-edit/photo-edit.component';
 import { AdminRestService } from '../../services/admin-rest.service';
@@ -22,23 +23,28 @@ export class PhotosComponent implements OnInit {
   constructor(private readonly restService: AdminRestService, private readonly dialog: MatDialog) { }
 
   Remove(photo: Photo): void {
-    console.log('Remove');
-    console.log(photo);
-    this.IsLoading = true;
-    this.restService.deletePhoto(photo.Id)
-      .subscribe(
-        (data) => {
-          this.IsLoading = false;
-          this.GetPhotos();
-      },
-      (error) => {
-          this.error = error;
-          this.IsLoading = false;
-      });
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = photo.Title;
+    dialogConfig.autoFocus = true;
+    const dialogRef = this.dialog.open(ConfirmDeleteComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.IsLoading = true;
+        this.restService.deletePhoto(photo.Id)
+          .subscribe(
+            () => {
+              this.IsLoading = false;
+              this.GetPhotos();
+          },
+          (error) => {
+              this.error = error;
+              this.IsLoading = false;
+          });
+      }
+    });
   }
   Edit(photo: Photo): void {
-    console.log('Edit');
-    console.log(photo);
+
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = photo;
     dialogConfig.width = '90%';
@@ -51,7 +57,6 @@ export class PhotosComponent implements OnInit {
     });
   }
   Create(): void {
-    console.log('Create');
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.width = '90%';
@@ -67,8 +72,6 @@ export class PhotosComponent implements OnInit {
       .pipe(
         map((data: Photo[]) => {
           this.IsLoading = false;
-          console.log(data);
-
           return data;
         }))
       .subscribe((p: Photo[]) => this.Photos = p);

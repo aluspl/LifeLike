@@ -16,5 +16,7 @@
     <app-spinner *ngIf="loading">
     </app-spinner>
     <button mat-button type="submit" [disabled]="!editPostForm.form.valid">Submit</button>
+    <button mat-flat-button color="warn" (click)="onNoClick()">Cancel</button>
+
   </form>
 </div>

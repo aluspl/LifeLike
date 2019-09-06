@@ -17,16 +17,16 @@ export class PhotoEditComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) data) {
       this.model = data;
   }
-
+  onNoClick() {
+    this.dialogRef.close();
+  }
   onSubmit() {
     this.loading = true;
     this.restService.editPhoto(this.model).subscribe((p) => {
       this.loading = false;
-      console.log(p);
       this.dialogRef.close();
     }, (error) => {
       this.loading = false;
-      console.log(error);
     });
   }
   ngOnInit() {

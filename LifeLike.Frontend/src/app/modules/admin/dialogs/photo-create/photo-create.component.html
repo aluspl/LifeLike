@@ -16,6 +16,8 @@
     <input mat-flat-button type="file" #file type="file" multiple (change)="upload(file.files)" name="PhotoStream">
     <button mat-flat-button color="primary" type="submit"
       [disabled]="!createPostForm.form.valid && !submitEnabled">Submit</button>
+    <button mat-flat-button color="warn" (click)="onNoClick()">Cancel</button>
+
     <span style="font-weight:bold;color:green;" *ngIf="loading">
       {{progress}}%
     </span>

@@ -44,17 +44,17 @@ export class PhotoCreateComponent implements OnInit {
   ngOnInit() {
     this.submitEnabled = false;
   }
-
+  onNoClick() {
+    this.dialogRef.close();
+  }
   private PhotoUpload(event) {
     if (event.type === HttpEventType.UploadProgress) {
       this.progress = Math.round(100 * event.loaded / event.total);
     } else if (event.type === HttpEventType.Response) {
       this.loading = false;
-      if (event.status == 200) {
-        console.log(event);
+      if (event.status === 200) {
         this.dialogRef.close();
       } else {
-        console.log(event);
         this.message = event;
       }
     }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { map } from 'rxjs/operators';
 import Page from '../../../../shared/models/Page';
+import { ConfirmDeleteComponent } from '../../dialogs/confirm-delete/confirm-delete.component';
 import { PostCreateComponent } from '../../dialogs/post-create/post-create.component';
 import { PostEditComponent } from '../../dialogs/post-edit/post-edit.component';
 import { AdminRestService } from '../../services/admin-rest.service';
@@ -22,23 +23,27 @@ export class PostsComponent implements OnInit {
   constructor(private readonly restService: AdminRestService, public dialog: MatDialog) { }
 
   Remove(page: Page): void {
-    console.log('Remove');
-    console.log(page);
-    this.IsLoading = true;
-    this.restService.removePost(page.Id)
-      .subscribe(
-        (data) => {
-          this.IsLoading = false;
-          this.GetPages();
-        },
-        (error) => {
-          this.error = error;
-          this.IsLoading = false;
-        });
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = page.FullName;
+    dialogConfig.autoFocus = true;
+    const dialogRef = this.dialog.open(ConfirmDeleteComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.IsLoading = true;
+        this.restService.removePost(page.Id)
+          .subscribe(
+            (data) => {
+              this.IsLoading = false;
+              this.GetPages();
+            },
+            (error) => {
+              this.error = error;
+              this.IsLoading = false;
+            });
+      }
+    });
   }
   Edit(page: Page): void {
-    console.log('Edit');
-    console.log(page);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = page;
     dialogConfig.width = '90%';
@@ -50,7 +55,6 @@ export class PostsComponent implements OnInit {
     });
   }
   PostCreate(): void {
-    console.log('Create');
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.width = '90%';
