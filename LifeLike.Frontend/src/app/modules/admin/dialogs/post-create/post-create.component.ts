@@ -14,15 +14,12 @@ export class PostCreateComponent implements OnInit {
   loading = false;
   categories = ['App', 'Game', 'Tutorial', 'Page', 'Post'];
   onSubmit() {
-    console.log(this.diagnostic);
     this.loading = true;
     this.restService.createPost(this.model).subscribe((p) => {
       this.loading = false;
-      console.log(p);
       this.dialogRef.close();
-    }, (error) => {
+    }, () => {
       this.loading = false;
-      console.log(error);
     });
   }
   // TODO: Remove this when we're done

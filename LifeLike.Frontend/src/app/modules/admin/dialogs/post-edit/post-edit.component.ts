@@ -27,11 +27,9 @@ export class PostEditComponent implements OnInit {
     this.loading = true;
     this.restService.editPost(this.model).subscribe((p) => {
       this.loading = false;
-      console.log(p);
       this.dialogRef.close();
-    }, (error) => {
+    }, () => {
       this.loading = false;
-      console.log(error);
     });
   }
   ngOnInit() {

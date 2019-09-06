@@ -58,8 +58,7 @@ export class ConfigComponent implements OnInit {
 
   Remove(config: Config) {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = config.DisplayName;
-    dialogConfig.width = '90%';
+    dialogConfig.data = config.Name;
     dialogConfig.autoFocus = true;
     const dialogRef = this.dialog.open(ConfirmDeleteComponent, dialogConfig);
     dialogRef.afterClosed().subscribe((result) => {
@@ -71,8 +70,6 @@ export class ConfigComponent implements OnInit {
             this.error = error;
           });
       }
-
-      this.GetConfigs();
     });
 
   }

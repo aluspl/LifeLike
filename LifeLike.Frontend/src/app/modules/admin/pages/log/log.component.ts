@@ -20,7 +20,6 @@ export class LogComponent implements OnInit {
        .pipe(
          map((data) => {
             this.IsLoading = false;
-            console.log(data);
             return data;
          })).subscribe((p) => this.Logs = p);
   }
