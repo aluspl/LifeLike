@@ -11,8 +11,5 @@
   },
   "ApplicationInsights": {
     "InstrumentationKey": "a4eb0ef3-f42c-4373-98b5-1457badff05e"
-  },
-  "KeyVaultName": "lifelikekv",
-  "AzureADApplicationId": "7268ad8d-94e7-4f75-82e1-a10accdfb158",
-  "AzureADPassword": "7FBvaw8BTktp6WYzEeb2sSZBhuEnajBVD9KiGI6P9o4="
+  }
 }

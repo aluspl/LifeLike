@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/internal/operators';
-import  Config  from '../../models/Config';
+import Config from '../../models/Config';
 import { RestService } from '../../services/rest.service';
 
 @Component({
@@ -20,8 +20,6 @@ export class HomeComponent implements OnInit {
       .pipe(
         map((data) => {
           this.IsLoading = false;
-          console.log(data);
-
           return data;
         })).subscribe((p) => this.Configs = p);
 
