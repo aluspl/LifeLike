@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-youtube-player',
+  selector: 'youtube-player',
   templateUrl: './youtube-player.component.html',
   styleUrls: ['./youtube-player.component.scss'],
 })

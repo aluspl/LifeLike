@@ -4,4 +4,14 @@ export default class Config {
   Value: string;
   DisplayName: string;
   Type: string;
+
+  get IsVideo(): boolean {
+    return this.Type === 'Video';
+  }
+  get IsText(): boolean {
+    return this.Type === 'Text';
+  }
+ get  IsRss(): boolean {
+    return this.Type === 'RSS';
+  }
 }

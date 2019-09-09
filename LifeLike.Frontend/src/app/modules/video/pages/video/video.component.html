@@ -7,7 +7,7 @@
       <mat-card-subtitle>{{video.Category}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <app-youtube-player [YoutubeID]="video.YoutubeId"></app-youtube-player>
+      <youtube-player [YoutubeID]="video.YoutubeId"></youtube-player>
       Published: {{video.PublishDate  | date: 'dd/MM/yyyy'}}
     </mat-card-content>
   </mat-card>
