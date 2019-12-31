@@ -1,17 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.421
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeLike.Data", "LifeLike.Data\LifeLike.Data.csproj", "{87DE8383-DE45-42A4-838F-3704BE3B2E42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{87DE8383-DE45-42A4-838F-3704BE3B2E42}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeLike.Web", "LifeLike.Web\LifeLike.Web.csproj", "{756FFCA7-81DC-4C97-A601-DFDA96BF5DD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{756FFCA7-81DC-4C97-A601-DFDA96BF5DD8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeLike.Services", "LifeLike.Services\LifeLike.Services.csproj", "{B5FB45D9-07AC-4D2E-B387-C653538B08CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Services\Domain.csproj", "{B5FB45D9-07AC-4D2E-B387-C653538B08CE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeLike.Shared", "LifeLike.Shared\LifeLike.Shared.csproj", "{865C410A-B56D-4B3B-A151-392B9783783B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{865C410A-B56D-4B3B-A151-392B9783783B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeLike.CloudService", "LifeLike.CloudService\LifeLike.CloudService.csproj", "{F3434EA3-BE80-44FF-AE58-00B67DBB17E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudServices", "CloudService\CloudServices.csproj", "{F3434EA3-BE80-44FF-AE58-00B67DBB17E1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityService", "IdentityProfile\IdentityService.csproj", "{A1E2369C-EF5E-46F7-B74B-F250722E6DED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalServices", "LocalServices\LocalServices.csproj", "{0EDC30F9-3E1D-4704-A838-67564D0BB0C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{F3434EA3-BE80-44FF-AE58-00B67DBB17E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3434EA3-BE80-44FF-AE58-00B67DBB17E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3434EA3-BE80-44FF-AE58-00B67DBB17E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1E2369C-EF5E-46F7-B74B-F250722E6DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1E2369C-EF5E-46F7-B74B-F250722E6DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1E2369C-EF5E-46F7-B74B-F250722E6DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1E2369C-EF5E-46F7-B74B-F250722E6DED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EDC30F9-3E1D-4704-A838-67564D0BB0C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EDC30F9-3E1D-4704-A838-67564D0BB0C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EDC30F9-3E1D-4704-A838-67564D0BB0C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EDC30F9-3E1D-4704-A838-67564D0BB0C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

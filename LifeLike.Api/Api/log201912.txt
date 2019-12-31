@@ -1,0 +1,261 @@
+2019-12-30 21:44:58.531 +01:00 [INF] User profile is available. Using 'C:\Users\szymo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-12-30 21:44:59.540 +01:00 [INF] Entity Framework Core 2.2.6-servicing-10079 initialized 'PortalContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite' with options: None
+2019-12-30 21:44:59.731 +01:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-12-30 21:44:59.796 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-12-30 21:44:59.807 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetRoles" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_AspNetRoles" PRIMARY KEY,
+    "Name" TEXT NULL,
+    "NormalizedName" TEXT NULL,
+    "ConcurrencyStamp" TEXT NULL
+);
+2019-12-30 21:44:59.901 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUsers" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_AspNetUsers" PRIMARY KEY,
+    "UserName" TEXT NULL,
+    "NormalizedUserName" TEXT NULL,
+    "Email" TEXT NULL,
+    "NormalizedEmail" TEXT NULL,
+    "EmailConfirmed" INTEGER NOT NULL,
+    "PasswordHash" TEXT NULL,
+    "SecurityStamp" TEXT NULL,
+    "ConcurrencyStamp" TEXT NULL,
+    "PhoneNumber" TEXT NULL,
+    "PhoneNumberConfirmed" INTEGER NOT NULL,
+    "TwoFactorEnabled" INTEGER NOT NULL,
+    "LockoutEnd" TEXT NULL,
+    "LockoutEnabled" INTEGER NOT NULL,
+    "AccessFailedCount" INTEGER NOT NULL,
+    "Firstname" TEXT NULL,
+    "Lastname" TEXT NULL
+);
+2019-12-30 21:44:59.921 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Changelogs" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_Changelogs" PRIMARY KEY,
+    "Name" TEXT NULL,
+    "Description" TEXT NULL,
+    "Published" TEXT NOT NULL,
+    "Link" TEXT NULL
+);
+2019-12-30 21:44:59.938 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Configs" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_Configs" PRIMARY KEY,
+    "Name" TEXT NULL,
+    "Value" TEXT NULL,
+    "DisplayName" TEXT NULL,
+    "Type" INTEGER NOT NULL
+);
+2019-12-30 21:44:59.953 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "EventLogs" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_EventLogs" PRIMARY KEY,
+    "Type" INTEGER NOT NULL,
+    "Messages" TEXT NULL,
+    "StackTrace" TEXT NULL,
+    "EventTime" TEXT NOT NULL
+);
+2019-12-30 21:44:59.970 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Links" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_Links" PRIMARY KEY,
+    "Controller" TEXT NULL,
+    "Action" TEXT NULL,
+    "Name" TEXT NULL,
+    "Url" TEXT NULL,
+    "IconName" TEXT NULL,
+    "Order" INTEGER NOT NULL,
+    "Category" INTEGER NOT NULL
+);
+2019-12-30 21:45:00.077 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Pages" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_Pages" PRIMARY KEY,
+    "ShortName" TEXT NOT NULL,
+    "FullName" TEXT NULL,
+    "Content" TEXT NULL,
+    "PageOrder" INTEGER NOT NULL,
+    "Category" INTEGER NOT NULL,
+    "LinkId" INTEGER NOT NULL,
+    "Published" TEXT NOT NULL,
+    "ImageUrl" TEXT NULL
+);
+2019-12-30 21:45:00.112 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Photos" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_Photos" PRIMARY KEY,
+    "Title" TEXT NULL,
+    "FileName" TEXT NULL,
+    "Created" TEXT NOT NULL,
+    "Camera" TEXT NULL,
+    "Tags" TEXT NULL,
+    "City" TEXT NULL,
+    "Url" TEXT NULL,
+    "ThumbUrl" TEXT NULL
+);
+2019-12-30 21:45:00.128 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Videos" (
+    "Id" TEXT NOT NULL CONSTRAINT "PK_Videos" PRIMARY KEY,
+    "Name" TEXT NULL,
+    "Url" TEXT NULL,
+    "Description" TEXT NULL,
+    "PublishDate" TEXT NOT NULL,
+    "Category" INTEGER NOT NULL
+);
+2019-12-30 21:45:00.144 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetRoleClaims" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_AspNetRoleClaims" PRIMARY KEY AUTOINCREMENT,
+    "RoleId" TEXT NOT NULL,
+    "ClaimType" TEXT NULL,
+    "ClaimValue" TEXT NULL,
+    CONSTRAINT "FK_AspNetRoleClaims_AspNetRoles_RoleId" FOREIGN KEY ("RoleId") REFERENCES "AspNetRoles" ("Id") ON DELETE CASCADE
+);
+2019-12-30 21:45:00.160 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUserClaims" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_AspNetUserClaims" PRIMARY KEY AUTOINCREMENT,
+    "UserId" TEXT NOT NULL,
+    "ClaimType" TEXT NULL,
+    "ClaimValue" TEXT NULL,
+    CONSTRAINT "FK_AspNetUserClaims_AspNetUsers_UserId" FOREIGN KEY ("UserId") REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE
+);
+2019-12-30 21:45:00.178 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUserLogins" (
+    "LoginProvider" TEXT NOT NULL,
+    "ProviderKey" TEXT NOT NULL,
+    "ProviderDisplayName" TEXT NULL,
+    "UserId" TEXT NOT NULL,
+    CONSTRAINT "PK_AspNetUserLogins" PRIMARY KEY ("LoginProvider", "ProviderKey"),
+    CONSTRAINT "FK_AspNetUserLogins_AspNetUsers_UserId" FOREIGN KEY ("UserId") REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE
+);
+2019-12-30 21:45:00.212 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUserRoles" (
+    "UserId" TEXT NOT NULL,
+    "RoleId" TEXT NOT NULL,
+    CONSTRAINT "PK_AspNetUserRoles" PRIMARY KEY ("UserId", "RoleId"),
+    CONSTRAINT "FK_AspNetUserRoles_AspNetRoles_RoleId" FOREIGN KEY ("RoleId") REFERENCES "AspNetRoles" ("Id") ON DELETE CASCADE,
+    CONSTRAINT "FK_AspNetUserRoles_AspNetUsers_UserId" FOREIGN KEY ("UserId") REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE
+);
+2019-12-30 21:45:00.249 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AspNetUserTokens" (
+    "UserId" TEXT NOT NULL,
+    "LoginProvider" TEXT NOT NULL,
+    "Name" TEXT NOT NULL,
+    "Value" TEXT NULL,
+    CONSTRAINT "PK_AspNetUserTokens" PRIMARY KEY ("UserId", "LoginProvider", "Name"),
+    CONSTRAINT "FK_AspNetUserTokens_AspNetUsers_UserId" FOREIGN KEY ("UserId") REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE
+);
+2019-12-30 21:45:00.254 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_AspNetRoleClaims_RoleId" ON "AspNetRoleClaims" ("RoleId");
+2019-12-30 21:45:00.285 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "RoleNameIndex" ON "AspNetRoles" ("NormalizedName");
+2019-12-30 21:45:00.356 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_AspNetUserClaims_UserId" ON "AspNetUserClaims" ("UserId");
+2019-12-30 21:45:00.360 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_AspNetUserLogins_UserId" ON "AspNetUserLogins" ("UserId");
+2019-12-30 21:45:00.362 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_AspNetUserRoles_RoleId" ON "AspNetUserRoles" ("RoleId");
+2019-12-30 21:45:00.380 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "EmailIndex" ON "AspNetUsers" ("NormalizedEmail");
+2019-12-30 21:45:00.409 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX "UserNameIndex" ON "AspNetUsers" ("NormalizedUserName");
+2019-12-30 21:45:00.644 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-12-30 21:45:00.654 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Links" AS "l")
+    THEN 1 ELSE 0
+END
+2019-12-30 21:45:00.733 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-12-30 21:45:00.771 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Configs" AS "c")
+    THEN 1 ELSE 0
+END
+2019-12-30 21:45:00.816 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-12-30 21:45:00.831 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM "Pages" AS "p")
+    THEN 1 ELSE 0
+END
+2019-12-30 21:45:00.920 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA foreign_keys=ON;
+2019-12-30 21:45:00.933 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 13), @p2='?' (Size = 4), @p3='?', @p4='?' (Size = 32)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Configs" ("Id", "DisplayName", "Name", "Type", "Value")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2019-12-30 21:45:00.940 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 3), @p2='?' (Size = 11), @p3='?', @p4='?' (Size = 86)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Configs" ("Id", "DisplayName", "Name", "Type", "Value")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2019-12-30 21:45:00.943 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 13), @p2='?' (Size = 12), @p3='?', @p4='?' (Size = 11)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Configs" ("Id", "DisplayName", "Name", "Type", "Value")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2019-12-30 21:45:00.945 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 14), @p2='?' (Size = 4), @p3='?', @p4='?' (Size = 28)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Configs" ("Id", "DisplayName", "Name", "Type", "Value")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2019-12-30 21:45:00.962 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?', @p3='?' (Size = 5), @p4='?' (Size = 9), @p5='?' (Size = 4), @p6='?', @p7='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-12-30 21:45:01.002 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?', @p3='?', @p4='?' (Size = 4), @p5='?' (Size = 21), @p6='?', @p7='?' (Size = 56)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-12-30 21:45:01.026 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?', @p3='?', @p4='?' (Size = 4), @p5='?' (Size = 17), @p6='?', @p7='?' (Size = 40)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-12-30 21:45:01.052 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?', @p3='?', @p4='?' (Size = 7), @p5='?' (Size = 8), @p6='?', @p7='?' (Size = 40)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-12-30 21:45:01.055 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?', @p3='?', @p4='?' (Size = 7), @p5='?' (Size = 8), @p6='?', @p7='?' (Size = 51)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-12-30 21:45:01.073 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?', @p3='?', @p4='?' (Size = 6), @p5='?' (Size = 13), @p6='?', @p7='?' (Size = 22)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-12-30 21:45:01.077 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?', @p3='?', @p4='?' (Size = 4), @p5='?' (Size = 6), @p6='?', @p7='?' (Size = 26)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-12-30 21:45:01.109 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?' (Size = 7), @p2='?', @p3='?' (Size = 4), @p4='?' (Size = 2), @p5='?' (Size = 7), @p6='?', @p7='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-12-30 21:45:01.145 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?', @p3='?' (Size = 4), @p4='?' (Size = 4), @p5='?' (Size = 4), @p6='?', @p7='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-12-30 21:45:01.153 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?', @p3='?' (Size = 5), @p4='?' (Size = 4), @p5='?' (Size = 8), @p6='?', @p7='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-12-30 21:45:01.191 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?', @p3='?' (Size = 6), @p4='?' (Size = 4), @p5='?' (Size = 6), @p6='?', @p7='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-12-30 21:45:01.228 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?', @p3='?' (Size = 6), @p4='?' (Size = 12), @p5='?' (Size = 6), @p6='?', @p7='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-12-30 21:45:01.313 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?', @p3='?', @p4='?' (Size = 5), @p5='?' (Size = 17), @p6='?', @p7='?' (Size = 26)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Links" ("Id", "Action", "Category", "Controller", "IconName", "Name", "Order", "Url")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2019-12-30 21:45:01.352 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 36), @p1='?', @p2='?' (Size = 16), @p3='?' (Size = 10), @p4='?', @p5='?', @p6='?', @p7='?', @p8='?' (Size = 7)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Pages" ("Id", "Category", "Content", "FullName", "ImageUrl", "LinkId", "PageOrder", "Published", "ShortName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2019-12-30 21:45:41.058 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/  
+2019-12-30 21:45:41.136 +01:00 [INF] Request was redirected to /swagger
+2019-12-30 21:45:41.167 +01:00 [INF] Request finished in 109.5781ms 302 
+2019-12-30 21:45:41.172 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger  
+2019-12-30 21:45:41.177 +01:00 [INF] Request finished in 4.9021ms 301 
+2019-12-30 21:45:41.181 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/index.html  
+2019-12-30 21:45:41.353 +01:00 [INF] Request finished in 172.5662ms 200 text/html
+2019-12-30 21:45:41.404 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/swagger-ui.css  
+2019-12-30 21:45:41.405 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/swagger-ui-bundle.js  
+2019-12-30 21:45:41.405 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/swagger-ui-standalone-preset.js  
+2019-12-30 21:45:41.429 +01:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2019-12-30 21:45:41.430 +01:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2019-12-30 21:45:41.444 +01:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2019-12-30 21:45:41.445 +01:00 [INF] Request finished in 39.7857ms 200 application/javascript
+2019-12-30 21:45:41.459 +01:00 [INF] Request finished in 54.8018ms 200 text/css
+2019-12-30 21:45:41.461 +01:00 [INF] Request finished in 56.1769ms 200 application/javascript
+2019-12-30 21:45:41.626 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/v1/swagger.json  
+2019-12-30 21:45:41.667 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost/swagger/favicon-32x32.png  
+2019-12-30 21:45:41.669 +01:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2019-12-30 21:45:41.673 +01:00 [INF] Request finished in 6.3133ms 200 image/png
+2019-12-30 21:45:41.933 +01:00 [INF] Request finished in 307.5065ms 200 application/json;charset=utf-8
