@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using LifeLike.Shared.Enums;
+using LifeLike.Common.Enums;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace LifeLike.Web.Utils
+namespace Api.Utils
 {
     public class HtmlUtils
     {
-      
-
         public static IEnumerable<SelectListItem> CategoryList
         {
             get

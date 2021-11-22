@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Azure.Storage.Blobs" Version="12.9.1" />
+      <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.12" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Database\LifeLike.Database.Data\LifeLike.Database.Data.csproj" />
+    </ItemGroup>
+
+</Project>

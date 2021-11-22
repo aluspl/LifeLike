@@ -1,36 +1,48 @@
 ﻿using System;
-using System.IO;
-using Api.Extensions;
-using Microsoft.AspNetCore;
+using System.Threading.Tasks;
+using LifeLike.Database.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
-using Serilog.Events;
-using Serilog.Formatting.Compact;
 
-namespace LifeLike.Web
+namespace Api
 {
     public class Program
     {
-        public static int Main(string[] args)
+        public static async Task<int> Main(string[] args)
         {
+            var configuration = new ConfigurationBuilder()
+                .AddJsonFile("app.settings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile(
+                    $"app.settings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json",
+                    optional: true,
+                    reloadOnChange: true)
+                .AddEnvironmentVariables()
+                .AddCommandLine(args)
+                .Build();
+
             Log.Logger = new LoggerConfiguration()
-                                  .MinimumLevel.Debug()
-                                  .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-                                  .Enrich.FromLogContext()
-                                  .WriteTo.Console(new RenderedCompactJsonFormatter())
-                                  .CreateLogger();
+                .ReadFrom.Configuration(configuration)
+                .CreateLogger();
 
             try
             {
-                Log.Information("Starting web host");
-                CreateHostBuilder(args).Build().Migrate().Run();
+                Log.Information("Starting web host.");
+
+                var host = CreateHostBuilder(args).Build();
+
+                await InitializeDatabaseAsync(host);
+
+                await host.RunAsync();
+
                 return 0;
             }
             catch (Exception ex)
             {
-                Log.Fatal(ex, "Host terminated unexpectedly");
+                Log.Fatal(ex, "Host terminated unexpectedly.");
+
                 return 1;
             }
             finally
@@ -40,8 +52,23 @@ namespace LifeLike.Web
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-             Host.CreateDefaultBuilder(args)
-                 .UseSerilog()
-                 .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
+            Host.CreateDefaultBuilder(args)
+                .UseSerilog()
+                .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
+
+        private static async Task InitializeDatabaseAsync(IHost host)
+        {
+            using var scope = host.Services.CreateScope();
+            var databaseInitializer = scope.ServiceProvider.GetRequiredService<DatabaseInitializer>();
+
+            try
+            {
+                await databaseInitializer.InitializeAsync();
+            }
+            catch (Exception exception)
+            {
+                throw new Exception("Unhandled exception occured while seeding the database.", exception);
+            }
+        }
     }
 }

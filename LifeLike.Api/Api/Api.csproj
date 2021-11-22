@@ -1,39 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>8084c8e7-0000-0000-0000-c26798dc28d1</UserSecretsId>
-    <IsPackable>false</IsPackable>
-    <BuildServerSideRenderer>false</BuildServerSideRenderer>
+    <TargetFramework>net6.0</TargetFramework>
+    <UserSecretsId>LifeLike.Api</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.1" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.0" />
-    <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
-    <PackageReference Include="Serilog.Extensions.Hosting" Version="3.0.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.4" />
+    <PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
+    <PackageReference Include="Serilog.Extensions.Hosting" Version="4.2.0" />
     <PackageReference Include="Serilog.Formatting.Compact" Version="1.1.0" />
-    <PackageReference Include="SixLabors.ImageSharp.Web" Version="1.0.0-beta0007" />
+    <PackageReference Include="SixLabors.ImageSharp.Web" Version="1.0.4" />
     <PackageReference Include="System.ComponentModel.Primitives" Version="4.3.0" />
-    <PackageReference Include="AutoMapper" Version="9.0.0" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
-    <PackageReference Include="Serilog" Version="2.9.0" />
-    <PackageReference Include="Serilog.Extensions.Logging" Version="3.0.1" />
-    <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
-    <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc5" />
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.0" />
+    <PackageReference Include="Serilog" Version="2.10.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
   <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+    <ProjectReference Include="..\Commons\LifeLike.Common.Api\LifeLike.Common.Api.csproj" />
+    <ProjectReference Include="..\Commons\LifeLike.Common\LifeLike.Common.csproj" />
+    <ProjectReference Include="..\Database\LifeLike.Database.Migrations\LifeLike.Database.Migrations.csproj" />
+    <ProjectReference Include="..\Services\LifeLIke.Services.All\LifeLIke.Services.All.csproj" />
+    <ProjectReference Include="..\Services\LifeLike.Services.CloudService\LifeLike.Services.Media.csproj" />
+    <ProjectReference Include="..\Services\LifeLike.Services.Domain\LifeLike.Services.Domain.csproj" />
+    <ProjectReference Include="..\Services\LifeLike.Services.IdentityProfile\Lifelike.Services.IdentityService.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="wwwroot\thumbs\" />
-    <Folder Include="wwwroot\photos\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CloudService\CloudServices.csproj" />
-    <ProjectReference Include="..\IdentityProfile\IdentityService.csproj" />
-    <ProjectReference Include="..\LocalServices\LocalServices.csproj" />
-    <ProjectReference Include="..\Services\Domain.csproj" />
-    <ProjectReference Include="..\Shared\Shared.csproj" />
-  </ItemGroup>
-  
+
 </Project>

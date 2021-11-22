@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\LifeLike.Services.CloudService\LifeLike.Services.Media.csproj" />
+      <ProjectReference Include="..\LifeLike.Services.Domain\LifeLike.Services.Domain.csproj" />
+      <ProjectReference Include="..\LifeLike.Services.IdentityProfile\Lifelike.Services.IdentityService.csproj" />
+      <ProjectReference Include="..\LifeLike.Services.Page\LifeLike.Services.Page.csproj" />
+    </ItemGroup>
+
+</Project>

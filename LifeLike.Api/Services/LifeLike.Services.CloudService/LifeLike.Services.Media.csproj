@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.9.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+
+    <ProjectReference Include="..\..\Commons\LifeLike.Common\LifeLike.Common.csproj" />
+
+    <ProjectReference Include="..\..\Database\LifeLike.Database.Data\LifeLike.Database.Data.csproj" />
+
+    <ProjectReference Include="..\LifeLike.Services.Commons\LifeLike.Services.Commons.csproj" />
+
+    <ProjectReference Include="..\LifeLike.Services.Domain\LifeLike.Services.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
