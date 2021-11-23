@@ -8,55 +8,32 @@ using LifeLike.Common.Exceptions;
 using LifeLike.Database.Data.Entities.Page;
 using LifeLike.Database.Data.Interfaces;
 using LifeLike.Services.Commons.Interfaces;
+using LifeLike.Services.Commons.Interfaces.Page;
 using LifeLike.Services.Commons.Models.Page;
 using LifeLike.Services.Domain.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace LifeLike.Services.Page
 {
-    public class PageService : BaseService, IPageService
+    public class PageService : QueryPageService, IPageService
     {
-        private readonly IRepository<PageEntity> _repository;
         private readonly ILinkService _linkService;
 
         public PageService(
             IRepository<PageEntity> repository,
             ILinkService linkService,
             IMapper mapper)
-            : base(mapper)
+            : base(repository, mapper)
         {
-            _repository = repository;
             _linkService = linkService;
         }
 
         public async Task<PageReadModel> Create(PageWriteModel model)
         {
-            var item = _mapper.Map<PageEntity>(model);
-
-            if (await _repository.Any(p => p.ShortName == model.ShortName))
-            {
-                item.ShortName = $"{model.ShortName}+ 1";
-            }
+            await ValidateShortname(model);
+            var item = PageEntity.New(model.ShortName, model.FullName);
 
             item = await _repository.Add(item);
-            return _mapper.Map<PageReadModel>(item);
-        }
-
-        public async Task<IEnumerable<PageReadModel>> List()
-        {
-            var items = await _repository.GetAll();
-            return _mapper.Map<IEnumerable<PageReadModel>>(items);
-        }
-
-        public async Task<PageReadModel> Get(Guid id)
-        {
-            var item = await _repository.Get(p => p.LinkId == id);
-            return _mapper.Map<PageReadModel>(item);
-        }
-
-        public async Task<PageReadModel> Get(string shortName)
-        {
-            var item = await GetEntity(p => p.ShortName == shortName);
             return _mapper.Map<PageReadModel>(item);
         }
 
@@ -80,17 +57,12 @@ namespace LifeLike.Services.Page
             await _repository.Delete(query => query.Id == model.Id);
         }
 
-        public async Task<IEnumerable<PageReadModel>> ListByCategory(Guid categoryId)
+        private async Task ValidateShortname(PageWriteModel model)
         {
-            var items = await _repository
-                .Find(p => p.Categories.Any(p => p.Id == categoryId))
-                .ToListAsync();
-            return _mapper.Map<IEnumerable<PageReadModel>>(items);
-        }
-
-        private async Task<PageEntity> GetEntity(Expression<Func<PageEntity, bool>> predicate)
-        {
-            return await _repository.Get(predicate)  ?? throw new NotFoundException($"Page not found");
+            if (await _repository.Any(p => p.Shortname == model.ShortName))
+            {
+                model.ShortName = $"{model.ShortName}+ 1";
+            }
         }
     }
 }

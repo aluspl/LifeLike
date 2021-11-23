@@ -14,7 +14,7 @@ namespace LifeLike.Database.Data.Entities.Page.Configuration
             base.Configure(builder);
 
             builder
-                .Property(q => q.ShortName)
+                .Property(q => q.Shortname)
                 .IsRequired();
 
             builder
@@ -30,6 +30,13 @@ namespace LifeLike.Database.Data.Entities.Page.Configuration
                 .HasOne(c => c.Link)
                 .WithOne(c => c.Page)
                 .HasForeignKey<PageEntity>(c => c.LinkId);
+
+            builder
+                .HasOne(c => c.Image)
+                .WithMany(c => c.Pages)
+                .HasForeignKey(c => c.ImageId);
+
+
         }
     }
 }

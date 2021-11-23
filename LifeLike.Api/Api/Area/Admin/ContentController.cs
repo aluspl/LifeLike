@@ -5,7 +5,7 @@ using Api.Models.Content;
 using AutoMapper;
 using LifeLike.Common.Api.Attributes;
 using LifeLike.Common.Api.Controllers;
-using LifeLike.Services.Commons.Interfaces;
+using LifeLike.Services.Commons.Interfaces.Page;
 using LifeLike.Services.Commons.Models.Video;
 using Microsoft.AspNetCore.Mvc;
 

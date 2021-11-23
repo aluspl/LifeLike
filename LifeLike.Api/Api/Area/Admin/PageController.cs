@@ -5,7 +5,7 @@ using Api.Models.Page;
 using AutoMapper;
 using LifeLike.Common.Api.Attributes;
 using LifeLike.Common.Api.Controllers;
-using LifeLike.Services.Commons.Interfaces;
+using LifeLike.Services.Commons.Interfaces.Page;
 using LifeLike.Services.Commons.Models.Page;
 using Microsoft.AspNetCore.Mvc;
 
@@ -60,9 +60,9 @@ namespace Api.Area.Admin
         public IActionResult Create([FromBody] PageRequestModel model)
         {
             var writeModel = _mapper.Map<PageWriteModel>(model);
-            writeModel.Published = DateTime.Now;
-            writeModel.ShortName = model?.ShortName?.ToLower();
+
             var result = _pageService.Create(writeModel);
+
             var response = _mapper.Map<PageResponseModel>(result);
             return GetResult(response);
         }

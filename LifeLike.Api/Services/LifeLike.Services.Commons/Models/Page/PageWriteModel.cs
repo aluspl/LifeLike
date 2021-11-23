@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using LifeLike.Services.Commons.Models.Category;
-using LifeLike.Services.Commons.Models.Video;
 
 namespace LifeLike.Services.Commons.Models.Page
 {
@@ -15,12 +12,6 @@ namespace LifeLike.Services.Commons.Models.Page
 
         public int Order { get; set; }
 
-        public ICollection<CategoryWriteModel> Categories { get; set; }
-
-        public ICollection<ContentWriteModel> Contents { get; set; }
-
         public Guid? ImageId { get; set; }
-
-        public DateTime Published { get; set; }
     }
 }

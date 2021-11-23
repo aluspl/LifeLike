@@ -33,16 +33,6 @@ namespace LifeLike.Database.Data.Repository
             return await Entities.ToListAsync();
         }
 
-        public virtual async Task<IEnumerable<T>> GetRange(int start, int count)
-        {
-            return await Entities.Skip(start).Take(count).ToListAsync();
-        }
-
-        public virtual async Task<IEnumerable<T>> GetRange(int start, int count, Expression<Func<T, bool>> predicate)
-        {
-            return await Entities.Where(predicate).Skip(start).Take(count).ToListAsync();
-        }
-
         public virtual IQueryable<T> Find(Expression<Func<T, bool>> predicate)
         {
             return Entities.Where(predicate);
@@ -88,11 +78,6 @@ namespace LifeLike.Database.Data.Repository
             return entity;
         }
 
-        public virtual async Task<bool> Exist(Expression<Func<T, bool>> predicate)
-        {
-            return await Entities.AnyAsync(predicate);
-        }
-
         public virtual async Task<long> Count(Expression<Func<T, bool>> predicate)
         {
             return await Entities.CountAsync(predicate);
@@ -101,12 +86,6 @@ namespace LifeLike.Database.Data.Repository
         public virtual async Task<bool> Any(Expression<Func<T, bool>> predicate)
         {
             return await Entities.AnyAsync(predicate);
-        }
-
-        public virtual async Task<long> CountFromQueryAsync(string query)
-        {
-            var list = await Entities.FromSqlRaw(query).ToListAsync();
-            return list.Count;
         }
 
         protected virtual void DeleteAction(T entity)

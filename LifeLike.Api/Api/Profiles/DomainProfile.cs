@@ -20,7 +20,7 @@ namespace Api.Profiles
         public DomainProfile()
         {
             CreateMap<PageRequestModel, PageWriteModel>()
-                .ForMember(x => x.Published, d => d.MapFrom(src => DateTime.UtcNow));
+                .ForMember(x => x.ShortName, d => d.MapFrom(src => src.ShortName.ToLower()));
             CreateMap<PageReadModel, PageResponseModel>();
             CreateMap<PhotoRequestModel, PhotoWriteModel>();
             CreateMap<PhotoReadModel, PhotoResponseModel>();

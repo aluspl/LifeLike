@@ -6,6 +6,7 @@ using AutoMapper;
 using LifeLike.Common.Api.Attributes;
 using LifeLike.Common.Api.Controllers;
 using LifeLike.Services.Commons.Interfaces;
+using LifeLike.Services.Commons.Interfaces.Page;
 using LifeLike.Services.Commons.Models.Page;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,11 +16,11 @@ namespace Api.Area.Client
     [Route("[area]/[controller]")]
     public class PageController : BaseController
     {
-        private readonly IPageService _pageService;
+        private readonly IQueryPageService _pageService;
         private readonly IMapper _mapper;
 
         public PageController(
-            IPageService pagePageService,
+            IQueryPageService pagePageService,
             IMapper mapper)
         {
             _pageService = pagePageService;
@@ -32,16 +33,6 @@ namespace Api.Area.Client
         public async Task<IActionResult> All()
         {
             var list = await _pageService.List();
-            var response = _mapper.Map<ICollection<PageResponseModel>>(list);
-            return GetResult(response);
-        }
-
-        // GET
-        [HttpGet("Category/{categoryId:guid}")]
-        [Return(typeof(ICollection<PageResponseModel>))]
-        public async Task<IActionResult> Posts(Guid categoryId)
-        {
-            var list = await _pageService.ListByCategory(categoryId);
             var response = _mapper.Map<ICollection<PageResponseModel>>(list);
             return GetResult(response);
         }

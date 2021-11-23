@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using LifeLike.Common.Enums;
 using LifeLike.Services.Commons.Models.Video;
 
-namespace LifeLike.Services.Commons.Interfaces
+namespace LifeLike.Services.Commons.Interfaces.Page
 {
     public interface IContentService
     {

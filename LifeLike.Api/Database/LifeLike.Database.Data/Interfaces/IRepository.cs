@@ -15,10 +15,6 @@ namespace LifeLike.Database.Data.Interfaces
 
         Task<IEnumerable<T>> GetAll();
 
-        Task<IEnumerable<T>> GetRange(int start, int count);
-
-        Task<IEnumerable<T>> GetRange(int start, int count, Expression<Func<T, bool>> predicate);
-
         Task<T> Get(Expression<Func<T, bool>> predicate = null);
 
         Task<T> Add(T entity);
@@ -29,12 +25,8 @@ namespace LifeLike.Database.Data.Interfaces
 
         Task<T> Update(T entity);
 
-        Task<bool> Exist(Expression<Func<T, bool>> predicate);
-
         Task<long> Count(Expression<Func<T, bool>> predicate);
 
         Task<bool> Any(Expression<Func<T, bool>> predicate);
-
-        Task<long> CountFromQueryAsync(string query);
     }
 }

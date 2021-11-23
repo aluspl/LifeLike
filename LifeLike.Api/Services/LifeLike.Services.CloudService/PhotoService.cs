@@ -15,14 +15,12 @@ namespace LifeLike.Services.Media
     {
         private readonly IRepository<PhotoEntity> _repo;
         private readonly IStorageService _storage;
-        private readonly IQueueService _queue;
 
-        public PhotoService(IRepository<PhotoEntity> repo, IMapper mapper, IStorageService storage, IQueueService queue)
+        public PhotoService(IRepository<PhotoEntity> repo, IMapper mapper, IStorageService storage)
             : base(mapper)
         {
             _repo = repo;
             _storage = storage;
-            _queue = queue;
         }
 
         public async Task<ICollection<PhotoReadModel>> List()
