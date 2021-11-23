@@ -1,20 +1,22 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { MyMaterialModule } from 'src/material.module';
 import { SharedModule } from '../../shared/shared.module';
 import { VideoComponent } from './pages/video/video.component';
-import { RouterModule } from '@angular/router';
 import { VideoRoutingModule } from './video-routing.module';
 
 @NgModule({
   declarations: [
-    VideoComponent
+    VideoComponent,
   ],
   imports: [
-    CommonModule,    
+    CommonModule,
     SharedModule,
     VideoRoutingModule,
-    RouterModule
+    RouterModule,
+    MyMaterialModule,
   ],
- 
+
 })
 export class VideoModule { }

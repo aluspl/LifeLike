@@ -1,40 +1,17 @@
-<!-- <app-menu></app-menu>
-<div class="container">
-  <router-outlet></router-outlet>
-</div> -->
-
 <mat-toolbar>
-    <mat-toolbar-row>
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="primary">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span><a mat-button routerLink="/">LifeLike.Dev</a></span>
-
-      <span class="setting-spacer"></span>
-      <mat-menu #appMenu="matMenu">
-          <button mat-menu-item color="accent" *ngIf="!IsLogin" (click)="login()">Login</button>
-          <button mat-menu-item color="primary" *ngIf="IsLogin" routerLink="Admin">{{CurrentUser.UserName | uppercase }}</button>
-          <button mat-menu-item color="accent" *ngIf="IsLogin" (click)="logout()">Logout</button>
-        </mat-menu>
-      <button mat-icon-button [matMenuTriggerFor]="appMenu">
-          <mat-icon class="setting-icon">more_vert</mat-icon>
-      </button>
-    </mat-toolbar-row>
-  </mat-toolbar>
-  <mat-sidenav-container class="container">
-  <mat-sidenav #drawer mode="side">
+  <mat-toolbar-row>
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" color="primary">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    <span class="setting-spacer"></span>
+    <app-toolbar></app-toolbar>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container class="container">
+  <mat-sidenav class="sidemenu" #drawer mode="side">
     <app-menu></app-menu>
   </mat-sidenav>
-
-  <mat-sidenav-content>
+  <mat-sidenav-content class="content">
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
-<!--
-<footer class="bottom">
-  <div class="btn-group">
-    <button mat-fab *ngIf="!IsLogin" class="btn btn-info" routerLink="Login">Login</button>
-    <button mat-fab *ngIf="!IsLogin" mat-flat-button color="warn" routerLink="Register">Register</button>
-    <button mat-fab *ngIf="IsLogin" class="btn btn-secondary" (click)="logout()">Logout</button>
-  </div>
-</footer> -->

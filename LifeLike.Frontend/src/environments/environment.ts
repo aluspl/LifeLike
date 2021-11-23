@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  ENV: process.env.ENV || "ENV File",
-  API: process.env.API || "http://localhost:81",
+  ENV: 'ENV File',
+  API: 'http://localhost:80',
 };
 
 /*

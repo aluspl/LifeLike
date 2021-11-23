@@ -1,0 +1,10 @@
+
+<mat-card class="card" *ngIf="LastFeed">
+    <mat-card-header>
+      <mat-card-title>{{LastFeed.title}}</mat-card-title>
+      <mat-card-subtitle *ngIf="feed.title" >Blog: {{feed.title}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <a mat-button href="{{LastFeed.link}}">OPEN</a>
+    </mat-card-actions>
+  </mat-card>

@@ -1,5 +1,4 @@
-export default class FileUpload
-{    
+export default class FileUpload {
     Name: string;
     Camera: string;
     Tags: string;

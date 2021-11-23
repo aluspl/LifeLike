@@ -1,0 +1,29 @@
+<form (ngSubmit)="onSubmit()" #createPostForm="ngForm">
+  <div mat-dialog-content class="form-container">
+    <app-title Title="Add Photo: {{model.Name}}"></app-title>
+    <mat-form-field>
+      <input matInput placeholder="Photo Name" [(ngModel)]="model.Name" name="model.Name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="City" id="City" [(ngModel)]="model.City" name="City">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Camera" id="Camera" [(ngModel)]="model.Camera" name="Camera">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Image Tags" id="Tags" [(ngModel)]="model.Tags" name="Tags">
+    </mat-form-field>
+    <input mat-flat-button type="file" #file type="file" multiple (change)="upload(file.files)" name="PhotoStream">
+    <button mat-flat-button color="primary" type="submit"
+      [disabled]="!createPostForm.form.valid && !submitEnabled">Submit</button>
+    <button mat-flat-button color="warn" (click)="onNoClick()">Cancel</button>
+
+    <span style="font-weight:bold;color:green;" *ngIf="loading">
+      {{progress}}%
+    </span>
+
+    <span style="font-weight:bold;color:green;" *ngIf="message">
+      {{message}}
+    </span>
+  </div>
+</form>

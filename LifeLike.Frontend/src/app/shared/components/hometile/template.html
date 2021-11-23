@@ -1,0 +1,5 @@
+<div [ngSwitch]="config.Type">
+    <youtube-player   *ngSwitchCase="'Video'"     [YoutubeID]="config.Value"></youtube-player>
+    <intro-text       *ngSwitchCase="'Text'"      [config]="config"></intro-text>
+    <rss              *ngSwitchCase="'RSS'"       [config]="config"></rss>
+</div>

@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { PostDetailComponent } from './pages/post-detail/post-detail.component';
 import { SharedModule } from '../../shared/shared.module';
+import { PostDetailComponent } from './pages/post-detail/post-detail.component';
 import { PostRestService } from './services/post-rest.service';
 
 @NgModule({
@@ -16,6 +16,6 @@ import { PostRestService } from './services/post-rest.service';
     RouterModule,
   ],
 
-  providers: [PostRestService]
+  providers: [PostRestService],
 })
 export class PageDetailModule { }

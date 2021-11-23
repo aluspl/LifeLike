@@ -9,7 +9,12 @@ namespace LifeLike.Common.Extensions
         {
             return string.IsNullOrEmpty(item) ? string.Empty : RemoveMarkdownTags(item.Length < 100 ? item : item.Substring(0, 100));
         }
-
+        public static string RemoveAllWhiteSpaces(this string item)
+        {
+            if (item == null) return null;
+            item = Regex.Replace(item, " ", string.Empty);
+            return item;
+        }
         private static string RemoveMarkdownTags(string content)
         {
             // Headers

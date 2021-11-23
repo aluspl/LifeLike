@@ -1,5 +1,7 @@
 <app-title Title="Logs"></app-title>
-<app-spinner *ngIf="IsLoading"></app-spinner>'
+<app-spinner *ngIf="IsLoading"></app-spinner>
+<button mat-flat-button color="primary" (click)="ClearLogs()"> Clear </button>
+
 <mat-table [dataSource]="Logs">
   <ng-container matColumnDef="Id">
     <mat-header-cell *matHeaderCellDef>#</mat-header-cell>

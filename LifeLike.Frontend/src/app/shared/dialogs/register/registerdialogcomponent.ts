@@ -1,12 +1,12 @@
-import { Component, Input, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthenticationService } from '../../services/authentication.service';
+import { Component, Inject, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { first } from 'rxjs/operators';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-registerdialog',
-  templateUrl: './registerdialog.component.html'
+  templateUrl: './registerdialog.component.html',
 })
 export class RegisterDialogComponent implements OnInit {
   registerForm: FormGroup;
@@ -16,8 +16,8 @@ export class RegisterDialogComponent implements OnInit {
   error = '';
   constructor(
     public dialogRef: MatDialogRef<RegisterDialogComponent>,
-    private formBuilder: FormBuilder,
-    private authenticationService: AuthenticationService
+    private readonly formBuilder: FormBuilder,
+    private readonly authenticationService: AuthenticationService,
   ) { }
   onNoClick(): void {
     this.dialogRef.close();
@@ -26,7 +26,7 @@ export class RegisterDialogComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
-      email: ['', Validators.required]
+      email: ['', Validators.required],
     });
   }
 
@@ -45,12 +45,12 @@ export class RegisterDialogComponent implements OnInit {
     this.authenticationService.register(this.f.username.value, this.f.password.value, this.f.email.value)
       .pipe(first())
       .subscribe(
-        data => {
+        (data) => {
           this.loading = false;
           this.dialogRef.close();
 
         },
-        error => {
+        (error) => {
           this.error = error;
           this.loading = false;
         });
