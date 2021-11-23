@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using LifeLike.Database.Data.Entities.Base.Configuration;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 #endregion
@@ -24,7 +25,8 @@ namespace LifeLike.Database.Data.Entities.Page.Configuration
             builder
                 .HasMany(c => c.Contents)
                 .WithOne(c => c.Page)
-                .HasForeignKey(c => c.PageId);
+                .HasForeignKey(c => c.PageId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder
                 .HasOne(c => c.Link)
@@ -34,9 +36,8 @@ namespace LifeLike.Database.Data.Entities.Page.Configuration
             builder
                 .HasOne(c => c.Image)
                 .WithMany(c => c.Pages)
-                .HasForeignKey(c => c.ImageId);
-
-
+                .HasForeignKey(c => c.ImageId)
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }
