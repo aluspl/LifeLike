@@ -9,7 +9,7 @@ namespace LifeLike.Database.Data.Entities.User.Configuration
 {
     public class RefreshTokenEntityConfiguration : BaseEntityConfiguration<RefreshTokenEntity>
     {
-        public void Configure(EntityTypeBuilder<RefreshTokenEntity> builder)
+        public override void Configure(EntityTypeBuilder<RefreshTokenEntity> builder)
         {
             base.Configure(builder);
         }

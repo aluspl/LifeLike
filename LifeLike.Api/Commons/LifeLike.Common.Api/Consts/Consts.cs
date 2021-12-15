@@ -60,7 +60,7 @@ namespace LifeLike.Common.Api.Consts
 
         #endregion
 
-        #region Api Groups
+        #region LifeLike Groups
 
         public struct ApiGroups
         {

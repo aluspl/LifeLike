@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{6F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Commons", "Commons", "{5A0ACC97-5DD8-4581-911C-C3EB6AFA3F5B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{756FFCA7-81DC-4C97-A601-DFDA96BF5DD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeLike", "LifeLike\LifeLike.csproj", "{756FFCA7-81DC-4C97-A601-DFDA96BF5DD8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeLike.Services.Domain", "Services\LifeLike.Services.Domain\LifeLike.Services.Domain.csproj", "{B5FB45D9-07AC-4D2E-B387-C653538B08CE}"
 EndProject
