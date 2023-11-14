@@ -1,15 +1,14 @@
 ﻿using LifeLike.Common.Enums;
 
-namespace LifeLike.Common.Config
+namespace LifeLike.Common.Config;
+
+public class SeedConfig
 {
-    public class SeedConfig
-    {
-        public string Name { get; set; }
+    public string Name { get; set; }
 
-        public string Value { get; set; }
+    public string Value { get; set; }
 
-        public string DisplayName { get; set; }
+    public string DisplayName { get; set; }
 
-        public ConfigType Type { get; set; }
-    }
+    public ConfigType Type { get; set; }
 }

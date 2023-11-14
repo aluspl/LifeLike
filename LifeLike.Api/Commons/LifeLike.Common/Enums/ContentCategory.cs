@@ -1,10 +1,7 @@
-﻿using System;
+﻿namespace LifeLike.Common.Enums;
 
-namespace LifeLike.Common.Enums
+[Flags]
+public enum ContentCategory
 {
-    [Flags]
-    public enum ContentCategory
-    {
-        Video, Text, Photo
-    }
+    Video, Text, Photo
 }

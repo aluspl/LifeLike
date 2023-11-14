@@ -1,68 +1,68 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using System.Diagnostics;
 using LifeLike.Common.Enums;
 using LifeLike.Common.Extensions;
 using LifeLike.Database.Data.Entities.Page;
 using LifeLike.Database.Data.Interfaces;
-using LifeLike.Services.Commons.Interfaces;
 using LifeLike.Services.Commons.Interfaces.Page;
 using LifeLike.Services.Commons.Models.Video;
+using LifeLike.Services.Domain.Profiles;
 using LifeLike.Services.Domain.Services;
 using Microsoft.EntityFrameworkCore;
 
-namespace LifeLike.Services.Page
+namespace LifeLike.Services.Page;
+
+public class ContentService : BaseService, IContentService
 {
-    public class ContentService : BaseService, IContentService
+    private readonly IRepository<ContentEntity> _repo;
+
+    public ContentService(IRepository<ContentEntity> repo) : base()
     {
-        private readonly IRepository<ContentEntity> _repo;
+        _repo = repo;
+    }
 
-        public ContentService(IRepository<ContentEntity> repo, IMapper mapper) : base(mapper)
+    public async Task<ContentModel> Create(ContentWriteModel model)
+    {
+        var item = new ContentEntity()
         {
-            _repo = repo;
-        }
+            Category = model.Category,
+            Content = model.Content,
+            Name = model.Name,
+            Url = model.Url,
+        };
+        item = await _repo.Add(item);
+        return item.Map();
+    }
 
-        public async Task<ContentReadModel> Create(ContentWriteModel model)
-        {
-            var item = _mapper.Map<ContentEntity>(model);
-            item = await _repo.Add(item);
-            return _mapper.Map<ContentReadModel>(item);
-        }
+    public async Task<IEnumerable<ContentModel>> List()
+    {
+        var items = await _repo.GetAll();
+        Debug.WriteLine(items.ToJSON());
+        return items.Select(x => x.Map()).ToList();
+    }
 
-        public async Task<IEnumerable<ContentReadModel>> List()
-        {
-            var items = await _repo.GetAll();
-            Debug.WriteLine(items.ToJSON());
-            return _mapper.Map<IEnumerable<ContentReadModel>>(items);
-        }
+    public async Task<IEnumerable<ContentModel>> ListByCategory(ContentCategory category)
+    {
+        var items = await _repo.Find(p => p.Category == category).ToListAsync();
+        Debug.WriteLine(items.ToJSON());
+        return items.Select(x => x.Map()).ToList();
+    }
 
-        public async Task<IEnumerable<ContentReadModel>> ListByCategory(ContentCategory category)
-        {
-            var items = await _repo.Find(p => p.Category == category).ToListAsync();
-            Debug.WriteLine(items.ToJSON());
-            return _mapper.Map<IEnumerable<ContentReadModel>>(items);
-        }
+    public async Task<ContentModel> Get(Guid id)
+    {
+        var item = await _repo.Get(o => o.Id == id);
+        return item.Map();
+    }
 
-        public async Task<ContentReadModel> Get(Guid id)
-        {
-            var item = await _repo.Get(o => o.Id == id);
-            return _mapper.Map<ContentReadModel>(item);
-        }
+    // Add Update logic
+    public async Task<ContentModel> Update(Guid id, ContentWriteModel model)
+    {
+        var item = await _repo.Get(o => o.Id == id);
+        item = await _repo.Update(item);
+        return item.Map();
+    }
 
-        public async Task<ContentReadModel> Update(Guid id, ContentWriteModel model)
-        {
-            var item = await _repo.Get(o => o.Id == id);
-            _mapper.Map(model, item);
-            item = await _repo.Update(item);
-            _mapper.Map(model, item);
-            return _mapper.Map<ContentReadModel>(item);
-        }
-
-        public async Task Delete(Guid id)
-        {
-            await _repo.Delete(o => o.Id == id);
-        }
+    public async Task Delete(Guid id)
+    {
+        await _repo.Delete(o => o.Id == id);
     }
 }

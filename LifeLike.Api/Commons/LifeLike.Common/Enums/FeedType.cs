@@ -1,7 +1,6 @@
-namespace LifeLike.Common.Enums
+namespace LifeLike.Common.Enums;
+
+public enum FeedType
 {
-    public enum FeedType
-    {
-        Rss, Atom
-    }
+    Rss, Atom
 }

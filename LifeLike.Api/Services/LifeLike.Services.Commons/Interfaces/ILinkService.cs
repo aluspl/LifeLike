@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using LifeLike.Common.Enums;
+﻿using LifeLike.Common.Enums;
 using LifeLike.Services.Commons.Models.Link;
 
-namespace LifeLike.Services.Commons.Interfaces
+namespace LifeLike.Services.Commons.Interfaces;
+
+public interface ILinkService
 {
-    public interface ILinkService
-    {
-        Task<IEnumerable<LinkReadModel>> List(LinkCategory category);
+    Task<IEnumerable<LinkModel>> List(LinkCategory category);
 
-        Task<LinkReadModel> GetByAction(string action);
+    Task<LinkModel> GetByAction(string action);
 
-        Task Delete(Guid id);
+    Task Delete(Guid id);
 
-        Task<LinkReadModel> Create(LinkWriteModel link);
+    Task<LinkModel> Create(CreateLinkModel createLink);
 
-        Task<IEnumerable<LinkReadModel>> List();
+    Task<IEnumerable<LinkModel>> List();
 
-        Task<LinkReadModel> Update(Guid id, LinkWriteModel model);
-    }
+    Task<LinkModel> Update(Guid id, CreateLinkModel model);
 }

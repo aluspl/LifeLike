@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using LifeLike.Services.Commons.Models.Photo;
+﻿using LifeLike.Services.Commons.Models.Photo;
 
-namespace LifeLike.Services.Commons.Interfaces
+namespace LifeLike.Services.Commons.Interfaces;
+
+public interface IPhotoService
 {
-    public interface IPhotoService
-    {
-        Task<PhotoReadModel> Create(PhotoWriteModel photoWriteModel);
+    Task<PhotoModel> Create(PhotoWriteModel photoWriteModel);
 
-        Task<PhotoReadModel> Get(Guid id);
+    Task<PhotoModel> Get(Guid id);
 
-        Task<ICollection<PhotoReadModel>> List();
+    Task<ICollection<PhotoModel>> List();
 
-        Task Delete(Guid id);
-    }
+    Task Delete(Guid id);
 }

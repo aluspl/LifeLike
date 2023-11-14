@@ -1,6 +1,5 @@
-namespace LifeLike.Common.Config
+namespace LifeLike.Common.Config;
+
+public class SeedCategory
 {
-    public class SeedCategory
-    {
-    }
 }

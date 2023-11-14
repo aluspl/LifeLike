@@ -1,7 +1,6 @@
-﻿namespace LifeLike.Validators.Photos
+﻿namespace LifeLike.Validators.Photos;
+
+public class PhotoRequestValidator
 {
-    public class PhotoRequestValidator
-    {
         
-    }
 }

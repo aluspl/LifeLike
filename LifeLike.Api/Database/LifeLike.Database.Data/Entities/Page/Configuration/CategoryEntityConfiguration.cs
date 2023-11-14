@@ -6,26 +6,25 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 #endregion
 
-namespace LifeLike.Database.Data.Entities.Page.Configuration
+namespace LifeLike.Database.Data.Entities.Page.Configuration;
+
+public class CategoryEntityConfiguration : BaseEntityConfiguration<CategoryEntity>
 {
-    public class CategoryEntityConfiguration : BaseEntityConfiguration<CategoryEntity>
+    public override void Configure(EntityTypeBuilder<CategoryEntity> builder)
     {
-        public override void Configure(EntityTypeBuilder<CategoryEntity> builder)
-        {
-            base.Configure(builder);
+        base.Configure(builder);
 
-            builder
-                .Property(q => q.Name)
-                .IsRequired();
+        builder
+            .Property(q => q.Name)
+            .IsRequired();
 
-            builder
-                .Property(c => c.Order)
-                .IsRequired()
-                .HasDefaultValue(0);
+        builder
+            .Property(c => c.Order)
+            .IsRequired()
+            .HasDefaultValue(0);
 
-            builder
-                .HasMany(c => c.Pages)
-                .WithMany(c => c.Categories);
-        }
+        builder
+            .HasMany(c => c.Pages)
+            .WithMany(c => c.Categories);
     }
 }

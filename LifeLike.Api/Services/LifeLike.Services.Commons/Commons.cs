@@ -1,6 +1,5 @@
-﻿namespace LifeLike.Services.Commons
+﻿namespace LifeLike.Services.Commons;
+
+public class Commons
 {
-    public class Commons
-    {
-    }
 }

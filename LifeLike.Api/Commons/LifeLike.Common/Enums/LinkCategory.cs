@@ -1,10 +1,7 @@
-using System;
+namespace LifeLike.Common.Enums;
 
-namespace LifeLike.Common.Enums
+[Flags]
+public enum LinkCategory
 {
-    [Flags]
-    public enum LinkCategory
-    {
-        Menu, Sidebar, Video, Photo
-    }
+    Menu, Sidebar, Video, Photo
 }

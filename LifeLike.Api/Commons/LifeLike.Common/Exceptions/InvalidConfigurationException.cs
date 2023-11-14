@@ -1,20 +1,17 @@
 ﻿#region Usings
 
-using System;
-
 #endregion
 
-namespace LifeLike.Common.Exceptions
+namespace LifeLike.Common.Exceptions;
+
+public class InvalidConfigurationException : Exception
 {
-    public class InvalidConfigurationException : Exception
+    #region Constructor(s)
+
+    public InvalidConfigurationException(string message)
+        : base(message)
     {
-        #region Constructor(s)
-
-        public InvalidConfigurationException(string message)
-            : base(message)
-        {
-        }
-
-        #endregion
     }
+
+    #endregion
 }

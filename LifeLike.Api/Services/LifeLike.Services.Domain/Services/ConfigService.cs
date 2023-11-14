@@ -1,60 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using AutoMapper;
-using LifeLike.Database.Data.Entities;
+﻿using LifeLike.Database.Data.Entities;
 using LifeLike.Database.Data.Interfaces;
 using LifeLike.Services.Commons.Interfaces;
 using LifeLike.Services.Commons.Models.Config;
+using LifeLike.Services.Domain.Profiles;
 using Microsoft.Extensions.Logging;
 
-namespace LifeLike.Services.Domain.Services
+namespace LifeLike.Services.Domain.Services;
+
+public class ConfigService : BaseService, IConfigService
 {
-    public class ConfigService : BaseService, IConfigService
+    private readonly IRepository<ConfigEntity> _configRepository;
+    private readonly ILogger<ConfigService> _log;
+
+    public ConfigService(IRepository<ConfigEntity> configRepository,
+        ILogger<ConfigService> logger)
+        : base()
     {
-        private readonly IRepository<ConfigEntity> _configRepository;
-        private readonly ILogger<ConfigService> _log;
+        _configRepository = configRepository;
+        _log = logger;
+    }
 
-        public ConfigService(IRepository<ConfigEntity> configRepository,
-            ILogger<ConfigService> logger,
-            IMapper mapper)
-            : base(mapper)
+    public async Task<ConfigModel> Create(CreateConfigModel model)
+    {
+        var entity = new ConfigEntity()
         {
-            _configRepository = configRepository;
-            _log = logger;
-        }
+            Name    = model.Name,
+            DisplayName = model.DisplayName,
+            Value = model.Value,
+            Type = model.Type,
+        };
+        var configEntity = await _configRepository.Add(entity);
+        return configEntity.Map();
+    }
 
-        public async Task<ConfigReadModel> Create(ConfigWriteModel model)
-        {
-            var configEntity = _mapper.Map<ConfigEntity>(model);
-            configEntity = await _configRepository.Add(configEntity);
-            var result =  _mapper.Map<ConfigReadModel>(configEntity);
-            return result;
-        }
+    public async Task<ConfigModel> Get(Guid id)
+    {
+        var item = await _configRepository.Get(p => p.Id == id);
+        return item.Map();
+    }
 
-        public async Task<ConfigReadModel> Get(Guid id)
-        {
-            var item = await _configRepository.Get(p => p.Id == id);
-            return _mapper.Map<ConfigReadModel>(item);
-        }
+    public async Task<ConfigModel> Update(Guid id, UpdateConfigModel model)
+    {
+        var item = await _configRepository.Get(p => p.Id == id);
+        item = await _configRepository.Update(item);
+        return item.Map();
+    }
 
-        public async Task<ConfigReadModel> Update(ConfigWriteModel model)
-        {
-            var item = await _configRepository.Get(p => p.Name == model.Name);
-            _mapper.Map(model, item);
-            item = await _configRepository.Update(item);
-            return _mapper.Map<ConfigReadModel>(item);
-        }
+    public async Task Delete(Guid id)
+    {
+        await _configRepository.Delete(p => p.Id == id);
+    }
 
-        public async Task Delete(Guid id)
-        {
-            await _configRepository.Delete(p => p.Id == id);
-        }
-
-        public async Task<IList<ConfigReadModel>> List()
-        {
-            var items = await _configRepository.GetAll();
-            return _mapper.Map<IList<ConfigReadModel>>(items);
-        }
+    public async Task<IList<ConfigModel>> List()
+    {
+        var items = await _configRepository.GetAll();
+        return items.Select(x => x.Map()).ToList();
     }
 }

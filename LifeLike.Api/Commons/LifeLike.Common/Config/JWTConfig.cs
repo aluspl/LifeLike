@@ -1,19 +1,16 @@
 ﻿#region Usings
 
-using System;
-
 #endregion
 
-namespace LifeLike.Common.Config
+namespace LifeLike.Common.Config;
+
+public class JWTConfig
 {
-    public class JWTConfig
-    {
-        public string Key { get; set; }
+    public string Key { get; set; }
 
-        public string Audience { get; set; }
+    public string Audience { get; set; }
 
-        public TimeSpan TokenExpirationTime { get; set; }
+    public TimeSpan TokenExpirationTime { get; set; }
 
-        public string Issuer { get; set; }
-    }
+    public string Issuer { get; set; }
 }

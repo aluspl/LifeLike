@@ -1,6 +1,5 @@
-﻿namespace LifeLike.Database.Data
+﻿namespace LifeLike.Database.Data;
+
+public class Data
 {
-    public class Data
-    {
-    }
 }

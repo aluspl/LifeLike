@@ -1,20 +1,19 @@
-﻿namespace LifeLike.Common.Enums
+﻿namespace LifeLike.Common.Enums;
+
+public enum ErrorType
 {
-    public enum ErrorType
-    {
-        Unexpected,
-        Unauthorized,
-        TokenInvalid,
-        UserDoesNotExist,
-        UserCantBeAddedToRole,
-        UserNotCreated,
-        UserResetPasswordFailed,
-        TokenEmpty,
-        InvalidUsernameOrPassword,
-        UserWithGivenEmailAlreadyExists,
-        UserEmailConfirmFailed,
-        UserEmailNotConfirmed,
-        ErrorSendingEmail,
-        ValidationError,
-    }
+    Unexpected,
+    Unauthorized,
+    TokenInvalid,
+    UserDoesNotExist,
+    UserCantBeAddedToRole,
+    UserNotCreated,
+    UserResetPasswordFailed,
+    TokenEmpty,
+    InvalidUsernameOrPassword,
+    UserWithGivenEmailAlreadyExists,
+    UserEmailConfirmFailed,
+    UserEmailNotConfirmed,
+    ErrorSendingEmail,
+    ValidationError,
 }

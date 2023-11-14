@@ -1,6 +1,5 @@
-namespace LifeLike.Common.Api.Models
+namespace LifeLike.Common.Api.Models;
+
+public class EmptyData
 {
-    public class EmptyData
-    {
-    }
 }

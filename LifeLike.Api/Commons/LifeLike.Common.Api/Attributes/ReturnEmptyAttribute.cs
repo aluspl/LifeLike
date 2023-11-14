@@ -6,13 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 
 #endregion
 
-namespace LifeLike.Common.Api.Attributes
+namespace LifeLike.Common.Api.Attributes;
+
+public class ReturnEmptyAttribute : ProducesResponseTypeAttribute
 {
-    public class ReturnEmptyAttribute : ProducesResponseTypeAttribute
+    public ReturnEmptyAttribute(int statusCode = StatusCodes.Status200OK)
+        : base(typeof(EmptyEnvelope), statusCode)
     {
-        public ReturnEmptyAttribute(int statusCode = StatusCodes.Status200OK)
-            : base(typeof(EmptyEnvelope), statusCode)
-        {
-        }
     }
 }

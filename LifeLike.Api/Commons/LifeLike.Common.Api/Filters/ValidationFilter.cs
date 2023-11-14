@@ -7,60 +7,59 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 #endregion
 
-namespace LifeLike.Common.Api.Filters
+namespace LifeLike.Common.Api.Filters;
+
+public class ValidationFilter : IActionFilter
 {
-    public class ValidationFilter : IActionFilter
+    #region OnActionExecuting
+
+    public void OnActionExecuting(ActionExecutingContext context)
     {
-        #region OnActionExecuting
-
-        public void OnActionExecuting(ActionExecutingContext context)
+        if (context.ModelState.IsValid)
         {
-            if (context.ModelState.IsValid)
-            {
-                return;
-            }
-
-            var envelope = new EmptyEnvelope();
-
-            foreach (var invalidProperty in context.ModelState)
-            {
-                foreach (var error in invalidProperty.Value.Errors)
-                {
-                    var propertyError = new Error(invalidProperty.Key, error.ErrorMessage, true);
-
-                    envelope.Errors.Add(propertyError);
-                }
-            }
-
-            context.Result = new BadRequestObjectResult(envelope);
+            return;
         }
 
-        #endregion
+        var envelope = new EmptyEnvelope();
 
-        #region OnActionExecuted
-
-        public void OnActionExecuted(ActionExecutedContext context)
+        foreach (var invalidProperty in context.ModelState)
         {
-            if (context.ModelState.IsValid)
+            foreach (var error in invalidProperty.Value.Errors)
             {
-                return;
+                var propertyError = new Error(invalidProperty.Key, error.ErrorMessage, true);
+
+                envelope.Errors.Add(propertyError);
             }
-
-            var envelope = new EmptyEnvelope();
-
-            foreach (var invalidProperty in context.ModelState)
-            {
-                foreach (var error in invalidProperty.Value.Errors)
-                {
-                    var propertyError = new Error(invalidProperty.Key, error.ErrorMessage, true);
-
-                    envelope.Errors.Add(propertyError);
-                }
-            }
-
-            context.Result = new BadRequestObjectResult(envelope);
         }
 
-        #endregion
+        context.Result = new BadRequestObjectResult(envelope);
     }
+
+    #endregion
+
+    #region OnActionExecuted
+
+    public void OnActionExecuted(ActionExecutedContext context)
+    {
+        if (context.ModelState.IsValid)
+        {
+            return;
+        }
+
+        var envelope = new EmptyEnvelope();
+
+        foreach (var invalidProperty in context.ModelState)
+        {
+            foreach (var error in invalidProperty.Value.Errors)
+            {
+                var propertyError = new Error(invalidProperty.Key, error.ErrorMessage, true);
+
+                envelope.Errors.Add(propertyError);
+            }
+        }
+
+        context.Result = new BadRequestObjectResult(envelope);
+    }
+
+    #endregion
 }

@@ -1,6 +1,5 @@
-﻿namespace LifeLike.Services.Domain
+﻿namespace LifeLike.Services.Domain;
+
+public class Domain
 {
-    public class Domain
-    {
-    }
 }

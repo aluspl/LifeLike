@@ -1,8 +1,8 @@
-FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine AS base
+FROM mcr.microsoft.com/dotnet/aspnet:7.0-alpine AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine AS cache
+FROM mcr.microsoft.com/dotnet/sdk:7.0-alpine AS cache
 
 WORKDIR /src
 COPY "NuGet.config" "NuGet.config"

@@ -1,10 +1,9 @@
-﻿namespace LifeLike.Common.Extensions
+﻿namespace LifeLike.Common.Extensions;
+
+public static class JsonExtensions
 {
-    public static class JsonExtensions
+    public static string ToJSON(this object item)
     {
-        public static string ToJSON(this object item)
-        {
-          return string.Empty;
-        }
+        return string.Empty;
     }
 }

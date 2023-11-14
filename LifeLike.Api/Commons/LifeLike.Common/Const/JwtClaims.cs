@@ -2,16 +2,15 @@
 
 #endregion
 
-namespace LifeLike.Common.Const
+namespace LifeLike.Common.Const;
+
+public static class JwtClaims
 {
-    public static class JwtClaims
-    {
-        public const string Id = "id";
+    public const string Id = "id";
 
-        public const string Role = "role";
+    public const string Role = "role";
 
-        public const string Email = "email";
+    public const string Email = "email";
 
-        public const string Name = "name";
-    }
+    public const string Name = "name";
 }

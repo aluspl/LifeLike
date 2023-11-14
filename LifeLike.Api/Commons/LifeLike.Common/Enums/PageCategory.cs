@@ -1,14 +1,11 @@
-﻿using System;
+﻿namespace LifeLike.Common.Enums;
 
-namespace LifeLike.Common.Enums
+[Flags]
+public enum PageCategory
 {
-    [Flags]
-    public enum PageCategory
-    {
-        App, Game,
-        Tutorial,
-        Page,
-        Post,
-        Projects = App | Game
-    }
+    App, Game,
+    Tutorial,
+    Page,
+    Post,
+    Projects = App | Game
 }

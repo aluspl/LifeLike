@@ -1,14 +1,11 @@
-using System;
+namespace LifeLike.Common.Enums;
 
-namespace LifeLike.Common.Enums
+[Flags]
+public enum ConfigType
 {
-    [Flags]
-    public enum ConfigType
-    {
-        RSS,
-        Text,
-        Image,
-        Video,
-        URL,
-    }
+    RSS,
+    Text,
+    Image,
+    Video,
+    URL,
 }

@@ -2,10 +2,9 @@
 
 #endregion
 
-namespace LifeLike.Services.Commons.Interfaces.Media
+namespace LifeLike.Services.Commons.Interfaces.Media;
+
+public interface IMediaService
 {
-    public interface IMediaService
-    {
-        byte[] ResizeImage(byte[] file);
-    }
+    byte[] ResizeImage(byte[] file);
 }

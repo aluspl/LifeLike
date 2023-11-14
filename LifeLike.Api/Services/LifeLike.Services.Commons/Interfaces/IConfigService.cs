@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using LifeLike.Services.Commons.Models.Config;
+﻿using LifeLike.Services.Commons.Models.Config;
 
-namespace LifeLike.Services.Commons.Interfaces
+namespace LifeLike.Services.Commons.Interfaces;
+
+public interface IConfigService
 {
-    public interface IConfigService
-    {
-        Task<ConfigReadModel> Create(ConfigWriteModel model);
+    Task<ConfigModel> Create(CreateConfigModel model);
 
-        Task<ConfigReadModel> Get(Guid id);
+    Task<ConfigModel> Get(Guid id);
 
-        Task<IList<ConfigReadModel>> List();
+    Task<IList<ConfigModel>> List();
 
-        Task<ConfigReadModel> Update(ConfigWriteModel model);
+    Task<ConfigModel> Update(Guid id, UpdateConfigModel model);
 
-        Task Delete(Guid id);
-    }
+    Task Delete(Guid id);
 }

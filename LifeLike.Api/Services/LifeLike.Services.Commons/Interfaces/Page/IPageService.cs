@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using LifeLike.Services.Commons.Models.Page;
+﻿using LifeLike.Services.Commons.Models.Page;
 
-namespace LifeLike.Services.Commons.Interfaces.Page
+namespace LifeLike.Services.Commons.Interfaces.Page;
+
+public interface IPageService : IQueryPageService
 {
-    public interface IPageService : IQueryPageService
-    {
-        Task<PageReadModel> Create(PageWriteModel model);
+    Task<PageModel> Create(CreatePageModel model);
 
-        Task Delete(Guid id);
+    Task Delete(Guid id);
 
-        Task<PageReadModel> Update(Guid id, PageWriteModel model);
-    }
+    Task<PageModel> Update(Guid id, CreatePageModel model);
 }

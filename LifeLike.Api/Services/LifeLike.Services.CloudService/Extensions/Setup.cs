@@ -1,14 +1,13 @@
 ﻿using LifeLike.Services.Commons.Interfaces.Media;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace LifeLike.Services.Media.Extensions
+namespace LifeLike.Services.Media.Extensions;
+
+public static class Setup
 {
-    public static class Setup
+    public static IServiceCollection UseCloudServices(this IServiceCollection services)
     {
-        public static IServiceCollection UseCloudServices(this IServiceCollection services)
-        {
-            services.AddScoped<IStorageService, StorageService>();
-            return services;
-        }
+        services.AddScoped<IStorageService, StorageService>();
+        return services;
     }
 }

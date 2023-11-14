@@ -1,75 +1,70 @@
 ﻿#region Usings
 
-using System.IO;
 using LifeLike.Common.Config;
 using LifeLike.Services.Commons.Interfaces.Media;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats.Png;
-using SixLabors.ImageSharp.PixelFormats;
-using SixLabors.ImageSharp.Processing;
 
 #endregion
 
-namespace LifeLike.Services.Media
+namespace LifeLike.Services.Media;
+
+public class MediaService : IMediaService
 {
-    public class MediaService : IMediaService
+    #region Privates
+
+    private readonly ILogger<MediaService> _logger;
+    private readonly AzureStorageConfig _azureOptions;
+
+    #endregion
+
+    #region Constructors
+
+    public MediaService(
+        ILogger<MediaService> logger,
+        IOptions<AzureStorageConfig> options)
     {
-        #region Privates
+        _azureOptions = options.Value;
+        _logger = logger;
+    }
 
-        private readonly ILogger<MediaService> Logger;
-        private readonly AzureStorageConfig AzureOptions;
+    #endregion
 
-        #endregion
+    #region Public Methods
 
-        #region Constructors
-
-        public MediaService(
-            ILogger<MediaService> logger,
-            IOptions<AzureStorageConfig> options)
+    public byte[] ResizeImage(byte[] file)
+    {
+        if (file.Length <= 0)
         {
-            AzureOptions = options.Value;
-            Logger = logger;
-        }
-
-        #endregion
-
-        #region Public Methods
-
-        public byte[] ResizeImage(byte[] file)
-        {
-            if (file.Length <= 0)
-            {
-                return file;
-            }
-
-            using var image = Image.Load(file);
-            using var outputStream = new MemoryStream();
-            ResizeImage(image, AzureOptions.MaxImageSize);
-            image.Save(outputStream, PngFormat.Instance);
-            file = outputStream.ToArray();
-
             return file;
         }
+        //
+        // using var image = new Image<Rgba32>;
+        // using var outputStream = new MemoryStream();
+        // ResizeImage(image, _azureOptions.MaxImageSize);
+        // image.Save(outputStream, PngFormat.Instance);
+        // file = outputStream.ToArray();
 
-        #endregion
-
-        #region Utils
-
-        private void ResizeImage(Image<Rgba32> image, int maxImageSize)
-        {
-            var width = image.Width;
-            var height = image.Height;
-            image.Mutate(
-                p => p.Resize(new ResizeOptions
-                {
-                    Size = new Size(maxImageSize, maxImageSize),
-                    Mode = ResizeMode.Max,
-                }));
-            Logger.LogInformation($"Image Resized from {width} x {height} to {image.Width} {image.Height}");
-        }
-
-        #endregion
+        return file;
     }
+
+    #endregion
+
+    #region Utils
+
+    private void ResizeImage(Image<Rgba32> image, int maxImageSize)
+    {
+        var width = image.Width;
+        var height = image.Height;
+        image.Mutate(
+            p => p.Resize(new ResizeOptions
+            {
+                Size = new Size(maxImageSize, maxImageSize),
+                Mode = ResizeMode.Max,
+            }));
+        _logger.LogInformation($"Image Resized from {width} x {height} to {image.Width} {image.Height}");
+    }
+
+    #endregion
 }

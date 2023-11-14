@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using LifeLike.Common.Enums;
+﻿using LifeLike.Common.Enums;
 using LifeLike.Services.Commons.Models.Video;
 
-namespace LifeLike.Services.Commons.Interfaces.Page
+namespace LifeLike.Services.Commons.Interfaces.Page;
+
+public interface IContentService
 {
-    public interface IContentService
-    {
-        Task<ContentReadModel> Create(ContentWriteModel model);
+    Task<ContentModel> Create(ContentWriteModel model);
 
-        Task<ContentReadModel> Update(Guid id, ContentWriteModel model);
+    Task<ContentModel> Update(Guid id, ContentWriteModel model);
 
-        Task Delete(Guid id);
+    Task Delete(Guid id);
 
-        Task<IEnumerable<ContentReadModel>> ListByCategory(ContentCategory category);
+    Task<IEnumerable<ContentModel>> ListByCategory(ContentCategory category);
 
-        Task<IEnumerable<ContentReadModel>> List();
-    }
+    Task<IEnumerable<ContentModel>> List();
 }

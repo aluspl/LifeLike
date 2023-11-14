@@ -4,52 +4,51 @@
 
 using LifeLike.Common.Enums;
 
-namespace LifeLike.Common.Model
+namespace LifeLike.Common.Model;
+
+public class Error
 {
-    public class Error
+    #region Constructor(s)
+
+    public Error(
+        ErrorType code,
+        string message)
     {
-        #region Constructor(s)
+        Code = code.ToString();
+        Message = message;
+    }
 
-        public Error(
-            ErrorType code,
-            string message)
+    public Error(
+        string code,
+        string message,
+        bool validationError = false)
+    {
+        if (string.IsNullOrEmpty(code))
         {
-            Code = code.ToString();
-            Message = message;
+            Code = ErrorType.Unexpected.ToString();
         }
-
-        public Error(
-            string code,
-            string message,
-            bool validationError = false)
+        else
         {
-            if (string.IsNullOrEmpty(code))
+            if (!code.StartsWith("invalid") && validationError)
             {
-                Code = ErrorType.Unexpected.ToString();
+                Code = $"invalid{code[0].ToString().ToUpper()}{code.Substring(1)}";
             }
             else
             {
-                if (!code.StartsWith("invalid") && validationError)
-                {
-                    Code = $"invalid{code[0].ToString().ToUpper()}{code.Substring(1)}";
-                }
-                else
-                {
-                    Code = code[0].ToString().ToLower() + code.Substring(1);
-                }
+                Code = code[0].ToString().ToLower() + code.Substring(1);
             }
-
-            Message = message;
         }
 
-        #endregion
-
-        #region Public properties
-
-        public string Code { get; }
-
-        public string Message { get; }
-
-        #endregion
+        Message = message;
     }
+
+    #endregion
+
+    #region Public properties
+
+    public string Code { get; }
+
+    public string Message { get; }
+
+    #endregion
 }

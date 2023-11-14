@@ -1,9 +1,6 @@
-﻿using System;
+﻿namespace LifeLike.Database.Data.Interfaces;
 
-namespace LifeLike.Database.Data.Interfaces
+public interface IBaseEntity
 {
-    public interface IBaseEntity
-    {
-        Guid Id { get; set; }
-    }
+    Guid Id { get; set; }
 }

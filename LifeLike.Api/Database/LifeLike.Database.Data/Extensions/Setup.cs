@@ -1,6 +1,5 @@
-﻿namespace LifeLike.Database.Data.Extensions
+﻿namespace LifeLike.Database.Data.Extensions;
+
+public static class Setup
 {
-    public static class Setup
-    {
-    }
 }
