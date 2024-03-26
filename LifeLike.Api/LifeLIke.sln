@@ -1,17 +1,35 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.421
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeLike.Data", "LifeLike.Data\LifeLike.Data.csproj", "{87DE8383-DE45-42A4-838F-3704BE3B2E42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeLike.Database.Data", "Database\LifeLike.Database.Data\LifeLike.Database.Data.csproj", "{87DE8383-DE45-42A4-838F-3704BE3B2E42}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeLike.Web", "LifeLike.Web\LifeLike.Web.csproj", "{756FFCA7-81DC-4C97-A601-DFDA96BF5DD8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{D9258F74-416A-4C99-BC70-4168BB75803E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeLike.Services", "LifeLike.Services\LifeLike.Services.csproj", "{B5FB45D9-07AC-4D2E-B387-C653538B08CE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{6FBE393E-3522-4F93-B273-241EB56FEDE4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeLike.Shared", "LifeLike.Shared\LifeLike.Shared.csproj", "{865C410A-B56D-4B3B-A151-392B9783783B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Commons", "Commons", "{5A0ACC97-5DD8-4581-911C-C3EB6AFA3F5B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeLike.CloudService", "LifeLike.CloudService\LifeLike.CloudService.csproj", "{F3434EA3-BE80-44FF-AE58-00B67DBB17E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeLike", "LifeLike\LifeLike.csproj", "{756FFCA7-81DC-4C97-A601-DFDA96BF5DD8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeLike.Services.Domain", "Services\LifeLike.Services.Domain\LifeLike.Services.Domain.csproj", "{B5FB45D9-07AC-4D2E-B387-C653538B08CE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeLike.Common", "Commons\LifeLike.Common\LifeLike.Common.csproj", "{865C410A-B56D-4B3B-A151-392B9783783B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LifeLike.Services.Media", "Services\LifeLike.Services.CloudService\LifeLike.Services.Media.csproj", "{F3434EA3-BE80-44FF-AE58-00B67DBB17E1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lifelike.Services.IdentityService", "Services\LifeLike.Services.IdentityProfile\Lifelike.Services.IdentityService.csproj", "{A1E2369C-EF5E-46F7-B74B-F250722E6DED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeLike.Common.Api", "Commons\LifeLike.Common.Api\LifeLike.Common.Api.csproj", "{669EA5AC-4A31-4261-B95D-FAEB6A178F34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeLIke.Services.All", "Services\LifeLIke.Services.All\LifeLIke.Services.All.csproj", "{02B9B340-22F7-4663-BB2B-154206E8272D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeLike.Database.Migrations", "Database\LifeLike.Database.Migrations\LifeLike.Database.Migrations.csproj", "{F3BD650E-E825-4EAF-BBDA-988D1E458058}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeLike.Services.Commons", "Services\LifeLike.Services.Commons\LifeLike.Services.Commons.csproj", "{90C8F832-A6C4-4162-A7F0-B211169002C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeLike.Services.Page", "Services\LifeLike.Services.Page\LifeLike.Services.Page.csproj", "{F83D1CBC-7B16-4F2F-A87E-2E3265513DBC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,11 +57,47 @@ Global
 		{F3434EA3-BE80-44FF-AE58-00B67DBB17E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3434EA3-BE80-44FF-AE58-00B67DBB17E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3434EA3-BE80-44FF-AE58-00B67DBB17E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1E2369C-EF5E-46F7-B74B-F250722E6DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1E2369C-EF5E-46F7-B74B-F250722E6DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1E2369C-EF5E-46F7-B74B-F250722E6DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1E2369C-EF5E-46F7-B74B-F250722E6DED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{669EA5AC-4A31-4261-B95D-FAEB6A178F34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{669EA5AC-4A31-4261-B95D-FAEB6A178F34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{669EA5AC-4A31-4261-B95D-FAEB6A178F34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{669EA5AC-4A31-4261-B95D-FAEB6A178F34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02B9B340-22F7-4663-BB2B-154206E8272D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02B9B340-22F7-4663-BB2B-154206E8272D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02B9B340-22F7-4663-BB2B-154206E8272D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02B9B340-22F7-4663-BB2B-154206E8272D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3BD650E-E825-4EAF-BBDA-988D1E458058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3BD650E-E825-4EAF-BBDA-988D1E458058}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3BD650E-E825-4EAF-BBDA-988D1E458058}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3BD650E-E825-4EAF-BBDA-988D1E458058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90C8F832-A6C4-4162-A7F0-B211169002C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90C8F832-A6C4-4162-A7F0-B211169002C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90C8F832-A6C4-4162-A7F0-B211169002C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90C8F832-A6C4-4162-A7F0-B211169002C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F83D1CBC-7B16-4F2F-A87E-2E3265513DBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F83D1CBC-7B16-4F2F-A87E-2E3265513DBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F83D1CBC-7B16-4F2F-A87E-2E3265513DBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F83D1CBC-7B16-4F2F-A87E-2E3265513DBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9AC4A235-88E2-44AF-B199-71C28EBE2302}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A1E2369C-EF5E-46F7-B74B-F250722E6DED} = {D9258F74-416A-4C99-BC70-4168BB75803E}
+		{F3434EA3-BE80-44FF-AE58-00B67DBB17E1} = {D9258F74-416A-4C99-BC70-4168BB75803E}
+		{B5FB45D9-07AC-4D2E-B387-C653538B08CE} = {D9258F74-416A-4C99-BC70-4168BB75803E}
+		{87DE8383-DE45-42A4-838F-3704BE3B2E42} = {6FBE393E-3522-4F93-B273-241EB56FEDE4}
+		{865C410A-B56D-4B3B-A151-392B9783783B} = {5A0ACC97-5DD8-4581-911C-C3EB6AFA3F5B}
+		{669EA5AC-4A31-4261-B95D-FAEB6A178F34} = {5A0ACC97-5DD8-4581-911C-C3EB6AFA3F5B}
+		{02B9B340-22F7-4663-BB2B-154206E8272D} = {D9258F74-416A-4C99-BC70-4168BB75803E}
+		{F3BD650E-E825-4EAF-BBDA-988D1E458058} = {6FBE393E-3522-4F93-B273-241EB56FEDE4}
+		{90C8F832-A6C4-4162-A7F0-B211169002C9} = {D9258F74-416A-4C99-BC70-4168BB75803E}
+		{F83D1CBC-7B16-4F2F-A87E-2E3265513DBC} = {D9258F74-416A-4C99-BC70-4168BB75803E}
 	EndGlobalSection
 EndGlobal

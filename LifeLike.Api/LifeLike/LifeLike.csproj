@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+     <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <UserSecretsId>LifeLike.Api</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="3.1.1" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="7.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Commons\LifeLike.Common.Api\LifeLike.Common.Api.csproj" />
+    <ProjectReference Include="..\Commons\LifeLike.Common\LifeLike.Common.csproj" />
+    <ProjectReference Include="..\Database\LifeLike.Database.Migrations\LifeLike.Database.Migrations.csproj" />
+    <ProjectReference Include="..\Services\LifeLIke.Services.All\LifeLIke.Services.All.csproj" />
+    <ProjectReference Include="..\Services\LifeLike.Services.CloudService\LifeLike.Services.Media.csproj" />
+    <ProjectReference Include="..\Services\LifeLike.Services.Domain\LifeLike.Services.Domain.csproj" />
+    <ProjectReference Include="..\Services\LifeLike.Services.IdentityProfile\Lifelike.Services.IdentityService.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
+</Project>

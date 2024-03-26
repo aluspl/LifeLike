@@ -2,20 +2,20 @@ version: '3'
 volumes:
   node_modules:
 services:
-  # db:    
-  #   container_name: db
-  #   image: "microsoft/mssql-server-linux"
-  #   environment:
-  #      SA_PASSWORD: "Ab12345678"
-  #      ACCEPT_EULA: "Y"
-  #   volumes:
-  #     - ./db:/var/opt/mssql/data/:rw
-  #   ports:
-  #     - "1433:1433"
-  #   expose: 
-  #     - 1433
-  #   networks:
-  #     - app-network
+  db:    
+    container_name: db
+    image: "microsoft/mssql-server-linux"
+    environment:
+       SA_PASSWORD: "Ab12345678"
+       ACCEPT_EULA: "Y"
+    volumes:
+      - ./db:/var/opt/mssql/data/:rw
+    ports:
+      - "1433:1433"
+    expose: 
+      - 1433
+    networks:
+      - app-network
   api:
     container_name: api
     build:
